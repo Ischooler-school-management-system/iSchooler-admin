@@ -1,0 +1,11 @@
+{
+    "no_internet_connection": "No internet connection",
+    "select_language": "Select Language",
+    "loading": "Loading",
+    "cancel": "Cancel",
+    "login_dialog_content": "Login to access this feature",
+    "sign_in": "Sign in",
+    "there_is_an_error": "There Is An Error",
+    "select_option_prompt": "Please select an option",
+    "apply": "Apply"
+}

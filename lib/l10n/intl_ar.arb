@@ -1,0 +1,12 @@
+{
+  "no_internet_connection":"لا يوجد اتصال بالإنترنت.",
+  "select_language": "اختار لغة",
+  "loading": "جاري تحديث البيانات",
+  "cancel":"إلغاء",
+  "login_dialog_content": "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة.",
+  "sign_in": "تسجيل الدخول",
+  "there_is_an_error":"حدث خطأ ما ",
+  "select_option_prompt": "الرجاء تحديد خيار",
+  "apply": "تطبق"
+
+}

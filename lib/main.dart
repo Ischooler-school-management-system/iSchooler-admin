@@ -1,261 +1,86 @@
-import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:rxdart/rxdart.dart';
 
-void main() {
-  runApp(const MyApp());
+import 'app_listeners.dart';
+import 'app_materialapp.dart';
+import 'common/di.dart';
+import 'common/mawjood_local_settings.dart';
+
+/// app initial settings:
+/// inside main:
+//  TODO 1. localization
+///    1.install localization package and intl extension(done)
+///    2.set up change lang from the app
+///       i.stream to listen for the change
+///       ii.save chosen lang in sharedpref
+
+//  TODO 2. fixed scale(done)
+//  TODO 3. themes
+//  TODO 4. smart dialog(done)
+//  TODO 4. DI (done)
+//  TODO 5. setPreferredOrientations(done)
+//  TODO 7. onboarding for first time only
+//  TODO 8. custom navigator(done)
+//  TODO Loading and error cubits(done)
+//TODO Madpoly(custom printing class)(done)
+
+Future<void> main() async {
+  /// this is responsible for the Dependency Injection in the app
+  await DependencyInjection().registerSingleton();
+
+  /// ScreenUtil is used to make app responsible
+  /// setting up ScreenUtil(1):
+  await ScreenUtil.ensureScreenSize();
+
+  final bool isFirstTime = await MawjoodLocalSettings.isFirstTime();
+  // 1. localization(1)
+  final int currentLang = await MawjoodLocalSettings.getCurrentLang();
+
+  /// 5. setPreferredOrientations:
+  /// here we set the app Orientation to work in portraitUp only so it doesn't rotate
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then(
+    (value) => runApp(MyApp(
+      isFirstTime: isFirstTime,
+      currentLang: currentLang,
+    )),
+  );
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  final bool isFirstTime;
+  final int currentLang;
+
+  const MyApp(
+      {super.key, required this.isFirstTime, required this.currentLang});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'easy_sidemenu Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'easy_sidemenu Demo'),
-      debugShowCheckedModeBanner: false,
-    );
-  }
-}
+    // 1. localization(3)
+    final BehaviorSubject<int> languageSubject =
+        BehaviorSubject<int>.seeded(-1);
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  PageController pageController = PageController();
-  SideMenuController sideMenu = SideMenuController();
-
-  @override
-  void initState() {
-    sideMenu.addListener((index) {
-      pageController.jumpToPage(index);
-    });
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final SideMenuStyle sideMenuStyle = SideMenuStyle(
-      // showTooltip: false,
-      displayMode: SideMenuDisplayMode.auto,
-      hoverColor: Colors.blue[100],
-      selectedHoverColor: Colors.blue[100],
-      selectedColor: Colors.lightBlue,
-      selectedTitleTextStyle: const TextStyle(color: Colors.white),
-      selectedIconColor: Colors.white,
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.all(Radius.circular(10)),
-      // ),
-      // backgroundColor: Colors.blueGrey[700]
-    );
-    final List<SideMenuItem> sideMenuItems = [
-      SideMenuItem(
-        title: 'Dashboard',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.home),
-        badgeContent: const Text(
-          '3',
-          style: TextStyle(color: Colors.white),
-        ),
-        tooltipContent: "This is a tooltip for Dashboard item",
-      ),
-      SideMenuItem(
-        title: 'Users',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.supervisor_account),
-      ),
-      SideMenuItem(
-        title: 'Files',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.file_copy_rounded),
-        trailing: Container(
-            decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.all(Radius.circular(6))),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 3),
-              child: Text(
-                'New',
-                style: TextStyle(fontSize: 11, color: Colors.grey[800]),
-              ),
-            )),
-      ),
-      SideMenuItem(
-        title: 'Download',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.download),
-      ),
-      SideMenuItem(
-        builder: (context, displayMode) {
-          return const Divider(
-            endIndent: 8,
-            indent: 8,
+    /// AppListeners is the widget that contains all listeners needed on the starting of the app
+    return AppListeners(
+      /// setting up ScreenUtil(2):
+      child: ScreenUtilInit(
+        designSize: const Size(360, 690),
+        minTextAdapt: true,
+        splitScreenMode: true,
+        builder: (_, child) {
+          /// this is the language stream builder
+          /// that listens to selected language changes and apply it
+          return StreamBuilder(
+            stream: languageSubject.stream,
+            initialData: currentLang,
+            builder: (context, AsyncSnapshot<int> snapshot) {
+              return AppMaterialApp(snapshot: snapshot);
+            },
           );
         },
-      ),
-      SideMenuItem(
-        title: 'Settings',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.settings),
-      ),
-      // SideMenuItem(
-      //   onTap:(index, _){
-      //     sideMenu.changePage(index);
-      //   },
-      //   icon: const Icon(Icons.image_rounded),
-      // ),
-      // SideMenuItem(
-      //   title: 'Only Title',
-      //   onTap:(index, _){
-      //     sideMenu.changePage(index);
-      //   },
-      // ),
-      const SideMenuItem(
-        title: 'Exit',
-        icon: Icon(Icons.exit_to_app),
-      ),
-    ];
-    final List<Container> tabsContentWidgets = [
-      Container(
-        color: Colors.white,
-        child: Center(
-            child: Form(
-                child: Column(
-          children: [
-            TextFormField(),
-            TextFormField(),
-            TextFormField(),
-            TextFormField(),
-          ],
-        ))),  
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Users',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Files',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Download',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Settings',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Only Title',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Only Icon',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-    ];
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-        centerTitle: true,
-      ),
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          SideMenu(
-            controller: sideMenu,
-            style: sideMenuStyle,
-            title: Column(
-              children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxHeight: 150,
-                    maxWidth: 150,
-                  ),
-                  child: Image.asset(
-                    'assets/images/easy_sidemenu.png',
-                  ),
-                ),
-                const Divider(
-                  indent: 8.0,
-                  endIndent: 8.0,
-                ),
-              ],
-            ),
-            footer: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.lightBlue[100],
-                    borderRadius: BorderRadius.circular(12)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-                  child: Text(
-                    'mohada',
-                    style: TextStyle(fontSize: 15, color: Colors.grey[800]),
-                  ),
-                ),
-              ),
-            ),
-            items: sideMenuItems,
-          ),
-          Expanded(
-            child: PageView(
-              controller: pageController,
-              children: tabsContentWidgets,
-            ),
-          ),
-        ],
       ),
     );
   }
