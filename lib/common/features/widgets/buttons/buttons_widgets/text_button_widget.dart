@@ -17,19 +17,19 @@ class _TextButtonWidget extends StatelessWidget {
       onPressed: mawjoodTextButton.onPressed,
       child: (mawjoodTextButton.leadingText != null)
           ? SizedBox(
-              width: MawjoodConstants.mawjood_screen_width / 1.3,
+              width: EduConnectConstants.mawjood_screen_width / 1.3,
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
                   text: "${mawjoodTextButton.leadingText!} ",
                   style: mawjoodTextButton.style ??
-                      MawjoodConstants.text_theme.bodyMedium!
+                      EduConnectConstants.text_theme.bodyMedium!
                           .copyWith(color: MawjoodColors.grey),
                   children: [
                     TextSpan(
                       text: mawjoodTextButton.textButton,
                       style: mawjoodTextButton.style ??
-                          MawjoodConstants.text_theme.bodyMedium!.copyWith(
+                          EduConnectConstants.text_theme.bodyMedium!.copyWith(
                             decoration: TextDecoration.underline,
                             decorationColor: MawjoodColors.primaryColor,
                           ),
@@ -46,7 +46,7 @@ class _TextButtonWidget extends StatelessWidget {
                     Text(
                       mawjoodTextButton.textButton,
                       style: mawjoodTextButton.style ??
-                          MawjoodConstants.text_theme.bodyMedium!.copyWith(
+                          EduConnectConstants.text_theme.bodyMedium!.copyWith(
                             // decoration: mawjoodTextButton.hasUnderline
                             //     ? TextDecoration.underline
                             //     : TextDecoration.none,
@@ -67,7 +67,7 @@ class _TextButtonWidget extends StatelessWidget {
               : Text(
                   mawjoodTextButton.textButton,
                   style: mawjoodTextButton.style ??
-                      MawjoodConstants.text_theme.bodyMedium!.copyWith(
+                      EduConnectConstants.text_theme.bodyMedium!.copyWith(
                         // decoration: mawjoodTextButton.hasUnderline
                         //     ? TextDecoration.underline
                         //     : TextDecoration.none,

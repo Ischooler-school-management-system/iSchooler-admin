@@ -35,23 +35,23 @@ class AppListeners extends StatelessWidget {
 
   void errorListener(BuildContext context, ErrorHandlingState state) {
     final authSnackBar = SnackBar(
-      content: Text(MawjoodConstants.localization().login_dialog_content),
+      content: Text(EduConnectConstants.localization().login_dialog_content),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
         onPressed: () {},
-        label: MawjoodConstants.localization().sign_in,
+        label: EduConnectConstants.localization().sign_in,
       ),
     );
     final noInternetSnackBar = SnackBar(
-      content: Text(MawjoodConstants.localization().no_internet_connection),
+      content: Text(EduConnectConstants.localization().no_internet_connection),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
           onPressed: () {
             ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar();
           },
-          label: MawjoodConstants.localization().cancel),
+          label: EduConnectConstants.localization().cancel),
     );
 
     Madpoly.print(
@@ -91,7 +91,7 @@ class AppListeners extends StatelessWidget {
         if (state.error.showToast) {
           SmartDialog.dismiss();
           SmartDialog.showToast(
-            '${MawjoodConstants.localization().there_is_an_error} ${state.error.message}',
+            '${EduConnectConstants.localization().there_is_an_error} ${state.error.message}',
           );
         }
     }

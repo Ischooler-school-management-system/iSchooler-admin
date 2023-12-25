@@ -10,24 +10,24 @@ class _MawjoodAddRemoveButtonWidget extends StatelessWidget {
       children: [
         MawjoodButton(
           button: MawjoodIconButton(
-            height: MawjoodConstants.mawjood_screen_height / 30,
-            width: MawjoodConstants.mawjood_screen_width / 30,
+            height: EduConnectConstants.mawjood_screen_height / 30,
+            width: EduConnectConstants.mawjood_screen_width / 30,
             onPressed: mawjoodAddRemoveButton.addButtonFunction,
             icon: Icon(Icons.add,
-                size: MawjoodConstants.isTablet
-                    ? MawjoodConstants.mawjood_screen_height / 25
-                    : MawjoodConstants.mawjood_screen_height / 35),
+                size: EduConnectConstants.isTablet
+                    ? EduConnectConstants.mawjood_screen_height / 25
+                    : EduConnectConstants.mawjood_screen_height / 35),
           ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: SizedBox(
-            width: MawjoodConstants.isTablet ? 50 : 25,
-            height: MawjoodConstants.isTablet ? 50 : 25,
+            width: EduConnectConstants.isTablet ? 50 : 25,
+            height: EduConnectConstants.isTablet ? 50 : 25,
             child: FittedBox(
               child: Text(
                 '${mawjoodAddRemoveButton.count}',
-                style: MawjoodConstants.text_theme.displaySmall!.copyWith(
+                style: EduConnectConstants.text_theme.displaySmall!.copyWith(
                   color: MawjoodColors.primaryColor,
                   fontWeight: FontWeight.normal,
                 ),
@@ -37,13 +37,13 @@ class _MawjoodAddRemoveButtonWidget extends StatelessWidget {
         ),
         MawjoodButton(
           button: MawjoodIconButton(
-            height: MawjoodConstants.mawjood_screen_height / 30,
-            width: MawjoodConstants.mawjood_screen_width / 30,
+            height: EduConnectConstants.mawjood_screen_height / 30,
+            width: EduConnectConstants.mawjood_screen_width / 30,
             onPressed: mawjoodAddRemoveButton.subtractButtonFunction,
             icon: Icon(Icons.remove,
-                size: MawjoodConstants.isTablet
-                    ? MawjoodConstants.mawjood_screen_height / 25
-                    : MawjoodConstants.mawjood_screen_height / 35),
+                size: EduConnectConstants.isTablet
+                    ? EduConnectConstants.mawjood_screen_height / 25
+                    : EduConnectConstants.mawjood_screen_height / 35),
           ),
         ),
       ],

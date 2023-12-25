@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../app_constants.dart';
-import '../../../mawjood_colors.dart';
+import '../../../style/mawjood_colors.dart';
 import 'models/buttons_model.dart';
 import 'models/mawjood_button_interface.dart';
 

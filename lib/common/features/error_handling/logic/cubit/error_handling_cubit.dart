@@ -33,7 +33,7 @@ class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
         if (result == ConnectivityResult.none) {
           _onErrorUpdated(
             ErrorHandlingModel(
-              message: MawjoodConstants.localization().no_internet_connection,
+              message: EduConnectConstants.localization().no_internet_connection,
               type: ErrorHandlingTypes.InternetConnection,
               showToast: true,
             ),

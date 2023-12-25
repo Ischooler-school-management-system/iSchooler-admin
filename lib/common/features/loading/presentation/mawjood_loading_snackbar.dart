@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../app_constants.dart';
-import '../../../mawjood_colors.dart';
+import '../../../style/mawjood_colors.dart';
 
 class MawjoodLoadingSnackbar extends StatelessWidget {
   final String message;
@@ -33,7 +33,7 @@ class MawjoodLoadingSnackbar extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             message,
-            style: MawjoodConstants.text_theme.labelMedium!
+            style: EduConnectConstants.text_theme.labelMedium!
                 .copyWith(color: MawjoodColors.white),
           ),
         ],

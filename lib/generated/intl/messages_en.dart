@@ -45,6 +45,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
         "there_is_an_error":
             MessageLookupByLibrary.simpleMessage("There Is An Error"),
+        "welcome_create_account": MessageLookupByLibrary.simpleMessage(
+            "Welcome, create your school account"),
         "welcome_message": MessageLookupByLibrary.simpleMessage(
             "It is our great pleasure to have you on board!")
       };

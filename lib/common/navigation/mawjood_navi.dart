@@ -25,7 +25,7 @@ abstract class MawjoodNavigator {
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               var tween = Tween(
-                begin: MawjoodConstants.isCurrentLocaleArabic()
+                begin: EduConnectConstants.isCurrentLocaleArabic()
                     ? const Offset(-1.0, 0.0)
                     : const Offset(1.0, 0.0),
                 end: Offset.zero,

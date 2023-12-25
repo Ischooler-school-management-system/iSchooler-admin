@@ -38,7 +38,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       fixedSize: Size(205.w, 44.h),
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(MawjoodConstants.mawjood_button_radius),
+            BorderRadius.circular(EduConnectConstants.mawjood_button_radius),
         side: BorderSide(
           color: borderColor!,
         ),
@@ -57,13 +57,13 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
 
           Text(
             mawjoodElevatedButtonWithIcon.text,
-            style: MawjoodConstants.text_theme.bodyLarge!
+            style: EduConnectConstants.text_theme.bodyLarge!
                 .copyWith(color: textColor),
             textAlign: TextAlign.center,
           ),
 
           Align(
-            alignment: MawjoodConstants.isCurrentLocaleArabic()
+            alignment: EduConnectConstants.isCurrentLocaleArabic()
                 ? Alignment.centerLeft
                 : Alignment.centerRight,
             child: Container(
@@ -71,7 +71,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
               height: 40.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                    MawjoodConstants.mawjood_button_radius),
+                    EduConnectConstants.mawjood_button_radius),
                 // gradient: LinearGradient(colors: [
                 //   MawjoodColors.white.withOpacity(0),
                 //   MawjoodColors.white.withOpacity(0.1),
@@ -96,10 +96,10 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
         backgroundColor: buttonColor,
         surfaceTintColor: buttonColor,
         minimumSize:
-            Size(double.infinity, MawjoodConstants.mawjood_button_height),
+            Size(double.infinity, EduConnectConstants.mawjood_button_height),
         shape: RoundedRectangleBorder(
           borderRadius:
-              BorderRadius.circular(MawjoodConstants.mawjood_button_radius),
+              BorderRadius.circular(EduConnectConstants.mawjood_button_radius),
           side: BorderSide(
             color: borderColor!,
           ),
@@ -110,7 +110,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       label: Text(
         mawjoodElevatedButtonWithIcon.text,
         style:
-            MawjoodConstants.text_theme.bodyLarge!.copyWith(color: textColor),
+            EduConnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
       ),
     );
   }

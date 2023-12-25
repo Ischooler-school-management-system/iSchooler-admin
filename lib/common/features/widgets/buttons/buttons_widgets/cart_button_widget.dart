@@ -16,8 +16,8 @@ class _CartButtonWidget extends StatelessWidget {
           color: MawjoodColors.grey,
           borderRadius: BorderRadius.circular(30.r),
         ),
-        height: MawjoodConstants.mawjood_screen_height / 28,
-        width: MawjoodConstants.mawjood_screen_width / 5,
+        height: EduConnectConstants.mawjood_screen_height / 28,
+        width: EduConnectConstants.mawjood_screen_width / 5,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 2.w),
         child: SizedBox(
@@ -40,7 +40,7 @@ class _CartButtonWidget extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     mawjoodCartButton.text,
-                    style: MawjoodConstants.text_theme.bodyMedium!.copyWith(
+                    style: EduConnectConstants.text_theme.bodyMedium!.copyWith(
                       color: MawjoodColors.secondaryColor,
                       fontWeight: FontWeight.w600,
                       fontFamily: GoogleFonts.poppins().fontFamily,

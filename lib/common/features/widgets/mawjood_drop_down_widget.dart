@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../common/madpoly.dart';
 import '../../app_constants.dart';
-import '../../mawjood_colors.dart';
+import '../../style/mawjood_colors.dart';
 
 class DropdownButtonWidget extends StatefulWidget {
   final List<String> options;
@@ -42,7 +42,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
     );
     if (value == null || !validValue) {
       // SmartDialog.showToast(MawjoodConstants.localization().select_option_prompt);
-      return MawjoodConstants.localization().select_option_prompt;
+      return EduConnectConstants.localization().select_option_prompt;
     }
     return null;
   }
@@ -94,7 +94,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         hint: (widget.hint != null)
             ? Text(
                 widget.hint!,
-                style: MawjoodConstants.text_theme.labelMedium!.copyWith(
+                style: EduConnectConstants.text_theme.labelMedium!.copyWith(
                   fontFamily: GoogleFonts.poppins().fontFamily,
                   color: MawjoodColors.grey,
                 ),
@@ -111,7 +111,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
       value: item,
       child: Text(
         item,
-        style: MawjoodConstants.text_theme.labelMedium!.copyWith(
+        style: EduConnectConstants.text_theme.labelMedium!.copyWith(
           fontFamily: GoogleFonts.poppins().fontFamily,
           color: MawjoodColors.blue,
         ),

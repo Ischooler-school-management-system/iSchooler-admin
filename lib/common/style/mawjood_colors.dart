@@ -12,8 +12,8 @@ abstract class MawjoodColors {
   static const Color yellow = Color(0xffE6BB22);
   static const Color red = Color(0xffEC2D30);
   static const Color dark_red = Color(0xFFB12704);
-  static const Color blue = Color(0xff1B4865);
-  static const Color light_blue = Color(0xff61B6CB);
+  static const Color blue = Color(0xff152259);
+  static const Color light_blue = Color(0xff2D88D4);
   static const Color extra_light_blue = Color.fromRGBO(202, 233, 254, 1);
   static const Color grey = Colors.grey;
   static const Color transparent = Colors.transparent;

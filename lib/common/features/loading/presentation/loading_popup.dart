@@ -4,7 +4,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../app_constants.dart';
-import '../../../mawjood_colors.dart';
+import '../../../style/mawjood_colors.dart';
 import '../data/models/loading_model.dart';
 import 'mawjood_loading_snackbar.dart';
 
@@ -55,7 +55,7 @@ class LoadingPopup {
       builder: (context) => Padding(
         padding: EdgeInsets.all(30.0.h),
         child: MawjoodLoadingSnackbar(
-          message: MawjoodConstants.localization().loading,
+          message: EduConnectConstants.localization().loading,
         ),
       ),
       msg: 'text',

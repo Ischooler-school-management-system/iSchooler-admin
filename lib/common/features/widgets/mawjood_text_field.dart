@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../app_constants.dart';
-import '../../mawjood_colors.dart';
+import '../../style/mawjood_colors.dart';
 import 'buttons/mawjood_button_export.dart';
 
 class EduConnectTextField extends StatelessWidget {
@@ -62,7 +62,7 @@ class EduConnectTextField extends StatelessWidget {
     return OutlineInputBorder(
       borderSide: BorderSide(
         color: color ?? MawjoodColors.grey,
-        width: 1.w,
+        width: 0.5.w,
       ),
       borderRadius: BorderRadius.circular(10),
     );
@@ -70,13 +70,12 @@ class EduConnectTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isArabic = MawjoodConstants.isCurrentLocaleArabic();
+    final bool isArabic = EduConnectConstants.isCurrentLocaleArabic();
     return Padding(
       padding: const EdgeInsets.only(top: 10),
       child: SizedBox(
         width: width ?? double.infinity,
         child: TextFormField(
-          
           enabled: enabled,
           textDirection: textDirection,
           textAlign: textAlign ?? (isArabic ? TextAlign.right : TextAlign.left),
@@ -104,26 +103,24 @@ class EduConnectTextField extends StatelessWidget {
 
   InputDecoration decoration() {
     return InputDecoration(
-          alignLabelWithHint: true,
-          prefixIcon: prefixIcon,
-          prefixIconColor: MawjoodColors.grey,
-          errorMaxLines: 5,
-          contentPadding:
-              EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
-          labelStyle: GoogleFonts.poppins(
-            textStyle: MawjoodConstants.text_theme.bodyMedium!.copyWith(
-                color: MawjoodColors.grey,
-                fontWeight: FontWeight.w400,
-                fontFamily: GoogleFonts.poppins().fontFamily),
-          ),
-          labelText: labelText,
-          suffixIcon: suffixIcon,
-          suffixIconColor: MawjoodColors.grey,
-          border: hasBorder ? buildBorder() : null,
-          enabledBorder: hasBorder ? buildBorder() : null,
-          focusedBorder:
-              hasBorder ? buildBorder(color: MawjoodColors.blue) : null,
-        );
+      alignLabelWithHint: true,
+      prefixIcon: prefixIcon,
+      prefixIconColor: MawjoodColors.grey,
+      errorMaxLines: 5,
+      contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
+      labelStyle: GoogleFonts.poppins(
+        textStyle: EduConnectConstants.text_theme.bodyMedium!.copyWith(
+            color: MawjoodColors.grey,
+            fontWeight: FontWeight.w400,
+            fontFamily: GoogleFonts.poppins().fontFamily),
+      ),
+      labelText: labelText,
+      suffixIcon: suffixIcon,
+      suffixIconColor: MawjoodColors.grey,
+      border: hasBorder ? buildBorder() : null,
+      enabledBorder: hasBorder ? buildBorder() : null,
+      focusedBorder: hasBorder ? buildBorder(color: MawjoodColors.blue) : null,
+    );
   }
 }
 
@@ -148,7 +145,7 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isArabic = MawjoodConstants.isCurrentLocaleArabic();
+    final bool isArabic = EduConnectConstants.isCurrentLocaleArabic();
 
     return Container(
       height: 50.h,
@@ -171,13 +168,13 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
           errorMaxLines: 5,
           contentPadding: EdgeInsets.symmetric(horizontal: 15.w),
           labelStyle: GoogleFonts.poppins(
-            textStyle: MawjoodConstants.text_theme.bodyMedium!.copyWith(
+            textStyle: EduConnectConstants.text_theme.bodyMedium!.copyWith(
               color: MawjoodColors.grey,
               fontWeight: FontWeight.w400,
             ),
           ),
           labelText: hintText,
-          hintStyle: MawjoodConstants.text_theme.labelMedium!.copyWith(
+          hintStyle: EduConnectConstants.text_theme.labelMedium!.copyWith(
             color: MawjoodColors.grey,
           ),
           border: InputBorder.none,
@@ -190,8 +187,8 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
               onPressed: () {
                 FocusManager.instance.primaryFocus?.unfocus();
               },
-              text: MawjoodConstants.localization().apply,
-              textStyle: MawjoodConstants.text_theme.labelMedium!.copyWith(
+              text: EduConnectConstants.localization().apply,
+              textStyle: EduConnectConstants.text_theme.labelMedium!.copyWith(
                 color: MawjoodColors.white,
               ),
               shape: RoundedRectangleBorder(

@@ -140,6 +140,16 @@ class S {
     );
   }
 
+  /// `Welcome, create your school account`
+  String get welcome_create_account {
+    return Intl.message(
+      'Welcome, create your school account',
+      name: 'welcome_create_account',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `It is our great pleasure to have you on board!`
   String get welcome_message {
     return Intl.message(

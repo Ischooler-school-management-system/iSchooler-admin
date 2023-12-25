@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../generated/l10n.dart';
 import 'navigation/mawjood_navi.dart';
 
-abstract class MawjoodConstants {
+abstract class EduConnectConstants {
   static final double mawjood_button_height = 60.h;
   static final double mawjood_button_radius = 10.r;
 

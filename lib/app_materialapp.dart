@@ -4,6 +4,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import 'common/madpoly.dart';
 import 'common/navigation/router.export.dart';
+import 'common/style/educonnect_theme_data.dart';
 import 'features/auth/presentation/auth_screen.dart';
 import 'generated/l10n.dart';
 
@@ -20,7 +21,7 @@ class AppMaterialApp extends StatelessWidget {
       title: 'App',
       // material app initial settings
       // 1. localization(3)
-      locale: getSelecetedLanguage(snapshot),
+      // locale: getSelecetedLanguage(snapshot),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,
@@ -50,13 +51,6 @@ class AppMaterialApp extends StatelessWidget {
   }
 }
 
-ThemeData buildThemeData() {
-  return ThemeData(
-    // colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-    // useMaterial3 brings flutter new ui to the app
-    useMaterial3: true,
-  );
-}
 
 TransitionBuilder materialAppBuilder() {
   return FlutterSmartDialog.init(

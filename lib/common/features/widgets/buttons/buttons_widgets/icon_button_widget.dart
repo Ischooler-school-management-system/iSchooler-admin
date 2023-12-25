@@ -26,8 +26,8 @@ class _IconButtonWidget extends StatelessWidget {
           backgroundColor: mawjoodIconButton.color ?? buttonColor,
           surfaceTintColor: mawjoodIconButton.color ?? buttonColor,
           minimumSize: Size(
-            mawjoodIconButton.width ?? MawjoodConstants.mawjood_button_height,
-            mawjoodIconButton.height ?? MawjoodConstants.mawjood_button_height,
+            mawjoodIconButton.width ?? EduConnectConstants.mawjood_button_height,
+            mawjoodIconButton.height ?? EduConnectConstants.mawjood_button_height,
           ),
           shape: mawjoodIconButton.hasBorder
               ? CircleBorder(
