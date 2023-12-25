@@ -1,12 +1,17 @@
 {
-  "no_internet_connection":"لا يوجد اتصال بالإنترنت.",
+  "no_internet_connection": "لا يوجد اتصال بالإنترنت.",
   "select_language": "اختار لغة",
   "loading": "جاري تحديث البيانات",
-  "cancel":"إلغاء",
+  "cancel": "إلغاء",
   "login_dialog_content": "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة.",
   "sign_in": "تسجيل الدخول",
-  "there_is_an_error":"حدث خطأ ما ",
+  "there_is_an_error": "حدث خطأ ما ",
   "select_option_prompt": "الرجاء تحديد خيار",
-  "apply": "تطبق"
-
+  "apply": "تطبق",
+  "welcome_message": "نحن مسرورون جدًا بانضمامك إلينا!",
+  "enter_admin_name": "أدخل اسم المسؤول",
+  "enter_school_name": "أدخل اسم المدرسة",
+  "enter_school_email": "أدخل البريد الإلكتروني للمدرسة",
+  "next": "التالي",
+  "have_account_prompt": "هل لديك حساب؟ سجل الدخول الآن"
 }

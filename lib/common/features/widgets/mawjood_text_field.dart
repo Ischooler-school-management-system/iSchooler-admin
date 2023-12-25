@@ -6,7 +6,7 @@ import '../../app_constants.dart';
 import '../../mawjood_colors.dart';
 import 'buttons/mawjood_button_export.dart';
 
-class MawjoodTextField extends StatelessWidget {
+class EduConnectTextField extends StatelessWidget {
   final String? labelText;
   final double? width;
   final String? initialValue;
@@ -31,7 +31,7 @@ class MawjoodTextField extends StatelessWidget {
   final TextDirection? textDirection;
   final bool? enabled;
 
-  const MawjoodTextField({
+  const EduConnectTextField({
     super.key,
     this.labelText,
     this.width,
@@ -76,6 +76,7 @@ class MawjoodTextField extends StatelessWidget {
       child: SizedBox(
         width: width ?? double.infinity,
         child: TextFormField(
+          
           enabled: enabled,
           textDirection: textDirection,
           textAlign: textAlign ?? (isArabic ? TextAlign.right : TextAlign.left),
@@ -94,31 +95,35 @@ class MawjoodTextField extends StatelessWidget {
           maxLines: maxLines,
           initialValue: initialValue,
           textInputAction: textInputAction ?? TextInputAction.next,
-          decoration: InputDecoration(
-            alignLabelWithHint: true,
-            prefixIcon: prefixIcon,
-            prefixIconColor: MawjoodColors.grey,
-            errorMaxLines: 5,
-            contentPadding:
-                EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
-            labelStyle: GoogleFonts.poppins(
-              textStyle: MawjoodConstants.text_theme.bodyMedium!.copyWith(
-                  color: MawjoodColors.grey,
-                  fontWeight: FontWeight.w400,
-                  fontFamily: GoogleFonts.poppins().fontFamily),
-            ),
-            labelText: labelText,
-            suffixIcon: suffixIcon,
-            suffixIconColor: MawjoodColors.grey,
-            border: hasBorder ? buildBorder() : null,
-            enabledBorder: hasBorder ? buildBorder() : null,
-            focusedBorder:
-                hasBorder ? buildBorder(color: MawjoodColors.blue) : null,
-          ),
+          decoration: decoration(),
           // ),
         ),
       ),
     );
+  }
+
+  InputDecoration decoration() {
+    return InputDecoration(
+          alignLabelWithHint: true,
+          prefixIcon: prefixIcon,
+          prefixIconColor: MawjoodColors.grey,
+          errorMaxLines: 5,
+          contentPadding:
+              EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
+          labelStyle: GoogleFonts.poppins(
+            textStyle: MawjoodConstants.text_theme.bodyMedium!.copyWith(
+                color: MawjoodColors.grey,
+                fontWeight: FontWeight.w400,
+                fontFamily: GoogleFonts.poppins().fontFamily),
+          ),
+          labelText: labelText,
+          suffixIcon: suffixIcon,
+          suffixIconColor: MawjoodColors.grey,
+          border: hasBorder ? buildBorder() : null,
+          enabledBorder: hasBorder ? buildBorder() : null,
+          focusedBorder:
+              hasBorder ? buildBorder(color: MawjoodColors.blue) : null,
+        );
   }
 }
 

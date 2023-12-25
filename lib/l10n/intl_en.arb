@@ -7,5 +7,11 @@
     "sign_in": "Sign in",
     "there_is_an_error": "There Is An Error",
     "select_option_prompt": "Please select an option",
-    "apply": "Apply"
+    "apply": "Apply",
+    "welcome_message": "It is our great pleasure to have you on board!",
+    "enter_admin_name": "Enter the name of admin",
+    "enter_school_name": "Enter the name of school",
+    "enter_school_email": "Enter the school email",
+    "next": "Next",
+    "have_account_prompt": "Already have an account? Sign up"
 }

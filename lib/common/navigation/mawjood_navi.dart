@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../features/auth/presentation/screen.dart';
+import '../../features/auth/presentation/auth_screen.dart';
 import '../app_constants.dart';
 import 'routes.dart';
 
@@ -42,13 +42,13 @@ abstract class MawjoodNavigator {
 
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.homeScreen:
-        return slideNavigation(screen: const HomeScreen());
+      case Routes.authScreen:
+        return slideNavigation(screen: const AuthScreen());
 
 
       default:
         {
-          return slideNavigation(screen: const HomeScreen());
+          return slideNavigation(screen: const AuthScreen());
         }
     }
   }

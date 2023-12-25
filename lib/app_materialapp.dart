@@ -4,8 +4,8 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import 'common/madpoly.dart';
 import 'common/navigation/router.export.dart';
+import 'features/auth/presentation/auth_screen.dart';
 import 'generated/l10n.dart';
-import 'side_menu.dart';
 
 class AppMaterialApp extends StatelessWidget {
   final AsyncSnapshot<int> snapshot;
@@ -41,7 +41,7 @@ class AppMaterialApp extends StatelessWidget {
 
       // to remove the debug banner showed in the screen
       debugShowCheckedModeBanner: false,
-      home: const AppSideMenu(),
+      home: const AuthScreen(),
 
       ///4. smart dialog:
       /// FlutterSmartDialog is a package that provide dialogs and toasts without a context

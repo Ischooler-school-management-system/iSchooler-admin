@@ -24,15 +24,27 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "apply": MessageLookupByLibrary.simpleMessage("تطبق"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "enter_admin_name":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم المسؤول"),
+        "enter_school_email": MessageLookupByLibrary.simpleMessage(
+            "أدخل البريد الإلكتروني للمدرسة"),
+        "enter_school_name":
+            MessageLookupByLibrary.simpleMessage("أدخل اسم المدرسة"),
+        "have_account_prompt": MessageLookupByLibrary.simpleMessage(
+            "هل لديك حساب؟ سجل الدخول الآن"),
         "loading": MessageLookupByLibrary.simpleMessage("جاري تحديث البيانات"),
         "login_dialog_content": MessageLookupByLibrary.simpleMessage(
             "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة."),
+        "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالإنترنت."),
         "select_language": MessageLookupByLibrary.simpleMessage("اختار لغة"),
         "select_option_prompt":
             MessageLookupByLibrary.simpleMessage("الرجاء تحديد خيار"),
         "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
-        "there_is_an_error": MessageLookupByLibrary.simpleMessage("حدث خطأ ما ")
+        "there_is_an_error":
+            MessageLookupByLibrary.simpleMessage("حدث خطأ ما "),
+        "welcome_message": MessageLookupByLibrary.simpleMessage(
+            "نحن مسرورون جدًا بانضمامك إلينا!")
       };
 }

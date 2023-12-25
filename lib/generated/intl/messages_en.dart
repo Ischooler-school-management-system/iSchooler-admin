@@ -24,9 +24,18 @@ class MessageLookup extends MessageLookupByLibrary {
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "enter_admin_name":
+            MessageLookupByLibrary.simpleMessage("Enter the name of admin"),
+        "enter_school_email":
+            MessageLookupByLibrary.simpleMessage("Enter the school email"),
+        "enter_school_name":
+            MessageLookupByLibrary.simpleMessage("Enter the name of school"),
+        "have_account_prompt": MessageLookupByLibrary.simpleMessage(
+            "Already have an account? Sign up"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading"),
         "login_dialog_content": MessageLookupByLibrary.simpleMessage(
             "Login to access this feature"),
+        "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
         "select_language":
@@ -35,6 +44,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please select an option"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
         "there_is_an_error":
-            MessageLookupByLibrary.simpleMessage("There Is An Error")
+            MessageLookupByLibrary.simpleMessage("There Is An Error"),
+        "welcome_message": MessageLookupByLibrary.simpleMessage(
+            "It is our great pleasure to have you on board!")
       };
 }

@@ -46,6 +46,11 @@ dependencies:
 #  device_preview: ^1.1.0
   rxdart: ^0.27.7
   easy_sidemenu: ^0.5.0
+  # firebase packages
+  cloud_firestore: ^4.13.5
+  firebase_auth: ^4.15.0
+  firebase_core: ^2.24.0
+
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1

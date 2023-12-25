@@ -1,4 +1,5 @@
 /// Named Routes
 abstract class Routes {
-  static const homeScreen = "HOME_SCREEN";
+  static const authScreen = "AUTHSCREEN";
+  // static const homeScreen = "HOME_SCREEN";
 }

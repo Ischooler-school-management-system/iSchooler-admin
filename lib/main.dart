@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -7,24 +8,25 @@ import 'app_listeners.dart';
 import 'app_materialapp.dart';
 import 'common/di.dart';
 import 'common/mawjood_local_settings.dart';
+import 'firebase_options.dart';
 
 /// app initial settings:
 /// inside main:
-//  TODO 1. localization
+//   1. localization
 ///    1.install localization package and intl extension(done)
 ///    2.set up change lang from the app
 ///       i.stream to listen for the change
 ///       ii.save chosen lang in sharedpref
 
-//  TODO 2. fixed scale(done)
-//  TODO 3. themes
-//  TODO 4. smart dialog(done)
-//  TODO 4. DI (done)
-//  TODO 5. setPreferredOrientations(done)
-//  TODO 7. onboarding for first time only
-//  TODO 8. custom navigator(done)
-//  TODO Loading and error cubits(done)
-//TODO Madpoly(custom printing class)(done)
+//   2. fixed scale(done)
+//   3. themes
+//   4. smart dialog(done)
+//   4. DI (done)
+//   5. setPreferredOrientations(done)
+//   7. onboarding for first time only
+//   8. custom navigator(done)
+//   Loading and error cubits(done)
+// Madpoly(custom printing class)(done)
 
 Future<void> main() async {
   /// this is responsible for the Dependency Injection in the app
@@ -37,6 +39,11 @@ Future<void> main() async {
   final bool isFirstTime = await MawjoodLocalSettings.isFirstTime();
   // 1. localization(1)
   final int currentLang = await MawjoodLocalSettings.getCurrentLang();
+
+  // firebase setup
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
 
   /// 5. setPreferredOrientations:
   /// here we set the app Orientation to work in portraitUp only so it doesn't rotate

@@ -2,6 +2,7 @@ import 'dart:developer';
 import 'dart:developer' as developer;
 
 import 'package:flutter/material.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 /// LOVELY Naming (Mr. Maaaaaaaaaaaaaaaaaaaaaaaaaaadpoly)
 ///
@@ -18,6 +19,7 @@ abstract class Madpoly {
     String? tag,
     bool? isInspect,
     bool isLog = true,
+    bool showToast = false,
   }) {
     String message = "";
 
@@ -57,6 +59,10 @@ abstract class Madpoly {
     }
 
     if (isInspect == true) inspect(any);
+    if (showToast) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(any.toString());
+    }
   }
 
   // Blue text
