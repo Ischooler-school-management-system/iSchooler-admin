@@ -28,7 +28,7 @@ GoogleFonts.kumbhSans(
     /// 36 semibold
     displayLarge: GoogleFonts.poppins(
       textStyle: TextStyle(
-        color: MawjoodColors.blue,
+        color: EduConnectColors.blue,
         fontSize: 24.sp,
       ),
     ),
@@ -37,7 +37,7 @@ GoogleFonts.kumbhSans(
 
     displayMedium: GoogleFonts.poppins(
       textStyle: TextStyle(
-        color: MawjoodColors.blue,
+        color: EduConnectColors.blue,
         fontSize: 24.sp,
       ),
     ),
@@ -46,7 +46,7 @@ GoogleFonts.kumbhSans(
 
     displaySmall: GoogleFonts.poppins(
       textStyle: TextStyle(
-        color: MawjoodColors.grey,
+        color: EduConnectColors.grey,
         fontSize: 16.sp,
       ),
     ),
@@ -55,7 +55,7 @@ GoogleFonts.kumbhSans(
 
     titleMedium: GoogleFonts.poppins(
       textStyle: TextStyle(
-        color: MawjoodColors.blue,
+        color: EduConnectColors.blue,
         fontSize: 14.sp,
       ),
     ),
@@ -64,7 +64,7 @@ GoogleFonts.kumbhSans(
 
     titleSmall: GoogleFonts.poppins(
       textStyle: TextStyle(
-        color: MawjoodColors.blue,
+        color: EduConnectColors.blue,
         fontSize: 12.sp,
       ),
     ),

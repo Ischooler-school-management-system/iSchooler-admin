@@ -28,7 +28,7 @@ class _MawjoodAddRemoveButtonWidget extends StatelessWidget {
               child: Text(
                 '${educonnectAddRemoveButton.count}',
                 style: EduConnectConstants.text_theme.displaySmall!.copyWith(
-                  color: MawjoodColors.primaryColor,
+                  color: EduConnectColors.primaryColor,
                   fontWeight: FontWeight.normal,
                 ),
               ),

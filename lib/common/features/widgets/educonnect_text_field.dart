@@ -61,7 +61,7 @@ class EduConnectTextField extends StatelessWidget {
   OutlineInputBorder buildBorder({Color? color}) {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: color ?? MawjoodColors.grey,
+        color: color ?? EduConnectColors.grey,
         width: 0.5.w,
       ),
       borderRadius: BorderRadius.circular(10),
@@ -105,21 +105,21 @@ class EduConnectTextField extends StatelessWidget {
     return InputDecoration(
       alignLabelWithHint: true,
       prefixIcon: prefixIcon,
-      prefixIconColor: MawjoodColors.grey,
+      prefixIconColor: EduConnectColors.grey,
       errorMaxLines: 5,
       contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
       labelStyle: GoogleFonts.poppins(
         textStyle: EduConnectConstants.text_theme.bodyMedium!.copyWith(
-            color: MawjoodColors.grey,
+            color: EduConnectColors.grey,
             fontWeight: FontWeight.w400,
             fontFamily: GoogleFonts.poppins().fontFamily),
       ),
       labelText: labelText,
       suffixIcon: suffixIcon,
-      suffixIconColor: MawjoodColors.grey,
+      suffixIconColor: EduConnectColors.grey,
       border: hasBorder ? buildBorder() : null,
       enabledBorder: hasBorder ? buildBorder() : null,
-      focusedBorder: hasBorder ? buildBorder(color: MawjoodColors.blue) : null,
+      focusedBorder: hasBorder ? buildBorder(color: EduConnectColors.blue) : null,
     );
   }
 }
@@ -150,7 +150,7 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
     return Container(
       height: 50.h,
       decoration: BoxDecoration(
-        color: MawjoodColors.grey,
+        color: EduConnectColors.grey,
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(isArabic ? 0 : 10.r),
           bottomLeft: Radius.circular(isArabic ? 0 : 10.r),
@@ -169,13 +169,13 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
           contentPadding: EdgeInsets.symmetric(horizontal: 15.w),
           labelStyle: GoogleFonts.poppins(
             textStyle: EduConnectConstants.text_theme.bodyMedium!.copyWith(
-              color: MawjoodColors.grey,
+              color: EduConnectColors.grey,
               fontWeight: FontWeight.w400,
             ),
           ),
           labelText: hintText,
           hintStyle: EduConnectConstants.text_theme.labelMedium!.copyWith(
-            color: MawjoodColors.grey,
+            color: EduConnectColors.grey,
           ),
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
@@ -189,7 +189,7 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
               },
               text: EduConnectConstants.localization().apply,
               textStyle: EduConnectConstants.text_theme.labelMedium!.copyWith(
-                color: MawjoodColors.white,
+                color: EduConnectColors.white,
               ),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.only(

@@ -5,7 +5,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'common/madpoly.dart';
 import 'common/navigation/router.export.dart';
 import 'common/style/educonnect_theme_data.dart';
-import 'features/auth/presentation/auth_screen.dart';
+import 'features/auth/presentation/screens/auth_screen.dart';
 import 'generated/l10n.dart';
 
 class AppMaterialApp extends StatelessWidget {
@@ -50,7 +50,6 @@ class AppMaterialApp extends StatelessWidget {
     );
   }
 }
-
 
 TransitionBuilder materialAppBuilder() {
   return FlutterSmartDialog.init(

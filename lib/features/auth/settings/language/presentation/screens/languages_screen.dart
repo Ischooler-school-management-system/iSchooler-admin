@@ -55,14 +55,14 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MawjoodScreen(
+    return EduConnectScreen(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             /* MawjoodConstants.localization(). */ 'language',
             style: EduConnectConstants.text_theme.titleSmall!
-                .copyWith(color: MawjoodColors.light_blue),
+                .copyWith(color: EduConnectColors.blue),
           ),
           SizedBox(height: 10.h),
           LanguageWidget(

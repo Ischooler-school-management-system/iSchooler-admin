@@ -12,16 +12,16 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color buttonColor = educonnectElevatedButtonWithIcon.isLightMode
-        ? MawjoodColors.white // Background color in light mode
-        : MawjoodColors.secondaryColor; // Background color in dark mode
+        ? EduConnectColors.white // Background color in light mode
+        : EduConnectColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectElevatedButtonWithIcon.isLightMode
-        ? MawjoodColors.secondaryColor
-        : MawjoodColors.white; // Text color
+        ? EduConnectColors.secondaryColor
+        : EduConnectColors.white; // Text color
 
     final Color borderColor = educonnectElevatedButtonWithIcon.isLightMode
         ? textColor
-        : MawjoodColors.transparent; // Border color
+        : EduConnectColors.transparent; // Border color
 
     return educonnectElevatedButtonWithIcon.leftIcon
         ? buttonWithLeftIcon(buttonColor, borderColor, textColor)

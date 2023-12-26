@@ -13,7 +13,7 @@ class _CartButtonWidget extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-          color: MawjoodColors.grey,
+          color: EduConnectColors.grey,
           borderRadius: BorderRadius.circular(30.r),
         ),
         height: EduConnectConstants.educonnect_screen_height / 28,
@@ -30,7 +30,7 @@ class _CartButtonWidget extends StatelessWidget {
                 child: Icon(
                   Icons.remove,
                   size: 17.w,
-                  color: MawjoodColors.secondaryColor,
+                  color: EduConnectColors.secondaryColor,
                 ),
               ),
               SizedBox(
@@ -41,7 +41,7 @@ class _CartButtonWidget extends StatelessWidget {
                   child: Text(
                     educonnectCartButton.text,
                     style: EduConnectConstants.text_theme.bodyMedium!.copyWith(
-                      color: MawjoodColors.secondaryColor,
+                      color: EduConnectColors.secondaryColor,
                       fontWeight: FontWeight.w600,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
@@ -53,7 +53,7 @@ class _CartButtonWidget extends StatelessWidget {
                 child: Icon(
                   Icons.add,
                   size: 17.w,
-                  color: MawjoodColors.secondaryColor,
+                  color: EduConnectColors.secondaryColor,
                 ),
               ),
             ],

@@ -37,7 +37,7 @@ class LanguageWidget extends StatelessWidget {
                   ? Icons.radio_button_checked
                   : Icons.radio_button_unchecked,
               size: EduConnectConstants.educonnect_screen_height / 33,
-              color: MawjoodColors.blue,
+              color: EduConnectColors.blue,
             ),
           ],
         ),

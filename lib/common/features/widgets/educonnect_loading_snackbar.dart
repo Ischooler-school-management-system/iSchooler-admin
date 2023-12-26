@@ -17,7 +17,7 @@ class MawjoodLoadingSnackbar extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           vertical: 12.h, horizontal: 16.w), // Adjust vertical padding
       decoration: BoxDecoration(
-        color: MawjoodColors.secondaryColor,
+        color: EduConnectColors.secondaryColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -26,14 +26,14 @@ class MawjoodLoadingSnackbar extends StatelessWidget {
             height: 24, // Adjust the height of the CircularProgressIndicator
             width: 24, // Adjust the width of the CircularProgressIndicator
             child: SpinKitRing(
-              color: MawjoodColors.accentColor,
+              color: EduConnectColors.accentColor,
               lineWidth: 3,
             ),
           ),
           const SizedBox(width: 8),
           Text(message,
               style: EduConnectConstants.text_theme.labelMedium!
-                  .copyWith(color: MawjoodColors.accentColor)),
+                  .copyWith(color: EduConnectColors.accentColor)),
         ],
       ),
     );

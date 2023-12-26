@@ -9,16 +9,16 @@ class _IconButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color buttonColor = educonnectIconButton.isLightMode
-        ? MawjoodColors.white // Background color in light mode
-        : MawjoodColors.secondaryColor; // Background color in dark mode
+        ? EduConnectColors.white // Background color in light mode
+        : EduConnectColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectIconButton.isLightMode
-        ? MawjoodColors.secondaryColor
-        : MawjoodColors.white; // Text color
+        ? EduConnectColors.secondaryColor
+        : EduConnectColors.white; // Text color
 
     final Color borderColor = educonnectIconButton.isLightMode
         ? textColor
-        : MawjoodColors.transparent; // Border color
+        : EduConnectColors.transparent; // Border color
 
     return IconButton(
       style: IconButton.styleFrom(

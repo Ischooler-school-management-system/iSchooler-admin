@@ -24,14 +24,14 @@ class _TextButtonWidget extends StatelessWidget {
                   text: "${educonnectTextButton.leadingText!} ",
                   style: educonnectTextButton.style ??
                       EduConnectConstants.text_theme.bodyMedium!
-                          .copyWith(color: MawjoodColors.grey),
+                          .copyWith(color: EduConnectColors.grey),
                   children: [
                     TextSpan(
                       text: educonnectTextButton.textButton,
                       style: educonnectTextButton.style ??
                           EduConnectConstants.text_theme.bodyMedium!.copyWith(
                             decoration: TextDecoration.underline,
-                            decorationColor: MawjoodColors.primaryColor,
+                            decorationColor: EduConnectColors.primaryColor,
                           ),
                     ),
                   ],
@@ -51,9 +51,9 @@ class _TextButtonWidget extends StatelessWidget {
                             //     ? TextDecoration.underline
                             //     : TextDecoration.none,
                             decorationColor:
-                                educonnectTextButton.color ?? MawjoodColors.primaryColor,
+                                educonnectTextButton.color ?? EduConnectColors.primaryColor,
                             color:
-                                educonnectTextButton.color ?? MawjoodColors.black,
+                                educonnectTextButton.color ?? EduConnectColors.black,
                           ),
                     ),
                     Row(
@@ -72,8 +72,8 @@ class _TextButtonWidget extends StatelessWidget {
                         //     ? TextDecoration.underline
                         //     : TextDecoration.none,
                         decorationColor:
-                            educonnectTextButton.color ?? MawjoodColors.primaryColor,
-                        color: educonnectTextButton.color ?? MawjoodColors.black,
+                            educonnectTextButton.color ?? EduConnectColors.primaryColor,
+                        color: educonnectTextButton.color ?? EduConnectColors.black,
                       ),
                 ),
     );

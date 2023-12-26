@@ -31,7 +31,7 @@ class LoadingPopup {
         width: 40.w,
         height: 40.h,
         decoration: BoxDecoration(
-            color: MawjoodColors.secondaryColor.withOpacity(0.6),
+            color: EduConnectColors.secondaryColor.withOpacity(0.6),
             borderRadius: BorderRadius.circular(15.0),
             shape: BoxShape.rectangle // Add rounded corners
             ),
@@ -40,7 +40,7 @@ class LoadingPopup {
             width: 25.w,
             height: 25.h,
             child: const SpinKitRing(
-              color: MawjoodColors.white,
+              color: EduConnectColors.white,
               lineWidth: 3,
             ),
           ),

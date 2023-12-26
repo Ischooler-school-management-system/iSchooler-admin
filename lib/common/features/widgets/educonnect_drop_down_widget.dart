@@ -96,7 +96,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
                 widget.hint!,
                 style: EduConnectConstants.text_theme.labelMedium!.copyWith(
                   fontFamily: GoogleFonts.poppins().fontFamily,
-                  color: MawjoodColors.grey,
+                  color: EduConnectColors.grey,
                 ),
               )
             : null,
@@ -113,7 +113,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         item,
         style: EduConnectConstants.text_theme.labelMedium!.copyWith(
           fontFamily: GoogleFonts.poppins().fontFamily,
-          color: MawjoodColors.blue,
+          color: EduConnectColors.blue,
         ),
       ),
     );

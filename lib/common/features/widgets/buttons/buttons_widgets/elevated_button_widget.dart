@@ -11,16 +11,16 @@ class _ElevatedButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //switch colors for the button
     final Color buttonColor = educonnectElevatedButton.isLightMode
-        ? MawjoodColors.white // Background color in light mode
-        : MawjoodColors.secondaryColor; // Background color in dark mode
+        ? EduConnectColors.white // Background color in light mode
+        : EduConnectColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectElevatedButton.isLightMode
-        ? MawjoodColors.secondaryColor
-        : MawjoodColors.white; // Text color
+        ? EduConnectColors.secondaryColor
+        : EduConnectColors.white; // Text color
 
     final Color borderColor = educonnectElevatedButton.isLightMode
         ? textColor
-        : MawjoodColors.transparent; // Border color
+        : EduConnectColors.transparent; // Border color
 
     return ElevatedButton(
       onPressed: educonnectElevatedButton.onPressed,

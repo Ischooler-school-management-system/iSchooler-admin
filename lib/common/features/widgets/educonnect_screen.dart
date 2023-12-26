@@ -10,7 +10,7 @@ import '../../madpoly.dart';
 import '../../style/educonnect_colors.dart';
 
 // ignore: must_be_immutable
-class MawjoodScreen extends StatelessWidget {
+class EduConnectScreen extends StatelessWidget {
   final bool enableBackButton;
   final String tag;
   final PreferredSizeWidget? appBar;
@@ -23,7 +23,7 @@ class MawjoodScreen extends StatelessWidget {
 
   final FloatingActionButton? floatingActionButton;
 
-  MawjoodScreen({
+  EduConnectScreen({
     super.key,
     required this.body,
     this.enableBackButton = false,
@@ -99,7 +99,7 @@ class MawjoodScreen extends StatelessWidget {
                 animSpeedFactor: 2.5,
                 springAnimationDurationInMilliseconds: 500,
                 showChildOpacityTransition: false,
-                color: MawjoodColors.light_blue,
+                color: EduConnectColors.blue,
                 onRefresh: () {
                   Madpoly.print(
                     'onRefresh function is called',
