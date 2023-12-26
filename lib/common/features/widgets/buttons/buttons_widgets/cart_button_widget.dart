@@ -1,10 +1,10 @@
-part of '../mawjood_button.dart';
+part of '../educonnect_button.dart';
 
 class _CartButtonWidget extends StatelessWidget {
-  final MawjoodCartButton mawjoodCartButton;
+  final MawjoodCartButton educonnectCartButton;
 
   const _CartButtonWidget({
-    required this.mawjoodCartButton,
+    required this.educonnectCartButton,
   });
 
   @override
@@ -16,8 +16,8 @@ class _CartButtonWidget extends StatelessWidget {
           color: MawjoodColors.grey,
           borderRadius: BorderRadius.circular(30.r),
         ),
-        height: EduConnectConstants.mawjood_screen_height / 28,
-        width: EduConnectConstants.mawjood_screen_width / 5,
+        height: EduConnectConstants.educonnect_screen_height / 28,
+        width: EduConnectConstants.educonnect_screen_width / 5,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 2.w),
         child: SizedBox(
@@ -26,7 +26,7 @@ class _CartButtonWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                onTap: mawjoodCartButton.removeOnPressed,
+                onTap: educonnectCartButton.removeOnPressed,
                 child: Icon(
                   Icons.remove,
                   size: 17.w,
@@ -39,7 +39,7 @@ class _CartButtonWidget extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    mawjoodCartButton.text,
+                    educonnectCartButton.text,
                     style: EduConnectConstants.text_theme.bodyMedium!.copyWith(
                       color: MawjoodColors.secondaryColor,
                       fontWeight: FontWeight.w600,
@@ -49,7 +49,7 @@ class _CartButtonWidget extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: mawjoodCartButton.addOnPressed,
+                onTap: educonnectCartButton.addOnPressed,
                 child: Icon(
                   Icons.add,
                   size: 17.w,

@@ -7,7 +7,7 @@ import 'package:rxdart/rxdart.dart';
 import 'app_listeners.dart';
 import 'app_materialapp.dart';
 import 'common/di.dart';
-import 'common/mawjood_local_settings.dart';
+import 'common/educonnect_local_settings.dart';
 import 'firebase_options.dart';
 
 /// app initial settings:

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import '../../../common/features/widgets/buttons/mawjood_button.dart';
+import '../../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../../common/features/widgets/buttons/models/buttons_model.dart';
 
 import '../../../common/app_constants.dart';
-import '../../../common/features/widgets/mawjood_text_field.dart';
+import '../../../common/features/widgets/educonnect_text_field.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -26,8 +26,8 @@ class AuthScreen extends StatelessWidget {
             // ),
             Padding(
               padding: EdgeInsets.symmetric(
-                vertical: EduConnectConstants.mawjood_screen_height * 0.1,
-                horizontal: EduConnectConstants.mawjood_screen_width * 0.35,
+                vertical: EduConnectConstants.educonnect_screen_height * 0.1,
+                horizontal: EduConnectConstants.educonnect_screen_width * 0.35,
               ),
               child: Column(
                 children: [

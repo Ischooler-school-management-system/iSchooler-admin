@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../../../../../../common/app_constants.dart';
-import '../../../../../../common/style/mawjood_colors.dart';
+import '../../../../../../common/style/educonnect_colors.dart';
 
 class LanguageWidget extends StatelessWidget {
   final String title;
@@ -36,7 +36,7 @@ class LanguageWidget extends StatelessWidget {
               isSelected
                   ? Icons.radio_button_checked
                   : Icons.radio_button_unchecked,
-              size: EduConnectConstants.mawjood_screen_height / 33,
+              size: EduConnectConstants.educonnect_screen_height / 33,
               color: MawjoodColors.blue,
             ),
           ],

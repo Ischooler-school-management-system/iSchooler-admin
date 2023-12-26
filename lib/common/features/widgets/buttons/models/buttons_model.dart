@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'mawjood_button_interface.dart';
+import 'educonnect_button_interface.dart';
 
 class MawjoodElevatedButton extends IMawjoodButton {
   final String text;

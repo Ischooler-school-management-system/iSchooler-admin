@@ -1,29 +1,29 @@
-part of '../mawjood_button.dart';
+part of '../educonnect_button.dart';
 
 //elevated button with text and icon
 //the icon either at the beginning or the end of the button
 
 class _ElevatedButtonWithIconWidget extends StatelessWidget {
-  final MawjoodElevatedButtonWithIcon mawjoodElevatedButtonWithIcon;
+  final MawjoodElevatedButtonWithIcon educonnectElevatedButtonWithIcon;
   const _ElevatedButtonWithIconWidget({
-    required this.mawjoodElevatedButtonWithIcon,
+    required this.educonnectElevatedButtonWithIcon,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Color buttonColor = mawjoodElevatedButtonWithIcon.isLightMode
+    final Color buttonColor = educonnectElevatedButtonWithIcon.isLightMode
         ? MawjoodColors.white // Background color in light mode
         : MawjoodColors.secondaryColor; // Background color in dark mode
 
-    final Color textColor = mawjoodElevatedButtonWithIcon.isLightMode
+    final Color textColor = educonnectElevatedButtonWithIcon.isLightMode
         ? MawjoodColors.secondaryColor
         : MawjoodColors.white; // Text color
 
-    final Color borderColor = mawjoodElevatedButtonWithIcon.isLightMode
+    final Color borderColor = educonnectElevatedButtonWithIcon.isLightMode
         ? textColor
         : MawjoodColors.transparent; // Border color
 
-    return mawjoodElevatedButtonWithIcon.leftIcon
+    return educonnectElevatedButtonWithIcon.leftIcon
         ? buttonWithLeftIcon(buttonColor, borderColor, textColor)
         : buttonWithRightIcon(buttonColor, borderColor, textColor);
   }
@@ -38,7 +38,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       fixedSize: Size(205.w, 44.h),
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(EduConnectConstants.mawjood_button_radius),
+            BorderRadius.circular(EduConnectConstants.educonnect_button_radius),
         side: BorderSide(
           color: borderColor!,
         ),
@@ -47,7 +47,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
 
     return ElevatedButton(
       style: buttonStyle,
-      onPressed: mawjoodElevatedButtonWithIcon.onPressed,
+      onPressed: educonnectElevatedButtonWithIcon.onPressed,
       //first row to make the sized box at the end of the button
       child: Stack(
         alignment: Alignment.center,
@@ -56,7 +56,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
           //sized box to take width so the text will be in the center
 
           Text(
-            mawjoodElevatedButtonWithIcon.text,
+            educonnectElevatedButtonWithIcon.text,
             style: EduConnectConstants.text_theme.bodyLarge!
                 .copyWith(color: textColor),
             textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
               height: 40.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                    EduConnectConstants.mawjood_button_radius),
+                    EduConnectConstants.educonnect_button_radius),
                 // gradient: LinearGradient(colors: [
                 //   MawjoodColors.white.withOpacity(0),
                 //   MawjoodColors.white.withOpacity(0.1),
@@ -79,7 +79,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
                 //   MawjoodColors.white.withOpacity(0.4),
                 // ])
               ),
-              child: mawjoodElevatedButtonWithIcon.icon,
+              child: educonnectElevatedButtonWithIcon.icon,
             ),
           ),
         ],
@@ -96,19 +96,19 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
         backgroundColor: buttonColor,
         surfaceTintColor: buttonColor,
         minimumSize:
-            Size(double.infinity, EduConnectConstants.mawjood_button_height),
+            Size(double.infinity, EduConnectConstants.educonnect_button_height),
         shape: RoundedRectangleBorder(
           borderRadius:
-              BorderRadius.circular(EduConnectConstants.mawjood_button_radius),
+              BorderRadius.circular(EduConnectConstants.educonnect_button_radius),
           side: BorderSide(
             color: borderColor!,
           ),
         ),
       ),
-      onPressed: mawjoodElevatedButtonWithIcon.onPressed,
-      icon: mawjoodElevatedButtonWithIcon.icon,
+      onPressed: educonnectElevatedButtonWithIcon.onPressed,
+      icon: educonnectElevatedButtonWithIcon.icon,
       label: Text(
-        mawjoodElevatedButtonWithIcon.text,
+        educonnectElevatedButtonWithIcon.text,
         style:
             EduConnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
       ),

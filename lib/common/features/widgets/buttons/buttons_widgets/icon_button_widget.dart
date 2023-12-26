@@ -1,43 +1,43 @@
-part of '../mawjood_button.dart';
+part of '../educonnect_button.dart';
 
 //button with icon only
 class _IconButtonWidget extends StatelessWidget {
-  final MawjoodIconButton mawjoodIconButton;
+  final MawjoodIconButton educonnectIconButton;
   const _IconButtonWidget({
-    required this.mawjoodIconButton,
+    required this.educonnectIconButton,
   });
   @override
   Widget build(BuildContext context) {
-    final Color buttonColor = mawjoodIconButton.isLightMode
+    final Color buttonColor = educonnectIconButton.isLightMode
         ? MawjoodColors.white // Background color in light mode
         : MawjoodColors.secondaryColor; // Background color in dark mode
 
-    final Color textColor = mawjoodIconButton.isLightMode
+    final Color textColor = educonnectIconButton.isLightMode
         ? MawjoodColors.secondaryColor
         : MawjoodColors.white; // Text color
 
-    final Color borderColor = mawjoodIconButton.isLightMode
+    final Color borderColor = educonnectIconButton.isLightMode
         ? textColor
         : MawjoodColors.transparent; // Border color
 
     return IconButton(
       style: IconButton.styleFrom(
           foregroundColor: textColor,
-          backgroundColor: mawjoodIconButton.color ?? buttonColor,
-          surfaceTintColor: mawjoodIconButton.color ?? buttonColor,
+          backgroundColor: educonnectIconButton.color ?? buttonColor,
+          surfaceTintColor: educonnectIconButton.color ?? buttonColor,
           minimumSize: Size(
-            mawjoodIconButton.width ?? EduConnectConstants.mawjood_button_height,
-            mawjoodIconButton.height ?? EduConnectConstants.mawjood_button_height,
+            educonnectIconButton.width ?? EduConnectConstants.educonnect_button_height,
+            educonnectIconButton.height ?? EduConnectConstants.educonnect_button_height,
           ),
-          shape: mawjoodIconButton.hasBorder
+          shape: educonnectIconButton.hasBorder
               ? CircleBorder(
                   side: BorderSide(
                     color: borderColor,
                   ),
                 )
               : null),
-      onPressed: mawjoodIconButton.onPressed,
-      icon: mawjoodIconButton.icon,
+      onPressed: educonnectIconButton.onPressed,
+      icon: educonnectIconButton.icon,
     );
   }
 }

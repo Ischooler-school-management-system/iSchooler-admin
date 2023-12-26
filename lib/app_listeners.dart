@@ -9,7 +9,7 @@ import 'common/features/error_handling/logic/cubit/error_handling_cubit.dart';
 import 'common/features/loading/logic/cubit/loading_cubit.dart';
 import 'common/features/loading/presentation/loading_popup.dart';
 import 'common/madpoly.dart';
-import 'common/navigation/mawjood_navi.dart';
+import 'common/navigation/educonnect_navi.dart';
 
 class AppListeners extends StatelessWidget {
   final Widget child;

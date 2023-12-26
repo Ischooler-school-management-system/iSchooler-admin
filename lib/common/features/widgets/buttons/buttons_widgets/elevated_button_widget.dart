@@ -1,45 +1,45 @@
-part of '../mawjood_button.dart';
+part of '../educonnect_button.dart';
 
 //elevated button with text only
 class _ElevatedButtonWidget extends StatelessWidget {
-  final MawjoodElevatedButton mawjoodElevatedButton;
+  final MawjoodElevatedButton educonnectElevatedButton;
   const _ElevatedButtonWidget({
-    required this.mawjoodElevatedButton,
+    required this.educonnectElevatedButton,
   });
 
   @override
   Widget build(BuildContext context) {
     //switch colors for the button
-    final Color buttonColor = mawjoodElevatedButton.isLightMode
+    final Color buttonColor = educonnectElevatedButton.isLightMode
         ? MawjoodColors.white // Background color in light mode
         : MawjoodColors.secondaryColor; // Background color in dark mode
 
-    final Color textColor = mawjoodElevatedButton.isLightMode
+    final Color textColor = educonnectElevatedButton.isLightMode
         ? MawjoodColors.secondaryColor
         : MawjoodColors.white; // Text color
 
-    final Color borderColor = mawjoodElevatedButton.isLightMode
+    final Color borderColor = educonnectElevatedButton.isLightMode
         ? textColor
         : MawjoodColors.transparent; // Border color
 
     return ElevatedButton(
-      onPressed: mawjoodElevatedButton.onPressed,
+      onPressed: educonnectElevatedButton.onPressed,
       style: ElevatedButton.styleFrom(
-        padding: mawjoodElevatedButton.textPadding,
+        padding: educonnectElevatedButton.textPadding,
         foregroundColor: textColor,
         backgroundColor: buttonColor,
         surfaceTintColor: buttonColor,
         alignment: Alignment.center,
         minimumSize: Size(
-          mawjoodElevatedButton.width ?? double.infinity,
-          mawjoodElevatedButton.height ??
-              EduConnectConstants.mawjood_button_height,
+          educonnectElevatedButton.width ?? double.infinity,
+          educonnectElevatedButton.height ??
+              EduConnectConstants.educonnect_button_height,
         ),
-        shape: mawjoodElevatedButton.shape ??
+        shape: educonnectElevatedButton.shape ??
             RoundedRectangleBorder(
-              borderRadius: mawjoodElevatedButton.hasRoundedCorners
+              borderRadius: educonnectElevatedButton.hasRoundedCorners
                   ? BorderRadius.circular(
-                      EduConnectConstants.mawjood_button_radius)
+                      EduConnectConstants.educonnect_button_radius)
                   : BorderRadius.zero,
               side: BorderSide(
                 color: borderColor,
@@ -47,8 +47,8 @@ class _ElevatedButtonWidget extends StatelessWidget {
             ),
       ),
       child: Text(
-        mawjoodElevatedButton.text,
-        style: mawjoodElevatedButton.textStyle ??
+        educonnectElevatedButton.text,
+        style: educonnectElevatedButton.textStyle ??
             TextStyle(
               fontSize: 10.sp,
               // fontWeight: FontWeight.w600,

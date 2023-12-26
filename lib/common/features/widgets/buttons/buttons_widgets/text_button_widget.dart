@@ -1,10 +1,10 @@
-part of '../mawjood_button.dart';
+part of '../educonnect_button.dart';
 
 //text button either with or without leading text
 class _TextButtonWidget extends StatelessWidget {
-  final MawjoodTextButton mawjoodTextButton;
+  final MawjoodTextButton educonnectTextButton;
   const _TextButtonWidget({
-    required this.mawjoodTextButton,
+    required this.educonnectTextButton,
   });
 
   @override
@@ -14,21 +14,21 @@ class _TextButtonWidget extends StatelessWidget {
         shape: const RoundedRectangleBorder(),
         padding: EdgeInsets.zero,
       ),
-      onPressed: mawjoodTextButton.onPressed,
-      child: (mawjoodTextButton.leadingText != null)
+      onPressed: educonnectTextButton.onPressed,
+      child: (educonnectTextButton.leadingText != null)
           ? SizedBox(
-              width: EduConnectConstants.mawjood_screen_width / 1.3,
+              width: EduConnectConstants.educonnect_screen_width / 1.3,
               child: RichText(
                 textAlign: TextAlign.center,
                 text: TextSpan(
-                  text: "${mawjoodTextButton.leadingText!} ",
-                  style: mawjoodTextButton.style ??
+                  text: "${educonnectTextButton.leadingText!} ",
+                  style: educonnectTextButton.style ??
                       EduConnectConstants.text_theme.bodyMedium!
                           .copyWith(color: MawjoodColors.grey),
                   children: [
                     TextSpan(
-                      text: mawjoodTextButton.textButton,
-                      style: mawjoodTextButton.style ??
+                      text: educonnectTextButton.textButton,
+                      style: educonnectTextButton.style ??
                           EduConnectConstants.text_theme.bodyMedium!.copyWith(
                             decoration: TextDecoration.underline,
                             decorationColor: MawjoodColors.primaryColor,
@@ -40,40 +40,40 @@ class _TextButtonWidget extends StatelessWidget {
                 overflow: TextOverflow.visible, // Set the overflow behavior
               ),
             )
-          : mawjoodTextButton.widget != null
+          : educonnectTextButton.widget != null
               ? Row(
                   children: [
                     Text(
-                      mawjoodTextButton.textButton,
-                      style: mawjoodTextButton.style ??
+                      educonnectTextButton.textButton,
+                      style: educonnectTextButton.style ??
                           EduConnectConstants.text_theme.bodyMedium!.copyWith(
-                            // decoration: mawjoodTextButton.hasUnderline
+                            // decoration: educonnectTextButton.hasUnderline
                             //     ? TextDecoration.underline
                             //     : TextDecoration.none,
                             decorationColor:
-                                mawjoodTextButton.color ?? MawjoodColors.primaryColor,
+                                educonnectTextButton.color ?? MawjoodColors.primaryColor,
                             color:
-                                mawjoodTextButton.color ?? MawjoodColors.black,
+                                educonnectTextButton.color ?? MawjoodColors.black,
                           ),
                     ),
                     Row(
                       children: [
                         SizedBox(width: 3.w),
-                        mawjoodTextButton.widget!
+                        educonnectTextButton.widget!
                       ],
                     ),
                   ],
                 )
               : Text(
-                  mawjoodTextButton.textButton,
-                  style: mawjoodTextButton.style ??
+                  educonnectTextButton.textButton,
+                  style: educonnectTextButton.style ??
                       EduConnectConstants.text_theme.bodyMedium!.copyWith(
-                        // decoration: mawjoodTextButton.hasUnderline
+                        // decoration: educonnectTextButton.hasUnderline
                         //     ? TextDecoration.underline
                         //     : TextDecoration.none,
                         decorationColor:
-                            mawjoodTextButton.color ?? MawjoodColors.primaryColor,
-                        color: mawjoodTextButton.color ?? MawjoodColors.black,
+                            educonnectTextButton.color ?? MawjoodColors.primaryColor,
+                        color: educonnectTextButton.color ?? MawjoodColors.black,
                       ),
                 ),
     );

@@ -4,22 +4,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../generated/l10n.dart';
-import 'navigation/mawjood_navi.dart';
+import 'navigation/educonnect_navi.dart';
 
 abstract class EduConnectConstants {
-  static final double mawjood_button_height = 60.h;
-  static final double mawjood_button_radius = 10.r;
+  static final double educonnect_button_height = 60.h;
+  static final double educonnect_button_radius = 10.r;
 
   // Get the text theme from the current theme currentContext!.
   static final TextTheme text_theme = Theme.of(currentContext!).textTheme;
 
   // Get the screen size, height, and width from the current currentContext!.
-  static final Size mawjood_screen_size = MediaQuery.of(currentContext!).size;
+  static final Size educonnect_screen_size = MediaQuery.of(currentContext!).size;
 
-  static final double mawjood_screen_height =
+  static final double educonnect_screen_height =
       MediaQuery.of(currentContext!).size.height;
 
-  static final double mawjood_screen_width =
+  static final double educonnect_screen_width =
       MediaQuery.of(currentContext!).size.width;
 
   static final bool isTablet = MediaQuery.of(currentContext!).size.width > 600;

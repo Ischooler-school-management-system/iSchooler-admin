@@ -3,8 +3,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../app_constants.dart';
-import '../../style/mawjood_colors.dart';
-import 'buttons/mawjood_button_export.dart';
+import '../../style/educonnect_colors.dart';
+import 'buttons/educonnect_button_export.dart';
 
 class EduConnectTextField extends StatelessWidget {
   final String? labelText;

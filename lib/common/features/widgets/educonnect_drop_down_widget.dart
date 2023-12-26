@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../common/madpoly.dart';
 import '../../app_constants.dart';
-import '../../style/mawjood_colors.dart';
+import '../../style/educonnect_colors.dart';
 
 class DropdownButtonWidget extends StatefulWidget {
   final List<String> options;

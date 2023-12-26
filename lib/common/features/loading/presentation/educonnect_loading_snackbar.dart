@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
 import '../../../app_constants.dart';
-import '../../../style/mawjood_colors.dart';
+import '../../../style/educonnect_colors.dart';
 
 class MawjoodLoadingSnackbar extends StatelessWidget {
   final String message;

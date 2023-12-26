@@ -1,2 +1,2 @@
-export 'mawjood_button.dart';
+export 'educonnect_button.dart';
 export 'models/buttons_model.dart';

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/style/mawjood_text_theme.dart';
+import 'package:school_admin/common/style/educonnect_text_theme.dart';
 
 ThemeData buildThemeData() {
   return ThemeData(

@@ -7,7 +7,7 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import '../../features/error_handling/data/models/error_handling_model.dart';
 import '../../features/error_handling/logic/cubit/error_handling_cubit.dart';
 import '../../madpoly.dart';
-import '../../style/mawjood_colors.dart';
+import '../../style/educonnect_colors.dart';
 
 // ignore: must_be_immutable
 class MawjoodScreen extends StatelessWidget {
