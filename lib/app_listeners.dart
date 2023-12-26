@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import 'common/app_constants.dart';
 import 'bloc_providers.dart';
+import 'common/app_constants.dart';
 import 'common/features/error_handling/data/models/error_handling_model.dart';
 import 'common/features/error_handling/logic/cubit/error_handling_cubit.dart';
 import 'common/features/loading/logic/cubit/loading_cubit.dart';

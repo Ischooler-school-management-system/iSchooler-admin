@@ -26,12 +26,12 @@ class AuthHeaderWidget extends StatelessWidget {
         color: EduConnectColors.blue,
         borderRadius: BorderRadiusDirectional.only(
           bottomEnd: Radius.circular(
-            120.r,
+            90.r,
           ),
         ),
       ),
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding:  EdgeInsets.all(20.0.h),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.start,

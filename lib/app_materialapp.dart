@@ -43,6 +43,8 @@ class AppMaterialApp extends StatelessWidget {
       // to remove the debug banner showed in the screen
       debugShowCheckedModeBanner: false,
       home: const AuthScreen(),
+      // home: const SigninScreen(),
+      
 
       ///4. smart dialog:
       /// FlutterSmartDialog is a package that provide dialogs and toasts without a context
