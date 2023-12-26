@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import '../../../../app_constants.dart';
 import '../../../../di.dart';
 import '../../../../madpoly.dart';

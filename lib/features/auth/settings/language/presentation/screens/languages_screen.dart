@@ -4,10 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../../../common/app_constants.dart';
+import '../../../../../../common/educonnect_local_settings.dart';
 import '../../../../../../common/features/loading/presentation/loading_popup.dart';
 import '../../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../../common/madpoly.dart';
-import '../../../../../../common/educonnect_local_settings.dart';
 import '../../../../../../common/style/educonnect_colors.dart';
 import '../../language_bloc/language_bloc.dart';
 import '../widgets/language_widget.dart';
