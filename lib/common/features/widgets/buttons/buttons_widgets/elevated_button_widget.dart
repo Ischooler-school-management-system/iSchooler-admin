@@ -50,7 +50,7 @@ class _ElevatedButtonWidget extends StatelessWidget {
         educonnectElevatedButton.text,
         style: educonnectElevatedButton.textStyle ??
             TextStyle(
-              fontSize: 10.sp,
+              fontSize: 14.sp,
               // fontWeight: FontWeight.w600,
               color: textColor,
             ),

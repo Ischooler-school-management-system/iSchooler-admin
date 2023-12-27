@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:school_admin/common/features/widgets/buttons/educonnect_button.dart';
+import 'package:school_admin/common/features/widgets/buttons/models/buttons_model.dart';
 
 import '../../../../common/app_constants.dart';
 import '../../../../common/educonnect_assets.dart';
@@ -11,16 +13,16 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-         /*  EduconnectImageWidget.asset(
-            url: EduconnectAssets.authImage,
-            height: EduConnectConstants.educonnect_screen_height * 0.2,
-          ), */
-
-          Image.asset(EduconnectAssets.authImage),
-          Text(
+      body: Padding(
+        padding: EdgeInsets.all(20.0.h),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            EduconnectImageWidget.asset(
+              url: EduconnectAssets.authImage,
+              height: EduConnectConstants.educonnect_screen_height * 0.5,
+            ),
+            Text(
               'Welcome',
               style: TextStyle(
                 fontSize: 20.sp,
@@ -28,6 +30,7 @@ class AuthScreen extends StatelessWidget {
                 // color: Colors.white,
               ),
             ),
+            SizedBox(height: 12.h),
             Text(
               'Now you can manage your entire school with EduConnect app',
               style: TextStyle(
@@ -36,7 +39,22 @@ class AuthScreen extends StatelessWidget {
                 // color: Colors.white,
               ),
             ),
-        ],
+            SizedBox(height: 20.h),
+            MawjoodButton(
+                button: MawjoodElevatedButton(
+              onPressed: () {},
+              text: 'sign Up',
+              height: 35.h,
+            )),
+            SizedBox(height: 10.h),
+            MawjoodButton(
+                button: MawjoodElevatedButton(
+              onPressed: () {},
+              isLightMode: true,
+              text: 'sign in',
+            ))
+          ],
+        ),
       ),
     );
   }

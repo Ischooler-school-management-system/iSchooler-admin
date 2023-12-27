@@ -7,8 +7,8 @@ import '../generated/l10n.dart';
 import 'navigation/educonnect_navi.dart';
 
 abstract class EduConnectConstants {
-  static final double educonnect_button_height = 60.h;
-  static final double educonnect_button_radius = 10.r;
+  static final double educonnect_button_height = 35.h;
+  static final double educonnect_button_radius = 8.r;
 
   // Get the text theme from the current theme currentContext!.
   static final TextTheme text_theme = Theme.of(currentContext!).textTheme;
