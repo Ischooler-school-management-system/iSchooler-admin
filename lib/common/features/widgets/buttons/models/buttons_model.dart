@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'educonnect_button_interface.dart';
 // 
-class MawjoodElevatedButton extends IMawjoodButton {
+class EduconnectElevatedButton extends IEduconnectButton {
   final String text;
   final bool isLightMode;
   final double? width;
@@ -13,7 +13,7 @@ class MawjoodElevatedButton extends IMawjoodButton {
   final EdgeInsetsGeometry? textPadding;
   final OutlinedBorder? shape;
 
-  const MawjoodElevatedButton({
+  const EduconnectElevatedButton({
     required super.onPressed,
     required this.text,
     this.isLightMode = false,
@@ -27,7 +27,7 @@ class MawjoodElevatedButton extends IMawjoodButton {
   });
 }
 
-class MawjoodTextButton extends IMawjoodButton {
+class EduconnectTextButton extends IEduconnectButton {
   final String? leadingText;
   final String textButton;
   final Color? color;
@@ -36,7 +36,7 @@ class MawjoodTextButton extends IMawjoodButton {
   final Widget? widget;
   //final BuildContext context;
 
-  const MawjoodTextButton( {
+  const EduconnectTextButton( {
     this.leadingText,
     required super.onPressed,
     required this.textButton,
@@ -48,7 +48,7 @@ class MawjoodTextButton extends IMawjoodButton {
   });
 }
 
-class MawjoodIconButton extends IMawjoodButton {
+class EduconnectIconButton extends IEduconnectButton {
   final Widget icon;
   final Color? color;
   final bool isLightMode;
@@ -56,7 +56,7 @@ class MawjoodIconButton extends IMawjoodButton {
   final double? width;
   final double? height;
 
-  const MawjoodIconButton({
+  const EduconnectIconButton({
     required super.onPressed,
     required this.icon,
     this.isLightMode = false,
@@ -67,13 +67,13 @@ class MawjoodIconButton extends IMawjoodButton {
   });
 }
 
-class MawjoodElevatedButtonWithIcon extends IMawjoodButton {
+class EduconnectElevatedButtonWithIcon extends IEduconnectButton {
   final Widget icon;
   final String text;
   final bool leftIcon;
   final bool isLightMode;
 
-  const MawjoodElevatedButtonWithIcon({
+  const EduconnectElevatedButtonWithIcon({
     required this.icon,
     required super.onPressed,
     required this.text,
@@ -82,12 +82,12 @@ class MawjoodElevatedButtonWithIcon extends IMawjoodButton {
   });
 }
 
-class MawjoodCartButton extends IMawjoodButton {
+class EduconnectCartButton extends IEduconnectButton {
   final String text;
   final dynamic Function()? addOnPressed;
   final dynamic Function()? removeOnPressed;
 
-  const MawjoodCartButton({
+  const EduconnectCartButton({
     this.addOnPressed,
     this.removeOnPressed,
     required super.onPressed,
@@ -95,12 +95,12 @@ class MawjoodCartButton extends IMawjoodButton {
   });
 }
 
-class MawjoodAddRemoveButton extends IMawjoodButton {
+class EduconnectAddRemoveButton extends IEduconnectButton {
    final dynamic Function() addButtonFunction;
   final dynamic Function() subtractButtonFunction;
   final int count;
 
-  const MawjoodAddRemoveButton({required this.count,
+  const EduconnectAddRemoveButton({required this.count,
    required this.addButtonFunction,required this.subtractButtonFunction,
     required super.onPressed,
 });

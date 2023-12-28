@@ -124,13 +124,13 @@ class EduConnectTextField extends StatelessWidget {
   }
 }
 
-class MawjoodPromoCodeTextField extends StatelessWidget {
+class EduconnectPromoCodeTextField extends StatelessWidget {
   final String hintText;
   final Function(String?)? onSaved;
   final String? Function(String?)? validator;
   final TextInputType? keyboardType;
 
-  const MawjoodPromoCodeTextField({
+  const EduconnectPromoCodeTextField({
     super.key,
     required this.hintText,
     this.onSaved,
@@ -180,8 +180,8 @@ class MawjoodPromoCodeTextField extends StatelessWidget {
           border: InputBorder.none,
           enabledBorder: InputBorder.none,
           focusedBorder: InputBorder.none,
-          suffixIcon: MawjoodButton(
-            button: MawjoodElevatedButton(
+          suffixIcon: EduconnectButton(
+            button: EduconnectElevatedButton(
               width: 50.w,
               height: 60.h,
               onPressed: () {

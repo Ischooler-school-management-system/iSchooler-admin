@@ -4,7 +4,7 @@ part of '../educonnect_button.dart';
 //the icon either at the beginning or the end of the button
 
 class _ElevatedButtonWithIconWidget extends StatelessWidget {
-  final MawjoodElevatedButtonWithIcon educonnectElevatedButtonWithIcon;
+  final EduconnectElevatedButtonWithIcon educonnectElevatedButtonWithIcon;
   const _ElevatedButtonWithIconWidget({
     required this.educonnectElevatedButtonWithIcon,
   });
@@ -73,10 +73,10 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
                 borderRadius: BorderRadius.circular(
                     EduConnectConstants.educonnect_button_radius),
                 // gradient: LinearGradient(colors: [
-                //   MawjoodColors.white.withOpacity(0),
-                //   MawjoodColors.white.withOpacity(0.1),
-                //   MawjoodColors.white.withOpacity(0.2),
-                //   MawjoodColors.white.withOpacity(0.4),
+                //   EduconnectColors.white.withOpacity(0),
+                //   EduconnectColors.white.withOpacity(0.1),
+                //   EduconnectColors.white.withOpacity(0.2),
+                //   EduconnectColors.white.withOpacity(0.4),
                 // ])
               ),
               child: educonnectElevatedButtonWithIcon.icon,

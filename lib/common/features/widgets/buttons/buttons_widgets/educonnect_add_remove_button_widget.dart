@@ -1,15 +1,15 @@
 part of '../educonnect_button.dart';
-class _MawjoodAddRemoveButtonWidget extends StatelessWidget {
-  final MawjoodAddRemoveButton educonnectAddRemoveButton;
+class _EduconnectAddRemoveButtonWidget extends StatelessWidget {
+  final EduconnectAddRemoveButton educonnectAddRemoveButton;
 
-  const _MawjoodAddRemoveButtonWidget({required this.educonnectAddRemoveButton});
+  const _EduconnectAddRemoveButtonWidget({required this.educonnectAddRemoveButton});
   //int count = 1;
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        MawjoodButton(
-          button: MawjoodIconButton(
+        EduconnectButton(
+          button: EduconnectIconButton(
             height: EduConnectConstants.educonnect_screen_height / 30,
             width: EduConnectConstants.educonnect_screen_width / 30,
             onPressed: educonnectAddRemoveButton.addButtonFunction,
@@ -35,8 +35,8 @@ class _MawjoodAddRemoveButtonWidget extends StatelessWidget {
             ),
           ),
         ),
-        MawjoodButton(
-          button: MawjoodIconButton(
+        EduconnectButton(
+          button: EduconnectIconButton(
             height: EduConnectConstants.educonnect_screen_height / 30,
             width: EduConnectConstants.educonnect_screen_width / 30,
             onPressed: educonnectAddRemoveButton.subtractButtonFunction,

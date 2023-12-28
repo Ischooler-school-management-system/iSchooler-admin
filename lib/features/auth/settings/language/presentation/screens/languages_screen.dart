@@ -31,7 +31,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
   }
 
   Future<void> getLang() async {
-    selectedIndex = await MawjoodLocalSettings.getCurrentLang();
+    selectedIndex = await EduconnectLocalSettings.getCurrentLang();
     setState(() {});
     Madpoly.print('selectedIndex$selectedIndex');
   }
@@ -40,7 +40,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     setState(() {
       selectedIndex = index;
     });
-    MawjoodLocalSettings.saveCurrentLang(selectedIndex);
+    EduconnectLocalSettings.saveCurrentLang(selectedIndex);
 
     // Update the language using the static languageSubject
     // LanguagesScreen.languageSubject.sink.add(index);
@@ -48,7 +48,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     BlocProvider.of<LangBloc>(context).add(UpdateLangEvent(selectedIndex));
     LoadingPopup.normalLoadingDialog();
     await Future.delayed(const Duration(seconds: 2), () {
-      // MawjoodNavigator.navigateToScreen(const MawjoodBottomNavBar());
+      // EduconnectNavigator.navigateToScreen(const EduconnectBottomNavBar());
       SmartDialog.dismiss();
     });
   }
@@ -60,7 +60,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            /* MawjoodConstants.localization(). */ 'language',
+            /* EduconnectConstants.localization(). */ 'language',
             style: EduConnectConstants.text_theme.titleSmall!
                 .copyWith(color: EduConnectColors.blue),
           ),

@@ -54,7 +54,7 @@ class LoadingPopup {
       clickMaskDismiss: false,
       builder: (context) => Padding(
         padding: EdgeInsets.all(30.0.h),
-        child: MawjoodLoadingSnackbar(
+        child: EduconnectLoadingSnackbar(
           message: EduConnectConstants.localization().loading,
         ),
       ),

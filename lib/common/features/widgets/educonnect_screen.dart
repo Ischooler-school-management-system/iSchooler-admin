@@ -54,7 +54,7 @@ class EduConnectScreen extends StatelessWidget {
       SystemNavigator.pop();
     } else {
       SmartDialog.showToast(
-          'MawjoodConstants.localization().press_back_again_to_close_the_app');
+          'EduconnectConstants.localization().press_back_again_to_close_the_app');
       backButtonPressed = true;
     }
     return false;
@@ -103,7 +103,7 @@ class EduConnectScreen extends StatelessWidget {
                 onRefresh: () {
                   Madpoly.print(
                     'onRefresh function is called',
-                    tag: "MawjoodScreen > LiquidPullToRefresh",
+                    tag: "EduconnectScreen > LiquidPullToRefresh",
                     developer: 'ziad',
                     isInspect: true,
                     isLog: true,
@@ -116,7 +116,7 @@ class EduConnectScreen extends StatelessWidget {
     );
   }
 
-  // Build method for the MawjoodScreen widget
+  // Build method for the EduconnectScreen widget
   @override
   Widget build(BuildContext context) {
     // Build the main screen with necessary widgets

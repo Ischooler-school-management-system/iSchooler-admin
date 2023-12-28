@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/features/auth/presentation/widgets/sign_in_screen.dart';
 
 import '../../features/auth/presentation/screens/auth_screen.dart';
 import '../app_constants.dart';
@@ -8,9 +9,9 @@ import 'routes.dart';
 
 /// Global Context of App
 BuildContext? get currentContext =>
-    MawjoodNavigator.navigatorState.currentContext;
+    EduconnectNavigator.navigatorState.currentContext;
 
-abstract class MawjoodNavigator {
+abstract class EduconnectNavigator {
   static final GlobalKey<NavigatorState> navigatorState =
       GlobalKey<NavigatorState>();
   static final RouteObserver<PageRoute> routeObserver =
@@ -44,6 +45,8 @@ abstract class MawjoodNavigator {
     switch (settings.name) {
       case Routes.authScreen:
         return slideNavigation(screen: const AuthScreen());
+      case Routes.signinScreen:
+        return slideNavigation(screen: const SigninScreen());
 
       default:
         {

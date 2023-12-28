@@ -18,10 +18,10 @@ part 'buttons_widgets/educonnect_add_remove_button_widget.dart';
 part 'buttons_widgets/text_button_widget.dart';
 
 // Main button class that renders different button types based on the provided `button` object.
-class MawjoodButton extends StatelessWidget {
-  final IMawjoodButton button;
+class EduconnectButton extends StatelessWidget {
+  final IEduconnectButton button;
 
-  const MawjoodButton({
+  const EduconnectButton({
     super.key,
     required this.button,
   });
@@ -29,25 +29,25 @@ class MawjoodButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (button) {
-      case MawjoodElevatedButton educonnectElevatedButton:
+      case EduconnectElevatedButton educonnectElevatedButton:
         return _ElevatedButtonWidget(
             educonnectElevatedButton: educonnectElevatedButton);
 
-      case MawjoodTextButton educonnectTextButton:
+      case EduconnectTextButton educonnectTextButton:
         return _TextButtonWidget(educonnectTextButton: educonnectTextButton);
 
-      case MawjoodIconButton educonnectIconButton:
+      case EduconnectIconButton educonnectIconButton:
         return _IconButtonWidget(educonnectIconButton: educonnectIconButton);
 
-      case MawjoodElevatedButtonWithIcon educonnectElevatedButtonWithIcon:
+      case EduconnectElevatedButtonWithIcon educonnectElevatedButtonWithIcon:
         return _ElevatedButtonWithIconWidget(
             educonnectElevatedButtonWithIcon: educonnectElevatedButtonWithIcon);
 
-      case MawjoodCartButton educonnectCartButton:
+      case EduconnectCartButton educonnectCartButton:
         return _CartButtonWidget(educonnectCartButton: educonnectCartButton);
 
-         case MawjoodAddRemoveButton educonnectAddRemoveButton:
-        return _MawjoodAddRemoveButtonWidget(educonnectAddRemoveButton: educonnectAddRemoveButton);
+         case EduconnectAddRemoveButton educonnectAddRemoveButton:
+        return _EduconnectAddRemoveButtonWidget(educonnectAddRemoveButton: educonnectAddRemoveButton);
 
       default:
         return const Text('Nothing');

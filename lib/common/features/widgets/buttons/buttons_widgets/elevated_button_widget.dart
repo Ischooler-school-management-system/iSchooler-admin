@@ -2,7 +2,7 @@ part of '../educonnect_button.dart';
 
 //elevated button with text only
 class _ElevatedButtonWidget extends StatelessWidget {
-  final MawjoodElevatedButton educonnectElevatedButton;
+  final EduconnectElevatedButton educonnectElevatedButton;
   const _ElevatedButtonWidget({
     required this.educonnectElevatedButton,
   });

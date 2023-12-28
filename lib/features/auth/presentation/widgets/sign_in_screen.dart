@@ -36,8 +36,8 @@ class SigninScreen extends StatelessWidget {
                       EduConnectConstants.localization().enter_school_email,
                 ),
                 SizedBox(height: 20.h),
-                MawjoodButton(
-                    button: MawjoodElevatedButton(
+                EduconnectButton(
+                    button: EduconnectElevatedButton(
                   onPressed: () {},
                   text: EduConnectConstants.localization().next,
                 ))

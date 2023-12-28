@@ -36,8 +36,8 @@ class AppMaterialApp extends StatelessWidget {
       // ----------------------------------
 
       // 8. custom navigator
-      navigatorKey: MawjoodNavigator.navigatorState,
-      onGenerateRoute: MawjoodNavigator.onCreateRoute,
+      navigatorKey: EduconnectNavigator.navigatorState,
+      onGenerateRoute: EduconnectNavigator.onCreateRoute,
       // ----------------------------------
 
       // to remove the debug banner showed in the screen

@@ -2,7 +2,7 @@ part of '../educonnect_button.dart';
 
 //text button either with or without leading text
 class _TextButtonWidget extends StatelessWidget {
-  final MawjoodTextButton educonnectTextButton;
+  final EduconnectTextButton educonnectTextButton;
   const _TextButtonWidget({
     required this.educonnectTextButton,
   });

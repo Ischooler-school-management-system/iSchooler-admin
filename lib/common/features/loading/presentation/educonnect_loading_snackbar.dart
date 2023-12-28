@@ -5,10 +5,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../app_constants.dart';
 import '../../../style/educonnect_colors.dart';
 
-class MawjoodLoadingSnackbar extends StatelessWidget {
+class EduconnectLoadingSnackbar extends StatelessWidget {
   final String message;
 
-  const MawjoodLoadingSnackbar({super.key, required this.message});
+  const EduconnectLoadingSnackbar({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {

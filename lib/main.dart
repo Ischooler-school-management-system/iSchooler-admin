@@ -36,9 +36,9 @@ Future<void> main() async {
   /// setting up ScreenUtil(1):
   await ScreenUtil.ensureScreenSize();
 
-  final bool isFirstTime = await MawjoodLocalSettings.isFirstTime();
+  final bool isFirstTime = await EduconnectLocalSettings.isFirstTime();
   // 1. localization(1)
-  final int currentLang = await MawjoodLocalSettings.getCurrentLang();
+  final int currentLang = await EduconnectLocalSettings.getCurrentLang();
 
   // firebase setup
   await Firebase.initializeApp(

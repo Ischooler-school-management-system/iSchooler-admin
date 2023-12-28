@@ -1,7 +1,7 @@
 
 //parent class for all the button classes
-abstract class IMawjoodButton {
+abstract class IEduconnectButton {
   final Function()? onPressed;
 
-  const IMawjoodButton({required this.onPressed});
+  const IEduconnectButton({required this.onPressed});
 }

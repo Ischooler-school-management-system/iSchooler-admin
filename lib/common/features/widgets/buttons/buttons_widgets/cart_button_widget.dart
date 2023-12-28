@@ -1,7 +1,7 @@
 part of '../educonnect_button.dart';
 
 class _CartButtonWidget extends StatelessWidget {
-  final MawjoodCartButton educonnectCartButton;
+  final EduconnectCartButton educonnectCartButton;
 
   const _CartButtonWidget({
     required this.educonnectCartButton,

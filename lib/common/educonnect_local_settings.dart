@@ -2,7 +2,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'madpoly.dart';
 
-class MawjoodLocalSettings {
+class EduconnectLocalSettings {
   static const String _firstTimeKey = 'isFirstTime';
   static const String _savedLang = 'language_index';
 

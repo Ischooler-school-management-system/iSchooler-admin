@@ -2,7 +2,7 @@ part of '../educonnect_button.dart';
 
 //button with icon only
 class _IconButtonWidget extends StatelessWidget {
-  final MawjoodIconButton educonnectIconButton;
+  final EduconnectIconButton educonnectIconButton;
   const _IconButtonWidget({
     required this.educonnectIconButton,
   });

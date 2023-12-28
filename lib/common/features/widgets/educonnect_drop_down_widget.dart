@@ -41,7 +41,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
       isLog: true,
     );
     if (value == null || !validValue) {
-      // SmartDialog.showToast(MawjoodConstants.localization().select_option_prompt);
+      // SmartDialog.showToast(EduconnectConstants.localization().select_option_prompt);
       return EduConnectConstants.localization().select_option_prompt;
     }
     return null;
