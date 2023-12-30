@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import 'bloc_providers.dart';
-import 'common/app_constants.dart';
+import 'common/educonnect_constants.dart';
 import 'common/features/error_handling/data/models/error_handling_model.dart';
 import 'common/features/error_handling/logic/cubit/error_handling_cubit.dart';
 import 'common/features/loading/logic/cubit/loading_cubit.dart';
@@ -35,23 +35,23 @@ class AppListeners extends StatelessWidget {
 
   void errorListener(BuildContext context, ErrorHandlingState state) {
     final authSnackBar = SnackBar(
-      content: Text(EduConnectConstants.localization().login_dialog_content),
+      content: Text(EduconnectConstants.localization().login_dialog_content),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
         onPressed: () {},
-        label: EduConnectConstants.localization().sign_in,
+        label: EduconnectConstants.localization().sign_in,
       ),
     );
     final noInternetSnackBar = SnackBar(
-      content: Text(EduConnectConstants.localization().no_internet_connection),
+      content: Text(EduconnectConstants.localization().no_internet_connection),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
           onPressed: () {
             ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar();
           },
-          label: EduConnectConstants.localization().cancel),
+          label: EduconnectConstants.localization().cancel),
     );
 
     Madpoly.print(
@@ -91,7 +91,7 @@ class AppListeners extends StatelessWidget {
         if (state.error.showToast) {
           SmartDialog.dismiss();
           SmartDialog.showToast(
-            '${EduConnectConstants.localization().there_is_an_error} ${state.error.message}',
+            '${EduconnectConstants.localization().there_is_an_error} ${state.error.message}',
           );
         }
     }

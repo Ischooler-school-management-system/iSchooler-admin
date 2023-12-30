@@ -22,6 +22,7 @@ class AppMaterialApp extends StatelessWidget {
       // material app initial settings
       // 1. localization(3)
       // locale: getSelecetedLanguage(snapshot),
+      // locale: const Locale('ar', ''),
       localizationsDelegates: const [
         S.delegate,
         GlobalMaterialLocalizations.delegate,

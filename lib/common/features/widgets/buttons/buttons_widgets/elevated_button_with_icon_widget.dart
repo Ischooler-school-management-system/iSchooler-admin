@@ -12,16 +12,16 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color buttonColor = educonnectElevatedButtonWithIcon.isLightMode
-        ? EduConnectColors.white // Background color in light mode
-        : EduConnectColors.secondaryColor; // Background color in dark mode
+        ? EduconnectColors.white // Background color in light mode
+        : EduconnectColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectElevatedButtonWithIcon.isLightMode
-        ? EduConnectColors.secondaryColor
-        : EduConnectColors.white; // Text color
+        ? EduconnectColors.secondaryColor
+        : EduconnectColors.white; // Text color
 
     final Color borderColor = educonnectElevatedButtonWithIcon.isLightMode
         ? textColor
-        : EduConnectColors.transparent; // Border color
+        : EduconnectColors.transparent; // Border color
 
     return educonnectElevatedButtonWithIcon.leftIcon
         ? buttonWithLeftIcon(buttonColor, borderColor, textColor)
@@ -38,7 +38,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       fixedSize: Size(205.w, 44.h),
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(EduConnectConstants.educonnect_button_radius),
+            BorderRadius.circular(EduconnectConstants.educonnect_button_radius),
         side: BorderSide(
           color: borderColor!,
         ),
@@ -57,13 +57,13 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
 
           Text(
             educonnectElevatedButtonWithIcon.text,
-            style: EduConnectConstants.text_theme.bodyLarge!
+            style: EduconnectConstants.text_theme.bodyLarge!
                 .copyWith(color: textColor),
             textAlign: TextAlign.center,
           ),
 
           Align(
-            alignment: EduConnectConstants.isCurrentLocaleArabic()
+            alignment: EduconnectConstants.isCurrentLocaleArabic()
                 ? Alignment.centerLeft
                 : Alignment.centerRight,
             child: Container(
@@ -71,7 +71,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
               height: 40.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                    EduConnectConstants.educonnect_button_radius),
+                    EduconnectConstants.educonnect_button_radius),
                 // gradient: LinearGradient(colors: [
                 //   EduconnectColors.white.withOpacity(0),
                 //   EduconnectColors.white.withOpacity(0.1),
@@ -96,10 +96,10 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
         backgroundColor: buttonColor,
         surfaceTintColor: buttonColor,
         minimumSize:
-            Size(double.infinity, EduConnectConstants.educonnect_button_height),
+            Size(double.infinity, EduconnectConstants.educonnect_button_height),
         shape: RoundedRectangleBorder(
           borderRadius:
-              BorderRadius.circular(EduConnectConstants.educonnect_button_radius),
+              BorderRadius.circular(EduconnectConstants.educonnect_button_radius),
           side: BorderSide(
             color: borderColor!,
           ),
@@ -110,7 +110,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       label: Text(
         educonnectElevatedButtonWithIcon.text,
         style:
-            EduConnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
+            EduconnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
       ),
     );
   }

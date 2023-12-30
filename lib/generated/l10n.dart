@@ -100,16 +100,6 @@ class S {
     );
   }
 
-  /// `Sign in`
-  String get sign_in {
-    return Intl.message(
-      'Sign in',
-      name: 'sign_in',
-      desc: '',
-      args: [],
-    );
-  }
-
   /// `There Is An Error`
   String get there_is_an_error {
     return Intl.message(
@@ -200,11 +190,161 @@ class S {
     );
   }
 
-  /// `Already have an account? Sign up`
+  /// `Already have an account?`
   String get have_account_prompt {
     return Intl.message(
-      'Already have an account? Sign up',
+      'Already have an account?',
       name: 'have_account_prompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Don''t have an account?`
+  String get no_account_prompt {
+    return Intl.message(
+      'Don\'\'t have an account?',
+      name: 'no_account_prompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Welcome`
+  String get welcome {
+    return Intl.message(
+      'Welcome',
+      name: 'welcome',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Now you can manage your entire school with the Educonnect app`
+  String get manage_school_with_app {
+    return Intl.message(
+      'Now you can manage your entire school with the Educonnect app',
+      name: 'manage_school_with_app',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in and get started`
+  String get sign_in_prompt {
+    return Intl.message(
+      'Sign in and get started',
+      name: 'sign_in_prompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up and get started`
+  String get sign_up_prompt {
+    return Intl.message(
+      'Sign up and get started',
+      name: 'sign_up_prompt',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `New Account`
+  String get new_account {
+    return Intl.message(
+      'New Account',
+      name: 'new_account',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign in`
+  String get sign_in {
+    return Intl.message(
+      'Sign in',
+      name: 'sign_in',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Sign up`
+  String get sign_up {
+    return Intl.message(
+      'Sign up',
+      name: 'sign_up',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `I agree with the terms and conditions and also the protection of my personal data on this application`
+  String get agree_terms_conditions {
+    return Intl.message(
+      'I agree with the terms and conditions and also the protection of my personal data on this application',
+      name: 'agree_terms_conditions',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Remember me`
+  String get remember_me {
+    return Intl.message(
+      'Remember me',
+      name: 'remember_me',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Forgot password?`
+  String get forgot_password {
+    return Intl.message(
+      'Forgot password?',
+      name: 'forgot_password',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `email`
+  String get enter_email {
+    return Intl.message(
+      'email',
+      name: 'enter_email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Phone Number`
+  String get enter_phone_number {
+    return Intl.message(
+      'Phone Number',
+      name: 'enter_phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `name`
+  String get enter_name {
+    return Intl.message(
+      'name',
+      name: 'enter_name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Password`
+  String get enter_password {
+    return Intl.message(
+      'Password',
+      name: 'enter_password',
       desc: '',
       args: [],
     );

@@ -10,25 +10,25 @@ class _EduconnectAddRemoveButtonWidget extends StatelessWidget {
       children: [
         EduconnectButton(
           button: EduconnectIconButton(
-            height: EduConnectConstants.educonnect_screen_height / 30,
-            width: EduConnectConstants.educonnect_screen_width / 30,
+            height: EduconnectConstants.educonnect_screen_height / 30,
+            width: EduconnectConstants.educonnect_screen_width / 30,
             onPressed: educonnectAddRemoveButton.addButtonFunction,
             icon: Icon(Icons.add,
-                size: EduConnectConstants.isTablet
-                    ? EduConnectConstants.educonnect_screen_height / 25
-                    : EduConnectConstants.educonnect_screen_height / 35),
+                size: EduconnectConstants.isTablet
+                    ? EduconnectConstants.educonnect_screen_height / 25
+                    : EduconnectConstants.educonnect_screen_height / 35),
           ),
         ),
         Padding(
           padding: EdgeInsets.symmetric(horizontal: 8.w),
           child: SizedBox(
-            width: EduConnectConstants.isTablet ? 50 : 25,
-            height: EduConnectConstants.isTablet ? 50 : 25,
+            width: EduconnectConstants.isTablet ? 50 : 25,
+            height: EduconnectConstants.isTablet ? 50 : 25,
             child: FittedBox(
               child: Text(
                 '${educonnectAddRemoveButton.count}',
-                style: EduConnectConstants.text_theme.displaySmall!.copyWith(
-                  color: EduConnectColors.primaryColor,
+                style: EduconnectConstants.text_theme.displaySmall!.copyWith(
+                  color: EduconnectColors.primaryColor,
                   fontWeight: FontWeight.normal,
                 ),
               ),
@@ -37,13 +37,13 @@ class _EduconnectAddRemoveButtonWidget extends StatelessWidget {
         ),
         EduconnectButton(
           button: EduconnectIconButton(
-            height: EduConnectConstants.educonnect_screen_height / 30,
-            width: EduConnectConstants.educonnect_screen_width / 30,
+            height: EduconnectConstants.educonnect_screen_height / 30,
+            width: EduconnectConstants.educonnect_screen_width / 30,
             onPressed: educonnectAddRemoveButton.subtractButtonFunction,
             icon: Icon(Icons.remove,
-                size: EduConnectConstants.isTablet
-                    ? EduConnectConstants.educonnect_screen_height / 25
-                    : EduConnectConstants.educonnect_screen_height / 35),
+                size: EduconnectConstants.isTablet
+                    ? EduconnectConstants.educonnect_screen_height / 25
+                    : EduconnectConstants.educonnect_screen_height / 35),
           ),
         ),
       ],

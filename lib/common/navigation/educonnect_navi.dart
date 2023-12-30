@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/features/auth/presentation/widgets/sign_in_screen.dart';
+import 'package:school_admin/features/auth/presentation/screens/sign_in_screen.dart';
 
 import '../../features/auth/presentation/screens/auth_screen.dart';
-import '../app_constants.dart';
+import '../../features/auth/presentation/screens/sign_up_screen.dart';
+import '../educonnect_constants.dart';
 import 'routes.dart';
 
 // implement or extend custom navi goto(target,targetId)
@@ -18,15 +19,15 @@ abstract class EduconnectNavigator {
       RouteObserver<PageRoute>();
 
   static PageRouteBuilder<dynamic> slideNavigation(
-      {required Widget screen, bool hasAnimation = false}) {
+      {required Widget screen, bool hasAnimation = true}) {
     return hasAnimation
         ? PageRouteBuilder(
             pageBuilder: (_, animation, secondaryAnimation) => screen,
-            transitionDuration: const Duration(milliseconds: 500),
+            transitionDuration: const Duration(milliseconds: 300),
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               var tween = Tween(
-                begin: EduConnectConstants.isCurrentLocaleArabic()
+                begin: EduconnectConstants.isCurrentLocaleArabic()
                     ? const Offset(-1.0, 0.0)
                     : const Offset(1.0, 0.0),
                 end: Offset.zero,
@@ -47,7 +48,8 @@ abstract class EduconnectNavigator {
         return slideNavigation(screen: const AuthScreen());
       case Routes.signinScreen:
         return slideNavigation(screen: const SigninScreen());
-
+      case Routes.signupScreen:
+        return slideNavigation(screen: const SignupScreen());
       default:
         {
           return slideNavigation(screen: const AuthScreen());

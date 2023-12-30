@@ -9,16 +9,16 @@ class _IconButtonWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color buttonColor = educonnectIconButton.isLightMode
-        ? EduConnectColors.white // Background color in light mode
-        : EduConnectColors.secondaryColor; // Background color in dark mode
+        ? EduconnectColors.white // Background color in light mode
+        : EduconnectColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectIconButton.isLightMode
-        ? EduConnectColors.secondaryColor
-        : EduConnectColors.white; // Text color
+        ? EduconnectColors.secondaryColor
+        : EduconnectColors.white; // Text color
 
     final Color borderColor = educonnectIconButton.isLightMode
         ? textColor
-        : EduConnectColors.transparent; // Border color
+        : EduconnectColors.transparent; // Border color
 
     return IconButton(
       style: IconButton.styleFrom(
@@ -26,8 +26,8 @@ class _IconButtonWidget extends StatelessWidget {
           backgroundColor: educonnectIconButton.color ?? buttonColor,
           surfaceTintColor: educonnectIconButton.color ?? buttonColor,
           minimumSize: Size(
-            educonnectIconButton.width ?? EduConnectConstants.educonnect_button_height,
-            educonnectIconButton.height ?? EduConnectConstants.educonnect_button_height,
+            educonnectIconButton.width ?? EduconnectConstants.educonnect_button_height,
+            educonnectIconButton.height ?? EduconnectConstants.educonnect_button_height,
           ),
           shape: educonnectIconButton.hasBorder
               ? CircleBorder(

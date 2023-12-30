@@ -4,7 +4,7 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../app_constants.dart';
+import '../../../../educonnect_constants.dart';
 import '../../../../di.dart';
 import '../../../../madpoly.dart';
 import '../../data/models/error_handling_model.dart';
@@ -34,7 +34,7 @@ class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
         if (result == ConnectivityResult.none) {
           _onErrorUpdated(
             ErrorHandlingModel(
-              message: EduConnectConstants.localization().no_internet_connection,
+              message: EduconnectConstants.localization().no_internet_connection,
               type: ErrorHandlingTypes.InternetConnection,
               showToast: true,
             ),

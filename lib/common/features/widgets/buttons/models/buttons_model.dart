@@ -41,7 +41,7 @@ class EduconnectTextButton extends IEduconnectButton {
     required super.onPressed,
     required this.textButton,
     this.color,
-    this.hasUnderline = true,
+    this.hasUnderline = false,
     this.style,
     this.widget,
     //required this.context,

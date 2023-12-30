@@ -16,66 +16,68 @@ class _TextButtonWidget extends StatelessWidget {
       ),
       onPressed: educonnectTextButton.onPressed,
       child: (educonnectTextButton.leadingText != null)
-          ? SizedBox(
-              width: EduConnectConstants.educonnect_screen_width / 1.3,
-              child: RichText(
-                textAlign: TextAlign.center,
-                text: TextSpan(
-                  text: "${educonnectTextButton.leadingText!} ",
-                  style: educonnectTextButton.style ??
-                      EduConnectConstants.text_theme.bodyMedium!
-                          .copyWith(color: EduConnectColors.grey),
-                  children: [
-                    TextSpan(
-                      text: educonnectTextButton.textButton,
-                      style: educonnectTextButton.style ??
-                          EduConnectConstants.text_theme.bodyMedium!.copyWith(
-                            decoration: TextDecoration.underline,
-                            decorationColor: EduConnectColors.primaryColor,
-                          ),
-                    ),
-                  ],
-                ),
-                maxLines: 2, // Set the maximum number of lines
-                overflow: TextOverflow.visible, // Set the overflow behavior
-              ),
-            )
+          ? childWithLeadingText()
           : educonnectTextButton.widget != null
-              ? Row(
-                  children: [
-                    Text(
-                      educonnectTextButton.textButton,
-                      style: educonnectTextButton.style ??
-                          EduConnectConstants.text_theme.bodyMedium!.copyWith(
-                            // decoration: educonnectTextButton.hasUnderline
-                            //     ? TextDecoration.underline
-                            //     : TextDecoration.none,
-                            decorationColor:
-                                educonnectTextButton.color ?? EduConnectColors.primaryColor,
-                            color:
-                                educonnectTextButton.color ?? EduConnectColors.black,
-                          ),
-                    ),
-                    Row(
-                      children: [
-                        SizedBox(width: 3.w),
-                        educonnectTextButton.widget!
-                      ],
-                    ),
-                  ],
-                )
-              : Text(
-                  educonnectTextButton.textButton,
-                  style: educonnectTextButton.style ??
-                      EduConnectConstants.text_theme.bodyMedium!.copyWith(
-                        // decoration: educonnectTextButton.hasUnderline
-                        //     ? TextDecoration.underline
-                        //     : TextDecoration.none,
-                        decorationColor:
-                            educonnectTextButton.color ?? EduConnectColors.primaryColor,
-                        color: educonnectTextButton.color ?? EduConnectColors.black,
-                      ),
-                ),
+              ? childWithWidget()
+              : buttonText(),
+    );
+  }
+
+  Text buttonText() {
+    return Text(
+      educonnectTextButton.textButton,
+      style: educonnectTextButton.style ?? buttonTextStyle(),
+    );
+  }
+
+  SizedBox childWithLeadingText() {
+    return SizedBox(
+      width: EduconnectConstants.educonnect_screen_width / 1.3,
+      child: RichText(
+        textAlign: TextAlign.center,
+        text: TextSpan(
+          text: "${educonnectTextButton.leadingText!} ",
+          style:
+              educonnectTextButton.style ?? EduconnectTextStyles.styleBlackW500,
+          children: [
+            TextSpan(
+              text: educonnectTextButton.textButton,
+              style: educonnectTextButton.style ?? buttonTextStyle(),
+            ),
+          ],
+        ),
+        maxLines: 2, // Set the maximum number of lines
+        overflow: TextOverflow.visible, // Set the overflow behavior
+      ),
+    );
+  }
+
+  TextStyle buttonTextStyle() {
+    return EduconnectTextStyles.style14BlueW500.copyWith(
+      decoration: educonnectTextButton.hasUnderline
+          ? TextDecoration.underline
+          : TextDecoration.none,
+      decorationColor: EduconnectColors.primaryColor,
+    );
+    /* TextStyle(
+      decoration: educonnectTextButton.hasUnderline
+          ? TextDecoration.underline
+          : TextDecoration.none,
+      decorationColor: EduconnectColors.primaryColor,
+      color: EduconnectColors.primaryColor,
+      fontSize: 14.sp,
+      fontWeight: FontWeight.w500,
+    ); */
+  }
+
+  Row childWithWidget() {
+    return Row(
+      children: [
+        buttonText(),
+        Row(
+          children: [SizedBox(width: 3.w), educonnectTextButton.widget!],
+        ),
+      ],
     );
   }
 }

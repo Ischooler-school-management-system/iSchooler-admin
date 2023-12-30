@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../../common/madpoly.dart';
-import '../../app_constants.dart';
+import '../../educonnect_constants.dart';
 import '../../style/educonnect_colors.dart';
 
 class DropdownButtonWidget extends StatefulWidget {
@@ -42,7 +42,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
     );
     if (value == null || !validValue) {
       // SmartDialog.showToast(EduconnectConstants.localization().select_option_prompt);
-      return EduConnectConstants.localization().select_option_prompt;
+      return EduconnectConstants.localization().select_option_prompt;
     }
     return null;
   }
@@ -94,9 +94,9 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         hint: (widget.hint != null)
             ? Text(
                 widget.hint!,
-                style: EduConnectConstants.text_theme.labelMedium!.copyWith(
+                style: EduconnectConstants.text_theme.labelMedium!.copyWith(
                   fontFamily: GoogleFonts.poppins().fontFamily,
-                  color: EduConnectColors.grey,
+                  color: EduconnectColors.light_grey,
                 ),
               )
             : null,
@@ -111,9 +111,9 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
       value: item,
       child: Text(
         item,
-        style: EduConnectConstants.text_theme.labelMedium!.copyWith(
+        style: EduconnectConstants.text_theme.labelMedium!.copyWith(
           fontFamily: GoogleFonts.poppins().fontFamily,
-          color: EduConnectColors.blue,
+          color: EduconnectColors.blue,
         ),
       ),
     );

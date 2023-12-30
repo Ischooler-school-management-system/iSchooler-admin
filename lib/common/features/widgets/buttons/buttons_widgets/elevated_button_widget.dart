@@ -11,16 +11,16 @@ class _ElevatedButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //switch colors for the button
     final Color buttonColor = educonnectElevatedButton.isLightMode
-        ? EduConnectColors.white // Background color in light mode
-        : EduConnectColors.secondaryColor; // Background color in dark mode
+        ? EduconnectColors.light_grey // Background color in light mode
+        : EduconnectColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectElevatedButton.isLightMode
-        ? EduConnectColors.secondaryColor
-        : EduConnectColors.white; // Text color
+        ? EduconnectColors.secondaryColor
+        : EduconnectColors.light_grey; // Text color
 
     final Color borderColor = educonnectElevatedButton.isLightMode
         ? textColor
-        : EduConnectColors.transparent; // Border color
+        : EduconnectColors.transparent; // Border color
 
     return ElevatedButton(
       onPressed: educonnectElevatedButton.onPressed,
@@ -33,29 +33,30 @@ class _ElevatedButtonWidget extends StatelessWidget {
         minimumSize: Size(
           educonnectElevatedButton.width ?? double.infinity,
           educonnectElevatedButton.height ??
-              EduConnectConstants.educonnect_button_height,
+              EduconnectConstants.educonnect_button_height,
         ),
         shape: educonnectElevatedButton.shape ??
             RoundedRectangleBorder(
               borderRadius: educonnectElevatedButton.hasRoundedCorners
                   ? BorderRadius.circular(
-                      EduConnectConstants.educonnect_button_radius)
+                      EduconnectConstants.educonnect_button_radius)
                   : BorderRadius.zero,
               side: BorderSide(
                 color: borderColor,
               ),
             ),
       ),
-      child: Text(
-        educonnectElevatedButton.text,
-        style: educonnectElevatedButton.textStyle ??
-            TextStyle(
-              fontSize: 14.sp,
+      child: Text(educonnectElevatedButton.text,
+          style: educonnectElevatedButton.textStyle ??
+              EduconnectTextStyles.style16.copyWith(color: textColor)
+          /*  TextStyle(
+              fontSize: EduconnectTextStyles.font14,
               // fontWeight: FontWeight.w600,
               color: textColor,
-            ),
-        // EduConnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
-      ),
+            ), */
+
+          // EduconnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
+          ),
     );
   }
 }

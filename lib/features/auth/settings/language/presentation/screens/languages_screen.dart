@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../../../common/app_constants.dart';
+import '../../../../../../common/educonnect_constants.dart';
 import '../../../../../../common/educonnect_local_settings.dart';
 import '../../../../../../common/features/loading/presentation/loading_popup.dart';
 import '../../../../../../common/features/widgets/educonnect_screen.dart';
@@ -55,14 +55,14 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return EduConnectScreen(
+    return EduconnectScreen(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             /* EduconnectConstants.localization(). */ 'language',
-            style: EduConnectConstants.text_theme.titleSmall!
-                .copyWith(color: EduConnectColors.blue),
+            style: EduconnectConstants.text_theme.titleSmall!
+                .copyWith(color: EduconnectColors.blue),
           ),
           SizedBox(height: 10.h),
           LanguageWidget(

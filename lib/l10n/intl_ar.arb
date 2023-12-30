@@ -14,5 +14,19 @@
   "enter_school_name": "أدخل اسم المدرسة",
   "enter_school_email": "أدخل البريد الإلكتروني للمدرسة",
   "next": "التالي",
-  "have_account_prompt": "هل لديك حساب؟ سجل الدخول الآن"
+  "have_account_prompt": "هل لديك حساب؟",
+  "welcome": "مرحبًا",
+  "manage_school_with_app": "الآن يمكنك إدارة مدرستك بأكملها باستخدام تطبيق Educonnect",
+  "sign_in_prompt": "قم بتسجيل الدخول وابدأ",
+  "sign_up_prompt": "قم بأنشاء حساب وابدأ",
+  "agree_terms_conditions": "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق",
+  "new_accountnew_account": "إنشاء حساب جديد",
+  "sign_up": "إنشاء حساب",
+  "no_account_prompt": "ليس لديك حساب؟",
+  "remember_me": "تذكرني",
+  "forgot_password": "نسيت كلمة المرور؟",
+  "enter_email": " عنوان بريدك الإلكتروني",
+  "enter_phone_number": "رقم الهاتف",
+  "enter_name": "الأسم",
+  "enter_password": "كلمة المرور"
 }

@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../generated/l10n.dart';
 import 'navigation/educonnect_navi.dart';
 
-abstract class EduConnectConstants {
+abstract class EduconnectConstants {
   static final double educonnect_button_height = 35.h;
   static final double educonnect_button_radius = 8.r;
 
