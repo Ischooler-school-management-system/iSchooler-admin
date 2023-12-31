@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'common/di.dart';
 import 'common/features/error_handling/logic/cubit/error_handling_cubit.dart';
 import 'common/features/loading/logic/cubit/loading_cubit.dart';
+import 'features/auth/settings/language/language_bloc/language_bloc.dart';
 
 /// here we define all blocs used in the app
 /// and the required properties is only added by passing getIt()
@@ -13,6 +14,7 @@ MultiBlocProvider listOfBlocProviders({required Widget child}) {
     providers: [
       BlocProvider(create: (_) => ErrorHandlingCubit(getIt())),
       BlocProvider(create: (_) => LoadingCubit(getIt())),
+      BlocProvider(create: (_) => LangBloc()),
     ],
     child: child,
   );

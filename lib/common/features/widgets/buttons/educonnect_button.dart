@@ -12,10 +12,10 @@ import 'models/buttons_model.dart';
 import 'models/educonnect_button_interface.dart';
 
 part 'buttons_widgets/cart_button_widget.dart';
+part 'buttons_widgets/educonnect_add_remove_button_widget.dart';
 part 'buttons_widgets/elevated_button_widget.dart';
 part 'buttons_widgets/elevated_button_with_icon_widget.dart';
 part 'buttons_widgets/icon_button_widget.dart';
-part 'buttons_widgets/educonnect_add_remove_button_widget.dart';
 part 'buttons_widgets/text_button_widget.dart';
 
 // Main button class that renders different button types based on the provided `button` object.

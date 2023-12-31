@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:school_admin/common/features/widgets/educonnect_screen.dart';
 
-import '../../../../common/educonnect_constants.dart';
-import '../../../../common/features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../common/features/widgets/educonnect_checkbox.dart';
-import '../../../../common/navigation/router.export.dart';
-import '../../../../common/style/educonnect_colors.dart';
-import '../widgets/auth_header_widget.dart';
+import '../../../../../common/educonnect_constants.dart';
+import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../../common/features/widgets/educonnect_checkbox.dart';
+import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../../../common/navigation/router.export.dart';
+import '../../../../../common/style/educonnect_colors.dart';
+import '../../auth/widgets/auth_header_widget.dart';
 import '../widgets/signin_form.dart';
 
 class SigninScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class SigninScreen extends StatefulWidget {
 
 class _SigninScreenState extends State<SigninScreen> {
   bool isKeyboardOpen = false;
-
+  bool _isButtonDisabled = true;
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
@@ -47,6 +47,9 @@ class _SigninScreenState extends State<SigninScreen> {
                         isKeyboardOpen = newValue;
                       });
                     },
+                    onFormChanged: (bool isButtonDisabled) {
+                      _isButtonDisabled = isButtonDisabled;
+                    },
                   ),
 
                   /// shows the row that contains the remember me checkbex
@@ -56,6 +59,7 @@ class _SigninScreenState extends State<SigninScreen> {
                   // sign in button
                   EduconnectButton(
                     button: EduconnectElevatedButton(
+                      disabled: _isButtonDisabled,
                       onPressed: onSigninButtonPressed,
                       text: EduconnectConstants.localization().sign_in,
                     ),
@@ -86,7 +90,7 @@ class _SigninScreenState extends State<SigninScreen> {
   }
 
   onSignupButtonPressed() {
-    EduconnectNavigator.push(Routes.signupScreen,replace: true);
+    EduconnectNavigator.push(Routes.signupScreen, replace: true);
   }
 
   onSigninButtonPressed() {

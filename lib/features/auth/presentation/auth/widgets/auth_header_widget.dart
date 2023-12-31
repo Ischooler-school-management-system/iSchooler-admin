@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:school_admin/common/style/educonnect_text_theme.dart';
 
-import '../../../../common/style/educonnect_colors.dart';
+import '../../../../../common/style/educonnect_colors.dart';
 
 class AuthHeaderWidget extends StatelessWidget {
   final String title;

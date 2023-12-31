@@ -28,5 +28,12 @@
   "enter_email": " عنوان بريدك الإلكتروني",
   "enter_phone_number": "رقم الهاتف",
   "enter_name": "الأسم",
-  "enter_password": "كلمة المرور"
+  "enter_password": "كلمة المرور",
+  "email_validation_error": "الرجاء إدخال بريدك الإلكتروني",
+  "email_invalid_error": "الرجاء إدخال بريد إلكتروني صحيح مثل example@gmail.com",
+  "password_validation_error": "الرجاء إدخال كلمة المرور",
+  "phone_number_validation_error": "الرجاء إدخال رقم هاتفك",
+  "name_validation_error": "الرجاء إدخال اسمك",
+  "verify": "تأكيد",
+  "confirm_password": "تأكيد كلمة المرور"
 }

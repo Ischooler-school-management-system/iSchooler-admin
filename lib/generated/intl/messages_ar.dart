@@ -26,6 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق"),
         "apply": MessageLookupByLibrary.simpleMessage("تطبق"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "email_invalid_error": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال بريد إلكتروني صحيح مثل example@gmail.com"),
+        "email_validation_error": MessageLookupByLibrary.simpleMessage(
+            "الرجاء إدخال بريدك الإلكتروني"),
         "enter_admin_name":
             MessageLookupByLibrary.simpleMessage("أدخل اسم المسؤول"),
         "enter_email":
@@ -47,11 +53,17 @@ class MessageLookup extends MessageLookupByLibrary {
             "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة."),
         "manage_school_with_app": MessageLookupByLibrary.simpleMessage(
             "الآن يمكنك إدارة مدرستك بأكملها باستخدام تطبيق Educonnect"),
+        "name_validation_error":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسمك"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
         "no_account_prompt":
             MessageLookupByLibrary.simpleMessage("ليس لديك حساب؟"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالإنترنت."),
+        "password_validation_error":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال كلمة المرور"),
+        "phone_number_validation_error":
+            MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم هاتفك"),
         "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),
         "select_language": MessageLookupByLibrary.simpleMessage("اختار لغة"),
         "select_option_prompt":
@@ -64,6 +76,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("قم بأنشاء حساب وابدأ"),
         "there_is_an_error":
             MessageLookupByLibrary.simpleMessage("حدث خطأ ما "),
+        "verify": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
         "welcome_create_account": MessageLookupByLibrary.simpleMessage(
             "مرحبًا، قم بإنشاء حساب مدرستك"),

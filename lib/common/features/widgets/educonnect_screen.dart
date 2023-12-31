@@ -3,14 +3,19 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:school_admin/common/features/widgets/buttons/educonnect_button.dart';
+import 'package:school_admin/common/features/widgets/buttons/models/buttons_model.dart';
+import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
+import '../../../features/auth/settings/language/language_bloc/language_bloc.dart';
+import '../../educonnect_local_settings.dart';
 import '../../features/error_handling/data/models/error_handling_model.dart';
 import '../../features/error_handling/logic/cubit/error_handling_cubit.dart';
 import '../../madpoly.dart';
 import '../../style/educonnect_colors.dart';
 
 // ignore: must_be_immutable
-class EduconnectScreen extends StatelessWidget {
+class EduconnectScreen extends StatefulWidget {
   final bool enableBackButton;
   final String tag;
   final PreferredSizeWidget? appBar;
@@ -23,7 +28,7 @@ class EduconnectScreen extends StatelessWidget {
 
   final FloatingActionButton? floatingActionButton;
 
-  EduconnectScreen({
+  const EduconnectScreen({
     super.key,
     required this.body,
     this.enableBackButton = false,
@@ -37,7 +42,23 @@ class EduconnectScreen extends StatelessWidget {
     this.floatingActionButton,
   });
 
+  @override
+  State<EduconnectScreen> createState() => _EduconnectScreenState();
+}
+
+class _EduconnectScreenState extends State<EduconnectScreen> {
   bool backButtonPressed = false;
+
+  int selectedIndex = 0;
+  @override
+  void initState() {
+    super.initState();
+    getCurrentLanguage();
+  }
+
+  getCurrentLanguage() async {
+    selectedIndex = await EduconnectLocalSettings.getCurrentLang();
+  }
 
   // Function to handle errors and refresh
   void errorListener(BuildContext context, ErrorHandlingState state,
@@ -59,61 +80,38 @@ class EduconnectScreen extends StatelessWidget {
     }
     return false;
   }
-/* 
-  bool onWillPopBack(BuildContext context) {
-    if (enableBackButton) {
-      // Handle back button press logic
-      context.read<AuthCubit>().onBackButtonPressed();
 
-      Madpoly.print(
-        'Going back...',
-        developer: 'ziad',
-        isLog: true,
-        tag: tag,
-      );
-      return false;
-    } else {
-      return true;
-    }
-  }
- */
   // Function to build the body based on the presence of onRefresh
   Widget buildBody(BuildContext context) {
-    return /* /*  */WillPopScope(
-      onWillPop: closeAppBackButton
-          ? onWillPopCloseApp
-          : () async {
-              return onWillPopBack(context);
+    return widget.onRefresh == null
+        ? widget.body
+        : BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
+            listener: (context, state) {
+              errorListener(context, state, onRefresh: widget.onRefresh);
             },
-      child:  */onRefresh == null
-          ? body
-          : BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
-              listener: (context, state) {
-                errorListener(context, state, onRefresh: onRefresh);
+            listenWhen: (previous, current) {
+              return previous.error.createdAt != current.error.createdAt;
+            },
+            child: LiquidPullToRefresh(
+              height: 70,
+              animSpeedFactor: 2.5,
+              springAnimationDurationInMilliseconds: 500,
+              showChildOpacityTransition: false,
+              color: EduconnectColors.blue,
+              onRefresh: () {
+                Madpoly.print(
+                  'onRefresh function is called',
+                  tag: "EduconnectScreen > LiquidPullToRefresh",
+                  developer: 'ziad',
+                  isInspect: true,
+                  isLog: true,
+                );
+                return widget.onRefresh!();
               },
-              listenWhen: (previous, current) {
-                return previous.error.createdAt != current.error.createdAt;
-              },
-              child: LiquidPullToRefresh(
-                height: 70,
-                animSpeedFactor: 2.5,
-                springAnimationDurationInMilliseconds: 500,
-                showChildOpacityTransition: false,
-                color: EduconnectColors.blue,
-                onRefresh: () {
-                  Madpoly.print(
-                    'onRefresh function is called',
-                    tag: "EduconnectScreen > LiquidPullToRefresh",
-                    developer: 'ziad',
-                    isInspect: true,
-                    isLog: true,
-                  );
-                  return onRefresh!();
-                },
-                child: body,
-              ),
+              child: widget.body,
+            ),
             // ),
-    );
+          );
   }
 
   // Build method for the EduconnectScreen widget
@@ -121,9 +119,10 @@ class EduconnectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Build the main screen with necessary widgets
     return Scaffold(
-      appBar: appBar,
-      bottomNavigationBar: bottomNavigationBar,
-      body: isScrollable
+      extendBodyBehindAppBar: true,
+      appBar: widget.appBar ?? languageAppbar(),
+      bottomNavigationBar: widget.bottomNavigationBar,
+      body: widget.isScrollable
           ? LayoutBuilder(
               builder: (context, constraints) {
                 // Enable scrolling within the screen
@@ -131,7 +130,7 @@ class EduconnectScreen extends StatelessWidget {
                   child: ConstrainedBox(
                     constraints: BoxConstraints(
                       minWidth: constraints.maxWidth,
-                      minHeight: hasMinHeight
+                      minHeight: widget.hasMinHeight
                           ? constraints.minHeight
                           : constraints.maxHeight,
                     ),
@@ -144,7 +143,36 @@ class EduconnectScreen extends StatelessWidget {
             )
           // Build the body
           : buildBody(context),
-      floatingActionButton: floatingActionButton,
+      floatingActionButton: widget.floatingActionButton,
+    );
+  }
+
+  AppBar languageAppbar() {
+    bool isArabic = false;
+    isArabic = selectedIndex == 0;
+    String langSymbol = isArabic ? 'AR' : 'ENG';
+    return AppBar(
+      backgroundColor: Colors.transparent, // Set transparent background color
+      elevation: 0, // Remove shadow
+      actions: [
+        EduconnectButton(
+          button: EduconnectTextButton(
+            onPressed: () {
+              /// arabic : 0
+              /// english : 1
+              /// on press will toggle the current lang with the other
+              selectedIndex = isArabic ? 1 : 0;
+
+              EduconnectLocalSettings.saveCurrentLang(selectedIndex);
+
+              BlocProvider.of<LangBloc>(currentContext!)
+                  .add(UpdateLangEvent(selectedIndex));
+              setState(() {});
+            },
+            textButton: langSymbol,
+          ),
+        ),
+      ],
     );
   }
 }

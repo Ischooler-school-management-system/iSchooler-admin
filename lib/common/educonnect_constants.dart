@@ -1,4 +1,4 @@
-// ignore_for_file: non_constant_identifier_names
+// ignore_for_file: non_constant_identifier_names, constant_identifier_names
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,6 +9,7 @@ import 'navigation/educonnect_navi.dart';
 abstract class EduconnectConstants {
   static final double educonnect_button_height = 35.h;
   static final double educonnect_button_radius = 8.r;
+  static const  EdgeInsets educonnect_screen_padding = EdgeInsets.all(20);
 
   // Get the text theme from the current theme currentContext!.
   static final TextTheme text_theme = Theme.of(currentContext!).textTheme;

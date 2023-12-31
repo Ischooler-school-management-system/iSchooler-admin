@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -67,6 +69,18 @@ class EduconnectTextField extends StatelessWidget {
     );
   }
 
+  OutlineInputBorder buildErrorBorder({Color? color}) {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        color: color ?? EduconnectColors.red,
+        width: 0.5.w,
+        
+      ),
+      gapPadding:14 ,
+      borderRadius: BorderRadius.circular(10),
+    );
+  }
+
   InputDecoration decoration() {
     return InputDecoration(
       filled: true,
@@ -76,7 +90,7 @@ class EduconnectTextField extends StatelessWidget {
       prefixIcon: prefixIcon,
       prefixIconColor: EduconnectColors.primaryColor,
       errorMaxLines: 5,
-      contentPadding: EdgeInsets.symmetric(vertical: 10.h, horizontal: 15.w),
+      contentPadding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 15.w),
       labelStyle: EduconnectTextStyles.style12Blue,
       /* TextStyle(
         color: EduconnectColors.primaryColor,
@@ -87,8 +101,8 @@ class EduconnectTextField extends StatelessWidget {
       suffixIconColor: EduconnectColors.primaryColor,
       border: hasBorder ? buildBorder() : null,
       enabledBorder: hasBorder ? buildBorder() : null,
-      focusedBorder:
-          hasBorder ? buildBorder(color: EduconnectColors.light_grey) : null,
+      focusedBorder: hasBorder ? buildBorder() : null,
+      errorBorder: hasBorder ? buildErrorBorder() : null,
     );
   }
 
@@ -109,8 +123,9 @@ class EduconnectTextField extends StatelessWidget {
           ),
           SizedBox(
             width: width ?? double.infinity,
-            height: EduconnectConstants.educonnect_button_height,
             child: TextFormField(
+                selectionHeightStyle : BoxHeightStyle.max,
+
               enabled: enabled,
               textDirection: textDirection,
               textAlign:

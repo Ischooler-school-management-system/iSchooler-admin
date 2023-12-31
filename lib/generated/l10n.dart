@@ -349,6 +349,76 @@ class S {
       args: [],
     );
   }
+
+  /// `Please Enter Your Email`
+  String get email_validation_error {
+    return Intl.message(
+      'Please Enter Your Email',
+      name: 'email_validation_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Valid email as example@gmail.com`
+  String get email_invalid_error {
+    return Intl.message(
+      'Please Enter Valid email as example@gmail.com',
+      name: 'email_invalid_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Your Password`
+  String get password_validation_error {
+    return Intl.message(
+      'Please Enter Your Password',
+      name: 'password_validation_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Your Phone Number`
+  String get phone_number_validation_error {
+    return Intl.message(
+      'Please Enter Your Phone Number',
+      name: 'phone_number_validation_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Please Enter Your Name`
+  String get name_validation_error {
+    return Intl.message(
+      'Please Enter Your Name',
+      name: 'name_validation_error',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Verify`
+  String get verify {
+    return Intl.message(
+      'Verify',
+      name: 'verify',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Confirm Password`
+  String get confirm_password {
+    return Intl.message(
+      'Confirm Password',
+      name: 'confirm_password',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

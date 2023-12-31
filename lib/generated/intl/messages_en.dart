@@ -26,6 +26,12 @@ class MessageLookup extends MessageLookupByLibrary {
             "I agree with the terms and conditions and also the protection of my personal data on this application"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "confirm_password":
+            MessageLookupByLibrary.simpleMessage("Confirm Password"),
+        "email_invalid_error": MessageLookupByLibrary.simpleMessage(
+            "Please Enter Valid email as example@gmail.com"),
+        "email_validation_error":
+            MessageLookupByLibrary.simpleMessage("Please Enter Your Email"),
         "enter_admin_name":
             MessageLookupByLibrary.simpleMessage("Enter the name of admin"),
         "enter_email": MessageLookupByLibrary.simpleMessage("email"),
@@ -46,12 +52,18 @@ class MessageLookup extends MessageLookupByLibrary {
             "Login to access this feature"),
         "manage_school_with_app": MessageLookupByLibrary.simpleMessage(
             "Now you can manage your entire school with the Educonnect app"),
+        "name_validation_error":
+            MessageLookupByLibrary.simpleMessage("Please Enter Your Name"),
         "new_account": MessageLookupByLibrary.simpleMessage("New Account"),
         "next": MessageLookupByLibrary.simpleMessage("Next"),
         "no_account_prompt":
             MessageLookupByLibrary.simpleMessage("Don\'\'t have an account?"),
         "no_internet_connection":
             MessageLookupByLibrary.simpleMessage("No internet connection"),
+        "password_validation_error":
+            MessageLookupByLibrary.simpleMessage("Please Enter Your Password"),
+        "phone_number_validation_error": MessageLookupByLibrary.simpleMessage(
+            "Please Enter Your Phone Number"),
         "remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
         "select_language":
             MessageLookupByLibrary.simpleMessage("Select Language"),
@@ -65,6 +77,7 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Sign up and get started"),
         "there_is_an_error":
             MessageLookupByLibrary.simpleMessage("There Is An Error"),
+        "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
         "welcome_create_account": MessageLookupByLibrary.simpleMessage(
             "Welcome, create your school account"),

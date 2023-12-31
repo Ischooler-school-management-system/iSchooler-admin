@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/features/auth/presentation/screens/sign_in_screen.dart';
+import 'package:school_admin/features/auth/presentation/signup/screens/sign_up_password_screen.dart';
 
-import '../../features/auth/presentation/screens/auth_screen.dart';
-import '../../features/auth/presentation/screens/sign_up_screen.dart';
+import '../../features/auth/presentation/auth/screens/auth_screen.dart';
+import '../../features/auth/presentation/signin/screens/sign_in_screen.dart';
+import '../../features/auth/presentation/signup/screens/sign_up_screen.dart';
 import '../educonnect_constants.dart';
 import 'routes.dart';
 
@@ -50,6 +51,8 @@ abstract class EduconnectNavigator {
         return slideNavigation(screen: const SigninScreen());
       case Routes.signupScreen:
         return slideNavigation(screen: const SignupScreen());
+      case Routes.signupPasswordScreen:
+        return slideNavigation(screen: const SignupPasswordScreen());
       default:
         {
           return slideNavigation(screen: const AuthScreen());

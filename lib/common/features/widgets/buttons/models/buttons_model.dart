@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'educonnect_button_interface.dart';
-// 
+
+//
 class EduconnectElevatedButton extends IEduconnectButton {
   final String text;
   final bool isLightMode;
@@ -15,6 +16,7 @@ class EduconnectElevatedButton extends IEduconnectButton {
 
   const EduconnectElevatedButton({
     required super.onPressed,
+     super.disabled,
     required this.text,
     this.isLightMode = false,
     this.hasRoundedCorners = true,
@@ -36,7 +38,7 @@ class EduconnectTextButton extends IEduconnectButton {
   final Widget? widget;
   //final BuildContext context;
 
-  const EduconnectTextButton( {
+  const EduconnectTextButton({
     this.leadingText,
     required super.onPressed,
     required this.textButton,
@@ -44,6 +46,7 @@ class EduconnectTextButton extends IEduconnectButton {
     this.hasUnderline = false,
     this.style,
     this.widget,
+     super.disabled,
     //required this.context,
   });
 }
@@ -64,6 +67,7 @@ class EduconnectIconButton extends IEduconnectButton {
     this.width,
     this.height,
     this.color,
+     super.disabled,
   });
 }
 
@@ -79,6 +83,7 @@ class EduconnectElevatedButtonWithIcon extends IEduconnectButton {
     required this.text,
     this.leftIcon = false,
     this.isLightMode = true,
+     super.disabled,
   });
 }
 
@@ -92,16 +97,20 @@ class EduconnectCartButton extends IEduconnectButton {
     this.removeOnPressed,
     required super.onPressed,
     required this.text,
+     super.disabled,
   });
 }
 
 class EduconnectAddRemoveButton extends IEduconnectButton {
-   final dynamic Function() addButtonFunction;
+  final dynamic Function() addButtonFunction;
   final dynamic Function() subtractButtonFunction;
   final int count;
 
-  const EduconnectAddRemoveButton({required this.count,
-   required this.addButtonFunction,required this.subtractButtonFunction,
+  const EduconnectAddRemoveButton({
+    required this.count,
+    required this.addButtonFunction,
+    required this.subtractButtonFunction,
     required super.onPressed,
-});
+     super.disabled,
+  });
 }

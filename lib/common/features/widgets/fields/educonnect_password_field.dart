@@ -6,6 +6,8 @@ import 'educonnect_text_field.dart';
 class EduconnectPasswordField extends StatefulWidget {
   final Function(String?)? onSaved;
   final String labelText;
+  final String? Function(String?)? validator;
+
   final String? initialValue;
   final FocusNode? focusNode;
 
@@ -15,6 +17,7 @@ class EduconnectPasswordField extends StatefulWidget {
     required this.labelText,
     this.initialValue,
     this.focusNode,
+    this.validator,
   });
 
   @override
@@ -44,6 +47,7 @@ class _EduconnectPasswordFieldState extends State<EduconnectPasswordField> {
       focusNode: widget.focusNode,
       initialValue: widget.initialValue,
       labelText: widget.labelText,
+      validator: widget.validator,
       textInputAction: TextInputAction.done,
       isObscureText: isHiddenPass,
       suffixIcon: InkWell(

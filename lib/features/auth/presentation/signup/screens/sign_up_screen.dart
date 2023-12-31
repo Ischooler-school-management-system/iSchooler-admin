@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../common/educonnect_constants.dart';
-import '../../../../common/features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../common/features/widgets/educonnect_checkbox.dart';
-import '../../../../common/features/widgets/educonnect_screen.dart';
-import '../../../../common/navigation/router.export.dart';
-import '../../../../common/style/educonnect_colors.dart';
-import '../../../../common/style/educonnect_text_theme.dart';
-import '../widgets/auth_header_widget.dart';
+import '../../../../../common/educonnect_constants.dart';
+import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../../common/features/widgets/educonnect_checkbox.dart';
+import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../../../common/navigation/router.export.dart';
+import '../../../../../common/style/educonnect_colors.dart';
+import '../../../../../common/style/educonnect_text_theme.dart';
+import '../../auth/widgets/auth_header_widget.dart';
 import '../widgets/signup_form.dart';
 
 class SignupScreen extends StatefulWidget {
@@ -20,6 +20,8 @@ class SignupScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupScreen> {
   bool isKeyboardOpen = false;
+  bool _isButtonDisabled = true;
+  bool _isCheckboxChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +45,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   SignupForm(
                     onIsKeyboardStatusChanged: onIsKeyboardStatusChanged,
+                    onFormChanged: (bool isButtonDisabled) {
+                      _isButtonDisabled = isButtonDisabled;
+                    },
                   ),
                   EduconnectCheckbox(
                     text:
@@ -52,6 +57,7 @@ class _SignupScreenState extends State<SignupScreen> {
                   ),
                   EduconnectButton(
                     button: EduconnectElevatedButton(
+                      disabled: _isButtonDisabled || !_isCheckboxChecked,
                       onPressed: onSignupButtonPressed,
                       text: EduconnectConstants.localization().sign_up,
                     ),
@@ -78,7 +84,11 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  onAgrementChecked(isSelected) {}
+  onAgrementChecked(bool isSelected) {
+    setState(() {
+      _isCheckboxChecked = isSelected;
+    });
+  }
 
   onIsKeyboardStatusChanged(newValue) {
     setState(() {
@@ -86,7 +96,10 @@ class _SignupScreenState extends State<SignupScreen> {
     });
   }
 
-  onSignupButtonPressed() {}
+  onSignupButtonPressed() {
+    EduconnectNavigator.push(Routes.signupPasswordScreen);
+
+  }
 
   onSigninButtonPressed() {
     EduconnectNavigator.push(Routes.signinScreen, replace: true);

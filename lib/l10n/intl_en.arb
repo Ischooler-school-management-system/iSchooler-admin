@@ -28,5 +28,12 @@
     "enter_email": "email",
     "enter_phone_number": "Phone Number",
     "enter_name": "name",
-    "enter_password": "Password"
+    "enter_password": "Password",
+    "email_validation_error": "Please Enter Your Email",
+    "email_invalid_error": "Please Enter Valid email as example@gmail.com",
+    "password_validation_error": "Please Enter Your Password",
+    "phone_number_validation_error": "Please Enter Your Phone Number",
+    "name_validation_error": "Please Enter Your Name",
+    "verify": "Verify",
+    "confirm_password": "Confirm Password"
 }

@@ -23,29 +23,10 @@ class _ElevatedButtonWidget extends StatelessWidget {
         : EduconnectColors.transparent; // Border color
 
     return ElevatedButton(
-      onPressed: educonnectElevatedButton.onPressed,
-      style: ElevatedButton.styleFrom(
-        padding: educonnectElevatedButton.textPadding,
-        foregroundColor: textColor,
-        backgroundColor: buttonColor,
-        surfaceTintColor: buttonColor,
-        alignment: Alignment.center,
-        minimumSize: Size(
-          educonnectElevatedButton.width ?? double.infinity,
-          educonnectElevatedButton.height ??
-              EduconnectConstants.educonnect_button_height,
-        ),
-        shape: educonnectElevatedButton.shape ??
-            RoundedRectangleBorder(
-              borderRadius: educonnectElevatedButton.hasRoundedCorners
-                  ? BorderRadius.circular(
-                      EduconnectConstants.educonnect_button_radius)
-                  : BorderRadius.zero,
-              side: BorderSide(
-                color: borderColor,
-              ),
-            ),
-      ),
+      onPressed: educonnectElevatedButton.disabled
+          ? null
+          : educonnectElevatedButton.onPressed,
+      style: buttonStyle(textColor, buttonColor, borderColor),
       child: Text(educonnectElevatedButton.text,
           style: educonnectElevatedButton.textStyle ??
               EduconnectTextStyles.style16.copyWith(color: textColor)
@@ -56,6 +37,32 @@ class _ElevatedButtonWidget extends StatelessWidget {
             ), */
 
           // EduconnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
+          ),
+    );
+  }
+
+  ButtonStyle buttonStyle(
+      Color textColor, Color buttonColor, Color borderColor) {
+    return ElevatedButton.styleFrom(
+      padding: educonnectElevatedButton.textPadding,
+      foregroundColor: textColor,
+      backgroundColor: buttonColor,
+      surfaceTintColor: buttonColor,
+      alignment: Alignment.center,
+      minimumSize: Size(
+        educonnectElevatedButton.width ?? double.infinity,
+        educonnectElevatedButton.height ??
+            EduconnectConstants.educonnect_button_height,
+      ),
+      shape: educonnectElevatedButton.shape ??
+          RoundedRectangleBorder(
+            borderRadius: educonnectElevatedButton.hasRoundedCorners
+                ? BorderRadius.circular(
+                    EduconnectConstants.educonnect_button_radius)
+                : BorderRadius.zero,
+            side: BorderSide(
+              color: borderColor,
+            ),
           ),
     );
   }
