@@ -1,18 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/educonnect_validation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_constants.dart';
+import '../../../../../common/educonnect_validation.dart';
+import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../../common/features/widgets/educonnect_checkbox.dart';
 import '../../../../../common/features/widgets/fields/educonnect_password_field.dart';
 import '../../../../../common/features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/style/educonnect_colors.dart';
+import '../../../logic/cubit/auth_cubit.dart';
 
 class SigninForm extends StatefulWidget {
   final Function(bool) onIsKeyboardOpenChanged;
-  final Function(bool isButtonDisabled) onFormChanged;
+  // final Function(bool isButtonDisabled) onFormChanged;
   //final FocusNode focusNode;
   const SigninForm({
     super.key,
     required this.onIsKeyboardOpenChanged,
-    required this.onFormChanged,
+    // required this.onFormChanged,
   });
 
   @override
@@ -20,10 +26,14 @@ class SigninForm extends StatefulWidget {
 }
 
 class _SigninFormState extends State<SigninForm> {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
   bool isKeyboardOpen = false;
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
   bool _isButtonDisabled = true;
+  String inputEmail = 'ziad@test.com';
+  String inputPassword = 'password';
 
   void _updateIsKeyboardOpen(bool newValue) {
     widget.onIsKeyboardOpenChanged(newValue);
@@ -51,7 +61,6 @@ class _SigninFormState extends State<SigninForm> {
     });
   }
 
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     return Form(
@@ -59,22 +68,78 @@ class _SigninFormState extends State<SigninForm> {
       onChanged: () {
         setState(() {
           _isButtonDisabled = !_formKey.currentState!.validate();
-          widget.onFormChanged(_isButtonDisabled);
+          // widget.onFormChanged(_isButtonDisabled);
         });
       },
       child: Column(
         children: [
           EduconnectTextField(
+            initialValue: 'ziad@test.com',
             labelText: EduconnectConstants.localization().enter_email,
             validator: EduconnectValidations.emailValidator,
             suffixIcon: const Icon(Icons.person),
             focusNode: emailFocusNode,
+            onSaved: (value) {
+              if (value != null) {
+                inputEmail = value;
+              }
+            },
           ),
           EduconnectPasswordField(
+            initialValue: 'password',
             labelText: EduconnectConstants.localization().enter_password,
             validator: EduconnectValidations.passwordValidator,
             focusNode: passwordFocusNode,
-          )
+            onSaved: (value) {
+              if (value != null) {
+                inputPassword = value;
+              }
+            },
+          ),
+
+          /// shows the row that contains the remember me checkbex
+          ///  and forgot pasword button
+          forgotPasswordRow(),
+          SizedBox(height: 20.h),
+          // sign in button
+          EduconnectButton(
+            button: EduconnectElevatedButton(
+              // disabled: _isButtonDisabled,
+              onPressed: onSigninButtonPressed,
+              text: EduconnectConstants.localization().sign_in,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  onSigninButtonPressed() {
+    context
+        .read<AuthCubit>()
+        .signIn(email: inputEmail, password: inputPassword);
+  }
+
+  List<Expanded> expandedChildren({required List<Widget> childern}) {
+    return childern.map((e) => Expanded(child: e)).toList();
+  }
+
+  Row forgotPasswordRow() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: expandedChildren(
+        childern: [
+          EduconnectCheckbox(
+            text: EduconnectConstants.localization().remember_me,
+            onChanged: (isSelected) {},
+          ),
+          EduconnectButton(
+            button: EduconnectTextButton(
+              onPressed: () {},
+              textButton: EduconnectConstants.localization().forgot_password,
+              color: EduconnectColors.primaryColor,
+            ),
+          ),
         ],
       ),
     );

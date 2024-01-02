@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -8,15 +9,16 @@ import 'common/navigation/router.export.dart';
 import 'common/style/educonnect_theme_data.dart';
 import 'features/auth/presentation/auth/screens/auth_screen.dart';
 import 'features/auth/settings/language/language_bloc/language_bloc.dart';
+import 'features/home/home_screen.dart';
 import 'generated/l10n.dart';
 
 class AppMaterialApp extends StatelessWidget {
-  final AsyncSnapshot<int> snapshot;
+  final AsyncSnapshot<int> languageSnapshot;
   final int currentLang;
 
   const AppMaterialApp({
     super.key,
-    required this.snapshot,
+    required this.languageSnapshot,
     required this.currentLang,
   });
   static final BehaviorSubject<int> languageSubject =
@@ -42,41 +44,57 @@ class AppMaterialApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LangBloc, LangState>(
       builder: (context, state) {
-        return MaterialApp(
-          title: 'EduConnect',
-          // material app initial settings
-          // 1. localization(3)
-          locale: localeMethod(state),
-          localizationsDelegates: const [
-            S.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
-          supportedLocales: S.delegate.supportedLocales,
-          // ----------------------------------
+        return StreamBuilder(
+            stream: FirebaseAuth.instance.authStateChanges(),
+            builder: (context, authSnapshot) {
+              return MaterialApp(
+                title: 'EduConnect',
+                // material app initial settings
+                // 1. localization(3)
+                locale: localeMethod(state),
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                supportedLocales: S.delegate.supportedLocales,
+                // ----------------------------------
 
-          //   3. themes
-          theme: buildThemeData(),
-          // ----------------------------------
+                //   3. themes
+                theme: buildThemeData(),
+                // ----------------------------------
 
-          // 8. custom navigator
-          navigatorKey: EduconnectNavigator.navigatorState,
-          onGenerateRoute: EduconnectNavigator.onCreateRoute,
-          // ----------------------------------
+                // 8. custom navigator
+                navigatorKey: EduconnectNavigator.navigatorState,
+                onGenerateRoute: EduconnectNavigator.onCreateRoute,
+                // ----------------------------------
 
-          // to remove the debug banner showed in the screen
-          debugShowCheckedModeBanner: false,
-          
-          home: const AuthScreen(),
-          // home: const SignupPasswordScreen(),
+                // to remove the debug banner showed in the screen
+                debugShowCheckedModeBanner: false,
 
-          ///4. smart dialog:
-          /// FlutterSmartDialog is a package that provide dialogs and toasts without a context
-          builder: materialAppBuilder(),
-        );
+                home: homeScreen(authSnapshot),
+                // home: const SignupPasswordScreen(),
+
+                ///4. smart dialog:
+                /// FlutterSmartDialog is a package that provide dialogs and toasts without a context
+                builder: materialAppBuilder(),
+              );
+            });
       },
     );
+  }
+
+  homeScreen(snapshot) {
+    if (snapshot.connectionState == ConnectionState.waiting) {
+      return const Center(child: CircularProgressIndicator());
+    } else {
+      if (snapshot.hasData) {
+        return const HomeScreen();
+      } else {
+        return const AuthScreen();
+      }
+    }
   }
 }
 

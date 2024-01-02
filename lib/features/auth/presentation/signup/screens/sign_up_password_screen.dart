@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../auth/widgets/auth_header_widget.dart';
 import '../widgets/signup_password_form.dart';
@@ -16,8 +15,6 @@ class SignupPasswordScreen extends StatefulWidget {
 
 class _SignupScreenState extends State<SignupPasswordScreen> {
   bool isKeyboardOpen = false;
-  bool _isButtonDisabled = true;
-  bool _isCheckboxChecked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -41,17 +38,6 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
                 children: [
                   SignupPasswordForm(
                     onIsKeyboardStatusChanged: onIsKeyboardStatusChanged,
-                    onFormChanged: (bool isButtonDisabled) {
-                      _isButtonDisabled = isButtonDisabled;
-                    },
-                  ),
-                  SizedBox(height: 20.h),
-                  EduconnectButton(
-                    button: EduconnectElevatedButton(
-                      disabled: _isButtonDisabled || !_isCheckboxChecked,
-                      onPressed: onSignupButtonPressed,
-                      text: EduconnectConstants.localization().sign_up,
-                    ),
                   ),
                 ],
               ),
@@ -67,6 +53,4 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
       isKeyboardOpen = newValue;
     });
   }
-
-  onSignupButtonPressed() {}
 }

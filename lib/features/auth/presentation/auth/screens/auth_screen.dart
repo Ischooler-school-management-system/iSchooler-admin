@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_assets.dart';
@@ -10,6 +11,7 @@ import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../common/features/widgets/responsive.dart';
 import '../../../../../common/navigation/router.export.dart';
 import '../../../../../common/style/educonnect_text_theme.dart';
+import '../../../logic/cubit/auth_cubit.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
@@ -63,7 +65,10 @@ class AuthScreen extends StatelessWidget {
   }
 
   onSignupButtonPressed() {
-    EduconnectNavigator.push(Routes.signupScreen);
+    // EduconnectNavigator.push(Routes.signupScreen);
+    currentContext!
+        .read<AuthCubit>()
+        .signUp(email: 'ziad@test.com', password: 'password');
   }
 
   onSigninButtonPressed() {

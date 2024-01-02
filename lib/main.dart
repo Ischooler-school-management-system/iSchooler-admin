@@ -85,7 +85,7 @@ class MyApp extends StatelessWidget {
             initialData: currentLang,
             builder: (context, AsyncSnapshot<int> snapshot) {
               return AppMaterialApp(
-                snapshot: snapshot,
+                languageSnapshot: snapshot,
                 currentLang: currentLang,
               );
             },

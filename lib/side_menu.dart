@@ -1,14 +1,14 @@
 import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
 
-class AppSideMenu extends StatefulWidget {
-  const AppSideMenu({super.key});
+class EduconnectSideMenu extends StatefulWidget {
+  const EduconnectSideMenu({super.key});
 
   @override
-  State<AppSideMenu> createState() => _AppSideMenuState();
+  State<EduconnectSideMenu> createState() => _EduconnectSideMenuState();
 }
 
-class _AppSideMenuState extends State<AppSideMenu> {
+class _EduconnectSideMenuState extends State<EduconnectSideMenu> {
   PageController pageController = PageController();
   SideMenuController sideMenu = SideMenuController();
 
@@ -112,125 +112,45 @@ class _AppSideMenuState extends State<AppSideMenu> {
         icon: Icon(Icons.exit_to_app),
       ),
     ];
-    final List<Container> tabsContentWidgets = [
-      Container(
-        color: Colors.white,
-        child: Center(
-            child: Form(
-                child: Column(
-          children: [
-            TextFormField(),
-            TextFormField(),
-            TextFormField(),
-            TextFormField(),
-          ],
-        ))),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Users',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Files',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Download',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Settings',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Only Title',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-      Container(
-        color: Colors.white,
-        child: const Center(
-          child: Text(
-            'Only Icon',
-            style: TextStyle(fontSize: 35),
-          ),
-        ),
-      ),
-    ];
-    return Scaffold(
-      body: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
+    return SideMenu(
+      // alwaysShowFooter:true,
+      collapseWidth: 200,
+      controller: sideMenu,
+      style: sideMenuStyle,
+      title: Column(
         children: [
-          SideMenu(
-            controller: sideMenu,
-            style: sideMenuStyle,
-            title: Column(
-              children: [
-                ConstrainedBox(
-                  constraints: const BoxConstraints(
-                    maxHeight: 150,
-                    maxWidth: 150,
-                  ),
-                  child: Image.asset(
-                    'assets/images/easy_sidemenu.png',
-                  ),
-                ),
-                const Divider(
-                  indent: 8.0,
-                  endIndent: 8.0,
-                ),
-              ],
-            ),
-            footer: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.lightBlue[100],
-                    borderRadius: BorderRadius.circular(12)),
-                child: Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-                  child: Text(
-                    'mohada',
-                    style: TextStyle(fontSize: 15, color: Colors.grey[800]),
-                  ),
-                ),
+          ConstrainedBox(
+              constraints: const BoxConstraints(
+                maxHeight: 150,
+                maxWidth: 150,
               ),
-            ),
-            items: sideMenuItems,
-          ),
-          Expanded(
-            child: PageView(
-              controller: pageController,
-              children: tabsContentWidgets,
-            ),
+              child: Container(
+                decoration: const BoxDecoration(
+                  color: Colors.grey,
+                ),
+              )),
+          const Divider(
+            indent: 8.0,
+            endIndent: 8.0,
           ),
         ],
       ),
+      footer: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          decoration: BoxDecoration(
+              color: Colors.lightBlue[100],
+              borderRadius: BorderRadius.circular(12)),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
+            child: Text(
+              'mohada',
+              style: TextStyle(fontSize: 15, color: Colors.grey[800]),
+            ),
+          ),
+        ),
+      ),
+      items: sideMenuItems,
     );
   }
 }

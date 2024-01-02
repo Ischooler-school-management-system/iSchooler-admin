@@ -1,17 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:school_admin/features/auth/logic/cubit/auth_cubit.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/educonnect_validation.dart';
+import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
 import '../../../../../common/features/widgets/fields/educonnect_password_field.dart';
 
 class SignupPasswordForm extends StatefulWidget {
   final Function(bool) onIsKeyboardStatusChanged;
-  final Function(bool isButtonDisabled) onFormChanged;
 
-  const SignupPasswordForm(
-      {super.key,
-      required this.onIsKeyboardStatusChanged,
-      required this.onFormChanged});
+  const SignupPasswordForm({
+    super.key,
+    required this.onIsKeyboardStatusChanged,
+  });
 
   @override
   State<SignupPasswordForm> createState() => _SignupFormState();
@@ -49,23 +52,36 @@ class _SignupFormState extends State<SignupPasswordForm> {
       onChanged: () {
         setState(() {
           _isButtonDisabled = !_formKey.currentState!.validate();
-          widget.onFormChanged(_isButtonDisabled);
         });
       },
       child: Column(
         children: [
           EduconnectPasswordField(
+            initialValue: 'password',
             labelText: EduconnectConstants.localization().enter_password,
             focusNode: passwordFocusNode,
-            validator: EduconnectValidations.emailValidator,
+            validator: EduconnectValidations.passwordValidator,
           ),
           EduconnectPasswordField(
+            initialValue: 'password',
             labelText: EduconnectConstants.localization().confirm_password,
             focusNode: confirmPasswordFocusNode,
-            validator: EduconnectValidations.nameValidator,
+            validator: EduconnectValidations.passwordValidator,
+          ),
+          SizedBox(height: 20.h),
+          EduconnectButton(
+            button: EduconnectElevatedButton(
+              // disabled: _isButtonDisabled,
+              onPressed: onSignupButtonPressed,
+              text: EduconnectConstants.localization().sign_up,
+            ),
           ),
         ],
       ),
     );
+  }
+
+  onSignupButtonPressed() {
+    context.read<AuthCubit>().signUp(email: 'ziad@test.com', password: 'password');
   }
 }

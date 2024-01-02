@@ -32,7 +32,7 @@ class AuthRepository {
           email: firebaseUser.email,
           displayName: firebaseUser.displayName,
         );
-        _userRepository.storeUserData(user: userModel);
+        // _userRepository.storeUserData(user: userModel);
       }
     } catch (e) {
       _alertHandlingRepository.addError(

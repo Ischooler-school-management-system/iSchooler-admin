@@ -3,7 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/features/widgets/educonnect_checkbox.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../common/navigation/router.export.dart';
 import '../../../../../common/style/educonnect_colors.dart';
@@ -19,7 +18,6 @@ class SigninScreen extends StatefulWidget {
 
 class _SigninScreenState extends State<SigninScreen> {
   bool isKeyboardOpen = false;
-  bool _isButtonDisabled = true;
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
@@ -42,28 +40,11 @@ class _SigninScreenState extends State<SigninScreen> {
               child: Column(
                 children: [
                   SigninForm(
-                    onIsKeyboardOpenChanged: (newValue) {
-                      setState(() {
-                        isKeyboardOpen = newValue;
-                      });
-                    },
-                    onFormChanged: (bool isButtonDisabled) {
-                      _isButtonDisabled = isButtonDisabled;
+                    onIsKeyboardOpenChanged: (bool value) {
+                      isKeyboardOpen = value;
                     },
                   ),
 
-                  /// shows the row that contains the remember me checkbex
-                  ///  and forgot pasword button
-                  forgotPasswordRow(),
-                  SizedBox(height: 20.h),
-                  // sign in button
-                  EduconnectButton(
-                    button: EduconnectElevatedButton(
-                      disabled: _isButtonDisabled,
-                      onPressed: onSigninButtonPressed,
-                      text: EduconnectConstants.localization().sign_in,
-                    ),
-                  ),
                   // Spacer(),
                   SizedBox(height: 20.h),
 
@@ -91,33 +72,5 @@ class _SigninScreenState extends State<SigninScreen> {
 
   onSignupButtonPressed() {
     EduconnectNavigator.push(Routes.signupScreen, replace: true);
-  }
-
-  onSigninButtonPressed() {
-    // EduconnectNavigator.push(Routes.signinScreen);
-  }
-
-  List<Expanded> expandedChildren({required List<Widget> childern}) {
-    return childern.map((e) => Expanded(child: e)).toList();
-  }
-
-  Row forgotPasswordRow() {
-    return Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: expandedChildren(
-          childern: [
-            EduconnectCheckbox(
-              text: EduconnectConstants.localization().remember_me,
-              onChanged: (isSelected) {},
-            ),
-            EduconnectButton(
-              button: EduconnectTextButton(
-                onPressed: () {},
-                textButton: EduconnectConstants.localization().forgot_password,
-                color: EduconnectColors.primaryColor,
-              ),
-            ),
-          ],
-        ));
   }
 }
