@@ -21,6 +21,8 @@ class _SigninScreenState extends State<SigninScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      keepMobileView: true,
+
       isScrollable: true,
       body: Center(
         child: Column(

@@ -8,7 +8,6 @@ import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../../../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/features/widgets/educonnect_image_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
-import '../../../../../common/features/widgets/responsive.dart';
 import '../../../../../common/navigation/router.export.dart';
 import '../../../../../common/style/educonnect_text_theme.dart';
 import '../../../logic/cubit/auth_cubit.dart';
@@ -19,27 +18,21 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      body: Container(
-        constraints: BoxConstraints(
-          maxWidth: Responsive.isMobile()
-              ? double.infinity
-              : EduconnectConstants.educonnect_screen_width * 0.5,
-          maxHeight: Responsive.isMobile()
-              ? double.infinity
-              : EduconnectConstants.educonnect_screen_width * 0.5,
-        ),
-        child: Padding(
-          padding: EdgeInsets.all(20.0.h),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              headerSection(),
-              SizedBox(height: 20.h),
-              footerSection()
-            ],
-          ),
-        ),
-      ),
+      keepMobileView: true,
+      body:  SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  headerSection(),
+                  SizedBox(height: 20.h),
+                  footerSection()
+                ],
+              ),
+            ),
+          // ),
+        // ),
+      // ),
     );
   }
 

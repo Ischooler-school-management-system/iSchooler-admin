@@ -35,5 +35,14 @@
     "phone_number_validation_error": "Please Enter Your Phone Number",
     "name_validation_error": "Please Enter Your Name",
     "verify": "Verify",
-    "confirm_password": "Confirm Password"
+    "confirm_password": "Confirm Password",
+    "users": "Users",
+    "classes": "Classes",
+    "grades": "Grades",
+    "subjects": "Subjects",
+    "exams": "Exams",
+    "timetable": "Timetable",
+    "homeworks": "Homeworks",
+    "profile": "Profile",
+    "settings": "Settings"
 }

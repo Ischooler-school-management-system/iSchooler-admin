@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "I agree with the terms and conditions and also the protection of my personal data on this application"),
         "apply": MessageLookupByLibrary.simpleMessage("Apply"),
         "cancel": MessageLookupByLibrary.simpleMessage("Cancel"),
+        "classes": MessageLookupByLibrary.simpleMessage("Classes"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("Confirm Password"),
         "email_invalid_error": MessageLookupByLibrary.simpleMessage(
@@ -43,10 +44,13 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Enter the school email"),
         "enter_school_name":
             MessageLookupByLibrary.simpleMessage("Enter the name of school"),
+        "exams": MessageLookupByLibrary.simpleMessage("Exams"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("Forgot password?"),
+        "grades": MessageLookupByLibrary.simpleMessage("Grades"),
         "have_account_prompt":
             MessageLookupByLibrary.simpleMessage("Already have an account?"),
+        "homeworks": MessageLookupByLibrary.simpleMessage("Homeworks"),
         "loading": MessageLookupByLibrary.simpleMessage("Loading"),
         "login_dialog_content": MessageLookupByLibrary.simpleMessage(
             "Login to access this feature"),
@@ -64,19 +68,24 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("Please Enter Your Password"),
         "phone_number_validation_error": MessageLookupByLibrary.simpleMessage(
             "Please Enter Your Phone Number"),
+        "profile": MessageLookupByLibrary.simpleMessage("Profile"),
         "remember_me": MessageLookupByLibrary.simpleMessage("Remember me"),
         "select_language":
             MessageLookupByLibrary.simpleMessage("Select Language"),
         "select_option_prompt":
             MessageLookupByLibrary.simpleMessage("Please select an option"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Sign in"),
         "sign_in_prompt":
             MessageLookupByLibrary.simpleMessage("Sign in and get started"),
         "sign_up": MessageLookupByLibrary.simpleMessage("Sign up"),
         "sign_up_prompt":
             MessageLookupByLibrary.simpleMessage("Sign up and get started"),
+        "subjects": MessageLookupByLibrary.simpleMessage("Subjects"),
         "there_is_an_error":
             MessageLookupByLibrary.simpleMessage("There Is An Error"),
+        "timetable": MessageLookupByLibrary.simpleMessage("Timetable"),
+        "users": MessageLookupByLibrary.simpleMessage("Users"),
         "verify": MessageLookupByLibrary.simpleMessage("Verify"),
         "welcome": MessageLookupByLibrary.simpleMessage("Welcome"),
         "welcome_create_account": MessageLookupByLibrary.simpleMessage(

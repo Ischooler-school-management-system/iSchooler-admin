@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/common/style/educonnect_text_theme.dart';
 
+import '../../common/features/widgets/educonnect_screen.dart';
 import '../../common/features/widgets/responsive.dart';
 import '../../side_menu.dart';
 
@@ -8,28 +10,53 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('app'),
-      ),
-      body: Responsive(
-        mobile: body(),
-        tablet: Row(
-          children: [
-            const EduconnectSideMenu(),
-            body(),
-          ],
+    return EduconnectScreen(
+      appBar: Responsive.isNotMobile()
+          ? null
+          : AppBar(
+              // title: Text('t'),
+              ),
+      body: ResponsiveRow(
+        body: body(),
+        sideWiget: Container(
+          color: Colors.red,
         ),
       ),
-      drawer: Responsive.isMobile()
-          ? const Drawer(child: EduconnectSideMenu())
-          : null,
+      drawer: Responsive.isNotMobile() ? null : const SideMenu(),
     );
   }
 
   Center body() {
-    return const Center(
-      child: Text('text'),
-    );
+    return Center(
+        child: Text(
+      'data',
+      style: EduconnectTextStyles.style20,
+    ));
+  }
+}
+
+class ResponsiveRow extends StatelessWidget {
+  final Widget body;
+  final Widget? sideWiget;
+
+  const ResponsiveRow({
+    super.key,
+    required this.body,
+    required this.sideWiget,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Responsive.isMobile()
+        ? body
+        : Row(
+            // children: Responsive.expandedChildren(
+            // ratio: 3,
+            children: [
+              const SideMenu(),
+              Expanded(child: body),
+              if (sideWiget != null) SizedBox(width: 300, child: sideWiget),
+            ],
+          );
   }
 }

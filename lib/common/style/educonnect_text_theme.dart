@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'educonnect_colors.dart';
 
 class EduconnectTextStyles {
   /// used font sizes
-  static final double font12 = 12.sp;
-  static final double font10 = 10.sp;
-  static final double font14 = 14.sp;
-  static final double font16 = 16.sp;
-  static final double font20 = 20.sp;
+  static final double font12 = 12;
+  static final double font10 = 10;
+  static final double font14 = 14;
+  static final double font16 = 16;
+  static final double font20 = 20;
 
   /// used font wieghts
   static const FontWeight weight500 = FontWeight.w500;
@@ -48,7 +47,7 @@ class EduconnectTextStyles {
   static final TextStyle style20 = TextStyle(fontSize: font20);
 
   static final TextStyle style20White = TextStyle(
-    fontSize: 20.sp,
+    fontSize: font20,
     color: Colors.white,
   );
 /*

@@ -35,5 +35,14 @@
   "phone_number_validation_error": "الرجاء إدخال رقم هاتفك",
   "name_validation_error": "الرجاء إدخال اسمك",
   "verify": "تأكيد",
-  "confirm_password": "تأكيد كلمة المرور"
+  "confirm_password": "تأكيد كلمة المرور",
+  "users": "المستخدمون",
+  "classes": "الصفوف",
+  "grades": "الدرجات",
+  "subjects": "المواد",
+  "exams": "الامتحانات",
+  "timetable": "الجدول الزمني",
+  "homeworks": "الواجبات المنزلية",
+  "profile": "الملف الشخصي",
+  "settings": "إعدادات"
 }

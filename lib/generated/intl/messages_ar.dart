@@ -26,6 +26,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق"),
         "apply": MessageLookupByLibrary.simpleMessage("تطبق"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
+        "classes": MessageLookupByLibrary.simpleMessage("الصفوف"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "email_invalid_error": MessageLookupByLibrary.simpleMessage(
@@ -44,10 +45,13 @@ class MessageLookup extends MessageLookupByLibrary {
             "أدخل البريد الإلكتروني للمدرسة"),
         "enter_school_name":
             MessageLookupByLibrary.simpleMessage("أدخل اسم المدرسة"),
+        "exams": MessageLookupByLibrary.simpleMessage("الامتحانات"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "grades": MessageLookupByLibrary.simpleMessage("الدرجات"),
         "have_account_prompt":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
+        "homeworks": MessageLookupByLibrary.simpleMessage("الواجبات المنزلية"),
         "loading": MessageLookupByLibrary.simpleMessage("جاري تحديث البيانات"),
         "login_dialog_content": MessageLookupByLibrary.simpleMessage(
             "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة."),
@@ -64,18 +68,23 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال كلمة المرور"),
         "phone_number_validation_error":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم هاتفك"),
+        "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),
         "remember_me": MessageLookupByLibrary.simpleMessage("تذكرني"),
         "select_language": MessageLookupByLibrary.simpleMessage("اختار لغة"),
         "select_option_prompt":
             MessageLookupByLibrary.simpleMessage("الرجاء تحديد خيار"),
+        "settings": MessageLookupByLibrary.simpleMessage("إعدادات"),
         "sign_in": MessageLookupByLibrary.simpleMessage("تسجيل الدخول"),
         "sign_in_prompt":
             MessageLookupByLibrary.simpleMessage("قم بتسجيل الدخول وابدأ"),
         "sign_up": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "sign_up_prompt":
             MessageLookupByLibrary.simpleMessage("قم بأنشاء حساب وابدأ"),
+        "subjects": MessageLookupByLibrary.simpleMessage("المواد"),
         "there_is_an_error":
             MessageLookupByLibrary.simpleMessage("حدث خطأ ما "),
+        "timetable": MessageLookupByLibrary.simpleMessage("الجدول الزمني"),
+        "users": MessageLookupByLibrary.simpleMessage("المستخدمون"),
         "verify": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
         "welcome_create_account": MessageLookupByLibrary.simpleMessage(

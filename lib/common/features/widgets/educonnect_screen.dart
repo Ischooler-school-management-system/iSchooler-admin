@@ -1,18 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:school_admin/common/features/widgets/buttons/educonnect_button.dart';
-import 'package:school_admin/common/features/widgets/buttons/models/buttons_model.dart';
-import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../features/auth/settings/language/language_bloc/language_bloc.dart';
 import '../../educonnect_local_settings.dart';
 import '../../features/error_handling/data/models/error_handling_model.dart';
 import '../../features/error_handling/logic/cubit/error_handling_cubit.dart';
 import '../../madpoly.dart';
+import '../../navigation/educonnect_navi.dart';
 import '../../style/educonnect_colors.dart';
+import 'buttons/educonnect_button.dart';
+import 'buttons/models/buttons_model.dart';
 
 // ignore: must_be_immutable
 class EduconnectScreen extends StatefulWidget {
@@ -23,8 +21,10 @@ class EduconnectScreen extends StatefulWidget {
   final bool closeAppBackButton;
   final Widget? bottomNavigationBar;
   final Future<void> Function()? onRefresh;
+  final bool keepMobileView;
   final bool isScrollable;
   final bool hasMinHeight;
+  final Widget? drawer;
 
   final FloatingActionButton? floatingActionButton;
 
@@ -40,6 +40,8 @@ class EduconnectScreen extends StatefulWidget {
     this.isScrollable = false,
     this.hasMinHeight = false,
     this.floatingActionButton,
+    this.keepMobileView = false,
+    this.drawer,
   });
 
   @override
@@ -50,12 +52,12 @@ class _EduconnectScreenState extends State<EduconnectScreen> {
   bool backButtonPressed = false;
 
   int selectedIndex = 0;
-  @override
+  /*  @override
   void initState() {
     super.initState();
     getCurrentLanguage();
   }
-
+ */
   getCurrentLanguage() async {
     selectedIndex = await EduconnectLocalSettings.getCurrentLang();
   }
@@ -67,18 +69,6 @@ class _EduconnectScreenState extends State<EduconnectScreen> {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       onRefresh!();
     }
-  }
-
-  Future<bool> onWillPopCloseApp() async {
-    // Handle closing the app logic
-    if (backButtonPressed) {
-      SystemNavigator.pop();
-    } else {
-      SmartDialog.showToast(
-          'EduconnectConstants.localization().press_back_again_to_close_the_app');
-      backButtonPressed = true;
-    }
-    return false;
   }
 
   // Function to build the body based on the presence of onRefresh
@@ -118,32 +108,40 @@ class _EduconnectScreenState extends State<EduconnectScreen> {
   @override
   Widget build(BuildContext context) {
     // Build the main screen with necessary widgets
+    double maxWidth =
+        MediaQuery.of(currentContext!).size.width < 400 ? double.infinity : 400;
+    var boxConstraints = BoxConstraints(maxWidth: maxWidth);
     return Scaffold(
-      extendBodyBehindAppBar: true,
-      appBar: widget.appBar ?? languageAppbar(),
+      // extendBodyBehindAppBar: true,
+      appBar: widget.appBar /* ?? languageAppbar() */,
       bottomNavigationBar: widget.bottomNavigationBar,
-      body: widget.isScrollable
-          ? LayoutBuilder(
-              builder: (context, constraints) {
-                // Enable scrolling within the screen
-                return SingleChildScrollView(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      minWidth: constraints.maxWidth,
-                      minHeight: widget.hasMinHeight
-                          ? constraints.minHeight
-                          : constraints.maxHeight,
-                    ),
-                    child: IntrinsicHeight(
-                      child: buildBody(context), // Build the body
-                    ),
-                  ),
-                );
-              },
-            )
-          // Build the body
-          : buildBody(context),
+      body: Center(
+          child: Container(
+              alignment: Alignment.center,
+              constraints: widget.keepMobileView ? boxConstraints : null,
+              child: widget.isScrollable
+                  ? LayoutBuilder(
+                      builder: (context, constraints) {
+                        // Enable scrolling within the screen
+                        return SingleChildScrollView(
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: constraints.maxWidth,
+                              minHeight: widget.hasMinHeight
+                                  ? constraints.minHeight
+                                  : constraints.maxHeight,
+                            ),
+                            child: IntrinsicHeight(
+                              child: buildBody(context), // Build the body
+                            ),
+                          ),
+                        );
+                      },
+                    )
+                  // Build the body
+                  : buildBody(context))),
       floatingActionButton: widget.floatingActionButton,
+      drawer: widget.drawer,
     );
   }
 

@@ -86,14 +86,11 @@ class AppMaterialApp extends StatelessWidget {
   }
 
   homeScreen(snapshot) {
-    if (snapshot.connectionState == ConnectionState.waiting) {
-      return const Center(child: CircularProgressIndicator());
+    if (snapshot.connectionState != ConnectionState.waiting &&
+        snapshot.hasData) {
+      return const HomeScreen();
     } else {
-      if (snapshot.hasData) {
-        return const HomeScreen();
-      } else {
-        return const AuthScreen();
-      }
+      return const AuthScreen();
     }
   }
 }
@@ -107,10 +104,10 @@ TransitionBuilder materialAppBuilder() {
       /// 2. fixed scale:
       ///  here we check if the app opened on tablet to make the scale 0.8
       /// because the tablet font is big when the scale is 1
-      final bool isTablet = mediaQueryData.size.width > 600;
+      bool isTablet = mediaQueryData.size.width > 600;
       return MediaQuery(
         data: mediaQueryData.copyWith(
-            textScaler: TextScaler.linear(isTablet ? 0.8 : 1.0)),
+            textScaler: TextScaler.linear(isTablet ? 1.1 : 1.0)),
         child: child ?? const SizedBox(),
       );
     },

@@ -1,156 +1,121 @@
-import 'package:easy_sidemenu/easy_sidemenu.dart';
 import 'package:flutter/material.dart';
+import 'package:school_admin/common/educonnect_constants.dart';
 
-class EduconnectSideMenu extends StatefulWidget {
-  const EduconnectSideMenu({super.key});
+import '../../common/style/educonnect_colors.dart';
+import '../../common/style/educonnect_text_theme.dart';
 
-  @override
-  State<EduconnectSideMenu> createState() => _EduconnectSideMenuState();
-}
-
-class _EduconnectSideMenuState extends State<EduconnectSideMenu> {
-  PageController pageController = PageController();
-  SideMenuController sideMenu = SideMenuController();
-
-  @override
-  void initState() {
-    sideMenu.addListener((index) {
-      pageController.jumpToPage(index);
-    });
-    super.initState();
-  }
+class SideMenu extends StatelessWidget {
+  const SideMenu({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final SideMenuStyle sideMenuStyle = SideMenuStyle(
-      // showTooltip: false,
-      displayMode: SideMenuDisplayMode.auto,
-      hoverColor: Colors.blue[100],
-      selectedHoverColor: Colors.blue[100],
-      selectedColor: Colors.lightBlue,
-      selectedTitleTextStyle: const TextStyle(color: Colors.white),
-      selectedIconColor: Colors.white,
-      // decoration: BoxDecoration(
-      //   borderRadius: BorderRadius.all(Radius.circular(10)),
-      // ),
-      // backgroundColor: Colors.blueGrey[700]
-    );
-    final List<SideMenuItem> sideMenuItems = [
-      SideMenuItem(
-        title: 'Dashboard',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.home),
-        badgeContent: const Text(
-          '3',
-          style: TextStyle(color: Colors.white),
+    List<StatelessWidget> drawerChildren = [
+      DrawerHeader(
+        child: Center(
+          child: ListTile(
+            leading: Container(
+              width: 80,
+              height: 80,
+              decoration: const BoxDecoration(
+                  color: Colors.red, shape: BoxShape.circle),
+            ),
+            title: Text('surya', style: EduconnectTextStyles.style20White),
+            subtitle: Text(EduconnectConstants.localization().profile,
+                style: EduconnectTextStyles.style14White),
+          ),
         ),
-        tooltipContent: "This is a tooltip for Dashboard item",
       ),
-      SideMenuItem(
-        title: 'Users',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.supervisor_account),
+      /*   DrawerListTile(
+        title: EduconnectConstants.localization().dashboard,
+        press: () {},
+      ), */
+      DrawerListTile(
+        title: EduconnectConstants.localization().users,
+        icon: Icons.person, // Placeholder for icon
+        press: () {},
       ),
-      SideMenuItem(
-        title: 'Files',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.file_copy_rounded),
-        trailing: Container(
-            decoration: const BoxDecoration(
-                color: Colors.amber,
-                borderRadius: BorderRadius.all(Radius.circular(6))),
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 6.0, vertical: 3),
-              child: Text(
-                'New',
-                style: TextStyle(fontSize: 11, color: Colors.grey[800]),
-              ),
-            )),
+      DrawerListTile(
+        title: EduconnectConstants.localization().classes,
+        icon: Icons.school, // Placeholder for icon
+        press: () {},
       ),
-      SideMenuItem(
-        title: 'Download',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.download),
+      DrawerListTile(
+        title: EduconnectConstants.localization().grades,
+        icon: Icons.grade, // Placeholder for icon
+        press: () {},
       ),
-      SideMenuItem(
-        builder: (context, displayMode) {
-          return const Divider(
-            endIndent: 8,
-            indent: 8,
-          );
-        },
+      DrawerListTile(
+        title: EduconnectConstants.localization().subjects,
+        icon: Icons.subject, // Placeholder for icon
+        press: () {},
       ),
-      SideMenuItem(
-        title: 'Settings',
-        onTap: (index, _) {
-          sideMenu.changePage(index);
-        },
-        icon: const Icon(Icons.settings),
+      DrawerListTile(
+        title: EduconnectConstants.localization().exams,
+        icon: Icons.assignment, // Placeholder for icon
+        press: () {},
       ),
-      // SideMenuItem(
-      //   onTap:(index, _){
-      //     sideMenu.changePage(index);
-      //   },
-      //   icon: const Icon(Icons.image_rounded),
-      // ),
-      // SideMenuItem(
-      //   title: 'Only Title',
-      //   onTap:(index, _){
-      //     sideMenu.changePage(index);
-      //   },
-      // ),
-      const SideMenuItem(
-        title: 'Exit',
-        icon: Icon(Icons.exit_to_app),
+      DrawerListTile(
+        title: EduconnectConstants.localization().timetable,
+        icon: Icons.schedule, // Placeholder for icon
+        press: () {},
+      ),
+      DrawerListTile(
+        title: EduconnectConstants.localization().homeworks,
+        icon: Icons.assignment_turned_in, // Placeholder for icon
+        press: () {},
+      ),
+      DrawerListTile(
+        title: EduconnectConstants.localization().profile,
+        icon: Icons.account_circle, // Placeholder for icon
+        press: () {},
+      ),
+      DrawerListTile(
+        title: EduconnectConstants.localization().settings,
+        icon: Icons.settings, // Placeholder for icon
+        press: () {},
       ),
     ];
-    return SideMenu(
-      // alwaysShowFooter:true,
-      collapseWidth: 200,
-      controller: sideMenu,
-      style: sideMenuStyle,
-      title: Column(
-        children: [
-          ConstrainedBox(
-              constraints: const BoxConstraints(
-                maxHeight: 150,
-                maxWidth: 150,
-              ),
-              child: Container(
-                decoration: const BoxDecoration(
-                  color: Colors.grey,
-                ),
-              )),
-          const Divider(
-            indent: 8.0,
-            endIndent: 8.0,
-          ),
-        ],
+    return Drawer(
+      backgroundColor: EduconnectColors.blue,
+      child: ListView(
+        children: drawerChildren,
       ),
-      footer: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Container(
-          decoration: BoxDecoration(
-              color: Colors.lightBlue[100],
-              borderRadius: BorderRadius.circular(12)),
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 10),
-            child: Text(
-              'mohada',
-              style: TextStyle(fontSize: 15, color: Colors.grey[800]),
-            ),
-          ),
-        ),
+    );
+  }
+}
+
+class DrawerListTile extends StatelessWidget {
+  // final String title, svgSrc;
+  final VoidCallback press;
+  final String title;
+  final IconData icon;
+  const DrawerListTile({
+    super.key,
+    // For selecting those three line once press "Command+D"
+    required this.title,
+    required this.press,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ListTile(
+      onTap: press,
+      horizontalTitleGap: 0.0,
+      leading: Icon(
+        icon,
+        color: EduconnectColors.white,
+        size: 16,
       ),
-      items: sideMenuItems,
+      /*  leading: SvgPicture.asset(
+        // svgSrc,
+        colorFilter: ColorFilter.mode(Colors.white54, BlendMode.srcIn),
+        height: 16,
+      ), */
+      title: Text(
+        title,
+        style: const TextStyle(color: EduconnectColors.white),
+      ),
     );
   }
 }

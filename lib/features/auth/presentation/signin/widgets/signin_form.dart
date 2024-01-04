@@ -1,6 +1,8 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:school_admin/common/features/widgets/responsive.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/educonnect_validation.dart';
@@ -120,15 +122,11 @@ class _SigninFormState extends State<SigninForm> {
         .signIn(email: inputEmail, password: inputPassword);
   }
 
-  List<Expanded> expandedChildren({required List<Widget> childern}) {
-    return childern.map((e) => Expanded(child: e)).toList();
-  }
-
   Row forgotPasswordRow() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: expandedChildren(
-        childern: [
+      children: Responsive.expandedChildren(
+        children: [
           EduconnectCheckbox(
             text: EduconnectConstants.localization().remember_me,
             onChanged: (isSelected) {},

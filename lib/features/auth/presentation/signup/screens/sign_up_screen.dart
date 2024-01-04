@@ -23,6 +23,8 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return EduconnectScreen(
       isScrollable: true,
+      keepMobileView: true,
+
       body: Center(
         child: Column(
           children: [
@@ -74,7 +76,5 @@ class _SignupScreenState extends State<SignupScreen> {
     EduconnectNavigator.push(Routes.signinScreen, replace: true);
   }
 
-  List<Expanded> expandedChildren({required List<Widget> childern}) {
-    return childern.map((e) => Expanded(child: e)).toList();
-  }
+ 
 }

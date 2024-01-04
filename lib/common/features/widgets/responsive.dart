@@ -18,27 +18,41 @@ class Responsive extends StatelessWidget {
 // This size work fine on my design, maybe you need some customization depends on your design
 
   // This isMobile, isTablet, isDesktop help us later
-  static bool isMobile() => MediaQuery.of(currentContext!).size.width < 850;
+  static double mobileWidth = 850;
+  static double tabletWidth = 1100;
 
-  static bool isTablet() =>
-      MediaQuery.of(currentContext!).size.width < 1100 &&
-      MediaQuery.of(currentContext!).size.width >= 850;
+  static bool isMobile() =>
+      MediaQuery.of(currentContext!).size.width < mobileWidth;
+  static bool isNotMobile() =>
+      MediaQuery.of(currentContext!).size.width >= mobileWidth;
 
-  static bool isDesktop() => MediaQuery.of(currentContext!).size.width >= 1100;
+  /* static bool isTablet() =>
+      MediaQuery.of(currentContext!).size.width < tabletWidth &&
+      MediaQuery.of(currentContext!).size.width >= mobileWidth;
+
+  static bool isDesktop() => MediaQuery.of(currentContext!).size.width >= tabletWidth; */
   static double responsiveFontSize(double size) {
     var responsiveSize = isMobile() ? size : size / 2;
     return responsiveSize.sp;
   }
 
+  static List<Expanded> expandedChildren({required List<Widget> children,int? ratio}) {
+    return children.map((e) => Expanded(child: e)).toList();
+  }
+
+
+ 
+
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(currentContext!).size;
-    // If our width is more than 1100 then we consider it a desktop
-    /* if (size.width >= 1100 && desktop != null) {
+    // If our width is more than tabletWidth then we consider it a desktop
+    /* if (size.width >= tabletWidth && desktop != null) {
       return desktop!;
-    }
-    // If width it less then 1100 and more then 850 we consider it as tablet
-    else */ if (size.width >= 850 && tablet != null) {
+    
+    // If width it less then tabletWidth and more then mobileWidth we consider it as tablet
+    else} */
+    if (size.width >= mobileWidth && tablet != null) {
       return tablet!;
     }
     // Or less then that we called it mobile
