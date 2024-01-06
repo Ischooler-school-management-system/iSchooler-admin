@@ -23,25 +23,17 @@ class Responsive extends StatelessWidget {
 
   static bool isMobile() =>
       MediaQuery.of(currentContext!).size.width < mobileWidth;
-  static bool isNotMobile() =>
-      MediaQuery.of(currentContext!).size.width >= mobileWidth;
 
   /* static bool isTablet() =>
       MediaQuery.of(currentContext!).size.width < tabletWidth &&
       MediaQuery.of(currentContext!).size.width >= mobileWidth;
 
   static bool isDesktop() => MediaQuery.of(currentContext!).size.width >= tabletWidth; */
-  static double responsiveFontSize(double size) {
-    var responsiveSize = isMobile() ? size : size / 2;
-    return responsiveSize.sp;
-  }
 
-  static List<Expanded> expandedChildren({required List<Widget> children,int? ratio}) {
+  static List<Expanded> expandedChildren(
+      {required List<Widget> children, int? ratio}) {
     return children.map((e) => Expanded(child: e)).toList();
   }
-
-
- 
 
   @override
   Widget build(BuildContext context) {

@@ -16,31 +16,34 @@ class EduconnectFlexibleScrollWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
+    if (enableflexibleScrolling) {
+      return LayoutBuilder(builder: (context, constraints) {
         // Enable scrolling within the screen
-        if (enableflexibleScrolling) {
-          return SingleChildScrollView(
-            child: ConstrainedBox(
-              constraints: BoxConstraints(
-                minWidth: constraints.maxWidth,
-                minHeight: hasMinHeight
-                    ? constraints.minHeight
-                    : constraints.maxHeight,
-              ),
-              child: IntrinsicHeight(
-                child: child, // Build the body
-              ),
+        return SingleChildScrollView(
+          child: ConstrainedBox(
+            constraints: BoxConstraints(
+              minWidth: constraints.maxWidth,
+              minHeight:
+                  hasMinHeight ? constraints.minHeight : constraints.maxHeight,
             ),
-          );
-        } else if (enableScrolling) {
-          return SingleChildScrollView(
-            child: child,
-          );
-        } else {
-          return child;
-        }
-      },
-    );
+            child: IntrinsicHeight(
+              child: child, // Build the body
+            ),
+          ),
+        );
+      });
+    } else if (enableScrolling) {
+      return SingleChildScrollView(
+        child: child,
+      );
+    } else {
+      return child;
+    }
   }
 }
+/* 
+MagicContainer(){
+   return 
+   
+}
+ */

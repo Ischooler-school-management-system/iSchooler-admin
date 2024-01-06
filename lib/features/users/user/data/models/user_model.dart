@@ -2,6 +2,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../common/functions/truncate_map.dart';
+
 class UserModel extends Equatable {
   final String id;
   final String username;
@@ -28,36 +30,6 @@ class UserModel extends Equatable {
     this.email = '',
     this.displayName = '',
   });
-
-  static List<String> allPropertyNames = [
-    'User ID',
-    'Username',
-    'Date of Birth',
-    'Class ID',
-    'Grade ID',
-    'Phone Number',
-    'Address',
-    'Gender',
-    'Payment Status',
-    'Email', // Added Email
-    'Display Name', // Added Display Name
-  ];
-
-  List<String> getPropertyValues() {
-    return [
-      id,
-      username,
-      DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-      classId,
-      gradeId,
-      phoneNumber,
-      address,
-      gender,
-      paymentStatus.toString(),
-      email,
-      displayName,
-    ];
-  }
 
   factory UserModel.empty() {
     return const UserModel(
@@ -107,6 +79,26 @@ class UserModel extends Equatable {
       'email': email,
       'displayName': displayName,
     };
+  }
+
+  Map<String, dynamic> toDisplayMap({bool showLess = false}) {
+    var map = {
+      'displayName': displayName,
+      'id': id,
+      'gender': gender,
+      'email': email,
+      // 'username': username,
+      // 'classId': classId,
+      // 'gradeId': gradeId,
+      'phoneNumber': phoneNumber,
+      'address': address,
+      'dateOfBirth':
+          DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
+
+      'paymentStatus': paymentStatus,
+    };
+
+    return showLess ? truncateMap(4, map) : map;
   }
 
   UserModel copyWith({

@@ -23,7 +23,7 @@ class EduconnectSideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final isSmallScreen = MediaQuery.of(context).size.width < 400;
+    final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [
       const StudentsTab(),

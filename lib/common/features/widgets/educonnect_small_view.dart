@@ -7,7 +7,7 @@ class EduconnectSmallView extends StatelessWidget {
   final Widget child;
   const EduconnectSmallView({
     super.key,
-    required this.keepMobileView,
+    this.keepMobileView = true,
     required this.child,
   });
 

@@ -18,6 +18,8 @@ class EduconnectScreen extends StatelessWidget {
   final bool enableScrolling;
   final bool hasMinHeight;
   final bool extendBodyBehindAppBar;
+  final EdgeInsetsGeometry? padding;
+  final EdgeInsetsGeometry? margin;
   final Widget? drawer;
 
   final FloatingActionButton? floatingActionButton;
@@ -38,6 +40,8 @@ class EduconnectScreen extends StatelessWidget {
     this.extendBodyBehindAppBar = false,
     this.drawer,
     this.floatingActionButton,
+    this.padding,
+    this.margin,
   });
 
   // Build method for the EduconnectScreen widget
@@ -48,15 +52,19 @@ class EduconnectScreen extends StatelessWidget {
       extendBodyBehindAppBar: extendBodyBehindAppBar,
       appBar: appBar /* ?? languageAppbar() */,
       bottomNavigationBar: bottomNavigationBar,
-      body: EduconnectSmallView(
-        keepMobileView: keepMobileView,
-        child: EduconnectFlexibleScrollWidget(
-          hasMinHeight: hasMinHeight,
-          enableflexibleScrolling: enableflexibleScrolling,
-          enableScrolling: enableScrolling,
-          child: EduconnectPullToRefresh(
-            onRefresh: onRefresh,
-            child: body,
+      body: Container(
+        padding: padding,
+        margin: margin,
+        child: EduconnectSmallView(
+          keepMobileView: keepMobileView,
+          child: EduconnectFlexibleScrollWidget(
+            hasMinHeight: hasMinHeight,
+            enableflexibleScrolling: enableflexibleScrolling,
+            enableScrolling: enableScrolling,
+            child: EduconnectPullToRefresh(
+              onRefresh: onRefresh,
+              child: body,
+            ),
           ),
         ),
       ),

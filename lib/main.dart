@@ -1,14 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'main/app_listeners.dart';
-import 'main/app_materialapp.dart';
 import 'common/di.dart';
 import 'common/educonnect_local_settings.dart';
+import 'common/madpoly.dart';
 import 'firebase_options.dart';
+import 'main/app_listeners.dart';
+import 'main/app_materialapp.dart';
 
 /// app initial settings:
 /// inside main:
@@ -39,21 +39,41 @@ Future<void> main() async {
   final bool isFirstTime = await EduconnectLocalSettings.isFirstTime();
   // 1. localization(1)
   final int currentLang = await EduconnectLocalSettings.getCurrentLang();
-
+  WidgetsFlutterBinding.ensureInitialized();
   // firebase setup
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+  try {
+    await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+      /* options: const FirebaseOptions(
+    apiKey: 'AIzaSyCqUoe7uNYPcIPHb4deFPm-X7GVIRv311g',
+    appId: '1:497792930106:web:dd37f1d7f7ecc3acc7c003',
+    messagingSenderId: '497792930106',
+    projectId: 'educonnect-7716d',
+    authDomain: 'educonnect-7716d.firebaseapp.com',
+    storageBucket: 'educonnect-7716d.appspot.com',
+  ), */
+    );
+  } catch (e) {
+    Madpoly.print(
+      '$e',
+      tag: 'main > Firebase.initializeApp',
+      developer: "Ziad",
+    );
+  }
 
   /// 5. setPreferredOrientations:
   /// here we set the app Orientation to work in portraitUp only so it doesn't rotate
-  SystemChrome.setPreferredOrientations([
+  /// this condition must be for mobile only if the project works for web it will throw an error
+  /* SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then(
-    (value) => runApp(MyApp(
+    (value) => */
+  runApp(
+    MyApp(
       isFirstTime: isFirstTime,
       currentLang: currentLang,
-    )),
+    ),
+    // ),
   );
 }
 

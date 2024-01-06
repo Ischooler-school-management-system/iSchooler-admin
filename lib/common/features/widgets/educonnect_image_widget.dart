@@ -8,6 +8,7 @@ class EduconnectImageWidget extends StatelessWidget {
   final double? height;
   final BoxFit? fit;
   final String? placeHolderImage;
+  final bool circleShape;
   const EduconnectImageWidget.asset({
     super.key,
     this.width,
@@ -15,6 +16,7 @@ class EduconnectImageWidget extends StatelessWidget {
     this.fit,
     this.placeHolderImage,
     this.url = '',
+    this.circleShape = false,
   });
 
   const EduconnectImageWidget.network({
@@ -24,10 +26,20 @@ class EduconnectImageWidget extends StatelessWidget {
     this.fit,
     this.placeHolderImage,
     this.url = '',
+    this.circleShape = false,
   });
 
   @override
   Widget build(BuildContext context) {
+    return circleShape
+        ? ClipOval(
+            // clipBehavior: Clip.antiAliasWithSaveLayer,
+            child: imageWidget(),
+          )
+        : imageWidget();
+  }
+
+  Widget imageWidget() {
     if (url.isEmpty) {
       // Handle empty URL
       return _buildPlaceholderImage();
