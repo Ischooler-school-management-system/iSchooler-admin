@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../common/features/error_handling/data/models/error_handling_model.dart';
-import '../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
+import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
+import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../models/user_model.dart';
 import '../network/user_network.dart';
 
@@ -13,7 +13,6 @@ class UserRepository {
       ErrorHandlingRepository alertHandlingRepository, UserNetwork userNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
         _userNetwork = userNetwork;
-
 
   Future<User?> storeUserData({required UserModel user}) async {
     try {

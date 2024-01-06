@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_admin/features/auth/logic/cubit/auth_cubit.dart';
 
-import 'common/di.dart';
-import 'common/features/error_handling/logic/cubit/error_handling_cubit.dart';
-import 'common/features/loading/logic/cubit/loading_cubit.dart';
-import 'features/auth/settings/language/language_bloc/language_bloc.dart';
-import 'features/user/logic/cubit/user_cubit.dart';
+import '../common/di.dart';
+import '../common/features/error_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/features/loading/logic/cubit/loading_cubit.dart';
+import '../features/auth/settings/language/language_bloc/language_bloc.dart';
+import '../features/users/user/logic/cubit/user_cubit.dart';
 
 /// here we define all blocs used in the app
 /// and the required properties is only added by passing getIt()

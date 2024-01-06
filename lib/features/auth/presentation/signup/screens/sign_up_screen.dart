@@ -22,9 +22,8 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      isScrollable: true,
+      enableflexibleScrolling: true,
       keepMobileView: true,
-
       body: Center(
         child: Column(
           children: [
@@ -43,7 +42,6 @@ class _SignupScreenState extends State<SignupScreen> {
                 children: [
                   SignupForm(
                     onIsKeyboardStatusChanged: onIsKeyboardStatusChanged,
-                   
                   ),
                   SizedBox(height: 20.h),
                   Visibility(
@@ -72,9 +70,8 @@ class _SignupScreenState extends State<SignupScreen> {
       isKeyboardOpen = newValue;
     });
   }
+
   onSigninButtonPressed() {
     EduconnectNavigator.push(Routes.signinScreen, replace: true);
   }
-
- 
 }

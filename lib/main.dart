@@ -4,8 +4,8 @@ import 'package:flutter/services.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'app_listeners.dart';
-import 'app_materialapp.dart';
+import 'main/app_listeners.dart';
+import 'main/app_materialapp.dart';
 import 'common/di.dart';
 import 'common/educonnect_local_settings.dart';
 import 'firebase_options.dart';

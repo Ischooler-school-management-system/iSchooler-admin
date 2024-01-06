@@ -5,12 +5,12 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
 
-import 'common/navigation/router.export.dart';
-import 'common/style/educonnect_theme_data.dart';
-import 'features/auth/presentation/auth/screens/auth_screen.dart';
-import 'features/auth/settings/language/language_bloc/language_bloc.dart';
-import 'features/home/home_screen.dart';
-import 'generated/l10n.dart';
+import '../common/navigation/router.export.dart';
+import '../common/style/educonnect_theme_data.dart';
+import '../features/auth/presentation/auth/screens/auth_screen.dart';
+import '../features/auth/settings/language/language_bloc/language_bloc.dart';
+import '../generated/l10n.dart';
+import '../side_bar/educonnect_side_bar.dart';
 
 class AppMaterialApp extends StatelessWidget {
   final AsyncSnapshot<int> languageSnapshot;
@@ -73,8 +73,8 @@ class AppMaterialApp extends StatelessWidget {
                 // to remove the debug banner showed in the screen
                 debugShowCheckedModeBanner: false,
 
-                home: homeScreen(authSnapshot),
-                // home: const SignupPasswordScreen(),
+                // home: homeScreen(authSnapshot),
+                home: EduconnectSideBar(),
 
                 ///4. smart dialog:
                 /// FlutterSmartDialog is a package that provide dialogs and toasts without a context
@@ -88,7 +88,7 @@ class AppMaterialApp extends StatelessWidget {
   homeScreen(snapshot) {
     if (snapshot.connectionState != ConnectionState.waiting &&
         snapshot.hasData) {
-      return const HomeScreen();
+      return EduconnectSideBar();
     } else {
       return const AuthScreen();
     }

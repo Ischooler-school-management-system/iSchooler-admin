@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:school_admin/common/style/educonnect_text_theme.dart';
 
 import '../../common/features/widgets/educonnect_screen.dart';
@@ -18,9 +18,9 @@ class HomeScreen extends StatelessWidget {
               ),
       body: ResponsiveRow(
         body: body(),
-        sideWiget: Container(
+        /* sideWiget: Container(
           color: Colors.red,
-        ),
+        ), */
       ),
       drawer: Responsive.isNotMobile() ? null : const SideMenu(),
     );
@@ -42,7 +42,7 @@ class ResponsiveRow extends StatelessWidget {
   const ResponsiveRow({
     super.key,
     required this.body,
-    required this.sideWiget,
+    this.sideWiget,
   });
 
   @override
@@ -60,3 +60,4 @@ class ResponsiveRow extends StatelessWidget {
           );
   }
 }
+ */

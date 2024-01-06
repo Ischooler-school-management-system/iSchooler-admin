@@ -13,7 +13,6 @@ dependencies:
   dio: ^5.4.0
   dots_indicator: ^3.0.0
   dropdown_button2: ^2.3.9
-  # easy_sidemenu: ^0.5.0
   equatable: ^2.0.5
   firebase_auth: ^4.15.0
   firebase_core: ^2.24.0
@@ -42,6 +41,7 @@ dependencies:
   path_provider: ^2.1.1
   rxdart: ^0.27.7
   shared_preferences: ^2.2.2
+  sidebarx: ^0.16.3
 
 dev_dependencies:
   flutter_launcher_icons: ^0.13.1
@@ -63,43 +63,15 @@ flutter:
     - family: KumbhSans
       fonts:
         - asset: assets/fonts/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf
-    - family: Poppins
+    - family: Almarai
       fonts:
-        - asset: assets/fonts/Poppins/Poppins-Black.ttf
-          weight: 900
-        - asset: assets/fonts/Poppins/Poppins-BlackItalic.ttf
-          weight: 900
-        - asset: assets/fonts/Poppins/Poppins-Bold.ttf
-          weight: 700
-        - asset: assets/fonts/Poppins/Poppins-BoldItalic.ttf
-          weight: 700
-        - asset: assets/fonts/Poppins/Poppins-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/Poppins/Poppins-ExtraBoldItalic.ttf
-          weight: 800
-        - asset: assets/fonts/Poppins/Poppins-ExtraLight.ttf
-          weight: 200
-        - asset: assets/fonts/Poppins/Poppins-ExtraLightItalic.ttf
-          weight: 200
-        - asset: assets/fonts/Poppins/Poppins-Italic.ttf
+        - asset: assets/fonts/Almarai/Almarai-Regular.ttf 
           weight: 400
-        - asset: assets/fonts/Poppins/Poppins-Light.ttf
-          weight: 300
-        - asset: assets/fonts/Poppins/Poppins-LightItalic.ttf
-          weight: 300
-        - asset: assets/fonts/Poppins/Poppins-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Poppins/Poppins-MediumItalic.ttf
-          weight: 500
-        - asset: assets/fonts/Poppins/Poppins-Regular.ttf
-          weight: 400
-        - asset: assets/fonts/Poppins/Poppins-SemiBold.ttf
+        - asset: assets/fonts/Almarai/Almarai-Light.ttf
           weight: 600
-        - asset: assets/fonts/Poppins/Poppins-SemiBoldItalic.ttf
-          weight: 600
-        - asset: assets/fonts/Poppins/Poppins-Thin.ttf
-          weight: 100
-        - asset: assets/fonts/Poppins/Poppins-ThinItalic.ttf
-          weight: 100
+        - asset: assets/fonts/Almarai/Almarai-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/Almarai/Almarai-ExtraBold.ttf
+          weight: 800
 flutter_intl:
   enabled: true

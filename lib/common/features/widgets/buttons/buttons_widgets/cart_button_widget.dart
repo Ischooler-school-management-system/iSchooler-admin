@@ -40,7 +40,7 @@ class _CartButtonWidget extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     educonnectCartButton.text,
-                    style: EduconnectConstants.text_theme.bodyMedium!.copyWith(
+                    style: EduconnectConstants.textTheme.bodyMedium!.copyWith(
                       color: EduconnectColors.secondaryColor,
                       fontWeight: FontWeight.w600,
                       fontFamily: GoogleFonts.poppins().fontFamily,

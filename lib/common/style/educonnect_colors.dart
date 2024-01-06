@@ -8,8 +8,8 @@ abstract class EduconnectColors {
   static const Color accentColor = white;
   static const Color backgroundColor = light_grey;
 
-
   static const Color white = Color(0xffFFFFFF);
+  static const Color white54 = Colors.white54;
   static const Color black = Color(0xff000000);
   static const Color yellow = Color(0xffE6BB22);
   static const Color red = Color(0xffEC2D30);

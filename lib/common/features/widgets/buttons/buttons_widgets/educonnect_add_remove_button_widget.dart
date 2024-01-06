@@ -1,8 +1,10 @@
 part of '../educonnect_button.dart';
+
 class _EduconnectAddRemoveButtonWidget extends StatelessWidget {
   final EduconnectAddRemoveButton educonnectAddRemoveButton;
 
-  const _EduconnectAddRemoveButtonWidget({required this.educonnectAddRemoveButton});
+  const _EduconnectAddRemoveButtonWidget(
+      {required this.educonnectAddRemoveButton});
   //int count = 1;
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class _EduconnectAddRemoveButtonWidget extends StatelessWidget {
             child: FittedBox(
               child: Text(
                 '${educonnectAddRemoveButton.count}',
-                style: EduconnectConstants.text_theme.displaySmall!.copyWith(
+                style: EduconnectConstants.textTheme.displaySmall!.copyWith(
                   color: EduconnectColors.primaryColor,
                   fontWeight: FontWeight.normal,
                 ),

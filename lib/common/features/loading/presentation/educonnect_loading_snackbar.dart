@@ -33,7 +33,7 @@ class EduconnectLoadingSnackbar extends StatelessWidget {
           const SizedBox(width: 8),
           Text(
             message,
-            style: EduconnectConstants.text_theme.labelMedium!
+            style: EduconnectConstants.textTheme.labelMedium!
                 .copyWith(color: EduconnectColors.white),
           ),
         ],

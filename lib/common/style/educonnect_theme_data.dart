@@ -6,8 +6,8 @@ ThemeData buildThemeData() {
   return ThemeData(
     // useMaterial3 brings flutter new ui to the app
     useMaterial3: true,
-    fontFamily: 'Poppins',
+    fontFamily: 'Almarai',
     // textTheme: AppTextStyles.appTextThemes,
-  scaffoldBackgroundColor: EduconnectColors.backgroundColor,
+    scaffoldBackgroundColor: EduconnectColors.backgroundColor,
   );
 }

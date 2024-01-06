@@ -19,9 +19,8 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      isScrollable: true,
+      enableflexibleScrolling: true,
       keepMobileView: true,
-
       body: Center(
         child: Column(
           children: [

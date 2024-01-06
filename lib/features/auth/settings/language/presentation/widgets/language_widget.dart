@@ -27,7 +27,7 @@ class LanguageWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: EduconnectConstants.text_theme.bodyMedium!.copyWith(
+              style: EduconnectConstants.textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w600,
                 fontFamily: GoogleFonts.poppins().fontFamily,
               ),

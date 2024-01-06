@@ -94,7 +94,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
         hint: (widget.hint != null)
             ? Text(
                 widget.hint!,
-                style: EduconnectConstants.text_theme.labelMedium!.copyWith(
+                style: EduconnectConstants.textTheme.labelMedium!.copyWith(
                   fontFamily: GoogleFonts.poppins().fontFamily,
                   color: EduconnectColors.light_grey,
                 ),
@@ -111,7 +111,7 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
       value: item,
       child: Text(
         item,
-        style: EduconnectConstants.text_theme.labelMedium!.copyWith(
+        style: EduconnectConstants.textTheme.labelMedium!.copyWith(
           fontFamily: GoogleFonts.poppins().fontFamily,
           color: EduconnectColors.blue,
         ),

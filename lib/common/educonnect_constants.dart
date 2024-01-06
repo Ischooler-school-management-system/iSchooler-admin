@@ -9,13 +9,14 @@ import 'navigation/educonnect_navi.dart';
 abstract class EduconnectConstants {
   static final double educonnect_button_height = 35.h;
   static final double educonnect_button_radius = 8.r;
-  static const  EdgeInsets educonnect_screen_padding = EdgeInsets.all(20);
+  static const EdgeInsets educonnect_screen_padding = EdgeInsets.all(20);
 
   // Get the text theme from the current theme currentContext!.
-  static final TextTheme text_theme = Theme.of(currentContext!).textTheme;
+  static final TextTheme textTheme = Theme.of(currentContext!).textTheme;
 
   // Get the screen size, height, and width from the current currentContext!.
-  static final Size educonnect_screen_size = MediaQuery.of(currentContext!).size;
+  static final Size educonnect_screen_size =
+      MediaQuery.of(currentContext!).size;
 
   static final double educonnect_screen_height =
       MediaQuery.of(currentContext!).size.height;

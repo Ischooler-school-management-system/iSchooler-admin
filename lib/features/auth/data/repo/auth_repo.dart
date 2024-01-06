@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../common/madpoly.dart';
-import '../../../user/data/models/user_model.dart';
-import '../../../user/data/repo/user_repo.dart';
+import '../../../users/user/data/models/user_model.dart';
+import '../../../users/user/data/repo/user_repo.dart';
 import '../network/auth_network.dart';
 
 class AuthRepository {
@@ -29,10 +29,10 @@ class AuthRepository {
       if (firebaseUser != null) {
         UserModel userModel = UserModel(
           id: firebaseUser.uid,
-          email: firebaseUser.email,
-          displayName: firebaseUser.displayName,
+          email: firebaseUser.email!,
+          displayName: firebaseUser.displayName!,
         );
-        // _userRepository.storeUserData(user: userModel);
+        _userRepository.storeUserData(user: userModel);
       }
     } catch (e) {
       _alertHandlingRepository.addError(

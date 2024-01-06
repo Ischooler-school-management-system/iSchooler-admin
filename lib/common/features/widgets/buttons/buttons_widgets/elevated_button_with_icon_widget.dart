@@ -57,7 +57,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
 
           Text(
             educonnectElevatedButtonWithIcon.text,
-            style: EduconnectConstants.text_theme.bodyLarge!
+            style: EduconnectConstants.textTheme.bodyLarge!
                 .copyWith(color: textColor),
             textAlign: TextAlign.center,
           ),
@@ -98,8 +98,8 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
         minimumSize:
             Size(double.infinity, EduconnectConstants.educonnect_button_height),
         shape: RoundedRectangleBorder(
-          borderRadius:
-              BorderRadius.circular(EduconnectConstants.educonnect_button_radius),
+          borderRadius: BorderRadius.circular(
+              EduconnectConstants.educonnect_button_radius),
           side: BorderSide(
             color: borderColor!,
           ),
@@ -110,7 +110,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       label: Text(
         educonnectElevatedButtonWithIcon.text,
         style:
-            EduconnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
+            EduconnectConstants.textTheme.bodyLarge!.copyWith(color: textColor),
       ),
     );
   }

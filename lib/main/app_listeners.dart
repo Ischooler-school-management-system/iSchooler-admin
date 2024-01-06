@@ -3,13 +3,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import 'bloc_providers.dart';
-import 'common/educonnect_constants.dart';
-import 'common/features/error_handling/data/models/error_handling_model.dart';
-import 'common/features/error_handling/logic/cubit/error_handling_cubit.dart';
-import 'common/features/loading/logic/cubit/loading_cubit.dart';
-import 'common/features/loading/presentation/loading_popup.dart';
-import 'common/madpoly.dart';
-import 'common/navigation/educonnect_navi.dart';
+import '../common/educonnect_constants.dart';
+import '../common/features/error_handling/data/models/error_handling_model.dart';
+import '../common/features/error_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/features/loading/logic/cubit/loading_cubit.dart';
+import '../common/features/loading/presentation/loading_popup.dart';
+import '../common/madpoly.dart';
+import '../common/navigation/educonnect_navi.dart';
 
 class AppListeners extends StatelessWidget {
   final Widget child;
@@ -18,7 +18,7 @@ class AppListeners extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return listOfBlocProviders(
-      child:BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
+      child: BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
         listener: errorListener,
         listenWhen: (previous, current) {
           return previous.error.createdAt != current.error.createdAt;

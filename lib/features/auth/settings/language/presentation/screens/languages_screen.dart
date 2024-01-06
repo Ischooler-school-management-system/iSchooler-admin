@@ -56,12 +56,13 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      keepMobileView: true,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             /* EduconnectConstants.localization(). */ 'language',
-            style: EduconnectConstants.text_theme.titleSmall!
+            style: EduconnectConstants.textTheme.titleSmall!
                 .copyWith(color: EduconnectColors.blue),
           ),
           SizedBox(height: 10.h),
