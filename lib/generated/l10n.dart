@@ -509,6 +509,86 @@ class S {
       args: [],
     );
   }
+
+  /// `الاسم`
+  String get name {
+    return Intl.message(
+      'الاسم',
+      name: 'name',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الرقم التعريفي`
+  String get id {
+    return Intl.message(
+      'الرقم التعريفي',
+      name: 'id',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `الجنس`
+  String get gender {
+    return Intl.message(
+      'الجنس',
+      name: 'gender',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `البريد الإلكتروني`
+  String get email {
+    return Intl.message(
+      'البريد الإلكتروني',
+      name: 'email',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `رقم الهاتف`
+  String get phone_number {
+    return Intl.message(
+      'رقم الهاتف',
+      name: 'phone_number',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `العنوان`
+  String get address {
+    return Intl.message(
+      'العنوان',
+      name: 'address',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `تاريخ الميلاد`
+  String get date_of_birth {
+    return Intl.message(
+      'تاريخ الميلاد',
+      name: 'date_of_birth',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `حالة الدفع`
+  String get payment_status {
+    return Intl.message(
+      'حالة الدفع',
+      name: 'payment_status',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

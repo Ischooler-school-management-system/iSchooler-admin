@@ -1,20 +1,20 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:school_admin/features/users/students/data/models/student_model.dart';
+import 'package:school_admin/features/users/students/data/repo/students_repo.dart';
 
 import '../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../common/madpoly.dart';
-import '../../../users/user/data/models/user_model.dart';
-import '../../../users/user/data/repo/user_repo.dart';
 import '../network/auth_network.dart';
 
 class AuthRepository {
   final ErrorHandlingRepository _alertHandlingRepository;
   final AuthNetwork _authNetwork;
-  final UserRepository _userRepository;
+  final StudentRepository _studentsRepository;
   AuthRepository(ErrorHandlingRepository alertHandlingRepository,
-      AuthNetwork authNetwork, UserRepository userRepository)
+      AuthNetwork authNetwork, StudentRepository studentsRepository)
       : _alertHandlingRepository = alertHandlingRepository,
-        _userRepository = userRepository,
+        _studentsRepository = studentsRepository,
         _authNetwork = authNetwork;
   final FirebaseAuth instance = FirebaseAuth.instance;
   Future<void> _handleAuthOperation(
@@ -24,15 +24,15 @@ class AuthRepository {
     required String password,
   }) async {
     try {
-      final User? firebaseUser = await authOperation();
+      final User? firebaseStudents = await authOperation();
 
-      if (firebaseUser != null) {
-        UserModel userModel = UserModel(
-          id: firebaseUser.uid,
-          email: firebaseUser.email!,
-          displayName: firebaseUser.displayName!,
+      if (firebaseStudents != null) {
+        StudentModel studentsModel = StudentModel(
+          id: firebaseStudents.uid,
+          email: firebaseStudents.email!,
+          displayName: firebaseStudents.displayName!,
         );
-        _userRepository.storeUserData(user: userModel);
+        _studentsRepository.storeStudentData(student: studentsModel);
       }
     } catch (e) {
       _alertHandlingRepository.addError(

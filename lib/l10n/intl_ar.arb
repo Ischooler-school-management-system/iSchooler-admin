@@ -44,5 +44,13 @@
   "timetable": "الجدول الزمني",
   "homeworks": "الواجبات المنزلية",
   "profile": "الملف الشخصي",
-  "settings": "إعدادات"
+  "settings": "إعدادات",
+  "name": "Name",
+  "id": "ID",
+  "gender": "Gender",
+  "email": "Email",
+  "phone number": "Phone Number",
+  "address": "Address",
+  "date_of_birth": "Date of Birth",
+  "payment_status": "Payment Status"
 }

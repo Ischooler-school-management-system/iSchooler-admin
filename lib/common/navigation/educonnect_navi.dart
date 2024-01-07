@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_admin/features/auth/presentation/signup/screens/sign_up_password_screen.dart';
+import 'package:school_admin/features/users/add_student_screen.dart';
 
 import '../../features/auth/presentation/auth/screens/auth_screen.dart';
 import '../../features/auth/presentation/signin/screens/sign_in_screen.dart';
@@ -43,29 +44,6 @@ abstract class EduconnectNavigator {
           );
   }
 
-  static Route<dynamic> onCreateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case Routes.authScreen:
-        return slideNavigation(screen: const AuthScreen());
-      case Routes.signinScreen:
-        return slideNavigation(screen: const SigninScreen());
-      case Routes.signupScreen:
-        return slideNavigation(screen: const SignupScreen());
-      case Routes.signupPasswordScreen:
-        return slideNavigation(screen: const SignupPasswordScreen());
-      default:
-        {
-          return slideNavigation(screen: const AuthScreen());
-        }
-    }
-  }
-
-  static void pop({dynamic result}) {
-    if (navigatorState.currentState!.canPop()) {
-      navigatorState.currentState!.pop(result);
-    }
-  }
-
   // track navigation of user
   static push(
     String routeName, {
@@ -88,6 +66,12 @@ abstract class EduconnectNavigator {
     }
   }
 
+  static void pop({dynamic result}) {
+    if (navigatorState.currentState!.canPop()) {
+      navigatorState.currentState!.pop(result);
+    }
+  }
+
   static void navigateToScreen(Widget screen,
       {bool replace = false, bool hasAnimation = false}) {
     if (replace) {
@@ -96,6 +80,25 @@ abstract class EduconnectNavigator {
     } else {
       navigatorState.currentState!
           .push(slideNavigation(screen: screen, hasAnimation: hasAnimation));
+    }
+  }
+
+  static Route<dynamic> onCreateRoute(RouteSettings settings) {
+    switch (settings.name) {
+      case Routes.authScreen:
+        return slideNavigation(screen: const AuthScreen());
+      case Routes.signinScreen:
+        return slideNavigation(screen: const SigninScreen());
+      case Routes.signupScreen:
+        return slideNavigation(screen: const SignupScreen());
+      case Routes.signupPasswordScreen:
+        return slideNavigation(screen: const SignupPasswordScreen());
+      case Routes.addStudentScreen:
+        return slideNavigation(screen: const AddStudentScreen());
+      default:
+        {
+          return slideNavigation(screen: const AuthScreen());
+        }
     }
   }
 }

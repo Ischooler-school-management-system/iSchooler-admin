@@ -22,6 +22,7 @@ class MessageLookup extends MessageLookupByLibrary {
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "address": MessageLookupByLibrary.simpleMessage("Address"),
         "agree_terms_conditions": MessageLookupByLibrary.simpleMessage(
             "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق"),
         "apply": MessageLookupByLibrary.simpleMessage("تطبق"),
@@ -29,6 +30,8 @@ class MessageLookup extends MessageLookupByLibrary {
         "classes": MessageLookupByLibrary.simpleMessage("الصفوف"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
+        "date_of_birth": MessageLookupByLibrary.simpleMessage("Date of Birth"),
+        "email": MessageLookupByLibrary.simpleMessage("Email"),
         "email_invalid_error": MessageLookupByLibrary.simpleMessage(
             "الرجاء إدخال بريد إلكتروني صحيح مثل example@gmail.com"),
         "email_validation_error": MessageLookupByLibrary.simpleMessage(
@@ -48,15 +51,18 @@ class MessageLookup extends MessageLookupByLibrary {
         "exams": MessageLookupByLibrary.simpleMessage("الامتحانات"),
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
+        "gender": MessageLookupByLibrary.simpleMessage("Gender"),
         "grades": MessageLookupByLibrary.simpleMessage("الدرجات"),
         "have_account_prompt":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
         "homeworks": MessageLookupByLibrary.simpleMessage("الواجبات المنزلية"),
+        "id": MessageLookupByLibrary.simpleMessage("ID"),
         "loading": MessageLookupByLibrary.simpleMessage("جاري تحديث البيانات"),
         "login_dialog_content": MessageLookupByLibrary.simpleMessage(
             "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة."),
         "manage_school_with_app": MessageLookupByLibrary.simpleMessage(
             "الآن يمكنك إدارة مدرستك بأكملها باستخدام تطبيق Educonnect"),
+        "name": MessageLookupByLibrary.simpleMessage("Name"),
         "name_validation_error":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسمك"),
         "next": MessageLookupByLibrary.simpleMessage("التالي"),
@@ -66,6 +72,8 @@ class MessageLookup extends MessageLookupByLibrary {
             MessageLookupByLibrary.simpleMessage("لا يوجد اتصال بالإنترنت."),
         "password_validation_error":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال كلمة المرور"),
+        "payment_status":
+            MessageLookupByLibrary.simpleMessage("Payment Status"),
         "phone_number_validation_error":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال رقم هاتفك"),
         "profile": MessageLookupByLibrary.simpleMessage("الملف الشخصي"),

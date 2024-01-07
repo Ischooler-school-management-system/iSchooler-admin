@@ -4,5 +4,6 @@ abstract class Routes {
   static const signinScreen = "SIGNINSCREEN";
   static const signupScreen = "SIGnUPSCREEN";
   static const signupPasswordScreen = "SIGNUPPASSWORDSCREEN";
+  static const addStudentScreen = "ADDSTUDENTSCREEN";
   // static const homeScreen = "HOME_SCREEN";
 }

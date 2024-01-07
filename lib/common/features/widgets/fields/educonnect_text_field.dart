@@ -62,8 +62,8 @@ class EduconnectTextField extends StatelessWidget {
   OutlineInputBorder buildBorder({Color? color}) {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: color ?? EduconnectColors.light_grey,
-        width: 0.5.w,
+        color: color ?? const Color.fromARGB(255, 200, 198, 198),
+        width: 0.5,
       ),
       borderRadius: BorderRadius.circular(10),
     );
@@ -73,10 +73,9 @@ class EduconnectTextField extends StatelessWidget {
     return OutlineInputBorder(
       borderSide: BorderSide(
         color: color ?? EduconnectColors.red,
-        width: 0.5.w,
-        
+        width: 0.5,
       ),
-      gapPadding:14 ,
+      gapPadding: 14,
       borderRadius: BorderRadius.circular(10),
     );
   }
@@ -121,10 +120,11 @@ class EduconnectTextField extends StatelessWidget {
               style: EduconnectTextStyles.style16,
             ),
           ),
-          SizedBox(
-            width: width ?? double.infinity,
+          Container(
+            // width: width ?? EduconnectConstants.educonnect_screen_width * 0.8,
+            padding: const EdgeInsets.all(8.0),
             child: TextFormField(
-                selectionHeightStyle : BoxHeightStyle.max,
+              selectionHeightStyle: BoxHeightStyle.max,
 
               enabled: enabled,
               textDirection: textDirection,

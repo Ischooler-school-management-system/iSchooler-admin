@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 abstract class AppCollections {
   static const users = 'users';
+  static const students = 'students';
 
   static final FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;
 

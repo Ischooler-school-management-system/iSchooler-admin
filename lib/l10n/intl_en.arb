@@ -44,5 +44,13 @@
     "timetable": "Timetable",
     "homeworks": "Homeworks",
     "profile": "Profile",
-    "settings": "Settings"
+    "settings": "Settings",
+    "name": "الاسم",
+    "id": "الرقم التعريفي",
+    "gender": "الجنس",
+    "email": "البريد الإلكتروني",
+    "phone_number": "رقم الهاتف",
+    "address": "العنوان",
+    "date_of_birth": "تاريخ الميلاد",
+    "payment_status": "حالة الدفع"
 }

@@ -1,20 +1,23 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../../common/madpoly.dart';
 import '../../educonnect_constants.dart';
 import '../../style/educonnect_colors.dart';
+import '../../style/educonnect_text_theme.dart';
 
-class DropdownButtonWidget extends StatefulWidget {
+class EduConnectDropdownWidget extends StatefulWidget {
   final List<String> options;
   final ValueChanged<String?> onChanged;
   final String? hint;
   final double? width;
   final String? value;
   final bool enableValidation;
+  final String labelText;
 
-  const DropdownButtonWidget({
+  const EduConnectDropdownWidget({
     super.key,
     required this.options,
     required this.onChanged,
@@ -22,14 +25,17 @@ class DropdownButtonWidget extends StatefulWidget {
     this.width,
     this.value,
     this.enableValidation = true,
+    required this.labelText,
   });
 
   @override
-  State<DropdownButtonWidget> createState() => _DropdownButtonWidgetState();
+  State<EduConnectDropdownWidget> createState() =>
+      _EduConnectDropdownWidgetState();
 }
 
-class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
+class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
   String? selectedValue;
+  bool isValidValue(value) => widget.options.contains(value);
 
   String? validator(value) {
     final bool validValue = isValidValue(value);
@@ -47,75 +53,118 @@ class _DropdownButtonWidgetState extends State<DropdownButtonWidget> {
     return null;
   }
 
+  OutlineInputBorder buildBorder({Color? color}) {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        color: color ?? EduconnectColors.fieldsBorderColor,
+        width: 0.5,
+      ),
+      borderRadius: BorderRadius.circular(10),
+    );
+  }
+
+  OutlineInputBorder buildErrorBorder({Color? color}) {
+    return OutlineInputBorder(
+      borderSide: BorderSide(
+        color: color ?? EduconnectColors.red,
+        width: 0.5,
+      ),
+      gapPadding: 14,
+      borderRadius: BorderRadius.circular(10),
+    );
+  }
+
+  InputDecoration decoration() {
+    return InputDecoration(
+      filled: true,
+      fillColor: EduconnectColors.white,
+      focusColor: EduconnectColors.white,
+      // alignLabelWithHint: true,
+      // prefixIconColor: EduconnectColors.primaryColor,
+      errorMaxLines: 5,
+      // labelStyle: EduconnectTextStyles.style12Blue,
+      // suffixIconColor: EduconnectColors.primaryColor,
+      border: buildBorder(),
+      enabledBorder: buildBorder(),
+      focusedBorder: buildBorder(),
+      errorBorder: buildErrorBorder(),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    // Madpoly.print(
-    //   'creating dropdown menu contains this list:${widget.options}',
-    //   tag: "DropdownButtonWidget > build function",
-    //   developer: 'ziad',
-    //   isInspect: true,
-    //   isLog: true,
-    // );
     final bool validValue = isValidValue(selectedValue);
     if (!validValue) {
       setState(() {
         selectedValue = null;
       });
     }
-    // Madpoly.print(
-    //   'widget.value = ${widget.value}',
-    //   tag: "_DropdownButtonWidgetState > build",
-    //   developer: 'ziad',
-    //   isInspect: true,
-    //   isLog: true,
-    // );
-    return SizedBox(
-      width: widget.width,
-      child: DropdownButtonFormField2(
-        autovalidateMode: AutovalidateMode.onUserInteraction,
-        validator: widget.enableValidation ? validator : null,
-        iconStyleData: const IconStyleData(
-          icon: Icon(
-            Icons.keyboard_arrow_down,
-          ),
-        ),
-        value: selectedValue,
-        isExpanded: true,
-        // icon: const Icon(
-        //   Icons.keyboard_arrow_down,
-        // ),
-        onChanged: (value) => setState(() {
+
+    void onChanged(value) => setState(() {
           selectedValue = value;
           widget.onChanged(value);
-        }),
-        items: (widget.options.isEmpty)
-            ? [itemWidget('Nothing', context)]
-            : widget.options.map((item) => itemWidget(item, context)).toList(),
-        hint: (widget.hint != null)
-            ? Text(
-                widget.hint!,
-                style: EduconnectConstants.textTheme.labelMedium!.copyWith(
-                  fontFamily: GoogleFonts.poppins().fontFamily,
-                  color: EduconnectColors.light_grey,
-                ),
-              )
-            : null,
-      ),
-    );
-  }
+        });
 
-  bool isValidValue(v) => widget.options.contains(v);
-
-  DropdownMenuItem<String> itemWidget(String item, BuildContext context) {
-    return DropdownMenuItem<String>(
-      value: item,
-      child: Text(
-        item,
-        style: EduconnectConstants.textTheme.labelMedium!.copyWith(
-          fontFamily: GoogleFonts.poppins().fontFamily,
-          color: EduconnectColors.blue,
+    DropdownMenuItem<String> itemWidget(String item) {
+      return DropdownMenuItem<String>(
+        value: item,
+        child: Text(
+          item,
+          style: EduconnectConstants.textTheme.labelMedium!.copyWith(
+            fontFamily: GoogleFonts.poppins().fontFamily,
+            color: EduconnectColors.blue,
+          ),
         ),
-      ),
+      );
+    }
+
+    List<DropdownMenuItem<String>> dropDownItems;
+    if ((widget.options.isEmpty)) {
+      dropDownItems = [itemWidget('Nothing')];
+    } else {
+      dropDownItems = widget.options.map((item) => itemWidget(item)).toList();
+    }
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            widget.labelText,
+            style: EduconnectTextStyles.style16,
+          ),
+        ),
+        Container(
+          padding: const EdgeInsets.symmetric(horizontal: 8),
+          width: widget.width,
+          child: DropdownButtonFormField2(
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            decoration: decoration(),
+            // validator: widget.enableValidation ? validator : null,
+            iconStyleData: const IconStyleData(
+              icon: Icon(Icons.keyboard_arrow_down),
+            ),
+
+            value: selectedValue,
+            isExpanded: true,
+            // icon: const Icon(
+            //   Icons.keyboard_arrow_down,
+            // ),
+            onChanged: onChanged,
+            items: dropDownItems,
+            hint: (widget.hint != null)
+                ? Text(
+                    widget.hint!,
+                    style: EduconnectConstants.textTheme.labelMedium!.copyWith(
+                      fontFamily: GoogleFonts.poppins().fontFamily,
+                      color: EduconnectColors.light_grey,
+                    ),
+                  )
+                : null,
+          ),
+        ),
+      ],
     );
   }
 }

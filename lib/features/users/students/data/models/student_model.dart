@@ -2,11 +2,12 @@
 import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
+import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/truncate_map.dart';
 
-class UserModel extends Equatable {
+class StudentModel extends Equatable {
   final String id;
-  final String username;
+  final String studentName;
   final DateTime? dateOfBirth;
   final String classId;
   final String gradeId;
@@ -17,9 +18,9 @@ class UserModel extends Equatable {
   final String email; // Added email field
   final String displayName; // Added displayName field
 
-  const UserModel({
+  const StudentModel({
     this.id = '-1',
-    this.username = '',
+    this.studentName = '',
     this.dateOfBirth,
     this.classId = '',
     this.gradeId = '',
@@ -31,10 +32,10 @@ class UserModel extends Equatable {
     this.displayName = '',
   });
 
-  factory UserModel.empty() {
-    return const UserModel(
+  factory StudentModel.empty() {
+    return const StudentModel(
       id: '',
-      username: '',
+      studentName: '',
       dateOfBirth: null,
       classId: '',
       gradeId: '',
@@ -47,10 +48,10 @@ class UserModel extends Equatable {
     );
   }
 
-  factory UserModel.fromMap(Map<String, dynamic> map) {
-    return UserModel(
+  factory StudentModel.fromMap(Map<String, dynamic> map) {
+    return StudentModel(
       id: map['id'] ?? '',
-      username: map['username'] ?? '',
+      studentName: map['studentname'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
@@ -68,7 +69,7 @@ class UserModel extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'username': username,
+      'studentname': studentName,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'classId': classId,
       'gradeId': gradeId,
@@ -81,29 +82,28 @@ class UserModel extends Equatable {
     };
   }
 
-  Map<String, dynamic> toDisplayMap({bool showLess = false}) {
+  Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
-      'displayName': displayName,
-      'id': id,
-      'gender': gender,
-      'email': email,
-      // 'username': username,
-      // 'classId': classId,
-      // 'gradeId': gradeId,
-      'phoneNumber': phoneNumber,
-      'address': address,
-      'dateOfBirth':
+      EduconnectConstants.localization().name: displayName,
+      EduconnectConstants.localization().id: id,
+      EduconnectConstants.localization().gender: gender,
+      EduconnectConstants.localization().email: email,
+      // EduconnectConstants.localization().studentname: studentname,
+      // EduconnectConstants.localization().classId: classId,
+      // EduconnectConstants.localization().gradeId: gradeId,
+      EduconnectConstants.localization().phone_number: phoneNumber,
+      EduconnectConstants.localization().address: address,
+      EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-
-      'paymentStatus': paymentStatus,
+      EduconnectConstants.localization().payment_status: paymentStatus,
     };
 
-    return showLess ? truncateMap(4, map) : map;
+    return limit != null ? truncateMap(limit, map) : map;
   }
 
-  UserModel copyWith({
+  StudentModel copyWith({
     String? id,
-    String? username,
+    String? studentName,
     DateTime? dateOfBirth,
     String? classId,
     String? gradeId,
@@ -114,9 +114,9 @@ class UserModel extends Equatable {
     String? email,
     String? displayName,
   }) {
-    return UserModel(
+    return StudentModel(
       id: id ?? this.id,
-      username: username ?? this.username,
+      studentName: studentName ?? this.studentName,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       classId: classId ?? this.classId,
       gradeId: gradeId ?? this.gradeId,
@@ -131,7 +131,7 @@ class UserModel extends Equatable {
 
   @override
   String toString() {
-    return 'UserModel{userId: $id, username: $username, dateOfBirth: $dateOfBirth, '
+    return 'StudentModel{studentId: $id, studentname: $studentName, dateOfBirth: $dateOfBirth, '
         'classId: $classId, gradeId: $gradeId, phoneNumber: $phoneNumber, address: $address, '
         'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName}';
   }
@@ -140,7 +140,7 @@ class UserModel extends Equatable {
   List<Object?> get props {
     return [
       id,
-      username,
+      studentName,
       dateOfBirth,
       classId,
       gradeId,

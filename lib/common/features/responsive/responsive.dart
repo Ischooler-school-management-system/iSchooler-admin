@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../navigation/educonnect_navi.dart';
 
@@ -23,6 +22,9 @@ class Responsive extends StatelessWidget {
 
   static bool isMobile() =>
       MediaQuery.of(currentContext!).size.width < mobileWidth;
+
+  static bool isCustomWidth({required double width}) =>
+      MediaQuery.of(currentContext!).size.width < width;
 
   /* static bool isTablet() =>
       MediaQuery.of(currentContext!).size.width < tabletWidth &&

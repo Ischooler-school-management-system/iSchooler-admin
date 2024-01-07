@@ -49,6 +49,7 @@ class EduconnectScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     // Build the main screen with necessary widgets
     return Scaffold(
+      // key: _key,
       extendBodyBehindAppBar: extendBodyBehindAppBar,
       appBar: appBar /* ?? languageAppbar() */,
       bottomNavigationBar: bottomNavigationBar,

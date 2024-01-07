@@ -1,5 +1,7 @@
-import 'package:cross_scroll/cross_scroll.dart';
 import 'package:flutter/material.dart';
+import 'package:school_admin/common/navigation/educonnect_navi.dart';
+import 'package:school_admin/common/navigation/router.export.dart';
+import 'package:school_admin/features/users/add_student_screen.dart';
 
 import '../../common/educonnect_assets.dart';
 import '../../common/features/widgets/buttons/educonnect_button.dart';
@@ -7,10 +9,10 @@ import '../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../common/features/widgets/educonnect_image_widget.dart';
 import '../../common/features/widgets/educonnect_screen.dart';
-import '../../common/features/widgets/responsive.dart';
+import '../../common/features/responsive/responsive.dart';
 import '../../common/style/educonnect_colors.dart';
 import '../../common/style/educonnect_text_theme.dart';
-import 'user/data/models/user_model.dart';
+import 'students/data/models/student_model.dart';
 
 class StudentsTab extends StatefulWidget {
   const StudentsTab({super.key});
@@ -20,11 +22,11 @@ class StudentsTab extends StatefulWidget {
 }
 
 class _StudentsTabState extends State<StudentsTab> {
-  List<UserModel> userList = [
-    UserModel(
+  List<StudentModel> userList = [
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -34,10 +36,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -47,10 +49,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -60,10 +62,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -73,10 +75,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -86,10 +88,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -99,10 +101,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -112,10 +114,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -125,10 +127,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -138,10 +140,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -151,10 +153,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -164,10 +166,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -177,10 +179,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -190,10 +192,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -203,10 +205,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -216,10 +218,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -229,10 +231,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -242,10 +244,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -255,10 +257,10 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -268,10 +270,88 @@ class _StudentsTabState extends State<StudentsTab> {
       gender: 'Male',
       email: 'ziad@mail.com',
     ),
-    UserModel(
+    StudentModel(
       id: '123',
       displayName: 'Joe',
-      username: 'JohnDoe',
+      studentName: 'JohnDoe',
+      dateOfBirth: DateTime(2000, 1, 1),
+      classId: '101',
+      gradeId: 'A',
+      phoneNumber: '1234567890',
+      address: '123 Main St',
+      paymentStatus: true,
+      gender: 'Male',
+      email: 'ziad@mail.com',
+    ),
+    StudentModel(
+      id: '123',
+      displayName: 'Joe',
+      studentName: 'JohnDoe',
+      dateOfBirth: DateTime(2000, 1, 1),
+      classId: '101',
+      gradeId: 'A',
+      phoneNumber: '1234567890',
+      address: '123 Main St',
+      paymentStatus: true,
+      gender: 'Male',
+      email: 'ziad@mail.com',
+    ),
+    StudentModel(
+      id: '123',
+      displayName: 'Joe',
+      studentName: 'JohnDoe',
+      dateOfBirth: DateTime(2000, 1, 1),
+      classId: '101',
+      gradeId: 'A',
+      phoneNumber: '1234567890',
+      address: '123 Main St',
+      paymentStatus: true,
+      gender: 'Male',
+      email: 'ziad@mail.com',
+    ),
+    StudentModel(
+      id: '123',
+      displayName: 'Joe',
+      studentName: 'JohnDoe',
+      dateOfBirth: DateTime(2000, 1, 1),
+      classId: '101',
+      gradeId: 'A',
+      phoneNumber: '1234567890',
+      address: '123 Main St',
+      paymentStatus: true,
+      gender: 'Male',
+      email: 'ziad@mail.com',
+    ),
+    StudentModel(
+      id: '123',
+      displayName: 'Joe',
+      studentName: 'JohnDoe',
+      dateOfBirth: DateTime(2000, 1, 1),
+      classId: '101',
+      gradeId: 'A',
+      phoneNumber: '1234567890',
+      address: '123 Main St',
+      paymentStatus: true,
+      gender: 'Male',
+      email: 'ziad@mail.com',
+    ),
+    StudentModel(
+      id: '123',
+      displayName: 'Joe',
+      studentName: 'JohnDoe',
+      dateOfBirth: DateTime(2000, 1, 1),
+      classId: '101',
+      gradeId: 'A',
+      phoneNumber: '1234567890',
+      address: '123 Main St',
+      paymentStatus: true,
+      gender: 'Male',
+      email: 'ziad@mail.com',
+    ),
+    StudentModel(
+      id: '123',
+      displayName: 'Joe',
+      studentName: 'JohnDoe',
       dateOfBirth: DateTime(2000, 1, 1),
       classId: '101',
       gradeId: 'A',
@@ -282,11 +362,29 @@ class _StudentsTabState extends State<StudentsTab> {
       email: 'ziad@mail.com',
     ),
   ];
+  int limit = 0;
+
+  onAddButtonPressed() {
+    // StudentModel newUser =
+    EduconnectNavigator.navigateToScreen(const AddStudentScreen());
+    // userList.add(newUser);
+    // setState(() {});
+  }
+
+  EduconnectButton addButton() {
+    return EduconnectButton(
+      button: EduconnectElevatedButton(
+        onPressed: onAddButtonPressed,
+        text: 'Add User',
+        width: 200,
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      // enableflexibleScrolling: true,
+      enableflexibleScrolling: true,
       padding: const EdgeInsets.all(8),
       body: EduconnectConditionalWidget(
         condition: Responsive.isMobile(),
@@ -296,85 +394,77 @@ class _StudentsTabState extends State<StudentsTab> {
     );
   }
 
-  CrossScroll webView() {
-    return CrossScroll(
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          EduconnectButton(
-            button: EduconnectElevatedButton(
-              onPressed: () {},
-              text: 'Add User',
-              width: 200,
-            ),
-          ),
-          // EduconnectConditionalWidget(
-          // condition: Responsive.isMobile(),
-          // whenTrue: listTileVeiw(),
-          _valuesRow(
-            map: UserModel.empty().toDisplayMap(),
-            isEven: false,
-            viewKeys: true,
-          ),
-          // Column(
-          ...userList.asMap().entries.map(
-            (entry) {
-              final UserModel user = entry.value;
-              final index = entry.key;
-              final isEven = index % 2 == 0;
-              // return _valueTextWidget(propertyName, isEven: isEven);
+  Widget listTileVeiw() {
+    limit = StudentModel.empty().toDisplayMap().length;
+    if (Responsive.isCustomWidth(width: 1200) && limit >= 8) {
+      limit -= 2;
+    } else if (Responsive.isCustomWidth(width: 1000) && limit >= 6) {
+      limit -= 2;
+    }
 
-              return _valuesRow(map: user.toDisplayMap(), isEven: isEven);
-            },
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      addButton(),
+      ...userList.map((user) {
+        return userListTile(
+          title: user.displayName,
+          isName: true,
+          subtitle: '${user.gender} | ${user.phoneNumber}',
+          trailing: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              IconButton(
+                icon: const Icon(Icons.edit),
+                onPressed: () {
+                  // Handle edit button press
+                  print('Edit button pressed for Item ');
+                },
+              ),
+              IconButton(
+                icon: const Icon(
+                  Icons.delete,
+                  color: Colors.red,
+                ),
+                onPressed: () {
+                  // Handle delete button press
+                  print('Delete button pressed for Item ');
+                },
+              ),
+            ],
           ),
-          // ),
-          // ),
-        ],
-      ),
-    );
+        );
+      }),
+    ]);
   }
 
-  Widget listTileVeiw() {
-    return SingleChildScrollView(
-      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        EduconnectButton(
-          button: EduconnectElevatedButton(
-            onPressed: () {},
-            text: 'Add User',
-            width: 200,
-          ),
+  Widget webView() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        addButton(),
+        // EduconnectConditionalWidget(
+        // condition: Responsive.isMobile(),
+        // whenTrue: listTileVeiw(),
+        _valuesRow(
+          map: StudentModel.empty().toDisplayMap(limit: limit),
+          isEven: false,
+          viewKeys: true,
         ),
-        ...userList.map((user) {
-          return userListTile(
-            title: user.displayName,
-            isName: true,
-            subtitle: '${user.gender} | ${user.phoneNumber}',
-            trailing: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                IconButton(
-                  icon: const Icon(Icons.edit),
-                  onPressed: () {
-                    // Handle edit button press
-                    print('Edit button pressed for Item ');
-                  },
-                ),
-                IconButton(
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.red,
-                  ),
-                  onPressed: () {
-                    // Handle delete button press
-                    print('Delete button pressed for Item ');
-                  },
-                ),
-              ],
-            ),
-          );
-        }),
-      ]),
+        // Column(
+        ...userList.asMap().entries.map(
+          (entry) {
+            final StudentModel user = entry.value;
+            final index = entry.key;
+            final isEven = index % 2 == 0;
+            // return _valueTextWidget(propertyName, isEven: isEven);
+
+            return _valuesRow(
+                map: user.toDisplayMap(limit: limit), isEven: isEven);
+          },
+        ),
+        // ),
+        // ),
+      ],
     );
   }
 
@@ -384,7 +474,7 @@ class _StudentsTabState extends State<StudentsTab> {
       color: isEven ? EduconnectColors.blue.withOpacity(0.3) : null,
       // padding: const EdgeInsets.all(8.0),
       child: Row(
-        children: map.entries.map((entry) {
+        children: map.entries.map((MapEntry entry) {
           if (viewKeys) {
             return userListTile(title: entry.key, width: 150);
           } else {
@@ -407,8 +497,8 @@ class _StudentsTabState extends State<StudentsTab> {
     Function()? onTap,
     double? width,
   }) {
-    return SizedBox(
-      width: width,
+    return Flexible(
+      // width: width,
       child: ListTile(
         // titleAlignment: ListTileTitleAlignment.top,
         leading: isName
@@ -424,6 +514,7 @@ class _StudentsTabState extends State<StudentsTab> {
           title,
           style: EduconnectTextStyles.style14,
           textAlign: TextAlign.center,
+          maxLines: 1,
         ),
         subtitle: subtitle != null
             ? Text(

@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/common/educonnect_validation.dart';
 
+import '../../common/features/responsive/responsive_column.dart';
+import '../../common/features/responsive/responsive_drop_down.dart';
+import '../../common/features/widgets/buttons/educonnect_button_export.dart';
+import '../../common/features/widgets/educonnect_drop_down_widget.dart';
 import '../../common/features/widgets/educonnect_screen.dart';
 import '../../common/features/widgets/fields/educonnect_text_field.dart';
-import 'user/data/models/user_model.dart';
+import 'students/data/models/student_model.dart';
 
 class AddStudentScreen extends StatefulWidget {
   const AddStudentScreen({super.key});
@@ -14,166 +19,171 @@ class AddStudentScreen extends StatefulWidget {
 class _AddStudentScreenState extends State<AddStudentScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // Use UserModel to store form data
-  UserModel userData = UserModel.empty();
+  // Use Studentmodel to store form data
+  StudentModel studentData = StudentModel.empty();
 
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      enableScrolling: true,
+      enableflexibleScrolling: true,
       body: Form(
         key: _formKey,
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
-            EduconnectTextField(
-              labelText: 'User ID',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter User ID';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(id: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Username',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Username';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(username: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Date of Birth',
-              validator: (value) {
-                // Add validation logic for date of birth if needed
-                return null;
-              },
-              onChanged: (value) {
-                // Convert the value to DateTime and assign it to dateOfBirth
-                // You may want to use a DatePicker for a better user experience
-                setState(() {
-                  userData =
-                      userData.copyWith(dateOfBirth: DateTime.parse(value));
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Class ID',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Class ID';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(classId: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Grade ID',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Grade ID';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(gradeId: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Phone Number',
-              validator: (value) {
-                // Add phone number validation if needed
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(phoneNumber: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Address',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Address';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(address: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            EduconnectTextField(
-              labelText: 'Gender',
-              validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter Gender';
-                }
-                return null;
-              },
-              onChanged: (value) {
-                setState(() {
-                  userData = userData.copyWith(gender: value);
-                });
-              },
-            ),
-            const SizedBox(height: 10),
-            Row(
+            ResponsiveDropDownRow(
               children: [
-                const Text('Payment Status: '),
-                Checkbox(
-                  value: userData.paymentStatus,
+                EduconnectTextField(
+                  // initialValue: 'test',
+                  labelText: 'Username',
+                  validator: EduconnectValidations.nameValidator,
                   onChanged: (value) {
                     setState(() {
-                      userData =
-                          userData.copyWith(paymentStatus: value ?? false);
+                      studentData = studentData.copyWith(studentName: value);
+                    });
+                  },
+                ),
+                EduconnectTextField(
+                  // initialValue: 'test',
+                  labelText: 'Email Address',
+
+                  validator: EduconnectValidations.emailValidator,
+
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(studentName: value);
+                    });
+                  },
+                ),
+                EduconnectTextField(
+                  // initialValue: 'test',
+                  labelText: 'Date of Birth',
+                  validator: (value) {
+                    // Add validation logic for date of birth if needed
+                    return null;
+                  },
+                  onChanged: (value) {
+                    // Convert the value to DateTime and assign it to dateOfBirth
+                    // You may want to use a DatePicker for a better user experience
+                    setState(() {
+                      studentData = studentData.copyWith(
+                          dateOfBirth: DateTime.parse(value));
+                    });
+                  },
+                ),
+                /*  EduConnectDropdownWidget(
+                  labelText: 'Gender',
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(gradeId: value);
+                    });
+                  },
+                  options: const ['Male', 'Female'],
+                ), */
+              ],
+            ),
+            ResponsiveDropDownRow(
+              children: [
+                EduConnectDropdownWidget(
+                  labelText: 'Class',
+                  // hint: 'Class',
+
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(classId: value);
+                    });
+                  },
+                  options: const ['claass 1', 'r 2', 'clasrs 2'],
+                ),
+                EduConnectDropdownWidget(
+                  labelText: 'Grade',
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(gradeId: value);
+                    });
+                  },
+                  options: const ['class 1', 'class 2', 'class 3'],
+                ),
+                EduConnectDropdownWidget(
+                  labelText: 'Gender',
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(gradeId: value);
+                    });
+                  },
+                  options: const ['Male', 'Female'],
+                ),
+              ],
+            ),
+
+            ResponsiveDropDownRow(
+              children: [
+                EduconnectTextField(
+                  // initialValue: '01111',
+                  labelText: 'Phone Number',
+                  validator: (value) {
+                    // Add phone number validation if needed
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(phoneNumber: value);
+                    });
+                  },
+                ),
+                EduconnectTextField(
+                  // initialValue: 'test',
+                  labelText: 'Address',
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter Address';
+                    }
+                    return null;
+                  },
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(address: value);
                     });
                   },
                 ),
               ],
             ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () {
-                if (_formKey.currentState!.validate()) {
-                  // Form is valid, process the data
-                  // You can add logic here to save the form data
-                  // For example, send it to a database or an API
-                  print('User Data: $userData');
-                }
-              },
-              child: const Text('Submit'),
+
+            EduconnectButton(
+              button: EduconnectElevatedButton(
+                width: 200,
+                onPressed: onSubmitButtonPressed,
+                text: 'Submit',
+              ),
             ),
+            /*  Row(
+
+
+        children: [
+          const Text('Payment Status: '),
+          Checkbox(
+            value: studentData.paymentStatus,
+            onChanged: (value) {
+              setState(() {
+                studentData =
+                    studentData.copyWith(paymentStatus: value ?? false);
+              });
+            },
+          ),
+        ],
+      ), */
+            // const SizedBox(height: 20),
           ],
         ),
       ),
     );
+  }
+
+  onSubmitButtonPressed() {
+    if (_formKey.currentState!.validate()) {
+      // Form is valid, process the data
+      // You can add logic here to save the form data
+      // For example, send it to a database or an API
+      print('User Data: $studentData');
+    }
   }
 }

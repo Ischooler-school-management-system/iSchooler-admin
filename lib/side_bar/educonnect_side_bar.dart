@@ -5,7 +5,7 @@ import '../../../common/style/educonnect_colors.dart';
 import '../common/educonnect_constants.dart';
 import '../common/features/widgets/educonnect_screen.dart';
 import '../features/auth/settings/language/presentation/screens/languages_screen.dart';
-import '../features/users/students_screen.dart';
+import '../features/users/add_student_screen.dart';
 import 'sidebar_x.dart';
 
 const primaryColor = canvasColor;
@@ -18,7 +18,6 @@ final divider = Divider(color: white.withOpacity(0.3), height: 1);
 class EduconnectSideBar extends StatelessWidget {
   EduconnectSideBar({super.key});
 
-  final _key = GlobalKey<ScaffoldState>();
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
 
   @override
@@ -26,7 +25,7 @@ class EduconnectSideBar extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [
-      const StudentsTab(),
+      const AddStudentScreen(),
       const ClassesTab(),
       const GradesTab(),
       const SubjectsTab(),
@@ -38,12 +37,12 @@ class EduconnectSideBar extends StatelessWidget {
       const LanguagesScreen(),
     ];
     return EduconnectScreen(
-      key: _key,
+      // key: _key,
       appBar: isSmallScreen
           ? AppBar(
               backgroundColor: Colors.transparent,
               // title: tabBodies[_controller.selectedIndex],
-              leading: IconButton(
+              /* leading: IconButton(
                 onPressed: () {
                   // if (!Platform.isAndroid && !Platform.isIOS) {
                   //   _controller.setExtended(true);
@@ -51,7 +50,7 @@ class EduconnectSideBar extends StatelessWidget {
                   _key.currentState?.openDrawer();
                 },
                 icon: const Icon(Icons.menu),
-              ),
+              ), */
             )
           : null,
       drawer: ExampleSidebarX(controller: _controller),
@@ -59,13 +58,12 @@ class EduconnectSideBar extends StatelessWidget {
         children: [
           if (!isSmallScreen) ExampleSidebarX(controller: _controller),
           Expanded(
-            child: Center(
-                child: AnimatedBuilder(
+            child: AnimatedBuilder(
               animation: _controller,
               builder: (context, child) {
                 return tabBodies[_controller.selectedIndex];
               },
-            )),
+            ),
           ),
         ],
       ),

@@ -8,7 +8,7 @@ import '../../../../../common/features/widgets/buttons/educonnect_button_export.
 import '../../../../../common/features/widgets/educonnect_checkbox.dart';
 import '../../../../../common/features/widgets/fields/educonnect_password_field.dart';
 import '../../../../../common/features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/features/widgets/responsive.dart';
+import '../../../../../common/features/responsive/responsive.dart';
 import '../../../../../common/style/educonnect_colors.dart';
 import '../../../logic/cubit/auth_cubit.dart';
 

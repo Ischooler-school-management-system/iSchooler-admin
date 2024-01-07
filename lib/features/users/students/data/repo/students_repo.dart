@@ -1,27 +1,26 @@
-import 'package:firebase_auth/firebase_auth.dart';
-
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
-import '../models/user_model.dart';
-import '../network/user_network.dart';
+import '../models/student_model.dart';
+import '../network/students_network.dart';
 
-class UserRepository {
+class StudentRepository {
   final ErrorHandlingRepository _alertHandlingRepository;
-  final UserNetwork _userNetwork;
+  final StudentNetwork _studentNetwork;
 
-  UserRepository(
-      ErrorHandlingRepository alertHandlingRepository, UserNetwork userNetwork)
+  StudentRepository(ErrorHandlingRepository alertHandlingRepository,
+      StudentNetwork studentNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
-        _userNetwork = userNetwork;
+        _studentNetwork = studentNetwork;
 
-  Future<User?> storeUserData({required UserModel user}) async {
+  Future<StudentModel?> storeStudentData(
+      {required StudentModel student}) async {
     try {
-      _userNetwork.storeUserData(user: user);
+      _studentNetwork.storeStudentData(student: student);
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
-        tag: 'user_repo > storeUserData',
+        tag: 'student_repo > storeStudentData',
         showToast: true,
       );
     }

@@ -18,4 +18,6 @@ abstract class EduconnectColors {
   static const grey = Color.fromARGB(255, 111, 110, 110);
 
   static const Color transparent = Colors.transparent;
+
+  static const Color fieldsBorderColor = Color.fromARGB(255, 200, 198, 198);
 }
