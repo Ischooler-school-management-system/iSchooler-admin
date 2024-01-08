@@ -18,7 +18,7 @@ MultiBlocProvider listOfBlocProviders({required Widget child}) {
       BlocProvider(create: (_) => LoadingCubit(getIt())),
       BlocProvider(create: (_) => LangBloc()),
       BlocProvider(create: (_) => AuthCubit(getIt(), getIt())),
-      BlocProvider(create: (_) => StudentCubit()),
+      BlocProvider(create: (_) => StudentCubit(getIt(), getIt())),
     ],
     child: child,
   );

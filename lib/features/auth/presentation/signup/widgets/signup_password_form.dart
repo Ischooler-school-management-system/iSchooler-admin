@@ -82,6 +82,8 @@ class _SignupFormState extends State<SignupPasswordForm> {
   }
 
   onSignupButtonPressed() {
-    context.read<AuthCubit>().signUp(email: 'ziad@test.com', password: 'password');
+    context
+        .read<AuthCubit>()
+        .signUp(email: 'ziad1@test.com', password: 'password');
   }
 }

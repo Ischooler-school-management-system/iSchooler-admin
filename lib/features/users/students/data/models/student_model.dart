@@ -68,7 +68,7 @@ class StudentModel extends Equatable {
 
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
+      // 'id': id,
       'studentname': studentName,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'classId': classId,

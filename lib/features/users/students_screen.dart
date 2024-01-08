@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/navigation/educonnect_navi.dart';
-import 'package:school_admin/common/navigation/router.export.dart';
-import 'package:school_admin/features/users/add_student_screen.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../common/educonnect_assets.dart';
+import '../../common/features/responsive/responsive.dart';
 import '../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../common/features/widgets/educonnect_image_widget.dart';
 import '../../common/features/widgets/educonnect_screen.dart';
-import '../../common/features/responsive/responsive.dart';
 import '../../common/style/educonnect_colors.dart';
 import '../../common/style/educonnect_text_theme.dart';
 import 'students/data/models/student_model.dart';
+import 'students/logic/cubit/students_cubit.dart';
 
 class StudentsTab extends StatefulWidget {
   const StudentsTab({super.key});
@@ -366,7 +365,22 @@ class _StudentsTabState extends State<StudentsTab> {
 
   onAddButtonPressed() {
     // StudentModel newUser =
-    EduconnectNavigator.navigateToScreen(const AddStudentScreen());
+    // EduconnectNavigator.navigateToScreen(const AddStudentScreen());
+    context.read<StudentCubit>().storeStudentData(
+          student: StudentModel(
+            id: '123',
+            displayName: 'Joe',
+            studentName: 'JohnDoe',
+            dateOfBirth: DateTime(2000, 1, 1),
+            classId: '101',
+            gradeId: 'A',
+            phoneNumber: '1234567890',
+            address: '123 Main St',
+            paymentStatus: true,
+            gender: 'Male',
+            email: 'ziad@mail.com',
+          ),
+        );
     // userList.add(newUser);
     // setState(() {});
   }

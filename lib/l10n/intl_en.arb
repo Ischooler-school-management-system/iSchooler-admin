@@ -22,6 +22,7 @@
     "new_account": "New Account",
     "sign_in": "Sign in",
     "sign_up": "Sign up",
+    "sign_out": "Sign Out",
     "agree_terms_conditions": "I agree with the terms and conditions and also the protection of my personal data on this application",
     "remember_me": "Remember me",
     "forgot_password": "Forgot password?",
@@ -45,12 +46,12 @@
     "homeworks": "Homeworks",
     "profile": "Profile",
     "settings": "Settings",
-    "name": "الاسم",
-    "id": "الرقم التعريفي",
-    "gender": "الجنس",
-    "email": "البريد الإلكتروني",
-    "phone_number": "رقم الهاتف",
-    "address": "العنوان",
-    "date_of_birth": "تاريخ الميلاد",
-    "payment_status": "حالة الدفع"
+    "name": "Name",
+    "id": "ID",
+    "gender": "Gender",
+    "email": "Email",
+    "phone_number": "Phone Number",
+    "address": "Address",
+    "date_of_birth": "Date of Birth",
+    "payment_status": "Payment Status"
 }

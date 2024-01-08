@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
 import '../common/educonnect_assets.dart';
 import '../common/educonnect_constants.dart';
+import '../features/auth/logic/cubit/auth_cubit.dart';
 
 const primaryColor = canvasColor;
 const canvasColor = EduconnectColors.blue;
@@ -55,14 +57,6 @@ class ExampleSidebarX extends StatelessWidget {
         icon: (Icons.assignment_turned_in),
         label: EduconnectConstants.localization().homeworks,
       ),
-      SidebarXItem(
-        icon: (Icons.account_circle),
-        label: EduconnectConstants.localization().profile,
-      ),
-      SidebarXItem(
-        icon: (Icons.settings),
-        label: EduconnectConstants.localization().settings,
-      ),
     ];
     const itemTextPadding = EdgeInsets.symmetric(horizontal: 30);
     final SidebarXTheme sidebarXTheme = SidebarXTheme(
@@ -98,6 +92,23 @@ class ExampleSidebarX extends StatelessWidget {
     }
 
     return SidebarX(
+      footerItems: [
+        SidebarXItem(
+          icon: (Icons.account_circle),
+          label: EduconnectConstants.localization().profile,
+        ),
+        SidebarXItem(
+          icon: (Icons.settings),
+          label: EduconnectConstants.localization().settings,
+        ),
+        SidebarXItem(
+          icon: Icons.logout,
+          label: EduconnectConstants.localization().sign_out,
+          onTap: () {
+            context.read<AuthCubit>().signOut();
+          },
+        )
+      ],
       controller: _controller,
       theme: sidebarXTheme,
       extendedTheme: extendedTheme,

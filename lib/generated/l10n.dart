@@ -280,6 +280,16 @@ class S {
     );
   }
 
+  /// `Sign Out`
+  String get sign_out {
+    return Intl.message(
+      'Sign Out',
+      name: 'sign_out',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `I agree with the terms and conditions and also the protection of my personal data on this application`
   String get agree_terms_conditions {
     return Intl.message(
@@ -510,80 +520,80 @@ class S {
     );
   }
 
-  /// `الاسم`
+  /// `Name`
   String get name {
     return Intl.message(
-      'الاسم',
+      'Name',
       name: 'name',
       desc: '',
       args: [],
     );
   }
 
-  /// `الرقم التعريفي`
+  /// `ID`
   String get id {
     return Intl.message(
-      'الرقم التعريفي',
+      'ID',
       name: 'id',
       desc: '',
       args: [],
     );
   }
 
-  /// `الجنس`
+  /// `Gender`
   String get gender {
     return Intl.message(
-      'الجنس',
+      'Gender',
       name: 'gender',
       desc: '',
       args: [],
     );
   }
 
-  /// `البريد الإلكتروني`
+  /// `Email`
   String get email {
     return Intl.message(
-      'البريد الإلكتروني',
+      'Email',
       name: 'email',
       desc: '',
       args: [],
     );
   }
 
-  /// `رقم الهاتف`
+  /// `Phone Number`
   String get phone_number {
     return Intl.message(
-      'رقم الهاتف',
+      'Phone Number',
       name: 'phone_number',
       desc: '',
       args: [],
     );
   }
 
-  /// `العنوان`
+  /// `Address`
   String get address {
     return Intl.message(
-      'العنوان',
+      'Address',
       name: 'address',
       desc: '',
       args: [],
     );
   }
 
-  /// `تاريخ الميلاد`
+  /// `Date of Birth`
   String get date_of_birth {
     return Intl.message(
-      'تاريخ الميلاد',
+      'Date of Birth',
       name: 'date_of_birth',
       desc: '',
       args: [],
     );
   }
 
-  /// `حالة الدفع`
+  /// `Payment Status`
   String get payment_status {
     return Intl.message(
-      'حالة الدفع',
+      'Payment Status',
       name: 'payment_status',
       desc: '',
       args: [],

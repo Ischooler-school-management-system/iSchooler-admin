@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/features/users/students_screen.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
@@ -25,7 +26,7 @@ class EduconnectSideBar extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [
-      const AddStudentScreen(),
+      const StudentsTab(),
       const ClassesTab(),
       const GradesTab(),
       const SubjectsTab(),

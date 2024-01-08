@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/educonnect_validation.dart';
 
-import '../../common/features/responsive/responsive_column.dart';
+import '../../common/educonnect_validation.dart';
 import '../../common/features/responsive/responsive_drop_down.dart';
 import '../../common/features/widgets/buttons/educonnect_button_export.dart';
 import '../../common/features/widgets/educonnect_drop_down_widget.dart';
@@ -81,39 +80,6 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                 ), */
               ],
             ),
-            ResponsiveDropDownRow(
-              children: [
-                EduConnectDropdownWidget(
-                  labelText: 'Class',
-                  // hint: 'Class',
-
-                  onChanged: (value) {
-                    setState(() {
-                      studentData = studentData.copyWith(classId: value);
-                    });
-                  },
-                  options: const ['claass 1', 'r 2', 'clasrs 2'],
-                ),
-                EduConnectDropdownWidget(
-                  labelText: 'Grade',
-                  onChanged: (value) {
-                    setState(() {
-                      studentData = studentData.copyWith(gradeId: value);
-                    });
-                  },
-                  options: const ['class 1', 'class 2', 'class 3'],
-                ),
-                EduConnectDropdownWidget(
-                  labelText: 'Gender',
-                  onChanged: (value) {
-                    setState(() {
-                      studentData = studentData.copyWith(gradeId: value);
-                    });
-                  },
-                  options: const ['Male', 'Female'],
-                ),
-              ],
-            ),
 
             ResponsiveDropDownRow(
               children: [
@@ -144,6 +110,39 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                       studentData = studentData.copyWith(address: value);
                     });
                   },
+                ),
+              ],
+            ),
+            ResponsiveDropDownRow(
+              children: [
+                EduConnectDropdownWidget(
+                  labelText: 'Class',
+                  // hint: 'Class',
+
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(classId: value);
+                    });
+                  },
+                  options: const ['claass 1', 'r 2', 'clasrs 2'],
+                ),
+                EduConnectDropdownWidget(
+                  labelText: 'Grade',
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(gradeId: value);
+                    });
+                  },
+                  options: const ['class 1', 'class 2', 'class 3'],
+                ),
+                EduConnectDropdownWidget(
+                  labelText: 'Gender',
+                  onChanged: (value) {
+                    setState(() {
+                      studentData = studentData.copyWith(gradeId: value);
+                    });
+                  },
+                  options: const ['Male', 'Female'],
                 ),
               ],
             ),

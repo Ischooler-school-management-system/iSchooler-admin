@@ -1,7 +1,6 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../../common/madpoly.dart';
 import '../../educonnect_constants.dart';

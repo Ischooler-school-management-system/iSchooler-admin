@@ -22,6 +22,7 @@
   "agree_terms_conditions": "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق",
   "new_accountnew_account": "إنشاء حساب جديد",
   "sign_up": "إنشاء حساب",
+  "sign_out": "تسجيل خروج",
   "no_account_prompt": "ليس لديك حساب؟",
   "remember_me": "تذكرني",
   "forgot_password": "نسيت كلمة المرور؟",
@@ -45,12 +46,12 @@
   "homeworks": "الواجبات المنزلية",
   "profile": "الملف الشخصي",
   "settings": "إعدادات",
-  "name": "Name",
-  "id": "ID",
-  "gender": "Gender",
-  "email": "Email",
-  "phone number": "Phone Number",
-  "address": "Address",
-  "date_of_birth": "Date of Birth",
-  "payment_status": "Payment Status"
+  "name": "الاسم",
+  "id": "الرقم التعريفي",
+  "gender": "الجنس",
+  "email": "البريد الإلكتروني",
+  "phone_number": "رقم الهاتف",
+  "address": "العنوان",
+  "date_of_birth": "تاريخ الميلاد",
+  "payment_status": "حالة الدفع"
 }

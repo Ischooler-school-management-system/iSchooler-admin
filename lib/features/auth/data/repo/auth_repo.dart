@@ -29,8 +29,8 @@ class AuthRepository {
       if (firebaseStudents != null) {
         StudentModel studentsModel = StudentModel(
           id: firebaseStudents.uid,
-          email: firebaseStudents.email!,
-          displayName: firebaseStudents.displayName!,
+          email: firebaseStudents.email ?? '',
+          displayName: firebaseStudents.displayName ?? '',
         );
         _studentsRepository.storeStudentData(student: studentsModel);
       }
@@ -46,7 +46,10 @@ class AuthRepository {
 
   Future<void> signUp({required String email, required String password}) async {
     await _handleAuthOperation(
-      () => _authNetwork.signUp(email: email, password: password),
+      () => _authNetwork.signUp(
+        email: email,
+        password: password,
+      ),
       'signup',
       email: email,
       password: password,

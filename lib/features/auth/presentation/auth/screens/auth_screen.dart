@@ -18,20 +18,17 @@ class AuthScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      padding: const EdgeInsets.all(20),
       keepMobileView: true,
-      body:  SingleChildScrollView(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  headerSection(),
-                  SizedBox(height: 20.h),
-                  footerSection()
-                ],
-              ),
-            ),
-          // ),
-        // ),
+      body: SingleChildScrollView(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [headerSection(), SizedBox(height: 20.h), footerSection()],
+        ),
+      ),
+      // ),
+      // ),
       // ),
     );
   }
@@ -58,10 +55,10 @@ class AuthScreen extends StatelessWidget {
   }
 
   onSignupButtonPressed() {
-    // EduconnectNavigator.push(Routes.signupScreen);
-    currentContext!
-        .read<AuthCubit>()
-        .signUp(email: 'ziad@test.com', password: 'password');
+    EduconnectNavigator.push(Routes.signupScreen);
+    //   currentContext!
+    //       .read<AuthCubit>()
+    //       .signUp(email: 'ziad@test.com', password: 'password');
   }
 
   onSigninButtonPressed() {
