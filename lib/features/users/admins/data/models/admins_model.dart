@@ -5,28 +5,28 @@ import 'package:intl/intl.dart';
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/truncate_map.dart';
 
-class AllStudentsModel extends Equatable {
-  final List<StudentModel> items;
+class AllAdminsModel extends Equatable {
+  final List<AdminModel> items;
 
-  const AllStudentsModel({required this.items});
-  factory AllStudentsModel.empty() {
-    return const AllStudentsModel(items: []);
+  const AllAdminsModel({required this.items});
+  factory AllAdminsModel.empty() {
+    return const AllAdminsModel(items: []);
   }
-  factory AllStudentsModel.fromMap(Map map) {
-    final List<StudentModel> items = List<StudentModel>.from(
+  factory AllAdminsModel.fromMap(Map map) {
+    final List<AdminModel> items = List<AdminModel>.from(
       map['items'].map(
-        (item) => StudentModel.fromMap(item),
+        (item) => AdminModel.fromMap(item),
       ),
     );
-    return AllStudentsModel(items: items);
+    return AllAdminsModel(items: items);
   }
   @override
   List<Object> get props => [items];
 }
 
-class StudentModel extends Equatable {
+class AdminModel extends Equatable {
   final String id;
-  final String studentName;
+  final String adminName;
   final DateTime? dateOfBirth;
   final String classId;
   final String gradeId;
@@ -37,9 +37,9 @@ class StudentModel extends Equatable {
   final String email; // Added email field
   final String displayName; // Added displayName field
 
-  const StudentModel({
+  const AdminModel({
     this.id = '-1',
-    this.studentName = '',
+    this.adminName = '',
     this.dateOfBirth,
     this.classId = '',
     this.gradeId = '',
@@ -51,10 +51,10 @@ class StudentModel extends Equatable {
     this.displayName = '',
   });
 
-  factory StudentModel.empty() {
-    return const StudentModel(
+  factory AdminModel.empty() {
+    return const AdminModel(
       id: '',
-      studentName: '',
+      adminName: '',
       dateOfBirth: null,
       classId: '',
       gradeId: '',
@@ -67,10 +67,10 @@ class StudentModel extends Equatable {
     );
   }
 
-  factory StudentModel.fromMap(Map<String, dynamic> map) {
-    return StudentModel(
+  factory AdminModel.fromMap(Map<String, dynamic> map) {
+    return AdminModel(
       id: map['id'] ?? '',
-      studentName: map['studentname'] ?? '',
+      adminName: map['adminname'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
@@ -88,7 +88,7 @@ class StudentModel extends Equatable {
   Map<String, dynamic> toMap() {
     return {
       // 'id': id,
-      'studentname': studentName,
+      'adminname': adminName,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'classId': classId,
       'gradeId': gradeId,
@@ -107,7 +107,7 @@ class StudentModel extends Equatable {
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
-      // EduconnectConstants.localization().studentname: studentname,
+      // EduconnectConstants.localization().adminname: adminname,
       // EduconnectConstants.localization().classId: classId,
       // EduconnectConstants.localization().gradeId: gradeId,
       EduconnectConstants.localization().phone_number: phoneNumber,
@@ -120,9 +120,9 @@ class StudentModel extends Equatable {
     return limit != null ? truncateMap(limit, map) : map;
   }
 
-  StudentModel copyWith({
+  AdminModel copyWith({
     String? id,
-    String? studentName,
+    String? adminName,
     DateTime? dateOfBirth,
     String? classId,
     String? gradeId,
@@ -133,9 +133,9 @@ class StudentModel extends Equatable {
     String? email,
     String? displayName,
   }) {
-    return StudentModel(
+    return AdminModel(
       id: id ?? this.id,
-      studentName: studentName ?? this.studentName,
+      adminName: adminName ?? this.adminName,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       classId: classId ?? this.classId,
       gradeId: gradeId ?? this.gradeId,
@@ -150,7 +150,7 @@ class StudentModel extends Equatable {
 
   @override
   String toString() {
-    return 'StudentModel{studentId: $id, studentname: $studentName, dateOfBirth: $dateOfBirth, '
+    return 'AdminModel{adminId: $id, adminname: $adminName, dateOfBirth: $dateOfBirth, '
         'classId: $classId, gradeId: $gradeId, phoneNumber: $phoneNumber, address: $address, '
         'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName}';
   }
@@ -159,7 +159,7 @@ class StudentModel extends Equatable {
   List<Object?> get props {
     return [
       id,
-      studentName,
+      adminName,
       dateOfBirth,
       classId,
       gradeId,

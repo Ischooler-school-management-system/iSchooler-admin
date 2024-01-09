@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_assets.dart';
@@ -8,24 +7,29 @@ import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../../../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/features/widgets/educonnect_image_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../../../common/madpoly.dart';
 import '../../../../../common/navigation/router.export.dart';
 import '../../../../../common/style/educonnect_text_theme.dart';
-import '../../../logic/cubit/auth_cubit.dart';
 
 class AuthScreen extends StatelessWidget {
   const AuthScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Madpoly.print(
+      'building',
+      tag: 'auth_screen > build',
+      developer: "Ziad",
+    );
     return EduconnectScreen(
       padding: const EdgeInsets.all(20),
       keepMobileView: true,
-      body: SingleChildScrollView(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [headerSection(), SizedBox(height: 20.h), footerSection()],
-        ),
+      alignment: Alignment.center,
+      enableScrolling: true,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [headerSection(), SizedBox(height: 20.h), footerSection()],
       ),
       // ),
       // ),

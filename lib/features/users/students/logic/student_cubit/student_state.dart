@@ -1,4 +1,4 @@
-part of 'students_cubit.dart';
+part of 'student_cubit.dart';
 
 enum StudentStatus { init, updated, loaded, failed }
 // @immutable

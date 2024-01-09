@@ -4,18 +4,18 @@ import 'package:school_admin/common/network/educonnect_response.dart';
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../../common/network/collections.dart';
-import '../models/student_model.dart';
+import '../models/admins_model.dart';
 
-class StudentNetwork {
+class AdminNetwork {
   final ErrorHandlingRepository _alertHandlingRepository;
 
-  StudentNetwork(ErrorHandlingRepository alertHandlingRepository)
+  AdminNetwork(ErrorHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 /* 
 
  Future<void> getCollectionData() async {
     String collectionName =
-        'students'; // Replace with your actual collection name
+        'admins'; // Replace with your actual collection name
 
     try {
       CollectionReference collectionReference =
@@ -31,35 +31,35 @@ class StudentNetwork {
   }
 
  */
-  Future<EduconnectResponse> getAllStudentsData() async {
+  Future<EduconnectResponse> getAllAdminsData() async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
       final CollectionReference<Map<String, dynamic>> reference =
           EduconnectNetwork.fireStoreInstance
-              .collection(EduconnectNetwork.students);
+              .collection(EduconnectNetwork.admins);
       final QuerySnapshot<Map<String, dynamic>> query = await reference.get();
       response = EduconnectResponse.fromCollection(query);
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
-        tag: 'student_network > storeStudentData',
+        tag: 'admin_network > storeAdminData',
         showToast: true,
       );
     }
     return response;
   }
 
-  Future<void> storeStudentData({required StudentModel student}) async {
+  Future<void> storeAdminData({required AdminModel admin}) async {
     try {
       final credentialCollection = EduconnectNetwork.fireStoreInstance
-          .collection(EduconnectNetwork.students);
-      credentialCollection.doc().set(student.toMap());
+          .collection(EduconnectNetwork.admins);
+      credentialCollection.doc().set(admin.toMap());
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
-        tag: 'student_network > storeStudentData',
+        tag: 'admin_network > storeAdminData',
         showToast: true,
       );
     }

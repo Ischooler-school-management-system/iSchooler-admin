@@ -20,6 +20,7 @@ class EduconnectScreen extends StatelessWidget {
   final bool extendBodyBehindAppBar;
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
+  final Alignment? alignment;
   final Widget? drawer;
 
   final FloatingActionButton? floatingActionButton;
@@ -42,6 +43,7 @@ class EduconnectScreen extends StatelessWidget {
     this.floatingActionButton,
     this.padding,
     this.margin,
+    this.alignment,
   });
 
   // Build method for the EduconnectScreen widget
@@ -56,6 +58,7 @@ class EduconnectScreen extends StatelessWidget {
       body: Container(
         padding: padding,
         margin: margin,
+        alignment: alignment,
         child: EduconnectSmallView(
           keepMobileView: keepMobileView,
           child: EduconnectFlexibleScrollWidget(

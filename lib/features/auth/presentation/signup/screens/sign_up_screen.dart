@@ -22,6 +22,7 @@ class _SignupScreenState extends State<SignupScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      alignment: Alignment.center,
       enableflexibleScrolling: true,
       keepMobileView: true,
       body: Center(

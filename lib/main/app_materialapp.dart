@@ -44,54 +44,42 @@ class AppMaterialApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<LangBloc, LangState>(
       builder: (context, state) {
-        return StreamBuilder(
-            stream: FirebaseAuth.instance.authStateChanges(),
-            builder: (context, authSnapshot) {
-              return MaterialApp(
-                title: 'EduConnect',
-                // material app initial settings
-                // 1. localization(3)
-                locale: localeMethod(state),
-                localizationsDelegates: const [
-                  S.delegate,
-                  GlobalMaterialLocalizations.delegate,
-                  GlobalWidgetsLocalizations.delegate,
-                  GlobalCupertinoLocalizations.delegate,
-                ],
-                supportedLocales: S.delegate.supportedLocales,
-                // ----------------------------------
+        return MaterialApp(
+          title: 'EduConnect',
+          // material app initial settings
+          // 1. localization(3)
+          locale: localeMethod(state),
+          localizationsDelegates: const [
+            S.delegate,
+            GlobalMaterialLocalizations.delegate,
+            GlobalWidgetsLocalizations.delegate,
+            GlobalCupertinoLocalizations.delegate,
+          ],
+          supportedLocales: S.delegate.supportedLocales,
+          // ----------------------------------
 
-                //   3. themes
-                theme: buildThemeData(),
-                // ----------------------------------
+          //   3. themes
+          theme: buildThemeData(),
+          // ----------------------------------
 
-                // 8. custom navigator
-                navigatorKey: EduconnectNavigator.navigatorState,
-                onGenerateRoute: EduconnectNavigator.onCreateRoute,
-                // ----------------------------------
+          // 8. custom navigator
+          navigatorKey: EduconnectNavigator.navigatorState,
+          onGenerateRoute: EduconnectNavigator.onCreateRoute,
+          // ----------------------------------
 
-                // to remove the debug banner showed in the screen
-                debugShowCheckedModeBanner: false,
+          // to remove the debug banner showed in the screen
+          debugShowCheckedModeBanner: false,
 
-                home: homeScreen(authSnapshot),
-                // home: EduconnectSideBar(),
+          home: const StartingScreen(),
+          // home: const TestScreen(),
 
-                ///4. smart dialog:
-                /// FlutterSmartDialog is a package that provide dialogs and toasts without a context
-                builder: materialAppBuilder(),
-              );
-            });
+          ///4. smart dialog:
+          /// FlutterSmartDialog is a package that provide dialogs and toasts without a context
+          builder: materialAppBuilder(),
+        );
+        // });
       },
     );
-  }
-
-  homeScreen(snapshot) {
-    if (snapshot.connectionState != ConnectionState.waiting &&
-        snapshot.hasData) {
-      return EduconnectSideBar();
-    } else {
-      return const AuthScreen();
-    }
   }
 }
 
@@ -112,4 +100,25 @@ TransitionBuilder materialAppBuilder() {
       );
     },
   );
+}
+
+class StartingScreen extends StatelessWidget {
+  /// this screen is only for deciding the home screen
+  const StartingScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder(
+      stream: FirebaseAuth.instance.authStateChanges(),
+      builder: (context, authSnapshot) {
+        // return homeScreen(authSnapshot);
+        if (authSnapshot.connectionState != ConnectionState.waiting &&
+            authSnapshot.hasData) {
+          return EduconnectSideBar();
+        } else {
+          return const AuthScreen();
+        }
+      },
+    );
+  }
 }

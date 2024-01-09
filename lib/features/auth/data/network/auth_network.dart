@@ -73,29 +73,33 @@ class AuthNetwork {
         //   displayName: firebaseUser.displayName ?? '',
         // );
       }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'user-not-found') {
-        _alertHandlingRepository.addError(
-          tag: 'auth_network > signIn',
-          'No user found for that email.',
-          ErrorHandlingTypes.ServerError,
-          showToast: true,
-        );
-      } else if (e.code == 'wrong-password') {
-        _alertHandlingRepository.addError(
-          tag: 'auth_network > signIn',
-          'Wrong password provided for that user.',
-          ErrorHandlingTypes.ServerError,
-          showToast: true,
-        );
+    } catch (e) {
+      if (e is FirebaseAuthException) {
+        if (e.code == 'user-not-found') {
+          _alertHandlingRepository.addError(
+            tag: 'auth_network > signIn',
+            'No user found for that email.',
+            ErrorHandlingTypes.ServerError,
+            showToast: true,
+          );
+          return null;
+        } else if (e.code == 'wrong-password') {
+          _alertHandlingRepository.addError(
+            tag: 'auth_network > signIn',
+            'Wrong password provided for that user.',
+            ErrorHandlingTypes.ServerError,
+            showToast: true,
+          );
+        }
       }
-    }catch (e) {
+
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
         tag: 'auth_network > signin',
         showToast: true,
       );
+      return null;
     }
     return null;
   }

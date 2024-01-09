@@ -1,28 +1,28 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_admin/features/users/students/data/repo/students_repo.dart';
 
 import '../../../../../common/features/loading/data/models/loading_model.dart';
 import '../../../../../common/features/loading/data/repo/loading_repo.dart';
-import '../../../../auth/data/repo/auth_repo.dart';
 import '../../data/models/student_model.dart';
+import '../../data/repo/students_repo.dart';
 
-part 'students_state.dart';
+part 'all_students_state.dart';
 
-class StudentCubit extends Cubit<StudentState> {
+class AllStudentsCubit extends Cubit<AllStudentsState> {
   final StudentRepository _studentRepository;
   final LoadingRepository _loadingRepository;
 
-  StudentCubit(
+  AllStudentsCubit(
     StudentRepository studentRepository,
     LoadingRepository loadingRepository,
   )   : _studentRepository = studentRepository,
         _loadingRepository = loadingRepository,
-        super(StudentState.init());
+        super(AllStudentsState.init());
 
-  Future<void> storeStudentData({required StudentModel student}) async {
+  Future<void> getAllStudentsData() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    await _studentRepository.storeStudentData(student: student);
+    AllStudentsModel response = await _studentRepository.getAllStudentsData();
+    emit(state.updateAllStudents(response));
     _loadingRepository.stopLoading();
   }
 }

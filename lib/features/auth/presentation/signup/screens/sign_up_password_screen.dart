@@ -20,6 +20,7 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
   Widget build(BuildContext context) {
     return EduconnectScreen(
       enableflexibleScrolling: true,
+      alignment: Alignment.center,
       keepMobileView: true,
       body: Center(
         child: Column(

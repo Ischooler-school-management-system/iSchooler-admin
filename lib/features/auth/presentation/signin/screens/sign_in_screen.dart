@@ -22,6 +22,7 @@ class _SigninScreenState extends State<SigninScreen> {
   Widget build(BuildContext context) {
     return EduconnectScreen(
       keepMobileView: true,
+      alignment: Alignment.center,
       enableflexibleScrolling: true,
       body: Center(
         child: Column(

@@ -57,6 +57,22 @@ class ExampleSidebarX extends StatelessWidget {
         icon: (Icons.assignment_turned_in),
         label: EduconnectConstants.localization().homeworks,
       ),
+
+      SidebarXItem(
+        icon: (Icons.account_circle),
+        label: EduconnectConstants.localization().profile,
+      ),
+      SidebarXItem(
+        icon: (Icons.settings),
+        label: EduconnectConstants.localization().settings,
+      ),
+      SidebarXItem(
+        icon: Icons.logout,
+        label: EduconnectConstants.localization().sign_out,
+        onTap: () {
+          context.read<AuthCubit>().signOut();
+        },
+      )
     ];
     const itemTextPadding = EdgeInsets.symmetric(horizontal: 30);
     final SidebarXTheme sidebarXTheme = SidebarXTheme(
@@ -92,23 +108,6 @@ class ExampleSidebarX extends StatelessWidget {
     }
 
     return SidebarX(
-      footerItems: [
-        SidebarXItem(
-          icon: (Icons.account_circle),
-          label: EduconnectConstants.localization().profile,
-        ),
-        SidebarXItem(
-          icon: (Icons.settings),
-          label: EduconnectConstants.localization().settings,
-        ),
-        SidebarXItem(
-          icon: Icons.logout,
-          label: EduconnectConstants.localization().sign_out,
-          onTap: () {
-            context.read<AuthCubit>().signOut();
-          },
-        )
-      ],
       controller: _controller,
       theme: sidebarXTheme,
       extendedTheme: extendedTheme,

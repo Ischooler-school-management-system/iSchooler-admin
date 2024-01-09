@@ -2,47 +2,47 @@ import 'package:school_admin/common/network/educonnect_response.dart';
 
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
-import '../models/student_model.dart';
-import '../network/students_network.dart';
+import '../models/admins_model.dart';
+import '../network/admins_network.dart';
 
-class StudentRepository {
+class AdminRepository {
   final ErrorHandlingRepository _alertHandlingRepository;
-  final StudentNetwork _studentNetwork;
+  final AdminNetwork _adminNetwork;
 
-  StudentRepository(ErrorHandlingRepository alertHandlingRepository,
-      StudentNetwork studentNetwork)
+  AdminRepository(ErrorHandlingRepository alertHandlingRepository,
+      AdminNetwork adminNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
-        _studentNetwork = studentNetwork;
+        _adminNetwork = adminNetwork;
 
-  Future<void> storeStudentData({required StudentModel student}) async {
+  Future<void> storeAdminData({required AdminModel admin}) async {
     try {
-      _studentNetwork.storeStudentData(student: student);
+      _adminNetwork.storeAdminData(admin: admin);
       _alertHandlingRepository.addError(
-        'Student Data Stored Successfully',
+        'Admin Data Stored Successfully',
         ErrorHandlingTypes.Alert,
-        tag: 'student_repo > storeStudentData',
+        tag: 'admin_repo > storeAdminData',
         showToast: true,
       );
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
-        tag: 'student_repo > storeStudentData',
+        tag: 'admin_repo > storeAdminData',
         showToast: true,
       );
     }
   }
 
-  Future<AllStudentsModel> getAllStudentsData() async {
-    var students = AllStudentsModel.empty();
+  Future<AllAdminsModel> getAllAdminsData() async {
+    var admins = AllAdminsModel.empty();
     try {
-      EduconnectResponse response = await _studentNetwork.getAllStudentsData();
+      EduconnectResponse response = await _adminNetwork.getAllAdminsData();
       if (response.hasData) {
-        students = AllStudentsModel.fromMap(response.data);
+        admins = AllAdminsModel.fromMap(response.data);
         _alertHandlingRepository.addError(
-          'Students retrieved sucessfully',
+          'Admins retrieved sucessfully',
           ErrorHandlingTypes.Alert,
-          tag: 'student_repo > getAllStudentsData',
+          tag: 'admin_repo > getAllAdminsData',
           showToast: true,
         );
       }
@@ -50,10 +50,10 @@ class StudentRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
-        tag: 'student_repo > getAllStudentsData',
+        tag: 'admin_repo > getAllAdminsData',
         showToast: true,
       );
     }
-    return students;
+    return admins;
   }
 }

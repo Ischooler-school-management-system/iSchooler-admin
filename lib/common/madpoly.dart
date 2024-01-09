@@ -18,7 +18,7 @@ abstract class Madpoly {
     MadpolyColor? color = MadpolyColor.yellow,
     String? tag,
     bool? isInspect,
-    bool isLog = true,
+    bool isLog = false,
     bool showToast = false,
   }) {
     String message = "";

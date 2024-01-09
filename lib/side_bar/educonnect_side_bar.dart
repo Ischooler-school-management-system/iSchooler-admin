@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/features/users/students_screen.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
 import '../common/educonnect_constants.dart';
 import '../common/features/widgets/educonnect_screen.dart';
+import '../common/madpoly.dart';
 import '../features/auth/settings/language/presentation/screens/languages_screen.dart';
-import '../features/users/add_student_screen.dart';
+import '../features/users/students_screen.dart';
 import 'sidebar_x.dart';
 
 const primaryColor = canvasColor;
@@ -23,6 +23,11 @@ class EduconnectSideBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Madpoly.print(
+      'building',
+      tag: 'educonnect_side_bar > build',
+      developer: "Ziad",
+    );
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [

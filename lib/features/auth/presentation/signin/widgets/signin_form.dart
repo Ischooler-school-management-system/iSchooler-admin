@@ -33,8 +33,8 @@ class _SigninFormState extends State<SigninForm> {
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
   bool _isButtonDisabled = true;
-  String inputEmail = 'ziad@test.com';
-  String inputPassword = 'password';
+  String inputEmail = '';
+  String inputPassword = '';
 
   void _updateIsKeyboardOpen(bool newValue) {
     widget.onIsKeyboardOpenChanged(newValue);
@@ -75,7 +75,7 @@ class _SigninFormState extends State<SigninForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: 'ziad@test.com',
+            initialValue: 'ziad2@test.com',
             labelText: EduconnectConstants.localization().enter_email,
             validator: EduconnectValidations.emailValidator,
             suffixIcon: const Icon(Icons.person),
@@ -116,9 +116,12 @@ class _SigninFormState extends State<SigninForm> {
   }
 
   onSigninButtonPressed() {
-    context
-        .read<AuthCubit>()
-        .signIn(email: inputEmail, password: inputPassword);
+    if (_formKey.currentState!.validate()) {
+      _formKey.currentState!.save();
+      context
+          .read<AuthCubit>()
+          .signIn(email: inputEmail, password: inputPassword);
+    }
   }
 
   Row forgotPasswordRow() {
