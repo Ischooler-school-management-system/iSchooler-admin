@@ -15,9 +15,9 @@ class StudentRepository {
       : _alertHandlingRepository = alertHandlingRepository,
         _studentNetwork = studentNetwork;
 
-  Future<void> storeStudentData({required StudentModel student}) async {
+  Future<void> addStudent({required StudentModel student}) async {
     try {
-      _studentNetwork.storeStudentData(student: student);
+      _studentNetwork.addStudent(student: student);
       _alertHandlingRepository.addError(
         'Student Data Stored Successfully',
         ErrorHandlingTypes.Alert,

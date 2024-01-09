@@ -13,8 +13,9 @@ class AdminModel extends Equatable {
   final String phoneNumber;
   final String address;
   final String gender;
-  final String email; // Added email field
-  final String displayName; // Added displayName field
+  final String email;
+  final String displayName;
+  final String role; // Added role field
 
   const AdminModel({
     this.id = '-1',
@@ -25,6 +26,7 @@ class AdminModel extends Equatable {
     this.gender = '',
     this.email = '',
     this.displayName = '',
+    this.role = 'admin', // Default value for role is 'admin'
   });
 
   factory AdminModel.empty() {
@@ -37,6 +39,7 @@ class AdminModel extends Equatable {
       gender: '',
       email: '',
       displayName: '',
+      role: 'admin', // Default value for role is 'admin'
     );
   }
 
@@ -52,6 +55,7 @@ class AdminModel extends Equatable {
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       displayName: map['displayName'] ?? '',
+      role: map['role'] ?? 'admin', // Default value for role is 'admin'
     );
   }
 
@@ -64,6 +68,7 @@ class AdminModel extends Equatable {
       'gender': gender,
       'email': email,
       'displayName': displayName,
+      'role': role,
     };
   }
 
@@ -77,6 +82,7 @@ class AdminModel extends Equatable {
       EduconnectConstants.localization().address: address,
       EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
+      'role': role,
     };
 
     return limit != null ? truncateMap(limit, map) : map;
@@ -91,6 +97,7 @@ class AdminModel extends Equatable {
     String? gender,
     String? email,
     String? displayName,
+    String? role,
   }) {
     return AdminModel(
       id: id ?? this.id,
@@ -101,6 +108,7 @@ class AdminModel extends Equatable {
       gender: gender ?? this.gender,
       email: email ?? this.email,
       displayName: displayName ?? this.displayName,
+      role: role ?? this.role,
     );
   }
 
@@ -108,7 +116,7 @@ class AdminModel extends Equatable {
   String toString() {
     return 'AdminModel{adminId: $id, adminname: $adminName, dateOfBirth: $dateOfBirth, '
         'phoneNumber: $phoneNumber, address: $address, '
-        'gender: $gender, email: $email, displayName: $displayName}';
+        'gender: $gender, email: $email, displayName: $displayName, role: $role}';
   }
 
   @override
@@ -122,6 +130,7 @@ class AdminModel extends Equatable {
       gender,
       email,
       displayName,
+      role,
     ];
   }
 }

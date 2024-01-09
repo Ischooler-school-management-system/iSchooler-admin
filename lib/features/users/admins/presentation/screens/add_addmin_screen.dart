@@ -154,7 +154,7 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
       // Form is valid, process the data
       // You can add logic here to save the form data
       // For example, send it to a database or an API
-      print('User Data: $adminData');
+      Madpoly.print('User Data: $adminData');
     }
   }
 }

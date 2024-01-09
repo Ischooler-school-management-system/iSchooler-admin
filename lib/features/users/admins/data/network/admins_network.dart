@@ -50,7 +50,7 @@ class AdminNetwork {
     return response;
   }
 
-  Future<void> storeAdminData({required AdminModel admin}) async {
+  Future<void> addAdmin({required AdminModel admin}) async {
     try {
       final credentialCollection = EduconnectNetwork.fireStoreInstance
           .collection(EduconnectNetwork.admins);

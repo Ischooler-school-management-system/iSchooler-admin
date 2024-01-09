@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/features/loading/data/models/loading_model.dart';
 import '../../../../../common/features/loading/data/repo/loading_repo.dart';
+import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../data/repo/admins_repo.dart';
 
@@ -24,5 +25,13 @@ class AllAdminsCubit extends Cubit<AllAdminsState> {
     AllAdminsModel response = await _adminRepository.getAllAdminsData();
     emit(state.updateAllAdmins(response));
     _loadingRepository.stopLoading();
+  }
+
+  Future<void> addAdmin({required AdminModel admin}) async {
+    _loadingRepository.startLoading(LoadingType.normal);
+
+    await _adminRepository.addAdmin(admin: admin);
+    await getAllAdminsData();
+    // _loadingRepository.stopLoading();
   }
 }

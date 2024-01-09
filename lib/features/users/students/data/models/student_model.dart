@@ -15,8 +15,9 @@ class StudentModel extends Equatable {
   final String address;
   final bool paymentStatus;
   final String gender;
-  final String email; // Added email field
-  final String displayName; // Added displayName field
+  final String email;
+  final String displayName;
+  final String role; // Added role field
 
   const StudentModel({
     this.id = '-1',
@@ -30,6 +31,7 @@ class StudentModel extends Equatable {
     this.gender = '',
     this.email = '',
     this.displayName = '',
+    this.role = 'student', // Default value for role is 'student'
   });
 
   factory StudentModel.empty() {
@@ -45,6 +47,7 @@ class StudentModel extends Equatable {
       gender: '',
       email: '',
       displayName: '',
+      role: 'student', // Default value for role is 'student'
     );
   }
 
@@ -63,12 +66,12 @@ class StudentModel extends Equatable {
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       displayName: map['displayName'] ?? '',
+      role: map['role'] ?? 'student', // Default value for role is 'student'
     );
   }
 
   Map<String, dynamic> toMap() {
     return {
-      // 'id': id,
       'studentname': studentName,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'classId': classId,
@@ -79,6 +82,7 @@ class StudentModel extends Equatable {
       'gender': gender,
       'email': email,
       'displayName': displayName,
+      'role': role,
     };
   }
 
@@ -88,14 +92,12 @@ class StudentModel extends Equatable {
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
-      // EduconnectConstants.localization().studentname: studentname,
-      // EduconnectConstants.localization().classId: classId,
-      // EduconnectConstants.localization().gradeId: gradeId,
       EduconnectConstants.localization().phone_number: phoneNumber,
       EduconnectConstants.localization().address: address,
       EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
       EduconnectConstants.localization().payment_status: paymentStatus,
+      'role': role,
     };
 
     return limit != null ? truncateMap(limit, map) : map;
@@ -113,6 +115,7 @@ class StudentModel extends Equatable {
     String? gender,
     String? email,
     String? displayName,
+    String? role,
   }) {
     return StudentModel(
       id: id ?? this.id,
@@ -126,6 +129,7 @@ class StudentModel extends Equatable {
       gender: gender ?? this.gender,
       email: email ?? this.email,
       displayName: displayName ?? this.displayName,
+      role: role ?? this.role,
     );
   }
 
@@ -133,7 +137,7 @@ class StudentModel extends Equatable {
   String toString() {
     return 'StudentModel{studentId: $id, studentname: $studentName, dateOfBirth: $dateOfBirth, '
         'classId: $classId, gradeId: $gradeId, phoneNumber: $phoneNumber, address: $address, '
-        'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName}';
+        'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName, role: $role}';
   }
 
   @override
@@ -150,6 +154,7 @@ class StudentModel extends Equatable {
       gender,
       email,
       displayName,
+      role,
     ];
   }
 }

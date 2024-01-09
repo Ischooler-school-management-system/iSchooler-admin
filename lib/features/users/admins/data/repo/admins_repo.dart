@@ -14,9 +14,9 @@ class AdminRepository {
       : _alertHandlingRepository = alertHandlingRepository,
         _adminNetwork = adminNetwork;
 
-  Future<void> storeAdminData({required AdminModel admin}) async {
+  Future<void> addAdmin({required AdminModel admin}) async {
     try {
-      _adminNetwork.storeAdminData(admin: admin);
+      _adminNetwork.addAdmin(admin: admin);
       _alertHandlingRepository.addError(
         'Admin Data Stored Successfully',
         ErrorHandlingTypes.Alert,

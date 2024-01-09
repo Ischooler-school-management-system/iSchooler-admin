@@ -50,7 +50,7 @@ class StudentNetwork {
     return response;
   }
 
-  Future<void> storeStudentData({required StudentModel student}) async {
+  Future<void> addStudent({required StudentModel student}) async {
     try {
       final credentialCollection = EduconnectNetwork.fireStoreInstance
           .collection(EduconnectNetwork.students);

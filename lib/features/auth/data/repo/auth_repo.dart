@@ -32,7 +32,7 @@ class AuthRepository {
           email: firebaseStudents.email ?? '',
           displayName: firebaseStudents.displayName ?? '',
         );
-        _studentsRepository.storeStudentData(student: studentsModel);
+        _studentsRepository.addStudent(student: studentsModel);
       }
     } catch (e) {
       _alertHandlingRepository.addError(

@@ -32,8 +32,9 @@ class EduconnectSideBar extends StatelessWidget {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [
-      const AllStudentsScreen(),
       const AllAdminsScreen(),
+      const TeachersTab(),
+      const AllStudentsScreen(),
       const ClassesTab(),
       const GradesTab(),
       const SubjectsTab(),
@@ -76,6 +77,15 @@ class EduconnectSideBar extends StatelessWidget {
         ],
       ),
     );
+  }
+}
+
+class TeachersTab extends StatelessWidget {
+  const TeachersTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(EduconnectConstants.localization().classes);
   }
 }
 

@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:school_admin/common/features/widgets/educonnect_screen.dart';
 
 import '../common/navigation/router.export.dart';
 import '../common/style/educonnect_theme_data.dart';
@@ -114,16 +115,19 @@ class _StartingScreenState extends State<StartingScreen> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      stream: FirebaseAuth.instance.authStateChanges(),
-      builder: (context, authSnapshot) {
-        // return homeScreen(authSnapshot);
-        if (authSnapshot.connectionState != ConnectionState.waiting &&
-            authSnapshot.hasData) {
-          return EduconnectSideBar();
-        } else {
-          return const AuthScreen();
-        }
-      },
-    );
+        stream: FirebaseAuth.instance.authStateChanges(),
+        builder: (context, authSnapshot) {
+          // return homeScreen(authSnapshot);
+          // if (authSnapshot.connectionState != ConnectionState.waiting) {
+          if (authSnapshot.hasData) {
+            return EduconnectSideBar();
+          } else {
+            return const AuthScreen();
+          }
+        } /* else {
+          return const EduconnectScreen();
+        } */
+        // },
+        );
   }
 }

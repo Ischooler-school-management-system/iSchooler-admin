@@ -9,7 +9,7 @@ class EduconnectScreen extends StatelessWidget {
   final bool enableBackButton;
   final String tag;
   final PreferredSizeWidget? appBar;
-  final Widget body;
+  final Widget? body;
   final bool closeAppBackButton;
   final Widget? bottomNavigationBar;
   final Future<void> Function()? onRefresh;
@@ -27,7 +27,7 @@ class EduconnectScreen extends StatelessWidget {
 
   const EduconnectScreen({
     super.key,
-    required this.body,
+    this.body,
     this.enableBackButton = false,
     this.appBar,
     this.tag = '',
@@ -55,23 +55,25 @@ class EduconnectScreen extends StatelessWidget {
       extendBodyBehindAppBar: extendBodyBehindAppBar,
       appBar: appBar /* ?? languageAppbar() */,
       bottomNavigationBar: bottomNavigationBar,
-      body: Container(
-        padding: padding,
-        margin: margin,
-        alignment: alignment,
-        child: EduconnectSmallView(
-          keepMobileView: keepMobileView,
-          child: EduconnectFlexibleScrollWidget(
-            hasMinHeight: hasMinHeight,
-            enableflexibleScrolling: enableflexibleScrolling,
-            enableScrolling: enableScrolling,
-            child: EduconnectPullToRefresh(
-              onRefresh: onRefresh,
-              child: body,
-            ),
-          ),
-        ),
-      ),
+      body: body != null
+          ? Container(
+              padding: padding,
+              margin: margin,
+              alignment: alignment,
+              child: EduconnectSmallView(
+                keepMobileView: keepMobileView,
+                child: EduconnectFlexibleScrollWidget(
+                  hasMinHeight: hasMinHeight,
+                  enableflexibleScrolling: enableflexibleScrolling,
+                  enableScrolling: enableScrolling,
+                  child: EduconnectPullToRefresh(
+                    onRefresh: onRefresh,
+                    child: body!,
+                  ),
+                ),
+              ),
+            )
+          : null,
       floatingActionButton: floatingActionButton,
       drawer: drawer,
     );

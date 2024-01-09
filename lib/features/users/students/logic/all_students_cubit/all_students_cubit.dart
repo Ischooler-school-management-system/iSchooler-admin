@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../../common/features/loading/data/models/loading_model.dart';
 import '../../../../../common/features/loading/data/repo/loading_repo.dart';
 import '../../data/models/all_students_model.dart';
+import '../../data/models/student_model.dart';
 import '../../data/repo/students_repo.dart';
 
 part 'all_students_state.dart';
@@ -24,5 +25,12 @@ class AllStudentsCubit extends Cubit<AllStudentsState> {
     AllStudentsModel response = await _studentRepository.getAllStudentsData();
     emit(state.updateAllStudents(response));
     _loadingRepository.stopLoading();
+  }
+
+  Future<void> addStudent({required StudentModel student}) async {
+    _loadingRepository.startLoading(LoadingType.normal);
+    await _studentRepository.addStudent(student: student);
+    await getAllStudentsData();
+    // _loadingRepository.stopLoading();
   }
 }

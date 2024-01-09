@@ -6,6 +6,7 @@ import '../../../../../common/features/widgets/buttons/educonnect_button_export.
 import '../../../../../common/features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../common/features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/madpoly.dart';
 import '../../data/models/student_model.dart';
 
 class AddStudentScreen extends StatefulWidget {
@@ -182,7 +183,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       // Form is valid, process the data
       // You can add logic here to save the form data
       // For example, send it to a database or an API
-      print('User Data: $studentData');
+      Madpoly.print('User Data: $studentData');
     }
   }
 }
