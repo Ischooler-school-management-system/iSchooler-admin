@@ -23,6 +23,7 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "address": MessageLookupByLibrary.simpleMessage("العنوان"),
+        "admins": MessageLookupByLibrary.simpleMessage("المسؤولين"),
         "agree_terms_conditions": MessageLookupByLibrary.simpleMessage(
             "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق"),
         "apply": MessageLookupByLibrary.simpleMessage("تطبق"),
@@ -89,11 +90,13 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_up": MessageLookupByLibrary.simpleMessage("إنشاء حساب"),
         "sign_up_prompt":
             MessageLookupByLibrary.simpleMessage("قم بأنشاء حساب وابدأ"),
+        "students": MessageLookupByLibrary.simpleMessage("الطلبه"),
         "subjects": MessageLookupByLibrary.simpleMessage("المواد"),
+        "teachers": MessageLookupByLibrary.simpleMessage("المدرسين"),
         "there_is_an_error":
             MessageLookupByLibrary.simpleMessage("حدث خطأ ما "),
         "timetable": MessageLookupByLibrary.simpleMessage("الجدول الزمني"),
-        "users": MessageLookupByLibrary.simpleMessage("المستخدمون"),
+        "users": MessageLookupByLibrary.simpleMessage("المستخدمين"),
         "verify": MessageLookupByLibrary.simpleMessage("تأكيد"),
         "welcome": MessageLookupByLibrary.simpleMessage("مرحبًا"),
         "welcome_create_account": MessageLookupByLibrary.simpleMessage(

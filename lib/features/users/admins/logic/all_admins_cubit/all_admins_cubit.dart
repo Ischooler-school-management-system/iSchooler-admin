@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/features/loading/data/models/loading_model.dart';
 import '../../../../../common/features/loading/data/repo/loading_repo.dart';
-import '../../data/models/admins_model.dart';
+import '../../data/models/all_admins_model.dart';
 import '../../data/repo/admins_repo.dart';
 
 part 'all_admins_state.dart';

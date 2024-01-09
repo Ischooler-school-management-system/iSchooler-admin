@@ -1,53 +1,53 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_admin/features/users/admins/data/models/all_admins_model.dart';
 
-import '../../common/educonnect_assets.dart';
-import '../../common/features/responsive/responsive.dart';
-import '../../common/features/widgets/buttons/educonnect_button.dart';
-import '../../common/features/widgets/buttons/models/buttons_model.dart';
-import '../../common/features/widgets/educonnect_conditional_widget.dart';
-import '../../common/features/widgets/educonnect_image_widget.dart';
-import '../../common/features/widgets/educonnect_screen.dart';
-import '../../common/style/educonnect_colors.dart';
-import '../../common/style/educonnect_text_theme.dart';
-import 'students/data/models/student_model.dart';
-import 'students/logic/all_students_cubit/all_students_cubit.dart';
-import 'students/logic/student_cubit/student_cubit.dart';
+import '../../../../../common/educonnect_assets.dart';
+import '../../../../../common/features/responsive/responsive.dart';
+import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
+import '../../../../../common/features/widgets/buttons/models/buttons_model.dart';
+import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
+import '../../../../../common/features/widgets/educonnect_image_widget.dart';
+import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../../../common/madpoly.dart';
+import '../../../../../common/style/educonnect_colors.dart';
+import '../../../../../common/style/educonnect_text_theme.dart';
+import '../../data/models/admin_model.dart';
+import '../../logic/all_admins_cubit/all_admins_cubit.dart';
+import '../../logic/admin_cubit/admin_cubit.dart';
 
-class StudentsTab extends StatefulWidget {
-  const StudentsTab({super.key});
+class AllAdminsScreen extends StatefulWidget {
+  const AllAdminsScreen({super.key});
 
   @override
-  State<StudentsTab> createState() => _StudentsTabState();
+  State<AllAdminsScreen> createState() => _AllAdminsScreenState();
 }
 
-class _StudentsTabState extends State<StudentsTab> {
+class _AllAdminsScreenState extends State<AllAdminsScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AllStudentsCubit>().getAllStudentsData();
+    context.read<AllAdminsCubit>().getAllAdminsData();
   }
 
   int limit = 0;
 
   onAddButtonPressed() {
-    // StudentModel newUser =
-    // EduconnectNavigator.navigateToScreen(const AddStudentScreen());
-    context.read<StudentCubit>().storeStudentData(
-          student: StudentModel(
+    // AdminModel newUser =
+    // EduconnectNavigator.navigateToScreen(const AddAdminScreen());
+    context.read<AdminCubit>().storeAdminData(
+          admin: AdminModel(
             id: '123',
             displayName: 'Joe',
-            studentName: 'JohnDoe',
+            adminName: 'JohnDoe',
             dateOfBirth: DateTime(2000, 1, 1),
-            classId: '101',
-            gradeId: 'A',
             phoneNumber: '1234567890',
             address: '123 Main St',
-            paymentStatus: true,
             gender: 'Male',
             email: 'ziad@mail.com',
           ),
         );
+    context.read<AllAdminsCubit>().getAllAdminsData();
     // userList.add(newUser);
     // setState(() {});
   }
@@ -64,16 +64,21 @@ class _StudentsTabState extends State<StudentsTab> {
 
   @override
   Widget build(BuildContext context) {
+    Madpoly.print(
+      'building',
+      tag: 'all_admins_screen > build',
+      developer: "Ziad",
+    );
     return EduconnectScreen(
       enableflexibleScrolling: true,
       padding: const EdgeInsets.all(8),
-      body: BlocBuilder<AllStudentsCubit, AllStudentsState>(
+      body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
-          AllStudentsModel allStudentsModel = AllStudentsModel.empty();
-          List<StudentModel> userList = [];
+          AllAdminsModel allAdminsModel = AllAdminsModel.empty();
+          List<AdminModel> userList = [];
           if (state.isLoaded()) {
-            allStudentsModel = state.allstudentsModel;
-            userList = allStudentsModel.items;
+            allAdminsModel = state.alladminsModel;
+            userList = allAdminsModel.items;
           }
           return EduconnectConditionalWidget(
             condition: Responsive.isMobile(),
@@ -86,7 +91,7 @@ class _StudentsTabState extends State<StudentsTab> {
   }
 
   Widget listTileVeiw(userList) {
-    limit = StudentModel.empty().toDisplayMap().length;
+    limit = AdminModel.empty().toDisplayMap().length;
     if (Responsive.isCustomWidth(width: 1200) && limit >= 8) {
       limit -= 2;
     } else if (Responsive.isCustomWidth(width: 1000) && limit >= 6) {
@@ -137,14 +142,14 @@ class _StudentsTabState extends State<StudentsTab> {
         // condition: Responsive.isMobile(),
         // whenTrue: listTileVeiw(),
         _valuesRow(
-          map: StudentModel.empty().toDisplayMap(limit: limit),
+          map: AdminModel.empty().toDisplayMap(limit: limit),
           isEven: false,
           viewKeys: true,
         ),
         // Column(
         ...userList.asMap().entries.map(
           (entry) {
-            final StudentModel user = entry.value;
+            final AdminModel user = entry.value;
             final index = entry.key;
             final isEven = index % 2 == 0;
             // return _valueTextWidget(propertyName, isEven: isEven);

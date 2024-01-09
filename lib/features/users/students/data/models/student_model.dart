@@ -5,25 +5,6 @@ import 'package:intl/intl.dart';
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/truncate_map.dart';
 
-class AllStudentsModel extends Equatable {
-  final List<StudentModel> items;
-
-  const AllStudentsModel({required this.items});
-  factory AllStudentsModel.empty() {
-    return const AllStudentsModel(items: []);
-  }
-  factory AllStudentsModel.fromMap(Map map) {
-    final List<StudentModel> items = List<StudentModel>.from(
-      map['items'].map(
-        (item) => StudentModel.fromMap(item),
-      ),
-    );
-    return AllStudentsModel(items: items);
-  }
-  @override
-  List<Object> get props => [items];
-}
-
 class StudentModel extends Equatable {
   final String id;
   final String studentName;

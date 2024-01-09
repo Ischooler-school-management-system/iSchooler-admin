@@ -1,8 +1,8 @@
-import 'package:school_admin/common/network/educonnect_response.dart';
-
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
-import '../models/admins_model.dart';
+import '../../../../../common/network/educonnect_response.dart';
+import '../models/admin_model.dart';
+import '../models/all_admins_model.dart';
 import '../network/admins_network.dart';
 
 class AdminRepository {

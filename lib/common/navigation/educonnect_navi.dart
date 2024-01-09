@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:school_admin/features/auth/presentation/signup/screens/sign_up_password_screen.dart';
-import 'package:school_admin/features/users/add_student_screen.dart';
+import 'package:school_admin/features/users/students/presentation/screens/add_student_screen.dart';
 
 import '../../features/auth/presentation/auth/screens/auth_screen.dart';
 import '../../features/auth/presentation/signin/screens/sign_in_screen.dart';

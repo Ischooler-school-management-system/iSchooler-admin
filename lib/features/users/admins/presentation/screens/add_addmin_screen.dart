@@ -1,28 +1,33 @@
 import 'package:flutter/material.dart';
 
-import '../../common/educonnect_validation.dart';
-import '../../common/features/responsive/responsive_drop_down.dart';
-import '../../common/features/widgets/buttons/educonnect_button_export.dart';
-import '../../common/features/widgets/educonnect_drop_down_widget.dart';
-import '../../common/features/widgets/educonnect_screen.dart';
-import '../../common/features/widgets/fields/educonnect_text_field.dart';
-import 'students/data/models/student_model.dart';
+import '../../../../../common/educonnect_validation.dart';
+import '../../../../../common/features/responsive/responsive_drop_down.dart';
+import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../../../common/features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/madpoly.dart';
+import '../../data/models/admin_model.dart';
 
-class AddStudentScreen extends StatefulWidget {
-  const AddStudentScreen({super.key});
+class AddAdminScreen extends StatefulWidget {
+  const AddAdminScreen({super.key});
 
   @override
-  State<AddStudentScreen> createState() => _AddStudentScreenState();
+  State<AddAdminScreen> createState() => _AddAdminScreenState();
 }
 
-class _AddStudentScreenState extends State<AddStudentScreen> {
+class _AddAdminScreenState extends State<AddAdminScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  // Use Studentmodel to store form data
-  StudentModel studentData = StudentModel.empty();
+  // Use Adminmodel to store form data
+  AdminModel adminData = AdminModel.empty();
 
   @override
   Widget build(BuildContext context) {
+    Madpoly.print(
+      'building',
+      tag: 'add_addmin_screen > build',
+      developer: "Ziad",
+    );
     return EduconnectScreen(
       enableflexibleScrolling: true,
       body: Form(
@@ -37,7 +42,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   validator: EduconnectValidations.nameValidator,
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(studentName: value);
+                      adminData = adminData.copyWith(adminName: value);
                     });
                   },
                 ),
@@ -49,7 +54,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
 
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(studentName: value);
+                      adminData = adminData.copyWith(adminName: value);
                     });
                   },
                 ),
@@ -64,7 +69,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                     // Convert the value to DateTime and assign it to dateOfBirth
                     // You may want to use a DatePicker for a better user experience
                     setState(() {
-                      studentData = studentData.copyWith(
+                      adminData = adminData.copyWith(
                           dateOfBirth: DateTime.parse(value));
                     });
                   },
@@ -73,7 +78,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   labelText: 'Gender',
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(gradeId: value);
+                      adminData = adminData.copyWith(gradeId: value);
                     });
                   },
                   options: const ['Male', 'Female'],
@@ -92,7 +97,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   },
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(phoneNumber: value);
+                      adminData = adminData.copyWith(phoneNumber: value);
                     });
                   },
                 ),
@@ -107,42 +112,9 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   },
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(address: value);
+                      adminData = adminData.copyWith(address: value);
                     });
                   },
-                ),
-              ],
-            ),
-            ResponsiveDropDownRow(
-              children: [
-                EduConnectDropdownWidget(
-                  labelText: 'Class',
-                  // hint: 'Class',
-
-                  onChanged: (value) {
-                    setState(() {
-                      studentData = studentData.copyWith(classId: value);
-                    });
-                  },
-                  options: const ['claass 1', 'r 2', 'clasrs 2'],
-                ),
-                EduConnectDropdownWidget(
-                  labelText: 'Grade',
-                  onChanged: (value) {
-                    setState(() {
-                      studentData = studentData.copyWith(gradeId: value);
-                    });
-                  },
-                  options: const ['class 1', 'class 2', 'class 3'],
-                ),
-                EduConnectDropdownWidget(
-                  labelText: 'Gender',
-                  onChanged: (value) {
-                    setState(() {
-                      studentData = studentData.copyWith(gradeId: value);
-                    });
-                  },
-                  options: const ['Male', 'Female'],
                 ),
               ],
             ),
@@ -160,11 +132,11 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
         children: [
           const Text('Payment Status: '),
           Checkbox(
-            value: studentData.paymentStatus,
+            value: adminData.paymentStatus,
             onChanged: (value) {
               setState(() {
-                studentData =
-                    studentData.copyWith(paymentStatus: value ?? false);
+                adminData =
+                    adminData.copyWith(paymentStatus: value ?? false);
               });
             },
           ),
@@ -182,7 +154,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
       // Form is valid, process the data
       // You can add logic here to save the form data
       // For example, send it to a database or an API
-      print('User Data: $studentData');
+      print('User Data: $adminData');
     }
   }
 }

@@ -1,10 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:school_admin/common/network/educonnect_response.dart';
 
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../../common/network/collections.dart';
-import '../models/admins_model.dart';
+import '../../../../../common/network/educonnect_response.dart';
+import '../models/admin_model.dart';
 
 class AdminNetwork {
   final ErrorHandlingRepository _alertHandlingRepository;

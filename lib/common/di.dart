@@ -4,6 +4,8 @@ import 'package:get_it/get_it.dart';
 
 import '../features/auth/data/network/auth_network.dart';
 import '../features/auth/data/repo/auth_repo.dart';
+import '../features/users/admins/data/network/admins_network.dart';
+import '../features/users/admins/data/repo/admins_repo.dart';
 import '../features/users/students/data/network/students_network.dart';
 import '../features/users/students/data/repo/students_repo.dart';
 import 'features/error_handling/data/repo/error_handling_repo.dart';
@@ -28,6 +30,7 @@ class DependencyInjection {
     /// register Networks:
     getIt.registerLazySingleton(() => AuthNetwork(getIt()));
     getIt.registerLazySingleton(() => StudentNetwork(getIt()));
+    getIt.registerLazySingleton(() => AdminNetwork(getIt()));
     //--------------------------------------------------------------------------
     /// register Repositories:
     getIt.registerLazySingleton(() => LoadingRepository());
@@ -35,6 +38,7 @@ class DependencyInjection {
     getIt
         .registerLazySingleton(() => AuthRepository(getIt(), getIt(), getIt()));
     getIt.registerLazySingleton(() => StudentRepository(getIt(), getIt()));
+    getIt.registerLazySingleton(() => AdminRepository(getIt(), getIt()));
     //--------------------------------------------------------------------------
   }
 }

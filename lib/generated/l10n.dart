@@ -440,6 +440,36 @@ class S {
     );
   }
 
+  /// `Admins`
+  String get admins {
+    return Intl.message(
+      'Admins',
+      name: 'admins',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Teachers`
+  String get teachers {
+    return Intl.message(
+      'Teachers',
+      name: 'teachers',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Students`
+  String get students {
+    return Intl.message(
+      'Students',
+      name: 'students',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Classes`
   String get classes {
     return Intl.message(

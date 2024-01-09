@@ -102,10 +102,15 @@ TransitionBuilder materialAppBuilder() {
   );
 }
 
-class StartingScreen extends StatelessWidget {
+class StartingScreen extends StatefulWidget {
   /// this screen is only for deciding the home screen
   const StartingScreen({super.key});
 
+  @override
+  State<StartingScreen> createState() => _StartingScreenState();
+}
+
+class _StartingScreenState extends State<StartingScreen> {
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
