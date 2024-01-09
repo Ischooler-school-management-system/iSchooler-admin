@@ -5,8 +5,8 @@ import '../../../../educonnect_dashboard_record.dart';
 import '../../../data/models/student_model.dart';
 
 class AllStudentsWebVeiw extends StatelessWidget {
-  final List userList;
-  const AllStudentsWebVeiw({super.key, required this.userList});
+  final List studentList;
+  const AllStudentsWebVeiw({super.key, required this.studentList});
 
   @override
   Widget build(BuildContext context) {
@@ -33,15 +33,15 @@ class AllStudentsWebVeiw extends StatelessWidget {
           viewKeys: true,
         ),
         // Column(
-        ...userList.asMap().entries.map(
+        ...studentList.asMap().entries.map(
           (entry) {
-            final StudentModel user = entry.value;
+            final StudentModel student = entry.value;
             final index = entry.key;
             final isEven = index % 2 == 0;
             // return _valueTextWidget(propertyName, isEven: isEven);
 
             return EduconnectDashboardRecord(
-              map: user.toDisplayMap(limit: limit),
+              map: student.toDisplayMap(limit: limit),
               isEven: isEven,
             );
           },
