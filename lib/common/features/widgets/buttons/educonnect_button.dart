@@ -17,7 +17,10 @@ part 'buttons_widgets/elevated_button_widget.dart';
 part 'buttons_widgets/elevated_button_with_icon_widget.dart';
 part 'buttons_widgets/icon_button_widget.dart';
 part 'buttons_widgets/text_button_widget.dart';
+part 'buttons_widgets/container_button_widget.dart';
 
+// lib/common/features/widgets/buttons/buttons_widgets/container_button_widget.dart
+// lib/common/features/widgets/buttons/buttons_widgets/elevated_button_with_icon_widget.dart
 // Main button class that renders different button types based on the provided `button` object.
 class EduconnectButton extends StatelessWidget {
   final IEduconnectButton button;
@@ -47,8 +50,13 @@ class EduconnectButton extends StatelessWidget {
       case EduconnectCartButton educonnectCartButton:
         return _CartButtonWidget(educonnectCartButton: educonnectCartButton);
 
-         case EduconnectAddRemoveButton educonnectAddRemoveButton:
-        return _EduconnectAddRemoveButtonWidget(educonnectAddRemoveButton: educonnectAddRemoveButton);
+      case EduconnectAddRemoveButton educonnectAddRemoveButton:
+        return _EduconnectAddRemoveButtonWidget(
+            educonnectAddRemoveButton: educonnectAddRemoveButton);
+      case EduconnectContainerButton educonnectContainerButton:
+        return _EduconnectContainerButtonWidget(
+          educonnectContainerButton: educonnectContainerButton,
+        );
 
       default:
         return const Text('Nothing');

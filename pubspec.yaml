@@ -64,6 +64,9 @@ flutter:
     - family: KumbhSans
       fonts:
         - asset: assets/fonts/Kumbh_Sans/KumbhSans-VariableFont_YOPQ,wght.ttf
+    - family: Educonnect
+      fonts:
+        - asset: assets/fonts/Educonnect.ttf
     - family: Almarai
       fonts:
         - asset: assets/fonts/Almarai/Almarai-Regular.ttf

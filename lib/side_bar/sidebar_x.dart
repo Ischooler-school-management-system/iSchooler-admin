@@ -5,6 +5,7 @@ import 'package:sidebarx/sidebarx.dart';
 import '../../../common/style/educonnect_colors.dart';
 import '../common/educonnect_assets.dart';
 import '../common/educonnect_constants.dart';
+import '../common/features/widgets/educonnect_icons.dart';
 import '../features/auth/logic/cubit/auth_cubit.dart';
 
 const primaryColor = canvasColor;
@@ -78,7 +79,7 @@ class ExampleSidebarX extends StatelessWidget {
         label: EduconnectConstants.localization().admins,
       ),
       SidebarXItem(
-        icon: Icons.person,
+        icon: EduconnectIcons.teacher_7,
         label: EduconnectConstants.localization().teachers,
       ),
       SidebarXItem(

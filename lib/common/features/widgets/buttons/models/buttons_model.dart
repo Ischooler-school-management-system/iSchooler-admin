@@ -16,7 +16,7 @@ class EduconnectElevatedButton extends IEduconnectButton {
 
   const EduconnectElevatedButton({
     required super.onPressed,
-     super.disabled,
+    super.disabled,
     required this.text,
     this.isLightMode = false,
     this.hasRoundedCorners = true,
@@ -46,8 +46,17 @@ class EduconnectTextButton extends IEduconnectButton {
     this.hasUnderline = false,
     this.style,
     this.widget,
-     super.disabled,
+    super.disabled,
     //required this.context,
+  });
+}
+
+class EduconnectContainerButton extends IEduconnectButton {
+  final Widget child;
+
+  const EduconnectContainerButton({
+    required this.child,
+    required super.onPressed,
   });
 }
 
@@ -58,8 +67,10 @@ class EduconnectIconButton extends IEduconnectButton {
   final bool hasBorder;
   final double? width;
   final double? height;
+  final bool isContainer;
 
   const EduconnectIconButton({
+    this.isContainer = false,
     required super.onPressed,
     required this.icon,
     this.isLightMode = false,
@@ -67,7 +78,7 @@ class EduconnectIconButton extends IEduconnectButton {
     this.width,
     this.height,
     this.color,
-     super.disabled,
+    super.disabled,
   });
 }
 
@@ -83,7 +94,7 @@ class EduconnectElevatedButtonWithIcon extends IEduconnectButton {
     required this.text,
     this.leftIcon = false,
     this.isLightMode = true,
-     super.disabled,
+    super.disabled,
   });
 }
 
@@ -97,7 +108,7 @@ class EduconnectCartButton extends IEduconnectButton {
     this.removeOnPressed,
     required super.onPressed,
     required this.text,
-     super.disabled,
+    super.disabled,
   });
 }
 
@@ -111,6 +122,6 @@ class EduconnectAddRemoveButton extends IEduconnectButton {
     required this.addButtonFunction,
     required this.subtractButtonFunction,
     required super.onPressed,
-     super.disabled,
+    super.disabled,
   });
 }

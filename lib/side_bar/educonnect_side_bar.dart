@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
@@ -17,9 +18,24 @@ const accentCanvasColor = EduconnectColors.grey;
 const white = Colors.white;
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
 
-class EduconnectSideBar extends StatelessWidget {
-  EduconnectSideBar({super.key});
+class SidebarCubit extends Cubit<int> {
+  final SidebarXController controller;
 
+  SidebarCubit({required this.controller}) : super(controller.selectedIndex);
+
+  void updateIndex(int newIndex) {
+    emit(newIndex);
+  }
+}
+
+class EduconnectSideBar extends StatefulWidget {
+  const EduconnectSideBar({super.key});
+
+  @override
+  State<EduconnectSideBar> createState() => _EduconnectSideBarState();
+}
+
+class _EduconnectSideBarState extends State<EduconnectSideBar> {
   final _controller = SidebarXController(selectedIndex: 0, extended: true);
 
   @override

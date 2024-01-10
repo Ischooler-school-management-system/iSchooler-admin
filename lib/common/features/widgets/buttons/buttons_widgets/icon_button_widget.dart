@@ -20,22 +20,38 @@ class _IconButtonWidget extends StatelessWidget {
         ? textColor
         : EduconnectColors.transparent; // Border color
 
+    CircleBorder? shape2;
+    if (educonnectIconButton.hasBorder) {
+      shape2 = CircleBorder(
+        side: BorderSide(
+          color: borderColor,
+        ),
+      );
+    } else if (educonnectIconButton.isContainer) {
+      const ContinuousRectangleBorder();
+    } else {
+      shape2 = null;
+    }
     return IconButton(
       style: IconButton.styleFrom(
-          foregroundColor: textColor,
-          backgroundColor: educonnectIconButton.color ?? buttonColor,
-          surfaceTintColor: educonnectIconButton.color ?? buttonColor,
-          minimumSize: Size(
-            educonnectIconButton.width ?? EduconnectConstants.educonnect_button_height,
-            educonnectIconButton.height ?? EduconnectConstants.educonnect_button_height,
-          ),
-          shape: educonnectIconButton.hasBorder
-              ? CircleBorder(
-                  side: BorderSide(
-                    color: borderColor,
-                  ),
-                )
-              : null),
+        foregroundColor: textColor,
+        backgroundColor: educonnectIconButton.isContainer
+            ? null
+            : educonnectIconButton.color ?? buttonColor,
+        surfaceTintColor: educonnectIconButton.isContainer
+            ? null
+            : educonnectIconButton.color ?? buttonColor,
+        padding: educonnectIconButton.isContainer ? EdgeInsets.zero : null,
+        minimumSize: educonnectIconButton.isContainer
+            ? null
+            : Size(
+                educonnectIconButton.width ??
+                    EduconnectConstants.educonnect_button_height,
+                educonnectIconButton.height ??
+                    EduconnectConstants.educonnect_button_height,
+              ),
+        shape: shape2,
+      ),
       onPressed: educonnectIconButton.onPressed,
       icon: educonnectIconButton.icon,
     );
