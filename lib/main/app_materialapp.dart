@@ -114,13 +114,18 @@ class StartingScreen extends StatefulWidget {
 class _StartingScreenState extends State<StartingScreen> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
+    if (FirebaseAuth.instance.currentUser != null) {
+      return const EduconnectSideBar();
+    } else {
+      return const AuthScreen();
+    }
+    /*return StreamBuilder(
         stream: FirebaseAuth.instance.authStateChanges(),
         builder: (context, authSnapshot) {
           // return homeScreen(authSnapshot);
           // if (authSnapshot.connectionState != ConnectionState.waiting) {
           if (authSnapshot.hasData) {
-            return EduconnectSideBar();
+            return const EduconnectSideBar();
           } else {
             return const AuthScreen();
           }
@@ -128,6 +133,6 @@ class _StartingScreenState extends State<StartingScreen> {
           return const EduconnectScreen();
         } */
         // },
-        );
+        ); */
   }
 }

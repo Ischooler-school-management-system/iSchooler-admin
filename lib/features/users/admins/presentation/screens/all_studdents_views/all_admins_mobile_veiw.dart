@@ -5,8 +5,8 @@ import '../../../../educonnect_dashboard_listtile.dart';
 import '../../../data/models/admin_model.dart';
 
 class AllAdminsMobileVeiw extends StatelessWidget {
-  final List<AdminModel> adminList;
-  const AllAdminsMobileVeiw({super.key, required this.adminList});
+  final List<AdminModel> adminsList;
+  const AllAdminsMobileVeiw({super.key, required this.adminsList});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class AllAdminsMobileVeiw extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ...adminList.map(
+          ...adminsList.map(
             (admin) {
               return EduconnecDashboardListTile(
                 title: admin.displayName,

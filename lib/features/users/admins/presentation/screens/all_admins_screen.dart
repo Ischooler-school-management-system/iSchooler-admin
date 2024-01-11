@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../../../../common/features/responsive/responsive.dart';
 import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
@@ -7,6 +8,7 @@ import '../../../../../common/features/widgets/buttons/models/buttons_model.dart
 import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../common/madpoly.dart';
+import '../../../../../common/style/educonnect_colors.dart';
 import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
@@ -21,6 +23,16 @@ class AllAdminsScreen extends StatefulWidget {
 }
 
 class _AllAdminsScreenState extends State<AllAdminsScreen> {
+  var adminModel = AdminModel(
+    id: '123',
+    displayName: 'Joe',
+    adminName: 'JohnDoe',
+    dateOfBirth: DateTime(2000, 1, 1),
+    phoneNumber: '1234567890',
+    address: '123 Main St',
+    gender: 'Male',
+    email: 'ziad@mail.com',
+  );
   @override
   void initState() {
     super.initState();
@@ -32,17 +44,9 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
   onAddButtonPressed() {
     // AdminModel newAdmin =
     // EduconnectNavigator.navigateToScreen(const AddAdminScreen());
+
     context.read<AllAdminsCubit>().addAdmin(
-          admin: AdminModel(
-            id: '123',
-            displayName: 'Joe',
-            adminName: 'JohnDoe',
-            dateOfBirth: DateTime(2000, 1, 1),
-            phoneNumber: '1234567890',
-            address: '123 Main St',
-            gender: 'Male',
-            email: 'ziad@mail.com',
-          ),
+          admin: adminModel,
         );
     // adminList.add(newAdmin);
     // setState(() {});
@@ -66,15 +70,15 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
       developer: "Ziad",
     );
     return EduconnectScreen(
-      enableflexibleScrolling: true,
+      enableScrolling: true,
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
           AllAdminsModel allAdminsModel = AllAdminsModel.empty();
-          List<AdminModel> adminList = [];
+          List<AdminModel> adminsList = [];
           if (state.isLoaded()) {
             allAdminsModel = state.alladminsModel;
-            adminList = allAdminsModel.items;
+            adminsList = allAdminsModel.items;
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -82,8 +86,18 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
               addButton(),
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
-                whenTrue: AllAdminsMobileVeiw(adminList: adminList),
-                whenFalse: AllAdminsWebVeiw(adminsList: adminList),
+                whenTrue: AllAdminsMobileVeiw(
+                  adminsList: List.generate(
+                    12,
+                    (index) => adminModel,
+                  ),
+                ),
+                whenFalse: const AllUsersWebVeiw(
+                    adminsList: [] /* List.generate(
+                  12,
+                  (index) => adminModel,
+                ), */
+                    ),
               ),
             ],
           );

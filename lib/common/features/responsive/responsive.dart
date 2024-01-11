@@ -23,8 +23,9 @@ class Responsive extends StatelessWidget {
   static bool isMobile() =>
       MediaQuery.of(currentContext!).size.width < mobileWidth;
 
-  static bool isCustomWidth({required double width}) =>
-      MediaQuery.of(currentContext!).size.width < width;
+  static bool isCustomWidth({required double width}) {
+    return MediaQuery.of(currentContext!).size.width < width;
+  }
 
   /* static bool isTablet() =>
       MediaQuery.of(currentContext!).size.width < tabletWidth &&

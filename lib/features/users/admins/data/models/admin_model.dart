@@ -75,17 +75,17 @@ class AdminModel extends Equatable {
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
       EduconnectConstants.localization().name: displayName,
-      EduconnectConstants.localization().id: id,
+      // EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
       EduconnectConstants.localization().phone_number: phoneNumber,
       EduconnectConstants.localization().address: address,
       EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-      'role': role,
+      // 'role': role,
     };
 
-    return limit != null ? truncateMap(limit, map) : map;
+    return limit != null && limit < map.length ? truncateMap(limit, map) : map;
   }
 
   AdminModel copyWith({

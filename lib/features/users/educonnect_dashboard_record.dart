@@ -31,7 +31,7 @@ class EduconnectDashboardRecord extends StatelessWidget {
           title: newMethod(),
           // onTap: () {},
           trailing: viewKeys
-              ? null
+              ? const SizedBox(width: 80)
               : Row(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -61,22 +61,19 @@ class EduconnectDashboardRecord extends StatelessWidget {
     );
   }
 
-  Container newMethod() {
-    return Container(
-      // padding: const EdgeInsets.all(8.0),
-      child: Row(
-        children: map.entries.map((MapEntry entry) {
-          if (viewKeys) {
-            return EduconnecDashboardListTile(title: entry.key, width: 150);
-          } else {
-            return EduconnecDashboardListTile(
-              title: entry.value.toString(),
-              isName: entry.key == EduconnectConstants.localization().name,
-              width: 150,
-            );
-          }
-        }).toList(),
-      ),
+  Widget newMethod() {
+    return Row(
+      children: map.entries.map((MapEntry entry) {
+        if (viewKeys) {
+          return EduconnecDashboardListTile(title: entry.key, width: 150);
+        } else {
+          return EduconnecDashboardListTile(
+            title: entry.value.toString(),
+            isName: entry.key == EduconnectConstants.localization().name,
+            width: 150,
+          );
+        }
+      }).toList(),
     );
   }
 

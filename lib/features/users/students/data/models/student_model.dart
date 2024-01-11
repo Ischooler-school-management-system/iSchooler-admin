@@ -89,7 +89,7 @@ class StudentModel extends Equatable {
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
       EduconnectConstants.localization().name: displayName,
-      EduconnectConstants.localization().id: id,
+      // EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
       EduconnectConstants.localization().phone_number: phoneNumber,
@@ -97,7 +97,7 @@ class StudentModel extends Equatable {
       EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
       EduconnectConstants.localization().payment_status: paymentStatus,
-      'role': role,
+      // 'role': role,
     };
 
     return limit != null ? truncateMap(limit, map) : map;

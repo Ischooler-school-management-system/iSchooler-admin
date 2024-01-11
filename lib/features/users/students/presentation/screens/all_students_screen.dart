@@ -6,7 +6,6 @@ import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../../../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
-import '../../../../../common/style/educonnect_colors.dart';
 import '../../data/models/all_students_model.dart';
 import '../../data/models/student_model.dart';
 import '../../logic/all_students_cubit/all_students_cubit.dart';
@@ -64,7 +63,7 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      enableflexibleScrolling: true,
+      enableScrolling: true,
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllStudentsCubit, AllStudentsState>(
         builder: (context, state) {
@@ -76,43 +75,13 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               addButton(),
-              EduconnectButton(
-                button: EduconnectIconButton(
-                  isContainer: true,
-                  icon: Container(
-                    width: 200,
-                    height: 400,
-                    color: EduconnectColors.blue,
-                    // padding: const EdgeInsets.all(8.0),
-                  ),
-                  onPressed: () {},
-                  // onPressed: onPressed,
-                ),
-              ),
-              IconButton(
-                // button: EduconnectIconButton(
-                // isContainer: true,
-
-                /*  style: IconButton.styleFrom(
-                  shape: const ContinuousRectangleBorder(),
-                  padding: EdgeInsets.zero,
-                ), */
-                icon: Container(
-                  width: 200,
-                  height: 400,
-                  color: EduconnectColors.red,
-                  // padding: const EdgeInsets.all(8.0),
-                ),
-                onPressed: () {},
-                // onPressed: onPressed,
-                // ),
-              ),
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
                 whenTrue: AllStudentsMobileVeiw(studentList: studentList),
-                whenFalse: AllStudentsWebVeiw(studentList: studentList),
+                whenFalse: const AllStudentsWebVeiw(studentList: []),
               ),
             ],
           );

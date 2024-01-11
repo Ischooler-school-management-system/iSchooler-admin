@@ -18,6 +18,12 @@ class AllAdminsModel extends Equatable {
     );
     return AllAdminsModel(items: items);
   }
+  Map<String, dynamic> toMap() {
+    return {
+      'items': items.map((item) => item.toMap()).toList(),
+    };
+  }
+
   @override
   List<Object> get props => [items];
 }

@@ -60,6 +60,7 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
       const ProfileTab(),
       // const SettingsTab(),
       const LanguagesScreen(),
+      const EmptyTab(),
     ];
     return EduconnectScreen(
       // key: _key,
@@ -165,5 +166,14 @@ class ProfileTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(EduconnectConstants.localization().profile);
+  }
+}
+
+class EmptyTab extends StatelessWidget {
+  const EmptyTab({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('Empty Tab');
   }
 }
