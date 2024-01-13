@@ -3,7 +3,8 @@ import '../features/responsive/responsive.dart';
 Map<String, dynamic> truncateMap(
     /* int length, */ Map<String, dynamic> originalMap) {
   List<MapEntry<String, dynamic>> entries = originalMap.entries.toList();
-  int limit = 0;
+  int length = entries.length;
+  int limit = length > 8 ? 8 : length;
 
   // if (usersList.isNotEmpty) {
   limit = originalMap.length;

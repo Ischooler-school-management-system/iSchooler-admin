@@ -75,7 +75,7 @@ class AdminModel extends Equatable {
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
       EduconnectConstants.localization().name: displayName,
-      // EduconnectConstants.localization().id: id,
+      EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
       EduconnectConstants.localization().phone_number: phoneNumber,
