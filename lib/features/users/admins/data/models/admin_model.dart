@@ -4,7 +4,7 @@ import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/functions/truncate_map.dart';
+import '../../../../../common/functions/truncate_dashboard_map.dart';
 
 class AdminModel extends Equatable {
   final String id;
@@ -82,10 +82,13 @@ class AdminModel extends Equatable {
       EduconnectConstants.localization().address: address,
       EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
+      // 'edit': 'edit',
+      // 'delete': 'delete',
       // 'role': role,
     };
 
-    return limit != null && limit < map.length ? truncateMap(limit, map) : map;
+    // return limit != null && limit < map.length ? truncateMap(limit, map) : map;
+    return truncateMap(map);
   }
 
   AdminModel copyWith({

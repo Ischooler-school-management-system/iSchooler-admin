@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/madpoly.dart';
 
 import '../../common/educonnect_constants.dart';
 import '../../common/features/widgets/buttons/educonnect_button.dart';
@@ -28,8 +27,7 @@ class EduconnectDashboardRecord extends StatelessWidget {
         child: ListTile(
           tileColor: isEven ? EduconnectColors.blue.withOpacity(0.3) : null,
           contentPadding: EdgeInsets.zero,
-          title: newMethod(),
-          // onTap: () {},
+          title: recordWidget(map, showKeys: viewKeys),
           trailing: viewKeys
               ? const SizedBox(width: 80)
               : Row(
@@ -37,20 +35,14 @@ class EduconnectDashboardRecord extends StatelessWidget {
                   children: [
                     IconButton(
                       icon: const Icon(Icons.edit),
-                      onPressed: () {
-                        // Handle edit button press
-                        Madpoly.print('Edit button pressed for Item ');
-                      },
+                      onPressed: () {},
                     ),
                     IconButton(
                       icon: const Icon(
                         Icons.delete,
                         color: Colors.red,
                       ),
-                      onPressed: () {
-                        // Handle delete button press
-                        Madpoly.print('Delete button pressed for Item ');
-                      },
+                      onPressed: () {},
                     ),
                   ],
                 ),
@@ -61,24 +53,22 @@ class EduconnectDashboardRecord extends StatelessWidget {
     );
   }
 
-  Widget newMethod() {
+// this widget takes the map add show its items in a row
+// if the showkeys is true it shows keys and if not it shows values
+  Widget recordWidget(Map childernsMap, {bool showKeys = false}) {
     return Row(
       children: map.entries.map((MapEntry entry) {
         if (viewKeys) {
-          return EduconnecDashboardListTile(title: entry.key, width: 150);
+          return EduconnecDashboardListTile(
+            title: entry.key,
+          );
         } else {
           return EduconnecDashboardListTile(
             title: entry.value.toString(),
             isName: entry.key == EduconnectConstants.localization().name,
-            width: 150,
           );
         }
       }).toList(),
     );
   }
-
-  /*  Widget _valuesRow(
-      {required}) {
-    return 
-  } */
 }

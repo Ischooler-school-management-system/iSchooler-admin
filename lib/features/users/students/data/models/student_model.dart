@@ -3,7 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
 import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/functions/truncate_map.dart';
+import '../../../../../common/functions/truncate_dashboard_map.dart';
 
 class StudentModel extends Equatable {
   final String id;
@@ -100,7 +100,8 @@ class StudentModel extends Equatable {
       // 'role': role,
     };
 
-    return limit != null ? truncateMap(limit, map) : map;
+    // return limit != null ? truncateMap(limit, map) : map;
+    return truncateMap(map);
   }
 
   StudentModel copyWith({

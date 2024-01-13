@@ -6,11 +6,11 @@ import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../../../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../admins/presentation/screens/all_studdents_views/all_admins_web_veiw.dart';
 import '../../data/models/all_students_model.dart';
 import '../../data/models/student_model.dart';
 import '../../logic/all_students_cubit/all_students_cubit.dart';
 import 'all_studdents_views/all_students_mobile_veiw.dart';
-import 'all_studdents_views/all_students_web_veiw.dart';
 
 class AllStudentsScreen extends StatefulWidget {
   const AllStudentsScreen({super.key});
@@ -23,8 +23,22 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AllStudentsCubit>().getAllStudentsData();
+    // context.read<AllStudentsCubit>().getAllStudentsData();
   }
+
+  var studentModel = StudentModel(
+    id: '123',
+    displayName: 'Joe',
+    studentName: 'JohnDoe',
+    dateOfBirth: DateTime(2000, 1, 1),
+    classId: '101',
+    gradeId: 'A',
+    phoneNumber: '1234567890',
+    address: '123 Main St',
+    paymentStatus: true,
+    gender: 'Male',
+    email: 'ziad@mail.com',
+  );
 
   int limit = 0;
 
@@ -32,20 +46,9 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
     // StudentModel newStudent =
     // EduconnectNavigator.navigateToScreen(const AddStudentScreen());
     context.read<AllStudentsCubit>().addStudent(
-          student: StudentModel(
-            id: '123',
-            displayName: 'Joe',
-            studentName: 'JohnDoe',
-            dateOfBirth: DateTime(2000, 1, 1),
-            classId: '101',
-            gradeId: 'A',
-            phoneNumber: '1234567890',
-            address: '123 Main St',
-            paymentStatus: true,
-            gender: 'Male',
-            email: 'ziad@mail.com',
-          ),
+          student: studentModel,
         );
+
     // studentList.add(newStudent);
     // setState(() {});
   }
@@ -63,14 +66,17 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      enableScrolling: true,
+      // enableScrolling: true,
+      enableflexibleScrolling: true,
+
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllStudentsCubit, AllStudentsState>(
         builder: (context, state) {
-          AllStudentsModel allStudentsModel = AllStudentsModel.empty();
+          AllStudentsModel allStudentsModel = AllStudentsModel(
+              items: List.generate(20, (index) => studentModel));
           List<StudentModel> studentList = [];
           if (state.isLoaded()) {
-            allStudentsModel = state.allstudentsModel;
+            // allStudentsModel = state.allstudentsModel;
             studentList = allStudentsModel.items;
           }
           return Column(
@@ -81,7 +87,9 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
                 whenTrue: AllStudentsMobileVeiw(studentList: studentList),
-                whenFalse: const AllStudentsWebVeiw(studentList: []),
+                whenFalse: AllUsersWebVeiw(
+                  usersList: allStudentsModel.toDisplayList(),
+                ),
               ),
             ],
           );

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_widget_from_html/flutter_widget_from_html.dart';
 
 import '../../../../../common/features/responsive/responsive.dart';
 import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
@@ -8,7 +7,6 @@ import '../../../../../common/features/widgets/buttons/models/buttons_model.dart
 import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../../common/style/educonnect_colors.dart';
 import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
@@ -36,15 +34,10 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
   @override
   void initState() {
     super.initState();
-    context.read<AllAdminsCubit>().getAllAdminsData();
+    // context.read<AllAdminsCubit>().getAllAdminsData();
   }
 
-  int limit = 0;
-
   onAddButtonPressed() {
-    // AdminModel newAdmin =
-    // EduconnectNavigator.navigateToScreen(const AddAdminScreen());
-
     context.read<AllAdminsCubit>().addAdmin(
           admin: adminModel,
         );
@@ -52,11 +45,17 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
     // setState(() {});
   }
 
+  /// A function that creates a button that adds a new user to the system.
   EduconnectButton addButton() {
     return EduconnectButton(
       button: EduconnectElevatedButton(
+        /// A function that is called when the add button is pressed.
         onPressed: onAddButtonPressed,
+
+        /// The text that appears on the button.
         text: 'Add Admin',
+
+        /// The width of the button.
         width: 200,
       ),
     );
@@ -69,35 +68,34 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
       tag: 'all_admins_screen > build',
       developer: "Ziad",
     );
+
     return EduconnectScreen(
       enableScrolling: true,
+      // enableflexibleScrolling: true,
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
-          AllAdminsModel allAdminsModel = AllAdminsModel.empty();
-          List<AdminModel> adminsList = [];
+          // AllAdminsModel allAdminsModel = AllAdminsModel.empty();
+          AllAdminsModel allAdminsModel =
+              AllAdminsModel(items: List.generate(20, (index) => adminModel));
           if (state.isLoaded()) {
-            allAdminsModel = state.alladminsModel;
-            adminsList = allAdminsModel.items;
+            // allAdminsModel = state.alladminsModel;
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
               addButton(),
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
                 whenTrue: AllAdminsMobileVeiw(
-                  adminsList: List.generate(
-                    12,
-                    (index) => adminModel,
-                  ),
+                  adminsList: allAdminsModel.items,
                 ),
-                whenFalse: const AllUsersWebVeiw(
-                    adminsList: [] /* List.generate(
-                  12,
-                  (index) => adminModel,
-                ), */
-                    ),
+                whenFalse: AllUsersWebVeiw(
+                  // usersList: [],
+                  usersList: allAdminsModel.toDisplayList(),
+                ),
+                // whenFalse: testFunction(allAdminsModel.toDisplayList()),
               ),
             ],
           );

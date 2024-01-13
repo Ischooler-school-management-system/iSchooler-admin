@@ -27,7 +27,7 @@ class EduconnectFlexibleScrollWidget extends StatelessWidget {
                   hasMinHeight ? constraints.minHeight : constraints.maxHeight,
             ),
             child: IntrinsicHeight(
-              child: child, // Build the body
+              child: SingleChildScrollView(child: child), // Build the body
             ),
           ),
         );

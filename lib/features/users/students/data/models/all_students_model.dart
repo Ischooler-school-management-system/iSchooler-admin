@@ -18,6 +18,16 @@ class AllStudentsModel extends Equatable {
     );
     return AllStudentsModel(items: items);
   }
+  Map<String, dynamic> toMap() {
+    return {
+      'items': items.map((item) => item.toMap()).toList(),
+    };
+  }
+
+  List<Map<String, dynamic>> toDisplayList() {
+    return items.map((item) => item.toDisplayMap()).toList();
+  }
+
   @override
   List<Object> get props => [items];
 }

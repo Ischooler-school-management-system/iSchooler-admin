@@ -24,6 +24,10 @@ class AllAdminsModel extends Equatable {
     };
   }
 
+  List<Map<String, dynamic>> toDisplayList() {
+    return items.map((item) => item.toDisplayMap()).toList();
+  }
+
   @override
   List<Object> get props => [items];
 }

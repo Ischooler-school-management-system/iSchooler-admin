@@ -17,22 +17,22 @@ class AuthRepository {
         _studentsRepository = studentsRepository,
         _authNetwork = authNetwork;
   final FirebaseAuth instance = FirebaseAuth.instance;
-  Future<void> _handleAuthOperation(
+  Future<StudentModel> _handleAuthOperation(
     Future<User?> Function() authOperation,
     String tag, {
     required String email,
     required String password,
   }) async {
+    StudentModel studentsModel = StudentModel.empty();
     try {
       final User? firebaseStudents = await authOperation();
 
       if (firebaseStudents != null) {
-        StudentModel studentsModel = StudentModel(
+        studentsModel = StudentModel(
           id: firebaseStudents.uid,
           email: firebaseStudents.email ?? '',
           displayName: firebaseStudents.displayName ?? '',
         );
-        _studentsRepository.addStudent(student: studentsModel);
       }
     } catch (e) {
       _alertHandlingRepository.addError(
@@ -42,10 +42,11 @@ class AuthRepository {
         showToast: true,
       );
     }
+    return studentsModel;
   }
 
   Future<void> signUp({required String email, required String password}) async {
-    await _handleAuthOperation(
+    StudentModel studentsModel = await _handleAuthOperation(
       () => _authNetwork.signUp(
         email: email,
         password: password,
@@ -54,6 +55,8 @@ class AuthRepository {
       email: email,
       password: password,
     );
+
+    _studentsRepository.addStudent(student: studentsModel);
   }
 
   Future<void> signIn({required String email, required String password}) async {

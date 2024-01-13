@@ -1,17 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:school_admin/common/features/widgets/educonnect_screen.dart';
 
 import '../common/navigation/router.export.dart';
 import '../common/style/educonnect_theme_data.dart';
-import '../features/auth/presentation/auth/screens/auth_screen.dart';
 import '../features/auth/settings/language/language_bloc/language_bloc.dart';
 import '../generated/l10n.dart';
-import '../side_bar/educonnect_side_bar.dart';
+import 'starting_screen.dart';
 
 class AppMaterialApp extends StatelessWidget {
   final AsyncSnapshot<int> languageSnapshot;
@@ -101,38 +98,4 @@ TransitionBuilder materialAppBuilder() {
       );
     },
   );
-}
-
-class StartingScreen extends StatefulWidget {
-  /// this screen is only for deciding the home screen
-  const StartingScreen({super.key});
-
-  @override
-  State<StartingScreen> createState() => _StartingScreenState();
-}
-
-class _StartingScreenState extends State<StartingScreen> {
-  @override
-  Widget build(BuildContext context) {
-    if (FirebaseAuth.instance.currentUser != null) {
-      return const EduconnectSideBar();
-    } else {
-      return const AuthScreen();
-    }
-    /*return StreamBuilder(
-        stream: FirebaseAuth.instance.authStateChanges(),
-        builder: (context, authSnapshot) {
-          // return homeScreen(authSnapshot);
-          // if (authSnapshot.connectionState != ConnectionState.waiting) {
-          if (authSnapshot.hasData) {
-            return const EduconnectSideBar();
-          } else {
-            return const AuthScreen();
-          }
-        } /* else {
-          return const EduconnectScreen();
-        } */
-        // },
-        ); */
-  }
 }
