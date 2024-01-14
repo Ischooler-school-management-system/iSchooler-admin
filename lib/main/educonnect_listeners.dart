@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:school_admin/common/navigation/routes.dart';
+import 'package:school_admin/features/auth/logic/cubit/auth_cubit.dart';
 
 import 'bloc_providers.dart';
 import '../common/educonnect_constants.dart';
@@ -11,13 +13,16 @@ import '../common/features/loading/presentation/loading_popup.dart';
 import '../common/madpoly.dart';
 import '../common/navigation/educonnect_navi.dart';
 
-class AppListeners extends StatelessWidget {
+class EduconnectListeners extends StatelessWidget {
   final Widget child;
-  const AppListeners({super.key, required this.child});
+  const EduconnectListeners({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
     return listOfBlocProviders(
+        child: BlocListener<AuthCubit, AuthState>(
+      listenWhen: (previous, current) => previous.status != current.status,
+      listener: authListener,
       child: BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
         listener: errorListener,
         listenWhen: (previous, current) {
@@ -30,7 +35,28 @@ class AppListeners extends StatelessWidget {
           child: child,
         ),
       ),
-    );
+    ));
+  }
+
+  void authListener(context, state) {
+    Madpoly.print('state = $state',
+        tag: 'starting_screen > ', developer: "Ziad");
+    SmartDialog.showToast('state = $state');
+
+    // if (state.isAuthenticated()) {
+    if (state.status == AuthStatus.authenticated) {
+      Madpoly.print('isAuthenticated',
+          tag: 'starting_screen > ', developer: "Ziad");
+      // User is authenticated, navigate to home screen
+      EduconnectNavigator.push(Routes.sideBarScreen, replace: true);
+      // } else if (state.isUnauthenticated()) {
+    } else if (state.status == AuthStatus.unauthenticated) {
+      Madpoly.print('isUnauthenticated',
+          tag: 'starting_screen > ', developer: "Ziad");
+
+      // User is signed out, navigate to authentication screen
+      EduconnectNavigator.push(Routes.authScreen, replace: true);
+    }
   }
 
   void errorListener(BuildContext context, ErrorHandlingState state) {

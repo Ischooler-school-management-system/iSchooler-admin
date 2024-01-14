@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/common/features/responsive/responsive.dart';
 import 'package:school_admin/features/auth/presentation/signup/screens/sign_up_password_screen.dart';
 import 'package:school_admin/features/users/students/presentation/screens/add_student_screen.dart';
+import 'package:school_admin/side_bar/educonnect_side_bar.dart';
 
 import '../../features/auth/presentation/auth/screens/auth_screen.dart';
 import '../../features/auth/presentation/signin/screens/sign_in_screen.dart';
@@ -22,7 +24,7 @@ abstract class EduconnectNavigator {
 
   static PageRouteBuilder<dynamic> slideNavigation(
       {required Widget screen, bool hasAnimation = true}) {
-    return hasAnimation
+    return hasAnimation && Responsive.isMobile()
         ? PageRouteBuilder(
             pageBuilder: (_, animation, secondaryAnimation) => screen,
             transitionDuration: const Duration(milliseconds: 300),
@@ -95,6 +97,8 @@ abstract class EduconnectNavigator {
         return slideNavigation(screen: const SignupPasswordScreen());
       case Routes.addStudentScreen:
         return slideNavigation(screen: const AddStudentScreen());
+      case Routes.sideBarScreen:
+        return slideNavigation(screen: const EduconnectSideBar());
       default:
         {
           return slideNavigation(screen: const AuthScreen());

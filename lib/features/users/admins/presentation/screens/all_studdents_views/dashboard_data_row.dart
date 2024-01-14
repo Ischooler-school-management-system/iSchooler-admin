@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../common/educonnect_assets.dart';
-import '../../../../../../common/educonnect_constants.dart';
 import '../../../../../../common/features/widgets/educonnect_image_widget.dart';
 import '../../../../../../common/style/educonnect_colors.dart';
 

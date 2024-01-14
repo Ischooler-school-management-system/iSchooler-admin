@@ -7,8 +7,8 @@ import 'common/di.dart';
 import 'common/educonnect_local_settings.dart';
 import 'common/madpoly.dart';
 import 'firebase_options.dart';
-import 'main/app_listeners.dart';
-import 'main/app_materialapp.dart';
+import 'main/educonnect_listeners.dart';
+import 'main/educonnect_materialapp.dart';
 
 /// app initial settings:
 /// inside main:
@@ -91,7 +91,7 @@ class MyApp extends StatelessWidget {
         BehaviorSubject<int>.seeded(-1);
 
     /// AppListeners is the widget that contains all listeners needed on the starting of the app
-    return AppListeners(
+    return EduconnectListeners(
       /// setting up ScreenUtil(2):
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -104,7 +104,7 @@ class MyApp extends StatelessWidget {
             stream: languageSubject.stream,
             initialData: currentLang,
             builder: (context, AsyncSnapshot<int> snapshot) {
-              return AppMaterialApp(
+              return EduconnectMaterialApp(
                 languageSnapshot: snapshot,
                 currentLang: currentLang,
               );

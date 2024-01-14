@@ -1,40 +1,52 @@
 part of 'auth_cubit.dart';
-enum AuthStatus { init, updated, loaded, failed }
-// @immutable
+
+enum AuthStatus { init, authenticated, unauthenticated }
 
 class AuthState extends Equatable {
-  final AuthModel authModel;
   final AuthStatus status;
 
   const AuthState({
-    required this.authModel,
     required this.status,
   });
 
   factory AuthState.init() {
-    return AuthState(
-      authModel: AuthModel.empty(),
+    return const AuthState(
       status: AuthStatus.init,
     );
   }
 
-  AuthState updateAuth(AuthModel authModel) {
-    return _copyWith(
-      authModel: authModel,
-      status: AuthStatus.loaded,
+  AuthState updateAuth() {
+    var copyWith = _copyWith(
+      status: AuthStatus.authenticated,
     );
+    Madpoly.print(
+      'new state = $copyWith',
+      tag: 'auth_state > updateauth',
+      developer: "Ziad",
+    );
+    return copyWith;
+  }
+
+  AuthState updateUnauth() {
+    var copyWith = _copyWith(
+      status: AuthStatus.unauthenticated,
+    );
+    Madpoly.print(
+      'new state = $copyWith',
+      tag: 'auth_state > updateUnauth',
+      developer: "Ziad",
+    );
+    return copyWith;
   }
 
   AuthState _copyWith({
-    AuthModel? authModel,
     AuthStatus? status,
   }) {
-    return AuthState(
-      authModel: authModel ?? this.authModel,
-      status: status ?? this.status,
-    );
+    return AuthState(status: status ?? this.status);
   }
 
+  bool isAuthenticated() => status == AuthStatus.authenticated;
+  bool isUnauthenticated() => status == AuthStatus.unauthenticated;
   @override
-  List<Object> get props => [authModel];
+  List<Object> get props => [status];
 }

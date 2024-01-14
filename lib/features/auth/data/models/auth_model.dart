@@ -1,4 +1,4 @@
 // don't forget Equatable
-class AuthModel{
+class AuthModel {
   AuthModel.empty();
 }

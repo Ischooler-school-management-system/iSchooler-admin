@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
@@ -6,15 +7,16 @@ import 'package:rxdart/rxdart.dart';
 
 import '../common/navigation/router.export.dart';
 import '../common/style/educonnect_theme_data.dart';
+import '../features/auth/presentation/auth/screens/auth_screen.dart';
 import '../features/auth/settings/language/language_bloc/language_bloc.dart';
 import '../generated/l10n.dart';
-import 'starting_screen.dart';
+import '../side_bar/educonnect_side_bar.dart';
 
-class AppMaterialApp extends StatelessWidget {
+class EduconnectMaterialApp extends StatelessWidget {
   final AsyncSnapshot<int> languageSnapshot;
   final int currentLang;
 
-  const AppMaterialApp({
+  const EduconnectMaterialApp({
     super.key,
     required this.languageSnapshot,
     required this.currentLang,
@@ -68,7 +70,7 @@ class AppMaterialApp extends StatelessWidget {
           // to remove the debug banner showed in the screen
           debugShowCheckedModeBanner: false,
 
-          home: const StartingScreen(),
+          home: startingScreen(),
           // home: const TestScreen(),
 
           ///4. smart dialog:
@@ -78,6 +80,17 @@ class AppMaterialApp extends StatelessWidget {
         // });
       },
     );
+  }
+
+  Widget startingScreen() {
+    FirebaseAuth auth = FirebaseAuth.instance;
+    User? user = auth.currentUser;
+
+    if (user != null) {
+      return const EduconnectSideBar();
+    } else {
+      return const AuthScreen();
+    }
   }
 }
 

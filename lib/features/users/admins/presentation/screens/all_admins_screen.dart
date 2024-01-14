@@ -38,9 +38,9 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
   }
 
   onAddButtonPressed() {
-    context.read<AllAdminsCubit>().addAdmin(
+/*     context.read<AllAdminsCubit>().addAdmin(
           admin: adminModel,
-        );
+        ); */
     // adminList.add(newAdmin);
     // setState(() {});
   }
