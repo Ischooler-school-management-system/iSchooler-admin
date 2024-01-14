@@ -360,6 +360,16 @@ class S {
     );
   }
 
+  /// `Please accept the terms and conditions`
+  String get accept_the_terms_and_conditions {
+    return Intl.message(
+      'Please accept the terms and conditions',
+      name: 'accept_the_terms_and_conditions',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Please Enter Your Email`
   String get email_validation_error {
     return Intl.message(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:school_admin/common/features/responsive/responsive.dart';
 import 'package:school_admin/features/auth/presentation/signup/screens/sign_up_password_screen.dart';
 import 'package:school_admin/features/users/students/presentation/screens/add_student_screen.dart';
+import 'package:school_admin/features/users/user_model.dart';
 import 'package:school_admin/side_bar/educonnect_side_bar.dart';
 
 import '../../features/auth/presentation/auth/screens/auth_screen.dart';
@@ -94,7 +95,10 @@ abstract class EduconnectNavigator {
       case Routes.signupScreen:
         return slideNavigation(screen: const SignupScreen());
       case Routes.signupPasswordScreen:
-        return slideNavigation(screen: const SignupPasswordScreen());
+        return slideNavigation(
+            screen: SignupPasswordScreen(
+          newUser: UserModel.empty(),
+        ));
       case Routes.addStudentScreen:
         return slideNavigation(screen: const AddStudentScreen());
       case Routes.sideBarScreen:

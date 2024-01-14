@@ -1,7 +1,7 @@
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../../common/network/educonnect_response.dart';
-import '../models/admin_model.dart';
+import '../../../user_model.dart';
 import '../models/all_admins_model.dart';
 import '../network/admins_network.dart';
 
@@ -14,9 +14,9 @@ class AdminRepository {
       : _alertHandlingRepository = alertHandlingRepository,
         _adminNetwork = adminNetwork;
 
-  Future<void> addAdmin({required AdminModel admin}) async {
+  Future<void> addUser({required UserModel user}) async {
     try {
-      _adminNetwork.addAdmin(admin: admin);
+      _adminNetwork.addUser(user: user);
       _alertHandlingRepository.addError(
         'Admin Data Stored Successfully',
         ErrorHandlingTypes.Alert,
@@ -36,7 +36,8 @@ class AdminRepository {
   Future<AllAdminsModel> getAllAdminsData() async {
     var admins = AllAdminsModel.empty();
     try {
-      EduconnectResponse response = await _adminNetwork.getAllAdminsData();
+      EduconnectResponse response =
+          await _adminNetwork.getAllUsersData(role: UserRole.admin);
       if (response.hasData) {
         admins = AllAdminsModel.fromMap(response.data);
         _alertHandlingRepository.addError(

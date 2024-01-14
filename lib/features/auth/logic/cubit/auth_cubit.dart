@@ -5,6 +5,7 @@ import '../../../../common/features/loading/data/models/loading_model.dart';
 import '../../../../common/features/loading/data/repo/loading_repo.dart';
 import '../../../../common/madpoly.dart';
 import '../../../users/admins/data/models/admin_model.dart';
+import '../../../users/user_model.dart';
 import '../../data/repo/auth_repo.dart';
 
 part 'auth_state.dart';
@@ -20,11 +21,12 @@ class AuthCubit extends Cubit<AuthState> {
         _loadingRepository = loadingRepository,
         super(AuthState.init());
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<void> signUp(
+      {required UserModel user, required String password}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    AdminModel adminModel =
-        await _authRepository.signUp(email: email, password: password);
-    if (adminModel != AdminModel.empty()) {
+    UserModel userModel =
+        await _authRepository.signUp(user: user, password: password);
+    if (userModel.id != '') {
       emit(state.updateAuth());
     }
     _loadingRepository.stopLoading();
@@ -32,9 +34,9 @@ class AuthCubit extends Cubit<AuthState> {
 
   Future<void> signIn({required String email, required String password}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    AdminModel adminModel =
+    UserModel userModel =
         await _authRepository.signIn(email: email, password: password);
-    if (adminModel != AdminModel.empty()) {
+    if (userModel.id != '') {
       emit(state.updateAuth());
     }
     _loadingRepository.stopLoading();

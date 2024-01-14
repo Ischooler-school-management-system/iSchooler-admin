@@ -7,11 +7,10 @@ import '../../../../../common/features/widgets/buttons/models/buttons_model.dart
 import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
 import '../../../../../common/madpoly.dart';
-import '../../data/models/admin_model.dart';
+import '../../../all_users_web_veiw.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
 import 'all_studdents_views/all_admins_mobile_veiw.dart';
-import '../../../all_users_web_veiw.dart';
 
 class AllAdminsScreen extends StatefulWidget {
   const AllAdminsScreen({super.key});
@@ -21,20 +20,10 @@ class AllAdminsScreen extends StatefulWidget {
 }
 
 class _AllAdminsScreenState extends State<AllAdminsScreen> {
-  var adminModel = AdminModel(
-    id: '123',
-    displayName: 'Joe allawi habib galbi',
-    userName: 'JohnDoe',
-    dateOfBirth: DateTime(2000, 1, 1),
-    phoneNumber: '1234567890',
-    address: '123 Main St',
-    gender: 'Male',
-    email: 'ziad@mail.com',
-  );
   @override
   void initState() {
     super.initState();
-    // context.read<AllAdminsCubit>().getAllAdminsData();
+    context.read<AllAdminsCubit>().getAllAdminsData();
   }
 
   onAddButtonPressed() {
@@ -73,16 +62,29 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
     );
 
     return EduconnectScreen(
-      enableScrolling: true,
-      // enableflexibleScrolling: true,
+      // enableScrolling: true,
+      enableflexibleScrolling: true,
       // padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
-          // AllAdminsModel allAdminsModel = AllAdminsModel.empty();
-          AllAdminsModel allAdminsModel =
-              AllAdminsModel(items: List.generate(20, (index) => adminModel));
+          AllAdminsModel allAdminsModel = AllAdminsModel.empty();
+          /* AllAdminsModel allAdminsModel = AllAdminsModel(
+            items: List.generate(
+              60,
+              (index) => AdminModel(
+                id: '$index',
+                displayName: 'Joe allawi habib galbi',
+                userName: 'JohnDoe',
+                dateOfBirth: DateTime(2000, 1, 1),
+                phoneNumber: '1234567890',
+                address: '123 Main St',
+                gender: 'Male',
+                email: 'ziad@mail.com',
+              ),
+            ),
+          ); */
           if (state.isLoaded()) {
-            // allAdminsModel = state.alladminsModel;
+            allAdminsModel = state.alladminsModel;
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,

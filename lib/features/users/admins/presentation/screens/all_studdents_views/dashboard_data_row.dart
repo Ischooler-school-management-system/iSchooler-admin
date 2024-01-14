@@ -48,11 +48,14 @@ class DashboardDataRow {
   static Widget textCellWidget(String value) {
     // return EduconnecDashboardListTile(title: value, isName: isName);
 
-    return Text(
-      value,
-      maxLines: 1,
-      textAlign: TextAlign.center,
-      overflow: TextOverflow.ellipsis,
+    return Align(
+      alignment: Alignment.center,
+      child: Text(
+        value,
+        maxLines: 1,
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
+      ),
     );
   }
 

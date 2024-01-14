@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:school_admin/test_screen.dart';
 
 import '../common/educonnect_constants.dart';
 import '../common/features/error_handling/data/models/error_handling_model.dart';
@@ -55,6 +56,7 @@ class EduconnectListeners extends StatelessWidget {
 
       // User is signed out, navigate to authentication screen
       EduconnectNavigator.push(Routes.authScreen, replace: true);
+      // EduconnectNavigator.navigateToScreen(const TestScreen(), replace: true);
     }
   }
 

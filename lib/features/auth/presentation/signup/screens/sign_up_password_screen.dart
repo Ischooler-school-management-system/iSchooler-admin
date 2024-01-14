@@ -3,11 +3,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
+import '../../../../users/user_model.dart';
 import '../../auth/widgets/auth_header_widget.dart';
 import '../widgets/signup_password_form.dart';
 
 class SignupPasswordScreen extends StatefulWidget {
-  const SignupPasswordScreen({super.key});
+  const SignupPasswordScreen({super.key, required this.newUser});
+  final UserModel newUser;
 
   @override
   State<SignupPasswordScreen> createState() => _SignupScreenState();
@@ -40,6 +42,7 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
                 children: [
                   SignupPasswordForm(
                     onIsKeyboardStatusChanged: onIsKeyboardStatusChanged,
+                    newUser: widget.newUser,
                   ),
                 ],
               ),

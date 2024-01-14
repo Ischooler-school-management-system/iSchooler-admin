@@ -30,6 +30,7 @@
   "enter_phone_number": "رقم الهاتف",
   "enter_name": "الأسم",
   "enter_password": "كلمة المرور",
+  "accept_the_terms_and_conditions": "يرجى قبول الشروط والأحكام",
   "email_validation_error": "الرجاء إدخال بريدك الإلكتروني",
   "email_invalid_error": "الرجاء إدخال بريد إلكتروني صحيح مثل example@gmail.com",
   "password_validation_error": "الرجاء إدخال كلمة المرور",

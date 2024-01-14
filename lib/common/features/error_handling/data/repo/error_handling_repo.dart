@@ -19,6 +19,7 @@ class ErrorHandlingRepository {
   Future<void> addError(
     String message,
     ErrorHandlingTypes type, {
+    String? developerMessage,
     String? tag,
     bool showToast = false,
   }) async {
@@ -39,7 +40,7 @@ class ErrorHandlingRepository {
         showToast: (showToast && message.isNotEmpty));
 
     Madpoly.print(
-      error,
+      '$error , developerMessage = $developerMessage',
       developer: "Ahmed",
       isInspect: true,
       isLog: true,

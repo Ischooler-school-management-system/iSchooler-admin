@@ -23,7 +23,7 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   @override
   void initState() {
     super.initState();
-    // context.read<AllStudentsCubit>().getAllStudentsData();
+    context.read<AllStudentsCubit>().getAllStudentsData();
   }
 
   var studentModel = StudentModel(
@@ -72,12 +72,11 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllStudentsCubit, AllStudentsState>(
         builder: (context, state) {
-          AllStudentsModel allStudentsModel = AllStudentsModel(
-              items: List.generate(20, (index) => studentModel));
-          List<StudentModel> studentList = [];
+          AllStudentsModel allStudentsModel = AllStudentsModel.empty();
+          // AllStudentsModel allStudentsModel = AllStudentsModel(
+          // items: List.generate(20, (index) => studentModel));
           if (state.isLoaded()) {
-            // allStudentsModel = state.allstudentsModel;
-            studentList = allStudentsModel.items;
+            allStudentsModel = state.allstudentsModel;
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -86,7 +85,8 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
               addButton(),
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
-                whenTrue: AllStudentsMobileVeiw(studentList: studentList),
+                whenTrue:
+                    AllStudentsMobileVeiw(studentList: allStudentsModel.items),
                 whenFalse: AllUsersWebVeiw(
                   allUsers: allStudentsModel,
                 ),

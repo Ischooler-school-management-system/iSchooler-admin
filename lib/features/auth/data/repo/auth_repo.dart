@@ -3,8 +3,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../common/madpoly.dart';
-import '../../../users/admins/data/models/admin_model.dart';
 import '../../../users/admins/data/repo/admins_repo.dart';
+import '../../../users/user_model.dart';
 import '../network/auth_network.dart';
 
 class AuthRepository {
@@ -19,21 +19,13 @@ class AuthRepository {
 
   final FirebaseAuth instance = FirebaseAuth.instance;
 
-  Future<AdminModel> _handleAuthOperation({
+  Future<UserModel> _handleAuthOperation({
     required Future<User?> Function() authOperation,
     required String tag,
   }) async {
-    AdminModel adminModel = AdminModel.empty();
+    User? firebaseUser;
     try {
-      final User? firebaseAdmins = await authOperation();
-
-      if (firebaseAdmins != null) {
-        adminModel = AdminModel(
-          id: firebaseAdmins.uid,
-          email: firebaseAdmins.email ?? '',
-          displayName: firebaseAdmins.displayName ?? '',
-        );
-      }
+      firebaseUser = await authOperation();
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -42,31 +34,39 @@ class AuthRepository {
         showToast: true,
       );
     }
-    return adminModel;
+    UserModel newUser = UserModel.empty();
+    if (firebaseUser != null) {
+      newUser = newUser.copyWith(
+        id: firebaseUser.uid,
+      );
+    }
+    return newUser;
   }
 
-  Future<AdminModel> signUp(
-      {required String email, required String password}) async {
-    AdminModel adminModel = await _handleAuthOperation(
-      authOperation: () {
-        return _authNetwork.signUp(email: email, password: password);
-      },
+  Future<UserModel> signUp(
+      {required UserModel user, required String password}) async {
+    UserModel newUser = await _handleAuthOperation(
+      authOperation: () =>
+          _authNetwork.signUp(email: user.email, password: password),
       tag: 'signup',
     );
-
-    _adminsRepository.addAdmin(admin: adminModel);
-    return adminModel;
+    // add the new created user id to the user data
+    newUser = user.copyWith(id: newUser.id);
+    // add the ful new user to firestore
+    _adminsRepository.addUser(user: newUser);
+    return newUser;
   }
 
-  Future<AdminModel> signIn(
+  Future<UserModel> signIn(
       {required String email, required String password}) async {
-    AdminModel adminModel = await _handleAuthOperation(
+    UserModel? newUser = await _handleAuthOperation(
       authOperation: () {
         return _authNetwork.signIn(email: email, password: password);
       },
       tag: 'signin',
     );
-    return adminModel;
+
+    return newUser;
   }
 
   Future<bool> signOut() async {

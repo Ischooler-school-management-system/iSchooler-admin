@@ -14,7 +14,7 @@ class AdminModel extends UserModel {
     super.gender = '',
     super.email = '',
     super.displayName = '',
-    super.role = 'admin',
+    super.role = UserRole.admin,
     super.profilePicture = '',
   });
 
@@ -28,7 +28,7 @@ class AdminModel extends UserModel {
       gender: '',
       email: '',
       displayName: '',
-      role: '',
+      role: UserRole.admin,
     );
   }
 
@@ -44,7 +44,7 @@ class AdminModel extends UserModel {
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       displayName: map['displayName'] ?? '',
-      role: map['role'] ?? 'admin',
+      role: map['role'] == UserRole.admin.name ? UserRole.admin : UserRole.none,
     );
   }
 
@@ -76,7 +76,7 @@ class AdminModel extends UserModel {
     String? gender,
     String? email,
     String? displayName,
-    String? role,
+    UserRole? role,
     String? profilePicture,
   }) {
     return AdminModel(
@@ -97,6 +97,6 @@ class AdminModel extends UserModel {
   String toString() {
     return 'AdminModel{adminId: $id, userName: $userName, dateOfBirth: $dateOfBirth, '
         'phoneNumber: $phoneNumber, address: $address, '
-        'gender: $gender, email: $email, displayName: $displayName, role: $role}';
+        'gender: $gender, email: $email, displayName: $displayName, role: ${role.name}}';
   }
 }

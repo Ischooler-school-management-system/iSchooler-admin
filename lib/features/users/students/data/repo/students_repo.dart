@@ -1,23 +1,23 @@
-import 'package:school_admin/common/network/educonnect_response.dart';
-import 'package:school_admin/features/users/students/data/models/all_students_model.dart';
-
 import '../../../../../common/features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/features/error_handling/data/repo/error_handling_repo.dart';
+import '../../../../../common/network/educonnect_response.dart';
+import '../../../admins/data/network/admins_network.dart';
+import '../../../user_model.dart';
+import '../models/all_students_model.dart';
 import '../models/student_model.dart';
-import '../network/students_network.dart';
 
 class StudentRepository {
   final ErrorHandlingRepository _alertHandlingRepository;
-  final StudentNetwork _studentNetwork;
+  final AdminNetwork _userNetwork;
 
-  StudentRepository(ErrorHandlingRepository alertHandlingRepository,
-      StudentNetwork studentNetwork)
+  StudentRepository(
+      ErrorHandlingRepository alertHandlingRepository, AdminNetwork userNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
-        _studentNetwork = studentNetwork;
+        _userNetwork = userNetwork;
 
   Future<void> addStudent({required StudentModel student}) async {
     try {
-      _studentNetwork.addStudent(student: student);
+      _userNetwork.addUser(user: student);
       _alertHandlingRepository.addError(
         'Student Data Stored Successfully',
         ErrorHandlingTypes.Alert,
@@ -37,7 +37,8 @@ class StudentRepository {
   Future<AllStudentsModel> getAllStudentsData() async {
     var students = AllStudentsModel.empty();
     try {
-      EduconnectResponse response = await _studentNetwork.getAllStudentsData();
+      EduconnectResponse response =
+          await _userNetwork.getAllUsersData(role: UserRole.student);
       if (response.hasData) {
         students = AllStudentsModel.fromMap(response.data);
         _alertHandlingRepository.addError(

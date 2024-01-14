@@ -7,13 +7,15 @@ import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/features/widgets/buttons/educonnect_button_export.dart';
 import '../../../../../common/features/widgets/fields/educonnect_password_field.dart';
+import '../../../../users/user_model.dart';
 
 class SignupPasswordForm extends StatefulWidget {
   final Function(bool) onIsKeyboardStatusChanged;
-
+  final UserModel newUser;
   const SignupPasswordForm({
     super.key,
     required this.onIsKeyboardStatusChanged,
+    required this.newUser,
   });
 
   @override
@@ -24,7 +26,7 @@ class _SignupFormState extends State<SignupPasswordForm> {
   bool isKeyboardOpen = false;
   FocusNode passwordFocusNode = FocusNode();
   FocusNode confirmPasswordFocusNode = FocusNode();
-  bool _isButtonDisabled = true;
+  // bool _isButtonDisabled = true;
 
   void _updateIsKeyboardOpen(bool newValue) {
     widget.onIsKeyboardStatusChanged(newValue);
@@ -49,11 +51,11 @@ class _SignupFormState extends State<SignupPasswordForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      onChanged: () {
+      /* onChanged: () {
         setState(() {
           _isButtonDisabled = !_formKey.currentState!.validate();
         });
-      },
+      }, */
       child: Column(
         children: [
           EduconnectPasswordField(
@@ -84,6 +86,6 @@ class _SignupFormState extends State<SignupPasswordForm> {
   onSignupButtonPressed() {
     context
         .read<AuthCubit>()
-        .signUp(email: 'ziad2@test.com', password: 'password');
+        .signUp(user: widget.newUser, password: 'password');
   }
 }

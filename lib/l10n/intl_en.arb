@@ -30,6 +30,7 @@
     "enter_phone_number": "Phone Number",
     "enter_name": "name",
     "enter_password": "Password",
+    "accept_the_terms_and_conditions": "Please accept the terms and conditions",
     "email_validation_error": "Please Enter Your Email",
     "email_invalid_error": "Please Enter Valid email as example@gmail.com",
     "password_validation_error": "Please Enter Your Password",

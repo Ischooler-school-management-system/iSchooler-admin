@@ -11,8 +11,8 @@ class StudentModel extends UserModel {
   final bool paymentStatus;
 
   const StudentModel({
-    required this.classId,
-    required this.gradeId,
+    this.classId = '',
+    this.gradeId = '',
     super.id = '-1',
     super.dateOfBirth,
     super.phoneNumber = '',
@@ -21,7 +21,7 @@ class StudentModel extends UserModel {
     super.gender = '',
     super.email = '',
     super.displayName = '',
-    super.role = 'student',
+    super.role = UserRole.student,
     super.userName = '',
     super.profilePicture = '',
   });
@@ -38,7 +38,7 @@ class StudentModel extends UserModel {
         gender: '',
         email: '',
         displayName: '',
-        role: '',
+        role: UserRole.student,
         profilePicture: '');
   }
 
@@ -57,7 +57,9 @@ class StudentModel extends UserModel {
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       displayName: map['displayName'] ?? '',
-      role: map['role'] ?? 'student',
+      role: map['role'] == UserRole.student.name
+          ? UserRole.student
+          : UserRole.none,
     );
   }
   @override
@@ -73,7 +75,7 @@ class StudentModel extends UserModel {
       'gender': gender,
       'email': email,
       'displayName': displayName,
-      'role': role,
+      'role': role.name,
       'profilePicture': profilePicture,
     };
   }
@@ -101,7 +103,7 @@ class StudentModel extends UserModel {
   String toString() {
     return 'StudentModel{studentId: $id, userName: $userName, dateOfBirth: $dateOfBirth, '
         'classId: $classId, gradeId: $gradeId, phoneNumber: $phoneNumber, address: $address, '
-        'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName, role: $role}';
+        'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName, role: ${role.name}}';
   }
 
   @override
@@ -117,7 +119,7 @@ class StudentModel extends UserModel {
     String? gender,
     String? email,
     String? displayName,
-    String? role,
+    UserRole? role,
     String? profilePicture, // Add this line
   }) {
     return StudentModel(

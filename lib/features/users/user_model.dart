@@ -4,6 +4,8 @@ import 'package:intl/intl.dart';
 import '../../common/educonnect_constants.dart';
 import '../../common/functions/truncate_dashboard_map.dart';
 
+enum UserRole { admin, teacher, student, none }
+
 class UserModel extends Equatable {
   final String id;
   final DateTime? dateOfBirth;
@@ -13,7 +15,7 @@ class UserModel extends Equatable {
   final String email;
   final String displayName;
   final String userName;
-  final String role; // Added role field
+  final UserRole role; // Added role field
   final String profilePicture;
   const UserModel({
     required this.userName,
@@ -38,11 +40,24 @@ class UserModel extends Equatable {
         gender: '',
         email: '',
         displayName: '',
-        role: '',
+        role: UserRole.none,
         profilePicture: '');
   }
 
   factory UserModel.fromMap(Map<String, dynamic> map) {
+    UserRole userRole = UserRole.none;
+    if (map['role'] != null) {
+      switch (map['role']) {
+        case 'admin':
+          userRole = UserRole.admin;
+        case 'teacher':
+          userRole = UserRole.teacher;
+        case 'student':
+          userRole = UserRole.student;
+        default:
+          userRole = UserRole.none;
+      }
+    }
     return UserModel(
       id: map['id'] ?? '',
       userName: map['userName'] ?? '',
@@ -54,7 +69,7 @@ class UserModel extends Equatable {
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       displayName: map['displayName'] ?? '',
-      role: map['role'] ?? 'student',
+      role: userRole,
       profilePicture: map['profilePicture'] ?? '',
     );
   }
@@ -67,7 +82,7 @@ class UserModel extends Equatable {
       'gender': gender,
       'email': email,
       'displayName': displayName,
-      'role': role,
+      'role': role.name,
       'profilePicture': profilePicture,
     };
   }
@@ -98,7 +113,7 @@ class UserModel extends Equatable {
     String? gender,
     String? email,
     String? displayName,
-    String? role,
+    UserRole? role,
     String? profilePicture,
   }) {
     return UserModel(

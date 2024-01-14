@@ -30,7 +30,7 @@ class AllAdminsCubit extends Cubit<AllAdminsState> {
   Future<void> addAdmin({required AdminModel admin}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _adminRepository.addAdmin(admin: admin);
+    await _adminRepository.addUser(user: admin);
     await getAllAdminsData();
     // _loadingRepository.stopLoading();
   }
