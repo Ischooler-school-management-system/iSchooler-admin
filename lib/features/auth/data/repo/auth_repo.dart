@@ -16,12 +16,12 @@ class AuthRepository {
       : _alertHandlingRepository = alertHandlingRepository,
         _adminsRepository = adminsRepository,
         _authNetwork = authNetwork;
+
   final FirebaseAuth instance = FirebaseAuth.instance;
-  Future<AdminModel> _handleAuthOperation(
-    Future<User?> Function() authOperation,
-    String tag, {
-    required String email,
-    required String password,
+
+  Future<AdminModel> _handleAuthOperation({
+    required Future<User?> Function() authOperation,
+    required String tag,
   }) async {
     AdminModel adminModel = AdminModel.empty();
     try {
@@ -45,30 +45,31 @@ class AuthRepository {
     return adminModel;
   }
 
-  Future<void> signUp({required String email, required String password}) async {
+  Future<AdminModel> signUp(
+      {required String email, required String password}) async {
     AdminModel adminModel = await _handleAuthOperation(
-      () => _authNetwork.signUp(
-        email: email,
-        password: password,
-      ),
-      'signup',
-      email: email,
-      password: password,
+      authOperation: () {
+        return _authNetwork.signUp(email: email, password: password);
+      },
+      tag: 'signup',
     );
 
     _adminsRepository.addAdmin(admin: adminModel);
+    return adminModel;
   }
 
-  Future<void> signIn({required String email, required String password}) async {
-    await _handleAuthOperation(
-      () => _authNetwork.signIn(email: email, password: password),
-      'signin',
-      email: email,
-      password: password,
+  Future<AdminModel> signIn(
+      {required String email, required String password}) async {
+    AdminModel adminModel = await _handleAuthOperation(
+      authOperation: () {
+        return _authNetwork.signIn(email: email, password: password);
+      },
+      tag: 'signin',
     );
+    return adminModel;
   }
 
-  Future<void> signOut() async {
+  Future<bool> signOut() async {
     try {
       await instance.signOut();
       Madpoly.print(
@@ -85,5 +86,6 @@ class AuthRepository {
         showToast: true,
       );
     }
+    return instance.currentUser == null;
   }
 }

@@ -42,7 +42,7 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
                   validator: EduconnectValidations.nameValidator,
                   onChanged: (value) {
                     setState(() {
-                      adminData = adminData.copyWith(adminName: value);
+                      adminData = adminData.copyWith(userName: value);
                     });
                   },
                 ),
@@ -54,7 +54,7 @@ class _AddAdminScreenState extends State<AddAdminScreen> {
 
                   onChanged: (value) {
                     setState(() {
-                      adminData = adminData.copyWith(adminName: value);
+                      adminData = adminData.copyWith(userName: value);
                     });
                   },
                 ),

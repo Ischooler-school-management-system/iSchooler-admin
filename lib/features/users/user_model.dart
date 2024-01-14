@@ -1,37 +1,37 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/functions/truncate_dashboard_map.dart';
-import '../../../user_model.dart';
+import '../../common/educonnect_constants.dart';
+import '../../common/functions/truncate_dashboard_map.dart';
 
-class StudentModel extends UserModel {
-  final String classId;
-  final String gradeId;
-  final bool paymentStatus;
-
-  const StudentModel({
-    required this.classId,
-    required this.gradeId,
-    super.id = '-1',
-    super.dateOfBirth,
-    super.phoneNumber = '',
-    super.address = '',
-    this.paymentStatus = false,
-    super.gender = '',
-    super.email = '',
-    super.displayName = '',
-    super.role = 'student',
-    super.userName = '',
-    super.profilePicture = '',
+class UserModel extends Equatable {
+  final String id;
+  final DateTime? dateOfBirth;
+  final String phoneNumber;
+  final String address;
+  final String gender;
+  final String email;
+  final String displayName;
+  final String userName;
+  final String role; // Added role field
+  final String profilePicture;
+  const UserModel({
+    required this.userName,
+    required this.id,
+    required this.dateOfBirth,
+    required this.phoneNumber,
+    required this.address,
+    required this.gender,
+    required this.email,
+    required this.displayName,
+    required this.role,
+    required this.profilePicture,
   });
-  @override
-  factory StudentModel.empty() {
-    return const StudentModel(
+
+  factory UserModel.empty() {
+    return const UserModel(
         id: '',
         userName: '',
-        classId: '',
-        gradeId: '',
         dateOfBirth: null,
         phoneNumber: '',
         address: '',
@@ -42,34 +42,28 @@ class StudentModel extends UserModel {
         profilePicture: '');
   }
 
-  factory StudentModel.fromMap(Map<String, dynamic> map) {
-    return StudentModel(
+  factory UserModel.fromMap(Map<String, dynamic> map) {
+    return UserModel(
       id: map['id'] ?? '',
       userName: map['userName'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
-      classId: map['classId'] ?? '',
-      gradeId: map['gradeId'] ?? '',
       phoneNumber: map['phoneNumber'] ?? '',
       address: map['address'] ?? '',
-      paymentStatus: map['paymentStatus'] ?? false,
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       displayName: map['displayName'] ?? '',
       role: map['role'] ?? 'student',
+      profilePicture: map['profilePicture'] ?? '',
     );
   }
-  @override
   Map<String, dynamic> toMap() {
     return {
       'userName': userName,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
-      'classId': classId,
-      'gradeId': gradeId,
       'phoneNumber': phoneNumber,
       'address': address,
-      'paymentStatus': paymentStatus,
       'gender': gender,
       'email': email,
       'displayName': displayName,
@@ -78,7 +72,6 @@ class StudentModel extends UserModel {
     };
   }
 
-  @override
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
       '': profilePicture,
@@ -90,27 +83,15 @@ class StudentModel extends UserModel {
       EduconnectConstants.localization().address: address,
       EduconnectConstants.localization().date_of_birth:
           DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-      EduconnectConstants.localization().payment_status:
-          paymentStatus.toString(),
     };
 
     return truncateMap(map);
   }
 
-  @override
-  String toString() {
-    return 'StudentModel{studentId: $id, userName: $userName, dateOfBirth: $dateOfBirth, '
-        'classId: $classId, gradeId: $gradeId, phoneNumber: $phoneNumber, address: $address, '
-        'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName, role: $role}';
-  }
-
-  @override
-  StudentModel copyWith({
+  UserModel copyWith({
     String? id,
     String? userName,
     DateTime? dateOfBirth,
-    String? classId,
-    String? gradeId,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,
@@ -118,27 +99,33 @@ class StudentModel extends UserModel {
     String? email,
     String? displayName,
     String? role,
-    String? profilePicture, // Add this line
+    String? profilePicture,
   }) {
-    return StudentModel(
+    return UserModel(
       id: id ?? this.id,
       userName: userName ?? this.userName,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      classId: classId ?? this.classId,
-      gradeId: gradeId ?? this.gradeId,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
-      paymentStatus: paymentStatus ?? this.paymentStatus,
       gender: gender ?? this.gender,
       email: email ?? this.email,
       displayName: displayName ?? this.displayName,
       role: role ?? this.role,
-      profilePicture: profilePicture ?? this.profilePicture, // Add this line
+      profilePicture: this.profilePicture,
     );
   }
 
   @override
   List<Object?> get props {
-    return super.props..addAll([userName, classId, gradeId, paymentStatus]);
+    return [
+      id,
+      dateOfBirth,
+      phoneNumber,
+      address,
+      gender,
+      email,
+      displayName,
+      role,
+    ];
   }
 }

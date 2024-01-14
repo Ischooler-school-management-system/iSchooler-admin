@@ -1,12 +1,12 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:equatable/equatable.dart';
-
+import '../../../all_users_model.dart';
 import 'admin_model.dart';
 
-class AllAdminsModel extends Equatable {
+class AllAdminsModel extends AllUsersModel {
+  @override
   final List<AdminModel> items;
 
-  const AllAdminsModel({required this.items});
+  const AllAdminsModel({required this.items}) : super(items: items);
   factory AllAdminsModel.empty() {
     return const AllAdminsModel(items: []);
   }
@@ -18,12 +18,14 @@ class AllAdminsModel extends Equatable {
     );
     return AllAdminsModel(items: items);
   }
+  @override
   Map<String, dynamic> toMap() {
     return {
       'items': items.map((item) => item.toMap()).toList(),
     };
   }
 
+  @override
   List<Map<String, dynamic>> toDisplayList() {
     return items.map((item) => item.toDisplayMap()).toList();
   }

@@ -28,7 +28,7 @@ class TestScreen extends StatelessWidget {
                         student: StudentModel(
                           id: '123',
                           displayName: 'ziad',
-                          studentName: 'Ziad Hesham',
+                          userName: 'Ziad Hesham',
                           dateOfBirth: DateTime(2000, 1, 1),
                           classId: '102',
                           gradeId: 'A',

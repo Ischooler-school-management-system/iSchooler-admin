@@ -38,7 +38,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
                   validator: EduconnectValidations.nameValidator,
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(studentName: value);
+                      studentData = studentData.copyWith(userName: value);
                     });
                   },
                 ),
@@ -50,7 +50,7 @@ class _AddStudentScreenState extends State<AddStudentScreen> {
 
                   onChanged: (value) {
                     setState(() {
-                      studentData = studentData.copyWith(studentName: value);
+                      studentData = studentData.copyWith(userName: value);
                     });
                   },
                 ),

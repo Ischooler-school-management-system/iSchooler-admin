@@ -11,7 +11,7 @@ import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
 import 'all_studdents_views/all_admins_mobile_veiw.dart';
-import 'all_studdents_views/all_admins_web_veiw.dart';
+import '../../../all_users_web_veiw.dart';
 
 class AllAdminsScreen extends StatefulWidget {
   const AllAdminsScreen({super.key});
@@ -23,8 +23,8 @@ class AllAdminsScreen extends StatefulWidget {
 class _AllAdminsScreenState extends State<AllAdminsScreen> {
   var adminModel = AdminModel(
     id: '123',
-    displayName: 'Joe',
-    adminName: 'JohnDoe',
+    displayName: 'Joe allawi habib galbi',
+    userName: 'JohnDoe',
     dateOfBirth: DateTime(2000, 1, 1),
     phoneNumber: '1234567890',
     address: '123 Main St',
@@ -46,17 +46,20 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
   }
 
   /// A function that creates a button that adds a new user to the system.
-  EduconnectButton addButton() {
-    return EduconnectButton(
-      button: EduconnectElevatedButton(
-        /// A function that is called when the add button is pressed.
-        onPressed: onAddButtonPressed,
+  Widget addButton() {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: EduconnectButton(
+        button: EduconnectElevatedButton(
+          /// A function that is called when the add button is pressed.
+          onPressed: onAddButtonPressed,
 
-        /// The text that appears on the button.
-        text: 'Add Admin',
+          /// The text that appears on the button.
+          text: 'Add Admin',
 
-        /// The width of the button.
-        width: 200,
+          /// The width of the button.
+          width: 200,
+        ),
       ),
     );
   }
@@ -72,7 +75,7 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
     return EduconnectScreen(
       enableScrolling: true,
       // enableflexibleScrolling: true,
-      padding: const EdgeInsets.all(8),
+      // padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
           // AllAdminsModel allAdminsModel = AllAdminsModel.empty();
@@ -93,7 +96,7 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
                 ),
                 whenFalse: AllUsersWebVeiw(
                   // usersList: [],
-                  usersList: allAdminsModel.toDisplayList(),
+                  allUsers: allAdminsModel,
                 ),
                 // whenFalse: testFunction(allAdminsModel.toDisplayList()),
               ),

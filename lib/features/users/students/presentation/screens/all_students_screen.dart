@@ -6,7 +6,7 @@ import '../../../../../common/features/widgets/buttons/educonnect_button.dart';
 import '../../../../../common/features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/features/widgets/educonnect_screen.dart';
-import '../../../admins/presentation/screens/all_studdents_views/all_admins_web_veiw.dart';
+import '../../../all_users_web_veiw.dart';
 import '../../data/models/all_students_model.dart';
 import '../../data/models/student_model.dart';
 import '../../logic/all_students_cubit/all_students_cubit.dart';
@@ -29,7 +29,7 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   var studentModel = StudentModel(
     id: '123',
     displayName: 'Joe',
-    studentName: 'JohnDoe',
+    userName: 'JohnDoe',
     dateOfBirth: DateTime(2000, 1, 1),
     classId: '101',
     gradeId: 'A',
@@ -88,7 +88,7 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
                 condition: Responsive.isMobile(),
                 whenTrue: AllStudentsMobileVeiw(studentList: studentList),
                 whenFalse: AllUsersWebVeiw(
-                  usersList: allStudentsModel.toDisplayList(),
+                  allUsers: allStudentsModel,
                 ),
               ),
             ],

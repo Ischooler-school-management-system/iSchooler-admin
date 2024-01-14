@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../common/educonnect_assets.dart';
-import '../../../../../../common/features/widgets/educonnect_image_widget.dart';
 import '../../../../../../common/style/educonnect_colors.dart';
 
 class DashboardDataRow {
@@ -23,7 +22,9 @@ class DashboardDataRow {
         ...map.entries.map((MapEntry<String, dynamic> map) {
           // bool isName = map.key == EduconnectConstants.localization().name;
 
-          return DataCell(cellWidget(map.value, isName: false));
+          return DataCell(map.value != ''
+              ? textCellWidget(map.value)
+              : imageCellWidget(map.value));
         }),
         DataCell(
           IconButton(
@@ -44,41 +45,32 @@ class DashboardDataRow {
     );
   }
 
-  static Widget cellWidget(String value, {bool isName = false}) {
+  static Widget textCellWidget(String value) {
     // return EduconnecDashboardListTile(title: value, isName: isName);
-    if (isName) {
-      return Row(
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            child: EduconnectImageWidget.asset(
-              url: EduconnectAssets.blankProfileImage,
-              circleShape: true,
-              width: 60,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8),
-            child: Text(
-              value,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      );
-    }
-    // return Text(value);
-    else {
-      return Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 8),
-        child: Text(
-          value,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
+
+    return Text(
+      value,
+      maxLines: 1,
+      textAlign: TextAlign.center,
+      overflow: TextOverflow.ellipsis,
+    );
+  }
+
+  static Widget imageCellWidget(String value) {
+    // return EduconnecDashboardListTile(title: value, isName: isName);
+
+    return Center(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 8.0),
+        child: CircleAvatar(
+          backgroundImage: AssetImage(EduconnectAssets.blankProfileImage),
         ),
-      );
-    }
+        /* EduconnectImageWidget.asset(
+          url: EduconnectAssets.blankProfileImage,
+          // circleShape: true,
+          width: 60,
+        ), */
+      ),
+    );
   }
 }

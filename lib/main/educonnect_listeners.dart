@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:school_admin/common/navigation/routes.dart';
-import 'package:school_admin/features/auth/logic/cubit/auth_cubit.dart';
 
-import 'bloc_providers.dart';
 import '../common/educonnect_constants.dart';
 import '../common/features/error_handling/data/models/error_handling_model.dart';
 import '../common/features/error_handling/logic/cubit/error_handling_cubit.dart';
@@ -12,6 +9,9 @@ import '../common/features/loading/logic/cubit/loading_cubit.dart';
 import '../common/features/loading/presentation/loading_popup.dart';
 import '../common/madpoly.dart';
 import '../common/navigation/educonnect_navi.dart';
+import '../common/navigation/routes.dart';
+import '../features/auth/logic/cubit/auth_cubit.dart';
+import 'bloc_providers.dart';
 
 class EduconnectListeners extends StatelessWidget {
   final Widget child;
@@ -38,10 +38,9 @@ class EduconnectListeners extends StatelessWidget {
     ));
   }
 
-  void authListener(context, state) {
+  void authListener(BuildContext context, AuthState state) {
     Madpoly.print('state = $state',
         tag: 'starting_screen > ', developer: "Ziad");
-    SmartDialog.showToast('state = $state');
 
     // if (state.isAuthenticated()) {
     if (state.status == AuthStatus.authenticated) {
