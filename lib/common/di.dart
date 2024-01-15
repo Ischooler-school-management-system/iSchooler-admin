@@ -2,14 +2,14 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../features/auth/data/network/auth_network.dart';
-import '../features/auth/data/repo/auth_repo.dart';
-import '../features/users/admins/data/network/admins_network.dart';
-import '../features/users/admins/data/repo/admins_repo.dart';
-import '../features/users/students/data/network/students_network.dart';
-import '../features/users/students/data/repo/students_repo.dart';
-import 'features/error_handling/data/repo/error_handling_repo.dart';
-import 'features/loading/data/repo/loading_repo.dart';
+import '../auth/data/network/auth_network.dart';
+import '../auth/data/repo/auth_repo.dart';
+import '../admin_features/users/admins/data/network/admins_network.dart';
+import '../admin_features/users/admins/data/repo/admins_repo.dart';
+import '../admin_features/users/students/data/network/students_network.dart';
+import '../admin_features/users/students/data/repo/students_repo.dart';
+import 'comon_features/error_handling/data/repo/error_handling_repo.dart';
+import 'comon_features/loading/data/repo/loading_repo.dart';
 
 /// Instance of Get It
 final GetIt getIt = GetIt.instance;

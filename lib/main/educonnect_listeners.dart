@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:school_admin/test_screen.dart';
 
 import '../common/educonnect_constants.dart';
-import '../common/features/error_handling/data/models/error_handling_model.dart';
-import '../common/features/error_handling/logic/cubit/error_handling_cubit.dart';
-import '../common/features/loading/logic/cubit/loading_cubit.dart';
-import '../common/features/loading/presentation/loading_popup.dart';
+import '../common/comon_features/error_handling/data/models/error_handling_model.dart';
+import '../common/comon_features/error_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/comon_features/loading/logic/cubit/loading_cubit.dart';
+import '../common/comon_features/loading/presentation/loading_popup.dart';
 import '../common/madpoly.dart';
 import '../common/navigation/educonnect_navi.dart';
 import '../common/navigation/routes.dart';
-import '../features/auth/logic/cubit/auth_cubit.dart';
+import '../auth/logic/cubit/auth_cubit.dart';
 import 'bloc_providers.dart';
 
 class EduconnectListeners extends StatelessWidget {

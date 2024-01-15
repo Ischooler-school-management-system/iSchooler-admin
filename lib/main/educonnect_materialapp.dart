@@ -8,8 +8,8 @@ import 'package:school_admin/test_screen.dart';
 
 import '../common/navigation/router.export.dart';
 import '../common/style/educonnect_theme_data.dart';
-import '../features/auth/presentation/auth/screens/auth_screen.dart';
-import '../features/auth/settings/language/language_bloc/language_bloc.dart';
+import '../auth/presentation/auth/screens/auth_screen.dart';
+import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../generated/l10n.dart';
 import '../side_bar/educonnect_side_bar.dart';
 

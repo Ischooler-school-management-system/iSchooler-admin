@@ -4,11 +4,11 @@ import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
 import '../common/educonnect_constants.dart';
-import '../common/features/widgets/educonnect_screen.dart';
+import '../common/comon_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';
-import '../features/auth/settings/language/presentation/screens/languages_screen.dart';
-import '../features/users/admins/presentation/screens/all_admins_screen.dart';
-import '../features/users/students/presentation/screens/all_students_screen.dart';
+import '../auth/settings/language/presentation/screens/languages_screen.dart';
+import '../admin_features/users/admins/presentation/screens/all_admins_screen.dart';
+import '../admin_features/users/students/presentation/screens/all_students_screen.dart';
 import 'sidebar_x.dart';
 
 const primaryColor = canvasColor;

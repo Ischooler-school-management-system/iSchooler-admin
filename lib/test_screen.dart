@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
-import 'common/features/widgets/buttons/educonnect_button.dart';
-import 'common/features/widgets/buttons/models/buttons_model.dart';
-import 'common/features/widgets/educonnect_screen.dart';
-import 'features/auth/logic/cubit/auth_cubit.dart';
-import 'features/users/admins/data/models/admin_model.dart';
-import 'features/users/students/data/models/student_model.dart';
+import 'common/comon_features/widgets/buttons/educonnect_button.dart';
+import 'common/comon_features/widgets/buttons/models/buttons_model.dart';
+import 'common/comon_features/widgets/educonnect_screen.dart';
+import '/auth/logic/cubit/auth_cubit.dart';
+import 'admin_features/users/admins/data/models/admin_model.dart';
+import 'admin_features/users/students/data/models/student_model.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});

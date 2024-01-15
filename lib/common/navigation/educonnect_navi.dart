@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/features/responsive/responsive.dart';
-import 'package:school_admin/features/auth/presentation/signup/screens/sign_up_password_screen.dart';
-import 'package:school_admin/features/users/students/presentation/screens/add_student_screen.dart';
-import 'package:school_admin/features/users/user_model.dart';
-import 'package:school_admin/side_bar/educonnect_side_bar.dart';
 
-import '../../features/auth/presentation/auth/screens/auth_screen.dart';
-import '../../features/auth/presentation/signin/screens/sign_in_screen.dart';
-import '../../features/auth/presentation/signup/screens/sign_up_screen.dart';
+import '../../admin_features/users/students/presentation/screens/add_student_screen.dart';
+import '../../admin_features/users/user_model.dart';
+import '../../auth/presentation/auth/screens/auth_screen.dart';
+import '../../auth/presentation/signin/screens/sign_in_screen.dart';
+import '../../auth/presentation/signup/screens/sign_up_password_screen.dart';
+import '../../auth/presentation/signup/screens/sign_up_screen.dart';
+import '../../side_bar/educonnect_side_bar.dart';
+import '../comon_features/responsive/responsive.dart';
 import '../educonnect_constants.dart';
 import 'routes.dart';
 
