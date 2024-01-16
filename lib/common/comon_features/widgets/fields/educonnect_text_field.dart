@@ -108,49 +108,46 @@ class EduconnectTextField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final bool isArabic = EduconnectConstants.isCurrentLocaleArabic();
-    return Padding(
-      padding: EdgeInsets.only(top: 10.h),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(
-              labelText ?? '',
-              style: EduconnectTextStyles.style16,
-            ),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Text(
+            labelText ?? '',
+            style: EduconnectTextStyles.style16,
           ),
-          Container(
-            // width: width ?? EduconnectConstants.educonnect_screen_width * 0.8,
-            padding: const EdgeInsets.all(8.0),
-            child: TextFormField(
-              selectionHeightStyle: BoxHeightStyle.max,
+        ),
+        Container(
+          // width: width ?? EduconnectConstants.educonnect_screen_width * 0.8,
+          padding: const EdgeInsets.all(8.0),
+          child: TextFormField(
+            selectionHeightStyle: BoxHeightStyle.max,
 
-              enabled: enabled,
-              textDirection: textDirection,
-              textAlign:
-                  textAlign ?? (isArabic ? TextAlign.right : TextAlign.left),
-              focusNode: focusNode,
-              controller: controller,
-              textCapitalization: textCapitalization,
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              onChanged: onChanged,
-              onEditingComplete: onEditingComplete,
-              onFieldSubmitted: onFieldSubmitted,
-              keyboardType: keyboardType,
-              obscureText: isObscureText,
-              //controller: textController,
-              onSaved: onSaved,
-              validator: validator,
-              maxLines: maxLines,
-              initialValue: initialValue,
-              textInputAction: textInputAction ?? TextInputAction.next,
-              decoration: decoration(),
-              // ),
-            ),
+            enabled: enabled,
+            textDirection: textDirection,
+            textAlign:
+                textAlign ?? (isArabic ? TextAlign.right : TextAlign.left),
+            focusNode: focusNode,
+            controller: controller,
+            textCapitalization: textCapitalization,
+            autovalidateMode: AutovalidateMode.onUserInteraction,
+            onChanged: onChanged,
+            onEditingComplete: onEditingComplete,
+            onFieldSubmitted: onFieldSubmitted,
+            keyboardType: keyboardType,
+            obscureText: isObscureText,
+            //controller: textController,
+            onSaved: onSaved,
+            validator: validator,
+            maxLines: maxLines,
+            initialValue: initialValue,
+            textInputAction: textInputAction ?? TextInputAction.next,
+            decoration: decoration(),
+            // ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

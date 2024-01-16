@@ -39,23 +39,25 @@ class EduconnectListeners extends StatelessWidget {
   }
 
   void authListener(BuildContext context, AuthState state) {
-    Madpoly.print('state = $state',
-        tag: 'starting_screen > ', developer: "Ziad");
-
-    // if (state.isAuthenticated()) {
-    if (state.status == AuthStatus.authenticated) {
-      Madpoly.print('isAuthenticated',
-          tag: 'starting_screen > ', developer: "Ziad");
-      // User is authenticated, navigate to home screen
-      EduconnectNavigator.push(Routes.sideBarScreen, replace: true);
-      // } else if (state.isUnauthenticated()) {
-    } else if (state.status == AuthStatus.unauthenticated) {
-      Madpoly.print('isUnauthenticated',
+    if (!EduconnectConstants.testMode) {
+      Madpoly.print('state = $state',
           tag: 'starting_screen > ', developer: "Ziad");
 
-      // User is signed out, navigate to authentication screen
-      EduconnectNavigator.push(Routes.authScreen, replace: true);
-      // EduconnectNavigator.navigateToScreen(const TestScreen(), replace: true);
+      // if (state.isAuthenticated()) {
+      if (state.status == AuthStatus.authenticated) {
+        Madpoly.print('isAuthenticated',
+            tag: 'starting_screen > ', developer: "Ziad");
+        // User is authenticated, navigate to home screen
+        EduconnectNavigator.push(Routes.sideBarScreen, replace: true);
+        // } else if (state.isUnauthenticated()) {
+      } else if (state.status == AuthStatus.unauthenticated) {
+        Madpoly.print('isUnauthenticated',
+            tag: 'starting_screen > ', developer: "Ziad");
+
+        // User is signed out, navigate to authentication screen
+        EduconnectNavigator.push(Routes.authScreen, replace: true);
+        // EduconnectNavigator.navigateToScreen(const TestScreen(), replace: true);
+      }
     }
   }
 

@@ -28,18 +28,18 @@ class LoadingPopup {
     SmartDialog.show(
       clickMaskDismiss: false,
       builder: (context) => Container(
-        width: 40.w,
-        height: 40.h,
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
             color: EduconnectColors.secondaryColor.withOpacity(0.6),
             borderRadius: BorderRadius.circular(15.0),
             shape: BoxShape.rectangle // Add rounded corners
             ),
-        child: Center(
+        child: const Center(
           child: SizedBox(
-            width: 25.w,
-            height: 25.h,
-            child: const SpinKitRing(
+            width: 25,
+            height: 25,
+            child: SpinKitRing(
               color: EduconnectColors.white,
               lineWidth: 3,
             ),

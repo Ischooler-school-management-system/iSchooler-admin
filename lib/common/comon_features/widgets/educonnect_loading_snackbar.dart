@@ -14,8 +14,8 @@ class EduconnectLoadingSnackbar extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.all(8.h),
-      padding: EdgeInsets.symmetric(
-          vertical: 12.h, horizontal: 16.w), // Adjust vertical padding
+      padding: const EdgeInsets.symmetric(
+          vertical: 12, horizontal: 16), // Adjust vertical padding
       decoration: BoxDecoration(
         color: EduconnectColors.secondaryColor,
         borderRadius: BorderRadius.circular(12),

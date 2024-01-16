@@ -6,6 +6,8 @@ import '../../../../../common/comon_features/widgets/buttons/educonnect_button.d
 import '../../../../../common/comon_features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
+import '../../../../../common/navigation/educonnect_navi.dart';
+import '../../../../../common/navigation/routes.dart';
 import '../../../all_users_web_veiw.dart';
 import '../../data/models/all_students_model.dart';
 import '../../data/models/student_model.dart';
@@ -45,12 +47,13 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   onAddButtonPressed() {
     // StudentModel newStudent =
     // EduconnectNavigator.navigateToScreen(const AddStudentScreen());
-    context.read<AllStudentsCubit>().addStudent(
+    /*  context.read<AllStudentsCubit>().addStudent(
           student: studentModel,
         );
-
+ */
     // studentList.add(newStudent);
     // setState(() {});
+    EduconnectNavigator.push(Routes.studentDetailsScreen);
   }
 
   EduconnectButton addButton() {

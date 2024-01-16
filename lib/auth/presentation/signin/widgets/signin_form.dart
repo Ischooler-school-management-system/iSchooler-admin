@@ -75,7 +75,7 @@ class _SigninFormState extends State<SigninForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: 'ziad2@test.com',
+            initialValue: 'ziad@admin.com',
             labelText: EduconnectConstants.localization().enter_email,
             validator: EduconnectValidations.emailValidator,
             suffixIcon: const Icon(Icons.person),

@@ -6,6 +6,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:school_admin/test_screen.dart';
 
+import '../common/educonnect_constants.dart';
 import '../common/navigation/router.export.dart';
 import '../common/style/educonnect_theme_data.dart';
 import '../auth/presentation/auth/screens/auth_screen.dart';
@@ -84,12 +85,16 @@ class EduconnectMaterialApp extends StatelessWidget {
   }
 
   Widget startingScreen() {
-    FirebaseAuth auth = FirebaseAuth.instance;
-    User? user = auth.currentUser;
-    if (user != null) {
-      return const EduconnectSideBar();
+    if (EduconnectConstants.testMode) {
+      return const TestScreen();
     } else {
-      return const AuthScreen();
+      FirebaseAuth auth = FirebaseAuth.instance;
+      User? user = auth.currentUser;
+      if (user != null) {
+        return const EduconnectSideBar();
+      } else {
+        return const AuthScreen();
+      }
     }
     // return const TestScreen();
   }

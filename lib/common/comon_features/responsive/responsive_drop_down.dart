@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 
 import 'responsive.dart';
 
-class ResponsiveDropDownRow extends StatelessWidget {
+class ResponsiveRow extends StatelessWidget {
   final List<Widget> children;
-  const ResponsiveDropDownRow({super.key, required this.children});
+  const ResponsiveRow({super.key, required this.children});
 
   @override
   Widget build(BuildContext context) {

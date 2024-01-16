@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
@@ -7,6 +8,7 @@ import '../../../../../common/comon_features/widgets/buttons/models/buttons_mode
 import '../../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../../common/madpoly.dart';
+import '../../../../../common/navigation/routes.dart';
 import '../../../all_users_web_veiw.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
@@ -32,6 +34,8 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
         ); */
     // adminList.add(newAdmin);
     // setState(() {});
+
+    EduconnectNavigator.push(Routes.adminDetailsScreen);
   }
 
   /// A function that creates a button that adds a new user to the system.

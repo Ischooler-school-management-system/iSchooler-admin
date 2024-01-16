@@ -1,85 +1,66 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_admin/common/navigation/educonnect_navi.dart';
+import 'package:school_admin/common/madpoly.dart';
 
 import 'common/comon_features/widgets/buttons/educonnect_button.dart';
 import 'common/comon_features/widgets/buttons/models/buttons_model.dart';
 import 'common/comon_features/widgets/educonnect_screen.dart';
-import '/auth/logic/cubit/auth_cubit.dart';
-import 'admin_features/users/admins/data/models/admin_model.dart';
-import 'admin_features/users/students/data/models/student_model.dart';
+import 'common/navigation/router.export.dart';
 
 class TestScreen extends StatelessWidget {
   const TestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    Madpoly.print(
+      'building',
+      tag: 'test_screen > ',
+      developer: "Ziad",
+    );
     return EduconnectScreen(
-        keepMobileView: true,
-        alignment: Alignment.center,
-        body: Column(
-          children: [
-            EduconnectButton(
-              button: EduconnectElevatedButton(
-                onPressed: _onPressedAdminSignup,
-                text: 'admin signup',
-              ),
+      keepMobileView: true,
+      alignment: Alignment.center,
+      body: Column(
+        children: [
+          EduconnectButton(
+            button: EduconnectElevatedButton(
+              onPressed: () => onPressed(context),
+              text: 'text',
             ),
-            EduconnectButton(
-              button: EduconnectElevatedButton(
-                onPressed: _onPressedAdminSignin,
-                text: 'admin signin',
-              ),
-            ),
-            EduconnectButton(
-              button: EduconnectElevatedButton(
-                onPressed: _onPressedStudentSignup,
-                text: 'student signup',
-              ),
-            ),
-            EduconnectButton(
-              button: EduconnectElevatedButton(
-                onPressed: _onPressedStudentSignin,
-                text: 'student signin',
-              ),
-            ),
-          ],
-        ));
-  }
-
-  void _onPressedAdminSignup() {
-    currentContext!.read<AuthCubit>().signUp(
-          user: AdminModel(
-            id: '123',
-            displayName: 'ZH',
-            userName: 'Ziad Hesham',
-            dateOfBirth: DateTime(2000, 1, 1),
-            phoneNumber: '1234567890',
-            address: '123 Main St',
-            gender: 'Male',
-            email: 'ziad@admin.com',
           ),
-          password: 'password',
-        );
+        ],
+      ),
+    );
   }
 
-  void _onPressedAdminSignin() {}
+  onPressed(BuildContext context) {
+    String textToPass = 'Hello from sroiensraoiensroinra!';
+    EduconnectNavigator.push(Routes.test2Screen, arguments: textToPass);
+  }
+} // Add debug statements in Test2Screen
 
-  void _onPressedStudentSignup() {
-    currentContext!.read<AuthCubit>().signUp(
-          user: StudentModel(
-            id: '123',
-            displayName: 'ZH',
-            userName: 'Ziad Hesham',
-            dateOfBirth: DateTime(2000, 1, 1),
-            phoneNumber: '1234567890',
-            address: '123 Main St',
-            gender: 'Male',
-            email: 'ziad@student.com',
-          ),
-          password: 'password',
-        );
+class Test2Screen extends StatelessWidget {
+  const Test2Screen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    Madpoly.print(
+      'building',
+      tag: 'test_screen > ',
+      developer: "Ziad",
+    );
+    final currentAdminData = ModalRoute.of(context)?.settings.arguments;
+    String receivedText = currentAdminData != null
+        ? currentAdminData.toString()
+        : 'No text received';
+
+    print('Received text: $receivedText');
+
+    return EduconnectScreen(
+      keepMobileView: true,
+      alignment: Alignment.center,
+      body: Text(receivedText),
+    );
   }
 
-  void _onPressedStudentSignin() {}
+  onPressed() {}
 }

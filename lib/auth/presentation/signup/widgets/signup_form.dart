@@ -9,6 +9,7 @@ import '../../../../../common/comon_features/widgets/fields/educonnect_text_fiel
 import '../../../../../common/navigation/educonnect_navi.dart';
 import '../../../../../common/style/educonnect_text_theme.dart';
 import '../../../../admin_features/users/user_model.dart';
+import '../../../../common/navigation/router.export.dart';
 import '../screens/sign_up_password_screen.dart';
 
 class SignupForm extends StatefulWidget {
@@ -118,8 +119,12 @@ class _SignupFormState extends State<SignupForm> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       if (_isCheckboxChecked) {
-        EduconnectNavigator.navigateToScreen(
-            SignupPasswordScreen(newUser: newUser));
+        // EduconnectNavigator.navigateToScreen(
+        // SignupPasswordScreen(newUser: newUser));
+        EduconnectNavigator.push(
+          Routes.signupPasswordScreen,
+          arguments: newUser,
+        );
       } else {
         SmartDialog.showToast(
             EduconnectConstants.localization().accept_the_terms_and_conditions);

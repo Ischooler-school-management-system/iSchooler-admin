@@ -24,3 +24,33 @@ class EduconnectSmallView extends StatelessWidget {
     );
   }
 }
+
+class EduconnectBoxConstrain extends StatelessWidget {
+  final Widget child;
+  final double? maxWidth;
+  final EdgeInsetsGeometry? padding;
+  final bool roundedCorners;
+  const EduconnectBoxConstrain({
+    super.key,
+    required this.child,
+    this.maxWidth,
+    this.padding,
+    this.roundedCorners = true,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final BoxConstraints boxConstraints =
+        BoxConstraints(maxWidth: maxWidth ?? 400);
+
+    return Container(
+      alignment: Alignment.center,
+      padding: padding,
+      constraints: boxConstraints,
+      decoration: BoxDecoration(
+        borderRadius: roundedCorners ? BorderRadius.circular(120) : null,
+      ),
+      child: child,
+    );
+  }
+}
