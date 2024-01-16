@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/test_screen.dart';
+import '../../test_screen.dart';
 
 import '../../admin_features/users/admins/data/models/admin_model.dart';
 import '../../admin_features/users/admins/presentation/screens/admin_details_screen.dart';

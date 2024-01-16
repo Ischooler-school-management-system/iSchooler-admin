@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
+import '../auth/logic/cubit/auth_cubit.dart';
+import '../common/comon_features/widgets/educonnect_icons.dart';
 import '../common/educonnect_assets.dart';
 import '../common/educonnect_constants.dart';
-import '../common/comon_features/widgets/educonnect_icons.dart';
-import '../auth/logic/cubit/auth_cubit.dart';
 
 const primaryColor = canvasColor;
 const canvasColor = EduconnectColors.blue;

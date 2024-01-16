@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/madpoly.dart';
+import 'common/madpoly.dart';
 
 import 'common/comon_features/widgets/buttons/educonnect_button.dart';
 import 'common/comon_features/widgets/buttons/models/buttons_model.dart';

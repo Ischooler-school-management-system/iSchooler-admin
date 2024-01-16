@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../../../common/educonnect_constants.dart';
-import '../../../../../../common/educonnect_local_settings.dart';
 import '../../../../../../common/comon_features/loading/presentation/loading_popup.dart';
 import '../../../../../../common/comon_features/widgets/educonnect_screen.dart';
+import '../../../../../../common/educonnect_constants.dart';
+import '../../../../../../common/educonnect_local_settings.dart';
 import '../../../../../../common/madpoly.dart';
 import '../../../../../../common/style/educonnect_colors.dart';
 import '../../language_bloc/language_bloc.dart';

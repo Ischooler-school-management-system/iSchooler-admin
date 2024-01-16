@@ -1,5 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:school_admin/admin_features/users/user_model.dart';
+import '../../admin_features/users/user_model.dart';
 
 abstract class EduconnectNetwork {
   static const users = 'users';

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:school_admin/admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
+import '../../logic/all_students_cubit/all_students_cubit.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';

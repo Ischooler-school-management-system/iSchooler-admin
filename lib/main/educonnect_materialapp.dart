@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
-import 'package:school_admin/test_screen.dart';
+import '../test_screen.dart';
 
 import '../common/educonnect_constants.dart';
 import '../common/navigation/router.export.dart';
