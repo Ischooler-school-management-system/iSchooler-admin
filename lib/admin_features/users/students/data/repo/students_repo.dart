@@ -1,17 +1,17 @@
 import '../../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
 import '../../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../../common/network/educonnect_response.dart';
-import '../../../admins/data/network/admins_network.dart';
+import '../../../admins/data/network/user_network.dart';
 import '../../../user_model.dart';
 import '../models/all_students_model.dart';
 import '../models/student_model.dart';
 
 class StudentRepository {
   final ErrorHandlingRepository _alertHandlingRepository;
-  final AdminNetwork _userNetwork;
+  final UserNetwork _userNetwork;
 
   StudentRepository(
-      ErrorHandlingRepository alertHandlingRepository, AdminNetwork userNetwork)
+      ErrorHandlingRepository alertHandlingRepository, UserNetwork userNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
         _userNetwork = userNetwork;
 

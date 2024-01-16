@@ -3,14 +3,14 @@ import '../../../../../common/comon_features/error_handling/data/repo/error_hand
 import '../../../../../common/network/educonnect_response.dart';
 import '../../../user_model.dart';
 import '../models/all_admins_model.dart';
-import '../network/admins_network.dart';
+import '../network/user_network.dart';
 
 class AdminRepository {
   final ErrorHandlingRepository _alertHandlingRepository;
-  final AdminNetwork _adminNetwork;
+  final UserNetwork _adminNetwork;
 
-  AdminRepository(ErrorHandlingRepository alertHandlingRepository,
-      AdminNetwork adminNetwork)
+  AdminRepository(
+      ErrorHandlingRepository alertHandlingRepository, UserNetwork adminNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
         _adminNetwork = adminNetwork;
 

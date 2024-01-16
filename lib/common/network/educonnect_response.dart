@@ -24,12 +24,12 @@ class EduconnectResponse {
       }
       Madpoly.print(
         'dataMap = $response',
-        tag: 'test_screen > fromCollection',
+        tag: 'educonnectResponse > fromCollection',
       );
     } catch (e) {
       Madpoly.print(
         'Error: $e',
-        tag: 'test_screen > fromCollection',
+        tag: 'educonnectResponse > fromCollection',
         developer: "Ziad",
       );
     }
@@ -47,18 +47,18 @@ class EduconnectResponse {
         response['id'] = documentSnapshot.id; // Add the document ID to the map
         Madpoly.print(
           'dataMap = $response',
-          tag: 'test_screen > fromDocument',
+          tag: 'educonnectResponse > fromDocument',
         );
       } else {
         Madpoly.print(
           'Document does not exist',
-          tag: 'test_screen > fromDocument',
+          tag: 'educonnectResponse > fromDocument',
         );
       }
     } catch (e) {
       Madpoly.print(
         'Error: $e',
-        tag: 'test_screen > fromDocument',
+        tag: 'educonnectResponse > fromDocument',
       );
     }
     return EduconnectResponse(

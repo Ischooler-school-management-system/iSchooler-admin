@@ -6,43 +6,23 @@ import '../../../../../common/network/collections.dart';
 import '../../../../../common/network/educonnect_response.dart';
 import '../../../user_model.dart';
 
-class AdminNetwork {
+class UserNetwork {
   final ErrorHandlingRepository _alertHandlingRepository;
 
-  AdminNetwork(ErrorHandlingRepository alertHandlingRepository)
+  UserNetwork(ErrorHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
-/* 
 
- Future<void> getCollectionData() async {
-    String collectionName =
-        'admins'; // Replace with your actual collection name
-
-    try {
-      CollectionReference collectionReference =
-          EduconnectNetwork.fireStoreInstance.collection(collectionName);
-      QuerySnapshot querySnapshot = await collectionReference.get();
-
-      EduconnectResponse educonnectResponse =
-          EduconnectResponse.fromCollection(querySnapshot);
-
-    } catch (e) {
-      Madpoly.print('Error: $e');
-    }
-  }
-
- */
   Future<EduconnectResponse> getAllUsersData({required UserRole role}) async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
       String? collectionName = EduconnectNetwork.getUserCollectionName(role);
       if (collectionName == null) {
         if (collectionName == null) {
-          throw Exception('unable to get users data');
+          throw Exception('unable to get users (role = ${role.name}) data');
         }
       }
       final CollectionReference<Map<String, dynamic>> reference =
-          EduconnectNetwork.fireStoreInstance
-              .collection(EduconnectNetwork.admins);
+          EduconnectNetwork.fireStoreInstance.collection(collectionName);
       final QuerySnapshot<Map<String, dynamic>> query = await reference.get();
       response = EduconnectResponse.fromCollection(query);
     } catch (e) {
@@ -61,7 +41,7 @@ class AdminNetwork {
       String? collectionName =
           EduconnectNetwork.getUserCollectionName(user.role);
       if (collectionName == null) {
-        throw Exception('unable to add user');
+        throw Exception('unable to add user (role = ${user.role.name})');
       }
       final credentialCollection =
           EduconnectNetwork.fireStoreInstance.collection(collectionName);

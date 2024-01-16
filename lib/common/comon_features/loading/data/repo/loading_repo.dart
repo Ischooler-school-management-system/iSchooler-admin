@@ -22,13 +22,13 @@ class LoadingRepository {
       loadingType: loadingType,
     );
 
-    Madpoly.print(
+    /* Madpoly.print(
       loading,
       developer: "Ziad",
       isInspect: true,
       isLog: true,
       tag: "LoadingRepository",
-    );
+    ); */
 
     _updateLoading(loading);
   }
@@ -37,13 +37,13 @@ class LoadingRepository {
     const LoadingModel loading =
         LoadingModel(loadingStatus: LoadingStatus.finished);
 
-    Madpoly.print(
+    /*  Madpoly.print(
       loading,
       developer: "Ziad",
       isInspect: true,
       isLog: true,
       tag: "LoadingRepository",
-    );
+    ); */
 
     _updateLoading(loading);
   }
