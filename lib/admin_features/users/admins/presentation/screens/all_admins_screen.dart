@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
@@ -10,8 +11,10 @@ import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../../common/navigation/routes.dart';
 import '../../../all_users_web_veiw.dart';
+import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
+import 'admin_details_screen.dart';
 import 'all_studdents_views/all_admins_mobile_veiw.dart';
 
 class AllAdminsScreen extends StatefulWidget {
@@ -35,7 +38,11 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
     // adminList.add(newAdmin);
     // setState(() {});
 
-    EduconnectNavigator.push(Routes.adminDetailsScreen);
+    // EduconnectNavigator.push(Routes.adminDetailsScreen);
+    SmartDialog.show(
+      alignment: Alignment.center,
+      builder: (context) => const AdminDetailsScreen(),
+    );
   }
 
   /// A function that creates a button that adds a new user to the system.

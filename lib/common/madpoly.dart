@@ -58,7 +58,7 @@ abstract class Madpoly {
       debugPrint(message);
     }
 
-    if (isInspect == true) inspect(any);
+    // if (isInspect == true) inspect(any);
     if (showToast) {
       SmartDialog.dismiss();
       SmartDialog.showToast(any.toString());

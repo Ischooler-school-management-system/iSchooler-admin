@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:school_admin/admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
@@ -10,11 +12,12 @@ import '../../../../../common/comon_features/widgets/fields/educonnect_text_fiel
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
 import '../../../../../common/madpoly.dart';
+import '../../../admins/logic/all_admins_cubit/all_admins_cubit.dart';
 import '../../data/models/student_model.dart';
 
 class StudentDetailsScreen extends StatefulWidget {
-  final StudentModel currentStudentData;
-  const StudentDetailsScreen({super.key, required this.currentStudentData});
+  final StudentModel? currentStudentData;
+  const StudentDetailsScreen({super.key, this.currentStudentData});
 
   @override
   State<StudentDetailsScreen> createState() => _StudentDetailsScreenState();
@@ -25,6 +28,16 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
 
   // Use Studentmodel to store form data
   StudentModel studentData = StudentModel.empty();
+  bool editingModel = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    editingModel = widget.currentStudentData != null;
+    if (editingModel) {
+      studentData = widget.currentStudentData!.copyWith();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +51,7 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
           child: Column(
             children: [
               EduconnectTextField(
-                initialValue: widget.currentStudentData.userName,
+                initialValue: studentData.userName,
                 labelText: 'Username',
                 validator: EduconnectValidations.nameValidator,
                 onChanged: (value) {
@@ -49,7 +62,7 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
               ),
               EduconnectTextField(
                 // initialValue: 'test',
-                initialValue: widget.currentStudentData.email,
+                initialValue: studentData.email,
 
                 labelText: 'Email Address',
 
@@ -62,8 +75,7 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
                 },
               ),
               EduconnectTextField(
-                initialValue: educonnectDateFormatter(
-                    widget.currentStudentData.dateOfBirth),
+                initialValue: educonnectDateFormatter(studentData.dateOfBirth),
                 labelText: 'Date of Birth',
                 validator: (value) {
                   // Add validation logic for date of birth if needed
@@ -90,7 +102,7 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
 
               EduconnectTextField(
                 // initialValue: '01111',
-                initialValue: widget.currentStudentData.phoneNumber,
+                initialValue: studentData.phoneNumber,
 
                 labelText: 'Phone Number',
                 validator: (value) {
@@ -104,7 +116,7 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
                 },
               ),
               EduconnectTextField(
-                initialValue: widget.currentStudentData.address,
+                initialValue: studentData.address,
 
                 // initialValue: 'test',
                 labelText: 'Address',
@@ -200,7 +212,14 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
       // Form is valid, process the data
       // You can add logic here to save the form data
       // For example, send it to a database or an API
+
       Madpoly.print('User Data: $studentData');
+      if (editingModel) {
+      } else {
+        context.read<AllStudentsCubit>().addStudent(
+              student: studentData,
+            );
+      }
     }
   }
 }

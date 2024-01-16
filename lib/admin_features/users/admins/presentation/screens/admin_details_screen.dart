@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
@@ -10,10 +11,11 @@ import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
 import '../../../../../common/madpoly.dart';
 import '../../data/models/admin_model.dart';
+import '../../logic/all_admins_cubit/all_admins_cubit.dart';
 
 class AdminDetailsScreen extends StatefulWidget {
-  final AdminModel currentAdminData;
-  const AdminDetailsScreen({super.key, required this.currentAdminData});
+  final AdminModel? currentAdminData;
+  const AdminDetailsScreen({super.key, this.currentAdminData});
 
   @override
   State<AdminDetailsScreen> createState() => _AdminDetailsScreenState();
@@ -24,6 +26,16 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
 
   // Use Adminmodel to store form data
   AdminModel adminData = AdminModel.empty();
+  bool editingModel = false;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    editingModel = widget.currentAdminData != null;
+    if (editingModel) {
+      adminData = widget.currentAdminData!.copyWith();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +55,7 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
           child: Column(
             children: [
               EduconnectTextField(
-                initialValue: widget.currentAdminData.userName,
+                initialValue: adminData.userName,
                 labelText: 'Username',
                 validator: EduconnectValidations.nameValidator,
                 onChanged: (value) {
@@ -53,7 +65,7 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
                 },
               ),
               EduconnectTextField(
-                initialValue: widget.currentAdminData.email,
+                initialValue: adminData.email,
                 labelText: 'Email Address',
                 validator: EduconnectValidations.emailValidator,
                 onChanged: (value) {
@@ -63,9 +75,8 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
                 },
               ),
               EduconnectTextField(
-                // initialValue: widget.currentAdminData.dateOfBirth.toString(),
-                initialValue: educonnectDateFormatter(
-                    widget.currentAdminData.dateOfBirth),
+                // initialValue: adminData.dateOfBirth.toString(),
+                initialValue: educonnectDateFormatter(adminData.dateOfBirth),
                 labelText: 'Date of Birth',
                 validator: (value) {
                   // Add validation logic for date of birth if needed
@@ -81,7 +92,7 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
                 },
               ),
               EduconnectTextField(
-                initialValue: widget.currentAdminData.phoneNumber,
+                initialValue: adminData.phoneNumber,
                 labelText: 'Phone Number',
                 validator: (value) {
                   // Add phone number validation if needed
@@ -94,7 +105,7 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
                 },
               ),
               EduconnectTextField(
-                initialValue: widget.currentAdminData.address,
+                initialValue: adminData.address,
                 labelText: 'Address',
                 validator: (value) {
                   if (value == null || value.isEmpty) {
@@ -141,7 +152,14 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
       // Form is valid, process the data
       // You can add logic here to save the form data
       // For example, send it to a database or an API
+
       Madpoly.print('User Data: $adminData');
+      if (editingModel) {
+      } else {
+        context.read<AllAdminsCubit>().addAdmin(
+              admin: adminData,
+            );
+      }
     }
   }
 }
