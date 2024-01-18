@@ -26,7 +26,7 @@ class DashboardDataRow {
               ? textCellWidget(map.value)
               : imageCellWidget(map.value));
         }),
-        DataCell(
+        /*   DataCell(
           IconButton(
             icon: const Icon(Icons.edit),
             onPressed: onEditPressed,
@@ -40,7 +40,7 @@ class DashboardDataRow {
             ),
             onPressed: onDeletePressed,
           ),
-        ),
+        ), */
       ],
     );
   }

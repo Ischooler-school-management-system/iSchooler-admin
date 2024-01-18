@@ -35,13 +35,16 @@ class Responsive extends StatelessWidget {
 
   static List<Expanded> expandedChildren(
       {required List<Widget> children, int? ratio}) {
-    return children
-        .map((e) => Expanded(
-                child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: e,
-            )))
-        .toList();
+    return children.map((e) => Expanded(child: e)).toList();
+  }
+
+  static List<Widget> childrenWithSpacing({
+    required List<Widget> children,
+    double? verticalSpacing,
+    double? horizontalSpacing,
+  }) {
+    final space = SizedBox(width: horizontalSpacing, height: verticalSpacing);
+    return children.expand((widget) => [widget, space]).toList();
   }
 
   @override

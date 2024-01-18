@@ -55,7 +55,7 @@ class EduconnectListeners extends StatelessWidget {
             tag: 'starting_screen > ', developer: "Ziad");
 
         // User is signed out, navigate to authentication screen
-        EduconnectNavigator.push(Routes.authScreen, replace: true);
+        EduconnectNavigator.push(Routes.selectRoleScreen, replace: true);
         // EduconnectNavigator.navigateToScreen(const TestScreen(), replace: true);
       }
     }

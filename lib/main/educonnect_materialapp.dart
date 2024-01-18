@@ -4,15 +4,15 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
-import '../test_screen.dart';
 
+import '../auth/presentation/auth/screens/select_role_screen.dart';
+import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/educonnect_constants.dart';
 import '../common/navigation/router.export.dart';
 import '../common/style/educonnect_theme_data.dart';
-import '../auth/presentation/auth/screens/auth_screen.dart';
-import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../generated/l10n.dart';
 import '../side_bar/educonnect_side_bar.dart';
+import '../test_screen.dart';
 
 class EduconnectMaterialApp extends StatelessWidget {
   final AsyncSnapshot<int> languageSnapshot;
@@ -86,14 +86,14 @@ class EduconnectMaterialApp extends StatelessWidget {
 
   Widget startingScreen() {
     if (EduconnectConstants.testMode) {
-      return const TestScreen();
+      return TestScreen();
     } else {
       FirebaseAuth auth = FirebaseAuth.instance;
       User? user = auth.currentUser;
       if (user != null) {
         return const EduconnectSideBar();
       } else {
-        return const AuthScreen();
+        return const SelectRoleScreen();
       }
     }
     // return const TestScreen();

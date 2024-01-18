@@ -10,7 +10,9 @@ class _EduconnectContainerButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return IconButton(
       style: IconButton.styleFrom(
-        shape: const ContinuousRectangleBorder(),
+        shape: educonnectContainerButton.roundedCorners
+            ? RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))
+            : const ContinuousRectangleBorder(),
         padding: EdgeInsets.zero,
       ),
       onPressed: educonnectContainerButton.onPressed,

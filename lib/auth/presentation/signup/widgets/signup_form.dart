@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
 import '../../../../../common/comon_features/widgets/educonnect_checkbox.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/navigation/educonnect_navi.dart';
+import '../../../../../common/educonnect_constants.dart';
+import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/style/educonnect_text_theme.dart';
 import '../../../../admin_features/users/user_model.dart';
 import '../../../../common/navigation/router.export.dart';
-import '../screens/sign_up_password_screen.dart';
+import '../../../logic/cubit/auth_cubit.dart';
 
 class SignupForm extends StatefulWidget {
   final Function(bool) onIsKeyboardStatusChanged;
@@ -65,47 +65,63 @@ class _SignupFormState extends State<SignupForm> {
           _isButtonDisabled = !_formKey.currentState!.validate();
         });
       }, */
-      child: Column(
-        children: [
-          EduconnectTextField(
-            initialValue: 'ziad',
-            labelText: EduconnectConstants.localization().enter_name,
-            focusNode: nameFocusNode,
-            validator: EduconnectValidations.nameValidator,
-            onSaved: (String? value) =>
-                newUser = newUser.copyWith(displayName: value, userName: value),
-          ),
-          EduconnectTextField(
-            initialValue: 'ziad@test.com',
-            labelText: EduconnectConstants.localization().enter_email,
-            focusNode: emailFocusNode,
-            validator: EduconnectValidations.emailValidator,
-            onSaved: (String? value) =>
-                newUser = newUser.copyWith(email: value),
-          ),
-          EduconnectTextField(
-            initialValue: '01112345671',
-            labelText: EduconnectConstants.localization().enter_phone_number,
-            focusNode: phoneFocusNode,
-            validator: EduconnectValidations.phoneNumberValidator,
-            onSaved: (String? value) =>
-                newUser = newUser.copyWith(phoneNumber: value),
-          ),
-          EduconnectCheckbox(
-            text:
-                'I agree with the terms and conditions and also the protection of my presonal data on thi applicaiton',
-            textStyle: EduconnectTextStyles.style10Grey,
-            onChanged: onAgrementChecked,
-          ),
-          EduconnectButton(
-            button: EduconnectElevatedButton(
-              // disabled: _isButtonDisabled || !_isCheckboxChecked,
-              onPressed: onNextButtonPressed,
-              text: EduconnectConstants.localization().next,
+      child: BlocBuilder<AuthCubit, AuthState>(builder: (context, state) {
+        return Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            if (!(state.user.role == UserRole.admin))
+              EduconnectTextField(
+                // initialValue: 'ziad',
+                labelText: 'Enrollment code',
+                focusNode: nameFocusNode,
+                validator: EduconnectValidations.nameValidator,
+                onSaved: (String? value) => newUser =
+                    newUser.copyWith(displayName: value, userName: value),
+              ),
+            if ((state.user.role == UserRole.admin))
+              EduconnectTextField(
+                initialValue: 'ziad',
+                labelText: EduconnectConstants.localization().enter_name,
+                focusNode: nameFocusNode,
+                validator: EduconnectValidations.nameValidator,
+                onSaved: (String? value) => newUser =
+                    newUser.copyWith(displayName: value, userName: value),
+              ),
+            if ((state.user.role == UserRole.admin))
+              EduconnectTextField(
+                initialValue: 'ziad@test.com',
+                labelText: EduconnectConstants.localization().enter_email,
+                focusNode: emailFocusNode,
+                validator: EduconnectValidations.emailValidator,
+                onSaved: (String? value) =>
+                    newUser = newUser.copyWith(email: value),
+              ),
+            if ((state.user.role == UserRole.admin))
+              EduconnectTextField(
+                initialValue: '01112345671',
+                labelText:
+                    EduconnectConstants.localization().enter_phone_number,
+                focusNode: phoneFocusNode,
+                validator: EduconnectValidations.phoneNumberValidator,
+                onSaved: (String? value) =>
+                    newUser = newUser.copyWith(phoneNumber: value),
+              ),
+            EduconnectCheckbox(
+              text:
+                  'I agree with the terms and conditions and also the protection of my presonal data on thi applicaiton',
+              textStyle: EduconnectTextStyles.style10Grey,
+              onChanged: onAgrementChecked,
             ),
-          ),
-        ],
-      ),
+            EduconnectButton(
+              button: EduconnectElevatedButton(
+                // disabled: _isButtonDisabled || !_isCheckboxChecked,
+                onPressed: onNextButtonPressed,
+                text: EduconnectConstants.localization().next,
+              ),
+            ),
+          ],
+        );
+      }),
     );
   }
 

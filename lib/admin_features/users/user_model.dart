@@ -43,7 +43,6 @@ class UserModel extends Equatable {
         role: UserRole.none,
         profilePicture: '');
   }
-
   factory UserModel.fromMap(Map<String, dynamic> map) {
     UserRole userRole = UserRole.none;
     if (map['role'] != null) {

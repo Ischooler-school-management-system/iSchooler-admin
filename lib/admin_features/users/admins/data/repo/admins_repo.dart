@@ -16,13 +16,17 @@ class AdminRepository {
 
   Future<void> addUser({required UserModel user}) async {
     try {
-      _adminNetwork.addUser(user: user);
-      _alertHandlingRepository.addError(
-        'Admin Data Stored Successfully',
-        ErrorHandlingTypes.Alert,
-        tag: 'admin_repo > storeAdminData',
-        showToast: true,
-      );
+      bool requestSuccess = await _adminNetwork.addUser(user: user);
+      if (requestSuccess) {
+        _alertHandlingRepository.addError(
+          'Admin Data Stored Successfully',
+          ErrorHandlingTypes.Alert,
+          tag: 'admin_repo > storeAdminData',
+          showToast: true,
+        );
+      } else {
+        throw Exception('unable to add user');
+      }
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),

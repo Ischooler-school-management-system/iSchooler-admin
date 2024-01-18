@@ -20,13 +20,17 @@ class AuthCubit extends Cubit<AuthState> {
         _loadingRepository = loadingRepository,
         super(AuthState.init());
 
+  Future<void> selectRole(UserRole role) async {
+    emit(state.updateRole(role));
+  }
+
   Future<void> signUp(
       {required UserModel user, required String password}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    UserModel userModel =
-        await _authRepository.signUp(user: user, password: password);
+    UserModel userModel = await _authRepository.signUp(
+        user: user.copyWith(role: state.user.role), password: password);
     if (userModel.id != '') {
-      emit(state.updateAuth());
+      emit(state.updateAuth(userModel));
     }
     _loadingRepository.stopLoading();
   }
@@ -36,7 +40,7 @@ class AuthCubit extends Cubit<AuthState> {
     UserModel userModel =
         await _authRepository.signIn(email: email, password: password);
     if (userModel.id != '') {
-      emit(state.updateAuth());
+      emit(state.updateAuth(userModel));
     }
     _loadingRepository.stopLoading();
   }

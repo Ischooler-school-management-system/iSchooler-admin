@@ -7,7 +7,8 @@ import '../generated/l10n.dart';
 import 'navigation/educonnect_navi.dart';
 
 abstract class EduconnectConstants {
-  static const bool testMode = false;
+  static const bool testMode = true;
+  // static const bool testMode = false;
 
   static final double educonnect_button_height = 35.h;
   static final double educonnect_button_radius = 8.r;

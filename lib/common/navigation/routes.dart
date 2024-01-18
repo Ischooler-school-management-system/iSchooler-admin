@@ -2,6 +2,7 @@
 abstract class Routes {
   static const test2Screen = "TESTSCREEN";
 
+  static const selectRoleScreen = "SELECTROLESCREEN";
   static const authScreen = "AUTHSCREEN";
   static const signinScreen = "SIGNINSCREEN";
   static const signupScreen = "SIGNUPSCREEN";

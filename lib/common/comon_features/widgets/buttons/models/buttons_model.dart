@@ -53,10 +53,12 @@ class EduconnectTextButton extends IEduconnectButton {
 
 class EduconnectContainerButton extends IEduconnectButton {
   final Widget child;
+  final bool roundedCorners;
 
   const EduconnectContainerButton({
     required this.child,
     required super.onPressed,
+    this.roundedCorners = false,
   });
 }
 

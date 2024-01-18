@@ -1,3 +1,4 @@
+import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -22,7 +23,7 @@ class AllUsersWebVeiw extends StatelessWidget {
     if (allUsers.items.isNotEmpty) {
       return SizedBox(
         width: double.infinity,
-        child: DataTable(
+        child: DataTable2(
           columns: _buildColumns(),
           rows: _buildRows(),
           columnSpacing: 8.0,
@@ -30,7 +31,9 @@ class AllUsersWebVeiw extends StatelessWidget {
         ),
       );
     } else {
-      return const SizedBox();
+      return Container(
+        color: Colors.red,
+      );
     }
   }
 
@@ -58,8 +61,8 @@ class AllUsersWebVeiw extends StatelessWidget {
         .toList();
     return [
       ...list,
-      const DataColumn(numeric: true, label: Text('edit')),
-      const DataColumn(numeric: true, label: Text('delete')),
+      // const DataColumn(numeric: true, label: Text('edit')),
+      // const DataColumn(numeric: true, label: Text('delete')),
     ];
   }
 
@@ -81,14 +84,14 @@ class AllUsersWebVeiw extends StatelessWidget {
             // Handle row selection, e.g., show a dialog or navigate to edit screen
           }
         }, */
-        onDeletePressed: () {
+        /*  onDeletePressed: () {
           SmartDialog.showToast('$index,id = ${user.id}, Delete');
         },
         onEditPressed: () {
           SmartDialog.showToast('$index, Edit');
           // EduconnectNavigator.navigateToScreen(edit)
           navigateToUserDetails(user);
-        },
+        }, */
       );
     }).toList();
   }

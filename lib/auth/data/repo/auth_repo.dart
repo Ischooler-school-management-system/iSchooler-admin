@@ -19,53 +19,51 @@ class AuthRepository {
 
   final FirebaseAuth instance = FirebaseAuth.instance;
 
-  Future<UserModel> _handleAuthOperation({
-    required Future<User?> Function() authOperation,
-    required String tag,
-  }) async {
-    User? firebaseUser;
+  Future<UserModel> signUp(
+      {required UserModel user, required String password}) async {
+    UserModel newUser = UserModel.empty();
     try {
-      firebaseUser = await authOperation();
+      if (user.role == UserRole.none) {
+        throw Exception('unable to sign up (role = ${user.role.name})');
+      }
+
+      User? firebaseUser =
+          await _authNetwork.signUp(email: user.email, password: password);
+      // add the new created user id to the user data
+      if (firebaseUser != null) {
+        newUser = user.copyWith(id: firebaseUser.uid);
+        // add the ful new user to firestore
+        _adminsRepository.addUser(user: newUser);
+      }
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         ErrorHandlingTypes.ServerError,
-        tag: 'auth_repo > $tag',
+        tag: 'auth_repo > signUp',
         showToast: true,
       );
     }
-    UserModel newUser = UserModel.empty();
-    if (firebaseUser != null) {
-      newUser = newUser.copyWith(
-        id: firebaseUser.uid,
-      );
-    }
-    return newUser;
-  }
-
-  Future<UserModel> signUp(
-      {required UserModel user, required String password}) async {
-    UserModel newUser = await _handleAuthOperation(
-      authOperation: () =>
-          _authNetwork.signUp(email: user.email, password: password),
-      tag: 'signup',
-    );
-    // add the new created user id to the user data
-    newUser = user.copyWith(id: newUser.id);
-    // add the ful new user to firestore
-    _adminsRepository.addUser(user: newUser);
     return newUser;
   }
 
   Future<UserModel> signIn(
       {required String email, required String password}) async {
-    UserModel? newUser = await _handleAuthOperation(
-      authOperation: () {
-        return _authNetwork.signIn(email: email, password: password);
-      },
-      tag: 'signin',
-    );
+    UserModel newUser = UserModel.empty();
 
+    try {
+      var firebaseUser =
+          await _authNetwork.signIn(email: email, password: password);
+      if (firebaseUser != null) {
+        newUser = newUser.copyWith(id: firebaseUser.uid);
+      }
+    } catch (e) {
+      _alertHandlingRepository.addError(
+        e.toString(),
+        ErrorHandlingTypes.ServerError,
+        tag: 'auth_repo > sign in',
+        showToast: true,
+      );
+    }
     return newUser;
   }
 

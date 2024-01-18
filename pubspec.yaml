@@ -6,14 +6,12 @@ environment:
   sdk: ">=3.1.0 <4.0.0"
 
 dependencies:
-  data_table_2: ^2.5.10
-
-  # flutter_widget_from_html: ^0.14.11
   awesome_bottom_bar: ^1.2.4
   cloud_firestore: ^4.13.5
   connectivity_plus: ^5.0.2
   cross_scroll: ^0.0.76
   cupertino_icons: ^1.0.6
+  data_table_2: ^2.5.10
   dio: ^5.4.0
   dots_indicator: ^3.0.0
   dropdown_button2: ^2.3.9
@@ -33,6 +31,8 @@ dependencies:
   flutter_slidable: ^3.0.1
   flutter_smart_dialog: ^4.9.5+1
   flutter_spinkit: ^5.2.0
+  flutter_svg: ^2.0.9
+  font_awesome_flutter: ^10.6.0
   geocoding: ^2.1.1
   geolocator: ^10.1.0
   get_it: ^7.6.4
@@ -62,6 +62,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/images/
+    - assets/icons/
 
   fonts:
     - family: KumbhSans

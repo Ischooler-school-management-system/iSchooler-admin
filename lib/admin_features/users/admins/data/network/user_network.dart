@@ -36,7 +36,8 @@ class UserNetwork {
     return response;
   }
 
-  Future<void> addUser({required UserModel user}) async {
+  Future<bool> addUser({required UserModel user}) async {
+    bool userStored = false;
     try {
       String? collectionName =
           EduconnectNetwork.getUserCollectionName(user.role);
@@ -46,6 +47,7 @@ class UserNetwork {
       final credentialCollection =
           EduconnectNetwork.fireStoreInstance.collection(collectionName);
       credentialCollection.doc(user.id).set(user.toMap());
+      userStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
@@ -56,6 +58,6 @@ class UserNetwork {
       );
     }
 
-    // return null;
+    return userStored;
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../auth/presentation/auth/screens/select_role_screen.dart';
 import '../../test_screen.dart';
 
 import '../../admin_features/users/admins/data/models/admin_model.dart';
@@ -126,9 +127,9 @@ abstract class EduconnectNavigator {
 
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.test2Screen:
+      case Routes.selectRoleScreen:
         return slideNavigation(
-            screen: const Test2Screen(), arguments: settings.arguments);
+            screen: const SelectRoleScreen(), arguments: settings.arguments);
       case Routes.authScreen:
         return slideNavigation(
             screen: const AuthScreen(), arguments: settings.arguments);

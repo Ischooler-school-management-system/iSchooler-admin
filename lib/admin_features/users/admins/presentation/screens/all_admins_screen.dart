@@ -74,7 +74,7 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
 
     return EduconnectScreen(
       // enableScrolling: true,
-      enableflexibleScrolling: true,
+      // enableflexibleScrolling: true,
       // padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
