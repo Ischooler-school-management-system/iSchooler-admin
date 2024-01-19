@@ -2,37 +2,46 @@ import '../../../../../common/comon_features/loading/data/models/loading_model.d
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../dashboard/logic/cubit/all_cubit.dart';
-import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
-import '../../data/repo/admins_repo.dart';
+import '../../../../dashboard/data/repo/dashboard_repo.dart';
 
 part 'all_admins_state.dart';
 
 class AllAdminsCubit extends EduconnectCubit {
-  final AdminRepository _adminRepository;
+  final DashboardRepository _adminRepository;
   final LoadingRepository _loadingRepository;
 
   AllAdminsCubit(
-    AdminRepository adminRepository,
+    DashboardRepository adminRepository,
     LoadingRepository loadingRepository,
   )   : _adminRepository = adminRepository,
         _loadingRepository = loadingRepository,
         super(AllAdminsState.init());
 
   @override
-  Future<void> getAllData() async {
+  Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    AllAdminsModel response = await _adminRepository.getAllAdminsData();
-    emit((state as AllAdminsState).updateAllAdmins(response));
+    EduconnectAllModel response =
+        //model is sent here to get the type of request only
+        await _adminRepository.getAllItems(model: state.educonnectAllModel);
+    emit((state as AllAdminsState).updateAllAdmins(response as AllAdminsModel));
     _loadingRepository.stopLoading();
   }
 
   @override
-  Future<void> add({required EduconnectModel educonnectModel}) async {
+  Future<void> addItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _adminRepository.addUser(user: educonnectModel as AdminModel);
-    await getAllData();
+    await _adminRepository.addItem(model: model);
+    await getAllItems();
     // _loadingRepository.stopLoading();
+  }
+
+  @override
+  Future<void> deleteItem({required EduconnectModel model}) async {
+    _loadingRepository.startLoading(LoadingType.normal);
+
+    await _adminRepository.deleteItem(model: model);
+    await getAllItems();
   }
 }

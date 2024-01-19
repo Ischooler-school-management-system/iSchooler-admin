@@ -12,6 +12,7 @@ import 'package:school_admin/common/educonnect_model.dart';
 import 'package:school_admin/common/madpoly.dart';
 
 import '../../../users/admins/data/models/admin_model.dart';
+import '../../../users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
 import '../../../users/admins/presentation/widgets/admin_details_form.dart';
 
 class DashboardDetailsScreen<C extends EduconnectCubit> extends StatefulWidget {
@@ -49,7 +50,7 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
         currentStudentData: widget.currentData as StudentModel?,
         onSaved: onSubmitButtonPressed,
       );
-    } else if (C == AllStudentsCubit) {
+    } else if (C == AllAdminsCubit) {
       return AdminDetailsForm(
         currentAdminData: widget.currentData as AdminModel?,
         onSaved: onSubmitButtonPressed,
@@ -61,6 +62,6 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
 
   onSubmitButtonPressed(EduconnectModel data) {
     Madpoly.print('User Data: $data');
-    context.read<C>().add(educonnectModel: data);
+    context.read<C>().addItem(model: data);
   }
 }

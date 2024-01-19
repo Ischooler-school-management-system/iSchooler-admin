@@ -100,8 +100,8 @@ class TestScreen extends StatelessWidget {
     List<DataColumn> columns = _buildColumns();
 
     // Build the data rows
-    Iterable<MapEntry<int, UserModel>> entries2 =
-        allUsers.items.asMap().entries;
+    Iterable<MapEntry<int, UserModel>> entries2 = [];
+    // allUsers.items.asMap().entries;
 
     List<DataRow> rows = entries2
         .map((MapEntry<int, UserModel> map) =>

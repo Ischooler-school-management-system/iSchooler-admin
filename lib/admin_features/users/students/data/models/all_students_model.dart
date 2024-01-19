@@ -4,10 +4,7 @@ import '../../../all_users_model.dart';
 import 'student_model.dart';
 
 class AllStudentsModel extends AllUsersModel {
-  @override
-  final List<StudentModel> items;
-
-  const AllStudentsModel({required this.items}) : super(items: items);
+  const AllStudentsModel({required super.items});
   factory AllStudentsModel.empty() {
     return const AllStudentsModel(items: []);
   }

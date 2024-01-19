@@ -33,5 +33,7 @@ class AllStudentsState extends EduconnectState {
   }
 
   @override
+  bool isLoaded() => status == EduconnectStatus.loaded;
+  @override
   List<Object> get props => [educonnectAllModel, status];
 }

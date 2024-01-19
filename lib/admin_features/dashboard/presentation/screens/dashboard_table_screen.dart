@@ -8,6 +8,8 @@ import '../../../../common/comon_features/widgets/buttons/models/buttons_model.d
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
+import '../../../users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
+import '../../../users/students/logic/all_students_cubit/all_students_cubit.dart';
 import '../../logic/cubit/all_cubit.dart';
 import '../veiws/dashboard_mobile_veiw.dart';
 import '../veiws/dashboard_web_veiw.dart';
@@ -25,7 +27,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
   @override
   void initState() {
     super.initState();
-    context.read<C>().getAllData();
+    context.read<C>().getAllItems();
   }
 
   int limit = 0;
@@ -37,11 +39,21 @@ class _DashboardScreenState<C extends EduconnectCubit>
     );
   }
 
+  String screenTag() {
+    if (C == AllStudentsCubit) {
+      return 'Student';
+    } else if (C == AllAdminsCubit) {
+      return 'Admin';
+    } else {
+      return '';
+    }
+  }
+
   EduconnectButton addButton() {
     return EduconnectButton(
       button: EduconnectElevatedButton(
         onPressed: onAddButtonPressed,
-        text: 'Add Student',
+        text: 'Add ${screenTag()}',
         width: 200,
       ),
     );

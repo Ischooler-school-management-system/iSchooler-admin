@@ -2,9 +2,8 @@ import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
-import '../admin_features/users/admins/data/network/user_network.dart';
-import '../admin_features/users/admins/data/repo/admins_repo.dart';
-import '../admin_features/users/students/data/repo/students_repo.dart';
+import '../admin_features/dashboard/data/network/dashboard_network.dart';
+import '../admin_features/dashboard/data/repo/dashboard_repo.dart';
 import '../auth/data/network/auth_network.dart';
 import '../auth/data/repo/auth_repo.dart';
 import 'comon_features/error_handling/data/repo/error_handling_repo.dart';
@@ -28,16 +27,14 @@ class DependencyInjection {
 
     /// register Networks:
     getIt.registerLazySingleton(() => AuthNetwork(getIt()));
-    // getIt.registerLazySingleton(() => StudentNetwork(getIt()));
-    getIt.registerLazySingleton(() => UserNetwork(getIt()));
+    getIt.registerLazySingleton(() => DashboardNetwork(getIt()));
     //--------------------------------------------------------------------------
     /// register Repositories:
     getIt.registerLazySingleton(() => LoadingRepository());
     getIt.registerLazySingleton(() => ErrorHandlingRepository());
     getIt
         .registerLazySingleton(() => AuthRepository(getIt(), getIt(), getIt()));
-    getIt.registerLazySingleton(() => StudentRepository(getIt(), getIt()));
-    getIt.registerLazySingleton(() => AdminRepository(getIt(), getIt()));
+    getIt.registerLazySingleton(() => DashboardRepository(getIt(), getIt()));
     //--------------------------------------------------------------------------
   }
 }

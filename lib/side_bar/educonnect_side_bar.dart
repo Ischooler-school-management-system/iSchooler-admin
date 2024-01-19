@@ -7,7 +7,6 @@ import '../admin_features/users/admins/logic/all_admins_cubit/all_admins_cubit.d
 import '../admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/comon_features/widgets/educonnect_screen.dart';
-import '../common/educonnect_constants.dart';
 import '../common/madpoly.dart';
 import 'sidebar_x.dart';
 
@@ -38,17 +37,17 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [
-      const DashboardScreen<AllStudentsCubit>(),
-      // const AllAdminsScreen(),
       const DashboardScreen<AllAdminsCubit>(),
-      const TeachersTab(),
-      const ClassesTab(),
-      const GradesTab(),
-      const SubjectsTab(),
-      const ExamsTab(),
-      const TimetableTab(),
-      const HomeworksTab(),
-      const ProfileTab(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+      const DashboardScreen<AllStudentsCubit>(),
+
       // const SettingsTab(),
       const LanguagesScreen(),
       const EmptyTab(),
@@ -58,16 +57,6 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
       appBar: isSmallScreen
           ? AppBar(
               backgroundColor: Colors.transparent,
-              // title: tabBodies[_controller.selectedIndex],
-              /* leading: IconButton(
-                onPressed: () {
-                  // if (!Platform.isAndroid && !Platform.isIOS) {
-                  //   _controller.setExtended(true);
-                  // }
-                  _key.currentState?.openDrawer();
-                },
-                icon: const Icon(Icons.menu),
-              ), */
             )
           : null,
       drawer: ExampleSidebarX(controller: _controller),
@@ -85,78 +74,6 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
         ],
       ),
     );
-  }
-}
-
-class TeachersTab extends StatelessWidget {
-  const TeachersTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().classes);
-  }
-}
-
-class ClassesTab extends StatelessWidget {
-  const ClassesTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().classes);
-  }
-}
-
-class GradesTab extends StatelessWidget {
-  const GradesTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().grades);
-  }
-}
-
-class SubjectsTab extends StatelessWidget {
-  const SubjectsTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().subjects);
-  }
-}
-
-class ExamsTab extends StatelessWidget {
-  const ExamsTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().exams);
-  }
-}
-
-class TimetableTab extends StatelessWidget {
-  const TimetableTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().timetable);
-  }
-}
-
-class HomeworksTab extends StatelessWidget {
-  const HomeworksTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().homeworks);
-  }
-}
-
-class ProfileTab extends StatelessWidget {
-  const ProfileTab({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().profile);
   }
 }
 
