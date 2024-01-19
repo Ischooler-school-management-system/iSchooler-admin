@@ -48,4 +48,12 @@ class EduconnectAllModel extends Equatable {
 
   @override
   List<Object> get props => [items];
+
+  EduconnectAllModel copyWith({
+    List<EduconnectModel>? items,
+  }) {
+    return EduconnectAllModel(
+      items: items ?? this.items,
+    );
+  }
 }

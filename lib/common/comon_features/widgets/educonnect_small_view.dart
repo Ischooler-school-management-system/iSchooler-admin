@@ -5,10 +5,12 @@ import '../../navigation/educonnect_navi.dart';
 class EduconnectSmallView extends StatelessWidget {
   final bool keepMobileView;
   final Widget child;
+  final bool isCenter;
   const EduconnectSmallView({
     super.key,
     this.keepMobileView = true,
     required this.child,
+    this.isCenter = true,
   });
 
   @override
@@ -18,7 +20,7 @@ class EduconnectSmallView extends StatelessWidget {
     final BoxConstraints boxConstraints = BoxConstraints(maxWidth: maxWidth);
 
     return Container(
-      alignment: Alignment.center,
+      alignment: isCenter ? Alignment.center : null,
       constraints: keepMobileView ? boxConstraints : null,
       child: child,
     );

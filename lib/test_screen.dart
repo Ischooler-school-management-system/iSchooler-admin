@@ -1,8 +1,8 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
-import 'admin_features/users/admins/presentation/screens/all_admins_views/dashboard_data_row.dart';
-import 'admin_features/dashboard/presentation/veiws/all_users_web_veiw.dart';
+import 'admin_features/dashboard/presentation/widgets/dashboard_data_row.dart';
+import 'admin_features/dashboard/presentation/veiws/dashboard_web_veiw.dart';
 import 'admin_features/users/students/data/models/all_students_model.dart';
 import 'admin_features/users/students/data/models/student_model.dart';
 import 'admin_features/users/user_model.dart';
@@ -58,7 +58,7 @@ class TestScreen extends StatelessWidget {
       // body: buildDataTable(),
       body: Column(
         children: [
-          Expanded(child: AllUsersWebVeiw(allUsers: allUsers)),
+          Expanded(child: DashboardWebVeiw(allUsers: allUsers)),
         ],
       ),
     );

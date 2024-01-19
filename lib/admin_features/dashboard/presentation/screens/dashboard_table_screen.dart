@@ -2,27 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../logic/cubit/all_cubit.dart';
 import '../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
 import '../../../../common/comon_features/widgets/buttons/models/buttons_model.dart';
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
-import '../veiws/all_users_web_veiw.dart';
 // import '../../data/models/all_students_model.dart';
 import '../../../users/students/presentation/screens/student_details_screen.dart';
+import '../../logic/cubit/all_cubit.dart';
+import '../veiws/dashboard_mobile_veiw.dart';
+import '../veiws/dashboard_web_veiw.dart';
 
-class DashboardTableScreen<C extends EduconnectCubit> extends StatefulWidget {
-  const DashboardTableScreen({super.key});
+class DashboardScreen<C extends EduconnectCubit> extends StatefulWidget {
+  const DashboardScreen({super.key});
 
   @override
-  State<DashboardTableScreen<C>> createState() =>
-      _DashboardTableScreenState<C>();
+  State<DashboardScreen<C>> createState() => _DashboardScreenState<C>();
 }
 
-class _DashboardTableScreenState<C extends EduconnectCubit>
-    extends State<DashboardTableScreen<C>> {
+class _DashboardScreenState<C extends EduconnectCubit>
+    extends State<DashboardScreen<C>> {
   @override
   void initState() {
     super.initState();
@@ -51,7 +51,7 @@ class _DashboardTableScreenState<C extends EduconnectCubit>
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      enableScrolling: Responsive.isMobile(),
+      // enableScrolling: Responsive.isMobile(),
       // enableflexibleScrolling: true,
 
       padding: const EdgeInsets.all(8),
@@ -62,20 +62,19 @@ class _DashboardTableScreenState<C extends EduconnectCubit>
           // items: List.generate(20, (index) => studentModel));
           if (state.isLoaded()) {
             educonnectAllModel = state.educonnectAllModel;
+            // .copyWith(items: state.educonnectAllModel.items.repeat(20));
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               addButton(),
-              Expanded(
-                child: EduconnectConditionalWidget(
-                  condition: Responsive.isMobile(),
-                  // whenTrue: AllStudentsMobileVeiw(
-                  // studentList: educonnectAllModel.items ),
-                  whenFalse: AllUsersWebVeiw(
-                    allUsers: educonnectAllModel,
-                  ),
+              EduconnectConditionalWidget(
+                condition: Responsive.isMobile(),
+                whenTrue:
+                    DashboardMobileVeiw(educonnectAllModel: educonnectAllModel),
+                whenFalse: DashboardWebVeiw(
+                  allUsers: educonnectAllModel,
                 ),
               ),
             ],

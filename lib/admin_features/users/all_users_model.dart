@@ -28,5 +28,14 @@ class AllUsersModel extends EduconnectAllModel {
   }
 
   @override
+  EduconnectAllModel copyWith({
+    List<EduconnectModel>? items,
+  }) {
+    return EduconnectAllModel(
+      items: items ?? this.items,
+    );
+  }
+
+  @override
   List<Object> get props => [items];
 }
