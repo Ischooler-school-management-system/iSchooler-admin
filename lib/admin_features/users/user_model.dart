@@ -145,7 +145,3 @@ class UserModel extends EduconnectModel {
     ];
   }
 }
-
-class Use2rModel extends EduconnectModel {
-  const Use2rModel({required super.id});
-}

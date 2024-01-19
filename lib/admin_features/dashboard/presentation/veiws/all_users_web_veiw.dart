@@ -2,17 +2,17 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../common/madpoly.dart';
-import 'admins/data/models/admin_model.dart';
-import 'admins/presentation/screens/admin_details_screen.dart';
-import 'admins/presentation/screens/all_studdents_views/dashboard_data_row.dart';
-import 'all_users_model.dart';
-import 'students/data/models/student_model.dart';
-import 'students/presentation/screens/student_details_screen.dart';
-import 'user_model.dart';
+import '../../../../common/educonnect_model.dart';
+import '../../../../common/madpoly.dart';
+import '../../../users/admins/data/models/admin_model.dart';
+import '../../../users/admins/presentation/screens/admin_details_screen.dart';
+import '../../../users/admins/presentation/screens/all_admins_views/dashboard_data_row.dart';
+import '../../../users/students/data/models/student_model.dart';
+import '../../../users/students/presentation/screens/student_details_screen.dart';
+import '../../../users/user_model.dart';
 
 class AllUsersWebVeiw extends StatelessWidget {
-  final AllUsersModel allUsers;
+  final EduconnectAllModel allUsers;
   const AllUsersWebVeiw({super.key, required this.allUsers});
 
   @override
@@ -69,12 +69,12 @@ class AllUsersWebVeiw extends StatelessWidget {
   }
 
   List<DataRow2> _buildRows() {
-    Iterable<MapEntry<int, UserModel>> entries2 =
+    Iterable<MapEntry<int, EduconnectModel>> entries2 =
         allUsers.items.asMap().entries;
     List<DataRow2> rowList = entries2.map((entry) {
       final int index = entry.key;
-      final UserModel user = allUsers.items[index];
-      final UserModel map = entry.value;
+      final EduconnectModel user = allUsers.items[index];
+      final EduconnectModel map = entry.value;
       final bool isEven = index % 2 == 0;
       // Add the edit and delete buttons in the trailing section
       return DashboardDataRow2.buildDataRow2(
@@ -92,7 +92,9 @@ class AllUsersWebVeiw extends StatelessWidget {
         onEditPressed: () {
           SmartDialog.showToast('$index, Edit');
           // EduconnectNavigator.navigateToScreen(edit)
-          navigateToUserDetails(user);
+          if (user is UserModel) {
+            navigateToUserDetails(user);
+          }
         },
       );
     }).toList();

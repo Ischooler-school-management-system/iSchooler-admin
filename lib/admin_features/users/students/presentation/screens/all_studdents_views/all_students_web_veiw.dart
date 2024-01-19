@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../common/comon_features/responsive/responsive.dart';
-import '../../../../educonnect_dashboard_record.dart';
+import '../../../../../dashboard/presentation/widgets/educonnect_dashboard_record.dart';
 import '../../../data/models/student_model.dart';
 
 class AllStudentsWebVeiw extends StatelessWidget {

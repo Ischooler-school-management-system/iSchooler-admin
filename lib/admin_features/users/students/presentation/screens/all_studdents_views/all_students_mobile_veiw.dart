@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../../common/madpoly.dart';
-import '../../../../educonnect_dashboard_listtile.dart';
+import '../../../../../dashboard/presentation/widgets/educonnect_dashboard_listtile.dart';
 import '../../../data/models/student_model.dart';
 
 class AllStudentsMobileVeiw extends StatelessWidget {

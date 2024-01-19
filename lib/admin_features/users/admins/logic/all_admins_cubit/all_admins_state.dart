@@ -1,42 +1,39 @@
 part of 'all_admins_cubit.dart';
 
-enum AllAdminsStatus { init, updated, loaded, failed }
 // @immutable
 
-class AllAdminsState extends Equatable {
-  final AllAdminsModel alladminsModel;
-  final AllAdminsStatus status;
-
+class AllAdminsState extends EduconnectState {
   const AllAdminsState({
-    required this.alladminsModel,
-    required this.status,
+    required super.educonnectAllModel,
+    required super.status,
   });
 
   factory AllAdminsState.init() {
     return AllAdminsState(
-      alladminsModel: AllAdminsModel.empty(),
-      status: AllAdminsStatus.init,
+      educonnectAllModel: AllAdminsModel.empty(),
+      status: EduconnectStatus.init,
     );
   }
 
   AllAdminsState updateAllAdmins(AllAdminsModel alladminsModel) {
     return _copyWith(
-      alladminsModel: alladminsModel,
-      status: AllAdminsStatus.loaded,
+      educonnectAllModel: alladminsModel,
+      status: EduconnectStatus.loaded,
     );
   }
 
   AllAdminsState _copyWith({
-    AllAdminsModel? alladminsModel,
-    AllAdminsStatus? status,
+    AllAdminsModel? educonnectAllModel,
+    EduconnectStatus? status,
   }) {
     return AllAdminsState(
-      alladminsModel: alladminsModel ?? this.alladminsModel,
+      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
       status: status ?? this.status,
     );
   }
 
-  bool isLoaded() => status == AllAdminsStatus.loaded;
   @override
-  List<Object> get props => [alladminsModel, status];
+  bool isLoaded() => status == EduconnectStatus.loaded;
+  @override
+  List<Object> get props => [educonnectAllModel, status];
 }

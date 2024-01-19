@@ -215,8 +215,8 @@ class _StudentDetailsScreenState extends State<StudentDetailsScreen> {
       Madpoly.print('User Data: $studentData');
       if (editingModel) {
       } else {
-        context.read<AllStudentsCubit>().addStudent(
-              student: studentData,
+        context.read<AllStudentsCubit>().add(
+              educonnectModel: studentData,
             );
       }
     }

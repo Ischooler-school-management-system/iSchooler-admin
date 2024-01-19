@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../../common/educonnect_assets.dart';
-import '../../common/comon_features/widgets/educonnect_image_widget.dart';
-import '../../common/style/educonnect_text_theme.dart';
+import '../../../../common/educonnect_assets.dart';
+import '../../../../common/comon_features/widgets/educonnect_image_widget.dart';
+import '../../../../common/style/educonnect_text_theme.dart';
 
 class EduconnecDashboardListTile extends StatelessWidget {
   final String title;

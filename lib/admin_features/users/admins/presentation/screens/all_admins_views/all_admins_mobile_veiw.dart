@@ -4,7 +4,7 @@ import 'package:school_admin/common/comon_features/widgets/educonnect_flexible_s
 
 import '../../../../../../common/comon_features/widgets/educonnect_small_view.dart';
 import '../../../../../../common/madpoly.dart';
-import '../../../../educonnect_dashboard_listtile.dart';
+import '../../../../../dashboard/presentation/widgets/educonnect_dashboard_listtile.dart';
 import '../../../data/models/admin_model.dart';
 import '../admin_details_screen.dart';
 

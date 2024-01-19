@@ -156,8 +156,8 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
       Madpoly.print('User Data: $adminData');
       if (editingModel) {
       } else {
-        context.read<AllAdminsCubit>().addAdmin(
-              admin: adminData,
+        context.read<AllAdminsCubit>().add(
+              educonnectModel: adminData,
             );
       }
     }

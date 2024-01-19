@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -81,7 +81,7 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
 
           if (state.isLoaded()) {
             allAdminsModel = state
-                    .alladminsModel /* .copyWith(
+                    .educonnectAllModel /* .copyWith(
               items: state.alladminsModel.items.repeat(20),
             ) */
                 ;
@@ -119,3 +119,4 @@ extension RepeatList<T> on List<T> {
     });
   }
 }
+ */

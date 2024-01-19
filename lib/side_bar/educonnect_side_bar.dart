@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
+import '../admin_features/users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
 import '../admin_features/users/admins/presentation/screens/all_admins_screen.dart';
-import '../admin_features/users/students/presentation/screens/all_students_screen.dart';
+import '../admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
+import '../admin_features/dashboard/presentation/screens/dashboard_table_screen.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/comon_features/widgets/educonnect_screen.dart';
 import '../common/educonnect_constants.dart';
@@ -37,9 +39,10 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     final List<Widget> tabBodies = [
-      const AllAdminsScreen(),
+      const DashboardTableScreen<AllStudentsCubit>(),
+      // const AllAdminsScreen(),
+      const DashboardTableScreen<AllAdminsCubit>(),
       const TeachersTab(),
-      const AllStudentsScreen(),
       const ClassesTab(),
       const GradesTab(),
       const SubjectsTab(),

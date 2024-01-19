@@ -51,13 +51,11 @@ class DashboardDataRow2 {
 
     return Align(
       alignment: Alignment.center,
-      child: Expanded(
-        child: Text(
-          value,
-          maxLines: 2,
-          textAlign: TextAlign.center,
-          overflow: TextOverflow.ellipsis,
-        ),
+      child: Text(
+        value,
+        maxLines: 2,
+        textAlign: TextAlign.center,
+        overflow: TextOverflow.ellipsis,
       ),
     );
   }
