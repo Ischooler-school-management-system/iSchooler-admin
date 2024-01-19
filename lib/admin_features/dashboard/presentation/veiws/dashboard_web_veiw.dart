@@ -3,11 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../common/educonnect_model.dart';
-import '../widgets/dashboard_data_row.dart';
 import '../../../users/user_model.dart';
-import '../../data/models/open_details_form.dart';
+import '../../logic/cubit/all_cubit.dart';
+import '../screens/dashboard_details_screen.dart';
+import '../widgets/dashboard_data_row.dart';
 
-class DashboardWebVeiw extends StatelessWidget {
+class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
   final EduconnectAllModel allUsers;
   const DashboardWebVeiw({super.key, required this.allUsers});
 
@@ -71,7 +72,7 @@ class DashboardWebVeiw extends StatelessWidget {
         allUsers.items.asMap().entries;
     List<DataRow2> rowList = entries2.map((entry) {
       final int index = entry.key;
-      final EduconnectModel user = allUsers.items[index];
+      final EduconnectModel data = allUsers.items[index];
       final EduconnectModel map = entry.value;
       final bool isEven = index % 2 == 0;
       // Add the edit and delete buttons in the trailing section
@@ -87,12 +88,17 @@ class DashboardWebVeiw extends StatelessWidget {
         onEditPressed: () {
           SmartDialog.showToast('$index, Edit');
           // EduconnectNavigator.navigateToScreen(edit)
-          if (user is UserModel) {
-            navigateToUserDetails(user);
+          if (data is UserModel) {
+            // navigateToUserDetails(user);
+            SmartDialog.show(
+              alignment: Alignment.center,
+              builder: (context) =>
+                  DashboardDetailsScreen<C>(currentData: data),
+            );
           }
         },
         onDeletePressed: () {
-          SmartDialog.showToast('$index,id = ${user.id}, Delete');
+          SmartDialog.showToast('$index,id = ${data.id}, Delete');
         },
       );
     }).toList();

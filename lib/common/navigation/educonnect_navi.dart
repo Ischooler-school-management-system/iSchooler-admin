@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../admin_features/users/admins/data/models/admin_model.dart';
-import '../../admin_features/users/admins/presentation/screens/admin_details_screen.dart';
-import '../../admin_features/users/students/data/models/student_model.dart';
-import '../../admin_features/users/students/presentation/screens/student_details_screen.dart';
 import '../../auth/presentation/auth/screens/auth_screen.dart';
 import '../../auth/presentation/auth/screens/select_role_screen.dart';
 import '../../auth/presentation/signin/screens/sign_in_screen.dart';
@@ -142,15 +138,15 @@ abstract class EduconnectNavigator {
         return slideNavigation(
             screen: const SignupPasswordScreen(),
             arguments: settings.arguments);
-      case Routes.studentDetailsScreen:
+      /* case Routes.studentDetailsScreen:
         return slideNavigation(
-            screen:
-                StudentDetailsScreen(currentStudentData: StudentModel.empty()),
+            screen: DashboardDetailsScreen(currentData: StudentModel.empty()),
             arguments: settings.arguments);
       case Routes.adminDetailsScreen:
         return slideNavigation(
-            screen: AdminDetailsScreen(currentAdminData: AdminModel.empty()),
+            screen: AdminDetailsForm(currentAdminData: AdminModel.empty()),
             arguments: settings.arguments);
+      */
       case Routes.sideBarScreen:
         return slideNavigation(
             screen: const EduconnectSideBar(), arguments: settings.arguments);

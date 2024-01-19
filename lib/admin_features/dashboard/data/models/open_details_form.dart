@@ -1,12 +1,12 @@
-import 'package:flutter/material.dart';
+/* import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../common/madpoly.dart';
 import '../../../users/admins/data/models/admin_model.dart';
-import '../../../users/admins/presentation/screens/admin_details_screen.dart';
+import '../../../users/admins/presentation/widgets/admi_details_form.dart';
 import '../../../users/students/data/models/student_model.dart';
-import '../../../users/students/presentation/screens/student_details_screen.dart';
 import '../../../users/user_model.dart';
+import '../../presentation/screens/dashboard_details_screen.dart';
 
 navigateToUserDetails(UserModel user) {
   switch (user.role) {
@@ -16,13 +16,13 @@ navigateToUserDetails(UserModel user) {
       SmartDialog.show(
         alignment: Alignment.center,
         builder: (context) =>
-            AdminDetailsScreen(currentAdminData: user as AdminModel),
+            AdminDetailsForm(currentAdminData: user as AdminModel),
       );
     case UserRole.student:
       SmartDialog.show(
         alignment: Alignment.center,
         builder: (context) =>
-            StudentDetailsScreen(currentStudentData: user as StudentModel),
+            DashboardDetailsScreen(currentData: user as StudentModel),
       );
     default:
       Madpoly.print(
@@ -32,3 +32,4 @@ navigateToUserDetails(UserModel user) {
       );
   }
 }
+ */

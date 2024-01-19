@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
@@ -7,21 +6,24 @@ import '../../../../../common/comon_features/widgets/buttons/educonnect_button_e
 import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../../common/comon_features/widgets/educonnect_small_view.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
 import '../../../../../common/madpoly.dart';
 import '../../data/models/admin_model.dart';
-import '../../logic/all_admins_cubit/all_admins_cubit.dart';
 
-class AdminDetailsScreen extends StatefulWidget {
+class AdminDetailsForm extends StatefulWidget {
   final AdminModel? currentAdminData;
-  const AdminDetailsScreen({super.key, this.currentAdminData});
+  final Function(EduconnectModel model) onSaved;
+
+  const AdminDetailsForm(
+      {super.key, this.currentAdminData, required this.onSaved});
 
   @override
-  State<AdminDetailsScreen> createState() => _AdminDetailsScreenState();
+  State<AdminDetailsForm> createState() => _AdminDetailsFormState();
 }
 
-class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
+class _AdminDetailsFormState extends State<AdminDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
   // Use Adminmodel to store form data
@@ -29,7 +31,6 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
   bool editingModel = false;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     editingModel = widget.currentAdminData != null;
     if (editingModel) {
@@ -149,17 +150,9 @@ class _AdminDetailsScreenState extends State<AdminDetailsScreen> {
 
   onSubmitButtonPressed() {
     if (_formKey.currentState!.validate()) {
-      // Form is valid, process the data
-      // You can add logic here to save the form data
-      // For example, send it to a database or an API
+      _formKey.currentState!.save();
 
-      Madpoly.print('User Data: $adminData');
-      if (editingModel) {
-      } else {
-        context.read<AllAdminsCubit>().add(
-              educonnectModel: adminData,
-            );
-      }
+      widget.onSaved(adminData);
     }
   }
 }

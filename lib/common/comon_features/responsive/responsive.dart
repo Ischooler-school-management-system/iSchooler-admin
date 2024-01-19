@@ -34,8 +34,10 @@ class Responsive extends StatelessWidget {
   static bool isDesktop() => MediaQuery.of(currentContext!).size.width >= tabletWidth; */
 
   static List<Expanded> expandedChildren(
-      {required List<Widget> children, int? ratio}) {
-    return children.map((e) => Expanded(child: e)).toList();
+      {required List<Widget> children, EdgeInsets? padding}) {
+    return children.map((e) {
+      return Expanded(child: Container(padding: padding, child: e));
+    }).toList();
   }
 
   static List<Widget> childrenWithSpacing({

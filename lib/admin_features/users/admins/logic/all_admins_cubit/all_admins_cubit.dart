@@ -1,10 +1,7 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../../../dashboard/logic/cubit/all_cubit.dart';
 import '../../../../../common/comon_features/loading/data/models/loading_model.dart';
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
+import '../../../../dashboard/logic/cubit/all_cubit.dart';
 import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../data/repo/admins_repo.dart';

@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:school_admin/common/comon_features/widgets/educonnect_flexible_scroll_widget.dart';
-import 'package:school_admin/common/comon_features/widgets/educonnect_small_view.dart';
 
+import '../../../../common/comon_features/widgets/educonnect_flexible_scroll_widget.dart';
+import '../../../../common/comon_features/widgets/educonnect_small_view.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../users/user_model.dart';
-import '../../data/models/open_details_form.dart';
 import '../widgets/educonnect_dashboard_listtile.dart';
 
 class DashboardMobileVeiw extends StatelessWidget {
@@ -47,7 +46,7 @@ class DashboardMobileVeiw extends StatelessWidget {
                             SmartDialog.showToast('id = ${model.id}, Edit');
                             // EduconnectNavigator.navigateToScreen(edit)
                             if (model is UserModel) {
-                              navigateToUserDetails(model);
+                              // navigateToUserDetails(model);
                             }
                           },
                         ),

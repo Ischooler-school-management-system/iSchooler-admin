@@ -8,11 +8,10 @@ import '../../../../common/comon_features/widgets/buttons/models/buttons_model.d
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
-// import '../../data/models/all_students_model.dart';
-import '../../../users/students/presentation/screens/student_details_screen.dart';
 import '../../logic/cubit/all_cubit.dart';
 import '../veiws/dashboard_mobile_veiw.dart';
 import '../veiws/dashboard_web_veiw.dart';
+import 'dashboard_details_screen.dart';
 
 class DashboardScreen<C extends EduconnectCubit> extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -34,7 +33,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
   onAddButtonPressed() {
     SmartDialog.show(
       alignment: Alignment.center,
-      builder: (context) => const StudentDetailsScreen(),
+      builder: (context) => DashboardDetailsScreen<C>(),
     );
   }
 
@@ -73,7 +72,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
                 condition: Responsive.isMobile(),
                 whenTrue:
                     DashboardMobileVeiw(educonnectAllModel: educonnectAllModel),
-                whenFalse: DashboardWebVeiw(
+                whenFalse: DashboardWebVeiw<C>(
                   allUsers: educonnectAllModel,
                 ),
               ),
