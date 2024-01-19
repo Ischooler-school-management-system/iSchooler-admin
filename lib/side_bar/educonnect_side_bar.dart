@@ -1,14 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
-import '../common/educonnect_constants.dart';
-import '../common/comon_features/widgets/educonnect_screen.dart';
-import '../common/madpoly.dart';
-import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../admin_features/users/admins/presentation/screens/all_admins_screen.dart';
 import '../admin_features/users/students/presentation/screens/all_students_screen.dart';
+import '../auth/settings/language/presentation/screens/languages_screen.dart';
+import '../common/comon_features/widgets/educonnect_screen.dart';
+import '../common/educonnect_constants.dart';
+import '../common/madpoly.dart';
 import 'sidebar_x.dart';
 
 const primaryColor = canvasColor;
@@ -17,16 +16,6 @@ const scaffoldBackgroundColor = Color.fromRGBO(255, 255, 255, 1);
 const accentCanvasColor = EduconnectColors.grey;
 const white = Colors.white;
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
-
-class SidebarCubit extends Cubit<int> {
-  final SidebarXController controller;
-
-  SidebarCubit({required this.controller}) : super(controller.selectedIndex);
-
-  void updateIndex(int newIndex) {
-    emit(newIndex);
-  }
-}
 
 class EduconnectSideBar extends StatefulWidget {
   const EduconnectSideBar({super.key});

@@ -32,4 +32,12 @@ class AllAdminsModel extends AllUsersModel {
 
   @override
   List<Object> get props => [items];
+
+  AllAdminsModel copyWith({
+    List<AdminModel>? items,
+  }) {
+    return AllAdminsModel(
+      items: items ?? this.items,
+    );
+  }
 }

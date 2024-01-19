@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../common/madpoly.dart';
-import '../../common/navigation/router.export.dart';
 import 'admins/data/models/admin_model.dart';
 import 'admins/presentation/screens/admin_details_screen.dart';
 import 'admins/presentation/screens/all_studdents_views/dashboard_data_row.dart';
@@ -21,23 +20,19 @@ class AllUsersWebVeiw extends StatelessWidget {
     // return old();
 
     if (allUsers.items.isNotEmpty) {
-      return SizedBox(
-        width: double.infinity,
-        child: DataTable2(
-          columns: _buildColumns(),
-          rows: _buildRows(),
-          columnSpacing: 8.0,
-          horizontalMargin: 0,
-        ),
+      return DataTable2(
+        columns: _buildColumns(),
+        rows: _buildRows(),
+
+        // columnSpacing: 8.0,
+        horizontalMargin: 0,
       );
     } else {
-      return Container(
-        color: Colors.red,
-      );
+      return Container();
     }
   }
 
-  List<DataColumn> _buildColumns() {
+  List<DataColumn2> _buildColumns() {
     if (allUsers.items.isEmpty) {
       return [];
     }
@@ -48,52 +43,61 @@ class AllUsersWebVeiw extends StatelessWidget {
         .first
         .keys
         .map(
-          (key) => DataColumn(
-            numeric: true,
-            label: Text(
-              key,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
+          (key) => DataColumn2(
+            size: ColumnSize.L,
+            // numeric: true,
+            label: Center(
+              child: Text(
+                key,
+                maxLines: 1,
+                textAlign: TextAlign.center,
+                overflow: TextOverflow.ellipsis,
+              ),
             ),
           ),
         )
         .toList();
-    return [
+    List<DataColumn2> columnList = [
       ...list,
-      // const DataColumn(numeric: true, label: Text('edit')),
-      // const DataColumn(numeric: true, label: Text('delete')),
+      const DataColumn2(
+          size: ColumnSize.S, /* numeric: true, */ label: Text('edit')),
+      const DataColumn2(
+          size: ColumnSize.S, /* numeric: true, */ label: Text('delete')),
     ];
+
+    return columnList;
   }
 
-  List<DataRow> _buildRows() {
+  List<DataRow2> _buildRows() {
     Iterable<MapEntry<int, UserModel>> entries2 =
         allUsers.items.asMap().entries;
-    return entries2.map((entry) {
+    List<DataRow2> rowList = entries2.map((entry) {
       final int index = entry.key;
       final UserModel user = allUsers.items[index];
       final UserModel map = entry.value;
       final bool isEven = index % 2 == 0;
       // Add the edit and delete buttons in the trailing section
-      return DashboardDataRow.buildDataRow(
+      return DashboardDataRow2.buildDataRow2(
         isEven: isEven,
         map: map.toDisplayMap(),
-        /*  onSelectChanged: (selected) {
+        onSelectChanged: (selected) {
           SmartDialog.showToast('$index,$selected');
           if (selected != null && selected) {
             // Handle row selection, e.g., show a dialog or navigate to edit screen
           }
-        }, */
-        /*  onDeletePressed: () {
+        },
+        onDeletePressed: () {
           SmartDialog.showToast('$index,id = ${user.id}, Delete');
         },
         onEditPressed: () {
           SmartDialog.showToast('$index, Edit');
           // EduconnectNavigator.navigateToScreen(edit)
           navigateToUserDetails(user);
-        }, */
+        },
       );
     }).toList();
+
+    return rowList;
   }
 }
 

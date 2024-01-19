@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import '../../logic/all_students_cubit/all_students_cubit.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
@@ -12,8 +11,8 @@ import '../../../../../common/comon_features/widgets/fields/educonnect_text_fiel
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../admins/logic/all_admins_cubit/all_admins_cubit.dart';
 import '../../data/models/student_model.dart';
+import '../../logic/all_students_cubit/all_students_cubit.dart';
 
 class StudentDetailsScreen extends StatefulWidget {
   final StudentModel? currentStudentData;

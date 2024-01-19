@@ -30,7 +30,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       title: 'Admin'
     ),
     (
-      role: UserRole.teacher,
+      role: UserRole.instructor,
       iconPath: EduconnectAssets.teacherIcon,
       title: 'Teacher'
     ),

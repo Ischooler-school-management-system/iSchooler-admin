@@ -1,5 +1,7 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_admin/common/style/educonnect_text_theme.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
@@ -14,6 +16,7 @@ const scaffoldBackgroundColor = Color.fromRGBO(255, 255, 255, 1);
 const accentCanvasColor = EduconnectColors.grey;
 const white = Colors.white;
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
+FirebaseAuth newVariable = FirebaseAuth.instance;
 
 class ExampleSidebarX extends StatelessWidget {
   final SidebarXController _controller;
@@ -57,12 +60,21 @@ class ExampleSidebarX extends StatelessWidget {
   }
 
   Widget headerBuilder(context, extended) {
-    return SizedBox(
-      height: 100,
-      child: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Image.asset(EduconnectAssets.blankProfileImage),
-      ),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceAround,
+      children: [
+        SizedBox(
+          height: 100,
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.asset(EduconnectAssets.blankProfileImage),
+          ),
+        ),
+        if (newVariable.currentUser != null &&
+            newVariable.currentUser!.email != null)
+          Text(newVariable.currentUser!.email!,
+              style: EduconnectTextStyles.style14White),
+      ],
     );
   }
 

@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../auth/presentation/auth/screens/select_role_screen.dart';
-import '../../test_screen.dart';
 
 import '../../admin_features/users/admins/data/models/admin_model.dart';
 import '../../admin_features/users/admins/presentation/screens/admin_details_screen.dart';
 import '../../admin_features/users/students/data/models/student_model.dart';
 import '../../admin_features/users/students/presentation/screens/student_details_screen.dart';
 import '../../auth/presentation/auth/screens/auth_screen.dart';
+import '../../auth/presentation/auth/screens/select_role_screen.dart';
 import '../../auth/presentation/signin/screens/sign_in_screen.dart';
 import '../../auth/presentation/signup/screens/sign_up_password_screen.dart';
 import '../../auth/presentation/signup/screens/sign_up_screen.dart';

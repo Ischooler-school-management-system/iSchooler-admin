@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import '../../../../../common/navigation/educonnect_navi.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
@@ -9,9 +8,7 @@ import '../../../../../common/comon_features/widgets/buttons/models/buttons_mode
 import '../../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../../common/navigation/routes.dart';
 import '../../../all_users_web_veiw.dart';
-import '../../data/models/admin_model.dart';
 import '../../data/models/all_admins_model.dart';
 import '../../logic/all_admins_cubit/all_admins_cubit.dart';
 import 'admin_details_screen.dart';
@@ -76,47 +73,49 @@ class _AllAdminsScreenState extends State<AllAdminsScreen> {
       // enableScrolling: true,
       // enableflexibleScrolling: true,
       // padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(8),
+
       body: BlocBuilder<AllAdminsCubit, AllAdminsState>(
         builder: (context, state) {
           AllAdminsModel allAdminsModel = AllAdminsModel.empty();
-          /* AllAdminsModel allAdminsModel = AllAdminsModel(
-            items: List.generate(
-              60,
-              (index) => AdminModel(
-                id: '$index',
-                displayName: 'Joe allawi habib galbi',
-                userName: 'JohnDoe',
-                dateOfBirth: DateTime(2000, 1, 1),
-                phoneNumber: '1234567890',
-                address: '123 Main St',
-                gender: 'Male',
-                email: 'ziad@mail.com',
-              ),
-            ),
-          ); */
+
           if (state.isLoaded()) {
-            allAdminsModel = state.alladminsModel;
+            allAdminsModel = state
+                    .alladminsModel /* .copyWith(
+              items: state.alladminsModel.items.repeat(20),
+            ) */
+                ;
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               addButton(),
-              EduconnectConditionalWidget(
-                condition: Responsive.isMobile(),
-                whenTrue: AllAdminsMobileVeiw(
-                  adminsList: allAdminsModel.items,
+              Expanded(
+                child: EduconnectConditionalWidget(
+                  condition: Responsive.isMobile(),
+                  whenTrue: AllAdminsMobileVeiw(
+                    adminsList: allAdminsModel.items,
+                  ),
+                  whenFalse: AllUsersWebVeiw(
+                    // usersList: [],
+                    allUsers: allAdminsModel,
+                  ),
+                  // whenFalse: testFunction(allAdminsModel.toDisplayList()),
                 ),
-                whenFalse: AllUsersWebVeiw(
-                  // usersList: [],
-                  allUsers: allAdminsModel,
-                ),
-                // whenFalse: testFunction(allAdminsModel.toDisplayList()),
               ),
             ],
           );
         },
       ),
     );
+  }
+}
+
+extension RepeatList<T> on List<T> {
+  List<T> repeat(int times) {
+    return List.generate(length * times, (index) {
+      return this[index % length];
+    });
   }
 }

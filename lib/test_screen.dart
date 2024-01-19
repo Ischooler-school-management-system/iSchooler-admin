@@ -1,29 +1,31 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
-import 'admin_features/users/admins/data/models/admin_model.dart';
-import 'admin_features/users/admins/data/models/all_admins_model.dart';
 import 'admin_features/users/admins/presentation/screens/all_studdents_views/dashboard_data_row.dart';
+import 'admin_features/users/all_users_web_veiw.dart';
+import 'admin_features/users/students/data/models/all_students_model.dart';
+import 'admin_features/users/students/data/models/student_model.dart';
 import 'admin_features/users/user_model.dart';
 import 'common/comon_features/widgets/educonnect_screen.dart';
-import 'common/educonnect_assets.dart';
 import 'common/madpoly.dart';
-import 'common/style/educonnect_colors.dart';
 
+// ignore: must_be_immutable
 class TestScreen extends StatelessWidget {
   TestScreen({super.key});
 
-  AllAdminsModel allUsers = AllAdminsModel(
+  AllStudentsModel allUsers = AllStudentsModel(
     items: List.generate(
       60,
-      (index) => AdminModel(
-        profilePicture: '',
+      (index) => StudentModel(
         id: '$index',
-        displayName: 'Joe allawi habib galbi',
-        userName: 'JohnDoe',
+        displayName: 'zzzzzzzzzzzzzzzzzzzJoe',
+        userName: 'JohznDoe',
         dateOfBirth: DateTime(2000, 1, 1),
+        classId: '101',
+        gradeId: 'A',
         phoneNumber: '1234567890',
-        address: '123 Main St',
+        address: '123 Main Staaaaaaaaaaaaaaaa',
+        paymentStatus: true,
         gender: 'Male',
         email: 'ziad@mail.com',
       ),
@@ -53,7 +55,12 @@ class TestScreen extends StatelessWidget {
       // keepMobileView: true,
       // alignment: Alignment.center,
       // body: tableBody(),
-      body: buildDataTable(dataList),
+      // body: buildDataTable(),
+      body: Column(
+        children: [
+          Expanded(child: AllUsersWebVeiw(allUsers: allUsers)),
+        ],
+      ),
     );
   }
 
@@ -88,14 +95,18 @@ class TestScreen extends StatelessWidget {
     ];
   }
 
-  Widget buildDataTable(List<Map<String, dynamic>> data) {
+  Widget buildDataTable() {
     // Define columns for the data table
     List<DataColumn> columns = _buildColumns();
 
     // Build the data rows
+    Iterable<MapEntry<int, UserModel>> entries2 =
+        allUsers.items.asMap().entries;
 
-    List<DataRow> rows =
-        data.map((map) => DashboardDataRow.buildDataRow(map: map)).toList();
+    List<DataRow> rows = entries2
+        .map((MapEntry<int, UserModel> map) =>
+            DashboardDataRow2.buildDataRow2(map: map.value.toDisplayMap()))
+        .toList();
     /*  List<DataRow> rows = data.map((Map<String, dynamic> rowData) {
       List<DataCell> cells = rowData.values
           .map(

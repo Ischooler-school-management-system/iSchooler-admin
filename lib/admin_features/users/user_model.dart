@@ -1,13 +1,13 @@
-import 'package:equatable/equatable.dart';
 import 'package:intl/intl.dart';
 
 import '../../common/educonnect_constants.dart';
+import '../../common/educonnect_model.dart';
 import '../../common/functions/truncate_dashboard_map.dart';
 
-enum UserRole { admin, teacher, student, none }
+enum UserRole { admin, instructor, student, none }
 
-class UserModel extends Equatable {
-  final String id;
+class UserModel extends EduconnectModel {
+  // final String id;
   final DateTime? dateOfBirth;
   final String phoneNumber;
   final String address;
@@ -19,7 +19,7 @@ class UserModel extends Equatable {
   final String profilePicture;
   const UserModel({
     required this.userName,
-    required this.id,
+    required super.id,
     required this.dateOfBirth,
     required this.phoneNumber,
     required this.address,
@@ -50,7 +50,7 @@ class UserModel extends Equatable {
         case 'admin':
           userRole = UserRole.admin;
         case 'teacher':
-          userRole = UserRole.teacher;
+          userRole = UserRole.instructor;
         case 'student':
           userRole = UserRole.student;
         default:
@@ -72,6 +72,7 @@ class UserModel extends Equatable {
       profilePicture: map['profilePicture'] ?? '',
     );
   }
+  @override
   Map<String, dynamic> toMap() {
     return {
       'userName': userName,
@@ -86,9 +87,10 @@ class UserModel extends Equatable {
     };
   }
 
+  @override
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
-      '': profilePicture,
+      // '': profilePicture,
       EduconnectConstants.localization().name: displayName,
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
@@ -102,6 +104,7 @@ class UserModel extends Equatable {
     return truncateMap(map);
   }
 
+  @override
   UserModel copyWith({
     String? id,
     String? userName,
@@ -132,7 +135,6 @@ class UserModel extends Equatable {
   @override
   List<Object?> get props {
     return [
-      id,
       dateOfBirth,
       phoneNumber,
       address,
@@ -142,4 +144,8 @@ class UserModel extends Equatable {
       role,
     ];
   }
+}
+
+class Use2rModel extends EduconnectModel {
+  const Use2rModel({required super.id});
 }

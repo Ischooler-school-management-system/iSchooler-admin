@@ -83,7 +83,7 @@ class StudentModel extends UserModel {
   @override
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
-      '': profilePicture,
+      // '': profilePicture,
       EduconnectConstants.localization().name: displayName,
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,

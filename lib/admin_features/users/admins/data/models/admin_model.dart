@@ -51,7 +51,7 @@ class AdminModel extends UserModel {
   @override
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
-      'q': profilePicture,
+      // 'q': profilePicture,
       EduconnectConstants.localization().name: displayName,
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,

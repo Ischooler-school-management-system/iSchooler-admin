@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:school_admin/common/comon_features/widgets/educonnect_flexible_scroll_widget.dart';
 
 import '../../../../../../common/comon_features/widgets/educonnect_small_view.dart';
 import '../../../../../../common/madpoly.dart';
@@ -14,56 +15,59 @@ class AllAdminsMobileVeiw extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return EduconnectSmallView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...adminsList.map(
-            (admin) {
-              return EduconnecDashboardListTile(
-                title: admin.displayName,
-                isName: true,
-                subtitle: '${admin.gender} | ${admin.phoneNumber}',
-                trailing: SizedBox(
-                  width: 80,
-                  child: Row(
-                    children: [
-                      IconButton(
-                        icon: const Icon(Icons.edit),
-                        onPressed: () {
-                          // EduconnectNavigator.push(
-                          //   Routes.adminDetailsScreen,
-                          //   arguments: adminsList,
-                          // );
-                          SmartDialog.show(
-                            alignment: Alignment.center,
-                            builder: (context) =>
-                                AdminDetailsScreen(currentAdminData: admin),
-                          );
-                          // Handle edit button press
-                          Madpoly.print('Edit button pressed for Item ');
-                        },
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.delete,
-                          color: Colors.red,
+      child: EduconnectFlexibleScrollWidget(
+        enableScrolling: true,
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            ...adminsList.map(
+              (admin) {
+                return EduconnecDashboardListTile(
+                  title: admin.displayName,
+                  isName: true,
+                  subtitle: '${admin.gender} | ${admin.phoneNumber}',
+                  trailing: SizedBox(
+                    width: 80,
+                    child: Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          onPressed: () {
+                            // EduconnectNavigator.push(
+                            //   Routes.adminDetailsScreen,
+                            //   arguments: adminsList,
+                            // );
+                            SmartDialog.show(
+                              alignment: Alignment.center,
+                              builder: (context) =>
+                                  AdminDetailsScreen(currentAdminData: admin),
+                            );
+                            // Handle edit button press
+                            Madpoly.print('Edit button pressed for Item ');
+                          },
                         ),
-                        onPressed: () {
-                          // Handle delete button press
-                          Madpoly.print('Delete button pressed for Item ');
-                        },
-                      ),
-                    ],
+                        IconButton(
+                          icon: const Icon(
+                            Icons.delete,
+                            color: Colors.red,
+                          ),
+                          onPressed: () {
+                            // Handle delete button press
+                            Madpoly.print('Delete button pressed for Item ');
+                          },
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-              );
+                );
 
-              /* return EduconnecDashboardListTile(
-                title: admin.displayName,
-              ); */
-            },
-          ),
-        ],
+                /* return EduconnecDashboardListTile(
+                  title: admin.displayName,
+                ); */
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

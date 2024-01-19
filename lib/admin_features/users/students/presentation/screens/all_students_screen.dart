@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
 import '../../../../../common/comon_features/widgets/buttons/models/buttons_model.dart';
 import '../../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
-import '../../../../../common/navigation/educonnect_navi.dart';
-import '../../../../../common/navigation/routes.dart';
 import '../../../all_users_web_veiw.dart';
 import '../../data/models/all_students_model.dart';
 import '../../data/models/student_model.dart';
 import '../../logic/all_students_cubit/all_students_cubit.dart';
 import 'all_studdents_views/all_students_mobile_veiw.dart';
+import 'student_details_screen.dart';
 
 class AllStudentsScreen extends StatefulWidget {
   const AllStudentsScreen({super.key});
@@ -53,7 +53,11 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
  */
     // studentList.add(newStudent);
     // setState(() {});
-    EduconnectNavigator.push(Routes.studentDetailsScreen);
+    // EduconnectNavigator.push(Routes.studentDetailsScreen);
+    SmartDialog.show(
+      alignment: Alignment.center,
+      builder: (context) => const StudentDetailsScreen(),
+    );
   }
 
   EduconnectButton addButton() {
@@ -69,8 +73,8 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      // enableScrolling: true,
-      enableflexibleScrolling: true,
+      enableScrolling: Responsive.isMobile(),
+      // enableflexibleScrolling: true,
 
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<AllStudentsCubit, AllStudentsState>(
@@ -86,12 +90,14 @@ class _AllStudentsScreenState extends State<AllStudentsScreen> {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               addButton(),
-              EduconnectConditionalWidget(
-                condition: Responsive.isMobile(),
-                whenTrue:
-                    AllStudentsMobileVeiw(studentList: allStudentsModel.items),
-                whenFalse: AllUsersWebVeiw(
-                  allUsers: allStudentsModel,
+              Expanded(
+                child: EduconnectConditionalWidget(
+                  condition: Responsive.isMobile(),
+                  whenTrue: AllStudentsMobileVeiw(
+                      studentList: allStudentsModel.items),
+                  whenFalse: AllUsersWebVeiw(
+                    allUsers: allStudentsModel,
+                  ),
                 ),
               ),
             ],
