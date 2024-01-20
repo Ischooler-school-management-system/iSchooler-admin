@@ -7,11 +7,11 @@ import '../../data/models/students_list_model.dart';
 
 part 'students_list_state.dart';
 
-class AllStudentsCubit extends EduconnectCubit {
+class StudentsListCubit extends EduconnectCubit {
   final DashboardRepository _studentRepository;
   final LoadingRepository _loadingRepository;
 
-  AllStudentsCubit(
+  StudentsListCubit(
     DashboardRepository studentRepository,
     LoadingRepository loadingRepository,
   )   : _studentRepository = studentRepository,

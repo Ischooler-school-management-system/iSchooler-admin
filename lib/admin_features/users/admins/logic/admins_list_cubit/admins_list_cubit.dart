@@ -7,11 +7,11 @@ import '../../../../dashboard/data/repo/dashboard_repo.dart';
 
 part 'admins_list_state.dart';
 
-class AllAdminsCubit extends EduconnectCubit {
+class AdminsListCubit extends EduconnectCubit {
   final DashboardRepository _adminRepository;
   final LoadingRepository _loadingRepository;
 
-  AllAdminsCubit(
+  AdminsListCubit(
     DashboardRepository adminRepository,
     LoadingRepository loadingRepository,
   )   : _adminRepository = adminRepository,

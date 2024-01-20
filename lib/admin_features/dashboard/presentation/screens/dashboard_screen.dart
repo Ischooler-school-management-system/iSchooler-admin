@@ -8,8 +8,9 @@ import '../../../../common/comon_features/widgets/buttons/models/buttons_model.d
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
-import '../../../users/admins/logic/all_admins_cubit/admins_list_cubit.dart';
-import '../../../users/students/logic/all_students_cubit/students_list_cubit.dart';
+import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
+import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
+import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
 import '../../logic/cubit/all_cubit.dart';
 import '../veiws/dashboard_mobile_veiw.dart';
 import '../veiws/dashboard_web_veiw.dart';
@@ -40,10 +41,12 @@ class _DashboardScreenState<C extends EduconnectCubit>
   }
 
   String screenTag() {
-    if (C == AllStudentsCubit) {
+    if (C == StudentsListCubit) {
       return 'Student';
-    } else if (C == AllAdminsCubit) {
+    } else if (C == AdminsListCubit) {
       return 'Admin';
+    } else if (C == InstructorsListCubit) {
+      return 'Instructor';
     } else {
       return '';
     }
