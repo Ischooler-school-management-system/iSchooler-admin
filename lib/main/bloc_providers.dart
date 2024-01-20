@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../admin_features/users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
-import '../admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
+import '../admin_features/users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
+import '../admin_features/users/students/logic/students_list_cubit/students_list_cubit.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/comon_features/error_handling/logic/cubit/error_handling_cubit.dart';

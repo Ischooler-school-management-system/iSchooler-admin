@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 import 'admin_features/dashboard/presentation/widgets/dashboard_data_row.dart';
 import 'admin_features/dashboard/presentation/veiws/dashboard_web_veiw.dart';
-import 'admin_features/users/students/data/models/all_students_model.dart';
+import 'admin_features/users/students/data/models/students_list_model.dart';
 import 'admin_features/users/students/data/models/student_model.dart';
 import 'admin_features/users/user_model.dart';
 import 'common/comon_features/widgets/educonnect_screen.dart';

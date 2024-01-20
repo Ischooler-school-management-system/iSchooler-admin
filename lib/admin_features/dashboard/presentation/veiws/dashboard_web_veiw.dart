@@ -1,15 +1,16 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../common/educonnect_model.dart';
-import '../../../users/user_model.dart';
+import '../../../../common/navigation/educonnect_navi.dart';
 import '../../logic/cubit/all_cubit.dart';
 import '../screens/dashboard_details_screen.dart';
 import '../widgets/dashboard_data_row.dart';
 
 class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
-  final EduconnectAllModel allUsers;
+  final EduconnectModelList allUsers;
   const DashboardWebVeiw({super.key, required this.allUsers});
 
   @override
@@ -87,18 +88,14 @@ class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
         },
         onEditPressed: () {
           SmartDialog.showToast('$index, Edit');
-          // EduconnectNavigator.navigateToScreen(edit)
-          if (data is UserModel) {
-            // navigateToUserDetails(user);
-            SmartDialog.show(
-              alignment: Alignment.center,
-              builder: (context) =>
-                  DashboardDetailsScreen<C>(currentData: data),
-            );
-          }
+          SmartDialog.show(
+            alignment: Alignment.center,
+            builder: (context) => DashboardDetailsScreen<C>(currentData: data),
+          );
         },
         onDeletePressed: () {
           SmartDialog.showToast('$index,id = ${data.id}, Delete');
+          currentContext!.read<C>().deleteItem(model: data);
         },
       );
     }).toList();

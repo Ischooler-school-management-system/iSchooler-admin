@@ -14,14 +14,14 @@ abstract class EduconnectCubit extends Cubit<EduconnectState> {
 
 abstract class EduconnectRepository {
   //model is sent here to get the type of request only
-  Future<EduconnectAllModel> getAllItems({required EduconnectAllModel model});
+  Future<EduconnectModelList> getAllItems({required EduconnectModelList model});
   Future<bool> addItem({required EduconnectModel model});
   Future<bool> deleteItem({required EduconnectModel model});
 }
 
 abstract class EduconnectNetwork {
   //model is sent here to get the type of request only
-  Future<EduconnectResponse> getAllItems({required EduconnectAllModel model});
+  Future<EduconnectResponse> getAllItems({required EduconnectModelList model});
   Future<bool> addItem({required EduconnectModel model});
   Future<bool> deleteItem({required EduconnectModel model});
 }
@@ -30,7 +30,7 @@ enum EduconnectStatus { init, updated, loaded, failed }
 // @immutable
 
 class EduconnectState extends Equatable {
-  final EduconnectAllModel educonnectAllModel;
+  final EduconnectModelList educonnectAllModel;
   final EduconnectStatus status;
 
   const EduconnectState({
@@ -40,12 +40,12 @@ class EduconnectState extends Equatable {
 
   factory EduconnectState.init() {
     return EduconnectState(
-      educonnectAllModel: EduconnectAllModel.empty(),
+      educonnectAllModel: EduconnectModelList.empty(),
       status: EduconnectStatus.init,
     );
   }
 
-  EduconnectState updateEduconnect(EduconnectAllModel educonnectModel) {
+  EduconnectState updateEduconnect(EduconnectModelList educonnectModel) {
     return _copyWith(
       educonnectAllModel: educonnectModel,
       status: EduconnectStatus.loaded,
@@ -53,7 +53,7 @@ class EduconnectState extends Equatable {
   }
 
   EduconnectState _copyWith({
-    EduconnectAllModel? educonnectAllModel,
+    EduconnectModelList? educonnectAllModel,
     EduconnectStatus? status,
   }) {
     return EduconnectState(

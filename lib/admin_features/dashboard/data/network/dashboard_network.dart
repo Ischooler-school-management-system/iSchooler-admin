@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
 import '../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../common/educonnect_model.dart';
-import '../../../../common/network/collections.dart';
+import '../../../../common/network/educonnect_network_helper.dart';
 import '../../../../common/network/educonnect_response.dart';
 import '../../logic/cubit/all_cubit.dart';
 
@@ -15,7 +15,7 @@ class DashboardNetwork implements EduconnectNetwork {
 
   @override
   Future<EduconnectResponse> getAllItems(
-      {required EduconnectAllModel model}) async {
+      {required EduconnectModelList model}) async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
       String? collectionName =

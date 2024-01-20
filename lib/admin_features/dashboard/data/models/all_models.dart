@@ -1,5 +1,5 @@
-import '../../../users/user_model.dart';
 import '../../../../common/educonnect_model.dart';
+import '../../../users/instructor/data/models/instructor_model.dart';
 
 /*
 class GradeModel
@@ -806,38 +806,6 @@ class ExamTimetableModel extends EduconnectModel {
   }
 }
 
-class InstructorModel extends UserModel {
-  const InstructorModel({
-    required super.userName,
-    required super.id,
-    required super.dateOfBirth,
-    required super.phoneNumber,
-    required super.address,
-    required super.gender,
-    required super.email,
-    required super.displayName,
-    super.role = UserRole.instructor,
-    required super.profilePicture,
-  });
-
-  factory InstructorModel.fromMap(Map<String, dynamic> map) {
-    return InstructorModel(
-      userName: map['userName'] ?? '',
-      id: map['id'] ?? '',
-      dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
-          : null,
-      phoneNumber: map['phoneNumber'] ?? '',
-      address: map['address'] ?? '',
-      gender: map['gender'] ?? '',
-      email: map['email'] ?? '',
-      displayName: map['displayName'] ?? '',
-      role: map['role'] == UserRole.admin.name ? UserRole.admin : UserRole.none,
-      profilePicture: map['profilePicture'] ?? '',
-    );
-  }
-}
-
 class HomeworkModel extends EduconnectModel {
   final String homeworkId;
   final ClassModel classInfo;
@@ -1006,214 +974,198 @@ class NewsModel extends EduconnectModel {
   }
 }
 
-class AllGradeModel extends EduconnectAllModel {
-  const AllGradeModel({required List<GradeModel> items}) : super(items: items);
+class GradesListModel extends EduconnectModelList {
+  const GradesListModel({required List<GradeModel> items})
+      : super(items: items);
 
-  factory AllGradeModel.empty() {
-    return const AllGradeModel(items: []);
+  factory GradesListModel.empty() {
+    return const GradesListModel(items: []);
   }
 
-  factory AllGradeModel.fromMap(Map map) {
+  factory GradesListModel.fromMap(Map map) {
     final List<GradeModel> items = List<GradeModel>.from(
       map['items'].map(
         (item) => GradeModel.fromMap(item),
       ),
     );
-    return AllGradeModel(items: items);
+    return GradesListModel(items: items);
   }
 }
 
-class AllClassModel extends EduconnectAllModel {
-  const AllClassModel({required List<ClassModel> items}) : super(items: items);
+class ClassesListModel extends EduconnectModelList {
+  const ClassesListModel({required List<ClassModel> items})
+      : super(items: items);
 
-  factory AllClassModel.empty() {
-    return const AllClassModel(items: []);
+  factory ClassesListModel.empty() {
+    return const ClassesListModel(items: []);
   }
 
-  factory AllClassModel.fromMap(Map map) {
+  factory ClassesListModel.fromMap(Map map) {
     final List<ClassModel> items = List<ClassModel>.from(
       map['items'].map(
         (item) => ClassModel.fromMap(item),
       ),
     );
-    return AllClassModel(items: items);
+    return ClassesListModel(items: items);
   }
 }
 
-class AllSubjectModel extends EduconnectAllModel {
-  const AllSubjectModel({required List<SubjectModel> items})
+class SubjectsListModel extends EduconnectModelList {
+  const SubjectsListModel({required List<SubjectModel> items})
       : super(items: items);
 
-  factory AllSubjectModel.empty() {
-    return const AllSubjectModel(items: []);
+  factory SubjectsListModel.empty() {
+    return const SubjectsListModel(items: []);
   }
 
-  factory AllSubjectModel.fromMap(Map map) {
+  factory SubjectsListModel.fromMap(Map map) {
     final List<SubjectModel> items = List<SubjectModel>.from(
       map['items'].map(
         (item) => SubjectModel.fromMap(item),
       ),
     );
-    return AllSubjectModel(items: items);
+    return SubjectsListModel(items: items);
   }
 }
 
-class AllWeeklySessionModel extends EduconnectAllModel {
-  const AllWeeklySessionModel({required List<WeeklySessionModel> items})
+class WeeklySessionsListModel extends EduconnectModelList {
+  const WeeklySessionsListModel({required List<WeeklySessionModel> items})
       : super(items: items);
 
-  factory AllWeeklySessionModel.empty() {
-    return const AllWeeklySessionModel(items: []);
+  factory WeeklySessionsListModel.empty() {
+    return const WeeklySessionsListModel(items: []);
   }
 
-  factory AllWeeklySessionModel.fromMap(Map map) {
+  factory WeeklySessionsListModel.fromMap(Map map) {
     final List<WeeklySessionModel> items = List<WeeklySessionModel>.from(
       map['items'].map(
         (item) => WeeklySessionModel.fromMap(item),
       ),
     );
-    return AllWeeklySessionModel(items: items);
+    return WeeklySessionsListModel(items: items);
   }
 }
 
-class AllWeeklyTimetableModel extends EduconnectAllModel {
-  const AllWeeklyTimetableModel({required List<WeeklyTimetableModel> items})
+class WeeklyTimetablesListModel extends EduconnectModelList {
+  const WeeklyTimetablesListModel({required List<WeeklyTimetableModel> items})
       : super(items: items);
 
-  factory AllWeeklyTimetableModel.empty() {
-    return const AllWeeklyTimetableModel(items: []);
+  factory WeeklyTimetablesListModel.empty() {
+    return const WeeklyTimetablesListModel(items: []);
   }
 
-  factory AllWeeklyTimetableModel.fromMap(Map map) {
+  factory WeeklyTimetablesListModel.fromMap(Map map) {
     final List<WeeklyTimetableModel> items = List<WeeklyTimetableModel>.from(
       map['items'].map(
         (item) => WeeklyTimetableModel.fromMap(item),
       ),
     );
-    return AllWeeklyTimetableModel(items: items);
+    return WeeklyTimetablesListModel(items: items);
   }
 }
 
-class AllExamTypeModel extends EduconnectAllModel {
-  const AllExamTypeModel({required List<ExamTypeModel> items})
+class ExamTypesListModel extends EduconnectModelList {
+  const ExamTypesListModel({required List<ExamTypeModel> items})
       : super(items: items);
 
-  factory AllExamTypeModel.empty() {
-    return const AllExamTypeModel(items: []);
+  factory ExamTypesListModel.empty() {
+    return const ExamTypesListModel(items: []);
   }
 
-  factory AllExamTypeModel.fromMap(Map map) {
+  factory ExamTypesListModel.fromMap(Map map) {
     final List<ExamTypeModel> items = List<ExamTypeModel>.from(
       map['items'].map(
         (item) => ExamTypeModel.fromMap(item),
       ),
     );
-    return AllExamTypeModel(items: items);
+    return ExamTypesListModel(items: items);
   }
 }
 
-class AllExamModel extends EduconnectAllModel {
-  const AllExamModel({required List<ExamModel> items}) : super(items: items);
+class ExamsListModel extends EduconnectModelList {
+  const ExamsListModel({required List<ExamModel> items}) : super(items: items);
 
-  factory AllExamModel.empty() {
-    return const AllExamModel(items: []);
+  factory ExamsListModel.empty() {
+    return const ExamsListModel(items: []);
   }
 
-  factory AllExamModel.fromMap(Map map) {
+  factory ExamsListModel.fromMap(Map map) {
     final List<ExamModel> items = List<ExamModel>.from(
       map['items'].map(
         (item) => ExamModel.fromMap(item),
       ),
     );
-    return AllExamModel(items: items);
+    return ExamsListModel(items: items);
   }
 }
 
-class AllExamSessionModel extends EduconnectAllModel {
-  const AllExamSessionModel({required List<ExamSessionModel> items})
+class ExamSessionsListModel extends EduconnectModelList {
+  const ExamSessionsListModel({required List<ExamSessionModel> items})
       : super(items: items);
 
-  factory AllExamSessionModel.empty() {
-    return const AllExamSessionModel(items: []);
+  factory ExamSessionsListModel.empty() {
+    return const ExamSessionsListModel(items: []);
   }
 
-  factory AllExamSessionModel.fromMap(Map map) {
+  factory ExamSessionsListModel.fromMap(Map map) {
     final List<ExamSessionModel> items = List<ExamSessionModel>.from(
       map['items'].map(
         (item) => ExamSessionModel.fromMap(item),
       ),
     );
-    return AllExamSessionModel(items: items);
+    return ExamSessionsListModel(items: items);
   }
 }
 
-class AllExamTimetableModel extends EduconnectAllModel {
-  const AllExamTimetableModel({required List<ExamTimetableModel> items})
+class ExamTimetablesListModel extends EduconnectModelList {
+  const ExamTimetablesListModel({required List<ExamTimetableModel> items})
       : super(items: items);
 
-  factory AllExamTimetableModel.empty() {
-    return const AllExamTimetableModel(items: []);
+  factory ExamTimetablesListModel.empty() {
+    return const ExamTimetablesListModel(items: []);
   }
 
-  factory AllExamTimetableModel.fromMap(Map map) {
+  factory ExamTimetablesListModel.fromMap(Map map) {
     final List<ExamTimetableModel> items = List<ExamTimetableModel>.from(
       map['items'].map(
         (item) => ExamTimetableModel.fromMap(item),
       ),
     );
-    return AllExamTimetableModel(items: items);
+    return ExamTimetablesListModel(items: items);
   }
 }
 
-class AllInstructorModel extends EduconnectAllModel {
-  const AllInstructorModel({required List<InstructorModel> items})
+class HomeworksListModel extends EduconnectModelList {
+  const HomeworksListModel({required List<HomeworkModel> items})
       : super(items: items);
 
-  factory AllInstructorModel.empty() {
-    return const AllInstructorModel(items: []);
+  factory HomeworksListModel.empty() {
+    return const HomeworksListModel(items: []);
   }
 
-  factory AllInstructorModel.fromMap(Map map) {
-    final List<InstructorModel> items = List<InstructorModel>.from(
-      map['items'].map(
-        (item) => InstructorModel.fromMap(item),
-      ),
-    );
-    return AllInstructorModel(items: items);
-  }
-}
-
-class AllHomeworkModel extends EduconnectAllModel {
-  const AllHomeworkModel({required List<HomeworkModel> items})
-      : super(items: items);
-
-  factory AllHomeworkModel.empty() {
-    return const AllHomeworkModel(items: []);
-  }
-
-  factory AllHomeworkModel.fromMap(Map map) {
+  factory HomeworksListModel.fromMap(Map map) {
     final List<HomeworkModel> items = List<HomeworkModel>.from(
       map['items'].map(
         (item) => HomeworkModel.fromMap(item),
       ),
     );
-    return AllHomeworkModel(items: items);
+    return HomeworksListModel(items: items);
   }
 }
 
-class AllNewsModel extends EduconnectAllModel {
-  const AllNewsModel({required List<NewsModel> items}) : super(items: items);
+class NewsListModel extends EduconnectModelList {
+  const NewsListModel({required List<NewsModel> items}) : super(items: items);
 
-  factory AllNewsModel.empty() {
-    return const AllNewsModel(items: []);
+  factory NewsListModel.empty() {
+    return const NewsListModel(items: []);
   }
 
-  factory AllNewsModel.fromMap(Map map) {
+  factory NewsListModel.fromMap(Map map) {
     final List<NewsModel> items = List<NewsModel>.from(
       map['items'].map(
         (item) => NewsModel.fromMap(item),
       ),
     );
-    return AllNewsModel(items: items);
+    return NewsListModel(items: items);
   }
 }

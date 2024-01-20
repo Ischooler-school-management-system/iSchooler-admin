@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../../../../common/educonnect_model.dart';
-import '../../../all_users_model.dart';
+import '../../../users_list_model.dart';
 import 'admin_model.dart';
 
-class AllAdminsModel extends AllUsersModel {
+class AllAdminsModel extends UsersListModel {
   @override
   const AllAdminsModel({required super.items});
   factory AllAdminsModel.empty() {
@@ -32,10 +32,10 @@ class AllAdminsModel extends AllUsersModel {
   @override
   List<Object> get props => [items];
   @override
-  EduconnectAllModel copyWith({
+  EduconnectModelList copyWith({
     List<EduconnectModel>? items,
   }) {
-    return EduconnectAllModel(
+    return EduconnectModelList(
       items: items ?? this.items,
     );
   }

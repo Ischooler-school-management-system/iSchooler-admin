@@ -8,7 +8,7 @@ import '../../../users/user_model.dart';
 import '../widgets/educonnect_dashboard_listtile.dart';
 
 class DashboardMobileVeiw extends StatelessWidget {
-  final EduconnectAllModel educonnectAllModel;
+  final EduconnectModelList educonnectAllModel;
   const DashboardMobileVeiw({super.key, required this.educonnectAllModel});
 
   @override

@@ -2,18 +2,18 @@
 import '../../common/educonnect_model.dart';
 import 'user_model.dart';
 
-class AllUsersModel extends EduconnectAllModel {
-  const AllUsersModel({required super.items});
-  factory AllUsersModel.empty() {
-    return const AllUsersModel(items: []);
+class UsersListModel extends EduconnectModelList {
+  const UsersListModel({required super.items});
+  factory UsersListModel.empty() {
+    return const UsersListModel(items: []);
   }
-  factory AllUsersModel.fromMap(Map map) {
+  factory UsersListModel.fromMap(Map map) {
     final List<UserModel> items = List<UserModel>.from(
       map['items'].map(
         (item) => UserModel.fromMap(item),
       ),
     );
-    return AllUsersModel(items: items);
+    return UsersListModel(items: items);
   }
   @override
   Map<String, dynamic> toMap() {
@@ -28,10 +28,10 @@ class AllUsersModel extends EduconnectAllModel {
   }
 
   @override
-  EduconnectAllModel copyWith({
+  EduconnectModelList copyWith({
     List<EduconnectModel>? items,
   }) {
-    return EduconnectAllModel(
+    return EduconnectModelList(
       items: items ?? this.items,
     );
   }

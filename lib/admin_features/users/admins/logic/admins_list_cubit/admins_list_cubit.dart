@@ -2,36 +2,37 @@ import '../../../../../common/comon_features/loading/data/models/loading_model.d
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../dashboard/logic/cubit/all_cubit.dart';
+import '../../data/models/admins_list_model.dart';
 import '../../../../dashboard/data/repo/dashboard_repo.dart';
-import '../../data/models/all_students_model.dart';
 
-part 'all_students_state.dart';
+part 'admins_list_state.dart';
 
-class AllStudentsCubit extends EduconnectCubit {
-  final DashboardRepository _studentRepository;
+class AllAdminsCubit extends EduconnectCubit {
+  final DashboardRepository _adminRepository;
   final LoadingRepository _loadingRepository;
 
-  AllStudentsCubit(
-    DashboardRepository studentRepository,
+  AllAdminsCubit(
+    DashboardRepository adminRepository,
     LoadingRepository loadingRepository,
-  )   : _studentRepository = studentRepository,
+  )   : _adminRepository = adminRepository,
         _loadingRepository = loadingRepository,
-        super(AllStudentsState.init());
+        super(AllAdminsState.init());
 
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectAllModel response =
+    EduconnectModelList response =
         //model is sent here to get the type of request only
-        await _studentRepository.getAllItems(model: state.educonnectAllModel);
-    emit((state as AllStudentsState).updateAllStudents(response));
+        await _adminRepository.getAllItems(model: AllAdminsModel.empty());
+    emit((state as AllAdminsState).updateAllAdmins(response as AllAdminsModel));
     _loadingRepository.stopLoading();
   }
 
   @override
   Future<void> addItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    await _studentRepository.addItem(model: model);
+
+    await _adminRepository.addItem(model: model);
     await getAllItems();
     // _loadingRepository.stopLoading();
   }
@@ -39,7 +40,8 @@ class AllStudentsCubit extends EduconnectCubit {
   @override
   Future<void> deleteItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    await _studentRepository.deleteItem(model: model);
+
+    await _adminRepository.deleteItem(model: model);
     await getAllItems();
   }
 }

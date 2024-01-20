@@ -1,32 +1,33 @@
-part of 'all_students_cubit.dart';
+part of 'instructors_list_cubit.dart';
 
 // @immutable
 
-class AllStudentsState extends EduconnectState {
-  const AllStudentsState({
+class InstructorsListState extends EduconnectState {
+  const InstructorsListState({
     required super.educonnectAllModel,
     required super.status,
   });
 
-  factory AllStudentsState.init() {
-    return AllStudentsState(
-      educonnectAllModel: EduconnectAllModel.empty(),
+  factory InstructorsListState.init() {
+    return InstructorsListState(
+      educonnectAllModel: InstructorsListModel.empty(),
       status: EduconnectStatus.init,
     );
   }
 
-  AllStudentsState updateAllStudents(EduconnectAllModel educonnectModel) {
+  InstructorsListState updateAllInstructors(
+      InstructorsListModel instructorsListModel) {
     return _copyWith(
-      educonnectAllModel: educonnectModel as AllStudentsModel,
+      educonnectAllModel: instructorsListModel,
       status: EduconnectStatus.loaded,
     );
   }
 
-  AllStudentsState _copyWith({
-    EduconnectAllModel? educonnectAllModel,
+  InstructorsListState _copyWith({
+    InstructorsListModel? educonnectAllModel,
     EduconnectStatus? status,
   }) {
-    return AllStudentsState(
+    return InstructorsListState(
       educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
       status: status ?? this.status,
     );

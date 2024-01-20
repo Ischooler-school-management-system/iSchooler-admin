@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:school_admin/admin_features/dashboard/logic/cubit/all_cubit.dart';
 import 'package:school_admin/admin_features/users/students/data/models/student_model.dart';
-import 'package:school_admin/admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
+import 'package:school_admin/admin_features/users/students/logic/students_list_cubit/students_list_cubit.dart';
 import 'package:school_admin/admin_features/users/students/presentation/widgets/student_details_form.dart';
 import 'package:school_admin/common/comon_features/widgets/educonnect_screen.dart';
 import 'package:school_admin/common/comon_features/widgets/educonnect_small_view.dart';
@@ -12,7 +12,7 @@ import 'package:school_admin/common/educonnect_model.dart';
 import 'package:school_admin/common/madpoly.dart';
 
 import '../../../users/admins/data/models/admin_model.dart';
-import '../../../users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
+import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
 import '../../../users/admins/presentation/widgets/admin_details_form.dart';
 
 class DashboardDetailsScreen<C extends EduconnectCubit> extends StatefulWidget {

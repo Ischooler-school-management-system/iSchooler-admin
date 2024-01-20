@@ -1,6 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
 
+import '../admin_features/dashboard/data/models/all_models.dart';
+import '../admin_features/users/admins/data/models/admins_list_model.dart';
+import '../admin_features/users/instructor/data/models/instructors_list_model.dart';
+import '../admin_features/users/students/data/models/students_list_model.dart';
+
 class EduconnectModel extends Equatable {
   final String id;
   const EduconnectModel({required this.id});
@@ -21,21 +26,57 @@ class EduconnectModel extends Equatable {
   List<Object?> get props => [id];
 }
 
-class EduconnectAllModel extends Equatable {
+class EduconnectModelList extends Equatable {
   final List<EduconnectModel> items;
 
-  const EduconnectAllModel({required this.items});
-  factory EduconnectAllModel.empty() {
-    return const EduconnectAllModel(items: []);
+  const EduconnectModelList({required this.items});
+  factory EduconnectModelList.empty() {
+    return const EduconnectModelList(items: []);
   }
-  factory EduconnectAllModel.fromMap(Map map) {
+  factory EduconnectModelList.fromMap(Map map) {
     final List<EduconnectModel> items = List<EduconnectModel>.from(
       map['items'].map(
         (item) => EduconnectModel.fromMap(item),
       ),
     );
-    return EduconnectAllModel(items: items);
+    return EduconnectModelList(items: items);
   }
+
+  static EduconnectModelList fromMapToChild(
+      EduconnectModelList model, Map map) {
+    if (model is AllStudentsModel) {
+      return AllStudentsModel.fromMap(map);
+    } else if (model is AllAdminsModel) {
+      return AllAdminsModel.fromMap(map);
+    } else if (model is InstructorsListModel) {
+      return InstructorsListModel.fromMap(map);
+    } else if (model is GradesListModel) {
+      return GradesListModel.fromMap(map);
+    } else if (model is ClassesListModel) {
+      return ClassesListModel.fromMap(map);
+    } else if (model is SubjectsListModel) {
+      return SubjectsListModel.fromMap(map);
+    } else if (model is WeeklySessionsListModel) {
+      return WeeklySessionsListModel.fromMap(map);
+    } else if (model is WeeklyTimetablesListModel) {
+      return WeeklyTimetablesListModel.fromMap(map);
+    } else if (model is ExamTypesListModel) {
+      return ExamTypesListModel.fromMap(map);
+    } else if (model is ExamsListModel) {
+      return ExamsListModel.fromMap(map);
+    } else if (model is ExamSessionsListModel) {
+      return ExamSessionsListModel.fromMap(map);
+    } else if (model is ExamTimetablesListModel) {
+      return ExamTimetablesListModel.fromMap(map);
+    } else if (model is HomeworksListModel) {
+      return HomeworksListModel.fromMap(map);
+    } else if (model is NewsListModel) {
+      return NewsListModel.fromMap(map);
+    }
+
+    return EduconnectModelList.empty();
+  }
+
   Map<String, dynamic> toMap() {
     return {
       'items': items.map((item) => item.toMap()).toList(),
@@ -49,10 +90,10 @@ class EduconnectAllModel extends Equatable {
   @override
   List<Object> get props => [items];
 
-  EduconnectAllModel copyWith({
+  EduconnectModelList copyWith({
     List<EduconnectModel>? items,
   }) {
-    return EduconnectAllModel(
+    return EduconnectModelList(
       items: items ?? this.items,
     );
   }

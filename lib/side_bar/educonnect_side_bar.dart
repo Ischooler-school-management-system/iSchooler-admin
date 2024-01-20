@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
-import '../admin_features/dashboard/presentation/screens/dashboard_table_screen.dart';
-import '../admin_features/users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
-import '../admin_features/users/students/logic/all_students_cubit/all_students_cubit.dart';
+import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
+import '../admin_features/users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
+import '../admin_features/users/students/logic/students_list_cubit/students_list_cubit.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/comon_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';

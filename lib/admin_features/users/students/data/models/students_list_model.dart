@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
-import '../../../all_users_model.dart';
+import '../../../users_list_model.dart';
 import 'student_model.dart';
 
-class AllStudentsModel extends AllUsersModel {
+class AllStudentsModel extends UsersListModel {
   const AllStudentsModel({required super.items});
   factory AllStudentsModel.empty() {
     return const AllStudentsModel(items: []);

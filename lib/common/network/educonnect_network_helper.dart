@@ -2,9 +2,11 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../admin_features/dashboard/data/models/all_models.dart';
 import '../../admin_features/users/admins/data/models/admin_model.dart';
-import '../../admin_features/users/admins/data/models/all_admins_model.dart';
-import '../../admin_features/users/all_users_model.dart';
-import '../../admin_features/users/students/data/models/all_students_model.dart';
+import '../../admin_features/users/admins/data/models/admins_list_model.dart';
+import '../../admin_features/users/users_list_model.dart';
+import '../../admin_features/users/instructor/data/models/instructors_list_model.dart';
+import '../../admin_features/users/instructor/data/models/instructor_model.dart';
+import '../../admin_features/users/students/data/models/students_list_model.dart';
 import '../../admin_features/users/students/data/models/student_model.dart';
 import '../../admin_features/users/user_model.dart';
 
@@ -35,37 +37,39 @@ class EduconnectNetworkHelper {
     if (userModel is AdminModel || userModel is AllAdminsModel) {
       return admins;
     } else if (userModel is InstructorModel ||
-        userModel is AllInstructorModel) {
+        userModel is InstructorsListModel) {
       return instructors;
     }
     return null;
   }
 
   static String? getCollectionByModel(dynamic model) {
-    if (model is UserModel || model is AllUsersModel) {
+    if (model is UserModel || model is UsersListModel) {
       return _getUserCollectionName(model);
-    } else if (model is GradeModel || model is AllGradeModel) {
+    } else if (model is GradeModel || model is GradesListModel) {
       return grades;
-    } else if (model is ClassModel || model is AllClassModel) {
+    } else if (model is ClassModel || model is ClassesListModel) {
       return classes;
-    } else if (model is SubjectModel || model is AllSubjectModel) {
+    } else if (model is SubjectModel || model is SubjectsListModel) {
       return subjects;
-    } else if (model is WeeklySessionModel || model is AllWeeklySessionModel) {
+    } else if (model is WeeklySessionModel ||
+        model is WeeklySessionsListModel) {
       return weeklySessions;
     } else if (model is WeeklyTimetableModel ||
-        model is AllWeeklyTimetableModel) {
+        model is WeeklyTimetablesListModel) {
       return weeklyTimetables;
-    } else if (model is ExamTypeModel || model is AllExamTypeModel) {
+    } else if (model is ExamTypeModel || model is ExamTypesListModel) {
       return examTypes;
-    } else if (model is ExamModel || model is AllExamModel) {
+    } else if (model is ExamModel || model is ExamsListModel) {
       return exams;
-    } else if (model is ExamSessionModel || model is AllExamSessionModel) {
+    } else if (model is ExamSessionModel || model is ExamSessionsListModel) {
       return examSessions;
-    } else if (model is ExamTimetableModel || model is AllExamTimetableModel) {
+    } else if (model is ExamTimetableModel ||
+        model is ExamTimetablesListModel) {
       return examTimetables;
-    } else if (model is HomeworkModel || model is AllHomeworkModel) {
+    } else if (model is HomeworkModel || model is HomeworksListModel) {
       return homework;
-    } else if (model is NewsModel || model is AllNewsModel) {
+    } else if (model is NewsModel || model is NewsListModel) {
       return news;
     }
     return null;

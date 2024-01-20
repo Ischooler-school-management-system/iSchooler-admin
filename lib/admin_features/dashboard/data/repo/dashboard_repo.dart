@@ -15,14 +15,14 @@ class DashboardRepository implements EduconnectRepository {
         _adminNetwork = adminNetwork;
 
   @override
-  Future<EduconnectAllModel> getAllItems(
-      {required EduconnectAllModel model}) async {
-    var admins = EduconnectAllModel.empty();
+  Future<EduconnectModelList> getAllItems(
+      {required EduconnectModelList model}) async {
+    var admins = EduconnectModelList.empty();
     try {
       EduconnectResponse response =
           await _adminNetwork.getAllItems(model: model);
       if (response.hasData) {
-        admins = EduconnectAllModel.fromMap(response.data);
+        admins = EduconnectModelList.fromMapToChild(model, response.data);
         _alertHandlingRepository.addError(
           'Admins retrieved sucessfully',
           ErrorHandlingTypes.Alert,

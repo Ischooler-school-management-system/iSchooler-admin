@@ -27,7 +27,7 @@ abstract class Madpoly {
 
     message += any.toString();
 
-    if (isLog == true) {
+    /* if (isLog == true) {
       switch (color) {
         case MadpolyColor.blue:
           _logInfo(message);
@@ -53,9 +53,9 @@ abstract class Madpoly {
         default:
           _logWarning(message);
       }
-    } else {
-      debugPrint(message);
-    }
+    } else { */
+    debugPrint(message);
+    // }
 
     // if (isInspect == true) inspect(any);
     if (showToast) {

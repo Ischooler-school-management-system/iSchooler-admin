@@ -8,8 +8,8 @@ import '../../../../common/comon_features/widgets/buttons/models/buttons_model.d
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
-import '../../../users/admins/logic/all_admins_cubit/all_admins_cubit.dart';
-import '../../../users/students/logic/all_students_cubit/all_students_cubit.dart';
+import '../../../users/admins/logic/all_admins_cubit/admins_list_cubit.dart';
+import '../../../users/students/logic/all_students_cubit/students_list_cubit.dart';
 import '../../logic/cubit/all_cubit.dart';
 import '../veiws/dashboard_mobile_veiw.dart';
 import '../veiws/dashboard_web_veiw.dart';
@@ -68,7 +68,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<C, EduconnectState>(
         builder: (context, state) {
-          EduconnectAllModel educonnectAllModel = EduconnectAllModel.empty();
+          EduconnectModelList educonnectAllModel = EduconnectModelList.empty();
           // AllStudentsModel allStudentsModel = AllStudentsModel(
           // items: List.generate(20, (index) => studentModel));
           if (state.isLoaded()) {
