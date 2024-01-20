@@ -43,6 +43,22 @@ class UserModel extends EduconnectModel {
         role: UserRole.none,
         profilePicture: '');
   }
+
+  factory UserModel.dummy() {
+    return UserModel(
+      userName: 'JohnDoe',
+      id: '123456',
+      dateOfBirth: DateTime(1990, 5, 15),
+      phoneNumber: '555-1234',
+      address: '123 Main St, City',
+      gender: 'Male',
+      email: 'john.doe@example.com',
+      displayName: 'John Doe',
+      role: UserRole.none,
+      profilePicture: 'path/to/profile_picture.jpg',
+    );
+  }
+
   factory UserModel.fromMap(Map<String, dynamic> map) {
     UserRole userRole = UserRole.none;
     if (map['role'] != null) {

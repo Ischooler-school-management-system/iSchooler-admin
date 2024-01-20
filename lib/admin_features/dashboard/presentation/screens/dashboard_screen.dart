@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
+import 'package:school_admin/admin_features/users/instructor/data/models/instructor_model.dart';
 
 import '../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
@@ -8,6 +9,7 @@ import '../../../../common/comon_features/widgets/buttons/models/buttons_model.d
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
+import '../../../../common/navigation/educonnect_navi.dart';
 import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
 import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
 import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
@@ -38,6 +40,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
       alignment: Alignment.center,
       builder: (context) => DashboardDetailsScreen<C>(),
     );
+    // context.read<C>().addItem(model: InstructorModel.dummy());
   }
 
   String screenTag() {
@@ -65,18 +68,12 @@ class _DashboardScreenState<C extends EduconnectCubit>
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
-      // enableScrolling: Responsive.isMobile(),
-      // enableflexibleScrolling: true,
-
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<C, EduconnectState>(
         builder: (context, state) {
           EduconnectModelList educonnectAllModel = EduconnectModelList.empty();
-          // AllStudentsModel allStudentsModel = AllStudentsModel(
-          // items: List.generate(20, (index) => studentModel));
           if (state.isLoaded()) {
             educonnectAllModel = state.educonnectAllModel;
-            // .copyWith(items: state.educonnectAllModel.items.repeat(20));
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,10 +82,15 @@ class _DashboardScreenState<C extends EduconnectCubit>
               addButton(),
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
-                whenTrue:
-                    DashboardMobileVeiw(educonnectAllModel: educonnectAllModel),
-                whenFalse: DashboardWebVeiw<C>(
+                whenTrue: DashboardMobileVeiw(
+                  educonnectAllModel: educonnectAllModel,
+                  onDeleteButtonPressed: onDeleteButtonPressed,
+                  onEditButtonPressed: onEditButtonPressed,
+                ),
+                whenFalse: DashboardWebVeiw(
                   allUsers: educonnectAllModel,
+                  onDeleteButtonPressed: onDeleteButtonPressed,
+                  onEditButtonPressed: onEditButtonPressed,
                 ),
               ),
             ],
@@ -96,5 +98,16 @@ class _DashboardScreenState<C extends EduconnectCubit>
         },
       ),
     );
+  }
+
+  onEditButtonPressed(model) {
+    SmartDialog.show(
+      alignment: Alignment.center,
+      builder: (context) => DashboardDetailsScreen<C>(currentData: model),
+    );
+  }
+
+  onDeleteButtonPressed(model) {
+    currentContext!.read<C>().deleteItem(model: model);
   }
 }

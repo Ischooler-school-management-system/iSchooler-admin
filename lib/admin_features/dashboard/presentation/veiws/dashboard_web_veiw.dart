@@ -1,17 +1,19 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../common/educonnect_model.dart';
-import '../../../../common/navigation/educonnect_navi.dart';
-import '../../logic/cubit/all_cubit.dart';
-import '../screens/dashboard_details_screen.dart';
 import '../widgets/dashboard_data_row.dart';
 
-class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
+class DashboardWebVeiw extends StatelessWidget {
   final EduconnectModelList allUsers;
-  const DashboardWebVeiw({super.key, required this.allUsers});
+  final Function(EduconnectModel model)? onDeleteButtonPressed;
+  final Function(EduconnectModel model)? onEditButtonPressed;
+  const DashboardWebVeiw(
+      {super.key,
+      required this.allUsers,
+      this.onDeleteButtonPressed,
+      this.onEditButtonPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +22,14 @@ class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
     if (allUsers.items.isNotEmpty) {
       return Expanded(
         child: DataTable2(
+          // source
           columns: _buildColumns(),
           rows: _buildRows(),
+          border: TableBorder.all(),
 
           // columnSpacing: 8.0,
-          horizontalMargin: 0,
+          // horizontalMargin: 0,
+          lmRatio: 2,
         ),
       );
     } else {
@@ -44,8 +49,8 @@ class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
         .keys
         .map(
           (key) => DataColumn2(
-            size: ColumnSize.L,
-            // numeric: true,
+            // size: ColumnSize.L,
+            numeric: true,
             label: Center(
               child: Text(
                 key,
@@ -59,10 +64,8 @@ class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
         .toList();
     List<DataColumn2> columnList = [
       ...list,
-      const DataColumn2(
-          size: ColumnSize.S, /* numeric: true, */ label: Text('edit')),
-      const DataColumn2(
-          size: ColumnSize.S, /* numeric: true, */ label: Text('delete')),
+      const DataColumn2(label: Text('edit')),
+      const DataColumn2(label: Text('delete')),
     ];
 
     return columnList;
@@ -86,17 +89,12 @@ class DashboardWebVeiw<C extends EduconnectCubit> extends StatelessWidget {
             // Handle row selection, e.g., show a dialog or navigate to edit screen
           }
         },
-        onEditPressed: () {
-          SmartDialog.showToast('$index, Edit');
-          SmartDialog.show(
-            alignment: Alignment.center,
-            builder: (context) => DashboardDetailsScreen<C>(currentData: data),
-          );
-        },
-        onDeletePressed: () {
-          SmartDialog.showToast('$index,id = ${data.id}, Delete');
-          currentContext!.read<C>().deleteItem(model: data);
-        },
+        onEditPressed: onEditButtonPressed == null
+            ? null
+            : () => onEditButtonPressed!(data),
+        onDeletePressed: onDeleteButtonPressed == null
+            ? null
+            : () => onDeleteButtonPressed!(data),
       );
     }).toList();
 

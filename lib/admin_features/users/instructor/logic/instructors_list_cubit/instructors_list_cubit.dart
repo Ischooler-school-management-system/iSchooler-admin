@@ -1,6 +1,7 @@
 import '../../../../../common/comon_features/loading/data/models/loading_model.dart';
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/logic/cubit/all_cubit.dart';
 import '../../data/models/instructors_list_model.dart';
 import '../../../../dashboard/data/repo/dashboard_repo.dart';
@@ -25,8 +26,16 @@ class InstructorsListCubit extends EduconnectCubit {
         //model is sent here to get the type of request only
         await _instructorRepository.getAllItems(
             model: InstructorsListModel.empty());
-    emit((state as InstructorsListState)
-        .updateAllInstructors(response as InstructorsListModel));
+    if (state is InstructorsListState && response is InstructorsListModel) {
+      emit((state as InstructorsListState).updateAllInstructors(response));
+    } else {
+      Madpoly.print(
+        'incorrect model >> ${response.runtimeType}',
+        tag: 'instructors_list_cubit > ',
+        showToast: true,
+        developer: "Ziad",
+      );
+    }
     _loadingRepository.stopLoading();
   }
 

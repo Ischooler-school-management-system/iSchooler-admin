@@ -28,6 +28,21 @@ class InstructorModel extends UserModel {
       profilePicture: '',
     );
   }
+  factory InstructorModel.dummy() {
+    return InstructorModel(
+      userName: 'JohnDoe',
+      id: '123456',
+      dateOfBirth: DateTime(1990, 5, 15),
+      phoneNumber: '555-1234',
+      address: '123 Main St, City',
+      gender: 'Male',
+      email: 'john.doe@example.com',
+      displayName: 'John Doe',
+      role: UserRole.instructor,
+      profilePicture: 'path/to/profile_picture.jpg',
+    );
+  }
+
   factory InstructorModel.fromMap(Map<String, dynamic> map) {
     return InstructorModel(
       userName: map['userName'] ?? '',

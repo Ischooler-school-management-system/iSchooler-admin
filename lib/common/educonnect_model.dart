@@ -1,5 +1,6 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:equatable/equatable.dart';
+import 'package:school_admin/common/madpoly.dart';
 
 import '../admin_features/dashboard/data/models/all_models.dart';
 import '../admin_features/users/admins/data/models/admins_list_model.dart';
@@ -10,6 +11,9 @@ class EduconnectModel extends Equatable {
   final String id;
   const EduconnectModel({required this.id});
   factory EduconnectModel.empty() {
+    return const EduconnectModel(id: '-1');
+  }
+  factory EduconnectModel.dummy() {
     return const EduconnectModel(id: '-1');
   }
   factory EduconnectModel.fromMap(Map<String, dynamic> map) {
@@ -33,6 +37,7 @@ class EduconnectModelList extends Equatable {
   factory EduconnectModelList.empty() {
     return const EduconnectModelList(items: []);
   }
+
   factory EduconnectModelList.fromMap(Map map) {
     final List<EduconnectModel> items = List<EduconnectModel>.from(
       map['items'].map(
@@ -44,10 +49,15 @@ class EduconnectModelList extends Equatable {
 
   static EduconnectModelList fromMapToChild(
       EduconnectModelList model, Map map) {
-    if (model is AllStudentsModel) {
-      return AllStudentsModel.fromMap(map);
-    } else if (model is AllAdminsModel) {
-      return AllAdminsModel.fromMap(map);
+    Madpoly.print(
+      'model = $model',
+      tag: 'EduconnectModelList > fromMapToChild',
+      developer: "Ziad",
+    );
+    if (model is StudentsListModel) {
+      return StudentsListModel.fromMap(map);
+    } else if (model is AdminsListModel) {
+      return AdminsListModel.fromMap(map);
     } else if (model is InstructorsListModel) {
       return InstructorsListModel.fromMap(map);
     } else if (model is GradesListModel) {

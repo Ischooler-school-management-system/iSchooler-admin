@@ -3,19 +3,19 @@ import '../../../../../common/educonnect_model.dart';
 import '../../../users_list_model.dart';
 import 'admin_model.dart';
 
-class AllAdminsModel extends UsersListModel {
+class AdminsListModel extends UsersListModel {
   @override
-  const AllAdminsModel({required super.items});
-  factory AllAdminsModel.empty() {
-    return const AllAdminsModel(items: []);
+  const AdminsListModel({required super.items});
+  factory AdminsListModel.empty() {
+    return const AdminsListModel(items: []);
   }
-  factory AllAdminsModel.fromMap(Map map) {
+  factory AdminsListModel.fromMap(Map map) {
     final List<AdminModel> items = List<AdminModel>.from(
       map['items'].map(
         (item) => AdminModel.fromMap(item),
       ),
     );
-    return AllAdminsModel(items: items);
+    return AdminsListModel(items: items);
   }
   @override
   Map<String, dynamic> toMap() {
@@ -32,10 +32,10 @@ class AllAdminsModel extends UsersListModel {
   @override
   List<Object> get props => [items];
   @override
-  EduconnectModelList copyWith({
+  AdminsListModel copyWith({
     List<EduconnectModel>? items,
   }) {
-    return EduconnectModelList(
+    return AdminsListModel(
       items: items ?? this.items,
     );
   }

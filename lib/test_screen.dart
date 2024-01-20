@@ -13,7 +13,7 @@ import 'common/madpoly.dart';
 class TestScreen extends StatelessWidget {
   TestScreen({super.key});
 
-  AllStudentsModel allUsers = AllStudentsModel(
+  StudentsListModel allUsers = StudentsListModel(
     items: List.generate(
       60,
       (index) => StudentModel(

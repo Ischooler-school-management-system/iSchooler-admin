@@ -9,6 +9,7 @@ import '../../admin_features/users/instructor/data/models/instructor_model.dart'
 import '../../admin_features/users/students/data/models/students_list_model.dart';
 import '../../admin_features/users/students/data/models/student_model.dart';
 import '../../admin_features/users/user_model.dart';
+import '../madpoly.dart';
 
 class EduconnectNetworkHelper {
   static final FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;
@@ -31,10 +32,10 @@ class EduconnectNetworkHelper {
   static const news = 'news';
 
   static String? _getUserCollectionName(dynamic userModel) {
-    if (userModel is StudentModel || userModel is AllStudentsModel) {
+    if (userModel is StudentModel || userModel is StudentsListModel) {
       return students;
     }
-    if (userModel is AdminModel || userModel is AllAdminsModel) {
+    if (userModel is AdminModel || userModel is AdminsListModel) {
       return admins;
     } else if (userModel is InstructorModel ||
         userModel is InstructorsListModel) {
@@ -44,34 +45,41 @@ class EduconnectNetworkHelper {
   }
 
   static String? getCollectionByModel(dynamic model) {
+    String? collectionName;
+
     if (model is UserModel || model is UsersListModel) {
-      return _getUserCollectionName(model);
+      collectionName = _getUserCollectionName(model);
     } else if (model is GradeModel || model is GradesListModel) {
-      return grades;
+      collectionName = grades;
     } else if (model is ClassModel || model is ClassesListModel) {
-      return classes;
+      collectionName = classes;
     } else if (model is SubjectModel || model is SubjectsListModel) {
-      return subjects;
+      collectionName = subjects;
     } else if (model is WeeklySessionModel ||
         model is WeeklySessionsListModel) {
-      return weeklySessions;
+      collectionName = weeklySessions;
     } else if (model is WeeklyTimetableModel ||
         model is WeeklyTimetablesListModel) {
-      return weeklyTimetables;
+      collectionName = weeklyTimetables;
     } else if (model is ExamTypeModel || model is ExamTypesListModel) {
-      return examTypes;
+      collectionName = examTypes;
     } else if (model is ExamModel || model is ExamsListModel) {
-      return exams;
+      collectionName = exams;
     } else if (model is ExamSessionModel || model is ExamSessionsListModel) {
-      return examSessions;
+      collectionName = examSessions;
     } else if (model is ExamTimetableModel ||
         model is ExamTimetablesListModel) {
-      return examTimetables;
+      collectionName = examTimetables;
     } else if (model is HomeworkModel || model is HomeworksListModel) {
-      return homework;
+      collectionName = homework;
     } else if (model is NewsModel || model is NewsListModel) {
-      return news;
+      collectionName = news;
     }
-    return null;
+    Madpoly.print(
+      'collection name = $collectionName',
+      tag: 'educonnect_network_helper > ',
+      developer: "Ziad",
+    );
+    return collectionName;
   }
 }

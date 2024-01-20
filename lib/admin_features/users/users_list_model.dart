@@ -28,10 +28,10 @@ class UsersListModel extends EduconnectModelList {
   }
 
   @override
-  EduconnectModelList copyWith({
+  UsersListModel copyWith({
     List<EduconnectModel>? items,
   }) {
-    return EduconnectModelList(
+    return UsersListModel(
       items: items ?? this.items,
     );
   }

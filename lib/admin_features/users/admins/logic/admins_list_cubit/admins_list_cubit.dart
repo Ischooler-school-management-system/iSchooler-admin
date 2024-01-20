@@ -1,6 +1,7 @@
 import '../../../../../common/comon_features/loading/data/models/loading_model.dart';
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/logic/cubit/all_cubit.dart';
 import '../../data/models/admins_list_model.dart';
 import '../../../../dashboard/data/repo/dashboard_repo.dart';
@@ -16,15 +17,25 @@ class AdminsListCubit extends EduconnectCubit {
     LoadingRepository loadingRepository,
   )   : _adminRepository = adminRepository,
         _loadingRepository = loadingRepository,
-        super(AllAdminsState.init());
+        super(AdminsListState.init());
 
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
     EduconnectModelList response =
         //model is sent here to get the type of request only
-        await _adminRepository.getAllItems(model: AllAdminsModel.empty());
-    emit((state as AllAdminsState).updateAllAdmins(response as AllAdminsModel));
+        await _adminRepository.getAllItems(model: AdminsListModel.empty());
+    if (state is AdminsListState && response is AdminsListModel) {
+      emit((state as AdminsListState).updateAllAdmins(response));
+    } else {
+      Madpoly.print(
+        'incorrect model >> ${response.runtimeType}',
+        tag: 'admins_list_cubit > ',
+        developer: "Ziad",
+        showToast: true,
+      );
+    }
+
     _loadingRepository.stopLoading();
   }
 

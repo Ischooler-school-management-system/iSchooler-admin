@@ -1,6 +1,7 @@
 import '../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
 import '../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
 import '../../../../common/educonnect_model.dart';
+import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_response.dart';
 import '../../logic/cubit/all_cubit.dart';
 import '../network/dashboard_network.dart';
@@ -18,18 +19,24 @@ class DashboardRepository implements EduconnectRepository {
   Future<EduconnectModelList> getAllItems(
       {required EduconnectModelList model}) async {
     var admins = EduconnectModelList.empty();
+    Madpoly.print(
+      ' model >> ${model.runtimeType}',
+      tag: 'repo > getAllItems ',
+      developer: "Ziad",
+      showToast: true,
+    );
     try {
       EduconnectResponse response =
           await _adminNetwork.getAllItems(model: model);
-      if (response.hasData) {
-        admins = EduconnectModelList.fromMapToChild(model, response.data);
-        _alertHandlingRepository.addError(
-          'Admins retrieved sucessfully',
-          ErrorHandlingTypes.Alert,
-          tag: 'admin_repo > getAllAdminsData',
-          showToast: true,
-        );
-      }
+      // if (response.hasData) {
+      admins = EduconnectModelList.fromMapToChild(model, response.data);
+      _alertHandlingRepository.addError(
+        'data retrieved sucessfully',
+        ErrorHandlingTypes.Alert,
+        tag: 'admin_repo > getAllAdminsData',
+        showToast: true,
+      );
+      // }
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
