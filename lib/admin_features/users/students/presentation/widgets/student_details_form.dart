@@ -30,7 +30,8 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
   // Use Studentmodel to store form data
   final _formKey = GlobalKey<FormState>();
 
-  StudentModel studentData = StudentModel.empty();
+  // StudentModel studentData = StudentModel.empty();
+  StudentModel studentData = StudentModel.dummy();
   bool editingModel = false;
   @override
   void initState() {
@@ -129,7 +130,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               });
             },
           ),
-          EduConnectDropdownWidget(
+          /* EduConnectDropdownWidget(
             labelText: 'Class',
             // hint: 'Class',
 
@@ -144,7 +145,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             labelText: 'Grade',
             onChanged: (value) {
               setState(() {
-                studentData = studentData.copyWith(gradeId: value);
+                studentData = studentData.copyWith(grade: value);
               });
             },
             options: const ['class 1', 'class 2', 'class 3'],
@@ -153,12 +154,12 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             labelText: 'Gender',
             onChanged: (value) {
               setState(() {
-                studentData = studentData.copyWith(gradeId: value);
+                studentData = studentData.copyWith(grade: value);
               });
             },
             options: const ['Male', 'Female'],
           ),
-
+ */
           Row(
               children: Responsive.expandedChildren(
             padding: const EdgeInsets.all(8),

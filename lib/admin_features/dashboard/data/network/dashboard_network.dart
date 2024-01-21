@@ -1,16 +1,16 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-import '../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
-import '../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
+import '../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/network/educonnect_network_helper.dart';
 import '../../../../common/network/educonnect_response.dart';
 import '../../logic/cubit/all_cubit.dart';
 
 class DashboardNetwork implements EduconnectNetwork {
-  final ErrorHandlingRepository _alertHandlingRepository;
+  final AlertHandlingRepository _alertHandlingRepository;
 
-  DashboardNetwork(ErrorHandlingRepository alertHandlingRepository)
+  DashboardNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
   @override
@@ -32,7 +32,7 @@ class DashboardNetwork implements EduconnectNetwork {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'admin_network > getAllData',
         showToast: true,
       );
@@ -41,8 +41,10 @@ class DashboardNetwork implements EduconnectNetwork {
   }
 
   @override
-  Future<bool> addItem({required EduconnectModel model}) async {
+  Future<bool> addItem(
+      {required EduconnectModel model, bool addWithId = false}) async {
     bool userStored = false;
+    String? docName = addWithId ? model.id : null;
     try {
       String? collectionName =
           EduconnectNetworkHelper.getCollectionByModel(model);
@@ -51,13 +53,14 @@ class DashboardNetwork implements EduconnectNetwork {
       }
       final credentialCollection =
           EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
-      await credentialCollection.doc(model.id).set(model.toMap());
+      await credentialCollection.doc(docName).set(model.toMap());
+      // await credentialCollection.doc(model.id).set(model.toMap());
       userStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
         /* developerMessage: */ e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'admin_network > addData > catch',
         showToast: true,
       );
@@ -81,9 +84,9 @@ class DashboardNetwork implements EduconnectNetwork {
       userStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
-        // 'unable to add user',
-        /* developerMessage: */ e.toString(),
-        ErrorHandlingTypes.ServerError,
+        'unable to add user',
+        developerMessage: e.toString(),
+        AlertHandlingTypes.ServerError,
         tag: 'admin_network > delete > catch',
         showToast: true,
       );

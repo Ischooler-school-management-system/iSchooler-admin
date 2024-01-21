@@ -1,17 +1,17 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
-import '../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
+import '../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/madpoly.dart';
 import '../../../admin_features/dashboard/data/repo/dashboard_repo.dart';
 import '../../../admin_features/users/user_model.dart';
 import '../network/auth_network.dart';
 
 class AuthRepository {
-  final ErrorHandlingRepository _alertHandlingRepository;
+  final AlertHandlingRepository _alertHandlingRepository;
   final AuthNetwork _authNetwork;
   final DashboardRepository _adminsRepository;
-  AuthRepository(ErrorHandlingRepository alertHandlingRepository,
+  AuthRepository(AlertHandlingRepository alertHandlingRepository,
       AuthNetwork authNetwork, DashboardRepository adminsRepository)
       : _alertHandlingRepository = alertHandlingRepository,
         _adminsRepository = adminsRepository,
@@ -33,12 +33,12 @@ class AuthRepository {
       if (firebaseUser != null) {
         newUser = user.copyWith(id: firebaseUser.uid);
         // add the ful new user to firestore
-        _adminsRepository.addItem(model: newUser);
+        _adminsRepository.addItem(model: newUser, addWithId: true);
       }
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'auth_repo > signUp',
         showToast: true,
       );
@@ -59,7 +59,7 @@ class AuthRepository {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'auth_repo > sign in',
         showToast: true,
       );
@@ -79,7 +79,7 @@ class AuthRepository {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'auth_repo > signin',
         showToast: true,
       );

@@ -3,16 +3,17 @@ import 'package:intl/intl.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/truncate_dashboard_map.dart';
+import '../../../../dashboard/data/models/all_models.dart';
 import '../../../user_model.dart';
 
 class StudentModel extends UserModel {
-  final String classId;
-  final String gradeId;
+  final ClassModel classModel;
+  final GradeModel gradeModel;
   final bool paymentStatus;
 
   const StudentModel({
-    this.classId = '',
-    this.gradeId = '',
+    required this.classModel,
+    required this.gradeModel,
     super.id = '-1',
     super.dateOfBirth,
     super.phoneNumber = '',
@@ -27,11 +28,27 @@ class StudentModel extends UserModel {
   });
   @override
   factory StudentModel.empty() {
-    return const StudentModel(
+    return StudentModel(
         id: '',
         userName: '',
-        classId: '',
-        gradeId: '',
+        classModel: ClassModel.empty(),
+        gradeModel: GradeModel.empty(),
+        dateOfBirth: null,
+        phoneNumber: '',
+        address: '',
+        gender: '',
+        email: '',
+        displayName: '',
+        role: UserRole.student,
+        profilePicture: '');
+  }
+  @override
+  factory StudentModel.dummy() {
+    return StudentModel(
+        id: '',
+        userName: 'ziad',
+        classModel: ClassModel.empty(),
+        gradeModel: GradeModel.empty(),
         dateOfBirth: null,
         phoneNumber: '',
         address: '',
@@ -49,8 +66,8 @@ class StudentModel extends UserModel {
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
-      classId: map['classId'] ?? '',
-      gradeId: map['gradeId'] ?? '',
+      classModel: ClassModel.fromMap(map['class'] ?? {}),
+      gradeModel: GradeModel.fromMap(map['grade'] ?? {}),
       phoneNumber: map['phoneNumber'] ?? '',
       address: map['address'] ?? '',
       paymentStatus: map['paymentStatus'] ?? false,
@@ -67,8 +84,8 @@ class StudentModel extends UserModel {
     return {
       'userName': userName,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
-      'classId': classId,
-      'gradeId': gradeId,
+      'classId': classModel.toMap(),
+      'gradeId': gradeModel.toDisplayMap(),
       'phoneNumber': phoneNumber,
       'address': address,
       'paymentStatus': paymentStatus,
@@ -102,7 +119,7 @@ class StudentModel extends UserModel {
   @override
   String toString() {
     return 'StudentModel{studentId: $id, userName: $userName, dateOfBirth: $dateOfBirth, '
-        'classId: $classId, gradeId: $gradeId, phoneNumber: $phoneNumber, address: $address, '
+        'classId: $classModel, gradeId: $gradeModel, phoneNumber: $phoneNumber, address: $address, '
         'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName, role: ${role.name}}';
   }
 
@@ -111,8 +128,8 @@ class StudentModel extends UserModel {
     String? id,
     String? userName,
     DateTime? dateOfBirth,
-    String? classId,
-    String? gradeId,
+    ClassModel? classModel,
+    GradeModel? gradeModel,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,
@@ -126,8 +143,8 @@ class StudentModel extends UserModel {
       id: id ?? this.id,
       userName: userName ?? this.userName,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      classId: classId ?? this.classId,
-      gradeId: gradeId ?? this.gradeId,
+      classModel: classModel ?? this.classModel,
+      gradeModel: gradeModel ?? this.gradeModel,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
       paymentStatus: paymentStatus ?? this.paymentStatus,
@@ -141,6 +158,7 @@ class StudentModel extends UserModel {
 
   @override
   List<Object?> get props {
-    return super.props..addAll([userName, classId, gradeId, paymentStatus]);
+    return super.props
+      ..addAll([userName, classModel, gradeModel, paymentStatus]);
   }
 }

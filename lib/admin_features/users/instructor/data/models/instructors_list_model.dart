@@ -17,6 +17,15 @@ class InstructorsListModel extends UsersListModel {
     );
   }
 
+  factory InstructorsListModel.dummy() {
+    return InstructorsListModel(items: [
+      InstructorModel.dummy(),
+      InstructorModel.dummy(),
+      InstructorModel.dummy(),
+      InstructorModel.dummy(),
+    ]);
+  }
+
   factory InstructorsListModel.fromMap(Map map) {
     final List<InstructorModel> items = List<InstructorModel>.from(
       map['items'].map(

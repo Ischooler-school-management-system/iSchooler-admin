@@ -2,7 +2,7 @@
 
 import 'package:equatable/equatable.dart';
 
-enum ErrorHandlingTypes {
+enum AlertHandlingTypes {
   None,
   InternetConnection,
   ServerError,
@@ -12,21 +12,21 @@ enum ErrorHandlingTypes {
   Other
 }
 
-class ErrorHandlingModel extends Equatable {
+class AlertHandlingModel extends Equatable {
   final String message;
-  final ErrorHandlingTypes type;
+  final AlertHandlingTypes type;
   final DateTime createdAt;
   final bool showToast;
 
-  ErrorHandlingModel({
+  AlertHandlingModel({
     required this.message,
     required this.type,
     this.showToast = false,
   }) : createdAt = DateTime.now();
 
-  static ErrorHandlingModel none = ErrorHandlingModel(
+  static AlertHandlingModel none = AlertHandlingModel(
     message: "",
-    type: ErrorHandlingTypes.None,
+    type: AlertHandlingTypes.None,
     showToast: false,
   );
 

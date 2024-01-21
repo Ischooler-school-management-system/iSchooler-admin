@@ -3,8 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../common/educonnect_constants.dart';
-import '../common/comon_features/error_handling/data/models/error_handling_model.dart';
-import '../common/comon_features/error_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
+import '../common/comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
 import '../common/comon_features/loading/logic/cubit/loading_cubit.dart';
 import '../common/comon_features/loading/presentation/loading_popup.dart';
 import '../common/madpoly.dart';
@@ -90,25 +90,25 @@ class EduconnectListeners extends StatelessWidget {
     );
 
     switch (state.error.type) {
-      case ErrorHandlingTypes.None:
+      case AlertHandlingTypes.None:
         ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar();
         break;
 
-      case ErrorHandlingTypes.InternetConnection:
+      case AlertHandlingTypes.InternetConnection:
         ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar();
         ScaffoldMessenger.of(currentContext!).showSnackBar(noInternetSnackBar);
         break;
 
-      case ErrorHandlingTypes.AuthenticationError:
+      case AlertHandlingTypes.AuthenticationError:
         ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar();
         ScaffoldMessenger.of(currentContext!).showSnackBar(authSnackBar);
         break;
 
-      case ErrorHandlingTypes.MajorError:
+      case AlertHandlingTypes.MajorError:
         // context.read<AuthCubit>().onLogoutButtonClicked();
         break;
 
-      case ErrorHandlingTypes.Alert:
+      case AlertHandlingTypes.Alert:
         if (state.error.showToast) {
           SmartDialog.dismiss();
           SmartDialog.showToast(state.error.message);

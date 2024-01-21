@@ -64,8 +64,8 @@ class DashboardWebVeiw extends StatelessWidget {
         .toList();
     List<DataColumn2> columnList = [
       ...list,
-      const DataColumn2(label: Text('edit')),
-      const DataColumn2(label: Text('delete')),
+      const DataColumn2(numeric: true, label: Text('edit')),
+      const DataColumn2(numeric: true, label: Text('delete')),
     ];
 
     return columnList;

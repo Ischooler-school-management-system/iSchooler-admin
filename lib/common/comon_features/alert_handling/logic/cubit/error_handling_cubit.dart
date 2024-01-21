@@ -7,19 +7,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../../di.dart';
 import '../../../../educonnect_constants.dart';
 import '../../../../madpoly.dart';
-import '../../data/models/error_handling_model.dart';
-import '../../data/repo/error_handling_repo.dart';
+import '../../data/models/alert_handling_model.dart';
+import '../../data/repo/alert_handling_repo.dart';
 
 part 'error_handling_state.dart';
 
 class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
-  final ErrorHandlingRepository _errorHandlingRepository;
+  final AlertHandlingRepository _errorHandlingRepository;
 
-  late StreamSubscription<ErrorHandlingModel> _errorHandlingStreamSubscription;
+  late StreamSubscription<AlertHandlingModel> _errorHandlingStreamSubscription;
 
   late StreamSubscription<ConnectivityResult> _networkErrorStreamSubscription;
 
-  ErrorHandlingCubit(ErrorHandlingRepository errorHandlingRepository)
+  ErrorHandlingCubit(AlertHandlingRepository errorHandlingRepository)
       : _errorHandlingRepository = errorHandlingRepository,
         super(ErrorHandlingState.init()) {
     _errorHandlingStreamSubscription =
@@ -33,24 +33,24 @@ class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
       (ConnectivityResult result) {
         if (result == ConnectivityResult.none) {
           _onErrorUpdated(
-            ErrorHandlingModel(
+            AlertHandlingModel(
               message:
                   EduconnectConstants.localization().no_internet_connection,
-              type: ErrorHandlingTypes.InternetConnection,
+              type: AlertHandlingTypes.InternetConnection,
               showToast: true,
             ),
           );
         } else if (result == ConnectivityResult.wifi ||
             result == ConnectivityResult.mobile) {
           _onErrorUpdated(
-            ErrorHandlingModel.none,
+            AlertHandlingModel.none,
           );
         }
       },
     );
   }
 
-  Future<void> _onErrorUpdated(ErrorHandlingModel error) async {
+  Future<void> _onErrorUpdated(AlertHandlingModel error) async {
     Madpoly.print(
       error.message,
       developer: "Ahmed",

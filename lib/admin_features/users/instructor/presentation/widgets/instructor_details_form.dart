@@ -25,7 +25,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
   // Use Instructormodel to store form data
-  InstructorModel instructorData = InstructorModel.empty();
+  InstructorModel instructorData = InstructorModel.dummy();
   bool editingModel = false;
   @override
   void initState() {

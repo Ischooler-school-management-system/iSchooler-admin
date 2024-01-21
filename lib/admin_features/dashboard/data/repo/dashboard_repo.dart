@@ -1,5 +1,5 @@
-import '../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
-import '../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
+import '../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_response.dart';
@@ -7,10 +7,10 @@ import '../../logic/cubit/all_cubit.dart';
 import '../network/dashboard_network.dart';
 
 class DashboardRepository implements EduconnectRepository {
-  final ErrorHandlingRepository _alertHandlingRepository;
+  final AlertHandlingRepository _alertHandlingRepository;
   final DashboardNetwork _adminNetwork;
 
-  DashboardRepository(ErrorHandlingRepository alertHandlingRepository,
+  DashboardRepository(AlertHandlingRepository alertHandlingRepository,
       DashboardNetwork adminNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
         _adminNetwork = adminNetwork;
@@ -18,21 +18,21 @@ class DashboardRepository implements EduconnectRepository {
   @override
   Future<EduconnectModelList> getAllItems(
       {required EduconnectModelList model}) async {
-    var admins = EduconnectModelList.empty();
+    EduconnectModelList listModel = EduconnectModelList.empty();
     Madpoly.print(
       ' model >> ${model.runtimeType}',
       tag: 'repo > getAllItems ',
       developer: "Ziad",
-      showToast: true,
+      // showToast: true,
     );
     try {
       EduconnectResponse response =
           await _adminNetwork.getAllItems(model: model);
       // if (response.hasData) {
-      admins = EduconnectModelList.fromMapToChild(model, response.data);
+      listModel = EduconnectModelList.fromMapToChild(model, response.data);
       _alertHandlingRepository.addError(
         'data retrieved sucessfully',
-        ErrorHandlingTypes.Alert,
+        AlertHandlingTypes.Alert,
         tag: 'admin_repo > getAllAdminsData',
         showToast: true,
       );
@@ -40,23 +40,25 @@ class DashboardRepository implements EduconnectRepository {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'admin_repo > getAllAdminsData',
         showToast: true,
       );
     }
-    return admins;
+    return listModel;
   }
 
   @override
-  Future<bool> addItem({required EduconnectModel model}) async {
+  Future<bool> addItem(
+      {required EduconnectModel model, bool addWithId = false}) async {
     bool requestSuccess = false;
     try {
-      bool requestSuccess = await _adminNetwork.addItem(model: model);
+      bool requestSuccess =
+          await _adminNetwork.addItem(model: model, addWithId: addWithId);
       if (requestSuccess) {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
-          ErrorHandlingTypes.Alert,
+          AlertHandlingTypes.Alert,
           tag: 'admin_repo > storeAdminData',
           showToast: true,
         );
@@ -66,7 +68,7 @@ class DashboardRepository implements EduconnectRepository {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'admin_repo > storeAdminData',
         showToast: true,
       );
@@ -82,7 +84,7 @@ class DashboardRepository implements EduconnectRepository {
       if (requestSuccess) {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
-          ErrorHandlingTypes.Alert,
+          AlertHandlingTypes.Alert,
           tag: 'admin_repo > storeAdminData',
           showToast: true,
         );
@@ -92,7 +94,7 @@ class DashboardRepository implements EduconnectRepository {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'admin_repo > storeAdminData',
         showToast: true,
       );

@@ -25,7 +25,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
   // Use Adminmodel to store form data
-  AdminModel adminData = AdminModel.empty();
+  AdminModel adminData = AdminModel.dummy();
   bool editingModel = false;
   @override
   void initState() {

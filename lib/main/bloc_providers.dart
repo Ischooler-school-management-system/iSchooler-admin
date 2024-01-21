@@ -6,7 +6,7 @@ import '../admin_features/users/instructor/logic/instructors_list_cubit/instruct
 import '../admin_features/users/students/logic/students_list_cubit/students_list_cubit.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
-import '../common/comon_features/error_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
 import '../common/comon_features/loading/logic/cubit/loading_cubit.dart';
 import '../common/di.dart';
 

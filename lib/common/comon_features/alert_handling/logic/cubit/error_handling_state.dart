@@ -1,14 +1,14 @@
 part of 'error_handling_cubit.dart';
 
 class ErrorHandlingState extends Equatable {
-  final ErrorHandlingModel error;
+  final AlertHandlingModel error;
   const ErrorHandlingState(this.error);
 
   factory ErrorHandlingState.init() {
-    return ErrorHandlingState(ErrorHandlingModel.none);
+    return ErrorHandlingState(AlertHandlingModel.none);
   }
 
-  ErrorHandlingState updateError(ErrorHandlingModel error) {
+  ErrorHandlingState updateError(AlertHandlingModel error) {
     return ErrorHandlingState(error);
   }
 

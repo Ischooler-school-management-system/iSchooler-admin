@@ -6,7 +6,7 @@ import '../admin_features/dashboard/data/network/dashboard_network.dart';
 import '../admin_features/dashboard/data/repo/dashboard_repo.dart';
 import '../auth/data/network/auth_network.dart';
 import '../auth/data/repo/auth_repo.dart';
-import 'comon_features/error_handling/data/repo/error_handling_repo.dart';
+import 'comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 import 'comon_features/loading/data/repo/loading_repo.dart';
 
 /// Instance of Get It
@@ -31,7 +31,7 @@ class DependencyInjection {
     //--------------------------------------------------------------------------
     /// register Repositories:
     getIt.registerLazySingleton(() => LoadingRepository());
-    getIt.registerLazySingleton(() => ErrorHandlingRepository());
+    getIt.registerLazySingleton(() => AlertHandlingRepository());
     getIt
         .registerLazySingleton(() => AuthRepository(getIt(), getIt(), getIt()));
     getIt.registerLazySingleton(() => DashboardRepository(getIt(), getIt()));

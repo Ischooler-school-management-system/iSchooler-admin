@@ -42,7 +42,6 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
       'widget.value = ${widget.value}',
       tag: "_DropdownButtonWidgetState > build",
       developer: 'ziad',
-      isInspect: true,
       isLog: true,
     );
     if (value == null || !validValue) {

@@ -1,24 +1,24 @@
 import 'dart:async';
 
 import '../../../../madpoly.dart';
-import '../models/error_handling_model.dart';
+import '../models/alert_handling_model.dart';
 
-class ErrorHandlingRepository {
-  final _controller = StreamController<ErrorHandlingModel>();
+class AlertHandlingRepository {
+  final _controller = StreamController<AlertHandlingModel>();
 
-  void _updateError(ErrorHandlingModel error) {
+  void _updateError(AlertHandlingModel error) {
     _controller.add(error);
   }
 
-  Stream<ErrorHandlingModel> get errorStatus async* {
+  Stream<AlertHandlingModel> get errorStatus async* {
     await Future<void>.delayed(const Duration(seconds: 1));
-    yield ErrorHandlingModel.none;
+    yield AlertHandlingModel.none;
     yield* _controller.stream;
   }
 
   Future<void> addError(
     String message,
-    ErrorHandlingTypes type, {
+    AlertHandlingTypes type, {
     String? developerMessage,
     String? tag,
     bool showToast = false,
@@ -26,15 +26,15 @@ class ErrorHandlingRepository {
     final bool isAuthMessage =
         message.isNotEmpty && message == 'Unauthenticated';
 
-    final bool isAuthErrorType = type == ErrorHandlingTypes.AuthenticationError;
+    final bool isAuthErrorType = type == AlertHandlingTypes.AuthenticationError;
 
-    ErrorHandlingTypes errorType = type;
+    AlertHandlingTypes errorType = type;
 
     if (isAuthErrorType && !isAuthMessage) {
-      errorType = ErrorHandlingTypes.ServerError;
+      errorType = AlertHandlingTypes.ServerError;
     }
 
-    final ErrorHandlingModel error = ErrorHandlingModel(
+    final AlertHandlingModel error = AlertHandlingModel(
         message: message,
         type: errorType,
         showToast: (showToast && message.isNotEmpty));
@@ -42,8 +42,10 @@ class ErrorHandlingRepository {
     Madpoly.print(
       '$error , developerMessage = $developerMessage',
       developer: "Ahmed",
-      isInspect: true,
       isLog: true,
+      color: type == AlertHandlingTypes.Alert
+          ? MadpolyColor.green
+          : MadpolyColor.red,
       tag: "ErrorHandlingRepository show toast= $showToast  ${tag ?? ''}",
     );
 

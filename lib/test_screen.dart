@@ -14,22 +14,7 @@ class TestScreen extends StatelessWidget {
   TestScreen({super.key});
 
   StudentsListModel allUsers = StudentsListModel(
-    items: List.generate(
-      60,
-      (index) => StudentModel(
-        id: '$index',
-        displayName: 'zzzzzzzzzzzzzzzzzzzJoe',
-        userName: 'JohznDoe',
-        dateOfBirth: DateTime(2000, 1, 1),
-        classId: '101',
-        gradeId: 'A',
-        phoneNumber: '1234567890',
-        address: '123 Main Staaaaaaaaaaaaaaaa',
-        paymentStatus: true,
-        gender: 'Male',
-        email: 'ziad@mail.com',
-      ),
-    ),
+    items: List.generate(60, (index) => StudentModel.dummy()),
   );
   List<Map<String, dynamic>> dataList = [];
   @override

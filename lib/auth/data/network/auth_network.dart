@@ -1,12 +1,12 @@
 import 'package:firebase_auth/firebase_auth.dart';
 
-import '../../../../common/comon_features/error_handling/data/models/error_handling_model.dart';
-import '../../../../common/comon_features/error_handling/data/repo/error_handling_repo.dart';
+import '../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 
 class AuthNetwork {
-  final ErrorHandlingRepository _alertHandlingRepository;
+  final AlertHandlingRepository _alertHandlingRepository;
 
-  AuthNetwork(ErrorHandlingRepository alertHandlingRepository)
+  AuthNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
   final FirebaseAuth instance = FirebaseAuth.instance;
@@ -32,14 +32,14 @@ class AuthNetwork {
       if (e.code == 'weak-password') {
         _alertHandlingRepository.addError(
           'The password provided is too weak.',
-          ErrorHandlingTypes.ServerError,
+          AlertHandlingTypes.ServerError,
           tag: 'auth_network > signup',
           showToast: true,
         );
       } else if (e.code == 'email-already-in-use') {
         _alertHandlingRepository.addError(
           'The account already exists for that email.',
-          ErrorHandlingTypes.ServerError,
+          AlertHandlingTypes.ServerError,
           tag: 'auth_network > signup',
           showToast: true,
         );
@@ -47,7 +47,7 @@ class AuthNetwork {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'auth_network > signup',
         showToast: true,
       );
@@ -79,7 +79,7 @@ class AuthNetwork {
           _alertHandlingRepository.addError(
             tag: 'auth_network > signIn',
             'No user found for that email.',
-            ErrorHandlingTypes.ServerError,
+            AlertHandlingTypes.ServerError,
             showToast: true,
           );
           return null;
@@ -87,7 +87,7 @@ class AuthNetwork {
           _alertHandlingRepository.addError(
             tag: 'auth_network > signIn',
             'Wrong password provided for that user.',
-            ErrorHandlingTypes.ServerError,
+            AlertHandlingTypes.ServerError,
             showToast: true,
           );
         }
@@ -95,7 +95,7 @@ class AuthNetwork {
 
       _alertHandlingRepository.addError(
         e.toString(),
-        ErrorHandlingTypes.ServerError,
+        AlertHandlingTypes.ServerError,
         tag: 'auth_network > signin',
         showToast: true,
       );

@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
-import '../../comon_features/error_handling/data/models/error_handling_model.dart';
-import '../../comon_features/error_handling/logic/cubit/error_handling_cubit.dart';
+import '../alert_handling/data/models/alert_handling_model.dart';
+import '../../comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
 import '../../madpoly.dart';
 import '../../style/educonnect_colors.dart';
 import 'educonnect_conditional_widget.dart';
@@ -25,7 +25,7 @@ class EduconnectPullToRefresh extends StatelessWidget {
       whenTrue: child,
       whenFalse: BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
         listener: (context, state) {
-          if (state.error.type == ErrorHandlingTypes.None) {
+          if (state.error.type == AlertHandlingTypes.None) {
             ScaffoldMessenger.of(context).hideCurrentSnackBar();
             onRefresh!();
           }
@@ -44,7 +44,6 @@ class EduconnectPullToRefresh extends StatelessWidget {
               'onRefresh function is called',
               tag: "EduconnectScreen > LiquidPullToRefresh",
               developer: 'ziad',
-              isInspect: true,
               isLog: true,
             );
             return onRefresh!();
