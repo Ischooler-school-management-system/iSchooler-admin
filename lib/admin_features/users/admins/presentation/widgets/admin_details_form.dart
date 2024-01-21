@@ -5,7 +5,7 @@ import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../students/presentation/widgets/student_details_form.dart';
+import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../data/models/admin_model.dart';
 
 class AdminDetailsForm extends StatefulWidget {

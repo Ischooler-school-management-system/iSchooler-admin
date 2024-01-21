@@ -1,4 +1,5 @@
 import '../../../../common/educonnect_model.dart';
+import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 import 'classes_model.dart';
 
 class ClassesListModel extends EduconnectModelList {
@@ -24,4 +25,10 @@ class ClassesListModel extends EduconnectModelList {
     );
     return ClassesListModel(items: items);
   }
+
+/* 
+  // Function to get a model by name
+  ClassesListModel? getModelByName(String modelName) {
+    return items.firstWhereOrNull((ClassModel item) => item.name == modelName);
+  } */
 }

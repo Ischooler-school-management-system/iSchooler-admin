@@ -4,7 +4,7 @@ import '../../../../../common/comon_features/widgets/fields/educonnect_text_fiel
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../users/students/presentation/widgets/student_details_form.dart';
+import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../data/models/classes_model.dart';
 
 class ClassDetailsForm extends StatefulWidget {

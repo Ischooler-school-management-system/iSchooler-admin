@@ -1,4 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 import 'package:equatable/equatable.dart';
 import 'package:school_admin/common/madpoly.dart';
 
@@ -97,6 +98,16 @@ class EduconnectModelList extends Equatable {
 
   List<Map<String, dynamic>> toDisplayList() {
     return items.map((item) => item.toDisplayMap()).toList();
+  }
+
+  // Function to get a list of items' names
+  List<String> getItemNames() {
+    return items.map((item) => item.name).toList();
+  }
+
+  // Function to get a model by name
+  EduconnectModel? getModelByName(String modelName) {
+    return items.firstWhereOrNull((item) => item.name == modelName);
   }
 
   @override
