@@ -51,13 +51,11 @@ class DashboardWebVeiw extends StatelessWidget {
           (key) => DataColumn2(
             // size: ColumnSize.L,
             numeric: true,
-            label: Center(
-              child: Text(
-                key,
-                maxLines: 1,
-                textAlign: TextAlign.center,
-                overflow: TextOverflow.ellipsis,
-              ),
+            label: Text(
+              key,
+              maxLines: 1,
+              // textAlign: TextAlign.center,
+              overflow: TextOverflow.ellipsis,
             ),
           ),
         )

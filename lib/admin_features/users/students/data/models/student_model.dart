@@ -3,7 +3,8 @@ import 'package:intl/intl.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/truncate_dashboard_map.dart';
-import '../../../../dashboard/data/models/all_models.dart';
+import '../../../../classes/data/models/classes_model.dart';
+import '../../../../grades/data/models/grade_model.dart';
 import '../../../user_model.dart';
 
 class StudentModel extends UserModel {

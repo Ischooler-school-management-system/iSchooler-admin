@@ -4,7 +4,6 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
@@ -160,28 +159,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             options: const ['Male', 'Female'],
           ),
  */
-          Row(
-              children: Responsive.expandedChildren(
-            padding: const EdgeInsets.all(8),
-            children: [
-              EduconnectButton(
-                button: EduconnectElevatedButton(
-                  // width: 200,
-                  onPressed: () {
-                    SmartDialog.dismiss();
-                  },
-                  text: 'cancel',
-                ),
-              ),
-              EduconnectButton(
-                button: EduconnectElevatedButton(
-                  // width: 200,
-                  onPressed: onSubmitButtonPressed,
-                  text: 'Submit',
-                ),
-              ),
-            ],
-          )),
+          FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
           /*  Row(
       
       
@@ -210,5 +188,39 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
 
       widget.onSaved(studentData);
     }
+  }
+}
+
+class FormButtonsWidget extends StatelessWidget {
+  final Function()? onSubmitButtonPressed;
+  const FormButtonsWidget({
+    super.key,
+    this.onSubmitButtonPressed,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+        children: Responsive.expandedChildren(
+      padding: const EdgeInsets.all(8),
+      children: [
+        EduconnectButton(
+          button: EduconnectElevatedButton(
+            // width: 200,
+            onPressed: () {
+              SmartDialog.dismiss();
+            },
+            text: 'cancel',
+          ),
+        ),
+        EduconnectButton(
+          button: EduconnectElevatedButton(
+            // width: 200,
+            onPressed: onSubmitButtonPressed,
+            text: 'Submit',
+          ),
+        ),
+      ],
+    ));
   }
 }

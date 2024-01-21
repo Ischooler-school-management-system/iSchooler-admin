@@ -3,34 +3,33 @@ import 'package:flutter/material.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/functions/educonnect_date_formatter.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../students/presentation/widgets/student_details_form.dart';
-import '../../data/models/admin_model.dart';
+import '../../../users/students/presentation/widgets/student_details_form.dart';
+import '../../data/models/classes_model.dart';
 
-class AdminDetailsForm extends StatefulWidget {
-  final AdminModel? currentAdminData;
+class ClassDetailsForm extends StatefulWidget {
+  final ClassModel? currentClassData;
   final Function(EduconnectModel model) onSaved;
 
-  const AdminDetailsForm(
-      {super.key, this.currentAdminData, required this.onSaved});
+  const ClassDetailsForm(
+      {super.key, this.currentClassData, required this.onSaved});
 
   @override
-  State<AdminDetailsForm> createState() => _AdminDetailsFormState();
+  State<ClassDetailsForm> createState() => _ClassDetailsFormState();
 }
 
-class _AdminDetailsFormState extends State<AdminDetailsForm> {
+class _ClassDetailsFormState extends State<ClassDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
-  // Use Adminmodel to store form data
-  AdminModel adminData = AdminModel.dummy();
+  // Use Classmodel to store form data
+  ClassModel classData = ClassModel.dummy();
   bool editingModel = false;
   @override
   void initState() {
     super.initState();
-    editingModel = widget.currentAdminData != null;
+    editingModel = widget.currentClassData != null;
     if (editingModel) {
-      adminData = widget.currentAdminData!.copyWith();
+      classData = widget.currentClassData!.copyWith();
     }
   }
 
@@ -38,7 +37,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
   Widget build(BuildContext context) {
     Madpoly.print(
       'building',
-      tag: 'add_addmin_screen > build',
+      tag: 'class_details_form.dart > build',
       developer: "Ziad",
     );
     return Form(
@@ -46,28 +45,29 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: adminData.userName,
-            labelText: 'Username',
+            initialValue: classData.name,
+            labelText: 'Class Name',
             validator: EduconnectValidations.nameValidator,
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(userName: value);
+                classData = classData.copyWith(name: value);
               });
             },
           ),
+          /*
           EduconnectTextField(
-            initialValue: adminData.email,
+            initialValue: classData.email,
             labelText: 'Email Address',
             validator: EduconnectValidations.emailValidator,
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(userName: value);
+                classData = classData.copyWith(userName: value);
               });
             },
           ),
           EduconnectTextField(
-            // initialValue: adminData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(adminData.dateOfBirth),
+            // initialValue: classData.dateOfBirth.toString(),
+            initialValue: educonnectDateFormatter(classData.dateOfBirth),
             labelText: 'Date of Birth',
             validator: (value) {
               // Add validation logic for date of birth if needed
@@ -77,13 +77,13 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
               // Convert the value to DateTime and assign it to dateOfBirth
               // You may want to use a DatePicker for a better user experience
               setState(() {
-                adminData =
-                    adminData.copyWith(dateOfBirth: DateTime.parse(value));
+                classData =
+                    classData.copyWith(dateOfBirth: DateTime.parse(value));
               });
             },
           ),
           EduconnectTextField(
-            initialValue: adminData.phoneNumber,
+            initialValue: classData.phoneNumber,
             labelText: 'Phone Number',
             validator: (value) {
               // Add phone number validation if needed
@@ -91,12 +91,12 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             },
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(phoneNumber: value);
+                classData = classData.copyWith(phoneNumber: value);
               });
             },
           ),
           EduconnectTextField(
-            initialValue: adminData.address,
+            initialValue: classData.address,
             labelText: 'Address',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -106,10 +106,10 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             },
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(address: value);
+                classData = classData.copyWith(address: value);
               });
             },
-          ),
+          ), */
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),
@@ -120,7 +120,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      widget.onSaved(adminData);
+      widget.onSaved(classData);
     }
   }
 }

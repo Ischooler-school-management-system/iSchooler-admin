@@ -2,6 +2,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:school_admin/common/madpoly.dart';
 
+import '../admin_features/classes/data/models/classes_list_model.dart';
 import '../admin_features/dashboard/data/models/all_models.dart';
 import '../admin_features/users/admins/data/models/admins_list_model.dart';
 import '../admin_features/users/instructor/data/models/instructors_list_model.dart';
@@ -9,15 +10,16 @@ import '../admin_features/users/students/data/models/students_list_model.dart';
 
 class EduconnectModel extends Equatable {
   final String id;
-  const EduconnectModel({required this.id});
+  final String name;
+  const EduconnectModel({required this.id, this.name = ''});
   factory EduconnectModel.empty() {
-    return const EduconnectModel(id: '-1');
+    return const EduconnectModel(id: '-1', name: 'name');
   }
   factory EduconnectModel.dummy() {
-    return const EduconnectModel(id: '-1');
+    return const EduconnectModel(id: '-1', name: 'name');
   }
   factory EduconnectModel.fromMap(Map<String, dynamic> map) {
-    return EduconnectModel(id: map['id'] ?? '');
+    return EduconnectModel(id: map['id'] ?? '', name: map['name']);
   }
   Map<String, dynamic> toMap() => {};
   Map<String, dynamic> toDisplayMap() => {};

@@ -49,47 +49,42 @@ class DashboardDataRow2 {
   static Widget textCellWidget(String value) {
     // return EduconnecDashboardListTile(title: value, isName: isName);
 
-    return Align(
-      alignment: Alignment.center,
-      child: Text(
-        value,
-        maxLines: 2,
-        textAlign: TextAlign.center,
-        overflow: TextOverflow.ellipsis,
-      ),
+    return Text(
+      value,
+      maxLines: 2,
+      textAlign: TextAlign.center,
+      overflow: TextOverflow.ellipsis,
     );
   }
 
   static Widget imageCellWidget(String value) {
     // return EduconnecDashboardListTile(title: value, isName: isName);
 
-    return Center(
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 12.0),
-            child: CircleAvatar(
-              backgroundImage: AssetImage(EduconnectAssets.blankProfileImage),
-            ),
+    return Row(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 12.0),
+          child: CircleAvatar(
+            backgroundImage: AssetImage(EduconnectAssets.blankProfileImage),
+          ),
 
-            /* EduconnectImageWidget.asset(
-              url: EduconnectAssets.blankProfileImage,
-              // circleShape: true,
-              width: 60,
-            ), */
+          /* EduconnectImageWidget.asset(
+            url: EduconnectAssets.blankProfileImage,
+            // circleShape: true,
+            width: 60,
+          ), */
+        ),
+        Expanded(
+          // width: 60,
+          child: Text(
+            value,
+            maxLines: 1,
+            textAlign: TextAlign.center,
+            overflow: TextOverflow.ellipsis,
           ),
-          Expanded(
-            // width: 60,
-            child: Text(
-              value,
-              maxLines: 1,
-              textAlign: TextAlign.center,
-              overflow: TextOverflow.ellipsis,
-            ),
-          ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

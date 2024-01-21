@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:school_admin/admin_features/users/instructor/data/models/instructor_model.dart';
 
 import '../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
@@ -10,6 +9,7 @@ import '../../../../common/comon_features/widgets/educonnect_conditional_widget.
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
+import '../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
 import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
 import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
@@ -50,6 +50,8 @@ class _DashboardScreenState<C extends EduconnectCubit>
       return 'Admin';
     } else if (C == InstructorsListCubit) {
       return 'Instructor';
+    } else if (C == ClassesListCubit) {
+      return 'Class';
     } else {
       return '';
     }

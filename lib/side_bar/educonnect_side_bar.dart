@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
@@ -41,7 +42,7 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
       const DashboardScreen<AdminsListCubit>(),
       const DashboardScreen<InstructorsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
-      const DashboardScreen<StudentsListCubit>(),
+      const DashboardScreen<ClassesListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),

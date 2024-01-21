@@ -2,6 +2,9 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_admin/admin_features/classes/data/models/classes_model.dart';
+import 'package:school_admin/admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
+import 'package:school_admin/admin_features/classes/presentation/widgets/classes_details_form.dart';
 import 'package:school_admin/admin_features/dashboard/logic/cubit/all_cubit.dart';
 import 'package:school_admin/admin_features/users/instructor/presentation/widgets/instructor_details_form.dart';
 import 'package:school_admin/admin_features/users/students/data/models/student_model.dart';
@@ -61,6 +64,11 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
     } else if (C == InstructorsListCubit) {
       return InstructorDetailsForm(
         currentInstructorData: widget.currentData as InstructorModel?,
+        onSaved: onSubmitButtonPressed,
+      );
+    } else if (C == ClassesListCubit) {
+      return ClassDetailsForm(
+        currentClassData: widget.currentData as ClassModel?,
         onSaved: onSubmitButtonPressed,
       );
     } else {

@@ -1,5 +1,6 @@
 import '../../../../common/educonnect_model.dart';
-import '../../../users/instructor/data/models/instructor_model.dart';
+import '../../../classes/data/models/classes_model.dart';
+import '../../../grades/data/models/grade_model.dart';
 import '../../../users/instructor/data/models/instructors_list_model.dart';
 
 /*
@@ -68,118 +69,8 @@ class AllNewsModel
 
 
 */
-class GradeModel extends EduconnectModel {
-  // final String gradeId;
-  final String name;
-
-  const GradeModel({
-    required super.id,
-    required this.name,
-  });
-
-  @override
-  List<Object?> get props => [id, name];
-
-  factory GradeModel.empty() {
-    return const GradeModel(id: '-1', name: '');
-  }
-  factory GradeModel.dummy() {
-    return const GradeModel(
-      id: '1',
-      name: 'Excellent',
-    );
-  }
-  factory GradeModel.fromMap(Map<String, dynamic> map) {
-    return GradeModel(
-      id: map['id'] ?? '',
-      name: map['name'] ?? '',
-    );
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-    };
-  }
-
-  @override
-  Map<String, dynamic> toDisplayMap() {
-    return {
-      'Name': name,
-    };
-  }
-
-  @override
-  GradeModel copyWith({String? id, String? grade, String? name}) {
-    return GradeModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-    );
-  }
-}
-
-class ClassModel extends EduconnectModel {
-  final String className;
-  final GradeModel grade; // Injecting GradeModel object
-
-  const ClassModel({
-    required super.id,
-    required this.className,
-    required this.grade,
-  });
-
-  @override
-  List<Object?> get props => [id, className, grade];
-
-  factory ClassModel.empty() {
-    return ClassModel(id: '-1', className: '', grade: GradeModel.empty());
-  }
-
-  factory ClassModel.dummy() {
-    return ClassModel(
-      id: '1',
-      className: 'Mathematics',
-      grade: GradeModel.dummy(),
-    );
-  }
-
-  factory ClassModel.fromMap(Map<String, dynamic> map) {
-    return ClassModel(
-      id: map['id'] ?? '',
-      className: map['className'] ?? '',
-      grade: GradeModel.fromMap(map['grade'] ?? {}),
-    );
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'className': className,
-      'grade': grade.toMap(),
-    };
-  }
-
-  @override
-  Map<String, dynamic> toDisplayMap() {
-    return {
-      'Class Name': className,
-      'Grade': grade.toDisplayMap(),
-    };
-  }
-
-  @override
-  ClassModel copyWith(
-      {String? id, String? classId, String? className, GradeModel? grade}) {
-    return ClassModel(
-      id: id ?? this.id,
-      className: className ?? this.className,
-      grade: grade ?? this.grade,
-    );
-  }
-}
-
 class SubjectModel extends EduconnectModel {
+  @override
   final String name;
   final GradeModel grade; // Injecting GradeModel object
   final int totalMarks;
@@ -464,6 +355,7 @@ class WeeklyTimetableModel extends EduconnectModel {
 }
 
 class ExamTypeModel extends EduconnectModel {
+  @override
   final String name;
   final double marksPercent;
 
@@ -924,6 +816,7 @@ class HomeworkModel extends EduconnectModel {
 }
 
 class NewsModel extends EduconnectModel {
+  @override
   final String name;
   final String thumbnail;
   final DateTime dateTime;
@@ -1035,31 +928,6 @@ class GradesListModel extends EduconnectModelList {
       ),
     );
     return GradesListModel(items: items);
-  }
-}
-
-class ClassesListModel extends EduconnectModelList {
-  const ClassesListModel({required List<ClassModel> items})
-      : super(items: items);
-
-  factory ClassesListModel.empty() {
-    return const ClassesListModel(items: []);
-  }
-  factory ClassesListModel.dummy() {
-    return ClassesListModel(items: [
-      ClassModel.dummy(),
-      ClassModel.dummy(),
-      ClassModel.dummy(),
-      ClassModel.dummy(),
-    ]);
-  }
-  factory ClassesListModel.fromMap(Map map) {
-    final List<ClassModel> items = List<ClassModel>.from(
-      map['items'].map(
-        (item) => ClassModel.fromMap(item),
-      ),
-    );
-    return ClassesListModel(items: items);
   }
 }
 
