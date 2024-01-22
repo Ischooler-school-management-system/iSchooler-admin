@@ -39,10 +39,11 @@ class ClassesListCubit extends EduconnectCubit {
   }
 
   @override
-  Future<void> addItem({required EduconnectModel model}) async {
+  Future<void> addItem(
+      {required EduconnectModel model, bool isEditing = false}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _classRepository.addItem(model: model);
+    await _classRepository.addItem(model: model, addWithId: isEditing);
     await getAllItems();
     // _loadingRepository.stopLoading();
   }

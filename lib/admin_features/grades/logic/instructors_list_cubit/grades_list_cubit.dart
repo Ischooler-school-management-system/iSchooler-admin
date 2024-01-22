@@ -2,31 +2,31 @@ import '../../../../../common/comon_features/loading/data/models/loading_model.d
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../dashboard/data/models/all_models.dart';
 import '../../../dashboard/data/repo/dashboard_repo.dart';
 import '../../../dashboard/logic/cubit/all_cubit.dart';
+import '../../data/models/grades_list_model.dart';
 
 part 'grades_list_state.dart';
 
 class GradesListCubit extends EduconnectCubit {
-  final DashboardRepository _classRepository;
+  final DashboardRepository _dashboardRepository;
   final LoadingRepository _loadingRepository;
 
   GradesListCubit(
-    DashboardRepository classRepository,
+    DashboardRepository dashboardRepository,
     LoadingRepository loadingRepository,
-  )   : _classRepository = classRepository,
+  )   : _dashboardRepository = dashboardRepository,
         _loadingRepository = loadingRepository,
-        super(ClassListState.init());
+        super(GradesListState.init());
 
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
     EduconnectModelList response =
         //model is sent here to get the type of request only
-        await _classRepository.getAllItems(model: GradesListModel.empty());
-    if (state is ClassListState && response is GradesListModel) {
-      emit((state as ClassListState).updateAllGrades(response));
+        await _dashboardRepository.getAllItems(model: GradesListModel.empty());
+    if (state is GradesListState && response is GradesListModel) {
+      emit((state as GradesListState).updateAllGrades(response));
     } else {
       Madpoly.print(
         'incorrect model >> ${response.runtimeType}',
@@ -39,10 +39,11 @@ class GradesListCubit extends EduconnectCubit {
   }
 
   @override
-  Future<void> addItem({required EduconnectModel model}) async {
+  Future<void> addItem(
+      {required EduconnectModel model, bool isEditing = false}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _classRepository.addItem(model: model);
+    await _dashboardRepository.addItem(model: model);
     await getAllItems();
     // _loadingRepository.stopLoading();
   }
@@ -51,7 +52,7 @@ class GradesListCubit extends EduconnectCubit {
   Future<void> deleteItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _classRepository.deleteItem(model: model);
+    await _dashboardRepository.deleteItem(model: model);
     await getAllItems();
   }
 }

@@ -14,10 +14,10 @@ abstract class Madpoly {
   static void print(
     Object? any, {
     String? developer,
-    MadpolyColor? color = MadpolyColor.green,
+    MadpolyColor? color = MadpolyColor.blue,
     String? tag,
     // bool? isInspect,
-    bool isLog = false,
+    // bool isLog = false,
     bool showToast = false,
   }) {
     String message = "";
@@ -27,7 +27,7 @@ abstract class Madpoly {
 
     message += any.toString();
 
-    if (isLog == true) {
+    if (color != null) {
       switch (color) {
         case MadpolyColor.blue:
           _logInfo(message);

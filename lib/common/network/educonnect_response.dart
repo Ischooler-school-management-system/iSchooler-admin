@@ -23,7 +23,7 @@ class EduconnectResponse {
         response.add(dataMap);
       }
       Madpoly.print(
-        'dataMap = $response',
+        'collection items = ${response.length} items',
         tag: 'educonnectResponse > fromCollection',
       );
     } catch (e) {

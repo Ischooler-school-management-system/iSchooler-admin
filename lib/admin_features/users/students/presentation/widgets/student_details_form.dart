@@ -1,6 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
+import 'package:school_admin/admin_features/classes/data/models/classes_model.dart';
+import 'package:school_admin/admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
+import 'package:school_admin/admin_features/dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import 'package:school_admin/admin_features/dashboard/presentation/widgets/form_buttons_widget.dart';
+import 'package:school_admin/admin_features/grades/logic/instructors_list_cubit/grades_list_cubit.dart';
+import 'package:school_admin/common/madpoly.dart';
 
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
@@ -50,9 +55,8 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             labelText: 'Username',
             validator: EduconnectValidations.nameValidator,
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(displayName: value);
-              });
+              studentData = studentData.copyWith(displayName: value);
+              // setState(() {});
             },
           ),
           EduconnectTextField(
@@ -64,9 +68,8 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             validator: EduconnectValidations.emailValidator,
 
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(userName: value);
-              });
+              studentData = studentData.copyWith(userName: value);
+              // setState(() {});
             },
           ),
           EduconnectTextField(
@@ -79,10 +82,9 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             onSaved: (value) {
               // Convert the value to DateTime and assign it to dateOfBirth
               // You may want to use a DatePicker for a better user experience
-              setState(() {
-                // studentData = studentData.copyWith(
-                //     dateOfBirth: value != null ? DateTime.parse(value) : null);
-              });
+              // studentData = studentData.copyWith(
+              //     dateOfBirth: value != null ? DateTime.parse(value) : null);
+              // setState(() {});
             },
           ),
           /*  EduConnectDropdownWidget(
@@ -105,9 +107,8 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               return null;
             },
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(phoneNumber: value);
-              });
+              studentData = studentData.copyWith(phoneNumber: value);
+              // setState(() {});
             },
           ),
           EduconnectTextField(
@@ -122,11 +123,32 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               return null;
             },
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(address: value);
-              });
+              studentData = studentData.copyWith(address: value);
+              // setState(() {});
             },
           ),
+          /* DashboardDropDownWidget<ClassesListCubit>(
+              onChanged: (EduconnectModel value) {
+            Madpoly.print(
+              'class model = $value',
+              tag:
+                  'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
+              developer: "Ziad",
+            );
+            studentData = studentData.copyWith(classModel: value as ClassModel);
+            setState(() {});
+          }), */
+          DashboardDropDownWidget<GradesListCubit>(
+              onChanged: (EduconnectModel value) {
+            Madpoly.print(
+              'Grade model = $value',
+              tag:
+                  'student_details_form > DashboardDropDownWidget<GradesListCubit>',
+              developer: "Ziad",
+            );
+            // studentData = studentData.copyWith(classModel: value as ClassModel);
+            setState(() {});
+          }),
           /* EduConnectDropdownWidget(
             labelText: 'Class',
             // hint: 'Class',
@@ -183,8 +205,12 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
   onSubmitButtonPressed() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-
-      widget.onSaved(studentData);
+      Madpoly.print(
+        'class model = $studentData',
+        tag: 'student_details_form > onSubmitButtonPressed>',
+        developer: "Ziad",
+      );
+      // widget.onSaved(studentData);
     }
   }
 }

@@ -44,7 +44,6 @@ class EduconnectPullToRefresh extends StatelessWidget {
               'onRefresh function is called',
               tag: "EduconnectScreen > LiquidPullToRefresh",
               developer: 'ziad',
-              isLog: true,
             );
             return onRefresh!();
           },

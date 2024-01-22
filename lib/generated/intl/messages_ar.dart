@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
             "أوافق على الشروط والأحكام وأيضًا على حماية بياناتي الشخصية في هذا التطبيق"),
         "apply": MessageLookupByLibrary.simpleMessage("تطبق"),
         "cancel": MessageLookupByLibrary.simpleMessage("إلغاء"),
-        "classes": MessageLookupByLibrary.simpleMessage("الصفوف"),
+        "classes": MessageLookupByLibrary.simpleMessage("الفصول"),
         "confirm_password":
             MessageLookupByLibrary.simpleMessage("تأكيد كلمة المرور"),
         "date_of_birth": MessageLookupByLibrary.simpleMessage("تاريخ الميلاد"),
@@ -55,7 +55,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "forgot_password":
             MessageLookupByLibrary.simpleMessage("نسيت كلمة المرور؟"),
         "gender": MessageLookupByLibrary.simpleMessage("الجنس"),
-        "grades": MessageLookupByLibrary.simpleMessage("الدرجات"),
+        "grades": MessageLookupByLibrary.simpleMessage("الصفوف الدراسيه"),
         "have_account_prompt":
             MessageLookupByLibrary.simpleMessage("هل لديك حساب؟"),
         "homeworks": MessageLookupByLibrary.simpleMessage("الواجبات المنزلية"),

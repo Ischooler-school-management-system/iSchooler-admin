@@ -2,31 +2,31 @@ part of 'grades_list_cubit.dart';
 
 // @immutable
 
-class ClassListState extends EduconnectState {
-  const ClassListState({
+class GradesListState extends EduconnectState {
+  const GradesListState({
     required super.educonnectAllModel,
     required super.status,
   });
 
-  factory ClassListState.init() {
-    return ClassListState(
+  factory GradesListState.init() {
+    return GradesListState(
       educonnectAllModel: GradesListModel.empty(),
       status: EduconnectStatus.init,
     );
   }
 
-  ClassListState updateAllGrades(GradesListModel classsListModel) {
+  GradesListState updateAllGrades(GradesListModel gradesListModel) {
     return _copyWith(
-      educonnectAllModel: classsListModel,
+      educonnectAllModel: gradesListModel,
       status: EduconnectStatus.loaded,
     );
   }
 
-  ClassListState _copyWith({
+  GradesListState _copyWith({
     GradesListModel? educonnectAllModel,
     EduconnectStatus? status,
   }) {
-    return ClassListState(
+    return GradesListState(
       educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
       status: status ?? this.status,
     );

@@ -21,7 +21,7 @@ class ClassModel extends EduconnectModel {
   factory ClassModel.dummy() {
     return ClassModel(
       id: '1',
-      name: 'Mathematics',
+      name: 'Class 1',
       grade: GradeModel.dummy(),
     );
   }
@@ -46,7 +46,7 @@ class ClassModel extends EduconnectModel {
   Map<String, dynamic> toDisplayMap() {
     return {
       'Class Name': name,
-      // 'Grade': grade.toDisplayMap(),
+      // 'Grade': grade.name,
     };
   }
 

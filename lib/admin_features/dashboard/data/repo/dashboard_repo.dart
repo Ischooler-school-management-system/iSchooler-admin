@@ -29,7 +29,12 @@ class DashboardRepository implements EduconnectRepository {
       EduconnectResponse response =
           await _adminNetwork.getAllItems(model: model);
       // if (response.hasData) {
-      listModel = EduconnectModelList.fromMapToChild(model, response.data);
+      Madpoly.print(
+        'response = ${response.data}',
+        tag: 'dashboard_repo > ',
+        developer: "Ziad",
+      );
+      listModel = model.fromMapToChild(response.data);
       _alertHandlingRepository.addError(
         'data retrieved sucessfully',
         AlertHandlingTypes.Alert,

@@ -8,6 +8,7 @@ environment:
 dependencies:
   awesome_bottom_bar: ^1.2.4
   cloud_firestore: ^4.13.5
+  collection: ^1.18.0
   connectivity_plus: ^5.0.2
   cross_scroll: ^0.0.76
   cupertino_icons: ^1.0.6

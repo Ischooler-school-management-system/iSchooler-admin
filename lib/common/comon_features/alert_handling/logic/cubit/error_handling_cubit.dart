@@ -51,13 +51,12 @@ class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
   }
 
   Future<void> _onErrorUpdated(AlertHandlingModel error) async {
-    Madpoly.print(
+    /*  Madpoly.print(
       error.message,
       developer: "Ahmed",
       tag: "ErrorHandlingCubit",
-      isLog: true,
     );
-
+ */
     // update UI
     emit(state.updateError(error));
   }

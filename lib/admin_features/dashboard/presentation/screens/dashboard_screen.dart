@@ -10,6 +10,7 @@ import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
 import '../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
+import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
 import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
 import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
 import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
@@ -43,7 +44,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
     // context.read<C>().addItem(model: InstructorModel.dummy());
   }
 
-  String screenTag() {
+  /*  String screenTag() {
     if (C == StudentsListCubit) {
       return 'Student';
     } else if (C == AdminsListCubit) {
@@ -55,6 +56,39 @@ class _DashboardScreenState<C extends EduconnectCubit>
     } else {
       return '';
     }
+  } */
+  String screenTag() {
+    if (C is StudentsListCubit) {
+      return 'Student';
+    } else if (C is AdminsListCubit) {
+      return 'Admin';
+    } else if (C is InstructorsListCubit) {
+      return 'Instructor';
+    } else if (C is GradesListCubit) {
+      return 'Grade';
+    } else if (C is ClassesListCubit) {
+      return 'Class';
+    } else {
+      return '';
+    } /* else if (C is SubjectsListCubit) {
+    return 'Subject';
+  } else if (C is WeeklySessionsListCubit) {
+    return 'Weekly Session';
+  } else if (C is WeeklyTimetablesListCubit) {
+    return 'Weekly Timetable';
+  } else if (C is ExamTypesListCubit) {
+    return 'Exam Type';
+  } else if (C is ExamsListCubit) {
+    return 'Exam';
+  } else if (C is ExamSessionsListCubit) {
+    return 'Exam Session';
+  } else if (C is ExamTimetablesListCubit) {
+    return 'Exam Timetable';
+  } else if (C is HomeworksListCubit) {
+    return 'Homework';
+  } else if (C is NewsListCubit) {
+    return 'News';
+  } */
   }
 
   EduconnectButton addButton() {
@@ -103,9 +137,12 @@ class _DashboardScreenState<C extends EduconnectCubit>
   }
 
   onEditButtonPressed(model) {
-    SmartDialog.show(
+    /* SmartDialog.show(
       alignment: Alignment.center,
       builder: (context) => DashboardDetailsScreen<C>(currentData: model),
+    ); */
+    EduconnectNavigator.navigateToScreen(
+      DashboardDetailsScreen<C>(currentData: model),
     );
   }
 

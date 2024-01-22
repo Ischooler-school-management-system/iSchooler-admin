@@ -24,8 +24,7 @@ class StudentsListCubit extends EduconnectCubit {
     _loadingRepository.startLoading(LoadingType.normal);
     EduconnectModelList response =
         //model is sent here to get the type of request only
-        await _studentRepository.getAllItems(model: StudentsListModel.empty())
-            as StudentsListModel;
+        await _studentRepository.getAllItems(model: StudentsListModel.empty());
     if (state is StudentsListState && response is StudentsListModel) {
       emit((state as StudentsListState).updateAllStudents(response));
     } else {
@@ -40,9 +39,10 @@ class StudentsListCubit extends EduconnectCubit {
   }
 
   @override
-  Future<void> addItem({required EduconnectModel model}) async {
+  Future<void> addItem(
+      {required EduconnectModel model, bool isEditing = false}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    await _studentRepository.addItem(model: model);
+    await _studentRepository.addItem(model: model, addWithId: isEditing);
     await getAllItems();
     // _loadingRepository.stopLoading();
   }

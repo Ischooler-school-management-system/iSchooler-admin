@@ -17,18 +17,18 @@ class InstructorModel
 class HomeworkModel
 class NewsModel 
 
-AllGradeModel
-AllClassModel
-AllSubjectModel
-AllWeeklySessionModel
-AllWeeklyTimetableModel
-AllExamTypeModel
-AllExamModel
-AllExamSessionModel
-AllExamTimetableModel
-AllInstructorModel
-AllHomeworkModel
-AllNewsModel
+GradesListModel
+ClasssListModel
+SubjectsListModel
+WeeklySessionsListModel
+WeeklyTimetablesListModel
+ExamTypesListModel
+ExamsListModel
+ExamSessionsListModel
+ExamTimetablesListModel
+InstructorsListModel
+HomeworksListModel
+NewsListModel
 
 class GradeModel
 class AllGradeModel
@@ -902,32 +902,6 @@ class NewsModel extends EduconnectModel {
       dateTime: dateTime ?? this.dateTime,
       description: description ?? this.description,
     );
-  }
-}
-
-class GradesListModel extends EduconnectModelList {
-  const GradesListModel({required List<GradeModel> items})
-      : super(items: items);
-
-  factory GradesListModel.empty() {
-    return const GradesListModel(items: []);
-  }
-  factory GradesListModel.dummy() {
-    return GradesListModel(items: [
-      GradeModel.dummy(),
-      GradeModel.dummy(),
-      GradeModel.dummy(),
-      GradeModel.dummy(),
-    ]);
-  }
-
-  factory GradesListModel.fromMap(Map map) {
-    final List<GradeModel> items = List<GradeModel>.from(
-      map['items'].map(
-        (item) => GradeModel.fromMap(item),
-      ),
-    );
-    return GradesListModel(items: items);
   }
 }
 

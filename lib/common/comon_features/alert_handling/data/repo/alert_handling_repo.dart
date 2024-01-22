@@ -42,7 +42,6 @@ class AlertHandlingRepository {
     Madpoly.print(
       '$error , developerMessage = $developerMessage',
       developer: "Ahmed",
-      isLog: true,
       color: type == AlertHandlingTypes.Alert
           ? MadpolyColor.green
           : MadpolyColor.red,

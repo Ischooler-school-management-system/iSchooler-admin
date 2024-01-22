@@ -5,6 +5,7 @@ import 'package:school_admin/common/madpoly.dart';
 
 import '../admin_features/classes/data/models/classes_list_model.dart';
 import '../admin_features/dashboard/data/models/all_models.dart';
+import '../admin_features/grades/data/models/grades_list_model.dart';
 import '../admin_features/users/admins/data/models/admins_list_model.dart';
 import '../admin_features/users/instructor/data/models/instructors_list_model.dart';
 import '../admin_features/users/students/data/models/students_list_model.dart';
@@ -43,51 +44,51 @@ class EduconnectModelList extends Equatable {
 
   factory EduconnectModelList.fromMap(Map map) {
     final List<EduconnectModel> items = List<EduconnectModel>.from(
-      map['items'].map(
-        (item) => EduconnectModel.fromMap(item),
-      ),
+      map['items'] ??
+          [].map(
+            (item) => EduconnectModel.fromMap(item),
+          ),
     );
     return EduconnectModelList(items: items);
   }
-
-  static EduconnectModelList fromMapToChild(
-      EduconnectModelList model, Map map) {
+  EduconnectModelList fromMapToChild(Map<String, dynamic> map) {
     Madpoly.print(
-      'model = $model',
+      'model = $this',
       tag: 'EduconnectModelList > fromMapToChild',
       developer: "Ziad",
     );
-    if (model is StudentsListModel) {
+
+    if (this is StudentsListModel) {
       return StudentsListModel.fromMap(map);
-    } else if (model is AdminsListModel) {
+    } else if (this is AdminsListModel) {
       return AdminsListModel.fromMap(map);
-    } else if (model is InstructorsListModel) {
+    } else if (this is InstructorsListModel) {
       return InstructorsListModel.fromMap(map);
-    } else if (model is GradesListModel) {
+    } else if (this is GradesListModel) {
       return GradesListModel.fromMap(map);
-    } else if (model is ClassesListModel) {
+    } else if (this is ClassesListModel) {
       return ClassesListModel.fromMap(map);
-    } else if (model is SubjectsListModel) {
+    } else if (this is SubjectsListModel) {
       return SubjectsListModel.fromMap(map);
-    } else if (model is WeeklySessionsListModel) {
+    } else if (this is WeeklySessionsListModel) {
       return WeeklySessionsListModel.fromMap(map);
-    } else if (model is WeeklyTimetablesListModel) {
+    } else if (this is WeeklyTimetablesListModel) {
       return WeeklyTimetablesListModel.fromMap(map);
-    } else if (model is ExamTypesListModel) {
+    } else if (this is ExamTypesListModel) {
       return ExamTypesListModel.fromMap(map);
-    } else if (model is ExamsListModel) {
+    } else if (this is ExamsListModel) {
       return ExamsListModel.fromMap(map);
-    } else if (model is ExamSessionsListModel) {
+    } else if (this is ExamSessionsListModel) {
       return ExamSessionsListModel.fromMap(map);
-    } else if (model is ExamTimetablesListModel) {
+    } else if (this is ExamTimetablesListModel) {
       return ExamTimetablesListModel.fromMap(map);
-    } else if (model is HomeworksListModel) {
+    } else if (this is HomeworksListModel) {
       return HomeworksListModel.fromMap(map);
-    } else if (model is NewsListModel) {
+    } else if (this is NewsListModel) {
       return NewsListModel.fromMap(map);
     }
 
-    return EduconnectModelList.empty();
+    return EduconnectModelList.fromMap(map);
   }
 
   Map<String, dynamic> toMap() {
@@ -105,9 +106,45 @@ class EduconnectModelList extends Equatable {
     return items.map((item) => item.name).toList();
   }
 
-  // Function to get a model by name
   EduconnectModel? getModelByName(String modelName) {
-    return items.firstWhereOrNull((item) => item.name == modelName);
+    Madpoly.print(
+      'model = $this',
+      tag: 'EduconnectModelList > getModelByName',
+      developer: "Ziad",
+    );
+
+    if (this is StudentsListModel) {
+      return (this as StudentsListModel).getModelByName(modelName);
+    } else if (this is AdminsListModel) {
+      return (this as AdminsListModel).getModelByName(modelName);
+    } else if (this is InstructorsListModel) {
+      return (this as InstructorsListModel).getModelByName(modelName);
+    } else if (this is GradesListModel) {
+      return (this as GradesListModel).getModelByName(modelName);
+    } else if (this is ClassesListModel) {
+      return (this as ClassesListModel).getModelByName(modelName);
+    } else if (this is SubjectsListModel) {
+      return (this as SubjectsListModel).getModelByName(modelName);
+    } else if (this is WeeklySessionsListModel) {
+      return (this as WeeklySessionsListModel).getModelByName(modelName);
+    } else if (this is WeeklyTimetablesListModel) {
+      return (this as WeeklyTimetablesListModel).getModelByName(modelName);
+    } else if (this is ExamTypesListModel) {
+      return (this as ExamTypesListModel).getModelByName(modelName);
+    } else if (this is ExamsListModel) {
+      return (this as ExamsListModel).getModelByName(modelName);
+    } else if (this is ExamSessionsListModel) {
+      return (this as ExamSessionsListModel).getModelByName(modelName);
+    } else if (this is ExamTimetablesListModel) {
+      return (this as ExamTimetablesListModel).getModelByName(modelName);
+    } else if (this is HomeworksListModel) {
+      return (this as HomeworksListModel).getModelByName(modelName);
+    } else if (this is NewsListModel) {
+      return (this as NewsListModel).getModelByName(modelName);
+    }
+    return items.firstWhereOrNull(
+      (EduconnectModel item) => item.name == modelName,
+    );
   }
 
   @override

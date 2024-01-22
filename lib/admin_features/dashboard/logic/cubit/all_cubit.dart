@@ -8,21 +8,24 @@ abstract class EduconnectCubit extends Cubit<EduconnectState> {
   EduconnectCubit(super.initialState);
 
   Future<void> getAllItems();
-  Future<void> addItem({required EduconnectModel model});
+  Future<void> addItem(
+      {required EduconnectModel model, bool isEditing = false});
   Future<void> deleteItem({required EduconnectModel model});
 }
 
 abstract class EduconnectRepository {
   //model is sent here to get the type of request only
   Future<EduconnectModelList> getAllItems({required EduconnectModelList model});
-  Future<bool> addItem({required EduconnectModel model});
+  Future<bool> addItem(
+      {required EduconnectModel model, bool addWithId = false});
   Future<bool> deleteItem({required EduconnectModel model});
 }
 
 abstract class EduconnectNetwork {
   //model is sent here to get the type of request only
   Future<EduconnectResponse> getAllItems({required EduconnectModelList model});
-  Future<bool> addItem({required EduconnectModel model});
+  Future<bool> addItem(
+      {required EduconnectModel model, bool addWithId = false});
   Future<bool> deleteItem({required EduconnectModel model});
 }
 

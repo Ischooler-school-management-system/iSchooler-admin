@@ -27,7 +27,7 @@ abstract class EduconnectNavigator {
   static PageRouteBuilder<dynamic> slideNavigation({
     required Widget screen,
     bool hasAnimation = true,
-    required Object? arguments,
+    Object? arguments,
   }) {
     return hasAnimation && Responsive.isMobile()
         ? PageRouteBuilder(
@@ -108,7 +108,7 @@ abstract class EduconnectNavigator {
       navigatorState.currentState!.pop(result);
     }
   }
-/* 
+
   static void navigateToScreen(Widget screen,
       {bool replace = false, bool hasAnimation = false}) {
     if (replace) {
@@ -118,7 +118,7 @@ abstract class EduconnectNavigator {
       navigatorState.currentState!
           .push(slideNavigation(screen: screen, hasAnimation: hasAnimation));
     }
-  } */
+  }
 
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {

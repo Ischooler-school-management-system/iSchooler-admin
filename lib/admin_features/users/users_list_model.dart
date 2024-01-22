@@ -9,9 +9,10 @@ class UsersListModel extends EduconnectModelList {
   }
   factory UsersListModel.fromMap(Map map) {
     final List<UserModel> items = List<UserModel>.from(
-      map['items'].map(
-        (item) => UserModel.fromMap(item),
-      ),
+      map['items'] ??
+          [].map(
+            (item) => UserModel.fromMap(item),
+          ),
     );
     return UsersListModel(items: items);
   }

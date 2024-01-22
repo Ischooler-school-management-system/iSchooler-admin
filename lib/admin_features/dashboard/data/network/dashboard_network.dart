@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/educonnect_model.dart';
+import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_network_helper.dart';
 import '../../../../common/network/educonnect_response.dart';
 import '../../logic/cubit/all_cubit.dart';
@@ -27,6 +28,12 @@ class DashboardNetwork implements EduconnectNetwork {
       }
       final CollectionReference<Map<String, dynamic>> reference =
           EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      Madpoly.print(
+        'request will be sent is >>  get(), collection:$collectionName,',
+        tag: 'dashboard_network > getAllItems',
+        color: MadpolyColor.purple,
+        developer: "Ziad",
+      );
       final QuerySnapshot<Map<String, dynamic>> query = await reference.get();
       response = EduconnectResponse.fromCollection(query);
     } catch (e) {
@@ -53,7 +60,15 @@ class DashboardNetwork implements EduconnectNetwork {
       }
       final credentialCollection =
           EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
-      await credentialCollection.doc(docName).set(model.toMap());
+      Map<String, dynamic> data = model.toMap();
+
+      Madpoly.print(
+        'request will be sent is >> set(), collection:$collectionName, addWithId = $addWithId document:$docName,',
+        tag: 'dashboard_network > add',
+        color: MadpolyColor.purple,
+        developer: "Ziad",
+      );
+      await credentialCollection.doc(docName).set(data);
       // await credentialCollection.doc(model.id).set(model.toMap());
       userStored = true;
     } catch (e) {
@@ -80,6 +95,12 @@ class DashboardNetwork implements EduconnectNetwork {
       }
       final credentialCollection =
           EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      Madpoly.print(
+        'request will be sent is >> delete(), collection:$collectionName, document:${model.id},',
+        tag: 'dashboard_network > deleteItem',
+        color: MadpolyColor.purple,
+        developer: "Ziad",
+      );
       await credentialCollection.doc(model.id).delete();
       userStored = true;
     } catch (e) {

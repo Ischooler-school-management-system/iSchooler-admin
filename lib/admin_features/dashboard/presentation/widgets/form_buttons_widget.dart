@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:school_admin/common/comon_features/responsive/responsive.dart';
 import 'package:school_admin/common/comon_features/widgets/buttons/educonnect_button_export.dart';
+import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 class FormButtonsWidget extends StatelessWidget {
   final Function()? onSubmitButtonPressed;
@@ -22,7 +23,8 @@ class FormButtonsWidget extends StatelessWidget {
           button: EduconnectElevatedButton(
             // width: 200,
             onPressed: () {
-              SmartDialog.dismiss();
+              // SmartDialog.dismiss();
+              EduconnectNavigator.pop();
             },
             text: 'cancel',
           ),

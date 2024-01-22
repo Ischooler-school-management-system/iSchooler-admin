@@ -82,12 +82,11 @@ class EduconnectListeners extends StatelessWidget {
           label: EduconnectConstants.localization().cancel),
     );
 
-    Madpoly.print(
+    /*  Madpoly.print(
       state.error,
       developer: "Ahmed",
       tag: "main.dart -> error BlocListener",
-      isLog: false,
-    );
+    ); */
 
     switch (state.error.type) {
       case AlertHandlingTypes.None:

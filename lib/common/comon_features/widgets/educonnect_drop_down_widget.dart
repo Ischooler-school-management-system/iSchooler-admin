@@ -42,7 +42,6 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
       'widget.value = ${widget.value}',
       tag: "_DropdownButtonWidgetState > build",
       developer: 'ziad',
-      isLog: true,
     );
     if (value == null || !validValue) {
       // SmartDialog.showToast(EduconnectConstants.localization().select_option_prompt);
