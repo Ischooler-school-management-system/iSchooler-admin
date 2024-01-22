@@ -46,12 +46,12 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: instructorData.displayName,
+            initialValue: instructorData.name,
             labelText: 'Display Name',
             validator: EduconnectValidations.nameValidator,
             onChanged: (value) {
               setState(() {
-                instructorData = instructorData.copyWith(displayName: value);
+                instructorData = instructorData.copyWith(name: value);
               });
             },
           ),
@@ -61,7 +61,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
             validator: EduconnectValidations.emailValidator,
             onChanged: (value) {
               setState(() {
-                instructorData = instructorData.copyWith(userName: value);
+                instructorData = instructorData.copyWith(name: value);
               });
             },
           ),

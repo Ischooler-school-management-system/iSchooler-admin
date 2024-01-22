@@ -1,5 +1,5 @@
 import '../../../../common/educonnect_model.dart';
-import '../../../classes/data/models/classes_model.dart';
+import '../../../classes/data/models/class_model.dart';
 import '../../../grades/data/models/grade_model.dart';
 import '../../../users/instructor/data/models/instructors_list_model.dart';
 

@@ -27,13 +27,16 @@ class GradesListModel extends EduconnectModelList {
   }
 
   factory GradesListModel.fromMap(Map map) {
-    /* final List<GradeModel> items = List<GradeModel>.from(
-      map['items'] ??
-          [].map(
-            (item) => GradeModel.fromMap(item),
-          ),
+    List<Map<String, dynamic>> list =
+        (map['items'] != null && map['items'] is List<Map<String, dynamic>>)
+            ? map['items']
+            : [];
+    final List<GradeModel> items = List<GradeModel>.from(
+      list.map(
+        (item) => GradeModel.fromMap(item),
+      ),
     );
-    return GradesListModel(items: items); */
-    return GradesListModel.dummy();
+    return GradesListModel(items: items);
+    // return GradesListModel.dummy();
   }
 }

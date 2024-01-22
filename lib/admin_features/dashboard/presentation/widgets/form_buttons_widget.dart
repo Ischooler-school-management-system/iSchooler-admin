@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
-import 'package:school_admin/common/comon_features/responsive/responsive.dart';
-import 'package:school_admin/common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import 'package:school_admin/common/navigation/educonnect_navi.dart';
+
+import '../../../../common/comon_features/responsive/responsive.dart';
+import '../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../common/navigation/router.export.dart';
 
 class FormButtonsWidget extends StatelessWidget {
   final Function()? onSubmitButtonPressed;

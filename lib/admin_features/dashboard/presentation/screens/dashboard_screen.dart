@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../common/comon_features/responsive/responsive.dart';
 import '../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
@@ -37,9 +36,13 @@ class _DashboardScreenState<C extends EduconnectCubit>
   int limit = 0;
 
   onAddButtonPressed() {
-    SmartDialog.show(
+    /*  SmartDialog.show(
       alignment: Alignment.center,
       builder: (context) => DashboardDetailsScreen<C>(),
+    ); */
+
+    EduconnectNavigator.navigateToScreen(
+      DashboardDetailsScreen<C>(),
     );
     // context.read<C>().addItem(model: InstructorModel.dummy());
   }

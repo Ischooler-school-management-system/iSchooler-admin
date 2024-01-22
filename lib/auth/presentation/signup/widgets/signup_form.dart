@@ -75,8 +75,8 @@ class _SignupFormState extends State<SignupForm> {
                 labelText: 'Enrollment code',
                 focusNode: nameFocusNode,
                 validator: EduconnectValidations.nameValidator,
-                onSaved: (String? value) => newUser =
-                    newUser.copyWith(displayName: value, userName: value),
+                onSaved: (String? value) =>
+                    newUser = newUser.copyWith(name: value),
               ),
             if ((state.user.role == UserRole.admin))
               EduconnectTextField(
@@ -84,8 +84,8 @@ class _SignupFormState extends State<SignupForm> {
                 labelText: EduconnectConstants.localization().enter_name,
                 focusNode: nameFocusNode,
                 validator: EduconnectValidations.nameValidator,
-                onSaved: (String? value) => newUser =
-                    newUser.copyWith(displayName: value, userName: value),
+                onSaved: (String? value) =>
+                    newUser = newUser.copyWith(name: value),
               ),
             if ((state.user.role == UserRole.admin))
               EduconnectTextField(

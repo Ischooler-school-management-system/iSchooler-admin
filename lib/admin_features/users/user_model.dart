@@ -13,19 +13,19 @@ class UserModel extends EduconnectModel {
   final String address;
   final String gender;
   final String email;
-  final String displayName;
-  final String userName;
+  // final String displayName;
+  // final String name;
   final UserRole role; // Added role field
   final String profilePicture;
   const UserModel({
-    required this.userName,
+    required super.name,
     required super.id,
     required this.dateOfBirth,
     required this.phoneNumber,
     required this.address,
     required this.gender,
     required this.email,
-    required this.displayName,
+    // required this.displayName,
     required this.role,
     required this.profilePicture,
   });
@@ -33,27 +33,27 @@ class UserModel extends EduconnectModel {
   factory UserModel.empty() {
     return const UserModel(
         id: '',
-        userName: '',
+        name: '',
         dateOfBirth: null,
         phoneNumber: '',
         address: '',
         gender: '',
         email: '',
-        displayName: '',
+        // displayName: '',
         role: UserRole.none,
         profilePicture: '');
   }
 
   factory UserModel.dummy() {
     return UserModel(
-      userName: 'JohnDoe',
+      name: 'JohnDoe',
       id: '123456',
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',
       address: '123 Main St, City',
       gender: 'Male',
       email: 'john.doe@example.com',
-      displayName: 'John Doe',
+      // displayName: 'John Doe',
       role: UserRole.none,
       profilePicture: 'path/to/profile_picture.jpg',
     );
@@ -75,7 +75,7 @@ class UserModel extends EduconnectModel {
     }
     return UserModel(
       id: map['id'] ?? '',
-      userName: map['userName'] ?? '',
+      name: map['name'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
@@ -83,7 +83,7 @@ class UserModel extends EduconnectModel {
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
-      displayName: map['displayName'] ?? '',
+      // // displayName: map['displayName'] ?? '',
       role: userRole,
       profilePicture: map['profilePicture'] ?? '',
     );
@@ -91,13 +91,13 @@ class UserModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'userName': userName,
+      'name': name,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'phoneNumber': phoneNumber,
       'address': address,
       'gender': gender,
       'email': email,
-      'displayName': displayName,
+      // // 'displayName': displayName,
       'role': role.name,
       'profilePicture': profilePicture,
     };
@@ -107,14 +107,14 @@ class UserModel extends EduconnectModel {
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
       // '': profilePicture,
-      EduconnectConstants.localization().name: displayName,
+      EduconnectConstants.localization().name: name,
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
-      EduconnectConstants.localization().phone_number: phoneNumber,
-      EduconnectConstants.localization().address: address,
-      EduconnectConstants.localization().date_of_birth:
-          DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
+      // EduconnectConstants.localization().phone_number: phoneNumber,
+      // EduconnectConstants.localization().address: address,
+      // EduconnectConstants.localization().date_of_birth:
+      // DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
     };
 
     return truncateMap(map);
@@ -123,26 +123,26 @@ class UserModel extends EduconnectModel {
   @override
   UserModel copyWith({
     String? id,
-    String? userName,
+    String? name,
     DateTime? dateOfBirth,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,
     String? gender,
     String? email,
-    String? displayName,
+    // String? displayName,
     UserRole? role,
     String? profilePicture,
   }) {
     return UserModel(
       id: id ?? this.id,
-      userName: userName ?? this.userName,
+      name: name ?? this.name,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
       gender: gender ?? this.gender,
       email: email ?? this.email,
-      displayName: displayName ?? this.displayName,
+      // // // displayName: displayName ?? this.displayName,
       role: role ?? this.role,
       profilePicture: this.profilePicture,
     );
@@ -156,7 +156,7 @@ class UserModel extends EduconnectModel {
       address,
       gender,
       email,
-      displayName,
+      name,
       role,
     ];
   }

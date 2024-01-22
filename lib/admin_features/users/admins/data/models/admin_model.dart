@@ -9,11 +9,11 @@ class AdminModel extends UserModel {
     super.id = '-1',
     super.dateOfBirth,
     super.phoneNumber = '',
-    super.userName = '',
+    super.name = '',
     super.address = '',
     super.gender = '',
     super.email = '',
-    super.displayName = '',
+    // super.displayName = '',
     super.role = UserRole.admin,
     super.profilePicture = '',
   });
@@ -21,26 +21,26 @@ class AdminModel extends UserModel {
   factory AdminModel.empty() {
     return const AdminModel(
       id: '',
-      userName: '',
+      name: '',
       dateOfBirth: null,
       phoneNumber: '',
       address: '',
       gender: '',
       email: '',
-      displayName: '',
+      // displayName: '',
       role: UserRole.admin,
     );
   }
   factory AdminModel.dummy() {
     return AdminModel(
-      userName: 'JohnDoe',
+      name: 'JohnDoe',
       id: '123456',
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',
       address: '123 Main St, City',
       gender: 'Male',
       email: 'john.doe@example.com',
-      displayName: 'John Doe',
+      // displayName: 'John Doe',
       role: UserRole.admin,
       profilePicture: 'path/to/profile_picture.jpg',
     );
@@ -48,7 +48,7 @@ class AdminModel extends UserModel {
   factory AdminModel.fromMap(Map<String, dynamic> map) {
     return AdminModel(
       id: map['id'] ?? '',
-      userName: map['userName'] ?? '',
+      name: map['name'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
@@ -56,51 +56,34 @@ class AdminModel extends UserModel {
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
-      displayName: map['displayName'] ?? '',
+      // // displayName: map['displayName'] ?? '',
       role: map['role'] == UserRole.admin.name ? UserRole.admin : UserRole.none,
     );
   }
 
   @override
-  Map<String, dynamic> toDisplayMap({int? limit}) {
-    var map = {
-      // 'q': profilePicture,
-      EduconnectConstants.localization().name: displayName,
-      EduconnectConstants.localization().id: id,
-      EduconnectConstants.localization().gender: gender,
-      EduconnectConstants.localization().email: email,
-      EduconnectConstants.localization().phone_number: phoneNumber,
-      EduconnectConstants.localization().address: address,
-      EduconnectConstants.localization().date_of_birth:
-          DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-    };
-
-    return truncateMap(map);
-  }
-
-  @override
   AdminModel copyWith({
     String? id,
-    String? userName,
+    String? name,
     DateTime? dateOfBirth,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,
     String? gender,
     String? email,
-    String? displayName,
+    // String? displayName,
     UserRole? role,
     String? profilePicture,
   }) {
     return AdminModel(
       id: id ?? this.id,
-      userName: userName ?? this.userName,
+      name: name ?? this.name,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
       gender: gender ?? this.gender,
       email: email ?? this.email,
-      displayName: displayName ?? this.displayName,
+      // // // displayName: displayName ?? this.displayName,
       role: role ?? this.role,
       profilePicture: this.profilePicture,
     );
@@ -108,8 +91,8 @@ class AdminModel extends UserModel {
 
   @override
   String toString() {
-    return 'AdminModel{adminId: $id, userName: $userName, dateOfBirth: $dateOfBirth, '
+    return 'AdminModel{adminId: $id, name: $name, dateOfBirth: $dateOfBirth, '
         'phoneNumber: $phoneNumber, address: $address, '
-        'gender: $gender, email: $email, displayName: $displayName, role: ${role.name}}';
+        'gender: $gender, email: $email, role: ${role.name}}';
   }
 }

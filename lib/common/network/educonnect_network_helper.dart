@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import '../../admin_features/classes/data/models/classes_list_model.dart';
-import '../../admin_features/classes/data/models/classes_model.dart';
+import '../../admin_features/classes/data/models/class_model.dart';
 import '../../admin_features/dashboard/data/models/all_models.dart';
 import '../../admin_features/grades/data/models/grade_model.dart';
 import '../../admin_features/grades/data/models/grades_list_model.dart';

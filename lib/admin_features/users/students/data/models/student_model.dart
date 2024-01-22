@@ -3,7 +3,7 @@ import 'package:intl/intl.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/truncate_dashboard_map.dart';
-import '../../../../classes/data/models/classes_model.dart';
+import '../../../../classes/data/models/class_model.dart';
 import '../../../../grades/data/models/grade_model.dart';
 import '../../../user_model.dart';
 
@@ -22,16 +22,16 @@ class StudentModel extends UserModel {
     this.paymentStatus = false,
     super.gender = '',
     super.email = '',
-    super.displayName = '',
+    // super.displayName = '',
     super.role = UserRole.student,
-    super.userName = '',
+    super.name = '',
     super.profilePicture = '',
   });
   @override
   factory StudentModel.empty() {
     return StudentModel(
         id: '',
-        userName: '',
+        name: '',
         classModel: ClassModel.empty(),
         // gradeModel: GradeModel.empty(),
         dateOfBirth: null,
@@ -39,7 +39,7 @@ class StudentModel extends UserModel {
         address: '',
         gender: '',
         email: '',
-        displayName: '',
+        // displayName: '',
         role: UserRole.student,
         profilePicture: '');
   }
@@ -47,15 +47,15 @@ class StudentModel extends UserModel {
   factory StudentModel.dummy() {
     return StudentModel(
         id: '',
-        userName: 'ziad',
+        name: 'ziad',
         classModel: ClassModel.empty(),
         // gradeModel: GradeModel.empty(),
         dateOfBirth: null,
-        phoneNumber: '',
-        address: '',
-        gender: '',
-        email: '',
-        displayName: '',
+        phoneNumber: '0123786323',
+        address: 'a .main b',
+        gender: 'male',
+        email: 'user@mail.com',
+        // displayName: '',
         role: UserRole.student,
         profilePicture: '');
   }
@@ -63,7 +63,7 @@ class StudentModel extends UserModel {
   factory StudentModel.fromMap(Map<String, dynamic> map) {
     return StudentModel(
       id: map['id'] ?? '',
-      userName: map['userName'] ?? '',
+      name: map['name'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
           : null,
@@ -74,7 +74,7 @@ class StudentModel extends UserModel {
       paymentStatus: map['paymentStatus'] ?? false,
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
-      displayName: map['displayName'] ?? '',
+      // // displayName: map['displayName'] ?? '',
       role: map['role'] == UserRole.student.name
           ? UserRole.student
           : UserRole.none,
@@ -83,7 +83,7 @@ class StudentModel extends UserModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'userName': userName,
+      'name': name,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'classId': classModel.toMap(),
       // 'gradeId': gradeModel.toDisplayMap(),
@@ -92,42 +92,42 @@ class StudentModel extends UserModel {
       'paymentStatus': paymentStatus,
       'gender': gender,
       'email': email,
-      'displayName': displayName,
+      // // 'displayName': displayName,
       'role': role.name,
       'profilePicture': profilePicture,
     };
   }
 
-  @override
+  /* @override
   Map<String, dynamic> toDisplayMap({int? limit}) {
     var map = {
       // '': profilePicture,
-      EduconnectConstants.localization().name: displayName,
+      // EduconnectConstants.localization().name: displayName,
       EduconnectConstants.localization().id: id,
       EduconnectConstants.localization().gender: gender,
       EduconnectConstants.localization().email: email,
-      EduconnectConstants.localization().phone_number: phoneNumber,
-      EduconnectConstants.localization().address: address,
-      EduconnectConstants.localization().date_of_birth:
-          DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-      EduconnectConstants.localization().payment_status:
-          paymentStatus.toString(),
+      // EduconnectConstants.localization().phone_number: phoneNumber,
+      // EduconnectConstants.localization().address: address,
+      // EduconnectConstants.localization().date_of_birth:
+      // DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
+      // EduconnectConstants.localization().payment_status:
+      // paymentStatus.toString(),
     };
 
     return truncateMap(map);
-  }
+  } */
 
   @override
   String toString() {
-    return 'StudentModel{studentId: $id, userName: $userName, dateOfBirth: $dateOfBirth, '
+    return 'StudentModel{studentId: $id, name: $name, dateOfBirth: $dateOfBirth, '
         'classId: $classModel, phoneNumber: $phoneNumber, address: $address, '
-        'paymentStatus: $paymentStatus, gender: $gender, email: $email, displayName: $displayName, role: ${role.name}}';
+        'paymentStatus: $paymentStatus, gender: $gender, email: $email, role: ${role.name}}';
   }
 
   @override
   StudentModel copyWith({
     String? id,
-    String? userName,
+    String? name,
     DateTime? dateOfBirth,
     ClassModel? classModel,
     GradeModel? gradeModel,
@@ -136,13 +136,13 @@ class StudentModel extends UserModel {
     bool? paymentStatus,
     String? gender,
     String? email,
-    String? displayName,
+    // String? displayName,
     UserRole? role,
     String? profilePicture, // Add this line
   }) {
     return StudentModel(
       id: id ?? this.id,
-      userName: userName ?? this.userName,
+      name: name ?? this.name,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       classModel: classModel ?? this.classModel,
       // gradeModel: gradeModel ?? this.gradeModel,
@@ -151,7 +151,7 @@ class StudentModel extends UserModel {
       paymentStatus: paymentStatus ?? this.paymentStatus,
       gender: gender ?? this.gender,
       email: email ?? this.email,
-      displayName: displayName ?? this.displayName,
+      // // // displayName: displayName ?? this.displayName,
       role: role ?? this.role,
       profilePicture: profilePicture ?? this.profilePicture, // Add this line
     );
@@ -159,7 +159,17 @@ class StudentModel extends UserModel {
 
   @override
   List<Object?> get props {
-    return super.props
-      ..addAll([userName, classModel, /* gradeModel, */ paymentStatus]);
+    return [
+      dateOfBirth,
+      phoneNumber,
+      address,
+      gender,
+      email,
+      name,
+      role,
+      name,
+      classModel,
+      /* gradeModel, */ paymentStatus,
+    ];
   }
 }

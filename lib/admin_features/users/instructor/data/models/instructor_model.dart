@@ -2,14 +2,14 @@ import '../../../user_model.dart';
 
 class InstructorModel extends UserModel {
   const InstructorModel({
-    required super.userName,
+    required super.name,
     required super.id,
     required super.dateOfBirth,
     required super.phoneNumber,
     required super.address,
     required super.gender,
     required super.email,
-    required super.displayName,
+    // required super.displayName,
     super.role = UserRole.instructor,
     required super.profilePicture,
   });
@@ -17,27 +17,27 @@ class InstructorModel extends UserModel {
   factory InstructorModel.empty() {
     return const InstructorModel(
       id: '',
-      userName: '',
+      name: '',
       dateOfBirth: null,
       phoneNumber: '',
       address: '',
       gender: '',
       email: '',
-      displayName: '',
+      // displayName: '',
       role: UserRole.instructor,
       profilePicture: '',
     );
   }
   factory InstructorModel.dummy() {
     return InstructorModel(
-      userName: 'JohnDoe',
+      name: 'JohnDoe',
       id: '123456',
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',
       address: '123 Main St, City',
       gender: 'Male',
       email: 'john.doe@example.com',
-      displayName: 'John Doe',
+      // displayName: 'John Doe',
       role: UserRole.instructor,
       profilePicture: 'path/to/profile_picture.jpg',
     );
@@ -45,7 +45,7 @@ class InstructorModel extends UserModel {
 
   factory InstructorModel.fromMap(Map<String, dynamic> map) {
     return InstructorModel(
-      userName: map['userName'] ?? '',
+      name: map['name'] ?? '',
       id: map['id'] ?? '',
       dateOfBirth: map['dateOfBirth'] != null
           ? DateTime.parse(map['dateOfBirth'])
@@ -54,7 +54,7 @@ class InstructorModel extends UserModel {
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
-      displayName: map['displayName'] ?? '',
+      // // displayName: map['displayName'] ?? '',
       role: map['role'] == UserRole.instructor.name
           ? UserRole.instructor
           : UserRole.none,
@@ -64,26 +64,26 @@ class InstructorModel extends UserModel {
   @override
   InstructorModel copyWith({
     String? id,
-    String? userName,
+    String? name,
     DateTime? dateOfBirth,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,
     String? gender,
     String? email,
-    String? displayName,
+    // String? displayName,
     UserRole? role,
     String? profilePicture,
   }) {
     return InstructorModel(
       id: id ?? this.id,
-      userName: userName ?? this.userName,
+      name: name ?? this.name,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
       gender: gender ?? this.gender,
       email: email ?? this.email,
-      displayName: displayName ?? this.displayName,
+      // // // displayName: displayName ?? this.displayName,
       role: role ?? this.role,
       profilePicture: this.profilePicture,
     );

@@ -87,7 +87,7 @@ class GradeModel extends EduconnectModel {
   factory GradeModel.dummy() {
     return const GradeModel(
       id: '1',
-      name: 'Excellent',
+      name: 'Grade 1',
     );
   }
   factory GradeModel.fromMap(Map<String, dynamic> map) {
@@ -104,12 +104,12 @@ class GradeModel extends EduconnectModel {
     };
   }
 
-  @override
+  /*  @override
   Map<String, dynamic> toDisplayMap() {
     return {
       'Name': name,
     };
-  }
+  } */
 
   @override
   GradeModel copyWith({String? id, String? grade, String? name}) {

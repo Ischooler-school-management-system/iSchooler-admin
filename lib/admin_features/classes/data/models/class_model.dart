@@ -29,7 +29,7 @@ class ClassModel extends EduconnectModel {
   factory ClassModel.fromMap(Map<String, dynamic> map) {
     return ClassModel(
       id: map['id'] ?? '',
-      name: map['className'] ?? '',
+      name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
     );
   }
@@ -37,18 +37,18 @@ class ClassModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'className': name,
-      'grade': grade.toMap(),
+      'name': name,
+      // 'grade': grade.toMap(),
     };
   }
 
-  @override
+  /* @override
   Map<String, dynamic> toDisplayMap() {
     return {
       'Class Name': name,
       // 'Grade': grade.name,
     };
-  }
+  } */
 
   @override
   ClassModel copyWith(

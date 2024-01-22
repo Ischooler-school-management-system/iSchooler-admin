@@ -1,17 +1,15 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
-import 'package:school_admin/admin_features/classes/data/models/classes_model.dart';
-import 'package:school_admin/admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
-import 'package:school_admin/admin_features/dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
-import 'package:school_admin/admin_features/dashboard/presentation/widgets/form_buttons_widget.dart';
-import 'package:school_admin/admin_features/grades/logic/instructors_list_cubit/grades_list_cubit.dart';
-import 'package:school_admin/common/madpoly.dart';
 
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
+import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
+import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
+import '../../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
 import '../../data/models/student_model.dart';
+import '/common/madpoly.dart';
 
 class StudentDetailsForm extends StatefulWidget {
   final StudentModel? currentStudentData;
@@ -51,11 +49,11 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: studentData.displayName,
+            initialValue: studentData.name,
             labelText: 'Username',
             validator: EduconnectValidations.nameValidator,
             onSaved: (value) {
-              studentData = studentData.copyWith(displayName: value);
+              studentData = studentData.copyWith(name: value);
               // setState(() {});
             },
           ),
@@ -68,7 +66,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             validator: EduconnectValidations.emailValidator,
 
             onSaved: (value) {
-              studentData = studentData.copyWith(userName: value);
+              studentData = studentData.copyWith(email: value);
               // setState(() {});
             },
           ),
@@ -205,12 +203,8 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
   onSubmitButtonPressed() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      Madpoly.print(
-        'class model = $studentData',
-        tag: 'student_details_form > onSubmitButtonPressed>',
-        developer: "Ziad",
-      );
-      // widget.onSaved(studentData);
+
+      widget.onSaved(studentData);
     }
   }
 }

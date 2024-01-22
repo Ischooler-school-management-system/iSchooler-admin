@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../classes/data/models/classes_model.dart';
+import '../../../classes/data/models/class_model.dart';
 import '../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import '../../../classes/presentation/widgets/classes_details_form.dart';
 import '../../../dashboard/logic/cubit/all_cubit.dart';

@@ -8,7 +8,7 @@ import '../../../../../common/madpoly.dart';
 import '../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
-import '../../data/models/classes_model.dart';
+import '../../data/models/class_model.dart';
 
 class ClassDetailsForm extends StatefulWidget {
   final ClassModel? currentClassData;

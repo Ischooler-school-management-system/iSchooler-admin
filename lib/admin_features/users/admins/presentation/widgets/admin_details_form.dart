@@ -46,12 +46,12 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: adminData.userName,
-            labelText: 'Username',
+            initialValue: adminData.name,
+            labelText: 'name',
             validator: EduconnectValidations.nameValidator,
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(userName: value);
+                adminData = adminData.copyWith(name: value);
               });
             },
           ),
@@ -61,7 +61,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             validator: EduconnectValidations.emailValidator,
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(userName: value);
+                adminData = adminData.copyWith(name: value);
               });
             },
           ),
