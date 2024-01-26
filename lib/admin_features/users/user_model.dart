@@ -1,5 +1,3 @@
-import 'package:intl/intl.dart';
-
 import '../../common/educonnect_constants.dart';
 import '../../common/educonnect_model.dart';
 import '../../common/functions/truncate_dashboard_map.dart';

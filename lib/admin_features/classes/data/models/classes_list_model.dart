@@ -1,7 +1,6 @@
 import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 
 import '../../../../common/educonnect_model.dart';
-import '../../../../common/madpoly.dart';
 import 'class_model.dart';
 
 class ClassesListModel extends EduconnectModelList {
@@ -24,28 +23,15 @@ class ClassesListModel extends EduconnectModelList {
         (map['items'] != null && map['items'] is List<Map<String, dynamic>>)
             ? map['items']
             : [];
-    Madpoly.print(
-      'list = $list',
-      tag: 'classes_list_model > ',
-      developer: "Ziad",
-    );
+
     final List<ClassModel> items = List<ClassModel>.from(
       list.map(
         (item) {
-          Madpoly.print(
-            'item = $item',
-            tag: 'classes_list_model > ',
-            developer: "Ziad",
-          );
           return ClassModel.fromMap(item);
         },
       ),
     );
-    Madpoly.print(
-      'items = $items',
-      tag: 'classes_list_model > ',
-      developer: "Ziad",
-    );
+
     return ClassesListModel(items: items);
     // return ClassesListModel.dummy();
   }

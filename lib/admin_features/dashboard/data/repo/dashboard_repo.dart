@@ -29,16 +29,17 @@ class DashboardRepository implements EduconnectRepository {
       EduconnectResponse response =
           await _adminNetwork.getAllItems(model: model);
       // if (response.hasData) {
+
+      listModel = model.fromMapToChild(response.data);
       Madpoly.print(
-        'response = ${response.data}',
+        'listModel = $listModel',
         tag: 'dashboard_repo > ',
         developer: "Ziad",
       );
-      listModel = model.fromMapToChild(response.data);
       _alertHandlingRepository.addError(
         'data retrieved sucessfully',
         AlertHandlingTypes.Alert,
-        tag: 'admin_repo > getAllAdminsData',
+        tag: 'dashboard_repo > getAllAdminsData',
         showToast: true,
       );
       // }
@@ -46,7 +47,7 @@ class DashboardRepository implements EduconnectRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_repo > getAllAdminsData',
+        tag: 'dashboard_repo > getAllAdminsData',
         showToast: true,
       );
     }
@@ -55,7 +56,7 @@ class DashboardRepository implements EduconnectRepository {
 
   @override
   Future<bool> addItem(
-      {required EduconnectModel model, bool addWithId = false}) async {
+      {required EduconnectModel model, required bool addWithId}) async {
     bool requestSuccess = false;
     try {
       bool requestSuccess =
@@ -64,7 +65,7 @@ class DashboardRepository implements EduconnectRepository {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'admin_repo > storeAdminData',
+          tag: 'dashboard_repo > storeAdminData',
           showToast: true,
         );
       } else {
@@ -74,7 +75,7 @@ class DashboardRepository implements EduconnectRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_repo > storeAdminData',
+        tag: 'dashboard_repo > storeAdminData',
         showToast: true,
       );
     }
@@ -90,7 +91,7 @@ class DashboardRepository implements EduconnectRepository {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'admin_repo > storeAdminData',
+          tag: 'dashboard_repo > storeAdminData',
           showToast: true,
         );
       } else {
@@ -100,7 +101,7 @@ class DashboardRepository implements EduconnectRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_repo > storeAdminData',
+        tag: 'dashboard_repo > storeAdminData',
         showToast: true,
       );
     }

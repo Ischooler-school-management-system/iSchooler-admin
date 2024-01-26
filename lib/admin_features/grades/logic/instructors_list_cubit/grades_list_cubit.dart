@@ -43,7 +43,7 @@ class GradesListCubit extends EduconnectCubit {
       {required EduconnectModel model, bool isEditing = false}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _dashboardRepository.addItem(model: model);
+    await _dashboardRepository.addItem(model: model, addWithId: isEditing);
     await getAllItems();
     // _loadingRepository.stopLoading();
   }

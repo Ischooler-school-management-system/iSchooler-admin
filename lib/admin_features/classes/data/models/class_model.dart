@@ -38,17 +38,17 @@ class ClassModel extends EduconnectModel {
   Map<String, dynamic> toMap() {
     return {
       'name': name,
-      // 'grade': grade.toMap(),
+      'grade': grade.toMapWithId(),
     };
   }
 
-  /* @override
+  @override
   Map<String, dynamic> toDisplayMap() {
     return {
       'Class Name': name,
-      // 'Grade': grade.name,
+      'Grade': grade.name,
     };
-  } */
+  }
 
   @override
   ClassModel copyWith(

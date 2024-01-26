@@ -38,14 +38,13 @@ class AlertHandlingRepository {
         message: message,
         type: errorType,
         showToast: (showToast && message.isNotEmpty));
-
     Madpoly.print(
-      '$error , developerMessage = $developerMessage',
-      developer: "Ahmed",
+      '$error',
+      developer: "Ziad",
       color: type == AlertHandlingTypes.Alert
           ? MadpolyColor.green
           : MadpolyColor.red,
-      tag: "ErrorHandlingRepository show toast= $showToast  ${tag ?? ''}",
+      tag: "ErrorHandlingRepository > show toast= $showToast > ${tag ?? ''}",
     );
 
     await Future.delayed(

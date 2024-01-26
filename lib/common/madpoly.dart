@@ -1,6 +1,5 @@
 import 'dart:developer' as developer;
 
-import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 /// LOVELY Naming (Mr. Maaaaaaaaaaaaaaaaaaaaaaaaaaadpoly)
@@ -14,10 +13,10 @@ abstract class Madpoly {
   static void print(
     Object? any, {
     String? developer,
-    MadpolyColor? color = MadpolyColor.blue,
+    MadpolyColor? color,
     String? tag,
-    // bool? isInspect,
-    // bool isLog = false,
+    bool? isInspect,
+    bool isLog = false,
     bool showToast = false,
   }) {
     String message = "";
@@ -26,42 +25,43 @@ abstract class Madpoly {
     if (developer != null) message += "$developer :: ";
 
     message += any.toString();
-
-    if (color != null) {
-      switch (color) {
-        case MadpolyColor.blue:
-          _logInfo(message);
-          break;
-        case MadpolyColor.green:
-          _logSuccess(message);
-          break;
-        case MadpolyColor.yellow:
-          _logWarning(message);
-          break;
-        case MadpolyColor.red:
-          _logError(message);
-          break;
-
-        case MadpolyColor.purple:
-          _logDebug(message);
-          break;
-
-        case MadpolyColor.black:
-          _logAssert(message);
-          break;
-
-        default:
-          _logWarning(message);
+    if (color == null) {
+      if (isLog == true) {
+        color = MadpolyColor.yellow;
+      } else {
+        color = MadpolyColor.blue;
       }
-    } else {
-      debugPrint(message);
     }
+    switch (color) {
+      case MadpolyColor.blue:
+        _logInfo(message);
+        break;
+      case MadpolyColor.green:
+        _logSuccess(message);
+        break;
+      case MadpolyColor.yellow:
+        _logWarning(message);
+        break;
+      case MadpolyColor.red:
+        _logError(message);
+        break;
 
-    // if (isInspect == true) inspect(any);
+      case MadpolyColor.purple:
+        _logDebug(message);
+        break;
+
+      case MadpolyColor.black:
+        _logAssert(message);
+        break;
+
+      default:
+        _logWarning(message);
+    }
     if (showToast) {
       SmartDialog.dismiss();
       SmartDialog.showToast(any.toString());
     }
+    // if (isInspect == true) inspect(any);
   }
 
   // Blue text

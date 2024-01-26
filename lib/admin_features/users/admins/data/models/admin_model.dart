@@ -1,7 +1,3 @@
-import 'package:intl/intl.dart';
-
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/functions/truncate_dashboard_map.dart';
 import '../../../user_model.dart';
 
 class AdminModel extends UserModel {

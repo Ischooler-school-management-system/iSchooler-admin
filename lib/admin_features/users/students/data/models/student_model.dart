@@ -1,8 +1,4 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:intl/intl.dart';
-
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/functions/truncate_dashboard_map.dart';
 import '../../../../classes/data/models/class_model.dart';
 import '../../../../grades/data/models/grade_model.dart';
 import '../../../user_model.dart';

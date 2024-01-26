@@ -62,7 +62,7 @@ class EduconnectListeners extends StatelessWidget {
   }
 
   void errorListener(BuildContext context, ErrorHandlingState state) {
-    final authSnackBar = SnackBar(
+    final SnackBar authSnackBar = SnackBar(
       content: Text(EduconnectConstants.localization().login_dialog_content),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
@@ -71,7 +71,7 @@ class EduconnectListeners extends StatelessWidget {
         label: EduconnectConstants.localization().sign_in,
       ),
     );
-    final noInternetSnackBar = SnackBar(
+    final SnackBar noInternetSnackBar = SnackBar(
       content: Text(EduconnectConstants.localization().no_internet_connection),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,

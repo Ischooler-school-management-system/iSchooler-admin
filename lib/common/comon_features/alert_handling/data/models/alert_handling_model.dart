@@ -3,13 +3,23 @@
 import 'package:equatable/equatable.dart';
 
 enum AlertHandlingTypes {
-  None,
-  InternetConnection,
+  /// shows a toast describing the issue
+  ///   - used in catch errors in the logic functions
   ServerError,
+
+  /// shows a snackbar describing the issue
+  InternetConnection,
+
+  /// shows a snackbar describing the issue with a login button that redirects the user to the auth screen
   AuthenticationError,
+
+  /// makes a instant logout
   MajorError,
+
+  /// (used in the logic functions when request is successful) shows a toast describing the excuted request
   Alert,
-  Other
+  None,
+  Other,
 }
 
 class AlertHandlingModel extends Equatable {

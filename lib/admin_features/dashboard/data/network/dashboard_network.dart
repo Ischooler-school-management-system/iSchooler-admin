@@ -31,7 +31,9 @@ class DashboardNetwork implements EduconnectNetwork {
       Madpoly.print(
         'request will be sent is >>  get(), collection:$collectionName,',
         tag: 'dashboard_network > getAllItems',
-        color: MadpolyColor.purple,
+        // color: MadpolyColor.purple,
+        isLog: true,
+
         developer: "Ziad",
       );
       final QuerySnapshot<Map<String, dynamic>> query = await reference.get();
@@ -49,7 +51,7 @@ class DashboardNetwork implements EduconnectNetwork {
 
   @override
   Future<bool> addItem(
-      {required EduconnectModel model, bool addWithId = false}) async {
+      {required EduconnectModel model, required bool addWithId}) async {
     bool userStored = false;
     String? docName = addWithId ? model.id : null;
     try {
@@ -65,7 +67,9 @@ class DashboardNetwork implements EduconnectNetwork {
       Madpoly.print(
         'request will be sent is >> set(), collection:$collectionName, addWithId = $addWithId document:$docName,',
         tag: 'dashboard_network > add',
-        color: MadpolyColor.purple,
+        // color: MadpolyColor.purple,
+        isLog: true,
+
         developer: "Ziad",
       );
       await credentialCollection.doc(docName).set(data);
@@ -98,7 +102,8 @@ class DashboardNetwork implements EduconnectNetwork {
       Madpoly.print(
         'request will be sent is >> delete(), collection:$collectionName, document:${model.id},',
         tag: 'dashboard_network > deleteItem',
-        color: MadpolyColor.purple,
+        isLog: true,
+        // color: MadpolyColor.purple,
         developer: "Ziad",
       );
       await credentialCollection.doc(model.id).delete();
