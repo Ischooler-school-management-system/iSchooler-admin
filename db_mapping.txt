@@ -1,6 +1,6 @@
 user: id | name | phone_number | address | gender | email | profile_picture | user_role_id
 
-admin: user_id | specialization(optional) | hire_date | admin_role
+admin: user_id | specialization(optional) | hire_date | admin_role_id
 
 instructor: user_id | date_of_birth | specialization(optional) | hire_date
 
@@ -8,9 +8,9 @@ student: user_id | guardians_phone_number | payment_status | class_id
 
 user_role: id | name
 
-admin_role: id | name >> [manager(full access), employee(manages students and instructors)]
+admin_role: id | name 
 
-instructor_assignment: id | instructor_id | subject_id | class_id |
+instructor_assignment: id | name | instructor_id | subject_id | class_id |
 
 class: id | name | grade_id
 
@@ -20,11 +20,11 @@ subject: id | name | total_marks| grade_id
 
 weekly_timetable: id | name | term  | class_id | grade_id
 
-weekly_sessions: id | session_number | weekday | start_time | end_time | session_interval | instructor_assignment_id | weekly_timetable_id
+weekly_sessions: id | name  | session_number | weekday | start_time | end_time | session_interval | instructor_assignment_id | weekly_timetable_id
 
 exam_type: id | name | marks_percent
 
-exam: id | name | date | time | subject_id | exam_type_id
+exam: id | name | date_time | subject_id | exam_type_id
 
 exam_timetable: id | name | term | grade_id | exam_id
 
