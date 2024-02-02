@@ -40,11 +40,19 @@ class AdminsListCubit extends EduconnectCubit {
   }
 
   @override
-  Future<void> addItem(
-      {required EduconnectModel model, bool isEditing = false}) async {
+  Future<void> addItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _adminRepository.addItem(model: model, addWithId: isEditing);
+    await _adminRepository.addItem(model: model);
+    await getAllItems();
+    // _loadingRepository.stopLoading();
+  }
+
+  @override
+  Future<void> updateItem({required EduconnectModel model}) async {
+    _loadingRepository.startLoading(LoadingType.normal);
+
+    await _adminRepository.updateItem(model: model);
     await getAllItems();
     // _loadingRepository.stopLoading();
   }

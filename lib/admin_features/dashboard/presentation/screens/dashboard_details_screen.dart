@@ -95,6 +95,6 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
 
   onSubmitButtonPressed(EduconnectModel data) {
     Madpoly.print(' Data: $data');
-    context.read<C>().addItem(model: data, isEditing: editingMode);
+    context.read<C>().updateItem(model: data);
   }
 }

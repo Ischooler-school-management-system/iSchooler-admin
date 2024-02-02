@@ -89,6 +89,43 @@ class DashboardNetwork implements EduconnectNetwork {
   }
 
   @override
+  Future<bool> updateItem({required EduconnectModel model}) async {
+    bool userStored = false;
+    try {
+      String? collectionName =
+          EduconnectNetworkHelper.getCollectionByModel(model);
+      if (collectionName == null) {
+        throw Exception('unable to add (model = $model) data');
+      }
+      final credentialCollection =
+          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      Map<String, dynamic> data = model.toMap();
+
+      Madpoly.print(
+        'request will be sent is >> update(), collection:$collectionName, model.id = ${model.id} document:${model.id},',
+        tag: 'dashboard_network > add',
+        // color: MadpolyColor.purple,
+        isLog: true,
+
+        developer: "Ziad",
+      );
+      await credentialCollection.doc(model.id).update(data);
+      // await credentialCollection.doc(model.id).set(model.toMap());
+      userStored = true;
+    } catch (e) {
+      _alertHandlingRepository.addError(
+        // 'unable to add user',
+        /* developerMessage: */ e.toString(),
+        AlertHandlingTypes.ServerError,
+        tag: 'admin_network > addData > catch',
+        showToast: true,
+      );
+    }
+
+    return userStored;
+  }
+
+  @override
   Future<bool> deleteItem({required EduconnectModel model}) async {
     bool userStored = false;
     try {

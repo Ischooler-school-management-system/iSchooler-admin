@@ -33,13 +33,13 @@ class DashboardRepository implements EduconnectRepository {
       listModel = model.fromMapToChild(response.data);
       Madpoly.print(
         'listModel = $listModel',
-        tag: 'dashboard_repo > ',
+        tag: 'dashboard_repo > getAllItems',
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
         'data retrieved sucessfully',
         AlertHandlingTypes.Alert,
-        tag: 'dashboard_repo > getAllAdminsData',
+        tag: 'dashboard_repo > getAllItems',
         showToast: true,
       );
       // }
@@ -47,7 +47,7 @@ class DashboardRepository implements EduconnectRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > getAllAdminsData',
+        tag: 'dashboard_repo > getAllItems',
         showToast: true,
       );
     }
@@ -56,7 +56,7 @@ class DashboardRepository implements EduconnectRepository {
 
   @override
   Future<bool> addItem(
-      {required EduconnectModel model, required bool addWithId}) async {
+      {required EduconnectModel model, bool addWithId = false}) async {
     bool requestSuccess = false;
     try {
       bool requestSuccess =
@@ -65,7 +65,7 @@ class DashboardRepository implements EduconnectRepository {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'dashboard_repo > storeAdminData',
+          tag: 'dashboard_repo > addItem',
           showToast: true,
         );
       } else {
@@ -75,7 +75,33 @@ class DashboardRepository implements EduconnectRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > storeAdminData',
+        tag: 'dashboard_repo > addItem',
+        showToast: true,
+      );
+    }
+    return requestSuccess;
+  }
+
+  @override
+  Future<bool> updateItem({required EduconnectModel model}) async {
+    bool requestSuccess = false;
+    try {
+      bool requestSuccess = await _adminNetwork.updateItem(model: model);
+      if (requestSuccess) {
+        _alertHandlingRepository.addError(
+          'Admin Data Stored Successfully',
+          AlertHandlingTypes.Alert,
+          tag: 'dashboard_repo > updateItem',
+          showToast: true,
+        );
+      } else {
+        throw Exception('unable to add user');
+      }
+    } catch (e) {
+      _alertHandlingRepository.addError(
+        e.toString(),
+        AlertHandlingTypes.ServerError,
+        tag: 'dashboard_repo > updateItem',
         showToast: true,
       );
     }

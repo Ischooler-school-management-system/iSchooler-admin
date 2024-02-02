@@ -8,8 +8,8 @@ abstract class EduconnectCubit extends Cubit<EduconnectState> {
   EduconnectCubit(super.initialState);
 
   Future<void> getAllItems();
-  Future<void> addItem(
-      {required EduconnectModel model, bool isEditing = false});
+  Future<void> addItem({required EduconnectModel model});
+  Future<void> updateItem({required EduconnectModel model});
   Future<void> deleteItem({required EduconnectModel model});
 }
 
@@ -18,6 +18,7 @@ abstract class EduconnectRepository {
   Future<EduconnectModelList> getAllItems({required EduconnectModelList model});
   Future<bool> addItem(
       {required EduconnectModel model, required bool addWithId});
+  Future<bool> updateItem({required EduconnectModel model});
   Future<bool> deleteItem({required EduconnectModel model});
 }
 
@@ -26,6 +27,7 @@ abstract class EduconnectNetwork {
   Future<EduconnectResponse> getAllItems({required EduconnectModelList model});
   Future<bool> addItem(
       {required EduconnectModel model, required bool addWithId});
+  Future<bool> updateItem({required EduconnectModel model});
   Future<bool> deleteItem({required EduconnectModel model});
 }
 

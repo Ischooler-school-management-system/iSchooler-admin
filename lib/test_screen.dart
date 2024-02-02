@@ -1,13 +1,11 @@
 import 'package:flutter/material.dart';
 
-import 'admin_features/classes/data/models/tst.dart';
-
 class TestScreen extends StatelessWidget {
-  final GradesService gradesService = GradesService();
-  final ClassesService classesService = ClassesService();
-  final StudentsService studentsService = StudentsService();
+  // final GradesService gradesService = GradesService();
+  // final ClassesService classesService = ClassesService();
+  // final StudentsService studentsService = StudentsService();
 
-  TestScreen({super.key});
+  const TestScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,11 +13,23 @@ class TestScreen extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Firestore CRUD Demo'),
       ),
-      body: Center(
-        child: Column(
+      body: const Center(
+          /* child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
+            ElevatedButton(
+              onPressed: () async {
+                await gradesService.getAllGradesData();
+              },
+              child: const Text('get Grades'),
+            ),
+            ElevatedButton(
+              onPressed: () async {
+                // await classesService.getAllClassesDataForGrade();
+              },
+              child: const Text('get classes'),
+            ),
             ElevatedButton(
               onPressed: () async {
                 await gradesService.addGrade('New Grade');
@@ -76,7 +86,8 @@ class TestScreen extends StatelessWidget {
             ),
           ],
         ),
-      ),
+       */
+          ),
     );
   }
 }
