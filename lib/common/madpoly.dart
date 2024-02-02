@@ -1,4 +1,5 @@
 import 'dart:developer' as developer;
+import 'dart:developer';
 
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
@@ -61,7 +62,7 @@ abstract class Madpoly {
       SmartDialog.dismiss();
       SmartDialog.showToast(any.toString());
     }
-    // if (isInspect == true) inspect(any);
+    if (isInspect == true) inspect(any);
   }
 
   // Blue text

@@ -1,0 +1,112 @@
+-- Insert data into user_role table
+INSERT INTO user_role (id, name) VALUES
+(1, 'Student'),
+(2, 'Instructor'),
+(3, 'Admin');
+
+-- Insert data into admin_role table
+INSERT INTO admin_role (id, name) VALUES
+(1, 'Principal'),
+(2, 'Vice Principal'),
+(3, 'Head of Department');
+
+-- Insert data into school_user table
+INSERT INTO school_user (id, name, phone_number, address, gender, email, profile_picture, user_role_id) VALUES
+(1, 'Ahmed Abdullah', '123456789', '123 Main St, City', 'Male', 'ahmed.abdullah@example.com', 'profile1.jpg', 1),
+(2, 'Fatima Ali', '987654321', '456 Elm St, Town', 'Female', 'fatima.ali@example.com', 'profile2.jpg', 2),
+(3, 'Youssef Ibrahim', '555555555', '789 Oak St, Village', 'Male', 'youssef.ibrahim@example.com', 'profile3.jpg', 3),
+(4, 'Nour Hassan', '111111111', '456 Maple St, Suburb', 'Female', 'nour.hassan@example.com', 'profile4.jpg', 1),
+(5, 'Layla Omar', '222222222', '789 Pine St, Countryside', 'Female', 'layla.omar@example.com', 'profile5.jpg', 2),
+(6, 'Khalid Mohamed', '333333333', '123 Cedar St, Hills', 'Male', 'khalid.mohamed@example.com', 'profile6.jpg', 3),
+(7, 'Mariam Ahmed', '444444444', '456 Birch St, Mountains', 'Female', 'mariam.ahmed@example.com', 'profile7.jpg', 1),
+(8, 'Hassan Ali', '555555555', '789 Oak St, Valley', 'Male', 'hassan.ali@example.com', 'profile8.jpg', 2),
+(9, 'Sara Abdelrahman', '666666666', '123 Willow St, Desert', 'Female', 'sara.abdelrahman@example.com', 'profile9.jpg', 3);
+
+-- Insert data into admin table
+INSERT INTO admin ( user_id, specialization, hire_date, admin_role_id) VALUES
+(4, 'Administration', '2023-01-01', 1),
+(5, 'Finance', '2023-02-01', 2),
+(6, 'Human Resources', '2023-03-01', 3);
+
+-- Insert data into instructor table
+INSERT INTO instructor ( user_id, date_of_birth, specialization, hire_date) VALUES
+(7, '1985-02-01', 'Science', '2023-02-01'),
+(8, '1990-03-01', 'History', '2023-03-01');
+(9, '1980-01-01', 'Mathematics', '2023-01-01'),
+
+-- Insert data into grade table
+INSERT INTO grade (id, name) VALUES
+(1, 'Grade 1'),
+(2, 'Grade 2'),
+(3, 'Grade 3');
+-- Insert data into class table
+INSERT INTO class (id, name, grade_id) VALUES
+(1, 'Class A', 1),
+(2, 'Class B', 2),
+(3, 'Class C', 3);
+
+-- Insert data into subject table
+INSERT INTO subject (id, name, total_marks, grade_id) VALUES
+(1, 'Mathematics', 100, 1),
+(2, 'Science', 100, 2),
+(3, 'History', 100, 3);
+
+-- Insert data into student table
+INSERT INTO student (user_id, guardians_phone_number, payment_status, class_id) VALUES
+(1, '111111111', 'Paid', 1),
+(2, '222222222', 'Pending', 2),
+(3, '333333333', 'Paid', 3);
+
+-- Insert data into instructor_assignment table
+INSERT INTO instructor_assignment (id, name, instructor_id, subject_id, class_id) VALUES
+(1, 'Class A', 7, 1, 1),
+(2, 'Class B', 8, 2, 2),
+(3, 'Class C', 9, 3, 3);
+
+-- Insert data into weekly_timetable table
+INSERT INTO weekly_timetable (id, name, term, class_id, grade_id) VALUES
+(1, 'Term 1 Timetable', 'Term 1', 1, 1),
+(2, 'Term 2 Timetable', 'Term 2', 2, 2),
+(3, 'Term 3 Timetable', 'Term 3', 3, 3);
+
+-- Insert data into weekly_sessions table
+INSERT INTO weekly_sessions (id, name, session_number, weekday, start_time, end_time, session_interval, instructor_assignment_id, weekly_timetable_id) VALUES
+(1, 'Mathematics Session 1', 1, 'Monday', '08:00:00', '10:00:00', 120, 1, 1),
+(2, 'Science Session 2', 2, 'Tuesday', '09:00:00', '11:00:00', 120, 2, 2),
+(3, 'History Session 3', 3, 'Wednesday', '10:00:00', '12:00:00', 120, 3, 3);
+
+-- Insert data into exam_type table
+INSERT INTO exam_type (id, name, marks_percent) VALUES
+(1, 'Midterm Exam', 30.0),
+(2, 'Final Exam', 40.0),
+(3, 'Quiz', 10.0);
+
+-- Insert data into exam table
+INSERT INTO exam (id, name, date_time, subject_id, exam_type_id) VALUES
+(1, 'Mathematics Midterm Exam', '2024-01-15 08:00:00', 1, 1),
+(2, 'Science Final Exam', '2024-05-20 09:00:00', 2, 2),
+(3, 'History Quiz', '2024-03-10 10:00:00', 3, 3);
+
+-- Insert data into exam_timetable table
+INSERT INTO exam_timetable (id, name, term, grade_id, exam_id) VALUES
+(1, 'Grade 1 Exam Schedule', 'Term 1', 1, 1),
+(2, 'Grade 2 Exam Schedule', 'Term 2', 2, 2),
+(3, 'Grade 3 Exam Schedule', 'Term 3', 3, 3);
+
+-- Insert data into exam_session table
+INSERT INTO exam_session (id, name, session_number, weekday, start_time, end_time, session_interval, instructor_id, exam_timetable_id) VALUES
+(1, 'Mathematics Midterm Exam Session 1', 1, 'Monday', '08:00:00', '10:00:00', 120, 7, 1),
+(2, 'Science Final Exam Session 2', 2, 'Tuesday', '09:00:00', '11:00:00', 120, 8, 2),
+(3, 'History Quiz Session 3', 3, 'Wednesday', '10:00:00', '12:00:00', 120, 9, 3);
+
+-- Insert data into homework table
+INSERT INTO homework (id, name, date, content, instructor_assignment_id) VALUES
+(1, 'Mathematics Homework 1', '2024-01-05', 'Solve exercises 1-10', 1),
+(2, 'Science Homework 2', '2024-02-10', 'Complete lab report', 2),
+(3, 'History Homework 3', '2024-03-15', 'Write an essay on topic X', 3);
+
+-- Insert data into news table
+INSERT INTO news (id, name, thumbnail, date_time, description) VALUES
+(1, 'School Newsletter', 'thumbnail1.jpg', '2024-01-01 08:00:00', 'Latest updates and events'),
+(2, 'Science Fair Announcement', 'thumbnail2.jpg', '2024-02-15 10:00:00', 'Details about the upcoming science fair'),
+(3, 'Sports Day Event', 'thumbnail3.jpg', '2024-03-20 12:00:00', 'Schedule and activities for the annual sports day');

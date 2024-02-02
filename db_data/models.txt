@@ -1,0 +1,44 @@
+. words with pascal case means model (ex: "User:")
+. ==> means inheret (ex: "Class: AppModel ==> (Grade)")
+. models as property means di (ex: "User: ...... | UserRole")
+
+--------------------------------------------------------------------------
+
+AppModel : id | name
+
+User: AppModel ==> (phone_number | address | gender | email | profile_picture | UserRole)
+    Notes: users are [Instructor, Student, Admin]
+Instructor: User ==> (date_of_birth | specialization(optional) | hire_date)
+    Notes: (assign homework to students, see his sceduale, have access to student's guardians_phone_number )
+Student: User ==> (guardians_phone_number | payment_status | Class)
+    Notes: (veiw homework, sceduale, exam results, have access to instructor and other students phone_number)
+AdminRole: AppModel ==> ( )
+    Notes: [owner('can manage managers'), manager('can manage employees'), employee(manages students and instructors)]
+
+Admin: User ==> (specialization(optional) | hire_date | admin_role)
+
+InstructorAssignment: AppModel ==> (Instructor | Subject | Class )
+
+Class: AppModel ==> (Grade)
+
+Grade: AppModel ==> ( )
+
+Subject: AppModel ==> (total_marks| Grade)
+
+WeeklyTimetable: AppModel ==> (term  | Class | Grade)
+
+WeeklySessions: AppModel ==> (session_number | weekday | start_time | end_time | session_interval | InstructorAssignment | WeeklyTimetable)
+
+ExamType: AppModel ==> (marks_percent)
+
+Exam: AppModel ==> (date | Subject | ExamType)
+
+ExamTimetable: AppModel ==> (term | Grade | Exam)
+
+ExamSession: AppModel ==> (session_number | weekday | start_time | end_time | session_interval | Instructor | ExamTimetable )
+
+Homework: AppModel ==> (date | content | InstructorAssignment)
+
+News: AppModel ==> (thumbnail | date | description)
+
+--------------------------------------------------------------------------

@@ -1,0 +1,38 @@
+
+user_role: id | name
+
+admin_role: id | name 
+
+school_user: id | name | phone_number | address | gender | email | profile_picture | user_role_id
+
+admin: school_user_id | specialization(optional) | hire_date | admin_role_id
+
+instructor: school_user_id | date_of_birth | specialization(optional) | hire_date
+
+grade: id | name
+
+class: id | name | grade_id
+
+subject: id | name | total_marks| grade_id
+
+student: school_user_id | guardians_phone_number | payment_status | class_id
+
+instructor_assignment: id | name | instructor_id | subject_id | class_id |
+
+weekly_timetable: id | name | term  | class_id | grade_id
+
+weekly_sessions: id | name  | session_number | weekday | start_time | end_time | session_interval | instructor_assignment_id | weekly_timetable_id
+
+exam_type: id | name | marks_percent
+
+exam: id | name | date_time | subject_id | exam_type_id
+
+exam_timetable: id | name | term | grade_id | exam_id
+
+exam_session: id | name | session_number | weekday | start_time | end_time | session_interval | instructor_id | exam_timetable_id 
+
+homework: id | name | date | content | instructor_assignment_id
+
+news: id | name | thumbnail | date_time | description
+
+--------------------------------------------------------------------------
