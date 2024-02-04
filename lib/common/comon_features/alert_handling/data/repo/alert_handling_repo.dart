@@ -44,7 +44,7 @@ class AlertHandlingRepository {
       color: type == AlertHandlingTypes.Alert
           ? MadpolyColor.green
           : MadpolyColor.red,
-      tag: "ErrorHandlingRepository > show toast= $showToast > ${tag ?? ''}",
+      tag: "AlertHandlingRepository > show toast= $showToast > ${tag ?? ''}",
     );
 
     await Future.delayed(

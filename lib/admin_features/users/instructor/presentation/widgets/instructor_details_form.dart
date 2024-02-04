@@ -56,18 +56,19 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
             },
           ),
           EduconnectTextField(
-            initialValue: instructorData.email,
+            initialValue: instructorData.userModel.email,
             labelText: 'Email Address',
             validator: EduconnectValidations.emailValidator,
             onChanged: (value) {
               setState(() {
-                instructorData = instructorData.copyWith(name: value);
+                instructorData = instructorData.copyWith(
+                    userModel: instructorData.userModel.copyWith(email: value));
               });
             },
           ),
           EduconnectTextField(
-            // initialValue: instructorData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(instructorData.dateOfBirth),
+            initialValue:
+                educonnectDateFormatter(instructorData.userModel.dateOfBirth),
             labelText: 'Date of Birth',
             validator: (value) {
               // Add validation logic for date of birth if needed
@@ -77,13 +78,14 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
               // Convert the value to DateTime and assign it to dateOfBirth
               // You may want to use a DatePicker for a better user experience
               setState(() {
-                instructorData =
-                    instructorData.copyWith(dateOfBirth: DateTime.parse(value));
+                instructorData = instructorData.copyWith(
+                    userModel: instructorData.userModel
+                        .copyWith(dateOfBirth: DateTime.parse(value)));
               });
             },
           ),
           EduconnectTextField(
-            initialValue: instructorData.phoneNumber,
+            initialValue: instructorData.userModel.phoneNumber,
             labelText: 'Phone Number',
             validator: (value) {
               // Add phone number validation if needed
@@ -91,12 +93,14 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
             },
             onChanged: (value) {
               setState(() {
-                instructorData = instructorData.copyWith(phoneNumber: value);
+                instructorData = instructorData.copyWith(
+                    userModel:
+                        instructorData.userModel.copyWith(phoneNumber: value));
               });
             },
           ),
           EduconnectTextField(
-            initialValue: instructorData.address,
+            initialValue: instructorData.userModel.address,
             labelText: 'Address',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -106,7 +110,9 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
             },
             onChanged: (value) {
               setState(() {
-                instructorData = instructorData.copyWith(address: value);
+                instructorData = instructorData.copyWith(
+                    userModel:
+                        instructorData.userModel.copyWith(address: value));
               });
             },
           ),

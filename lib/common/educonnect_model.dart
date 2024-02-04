@@ -13,21 +13,33 @@ import '../admin_features/users/students/data/models/students_list_model.dart';
 class EduconnectModel extends Equatable {
   final String id;
   final String name;
-  const EduconnectModel({required this.id, this.name = ''});
+  const EduconnectModel({
+    required this.id,
+    this.name = '',
+  });
   factory EduconnectModel.empty() {
-    return const EduconnectModel(id: '-1', name: 'name');
+    return const EduconnectModel(
+      id: '-1',
+      name: 'name',
+    );
   }
   factory EduconnectModel.dummy() {
-    return const EduconnectModel(id: '-1', name: 'name');
+    return const EduconnectModel(
+      id: '-1',
+      name: 'name',
+    );
   }
   factory EduconnectModel.fromMap(Map<String, dynamic> map) {
-    return EduconnectModel(id: map['id'] ?? '', name: map['name']);
+    return EduconnectModel(id: map['id'].toString(), name: map['name']);
   }
   Map<String, dynamic> toMap() => {'id': id, 'name': name};
   Map<String, dynamic> toDisplayMap() => {'name': name, 'id': id};
-
-  EduconnectModel copyWith({String? id}) {
-    return EduconnectModel(id: id ?? this.id);
+//temp  to avoid errors only
+  EduconnectModel copyWith({String? id /* , String? name */}) {
+    return EduconnectModel(
+      id: id ?? this.id,
+      // name: name ?? this.name,
+    );
   }
 
   @override

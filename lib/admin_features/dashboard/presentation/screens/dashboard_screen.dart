@@ -36,60 +36,41 @@ class _DashboardScreenState<C extends EduconnectCubit>
   int limit = 0;
 
   onAddButtonPressed() {
-    /*  SmartDialog.show(
-      alignment: Alignment.center,
-      builder: (context) => DashboardDetailsScreen<C>(),
-    ); */
-
     EduconnectNavigator.navigateToScreen(
       DashboardDetailsScreen<C>(),
     );
-    // context.read<C>().addItem(model: InstructorModel.dummy());
   }
 
-  /*  String screenTag() {
+  String screenTag() {
     if (C == StudentsListCubit) {
       return 'Student';
     } else if (C == AdminsListCubit) {
       return 'Admin';
     } else if (C == InstructorsListCubit) {
       return 'Instructor';
+    } else if (C == GradesListCubit) {
+      return 'Grade';
     } else if (C == ClassesListCubit) {
       return 'Class';
     } else {
       return '';
-    }
-  } */
-  String screenTag() {
-    if (C is StudentsListCubit) {
-      return 'Student';
-    } else if (C is AdminsListCubit) {
-      return 'Admin';
-    } else if (C is InstructorsListCubit) {
-      return 'Instructor';
-    } else if (C is GradesListCubit) {
-      return 'Grade';
-    } else if (C is ClassesListCubit) {
-      return 'Class';
-    } else {
-      return '';
-    } /* else if (C is SubjectsListCubit) {
+    } /* else if (C == SubjectsListCubit) {
     return 'Subject';
-  } else if (C is WeeklySessionsListCubit) {
+  } else if (C == WeeklySessionsListCubit) {
     return 'Weekly Session';
-  } else if (C is WeeklyTimetablesListCubit) {
+  } else if (C == WeeklyTimetablesListCubit) {
     return 'Weekly Timetable';
-  } else if (C is ExamTypesListCubit) {
+  } else if (C == ExamTypesListCubit) {
     return 'Exam Type';
-  } else if (C is ExamsListCubit) {
+  } else if (C == ExamsListCubit) {
     return 'Exam';
-  } else if (C is ExamSessionsListCubit) {
+  } else if (C == ExamSessionsListCubit) {
     return 'Exam Session';
-  } else if (C is ExamTimetablesListCubit) {
+  } else if (C == ExamTimetablesListCubit) {
     return 'Exam Timetable';
-  } else if (C is HomeworksListCubit) {
+  } else if (C == HomeworksListCubit) {
     return 'Homework';
-  } else if (C is NewsListCubit) {
+  } else if (C == NewsListCubit) {
     return 'News';
   } */
   }

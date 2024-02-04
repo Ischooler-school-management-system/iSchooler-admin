@@ -1,4 +1,4 @@
-import 'dart:developer' as developer;
+import 'dart:developer' as dev;
 import 'dart:developer';
 
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -16,7 +16,6 @@ abstract class Madpoly {
     String? developer,
     MadpolyColor? color,
     String? tag,
-    bool? isInspect,
     bool isLog = false,
     bool showToast = false,
   }) {
@@ -24,8 +23,10 @@ abstract class Madpoly {
 
     if (tag != null) message += "($tag) ";
     if (developer != null) message += "$developer :: ";
-
-    message += any.toString();
+    bool isInspect = any is! String;
+    if (!isInspect) {
+      message += any.toString();
+    }
     if (color == null) {
       if (isLog == true) {
         color = MadpolyColor.yellow;
@@ -33,7 +34,17 @@ abstract class Madpoly {
         color = MadpolyColor.blue;
       }
     }
-    switch (color) {
+    if (showToast) {
+      SmartDialog.dismiss();
+      SmartDialog.showToast(any.toString());
+    }
+    String formattedMessage = _formatLogMessage(message, color);
+    dev.log(formattedMessage);
+    if (isInspect) {
+      inspect(any);
+    }
+
+    /* switch (color) {
       case MadpolyColor.blue:
         _logInfo(message);
         break;
@@ -58,13 +69,34 @@ abstract class Madpoly {
       default:
         _logWarning(message);
     }
-    if (showToast) {
-      SmartDialog.dismiss();
-      SmartDialog.showToast(any.toString());
-    }
-    if (isInspect == true) inspect(any);
+     */
   }
 
+  static String _formatLogMessage(String message, MadpolyColor? color) {
+    String colorCode = _getColorCode(color);
+    return '$colorCode$message\x1B[0m';
+  }
+
+  static String _getColorCode(MadpolyColor? color) {
+    switch (color) {
+      case MadpolyColor.blue:
+        return '\x1B[34m'; // Blue text
+      case MadpolyColor.green:
+        return '\x1B[32m'; // Green text
+      case MadpolyColor.yellow:
+        return '\x1B[33m'; // Yellow text
+      case MadpolyColor.red:
+        return '\x1B[31m'; // Red text
+      case MadpolyColor.purple:
+        return '\x1B[35m'; // Purple text
+      case MadpolyColor.black:
+        return '\x1B[30m'; // Black with white background
+      default:
+        return '\x1B[33m'; // Default to yellow
+    }
+  }
+}
+/*
   // Blue text
   static void _logInfo(String msg) {
     developer.log('\x1B[34m$msg\x1B[0m');
@@ -94,4 +126,5 @@ abstract class Madpoly {
   static void _logAssert(String msg) {
     developer.log('\x1B[30m$msg\x1B[0m');
   }
-}
+ */
+

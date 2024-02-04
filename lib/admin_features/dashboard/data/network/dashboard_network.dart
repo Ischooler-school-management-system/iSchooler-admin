@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import '../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/educonnect_model.dart';
@@ -19,25 +17,35 @@ class DashboardNetwork implements EduconnectNetwork {
       {required EduconnectModelList model}) async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
-        if (collectionName == null) {
+      ({String? selectQuery, String? tableName}) tableQueryData =
+          EduconnectNetworkHelper.getTableQueryData(model);
+
+      if (tableQueryData.tableName == null) {
+        if (tableQueryData.tableName == null) {
           throw Exception('unable to get (model = $model) data');
         }
       }
-      final CollectionReference<Map<String, dynamic>> reference =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      /*  final CollectionReference<Map<String, dynamic>> reference =
+          EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
-        'request will be sent is >>  get(), collection:$collectionName,',
+        'request will be sent is >>  get(), '
+        'tableQueryData:$tableQueryData,',
         tag: 'dashboard_network > getAllItems',
         // color: MadpolyColor.purple,
         isLog: true,
 
         developer: "Ziad",
       );
-      final QuerySnapshot<Map<String, dynamic>> query = await reference.get();
-      response = EduconnectResponse.fromCollection(query);
+      final List<Map<String, dynamic>> query = await SupabaseCridentials
+          .supabase
+          .from(tableQueryData.tableName!)
+          .select(tableQueryData.selectQuery!);
+      Madpoly.print(
+        query,
+        tag: 'dashboard_network > getAllItems',
+        developer: "Ziad",
+      );
+      response = EduconnectResponse(hasData: true, data: {'items': query});
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -55,17 +63,18 @@ class DashboardNetwork implements EduconnectNetwork {
     bool userStored = false;
     String? docName = addWithId ? model.id : null;
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
+      var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
+      if (tableQueryData.tableName == null) {
         throw Exception('unable to add (model = $model) data');
       }
-      final credentialCollection =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      final credentialCollection = EduconnectNetworkHelper.fireStoreInstance
+          .collection(tableQueryData.tableName!);
       Map<String, dynamic> data = model.toMap();
 
       Madpoly.print(
-        'request will be sent is >> set(), collection:$collectionName, addWithId = $addWithId document:$docName,',
+        'request will be sent is >> set(), '
+        'collection:$tableQueryData, '
+        'addWithId = $addWithId document:$docName,',
         tag: 'dashboard_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
@@ -92,17 +101,18 @@ class DashboardNetwork implements EduconnectNetwork {
   Future<bool> updateItem({required EduconnectModel model}) async {
     bool userStored = false;
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
+      var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
+      if (tableQueryData.tableName == null) {
         throw Exception('unable to add (model = $model) data');
       }
-      final credentialCollection =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      final credentialCollection = EduconnectNetworkHelper.fireStoreInstance
+          .collection(tableQueryData.tableName!);
       Map<String, dynamic> data = model.toMap();
 
       Madpoly.print(
-        'request will be sent is >> update(), collection:$collectionName, model.id = ${model.id} document:${model.id},',
+        'request will be sent is >> update(),'
+        ' collection:$tableQueryData, '
+        'model.id = ${model.id} document:${model.id},',
         tag: 'dashboard_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
@@ -129,15 +139,16 @@ class DashboardNetwork implements EduconnectNetwork {
   Future<bool> deleteItem({required EduconnectModel model}) async {
     bool userStored = false;
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
+      var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
+      if (tableQueryData.tableName == null) {
         throw Exception('unable to delete (model = $model) data');
       }
-      final credentialCollection =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      final credentialCollection = EduconnectNetworkHelper.fireStoreInstance
+          .collection(tableQueryData.tableName!);
       Madpoly.print(
-        'request will be sent is >> delete(), collection:$collectionName, document:${model.id},',
+        'request will be sent is >> delete(), '
+        'collection:$tableQueryData, '
+        'document:${model.id},',
         tag: 'dashboard_network > deleteItem',
         isLog: true,
         // color: MadpolyColor.purple,

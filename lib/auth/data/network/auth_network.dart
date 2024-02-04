@@ -1,7 +1,8 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:gotrue/src/types/user.dart';
 
 import '../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../common/network/educonnect_network_helper.dart';
 
 class AuthNetwork {
   final AlertHandlingRepository _alertHandlingRepository;
@@ -9,40 +10,19 @@ class AuthNetwork {
   AuthNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
-  final FirebaseAuth instance = FirebaseAuth.instance;
+  // final FirebaseAuth instance = FirebaseAuth.instance;
+  final instance = SupabaseCridentials.authInstance;
 
   Future<User?> signUp(
       {required String email, required String password}) async {
     try {
-      final UserCredential userCredential =
-          await instance.createUserWithEmailAndPassword(
+      final userCredential = await SupabaseCridentials.authInstance.signUp(
         email: email,
         password: password,
       );
-      final User? firebaseUser = userCredential.user;
-      if (firebaseUser != null) {
-        return firebaseUser;
-        // return UserModel(
-        //   id: firebaseUser.uid,
-        //   email: firebaseUser.email ?? '',
-        //   displayName: firebaseUser.displayName ?? '',
-        // );
-      }
-    } on FirebaseAuthException catch (e) {
-      if (e.code == 'weak-password') {
-        _alertHandlingRepository.addError(
-          'The password provided is too weak.',
-          AlertHandlingTypes.ServerError,
-          tag: 'auth_network > signup',
-          showToast: true,
-        );
-      } else if (e.code == 'email-already-in-use') {
-        _alertHandlingRepository.addError(
-          'The account already exists for that email.',
-          AlertHandlingTypes.ServerError,
-          tag: 'auth_network > signup',
-          showToast: true,
-        );
+      final User? supabaseUser = userCredential.user;
+      if (supabaseUser != null) {
+        return supabaseUser;
       }
     } catch (e) {
       _alertHandlingRepository.addError(
@@ -59,40 +39,16 @@ class AuthNetwork {
   Future<User?> signIn(
       {required String email, required String password}) async {
     try {
-      final UserCredential userCredential =
-          await instance.signInWithEmailAndPassword(
+      final userCredential =
+          await SupabaseCridentials.authInstance.signInWithPassword(
         email: email,
         password: password,
       );
-      final User? firebaseUser = userCredential.user;
-      if (firebaseUser != null) {
-        return firebaseUser;
-        // return UserModel(
-        //   id: firebaseUser.uid,
-        //   email: firebaseUser.email ?? '',
-        //   displayName: firebaseUser.displayName ?? '',
-        // );
+      final User? supabaseUser = userCredential.user;
+      if (supabaseUser != null) {
+        return supabaseUser;
       }
     } catch (e) {
-      if (e is FirebaseAuthException) {
-        if (e.code == 'user-not-found') {
-          _alertHandlingRepository.addError(
-            tag: 'auth_network > signIn',
-            'No user found for that email.',
-            AlertHandlingTypes.ServerError,
-            showToast: true,
-          );
-          return null;
-        } else if (e.code == 'wrong-password') {
-          _alertHandlingRepository.addError(
-            tag: 'auth_network > signIn',
-            'Wrong password provided for that user.',
-            AlertHandlingTypes.ServerError,
-            showToast: true,
-          );
-        }
-      }
-
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,

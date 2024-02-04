@@ -28,7 +28,7 @@ class ClassModel extends EduconnectModel {
 
   factory ClassModel.fromMap(Map<String, dynamic> map) {
     return ClassModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
     );

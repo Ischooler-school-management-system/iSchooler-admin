@@ -99,7 +99,7 @@ class SubjectModel extends EduconnectModel {
   }
   factory SubjectModel.fromMap(Map<String, dynamic> map) {
     return SubjectModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
       totalMarks: map['totalMarks'] ?? 0,
@@ -198,7 +198,7 @@ class WeeklySessionModel extends EduconnectModel {
   }
   factory WeeklySessionModel.fromMap(Map<String, dynamic> map) {
     return WeeklySessionModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       sessionNumber: map['sessionNumber'] ?? 0,
       weekday: map['weekday'] ?? '',
       startTime: DateTime.parse(map['startTime'] ?? ''),
@@ -303,7 +303,7 @@ class WeeklyTimetableModel extends EduconnectModel {
 
   factory WeeklyTimetableModel.fromMap(Map<String, dynamic> map) {
     return WeeklyTimetableModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       classInfo: ClassModel.fromMap(map['classInfo'] ?? {}),
       term: map['term'] ?? '',
       weeklySessions: (map['weeklySessions'] as List<dynamic>?)
@@ -388,7 +388,7 @@ class ExamTypeModel extends EduconnectModel {
   }
   factory ExamTypeModel.fromMap(Map<String, dynamic> map) {
     return ExamTypeModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
       marksPercent: map['marksPercent'] ?? 0.0,
     );
@@ -466,7 +466,7 @@ class ExamModel extends EduconnectModel {
   }
   factory ExamModel.fromMap(Map<String, dynamic> map) {
     return ExamModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       subject: SubjectModel.fromMap(map['subject'] ?? {}),
       date: DateTime.parse(map['date'] ?? ''),
       time: DateTime.parse(map['time'] ?? ''),
@@ -569,7 +569,7 @@ class ExamSessionModel extends EduconnectModel {
   }
   factory ExamSessionModel.fromMap(Map<String, dynamic> map) {
     return ExamSessionModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       sessionNumber: map['sessionNumber'] ?? 0,
       weekday: map['weekday'] ?? '',
       startTime: DateTime.parse(map['startTime'] ?? ''),
@@ -676,7 +676,7 @@ class ExamTimetableModel extends EduconnectModel {
   }
   factory ExamTimetableModel.fromMap(Map<String, dynamic> map) {
     return ExamTimetableModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       term: map['term'] ?? '',
       examSessions: (map['examSessions'] as List<dynamic>?)
               ?.map((sessionMap) => ExamSessionModel.fromMap(sessionMap))
@@ -769,7 +769,7 @@ class HomeworkModel extends EduconnectModel {
   }
   factory HomeworkModel.fromMap(Map<String, dynamic> map) {
     return HomeworkModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       classInfo: ClassModel.fromMap(map['classInfo'] ?? {}),
       subject: SubjectModel.fromMap(map['subject'] ?? {}),
       date: DateTime.parse(map['date'] ?? ''),
@@ -859,7 +859,7 @@ class NewsModel extends EduconnectModel {
   }
   factory NewsModel.fromMap(Map<String, dynamic> map) {
     return NewsModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
       thumbnail: map['thumbnail'] ?? '',
       dateTime: DateTime.parse(map['dateTime'] ?? ''),

@@ -72,18 +72,18 @@ class UserModel extends EduconnectModel {
       }
     }
     return UserModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
-      dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
+      dateOfBirth: map['date_of_birth'] != null
+          ? DateTime.parse(map['date_of_birth'])
           : null,
-      phoneNumber: map['phoneNumber'] ?? '',
+      phoneNumber: map['phone_number'] ?? '',
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       // // displayName: map['displayName'] ?? '',
       role: userRole,
-      profilePicture: map['profilePicture'] ?? '',
+      profilePicture: map['profile_picture'] ?? '',
     );
   }
   @override

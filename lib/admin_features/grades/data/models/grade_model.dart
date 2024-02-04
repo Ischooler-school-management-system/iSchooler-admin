@@ -31,7 +31,7 @@ class GradeModel extends EduconnectModel {
   }
   factory GradeModel.fromMap(Map<String, dynamic> map) {
     return GradeModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString() ?? '',
       name: map['name'] ?? '',
       classes: ClassesListModel.fromMap(const {}),
     );
@@ -92,7 +92,7 @@ class GradeModel extends EduconnectModel {
   }
   factory GradeModel.fromMap(Map<String, dynamic> map) {
     return GradeModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
     );
   }

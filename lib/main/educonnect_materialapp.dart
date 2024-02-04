@@ -1,14 +1,15 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../auth/presentation/auth/screens/select_role_screen.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/educonnect_constants.dart';
 import '../common/navigation/router.export.dart';
+import '../common/network/educonnect_network_helper.dart';
 import '../common/style/educonnect_theme_data.dart';
 import '../generated/l10n.dart';
 import '../side_bar/educonnect_side_bar.dart';
@@ -86,10 +87,9 @@ class EduconnectMaterialApp extends StatelessWidget {
 
   Widget startingScreen() {
     if (EduconnectConstants.testMode) {
-      return TestScreen();
+      return const TestScreen();
     } else {
-      FirebaseAuth auth = FirebaseAuth.instance;
-      User? user = auth.currentUser;
+      User? user = SupabaseCridentials.authInstance.currentUser;
       if (user != null) {
         return const EduconnectSideBar();
       } else {

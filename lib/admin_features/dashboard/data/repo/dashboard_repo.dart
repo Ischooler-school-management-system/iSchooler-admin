@@ -32,7 +32,7 @@ class DashboardRepository implements EduconnectRepository {
 
       listModel = model.fromMapToChild(response.data);
       Madpoly.print(
-        'listModel = $listModel',
+        listModel,
         tag: 'dashboard_repo > getAllItems',
         developer: "Ziad",
       );
