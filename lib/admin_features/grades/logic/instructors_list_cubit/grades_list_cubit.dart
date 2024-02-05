@@ -51,9 +51,11 @@ class GradesListCubit extends EduconnectCubit {
   Future<void> updateItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _dashboardRepository.updateItem(model: model);
-    await getAllItems();
-    // _loadingRepository.stopLoading();
+    bool successfulRequest =
+        await _dashboardRepository.updateItem(model: model);
+    if (successfulRequest) {
+      await getAllItems();
+    } // _loadingRepository.stopLoading();
   }
 
   @override

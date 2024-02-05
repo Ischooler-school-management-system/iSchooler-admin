@@ -37,8 +37,9 @@ class ClassModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
+      'id': id,
       'name': name,
-      'grade': grade.toMapWithId(),
+      'grade_id': grade.id,
     };
   }
 

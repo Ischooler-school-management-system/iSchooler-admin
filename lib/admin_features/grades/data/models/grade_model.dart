@@ -100,7 +100,7 @@ class GradeModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      // 'id': id,
+      'id': id,
       'name': name,
     };
   }

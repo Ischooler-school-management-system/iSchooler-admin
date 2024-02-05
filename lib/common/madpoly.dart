@@ -1,4 +1,3 @@
-import 'dart:developer' as dev;
 import 'dart:developer';
 
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
@@ -39,7 +38,7 @@ abstract class Madpoly {
       SmartDialog.showToast(any.toString());
     }
     String formattedMessage = _formatLogMessage(message, color);
-    dev.log(formattedMessage);
+    log(formattedMessage);
     if (isInspect) {
       inspect(any);
     }

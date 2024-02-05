@@ -52,8 +52,10 @@ class AdminsListCubit extends EduconnectCubit {
   Future<void> updateItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _adminRepository.updateItem(model: model);
-    await getAllItems();
+    bool successfulRequest = await _adminRepository.updateItem(model: model);
+    if (successfulRequest) {
+      await getAllItems();
+    }
     // _loadingRepository.stopLoading();
   }
 

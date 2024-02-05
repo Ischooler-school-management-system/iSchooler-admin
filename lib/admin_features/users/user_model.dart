@@ -89,6 +89,7 @@ class UserModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
+      'user_id': id,
       'name': name,
       'dateOfBirth': dateOfBirth?.toIso8601String(),
       'phoneNumber': phoneNumber,
@@ -149,6 +150,7 @@ class UserModel extends EduconnectModel {
   @override
   List<Object?> get props {
     return [
+      id,
       dateOfBirth,
       phoneNumber,
       address,

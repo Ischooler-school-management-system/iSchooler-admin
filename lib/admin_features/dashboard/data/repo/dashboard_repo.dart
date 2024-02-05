@@ -59,8 +59,7 @@ class DashboardRepository implements EduconnectRepository {
       {required EduconnectModel model, bool addWithId = false}) async {
     bool requestSuccess = false;
     try {
-      bool requestSuccess =
-          await _adminNetwork.addItem(model: model, addWithId: addWithId);
+      bool requestSuccess = await _adminNetwork.addItem(model: model);
       if (requestSuccess) {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
@@ -86,14 +85,15 @@ class DashboardRepository implements EduconnectRepository {
   Future<bool> updateItem({required EduconnectModel model}) async {
     bool requestSuccess = false;
     try {
-      bool requestSuccess = await _adminNetwork.updateItem(model: model);
-      if (requestSuccess) {
+      bool successfulRequest = await _adminNetwork.updateItem(model: model);
+      if (successfulRequest) {
         _alertHandlingRepository.addError(
           'Admin Data Stored Successfully',
           AlertHandlingTypes.Alert,
           tag: 'dashboard_repo > updateItem',
           showToast: true,
         );
+        requestSuccess = true;
       } else {
         throw Exception('unable to add user');
       }

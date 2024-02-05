@@ -1,6 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:school_admin/common/educonnect_model.dart';
 
+import '../../../../../common/educonnect_constants.dart';
 import '../../../../classes/data/models/class_model.dart';
 import '../../../user_model.dart';
 
@@ -52,10 +53,27 @@ class StudentModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      ...super.toMap(),
-      'class': classModel.toMap(),
-      'paymentStatus': paymentStatus,
+      'user_id': super.id,
+      'class_id': classModel.id,
+      'payment_status': paymentStatus,
     };
+  }
+
+  @override
+  Map<String, dynamic> toDisplayMap({int? limit}) {
+    var map = {
+      // '': profilePicture,
+      EduconnectConstants.localization().name: name,
+      EduconnectConstants.localization().id: id,
+      EduconnectConstants.localization().gender: userModel.gender,
+      EduconnectConstants.localization().classes: classModel.name,
+      // EduconnectConstants.localization().phone_number: phoneNumber,
+      // EduconnectConstants.localization().address: address,
+      // EduconnectConstants.localization().date_of_birth:
+      // DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
+    };
+
+    return map;
   }
 
   @override

@@ -3,11 +3,16 @@ import 'package:collection/collection.dart'; // You have to add this manually, f
 import 'package:equatable/equatable.dart';
 import 'package:school_admin/common/madpoly.dart';
 
+import '../admin_features/classes/data/models/class_model.dart';
 import '../admin_features/classes/data/models/classes_list_model.dart';
 import '../admin_features/dashboard/data/models/all_models.dart';
+import '../admin_features/grades/data/models/grade_model.dart';
 import '../admin_features/grades/data/models/grades_list_model.dart';
+import '../admin_features/users/admins/data/models/admin_model.dart';
 import '../admin_features/users/admins/data/models/admins_list_model.dart';
+import '../admin_features/users/instructor/data/models/instructor_model.dart';
 import '../admin_features/users/instructor/data/models/instructors_list_model.dart';
+import '../admin_features/users/students/data/models/student_model.dart';
 import '../admin_features/users/students/data/models/students_list_model.dart';
 
 class EduconnectModel extends Equatable {
@@ -33,6 +38,47 @@ class EduconnectModel extends Equatable {
     return EduconnectModel(id: map['id'].toString(), name: map['name']);
   }
   Map<String, dynamic> toMap() => {'id': id, 'name': name};
+
+  Map<String, dynamic> toMapFromChild() {
+    Madpoly.print(
+      'model = $this',
+      tag: 'EduconnectModel > toMapFromChild',
+      developer: "Ziad",
+    );
+
+    if (this is StudentModel) {
+      return (this as StudentModel).toMap();
+    } else if (this is AdminModel) {
+      return (this as AdminModel).toMap();
+    } else if (this is InstructorModel) {
+      return (this as InstructorModel).toMap();
+    } else if (this is GradeModel) {
+      return (this as GradeModel).toMap();
+    } else if (this is ClassModel) {
+      return (this as ClassModel).toMap();
+    } else if (this is SubjectModel) {
+      return (this as SubjectModel).toMap();
+    } else if (this is WeeklySessionModel) {
+      return (this as WeeklySessionModel).toMap();
+    } else if (this is WeeklyTimetableModel) {
+      return (this as WeeklyTimetableModel).toMap();
+    } else if (this is ExamTypeModel) {
+      return (this as ExamTypeModel).toMap();
+    } else if (this is ExamModel) {
+      return (this as ExamModel).toMap();
+    } else if (this is ExamSessionModel) {
+      return (this as ExamSessionModel).toMap();
+    } else if (this is ExamTimetableModel) {
+      return (this as ExamTimetableModel).toMap();
+    } else if (this is HomeworkModel) {
+      return (this as HomeworkModel).toMap();
+    } else if (this is NewsModel) {
+      return (this as NewsModel).toMap();
+    }
+
+    return toMap();
+  }
+
   Map<String, dynamic> toDisplayMap() => {'name': name, 'id': id};
 //temp  to avoid errors only
   EduconnectModel copyWith({String? id /* , String? name */}) {

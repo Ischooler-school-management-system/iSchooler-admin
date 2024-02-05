@@ -41,7 +41,7 @@ class DashboardNetwork implements EduconnectNetwork {
           .from(tableQueryData.tableName!)
           .select(tableQueryData.selectQuery!);
       Madpoly.print(
-        query,
+        'query= $query',
         tag: 'dashboard_network > getAllItems',
         developer: "Ziad",
       );
@@ -58,32 +58,33 @@ class DashboardNetwork implements EduconnectNetwork {
   }
 
   @override
-  Future<bool> addItem(
-      {required EduconnectModel model, required bool addWithId}) async {
-    bool userStored = false;
-    String? docName = addWithId ? model.id : null;
+  Future<bool> addItem({required EduconnectModel model}) async {
+    bool dataStored = false;
+    // String? docName = addWithId ? model.id : null;
     try {
       var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
       if (tableQueryData.tableName == null) {
         throw Exception('unable to add (model = $model) data');
       }
-      final credentialCollection = EduconnectNetworkHelper.fireStoreInstance
-          .collection(tableQueryData.tableName!);
       Map<String, dynamic> data = model.toMap();
-
       Madpoly.print(
-        'request will be sent is >> set(), '
-        'collection:$tableQueryData, '
-        'addWithId = $addWithId document:$docName,',
+        'request will be sent is >> update(), '
+        'collection:$tableQueryData, ',
         tag: 'dashboard_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
-
         developer: "Ziad",
       );
-      await credentialCollection.doc(docName).set(data);
+      final credentialCollection = await SupabaseCridentials.supabase
+          .from(tableQueryData.tableName!)
+          .insert(data);
+      Madpoly.print(
+        credentialCollection,
+        tag: 'dashboard_network > add',
+        developer: "Ziad",
+      );
       // await credentialCollection.doc(model.id).set(model.toMap());
-      userStored = true;
+      dataStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
@@ -94,34 +95,39 @@ class DashboardNetwork implements EduconnectNetwork {
       );
     }
 
-    return userStored;
+    return dataStored;
   }
 
   @override
   Future<bool> updateItem({required EduconnectModel model}) async {
-    bool userStored = false;
+    bool dataUpdated = false;
+    // String? docName = addWithId ? model.id : null;
     try {
       var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
       if (tableQueryData.tableName == null) {
         throw Exception('unable to add (model = $model) data');
       }
-      final credentialCollection = EduconnectNetworkHelper.fireStoreInstance
-          .collection(tableQueryData.tableName!);
-      Map<String, dynamic> data = model.toMap();
-
+      Map<String, dynamic> data = model.toMapFromChild();
       Madpoly.print(
-        'request will be sent is >> update(),'
-        ' collection:$tableQueryData, '
-        'model.id = ${model.id} document:${model.id},',
-        tag: 'dashboard_network > add',
+        'request will be sent is >> update(), '
+        'table: ${tableQueryData.tableName}, '
+        'data = $data',
+        tag: 'dashboard_network > update',
         // color: MadpolyColor.purple,
         isLog: true,
-
         developer: "Ziad",
       );
-      await credentialCollection.doc(model.id).update(data);
+      final credentialCollection = await SupabaseCridentials.supabase
+          .from(tableQueryData.tableName!)
+          .update(data)
+          .match({'id': model.id});
+      Madpoly.print(
+        credentialCollection,
+        tag: 'dashboard_network > update',
+        developer: "Ziad",
+      );
       // await credentialCollection.doc(model.id).set(model.toMap());
-      userStored = true;
+      dataUpdated = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
@@ -132,19 +138,17 @@ class DashboardNetwork implements EduconnectNetwork {
       );
     }
 
-    return userStored;
+    return dataUpdated;
   }
 
   @override
   Future<bool> deleteItem({required EduconnectModel model}) async {
-    bool userStored = false;
+    bool dataDeleted = false;
     try {
       var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
       if (tableQueryData.tableName == null) {
         throw Exception('unable to delete (model = $model) data');
       }
-      final credentialCollection = EduconnectNetworkHelper.fireStoreInstance
-          .collection(tableQueryData.tableName!);
       Madpoly.print(
         'request will be sent is >> delete(), '
         'collection:$tableQueryData, '
@@ -154,8 +158,17 @@ class DashboardNetwork implements EduconnectNetwork {
         // color: MadpolyColor.purple,
         developer: "Ziad",
       );
-      await credentialCollection.doc(model.id).delete();
-      userStored = true;
+      final credentialCollection = await SupabaseCridentials.supabase
+          .from(tableQueryData.tableName!)
+          .delete()
+          .match({'id': model.id});
+      Madpoly.print(
+        credentialCollection,
+        tag: 'dashboard_network > delete',
+        developer: "Ziad",
+      );
+
+      dataDeleted = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         'unable to add user',
@@ -166,6 +179,6 @@ class DashboardNetwork implements EduconnectNetwork {
       );
     }
 
-    return userStored;
+    return dataDeleted;
   }
 }
