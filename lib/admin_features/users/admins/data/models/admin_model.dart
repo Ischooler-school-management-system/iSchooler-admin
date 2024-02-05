@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../../../../common/educonnect_model.dart';
 import '../../../user_model.dart';
 
@@ -9,6 +8,7 @@ class AdminModel extends EduconnectModel {
     required super.id,
     required super.name,
     required this.userModel,
+    required super.createdAt,
   });
 
   factory AdminModel.empty() {
@@ -16,6 +16,7 @@ class AdminModel extends EduconnectModel {
       id: '-1',
       name: 'name',
       userModel: UserModel.empty(),
+      createdAt: DateTime.now(),
     );
   }
 
@@ -24,6 +25,7 @@ class AdminModel extends EduconnectModel {
       id: userModel.id,
       name: userModel.name,
       userModel: userModel.copyWith(role: UserRole.admin),
+      createdAt: DateTime.now(),
     );
   }
 
@@ -40,7 +42,13 @@ class AdminModel extends EduconnectModel {
       id: userModel.id,
       name: userModel.name,
       userModel: userModel,
+      createdAt: DateTime.now(),
     );
+  }
+
+  @override
+  Map<String, dynamic> toMap() {
+    return userModel.toMap();
   }
 
   @override
@@ -48,11 +56,13 @@ class AdminModel extends EduconnectModel {
     String? id,
     String? name,
     UserModel? userModel,
+    // DateTime? createdAt,
   }) {
     return AdminModel(
       id: id ?? this.id,
       name: name ?? this.name,
       userModel: userModel ?? this.userModel,
+      createdAt: createdAt,
     );
   }
 }

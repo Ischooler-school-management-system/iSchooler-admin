@@ -2,20 +2,22 @@ import '../../../../common/educonnect_model.dart';
 import '../../../grades/data/models/grade_model.dart';
 
 class ClassModel extends EduconnectModel {
-  // final String name;
-  final GradeModel grade; // Injecting GradeModel object
+  final GradeModel grade;
 
   const ClassModel({
     required super.id,
     required super.name,
     required this.grade,
+    required super.createdAt,
   });
 
-  @override
-  List<Object?> get props => [id, name, grade];
-
   factory ClassModel.empty() {
-    return ClassModel(id: '-1', name: '', grade: GradeModel.empty());
+    return ClassModel(
+      id: '-1',
+      name: '',
+      grade: GradeModel.empty(),
+      createdAt: DateTime.now(),
+    );
   }
 
   factory ClassModel.dummy() {
@@ -23,6 +25,7 @@ class ClassModel extends EduconnectModel {
       id: '1',
       name: 'Class 1',
       grade: GradeModel.dummy(),
+      createdAt: DateTime.now(),
     );
   }
 
@@ -31,13 +34,13 @@ class ClassModel extends EduconnectModel {
       id: map['id'].toString(),
       name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
+      createdAt: DateTime.now(),
     );
   }
 
   @override
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'name': name,
       'grade_id': grade.id,
     };
@@ -52,12 +55,15 @@ class ClassModel extends EduconnectModel {
   }
 
   @override
-  ClassModel copyWith(
-      {String? id, String? classId, String? name, GradeModel? grade}) {
+  ClassModel copyWith({
+    String? name,
+    GradeModel? grade,
+  }) {
     return ClassModel(
-      id: id ?? this.id,
+      id: id,
       name: name ?? this.name,
       grade: grade ?? this.grade,
+      createdAt: createdAt,
     );
   }
 }

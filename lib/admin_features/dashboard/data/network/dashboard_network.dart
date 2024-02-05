@@ -120,7 +120,7 @@ class DashboardNetwork implements EduconnectNetwork {
       final credentialCollection = await SupabaseCridentials.supabase
           .from(tableQueryData.tableName!)
           .update(data)
-          .match({'id': model.id});
+          .match(model.idToMap());
       Madpoly.print(
         credentialCollection,
         tag: 'dashboard_network > update',

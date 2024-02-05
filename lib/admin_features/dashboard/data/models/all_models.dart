@@ -1,3 +1,5 @@
+// ignore_for_file: use_super_parameters
+
 import '../../../../common/educonnect_model.dart';
 import '../../../classes/data/models/class_model.dart';
 import '../../../grades/data/models/grade_model.dart';
@@ -80,6 +82,7 @@ class SubjectModel extends EduconnectModel {
     required this.name,
     required this.grade,
     required this.totalMarks,
+    required super.createdAt,
   });
 
   @override
@@ -87,11 +90,16 @@ class SubjectModel extends EduconnectModel {
 
   factory SubjectModel.empty() {
     return SubjectModel(
-        id: '-1', name: '', grade: GradeModel.empty(), totalMarks: 0);
+        id: '-1',
+        name: '',
+        grade: GradeModel.empty(),
+        totalMarks: 0,
+        createdAt: DateTime(5000));
   }
   factory SubjectModel.dummy() {
     return SubjectModel(
       id: '1',
+      createdAt: DateTime(5000),
       name: 'Introduction to Computer Science',
       grade: GradeModel.dummy(),
       totalMarks: 100,
@@ -103,6 +111,7 @@ class SubjectModel extends EduconnectModel {
       name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
       totalMarks: map['totalMarks'] ?? 0,
+      createdAt: DateTime.parse(map['created_at']),
     );
   }
 
@@ -110,7 +119,7 @@ class SubjectModel extends EduconnectModel {
   Map<String, dynamic> toMap() {
     return {
       'name': name,
-      'grade': grade.toMap(),
+      'grade_id': grade.id,
       'totalMarks': totalMarks,
     };
   }
@@ -133,6 +142,7 @@ class SubjectModel extends EduconnectModel {
   }) {
     return SubjectModel(
       id: id ?? this.id,
+      createdAt: createdAt,
       name: name ?? this.name,
       grade: grade ?? this.grade,
       totalMarks: totalMarks ?? this.totalMarks,
@@ -158,6 +168,7 @@ class WeeklySessionModel extends EduconnectModel {
     required this.sessionInterval,
     required this.subject,
     this.instructor,
+    required super.createdAt,
   });
 
   @override
@@ -174,6 +185,7 @@ class WeeklySessionModel extends EduconnectModel {
 
   factory WeeklySessionModel.empty() {
     return WeeklySessionModel(
+      createdAt: DateTime(5000),
       id: '-1',
       sessionNumber: 0,
       weekday: '',
@@ -186,6 +198,7 @@ class WeeklySessionModel extends EduconnectModel {
   }
   factory WeeklySessionModel.dummy() {
     return WeeklySessionModel(
+      createdAt: DateTime(5000),
       id: '1', // You can assign a unique ID for the dummy data
       sessionNumber: 1,
       weekday: 'Monday',
@@ -198,6 +211,7 @@ class WeeklySessionModel extends EduconnectModel {
   }
   factory WeeklySessionModel.fromMap(Map<String, dynamic> map) {
     return WeeklySessionModel(
+      createdAt: DateTime.parse(map['created_at']),
       id: map['id'].toString(),
       sessionNumber: map['sessionNumber'] ?? 0,
       weekday: map['weekday'] ?? '',
@@ -212,12 +226,12 @@ class WeeklySessionModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'sessionNumber': sessionNumber,
+      'session_number': sessionNumber,
       'weekday': weekday,
-      'startTime': startTime.toIso8601String(),
-      'endTime': endTime.toIso8601String(),
-      'sessionInterval': sessionInterval,
-      'subject': subject.toMap(),
+      'start_time': startTime.toIso8601String(),
+      'end_time': endTime.toIso8601String(),
+      'session_interval': sessionInterval,
+      'subject_id': subject.id,
       'instructor': instructor,
     };
   }
@@ -238,6 +252,7 @@ class WeeklySessionModel extends EduconnectModel {
   @override
   WeeklySessionModel copyWith({
     String? id,
+    String? name,
     int? sessionNumber,
     String? weekday,
     DateTime? startTime,
@@ -248,6 +263,7 @@ class WeeklySessionModel extends EduconnectModel {
   }) {
     return WeeklySessionModel(
       id: id ?? this.id,
+      createdAt: createdAt,
       sessionNumber: sessionNumber ?? this.sessionNumber,
       weekday: weekday ?? this.weekday,
       startTime: startTime ?? this.startTime,
@@ -266,12 +282,13 @@ class WeeklyTimetableModel extends EduconnectModel {
   final GradeModel grade;
 
   const WeeklyTimetableModel({
-    required super.id,
+    required String id,
     required this.classInfo,
     required this.term,
     required this.weeklySessions,
     required this.grade,
-  });
+    required DateTime createdAt,
+  }) : super(id: id, createdAt: createdAt);
 
   @override
   List<Object?> get props => [
@@ -289,8 +306,10 @@ class WeeklyTimetableModel extends EduconnectModel {
       term: '',
       weeklySessions: const [],
       grade: GradeModel.empty(),
+      createdAt: DateTime.now(),
     );
   }
+
   factory WeeklyTimetableModel.dummy() {
     return WeeklyTimetableModel(
       id: '1', // You can assign a unique ID for the dummy data
@@ -298,6 +317,7 @@ class WeeklyTimetableModel extends EduconnectModel {
       term: 'Fall 2024',
       weeklySessions: [WeeklySessionModel.dummy()],
       grade: GradeModel.dummy(),
+      createdAt: DateTime.now(),
     );
   }
 
@@ -311,13 +331,14 @@ class WeeklyTimetableModel extends EduconnectModel {
               .toList() ??
           [],
       grade: GradeModel.fromMap(map['grade'] ?? {}),
+      createdAt: DateTime.now(),
     );
   }
 
   @override
   Map<String, dynamic> toMap() {
     return {
-      'classInfo': classInfo.toMap(),
+      'class_id': classInfo.toMap(),
       'term': term,
       'weeklySessions':
           weeklySessions.map((session) => session.toMap()).toList(),
@@ -339,10 +360,12 @@ class WeeklyTimetableModel extends EduconnectModel {
   @override
   WeeklyTimetableModel copyWith({
     String? id,
+    String? name,
     ClassModel? classInfo,
     String? term,
     List<WeeklySessionModel>? weeklySessions,
     GradeModel? grade,
+    DateTime? createdAt,
   }) {
     return WeeklyTimetableModel(
       id: id ?? this.id,
@@ -350,6 +373,7 @@ class WeeklyTimetableModel extends EduconnectModel {
       term: term ?? this.term,
       weeklySessions: weeklySessions ?? this.weeklySessions,
       grade: grade ?? this.grade,
+      createdAt: createdAt ?? this.createdAt,
     );
   }
 }
@@ -477,10 +501,10 @@ class ExamModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'subject': subject.toMap(),
+      'subject': subject.id,
       'date': date.toIso8601String(),
       'time': time.toIso8601String(),
-      'examType': examType.toMap(),
+      'examType': examType.id,
     };
   }
 
@@ -593,7 +617,9 @@ class ExamSessionModel extends EduconnectModel {
       'endTime': endTime.toIso8601String(),
       'subject': subject.toMap(),
       'sessionInterval': sessionInterval,
-      'instructors': instructors.toMap(),
+      // 'instructors': instructors.toMap(),
+
+      'instructors': instructors.items.map((session) => session.id).toList(),
     };
   }
 
@@ -691,9 +717,9 @@ class ExamTimetableModel extends EduconnectModel {
   Map<String, dynamic> toMap() {
     return {
       'term': term,
-      'examSessions': examSessions.map((session) => session.toMap()).toList(),
+      'examSessions': examSessions.map((session) => session.id).toList(),
       'gradeId': grade,
-      'examType': examType.toMap(),
+      'examType': examType.id,
     };
   }
 
@@ -780,8 +806,8 @@ class HomeworkModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'classInfo': classInfo.toMap(),
-      'subject': subject.toMap(),
+      'class_id': classInfo.id,
+      'subject_id': subject.id,
       'date': date.toIso8601String(),
       'content': content,
     };

@@ -28,9 +28,9 @@ class DashboardMobileVeiw extends StatelessWidget {
             ...educonnectAllModel.items.map(
               (EduconnectModel model) {
                 return EduconnecDashboardListTile(
-                  title: model.id,
+                  title: model.name,
+                  subtitle: model.id,
                   isName: true,
-                  // subtitle: '${model.gender} | ${model.phoneNumber}',
                   trailing: SizedBox(
                     width: 100,
                     child: Row(

@@ -18,26 +18,51 @@ import '../admin_features/users/students/data/models/students_list_model.dart';
 class EduconnectModel extends Equatable {
   final String id;
   final String name;
+  final DateTime createdAt;
+
   const EduconnectModel({
     required this.id,
     this.name = '',
+    required this.createdAt,
   });
+
   factory EduconnectModel.empty() {
-    return const EduconnectModel(
+    return EduconnectModel(
       id: '-1',
       name: 'name',
+      createdAt: DateTime(5000),
     );
   }
+
   factory EduconnectModel.dummy() {
-    return const EduconnectModel(
+    return EduconnectModel(
       id: '-1',
       name: 'name',
+      createdAt: DateTime.now(),
     );
   }
+
   factory EduconnectModel.fromMap(Map<String, dynamic> map) {
-    return EduconnectModel(id: map['id'].toString(), name: map['name']);
+    return EduconnectModel(
+      id: map['id'].toString(),
+      name: map['name'],
+      createdAt: DateTime.parse(map['created_at']),
+    );
   }
-  Map<String, dynamic> toMap() => {'id': id, 'name': name};
+
+  Map<String, dynamic> toMap() => {
+        'id': id,
+        'name': name,
+        'created_at': createdAt.toIso8601String(),
+      };
+
+  Map<String, dynamic> idToMap() {
+    var idString = 'id';
+    if (this is StudentModel || this is AdminModel || this is InstructorModel) {
+      idString = 'user_id';
+    }
+    return {idString: id};
+  }
 
   Map<String, dynamic> toMapFromChild() {
     Madpoly.print(
@@ -45,7 +70,6 @@ class EduconnectModel extends Equatable {
       tag: 'EduconnectModel > toMapFromChild',
       developer: "Ziad",
     );
-
     if (this is StudentModel) {
       return (this as StudentModel).toMap();
     } else if (this is AdminModel) {
@@ -80,16 +104,17 @@ class EduconnectModel extends Equatable {
   }
 
   Map<String, dynamic> toDisplayMap() => {'name': name, 'id': id};
-//temp  to avoid errors only
-  EduconnectModel copyWith({String? id /* , String? name */}) {
+
+  EduconnectModel copyWith({String? name}) {
     return EduconnectModel(
-      id: id ?? this.id,
-      // name: name ?? this.name,
+      id: id,
+      name: name ?? this.name,
+      createdAt: createdAt,
     );
   }
 
   @override
-  List<Object?> get props => [id];
+  List<Object?> get props => [id, name, createdAt];
 }
 
 class EduconnectModelList extends Equatable {

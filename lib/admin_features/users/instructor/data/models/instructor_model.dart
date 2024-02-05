@@ -8,6 +8,7 @@ class InstructorModel extends EduconnectModel {
     required super.id,
     required super.name,
     required this.userModel,
+    required super.createdAt,
   });
 
   factory InstructorModel.empty() {
@@ -15,6 +16,7 @@ class InstructorModel extends EduconnectModel {
       id: '-1',
       name: 'name',
       userModel: UserModel.empty(),
+      createdAt: DateTime.now(),
     );
   }
 
@@ -23,6 +25,7 @@ class InstructorModel extends EduconnectModel {
       id: '123456',
       name: 'JohnDoe',
       userModel: UserModel.dummy().copyWith(role: UserRole.instructor),
+      createdAt: DateTime.now(),
     );
   }
 
@@ -33,19 +36,20 @@ class InstructorModel extends EduconnectModel {
       id: userModel.id,
       name: userModel.name,
       userModel: userModel,
+      createdAt: DateTime.now(),
     );
   }
 
   @override
   InstructorModel copyWith({
-    String? id,
     String? name,
     UserModel? userModel,
   }) {
     return InstructorModel(
-      id: id ?? this.id,
+      id: id,
       name: name ?? this.name,
       userModel: userModel ?? this.userModel,
+      createdAt: createdAt,
     );
   }
 }
