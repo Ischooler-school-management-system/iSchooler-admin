@@ -16,6 +16,10 @@ class UsersListModel extends EduconnectModelList {
     );
     return UsersListModel(items: items);
   }
+  factory UsersListModel.dummy() {
+    return UsersListModel(
+        items: List.generate(3, (index) => UserModel.dummy()));
+  }
   @override
   Map<String, dynamic> toMap() {
     return {

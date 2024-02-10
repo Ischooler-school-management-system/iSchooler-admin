@@ -4,22 +4,29 @@ class GradeModel extends EduconnectModel {
   const GradeModel({
     required super.id,
     required super.name,
-    required super.createdAt,
+    // required super.createdAt,
   });
 
   @override
-  List<Object?> get props =>
-      [id, name, createdAt]; // Include createdAt in props
+  List<Object?> get props => [
+        id,
+        name,
+        // createdAt,
+      ];
 
   factory GradeModel.empty() {
-    return GradeModel(id: '-1', name: '', createdAt: DateTime(5000));
+    return const GradeModel(
+      id: '-1',
+      name: '',
+      // createdAt: DateTime(5000),
+    );
   }
 
   factory GradeModel.dummy() {
-    return GradeModel(
+    return const GradeModel(
       id: '1',
       name: 'Grade 1',
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
     );
   }
 
@@ -27,8 +34,7 @@ class GradeModel extends EduconnectModel {
     return GradeModel(
       id: map['id'].toString(),
       name: map['name'] ?? '',
-      createdAt:
-          DateTime.now(), // You need to parse createdAt from map if available
+      // createdAt: DateTime.now(),
     );
   }
 
@@ -51,7 +57,7 @@ class GradeModel extends EduconnectModel {
     return GradeModel(
       id: id,
       name: name ?? this.name,
-      createdAt: createdAt,
+      // // createdAt: createdAt,
     );
   }
 }

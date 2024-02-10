@@ -21,6 +21,7 @@ class DashboardRepository implements EduconnectRepository {
     EduconnectModelList listModel = EduconnectModelList.empty();
     Madpoly.print(
       ' model >> ${model.runtimeType}',
+      inspectObject: model,
       tag: 'repo > getAllItems ',
       developer: "Ziad",
       // showToast: true,
@@ -32,7 +33,8 @@ class DashboardRepository implements EduconnectRepository {
 
       listModel = model.fromMapToChild(response.data);
       Madpoly.print(
-        listModel,
+        'response = ',
+        inspectObject: listModel,
         tag: 'dashboard_repo > getAllItems',
         developer: "Ziad",
       );

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_admin/admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 
+import '../admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import '../admin_features/grades/logic/instructors_list_cubit/grades_list_cubit.dart';
 import '../admin_features/users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
 import '../admin_features/users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
@@ -22,9 +22,7 @@ MultiBlocProvider listOfBlocProviders({required Widget child}) {
       BlocProvider(create: (_) => LoadingCubit(getIt())),
       BlocProvider(create: (_) => LangBloc()),
       BlocProvider(create: (_) => AuthCubit(getIt(), getIt())),
-      // BlocProvider(create: (_) => StudentCubit(getIt(), getIt())),
       BlocProvider(create: (_) => StudentsListCubit(getIt(), getIt())),
-      // BlocProvider(create: (_) => AdminCubit(getIt(), getIt())),
       BlocProvider(create: (_) => AdminsListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => InstructorsListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => ClassesListCubit(getIt(), getIt())),

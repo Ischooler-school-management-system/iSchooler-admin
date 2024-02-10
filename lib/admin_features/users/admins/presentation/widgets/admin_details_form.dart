@@ -56,19 +56,18 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             },
           ),
           EduconnectTextField(
-            initialValue: adminData.userModel.email,
+            initialValue: adminData.email,
             labelText: 'Email Address',
             validator: EduconnectValidations.emailValidator,
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(
-                    userModel: adminData.userModel.copyWith(email: value));
+                adminData = adminData.copyWith(name: value);
               });
             },
           ),
           EduconnectTextField(
-            initialValue:
-                educonnectDateFormatter(adminData.userModel.dateOfBirth),
+            // initialValue: adminData.dateOfBirth.toString(),
+            initialValue: educonnectDateFormatter(adminData.dateOfBirth),
             labelText: 'Date of Birth',
             validator: (value) {
               // Add validation logic for date of birth if needed
@@ -78,14 +77,13 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
               // Convert the value to DateTime and assign it to dateOfBirth
               // You may want to use a DatePicker for a better user experience
               setState(() {
-                adminData = adminData.copyWith(
-                    userModel: adminData.userModel
-                        .copyWith(dateOfBirth: DateTime.parse(value)));
+                adminData =
+                    adminData.copyWith(dateOfBirth: DateTime.parse(value));
               });
             },
           ),
           EduconnectTextField(
-            initialValue: adminData.userModel.phoneNumber,
+            initialValue: adminData.phoneNumber,
             labelText: 'Phone Number',
             validator: (value) {
               // Add phone number validation if needed
@@ -93,14 +91,12 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             },
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(
-                    userModel:
-                        adminData.userModel.copyWith(phoneNumber: value));
+                adminData = adminData.copyWith(phoneNumber: value);
               });
             },
           ),
           EduconnectTextField(
-            initialValue: adminData.userModel.address,
+            initialValue: adminData.address,
             labelText: 'Address',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -110,8 +106,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             },
             onChanged: (value) {
               setState(() {
-                adminData = adminData.copyWith(
-                    userModel: adminData.userModel.copyWith(address: value));
+                adminData = adminData.copyWith(address: value);
               });
             },
           ),

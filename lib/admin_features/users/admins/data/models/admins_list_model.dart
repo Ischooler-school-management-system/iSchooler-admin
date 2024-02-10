@@ -1,14 +1,19 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../../../../common/educonnect_model.dart';
-import '../../../users_list_model.dart';
 import 'admin_model.dart';
 
-class AdminsListModel extends UsersListModel {
+class AdminsListModel extends EduconnectModelList {
   @override
   const AdminsListModel({required super.items});
   factory AdminsListModel.empty() {
     return const AdminsListModel(items: []);
   }
+
+  factory AdminsListModel.dummy() {
+    return AdminsListModel(
+        items: List.generate(3, (index) => AdminModel.dummy()));
+  }
+
   factory AdminsListModel.fromMap(Map map) {
     final List<AdminModel> items = List<AdminModel>.from(
       map['items'].map(

@@ -5,10 +5,9 @@ import '../../../../../common/comon_features/widgets/fields/educonnect_text_fiel
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_formatter.dart';
-import '../../../../classes/data/models/class_model.dart';
-import '../../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
+import '../../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
 import '../../data/models/student_model.dart';
 import '/common/madpoly.dart';
 
@@ -58,30 +57,32 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               // setState(() {});
             },
           ),
-
           EduconnectTextField(
-            initialValue: studentData.userModel.email,
+            // initialValue: 'test',
+            initialValue: studentData.email,
+
             labelText: 'Email Address',
+
             validator: EduconnectValidations.emailValidator,
+
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(
-                    userModel: studentData.userModel.copyWith(email: value));
-              });
+              studentData = studentData.copyWith(email: value);
+              // setState(() {});
             },
           ),
           EduconnectTextField(
-            initialValue:
-                educonnectDateFormatter(studentData.userModel.dateOfBirth),
+            initialValue: educonnectDateFormatter(studentData.dateOfBirth),
             labelText: 'Date of Birth',
             validator: (value) {
               // Add validation logic for date of birth if needed
               return null;
             },
             onSaved: (value) {
-              setState(() {
-                // studentData = studentData.copyWith(userModel: studentData.userModel.copyWith(dateOfBirth: DateTime.parse(value)));
-              });
+              // Convert the value to DateTime and assign it to dateOfBirth
+              // You may want to use a DatePicker for a better user experience
+              // studentData = studentData.copyWith(
+              //     dateOfBirth: value != null ? DateTime.parse(value) : null);
+              // setState(() {});
             },
           ),
           /*  EduConnectDropdownWidget(
@@ -95,22 +96,23 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
                   ), */
 
           EduconnectTextField(
-            initialValue: studentData.userModel.phoneNumber,
+            // initialValue: '01111',
+            initialValue: studentData.phoneNumber,
+
             labelText: 'Phone Number',
             validator: (value) {
               // Add phone number validation if needed
               return null;
             },
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(
-                    userModel:
-                        studentData.userModel.copyWith(phoneNumber: value));
-              });
+              studentData = studentData.copyWith(phoneNumber: value);
+              // setState(() {});
             },
           ),
           EduconnectTextField(
-            initialValue: studentData.userModel.address,
+            initialValue: studentData.address,
+
+            // initialValue: 'test',
             labelText: 'Address',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -119,13 +121,11 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               return null;
             },
             onSaved: (value) {
-              setState(() {
-                studentData = studentData.copyWith(
-                    userModel: studentData.userModel.copyWith(address: value));
-              });
+              studentData = studentData.copyWith(address: value);
+              // setState(() {});
             },
           ),
-          DashboardDropDownWidget<ClassesListCubit>(
+          /* DashboardDropDownWidget<ClassesListCubit>(
               onChanged: (EduconnectModel value) {
             Madpoly.print(
               'class model = $value',
@@ -135,8 +135,48 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             );
             studentData = studentData.copyWith(classModel: value as ClassModel);
             setState(() {});
+          }), */
+          DashboardDropDownWidget<GradesListCubit>(
+              onChanged: (EduconnectModel value) {
+            Madpoly.print(
+              'Grade model = $value',
+              tag:
+                  'student_details_form > DashboardDropDownWidget<GradesListCubit>',
+              developer: "Ziad",
+            );
+            // studentData = studentData.copyWith(classModel: value as ClassModel);
+            setState(() {});
           }),
+          /* EduConnectDropdownWidget(
+            labelText: 'Class',
+            // hint: 'Class',
 
+            onChanged: (value) {
+              setState(() {
+                studentData = studentData.copyWith(classId: value);
+              });
+            },
+            options: const ['claass 1', 'r 2', 'clasrs 2'],
+          ),
+          EduConnectDropdownWidget(
+            labelText: 'Grade',
+            onChanged: (value) {
+              setState(() {
+                studentData = studentData.copyWith(grade: value);
+              });
+            },
+            options: const ['class 1', 'class 2', 'class 3'],
+          ),
+          EduConnectDropdownWidget(
+            labelText: 'Gender',
+            onChanged: (value) {
+              setState(() {
+                studentData = studentData.copyWith(grade: value);
+              });
+            },
+            options: const ['Male', 'Female'],
+          ),
+ */
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
           /*  Row(
       

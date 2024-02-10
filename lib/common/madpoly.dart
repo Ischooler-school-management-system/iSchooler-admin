@@ -11,7 +11,8 @@ enum MadpolyColor { blue, green, yellow, red, purple, black }
 
 abstract class Madpoly {
   static void print(
-    Object? any, {
+    String? msg, {
+    Object? inspectObject,
     String? developer,
     MadpolyColor? color,
     String? tag,
@@ -22,10 +23,8 @@ abstract class Madpoly {
 
     if (tag != null) message += "($tag) ";
     if (developer != null) message += "$developer :: ";
-    bool isInspect = any is! String;
-    if (!isInspect) {
-      message += any.toString();
-    }
+    // bool isInspect = msg is! String;
+    message += msg.toString();
     if (color == null) {
       if (isLog == true) {
         color = MadpolyColor.yellow;
@@ -35,40 +34,13 @@ abstract class Madpoly {
     }
     if (showToast) {
       SmartDialog.dismiss();
-      SmartDialog.showToast(any.toString());
+      SmartDialog.showToast(msg.toString());
     }
     String formattedMessage = _formatLogMessage(message, color);
-    log(formattedMessage);
-    if (isInspect) {
-      inspect(any);
-    }
-
-    /* switch (color) {
-      case MadpolyColor.blue:
-        _logInfo(message);
-        break;
-      case MadpolyColor.green:
-        _logSuccess(message);
-        break;
-      case MadpolyColor.yellow:
-        _logWarning(message);
-        break;
-      case MadpolyColor.red:
-        _logError(message);
-        break;
-
-      case MadpolyColor.purple:
-        _logDebug(message);
-        break;
-
-      case MadpolyColor.black:
-        _logAssert(message);
-        break;
-
-      default:
-        _logWarning(message);
-    }
-     */
+    log(formattedMessage + inspectObject.toString());
+    // if (inspectObject != null) {
+    // inspect(inspectObject);
+    // }
   }
 
   static String _formatLogMessage(String message, MadpolyColor? color) {
@@ -95,35 +67,3 @@ abstract class Madpoly {
     }
   }
 }
-/*
-  // Blue text
-  static void _logInfo(String msg) {
-    developer.log('\x1B[34m$msg\x1B[0m');
-  }
-
-  // Green text
-  static void _logSuccess(String msg) {
-    developer.log('\x1B[32m$msg\x1B[0m');
-  }
-
-  // Yellow text
-  static void _logWarning(String msg) {
-    developer.log('\x1B[33m$msg\x1B[0m');
-  }
-
-  // Red text
-  static void _logError(String msg) {
-    developer.log('\x1B[31m$msg\x1B[0m');
-  }
-
-  // purple text
-  static void _logDebug(String msg) {
-    developer.log('\x1B[35m$msg\x1B[0m');
-  }
-
-  // black with wite background
-  static void _logAssert(String msg) {
-    developer.log('\x1B[30m$msg\x1B[0m');
-  }
- */
-

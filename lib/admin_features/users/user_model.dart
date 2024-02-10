@@ -16,7 +16,7 @@ class UserModel extends EduconnectModel {
   const UserModel({
     required super.id,
     required super.name,
-    required super.createdAt,
+    // required super.createdAt,
     required this.dateOfBirth,
     required this.phoneNumber,
     required this.address,
@@ -27,10 +27,10 @@ class UserModel extends EduconnectModel {
   });
 
   factory UserModel.empty() {
-    return UserModel(
+    return const UserModel(
       id: '',
       name: '',
-      createdAt: DateTime(500),
+      // createdAt: DateTime(500),
       dateOfBirth: null,
       phoneNumber: '',
       address: '',
@@ -45,7 +45,7 @@ class UserModel extends EduconnectModel {
     return UserModel(
       id: '123456',
       name: 'JohnDoe',
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',
       address: '123 Main St, City',
@@ -55,37 +55,33 @@ class UserModel extends EduconnectModel {
       profilePicture: 'path/to/profile_picture.jpg',
     );
   }
-
   factory UserModel.fromMap(Map<String, dynamic> map) {
     UserRole userRole = UserRole.none;
-    if (map['role'] != null) {
-      switch (map['role']) {
-        case 'admin':
-          userRole = UserRole.admin;
-          break;
-        case 'teacher':
-          userRole = UserRole.instructor;
-          break;
-        case 'student':
-          userRole = UserRole.student;
-          break;
-        default:
-          userRole = UserRole.none;
-      }
+    switch (map['user_role_id']) {
+      case 1:
+        userRole = UserRole.admin;
+        break;
+      case 2:
+        userRole = UserRole.instructor;
+        break;
+      case 3:
+        userRole = UserRole.student;
+        break;
+      default:
+        userRole = UserRole.none;
     }
     return UserModel(
-      id: map['user_id'].toString(),
+      id: map['id'].toString(),
       name: map['name'] ?? '',
-      createdAt: DateTime.parse(map['created_at']),
-      dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
-          : null,
-      phoneNumber: map['phoneNumber'] ?? '',
+      // createdAt: DateTime.parse(map['created_at']),
+      dateOfBirth: DateTime.parse(map['date_of_birth'] ??
+          DateTime(5000)), // no 'dateOfBirth' in provided JSON
+      phoneNumber: map['phone_number'] ?? '',
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
       role: userRole,
-      profilePicture: map['profilePicture'] ?? '',
+      profilePicture: map['profile_picture'] ?? '',
     );
   }
 
@@ -94,14 +90,14 @@ class UserModel extends EduconnectModel {
     return {
       // 'user_id': id,
       'name': name,
-      'created_at': createdAt.toIso8601String(),
-      'dateOfBirth': dateOfBirth?.toIso8601String(),
-      'phoneNumber': phoneNumber,
-      'address': address,
-      'gender': gender,
       'email': email,
+      'gender': gender,
+      // 'date_of_birth': dateOfBirth?.toIso8601String(),
+      'phone_number': phoneNumber,
+      'address': address,
+      'profile_picture': profilePicture,
       // 'role': role.toString().split('.').last, // Convert enum to string
-      'profilePicture': profilePicture,
+      // 'created_at': createdAt.toIso8601String(),
     };
   }
 
@@ -132,7 +128,7 @@ class UserModel extends EduconnectModel {
     return UserModel(
       id: id ?? this.id,
       name: name ?? this.name,
-      createdAt: createdAt,
+      // // createdAt: createdAt,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,

@@ -68,6 +68,8 @@ class EduconnectResponse {
     );
   }
 
+  toJson() {}
+
 /* 
   Map<String, dynamic>? getDocumentData(DocumentSnapshot documentSnapshot) {
    

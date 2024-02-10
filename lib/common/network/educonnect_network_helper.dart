@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../admin_features/classes/data/models/class_model.dart';
@@ -12,7 +11,6 @@ import '../../admin_features/users/instructor/data/models/instructor_model.dart'
 import '../../admin_features/users/instructor/data/models/instructors_list_model.dart';
 import '../../admin_features/users/students/data/models/student_model.dart';
 import '../../admin_features/users/students/data/models/students_list_model.dart';
-import '../madpoly.dart';
 
 class SupabaseCridentials {
   static const String supabaseUrl = 'https://rqxinbwhqmugrjffbpjw.supabase.co';
@@ -23,191 +21,162 @@ class SupabaseCridentials {
 }
 
 class EduconnectNetworkHelper {
-  static final FirebaseFirestore fireStoreInstance = FirebaseFirestore.instance;
-
-  static final userRole = (
+// user_role: id | name
+  static const ({String tableName, String selectQuery}) userRole = (
     tableName: 'user_role',
-    relatedTables: [],
+    selectQuery: '*',
   );
-  static final adminRole = (
+
+// admin_role: id | name
+  static const ({String tableName, String selectQuery}) adminRole = (
     tableName: 'admin_role',
-    relatedTables: [],
+    selectQuery: '*',
   );
-  static const schoolUser = (
+
+// school_user: id | name | phone_number | address | gender | email | profile_picture | user_role_id
+  static const ({String tableName, String selectQuery}) schoolUser = (
     tableName: 'school_user',
-    relatedTables: ['user_role'],
+    selectQuery: '*',
   );
-  static const admin = (
+
+// admin: school_user_id | specialization(optional) | hire_date | admin_role_id
+  static const ({String tableName, String selectQuery}) admin = (
     tableName: 'admin',
-    relatedTables: ['admin_role'],
+    selectQuery: '*,admin_role(*)',
   );
-  static final instructor = (
+
+// instructor: school_user_id | date_of_birth | specialization(optional) | hire_date
+  static const ({String tableName, String selectQuery}) instructor = (
     tableName: 'instructor',
-    relatedTables: [],
+    selectQuery: '*',
   );
-  static final grade = (
+
+// grade: id | name
+  static const ({String tableName, String selectQuery}) grade = (
     tableName: 'grade',
-    relatedTables: [],
+    selectQuery: '*',
   );
-  static const classTable = (
+
+// class: id | name | grade_id
+  static const ({String tableName, String selectQuery}) classTable = (
     tableName: 'class',
-    relatedTables: ['grade'],
+    selectQuery: '*,grade(*)',
   );
-  static const subject = (
+
+// subject: id | name | total_marks | grade_id
+  static const ({String tableName, String selectQuery}) subject = (
     tableName: 'subject',
-    relatedTables: ['grade'],
+    selectQuery: '*,grade(*)',
   );
-  static final student = (
+
+// student: school_user_id | guardians_phone_number | payment_status | class_id
+  static const ({String tableName, String selectQuery}) student = (
     tableName: 'student',
-    relatedTables: ['class', ...(classTable.relatedTables)],
+    // selectQuery: ['class', 'grade'],
+    selectQuery: '*,class(*,grade(*)))',
   );
-  static const instructorAssignment = (
+
+// instructor_assignment: id | name | instructor_id | subject_id | class_id |
+  static const ({String tableName, String selectQuery}) instructorAssignment = (
     tableName: 'instructor_assignment',
-    relatedTables: ['instructor', 'subject', 'class,']
+    // selectQuery: ['instructor', 'subject', 'class'],
+    selectQuery: '*,instructor(*),class(*,grade(*)),subject(*,grade(*)))',
   );
-  static const weeklyTimetable = (
+
+// weekly_timetable: id | name | term | class_id |
+  static const ({String tableName, String selectQuery}) weeklyTimetable = (
     tableName: 'weekly_timetable',
-    relatedTables: ['class', 'grade'],
+    selectQuery: '*,class(*,grade(*))',
   );
-  static const weeklySessions = (
+
+// weekly_sessions: id | name | session_number | weekday | start_time | end_time | session_interval | instructor_assignment_id | weekly_timetable_id
+  static const ({String tableName, String selectQuery}) weeklySessions = (
     tableName: 'weekly_sessions',
-    relatedTables: ['instructor_assignment', 'weekly_timetable,']
+    // selectQuery: ['instructor_assignment', 'weekly_timetable'],
+    selectQuery:
+        '*,instructor_assignment(*,instructor(*),class(*,grade(*)),subject(*,grade(*)))),weekly_timetable(*,class(*,grade(*)))',
   );
-  static final examType = (
+
+// exam_type: id | name | marks_percent
+  static const examType = (
     tableName: 'exam_type',
-    relatedTables: [],
+    selectQuery: '*',
   );
-  static const exam = (
+
+// exam: id | name | date_time | subject_id | exam_type_id
+  static const ({String tableName, String selectQuery}) exam = (
     tableName: 'exam',
-    relatedTables: ['subject', 'exam_type'],
+    // selectQuery: ['subject', 'exam_type'],
+
+    selectQuery: '*,subject(*,grade(*)),exam_type(*)',
   );
-  static const examTimetable = (
+
+// exam_timetable: id | name | term | grade_id | exam_id
+  static const ({String tableName, String selectQuery}) examTimetable = (
     tableName: 'exam_timetable',
-    relatedTables: ['grade', 'exam'],
+    // selectQuery: ['grade', 'exam'],
+    selectQuery: '*,exam(*,subject(*,grade(*)),exam_type(*))',
   );
-  static const examSession = (
+
+// exam_session: id | name | session_number | weekday | start_time | end_time | session_interval | instructor_id | exam_timetable_id
+  static const ({String tableName, String selectQuery}) examSession = (
     tableName: 'exam_session',
-    relatedTables: ['instructor', 'exam_timetable,']
+    // selectQuery: ['instructor', 'exam_timetable'],
+    selectQuery:
+        '*,exam_session(*),*,exam_timetable(*,exam(*,subject(*,grade(*)),exam_type(*)))',
   );
-  static const homework = (
+
+// homework: id | name | date | content | instructor_assignment_id
+  static const ({String tableName, String selectQuery}) homework = (
     tableName: 'homework',
-    relatedTables: ['instructor_assignment'],
+    // selectQuery: ['instructor_assignment'],
+    selectQuery: '*,exam_session()',
   );
-  static final news = (
+
+// news: id | name | thumbnail | date_time | description
+  static const news = (
     tableName: 'news',
-    relatedTables: [],
+    selectQuery: '*',
   );
-  // '*, class(*, grade(*))';
-  static String selectQueryMaker(List<dynamic> strings) {
-    if (strings.isEmpty) {
-      return '*';
-    }
 
-    String result = '*,${strings.first}(*';
-    if (strings.length > 1) {
-      result += ',';
-    }
-    for (int i = 1; i < strings.length; i++) {
-      result += '${strings[i]}(*';
-      if (i != strings.length - 1) {
-        result += ',';
-      }
-    }
-    result += ')' * (strings.length);
-
-    return result;
-  }
-
-  static ({
-    String? tableName,
-    String? selectQuery,
-  }) getTableQueryData(dynamic model) {
-    ({String? tableName, String? selectQuery}) tableQueryData = (
-      tableName: '',
-      selectQuery: '',
-    );
-
+  static ({String? tableName, String? selectQuery}) getTableQueryData(
+      dynamic model) {
     if (model is StudentModel || model is StudentsListModel) {
-      return (
-        tableName: student.tableName,
-        selectQuery: '${selectQueryMaker(student.relatedTables)},school_user(*)'
-      );
+      return student;
     }
     if (model is AdminModel || model is AdminsListModel) {
-      return (
-        tableName: admin.tableName,
-        selectQuery: '${selectQueryMaker(admin.relatedTables)},school_user(*)'
-      );
+      return admin;
     } else if (model is InstructorModel || model is InstructorsListModel) {
-      return (
-        tableName: instructor.tableName,
-        selectQuery:
-            '${selectQueryMaker(instructor.relatedTables)},school_user(*)'
-      );
+      return instructor;
     } else if (model is GradeModel || model is GradesListModel) {
-      tableQueryData = (
-        tableName: grade.tableName,
-        selectQuery: selectQueryMaker(grade.relatedTables),
-      );
+      return grade;
     } else if (model is ClassModel || model is ClassesListModel) {
-      tableQueryData = (
-        tableName: classTable.tableName,
-        selectQuery: selectQueryMaker(classTable.relatedTables),
-      );
+      return classTable;
     } else if (model is SubjectModel || model is SubjectsListModel) {
-      tableQueryData = (
-        tableName: subject.tableName,
-        selectQuery: selectQueryMaker(subject.relatedTables),
-      );
+      return (subject);
     } else if (model is WeeklySessionModel ||
         model is WeeklySessionsListModel) {
-      tableQueryData = (
-        tableName: weeklySessions.tableName,
-        selectQuery: selectQueryMaker(weeklySessions.relatedTables),
-      );
+      return (weeklySessions);
     } else if (model is WeeklyTimetableModel ||
         model is WeeklyTimetablesListModel) {
-      tableQueryData = (
-        tableName: weeklyTimetable.tableName,
-        selectQuery: selectQueryMaker(weeklyTimetable.relatedTables),
-      );
+      return (weeklyTimetable);
     } else if (model is ExamTypeModel || model is ExamTypesListModel) {
-      tableQueryData = (
-        tableName: examType.tableName,
-        selectQuery: selectQueryMaker(examType.relatedTables),
-      );
+      return (examType);
     } else if (model is ExamModel || model is ExamsListModel) {
-      tableQueryData = (
-        tableName: exam.tableName,
-        selectQuery: selectQueryMaker(exam.relatedTables),
-      );
+      return (exam);
     } else if (model is ExamSessionModel || model is ExamSessionsListModel) {
-      tableQueryData = (
-        tableName: examSession.tableName,
-        selectQuery: selectQueryMaker(examSession.relatedTables),
-      );
+      return (examSession);
     } else if (model is ExamTimetableModel ||
         model is ExamTimetablesListModel) {
-      tableQueryData = (
-        tableName: examTimetable.tableName,
-        selectQuery: selectQueryMaker(examTimetable.relatedTables),
-      );
+      return (examTimetable);
     } else if (model is HomeworkModel || model is HomeworksListModel) {
-      tableQueryData = (
-        tableName: homework.tableName,
-        selectQuery: selectQueryMaker(homework.relatedTables),
-      );
+      return (homework);
     } else if (model is NewsModel || model is NewsListModel) {
-      tableQueryData = (
-        tableName: news.tableName,
-        selectQuery: selectQueryMaker(news.relatedTables),
-      );
+      return (news);
     }
-    Madpoly.print(
-      'collection name = $tableQueryData',
-      tag: 'educonnect_network_helper > ',
-      developer: "Ziad",
+    return (
+      tableName: null,
+      selectQuery: null,
     );
-    return tableQueryData;
   }
 }

@@ -29,19 +29,21 @@ class DashboardNetwork implements EduconnectNetwork {
           EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
         'request will be sent is >>  get(), '
-        'tableQueryData:$tableQueryData,',
+        'tableQueryData: $tableQueryData',
+        // inspectObject: tableQueryData,
         tag: 'dashboard_network > getAllItems',
         // color: MadpolyColor.purple,
         isLog: true,
-
         developer: "Ziad",
       );
       final List<Map<String, dynamic>> query = await SupabaseCridentials
           .supabase
           .from(tableQueryData.tableName!)
-          .select(tableQueryData.selectQuery!);
+          .select(tableQueryData.selectQuery!)
+          .order('created_at');
       Madpoly.print(
-        'query= $query',
+        'query= ',
+        inspectObject: query,
         tag: 'dashboard_network > getAllItems',
         developer: "Ziad",
       );
@@ -69,7 +71,7 @@ class DashboardNetwork implements EduconnectNetwork {
       Map<String, dynamic> data = model.toMap();
       Madpoly.print(
         'request will be sent is >> update(), '
-        'collection:$tableQueryData, ',
+        'tableQueryData: $tableQueryData',
         tag: 'dashboard_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
@@ -79,7 +81,8 @@ class DashboardNetwork implements EduconnectNetwork {
           .from(tableQueryData.tableName!)
           .insert(data);
       Madpoly.print(
-        credentialCollection,
+        'credentialCollection =',
+        inspectObject: credentialCollection,
         tag: 'dashboard_network > add',
         developer: "Ziad",
       );
@@ -111,7 +114,8 @@ class DashboardNetwork implements EduconnectNetwork {
       Madpoly.print(
         'request will be sent is >> update(), '
         'table: ${tableQueryData.tableName}, '
-        'data = $data',
+        'data = ',
+        inspectObject: data,
         tag: 'dashboard_network > update',
         // color: MadpolyColor.purple,
         isLog: true,
@@ -122,7 +126,8 @@ class DashboardNetwork implements EduconnectNetwork {
           .update(data)
           .match(model.idToMap());
       Madpoly.print(
-        credentialCollection,
+        'credentialCollection= ',
+        inspectObject: credentialCollection,
         tag: 'dashboard_network > update',
         developer: "Ziad",
       );
@@ -151,8 +156,8 @@ class DashboardNetwork implements EduconnectNetwork {
       }
       Madpoly.print(
         'request will be sent is >> delete(), '
-        'collection:$tableQueryData, '
-        'document:${model.id},',
+        'tableQueryData: $tableQueryData, ',
+        inspectObject: model,
         tag: 'dashboard_network > deleteItem',
         isLog: true,
         // color: MadpolyColor.purple,
@@ -163,7 +168,8 @@ class DashboardNetwork implements EduconnectNetwork {
           .delete()
           .match({'id': model.id});
       Madpoly.print(
-        credentialCollection,
+        'credentialCollection= ',
+        inspectObject: credentialCollection,
         tag: 'dashboard_network > delete',
         developer: "Ziad",
       );

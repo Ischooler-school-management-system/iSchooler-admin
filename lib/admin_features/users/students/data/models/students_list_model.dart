@@ -1,10 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import '../../../../../common/educonnect_model.dart';
-import '../../../users_list_model.dart';
 import 'student_model.dart';
 
-class StudentsListModel extends UsersListModel {
+class StudentsListModel extends EduconnectModelList {
   const StudentsListModel({required super.items});
   factory StudentsListModel.empty() {
     return const StudentsListModel(items: []);
@@ -17,6 +16,11 @@ class StudentsListModel extends UsersListModel {
     );
     return StudentsListModel(items: items);
   }
+  factory StudentsListModel.dummy() {
+    return StudentsListModel(
+        items: List.generate(3, (index) => StudentModel.dummy()));
+  }
+
   @override
   Map<String, dynamic> toMap() {
     return {

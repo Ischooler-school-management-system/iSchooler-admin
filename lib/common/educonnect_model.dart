@@ -2,43 +2,33 @@
 import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 import 'package:equatable/equatable.dart';
 import 'package:school_admin/common/madpoly.dart';
-
-import '../admin_features/classes/data/models/class_model.dart';
-import '../admin_features/classes/data/models/classes_list_model.dart';
-import '../admin_features/dashboard/data/models/all_models.dart';
-import '../admin_features/grades/data/models/grade_model.dart';
-import '../admin_features/grades/data/models/grades_list_model.dart';
-import '../admin_features/users/admins/data/models/admin_model.dart';
-import '../admin_features/users/admins/data/models/admins_list_model.dart';
-import '../admin_features/users/instructor/data/models/instructor_model.dart';
-import '../admin_features/users/instructor/data/models/instructors_list_model.dart';
-import '../admin_features/users/students/data/models/student_model.dart';
-import '../admin_features/users/students/data/models/students_list_model.dart';
+import 'package:school_admin/admin_features//models.dart';
+import 'package:school_admin/admin_features/list_models.dart';
 
 class EduconnectModel extends Equatable {
   final String id;
   final String name;
-  final DateTime createdAt;
+  // final DateTime createdAt;
 
   const EduconnectModel({
     required this.id,
     this.name = '',
-    required this.createdAt,
+    // required this.createdAt,
   });
 
   factory EduconnectModel.empty() {
-    return EduconnectModel(
+    return const EduconnectModel(
       id: '-1',
       name: 'name',
-      createdAt: DateTime(5000),
+      // createdAt: DateTime(5000),
     );
   }
 
   factory EduconnectModel.dummy() {
-    return EduconnectModel(
+    return const EduconnectModel(
       id: '-1',
       name: 'name',
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
     );
   }
 
@@ -46,15 +36,17 @@ class EduconnectModel extends Equatable {
     return EduconnectModel(
       id: map['id'].toString(),
       name: map['name'],
-      createdAt: DateTime.parse(map['created_at']),
+      // createdAt: DateTime.parse(map['created_at']),
     );
   }
 
-  Map<String, dynamic> toMap() => {
-        'id': id,
-        'name': name,
-        'created_at': createdAt.toIso8601String(),
-      };
+  Map<String, dynamic> toMap() {
+    return {
+      // 'id': id,
+      'name': name,
+      // 'created_at': createdAt.toIso8601String(),
+    };
+  }
 
   Map<String, dynamic> idToMap() {
     var idString = 'id';
@@ -66,7 +58,8 @@ class EduconnectModel extends Equatable {
 
   Map<String, dynamic> toMapFromChild() {
     Madpoly.print(
-      'model = $this',
+      'model = $runtimeType',
+      inspectObject: this,
       tag: 'EduconnectModel > toMapFromChild',
       developer: "Ziad",
     );
@@ -104,17 +97,37 @@ class EduconnectModel extends Equatable {
   }
 
   Map<String, dynamic> toDisplayMap() => {'name': name, 'id': id};
+  /*  UserModel? getUserModel() {
+    UserModel? userModel;
+    if (this is StudentModel) {
+      userModel = (this as StudentModel).userModel;
+      // return (this as StudentModel).toMap();
+    } else if (this is AdminModel) {
+      userModel = (this as AdminModel).userModel;
 
+      // return (this as AdminModel).toMap();
+    } else if (this is InstructorModel) {
+      userModel = (this as InstructorModel).userModel;
+
+      // return (this as InstructorModel).toMap();
+    }
+    return userModel;
+  }
+ */
   EduconnectModel copyWith({String? name}) {
     return EduconnectModel(
       id: id,
       name: name ?? this.name,
-      createdAt: createdAt,
+      // // createdAt: createdAt,
     );
   }
 
   @override
-  List<Object?> get props => [id, name, createdAt];
+  List<Object?> get props => [
+        id,
+        name,
+        // createdAt,
+      ];
 }
 
 class EduconnectModelList extends Equatable {

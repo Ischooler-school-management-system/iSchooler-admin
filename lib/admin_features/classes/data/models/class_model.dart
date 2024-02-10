@@ -8,7 +8,7 @@ class ClassModel extends EduconnectModel {
     required super.id,
     required super.name,
     required this.grade,
-    required super.createdAt,
+    // required super.createdAt,
   });
 
   factory ClassModel.empty() {
@@ -16,7 +16,7 @@ class ClassModel extends EduconnectModel {
       id: '-1',
       name: '',
       grade: GradeModel.empty(),
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
     );
   }
 
@@ -25,7 +25,7 @@ class ClassModel extends EduconnectModel {
       id: '1',
       name: 'Class 1',
       grade: GradeModel.dummy(),
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
     );
   }
 
@@ -34,7 +34,7 @@ class ClassModel extends EduconnectModel {
       id: map['id'].toString(),
       name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
-      createdAt: DateTime.now(),
+      // createdAt: DateTime.now(),
     );
   }
 
@@ -63,7 +63,7 @@ class ClassModel extends EduconnectModel {
       id: id,
       name: name ?? this.name,
       grade: grade ?? this.grade,
-      createdAt: createdAt,
+      // // createdAt: createdAt,
     );
   }
 }
