@@ -13,23 +13,6 @@ abstract class EduconnectCubit extends Cubit<EduconnectState> {
   Future<void> deleteItem({required EduconnectModel model});
 }
 
-abstract class EduconnectRepository {
-  //model is sent here to get the type of request only
-  Future<EduconnectModelList> getAllItems({required EduconnectModelList model});
-  Future<bool> addItem(
-      {required EduconnectModel model, required bool addWithId});
-  Future<bool> updateItem({required EduconnectModel model});
-  Future<bool> deleteItem({required EduconnectModel model});
-}
-
-abstract class EduconnectNetwork {
-  //model is sent here to get the type of request only
-  Future<EduconnectResponse> getAllItems({required EduconnectModelList model});
-  Future<bool> addItem({required EduconnectModel model});
-  Future<bool> updateItem({required EduconnectModel model});
-  Future<bool> deleteItem({required EduconnectModel model});
-}
-
 enum EduconnectStatus { init, updated, loaded, failed }
 // @immutable
 
@@ -70,4 +53,21 @@ class EduconnectState extends Equatable {
 
   @override
   List<Object> get props => [educonnectAllModel];
+}
+
+abstract class EduconnectRepository {
+  //model is sent here to get the type of request only
+  Future<EduconnectModelList> getAllItems({required EduconnectModelList model});
+  Future<bool> addItem(
+      {required EduconnectModel model, required bool addWithId});
+  Future<bool> updateItem({required EduconnectModel model});
+  Future<bool> deleteItem({required EduconnectModel model});
+}
+
+abstract class EduconnectNetwork {
+  //model is sent here to get the type of request only
+  Future<EduconnectResponse> getAllItems({required EduconnectModelList model});
+  Future<bool> addItem({required EduconnectModel model});
+  Future<bool> updateItem({required EduconnectModel model});
+  Future<bool> deleteItem({required EduconnectModel model});
 }
