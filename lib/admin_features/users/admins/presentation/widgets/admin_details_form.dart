@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/comon_features/widgets/educonnect_date_field.dart';
+import '../../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/educonnect_assets.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
@@ -10,7 +12,6 @@ import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.da
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../../admin_roles/data/models/admin_role_model.dart';
 import '../../../admin_roles/logic/admin_roles_list_cubit/admin_roles_list_cubit.dart';
-import '../../../user_details_form.dart';
 import '../../../user_model.dart';
 import '../../data/models/admin_model.dart';
 
@@ -27,7 +28,6 @@ class AdminDetailsForm extends StatefulWidget {
 
 class _AdminDetailsFormState extends State<AdminDetailsForm> {
   final _formKey = GlobalKey<FormState>();
-  final GlobalKey<FormState> _userFormKey = GlobalKey<FormState>();
   // Use Adminmodel to store form data
   AdminModel adminData = AdminModel.dummy();
   bool editingModel = false;
@@ -51,10 +51,114 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          UserDetailsForm(
-            currentUserData: adminData,
-            onSaved: onUserDataSaved,
-            formKey: _userFormKey,
+          SizedBox(
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(EduconnectAssets.blankProfileImage),
+            ),
+          ),
+
+          /// name
+          EduconnectTextField(
+            initialValue: adminData.name,
+            labelText: 'Name',
+            validator: EduconnectValidations.nameValidator,
+            onSaved: (value) {
+              adminData = adminData.copyWith(name: value);
+              // setState(() {});
+            },
+          ),
+
+          /// Email Address
+          EduconnectTextField(
+            // initialValue: 'test',
+            initialValue: adminData.email,
+
+            labelText: 'Email Address',
+
+            validator: EduconnectValidations.emailValidator,
+
+            onSaved: (value) {
+              adminData = adminData.copyWith(email: value);
+              // setState(() {});
+            },
+          ),
+
+          /// Date of Birth
+          EduconnectDateField(
+            initialValue:
+                EduconnectDateTimeHelper.format(adminData.dateOfBirth),
+            labelText: 'Date of Birth',
+            onTap: (date) {
+              adminData = adminData.copyWith(dateOfBirth: date);
+              setState(() {});
+            },
+          ),
+          //  Todo: create a ui to select user gender
+          /// Gender
+          EduConnectDropdownWidget(
+            labelText: 'Gender',
+            // value: ,
+            hint: adminData.gender,
+            onChanged: (value) {
+              Madpoly.print(
+                'gender after update = ',
+                inspectObject: value,
+                tag: 'user_details_form > ',
+                developer: "Ziad",
+              );
+              adminData = adminData.copyWith(gender: value);
+              setState(() {});
+            },
+            options: const ['Male', 'Female'],
+          ),
+
+          /// Role
+          EduConnectDropdownWidget(
+            labelText: 'Role',
+            // value: ,
+            hint: adminData.role.name,
+            onChanged: (value) {
+              setState(() {
+                adminData = adminData.copyWith(gender: value);
+              });
+            },
+            options: const ['Admin', 'Instructor', 'Student'],
+          ),
+
+          /// Phone Number
+          EduconnectTextField(
+            // initialValue: '01111',
+            initialValue: adminData.phoneNumber,
+
+            labelText: 'Phone Number',
+            validator: (value) {
+              // Add phone number validation if needed
+              return null;
+            },
+            onSaved: (value) {
+              adminData = adminData.copyWith(phoneNumber: value);
+              // setState(() {});
+            },
+          ),
+
+          /// Address
+          EduconnectTextField(
+            initialValue: adminData.address,
+
+            // initialValue: 'test',
+            labelText: 'Address',
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Please enter Address';
+              }
+              return null;
+            },
+            onSaved: (value) {
+              adminData = adminData.copyWith(address: value);
+              // setState(() {});
+            },
           ),
 
           /// Admin Role
@@ -103,7 +207,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
     );
   }
 
-  onUserDataSaved(UserModel user) {
+  onadminDataSaved(UserModel user) {
     adminData = adminData.copyFromUser(user);
   }
 
