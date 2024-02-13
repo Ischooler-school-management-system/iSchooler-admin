@@ -31,9 +31,10 @@ class GradeModel extends EduconnectModel {
   }
 
   factory GradeModel.fromMap(Map<String, dynamic> map) {
+    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
     return GradeModel(
-      id: map['id'].toString(),
-      name: map['name'] ?? '',
+      id: educonnectModel.id,
+      name: educonnectModel.name,
       // createdAt: DateTime.now(),
     );
   }

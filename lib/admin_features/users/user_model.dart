@@ -1,5 +1,6 @@
 import '../../common/educonnect_constants.dart';
 import '../../common/educonnect_model.dart';
+import '../../common/functions/educonnect_date_time_helper.dart';
 import '../../common/functions/truncate_dashboard_map.dart';
 
 enum UserRole { admin, instructor, student, none }
@@ -56,31 +57,20 @@ class UserModel extends EduconnectModel {
     );
   }
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    UserRole userRole = UserRole.none;
-    switch (map['user_role_id']) {
-      case 1:
-        userRole = UserRole.admin;
-        break;
-      case 2:
-        userRole = UserRole.instructor;
-        break;
-      case 3:
-        userRole = UserRole.student;
-        break;
-      default:
-        userRole = UserRole.none;
-    }
+    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    // return StudentModel(
     return UserModel(
-      id: map['id'].toString(),
-      name: map['name'] ?? '',
+      id: educonnectModel.id,
+      name: educonnectModel.name,
+
       // createdAt: DateTime.parse(map['created_at']),
-      dateOfBirth: DateTime.parse(map['date_of_birth'] ??
-          DateTime(5000)), // no 'dateOfBirth' in provided JSON
+      // dateOfBirth: DateTime.now(),
+      dateOfBirth: EduconnectDateTimeHelper.fromMapItem(map['date_of_birth']),
       phoneNumber: map['phone_number'] ?? '',
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
       email: map['email'] ?? '',
-      role: userRole,
+      role: UserRole.none,
       profilePicture: map['profile_picture'] ?? '',
     );
   }
@@ -92,7 +82,7 @@ class UserModel extends EduconnectModel {
       'name': name,
       'email': email,
       'gender': gender,
-      // 'date_of_birth': dateOfBirth?.toIso8601String(),
+      'date_of_birth': dateOfBirth?.toIso8601String(),
       'phone_number': phoneNumber,
       'address': address,
       'profile_picture': profilePicture,

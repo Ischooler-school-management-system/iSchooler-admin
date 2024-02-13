@@ -1,3 +1,4 @@
+import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../user_model.dart';
 import 'admin_role.dart';
 
@@ -15,9 +16,9 @@ class AdminModel extends UserModel {
     required super.email,
     required super.role,
     required super.profilePicture,
+    required super.dateOfBirth,
     required this.specialization,
     required this.hireDate,
-    required super.dateOfBirth,
     required this.adminRole,
   });
 
@@ -38,6 +39,20 @@ class AdminModel extends UserModel {
     );
   }
 
+  AdminModel copyFromUser(UserModel userModel) {
+    return copyWith(
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
+    );
+  }
+
   factory AdminModel.dummy() {
     return AdminModel(
       id: '123456',
@@ -54,31 +69,31 @@ class AdminModel extends UserModel {
       adminRole: AdminRole.dummy(),
     );
   }
-
   factory AdminModel.fromMap(Map<String, dynamic> map) {
+    var userModel = UserModel.fromMap(map).copyWith(role: UserRole.admin);
+
     return AdminModel(
-      id: map['id'].toString(),
-      name: map['name'] ?? '',
-      phoneNumber: map['phone_number'] ?? '',
-      address: map['address'] ?? '',
-      gender: map['gender'] ?? '',
-      email: map['email'] ?? '',
-      role: UserRole.admin,
-      profilePicture: map['profile_picture'] ?? '',
-      specialization: map['specialization'] ?? '',
-      hireDate: DateTime.parse(map['hire_date'] ?? ''),
-      dateOfBirth: DateTime.parse(map['date_of_birth'] ?? ''),
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
+      hireDate: EduconnectDateTimeHelper.fromMapItem(map['hire_date']),
       adminRole: AdminRole.fromMap(map['admin_role'] ?? {}),
+      specialization: map['specialization'] ?? '',
     );
   }
-
   @override
   Map<String, dynamic> toMap() {
     var map = super.toMap();
     map.addAll({
       'specialization': specialization,
       'hire_date': hireDate.toIso8601String(),
-      'admin_role': adminRole.toMap(),
+      'admin_role_id': adminRole.id,
     });
     return map;
   }

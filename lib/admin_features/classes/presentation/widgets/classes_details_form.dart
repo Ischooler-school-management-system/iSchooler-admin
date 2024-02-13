@@ -50,8 +50,6 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
           EduconnectTextField(
             initialValue: classData.id,
             labelText: 'Class ID',
-
-            // validator: EduconnectValidations.nameValidator,
           ),
           EduconnectTextField(
             initialValue: classData.name,
@@ -64,72 +62,18 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
             },
           ),
           DashboardDropDownWidget<GradesListCubit>(
+              value: classData.grade.name,
+              labelText: 'Grade',
               onChanged: (EduconnectModel value) {
-            Madpoly.print(
-              'Grade model = $value',
-              tag:
-                  'student_details_form > DashboardDropDownWidget<GradesListCubit>',
-              developer: "Ziad",
-            );
-            classData = classData.copyWith(grade: value as GradeModel);
-            setState(() {});
-          }),
-          /*
-          EduconnectTextField(
-            initialValue: classData.email,
-            labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
-            onSaved: (value) {
-              setState(() {
-                classData = classData.copyWith(userName: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            // initialValue: classData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(classData.dateOfBirth),
-            labelText: 'Date of Birth',
-            validator: (value) {
-              // Add validation logic for date of birth if needed
-              return null;
-            },
-            onSaved: (value) {
-              // Convert the value to DateTime and assign it to dateOfBirth
-              // You may want to use a DatePicker for a better user experience
-              setState(() {
-                classData =
-                    classData.copyWith(dateOfBirth: DateTime.parse(value));
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: classData.phoneNumber,
-            labelText: 'Phone Number',
-            validator: (value) {
-              // Add phone number validation if needed
-              return null;
-            },
-            onSaved: (value) {
-              setState(() {
-                classData = classData.copyWith(phoneNumber: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: classData.address,
-            labelText: 'Address',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter Address';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              setState(() {
-                classData = classData.copyWith(address: value);
-              });
-            },
-          ), */
+                Madpoly.print(
+                  'Grade model = $value',
+                  tag:
+                      'student_details_form > DashboardDropDownWidget<GradesListCubit>',
+                  developer: "Ziad",
+                );
+                classData = classData.copyWith(grade: value as GradeModel);
+                setState(() {});
+              }),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),

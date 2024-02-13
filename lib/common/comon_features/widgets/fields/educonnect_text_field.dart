@@ -14,9 +14,10 @@ class EduconnectTextField extends StatelessWidget {
   final int maxLines;
   //final TextEditingController textController;
   final Function(String?)? onSaved;
+  final Function(String)? onChanged;
+  final Function()? onTap;
   final Function(String?)? onFieldSubmitted;
   final void Function()? onEditingComplete;
-  final Function(String)? onChanged;
   final String? Function(String?)? validator;
   final bool isObscureText;
   final bool hasBorder;
@@ -57,6 +58,7 @@ class EduconnectTextField extends StatelessWidget {
     this.onEditingComplete,
     this.textDirection,
     this.enabled,
+    this.onTap,
   });
 
   OutlineInputBorder buildBorder({Color? color}) {
@@ -123,7 +125,7 @@ class EduconnectTextField extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
             selectionHeightStyle: BoxHeightStyle.max,
-
+            onTap: onTap,
             enabled: enabled,
             textDirection: textDirection,
             textAlign:

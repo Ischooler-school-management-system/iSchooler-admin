@@ -13,7 +13,7 @@ import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
 import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
 import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
 import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
-import '../../logic/cubit/all_cubit.dart';
+import '../../logic/cubit/educonnect_cubit.dart';
 import '../veiws/dashboard_mobile_veiw.dart';
 import '../veiws/dashboard_web_veiw.dart';
 import 'dashboard_details_screen.dart';

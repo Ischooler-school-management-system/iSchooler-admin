@@ -4,7 +4,8 @@ import '../../../../common/educonnect_model.dart';
 import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_network_helper.dart';
 import '../../../../common/network/educonnect_response.dart';
-import '../../logic/cubit/all_cubit.dart';
+import '../../../../common/network/educonnect_tables.dart';
+import '../../logic/cubit/educonnect_cubit.dart';
 
 class DashboardNetwork implements EduconnectNetwork {
   final AlertHandlingRepository _alertHandlingRepository;
@@ -17,13 +18,14 @@ class DashboardNetwork implements EduconnectNetwork {
       {required EduconnectModelList model}) async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
-      ({String? selectQuery, String? tableName}) tableQueryData =
+      DatabaseTable tableQueryData =
           EduconnectNetworkHelper.getTableQueryData(model);
 
-      if (tableQueryData.tableName == null) {
-        if (tableQueryData.tableName == null) {
-          throw Exception('unable to get (model = $model) data');
-        }
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to get (model = $model) data',
+        );
       }
       /*  final CollectionReference<Map<String, dynamic>> reference =
           EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
@@ -38,8 +40,8 @@ class DashboardNetwork implements EduconnectNetwork {
       );
       final List<Map<String, dynamic>> query = await SupabaseCridentials
           .supabase
-          .from(tableQueryData.tableName!)
-          .select(tableQueryData.selectQuery!)
+          .from(tableQueryData.tableName)
+          .select(tableQueryData.selectQuery)
           .order('created_at');
       Madpoly.print(
         'query= ',
@@ -64,29 +66,34 @@ class DashboardNetwork implements EduconnectNetwork {
     bool dataStored = false;
     // String? docName = addWithId ? model.id : null;
     try {
-      var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
-      if (tableQueryData.tableName == null) {
-        throw Exception('unable to add (model = $model) data');
+      DatabaseTable tableQueryData =
+          EduconnectNetworkHelper.getTableQueryData(model);
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to add (model = $model) data',
+        );
       }
       Map<String, dynamic> data = model.toMap();
       Madpoly.print(
-        'request will be sent is >> update(), '
-        'tableQueryData: $tableQueryData',
+        'request will be sent is >> insert(), '
+        'tableQueryData: $tableQueryData, '
+        'data = $data',
         tag: 'dashboard_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
       );
-      final credentialCollection = await SupabaseCridentials.supabase
-          .from(tableQueryData.tableName!)
+      final response = await SupabaseCridentials.supabase
+          .from(tableQueryData.tableName)
           .insert(data);
       Madpoly.print(
-        'credentialCollection =',
-        inspectObject: credentialCollection,
+        'response =',
+        inspectObject: response,
         tag: 'dashboard_network > add',
         developer: "Ziad",
       );
-      // await credentialCollection.doc(model.id).set(model.toMap());
+      // await response.doc(model.id).set(model.toMap());
       dataStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
@@ -106,9 +113,13 @@ class DashboardNetwork implements EduconnectNetwork {
     bool dataUpdated = false;
     // String? docName = addWithId ? model.id : null;
     try {
-      var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
-      if (tableQueryData.tableName == null) {
-        throw Exception('unable to add (model = $model) data');
+      DatabaseTable tableQueryData =
+          EduconnectNetworkHelper.getTableQueryData(model);
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to update (model = $model) data',
+        );
       }
       Map<String, dynamic> data = model.toMapFromChild();
       Madpoly.print(
@@ -121,24 +132,24 @@ class DashboardNetwork implements EduconnectNetwork {
         isLog: true,
         developer: "Ziad",
       );
-      final credentialCollection = await SupabaseCridentials.supabase
-          .from(tableQueryData.tableName!)
+      final response = await SupabaseCridentials.supabase
+          .from(tableQueryData.tableName)
           .update(data)
           .match(model.idToMap());
       Madpoly.print(
-        'credentialCollection= ',
-        inspectObject: credentialCollection,
+        'response= ',
+        inspectObject: response,
         tag: 'dashboard_network > update',
         developer: "Ziad",
       );
-      // await credentialCollection.doc(model.id).set(model.toMap());
+      // await response.doc(model.id).set(model.toMap());
       dataUpdated = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
         /* developerMessage: */ e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_network > addData > catch',
+        tag: 'admin_network > update > catch',
         showToast: true,
       );
     }
@@ -150,9 +161,13 @@ class DashboardNetwork implements EduconnectNetwork {
   Future<bool> deleteItem({required EduconnectModel model}) async {
     bool dataDeleted = false;
     try {
-      var tableQueryData = EduconnectNetworkHelper.getTableQueryData(model);
-      if (tableQueryData.tableName == null) {
-        throw Exception('unable to delete (model = $model) data');
+      DatabaseTable tableQueryData =
+          EduconnectNetworkHelper.getTableQueryData(model);
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to delete (model = $model) data',
+        );
       }
       Madpoly.print(
         'request will be sent is >> delete(), '
@@ -163,13 +178,13 @@ class DashboardNetwork implements EduconnectNetwork {
         // color: MadpolyColor.purple,
         developer: "Ziad",
       );
-      final credentialCollection = await SupabaseCridentials.supabase
-          .from(tableQueryData.tableName!)
+      final response = await SupabaseCridentials.supabase
+          .from(tableQueryData.tableName)
           .delete()
           .match({'id': model.id});
       Madpoly.print(
-        'credentialCollection= ',
-        inspectObject: credentialCollection,
+        'response= ',
+        inspectObject: response,
         tag: 'dashboard_network > delete',
         developer: "Ziad",
       );

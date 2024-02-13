@@ -49,11 +49,7 @@ class EduconnectModel extends Equatable {
   }
 
   Map<String, dynamic> idToMap() {
-    var idString = 'id';
-    if (this is StudentModel || this is AdminModel || this is InstructorModel) {
-      idString = 'user_id';
-    }
-    return {idString: id};
+    return {'id': id};
   }
 
   Map<String, dynamic> toMapFromChild() {

@@ -5,12 +5,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../common/educonnect_model.dart';
-import '../../logic/cubit/all_cubit.dart';
+import '../../logic/cubit/educonnect_cubit.dart';
 
 class DashboardDropDownWidget<C extends EduconnectCubit>
     extends StatefulWidget {
   final Function(EduconnectModel) onChanged;
-  const DashboardDropDownWidget({super.key, required this.onChanged});
+  final String value;
+  final String labelText;
+  const DashboardDropDownWidget({
+    super.key,
+    required this.onChanged,
+    required this.value,
+    required this.labelText,
+  });
 
   @override
   State<DashboardDropDownWidget<C>> createState() =>
@@ -35,7 +42,8 @@ class _DashboardDropDownWidgetState<C extends EduconnectCubit>
           educonnectAllModel = state.educonnectAllModel;
         }
         return EduConnectDropdownWidget(
-          labelText: 'Grade',
+          labelText: widget.labelText,
+          hint: widget.value,
           onChanged: (value) {
             setState(() {
               if (value != null && value != '') {

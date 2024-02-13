@@ -3,7 +3,7 @@ import '../../../../common/comon_features/alert_handling/data/repo/alert_handlin
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_response.dart';
-import '../../logic/cubit/all_cubit.dart';
+import '../../logic/cubit/educonnect_cubit.dart';
 import '../network/dashboard_network.dart';
 
 class DashboardRepository implements EduconnectRepository {

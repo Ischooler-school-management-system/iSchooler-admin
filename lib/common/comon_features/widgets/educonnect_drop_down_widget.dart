@@ -2,7 +2,6 @@ import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../common/madpoly.dart';
 import '../../educonnect_constants.dart';
 import '../../style/educonnect_colors.dart';
 import '../../style/educonnect_text_theme.dart';
@@ -34,15 +33,12 @@ class EduConnectDropdownWidget extends StatefulWidget {
 
 class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
   String? selectedValue;
-  bool isValidValue(value) => widget.options.contains(value);
+  bool isValidValue(value) {
+    return widget.options.contains(value);
+  }
 
   String? validator(value) {
     final bool validValue = isValidValue(value);
-    Madpoly.print(
-      'widget.value = ${widget.value}',
-      tag: "_DropdownButtonWidgetState > build",
-      developer: 'ziad',
-    );
     if (value == null || !validValue) {
       // SmartDialog.showToast(EduconnectConstants.localization().select_option_prompt);
       return EduconnectConstants.localization().select_option_prompt;
@@ -88,6 +84,24 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
     );
   }
 
+  void onChanged(value) => setState(() {
+        selectedValue = value;
+        widget.onChanged(value);
+      });
+
+  DropdownMenuItem<String> itemWidget(String item) {
+    return DropdownMenuItem<String>(
+      value: item,
+      child: Text(
+        item,
+        style: EduconnectConstants.textTheme.labelMedium!.copyWith(
+          fontFamily: GoogleFonts.poppins().fontFamily,
+          color: EduconnectColors.blue,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final bool validValue = isValidValue(selectedValue);
@@ -95,24 +109,6 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
       setState(() {
         selectedValue = null;
       });
-    }
-
-    void onChanged(value) => setState(() {
-          selectedValue = value;
-          widget.onChanged(value);
-        });
-
-    DropdownMenuItem<String> itemWidget(String item) {
-      return DropdownMenuItem<String>(
-        value: item,
-        child: Text(
-          item,
-          style: EduconnectConstants.textTheme.labelMedium!.copyWith(
-            fontFamily: GoogleFonts.poppins().fontFamily,
-            color: EduconnectColors.blue,
-          ),
-        ),
-      );
     }
 
     List<DropdownMenuItem<String>> dropDownItems;
@@ -153,9 +149,9 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
             hint: (widget.hint != null)
                 ? Text(
                     widget.hint!,
-                    style: EduconnectConstants.textTheme.labelMedium!.copyWith(
+                    style: EduconnectConstants.textTheme.labelLarge!.copyWith(
                       fontFamily: GoogleFonts.poppins().fontFamily,
-                      color: EduconnectColors.light_grey,
+                      // color: EduconnectColors.light_grey,
                     ),
                   )
                 : null,

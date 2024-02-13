@@ -6,7 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../../classes/data/models/class_model.dart';
 import '../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import '../../../classes/presentation/widgets/classes_details_form.dart';
-import '../../../dashboard/logic/cubit/all_cubit.dart';
+import '../../logic/cubit/educonnect_cubit.dart';
 import '../../../grades/data/models/grade_model.dart';
 import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
 import '../../../grades/presentation/widgets/grade_details_form.dart';

@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../common/comon_features/widgets/educonnect_date_field.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/functions/educonnect_date_formatter.dart';
+import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
+import '../../../user_details_form.dart';
+import '../../../user_model.dart';
 import '../../data/models/admin_model.dart';
 
 class AdminDetailsForm extends StatefulWidget {
@@ -21,7 +24,7 @@ class AdminDetailsForm extends StatefulWidget {
 
 class _AdminDetailsFormState extends State<AdminDetailsForm> {
   final _formKey = GlobalKey<FormState>();
-
+  final GlobalKey<FormState> _userFormKey = GlobalKey<FormState>();
   // Use Adminmodel to store form data
   AdminModel adminData = AdminModel.dummy();
   bool editingModel = false;
@@ -45,75 +48,70 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
+          UserDetailsForm(
+            currentUserData: adminData,
+            onSaved: onUserDataSaved,
+            formKey: _userFormKey,
+          ),
+
+          /// Admin Role
+          // to view role until cubit is created
           EduconnectTextField(
-            initialValue: adminData.name,
-            labelText: 'name',
+            initialValue: adminData.adminRole.name,
+            labelText: 'Admin Role',
             validator: EduconnectValidations.nameValidator,
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(name: value);
-              });
-            },
+            /*  onSaved: (value) {
+              adminData = adminData.copyWith(adminRole: value);
+              // setState(() {});
+            }, */
           ),
-          EduconnectTextField(
-            initialValue: adminData.email,
-            labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(name: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            // initialValue: adminData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(adminData.dateOfBirth),
-            labelText: 'Date of Birth',
-            validator: (value) {
-              // Add validation logic for date of birth if needed
-              return null;
-            },
-            onChanged: (value) {
-              // Convert the value to DateTime and assign it to dateOfBirth
-              // You may want to use a DatePicker for a better user experience
-              setState(() {
+          //  Todo: create AdminRoles logic folder
+
+          /* DashboardDropDownWidget<AdminRolesListCubit>(
+              value: adminData.adminRole.name,
+              labelText: 'Class',
+              onSaved: (EduconnectModel value) {
+                Madpoly.print(
+                  'class model = $value',
+                  tag:
+                      'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
+                  developer: "Ziad",
+                );
                 adminData =
-                    adminData.copyWith(dateOfBirth: DateTime.parse(value));
-              });
+                    adminData.copyWith(adminRole: value as AdminRoleModel);
+                setState(() {});
+              }),
+           */
+
+          /// specialization
+          EduconnectTextField(
+            initialValue: adminData.specialization,
+            labelText: 'Specialization',
+            validator: EduconnectValidations.nameValidator,
+            onSaved: (value) {
+              adminData = adminData.copyWith(specialization: value);
+              // setState(() {});
             },
           ),
-          EduconnectTextField(
-            initialValue: adminData.phoneNumber,
-            labelText: 'Phone Number',
-            validator: (value) {
-              // Add phone number validation if needed
-              return null;
-            },
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(phoneNumber: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: adminData.address,
-            labelText: 'Address',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter Address';
-              }
-              return null;
-            },
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(address: value);
-              });
+
+          /// hireDate
+          EduconnectDateField(
+            initialValue:
+                EduconnectDateTimeHelper.format(adminData.dateOfBirth),
+            labelText: 'Hire Date',
+            onTap: (date) {
+              adminData = adminData.copyWith(hireDate: date);
+              setState(() {});
             },
           ),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),
     );
+  }
+
+  onUserDataSaved(UserModel user) {
+    adminData = adminData.copyFromUser(user);
   }
 
   onSubmitButtonPressed() {

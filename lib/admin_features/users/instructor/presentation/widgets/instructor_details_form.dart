@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../../../../common/comon_features/widgets/educonnect_date_field.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/functions/educonnect_date_formatter.dart';
+import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
+import '../../../user_details_form.dart';
+import '../../../user_model.dart';
 import '../../data/models/instructor_model.dart';
 
 class InstructorDetailsForm extends StatefulWidget {
@@ -21,6 +24,7 @@ class InstructorDetailsForm extends StatefulWidget {
 
 class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
   final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _userFormKey = GlobalKey<FormState>();
 
   // Use Instructormodel to store form data
   InstructorModel instructorData = InstructorModel.dummy();
@@ -45,75 +49,41 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
+          UserDetailsForm(
+            currentUserData: instructorData,
+            onSaved: onUserDataSaved,
+            formKey: _userFormKey,
+          ),
+
+          /// specialization
           EduconnectTextField(
-            initialValue: instructorData.name,
-            labelText: 'Display Name',
+            initialValue: instructorData.specialization,
+            labelText: 'Specialization',
             validator: EduconnectValidations.nameValidator,
-            onChanged: (value) {
-              setState(() {
-                instructorData = instructorData.copyWith(name: value);
-              });
+            onSaved: (value) {
+              instructorData = instructorData.copyWith(specialization: value);
+              // setState(() {});
             },
           ),
-          EduconnectTextField(
-            initialValue: instructorData.email,
-            labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
-            onChanged: (value) {
-              setState(() {
-                instructorData = instructorData.copyWith(name: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            // initialValue: instructorData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(instructorData.dateOfBirth),
-            labelText: 'Date of Birth',
-            validator: (value) {
-              // Add validation logic for date of birth if needed
-              return null;
-            },
-            onChanged: (value) {
-              // Convert the value to DateTime and assign it to dateOfBirth
-              // You may want to use a DatePicker for a better user experience
-              setState(() {
-                instructorData =
-                    instructorData.copyWith(dateOfBirth: DateTime.parse(value));
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: instructorData.phoneNumber,
-            labelText: 'Phone Number',
-            validator: (value) {
-              // Add phone number validation if needed
-              return null;
-            },
-            onChanged: (value) {
-              setState(() {
-                instructorData = instructorData.copyWith(phoneNumber: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: instructorData.address,
-            labelText: 'Address',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter Address';
-              }
-              return null;
-            },
-            onChanged: (value) {
-              setState(() {
-                instructorData = instructorData.copyWith(address: value);
-              });
+
+          /// hireDate
+          EduconnectDateField(
+            initialValue:
+                EduconnectDateTimeHelper.format(instructorData.dateOfBirth),
+            labelText: 'Hire Date',
+            onTap: (date) {
+              instructorData = instructorData.copyWith(hireDate: date);
+              setState(() {});
             },
           ),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),
     );
+  }
+
+  onUserDataSaved(UserModel user) {
+    instructorData = instructorData.copyFromUser(user);
   }
 
   onSubmitButtonPressed() {

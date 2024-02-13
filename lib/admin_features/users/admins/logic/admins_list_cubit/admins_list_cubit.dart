@@ -2,13 +2,13 @@ import '../../../../../common/comon_features/loading/data/models/loading_model.d
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../dashboard/logic/cubit/all_cubit.dart';
+import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';
 import '../../data/models/admins_list_model.dart';
 import '../../../../dashboard/data/repo/dashboard_repo.dart';
 
 part 'admins_list_state.dart';
 
-class AdminsListCubit extends EduconnectCubit {
+class AdminsListCubit extends EduconnectCubit<AdminsListState> {
   final DashboardRepository _adminRepository;
   final LoadingRepository _loadingRepository;
 
@@ -25,8 +25,8 @@ class AdminsListCubit extends EduconnectCubit {
     EduconnectModelList response =
         //model is sent here to get the type of request only
         await _adminRepository.getAllItems(model: AdminsListModel.empty());
-    if (state is AdminsListState && response is AdminsListModel) {
-      emit((state as AdminsListState).updateAllAdmins(response));
+    if (response is AdminsListModel) {
+      emit(state.updateAllAdmins(response));
     } else {
       Madpoly.print(
         'incorrect model >> ${response.runtimeType}',

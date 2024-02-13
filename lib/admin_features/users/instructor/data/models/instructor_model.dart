@@ -1,3 +1,4 @@
+import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../user_model.dart';
 
 class InstructorModel extends UserModel {
@@ -34,7 +35,7 @@ class InstructorModel extends UserModel {
     );
   }
   factory InstructorModel.fromMap(Map<String, dynamic> map) {
-    var userModel = UserModel.fromMap(map);
+    var userModel = UserModel.fromMap(map).copyWith(role: UserRole.instructor);
     return InstructorModel(
       id: userModel.id,
       name: userModel.name,
@@ -45,8 +46,23 @@ class InstructorModel extends UserModel {
       role: UserRole.instructor,
       profilePicture: userModel.profilePicture,
       specialization: map['specialization'] ?? '',
-      hireDate: DateTime.parse(map['hire_date'] ?? ''),
+      // hireDate: DateTime.now(),
+      hireDate: EduconnectDateTimeHelper.fromMapItem((map['hire_date'] ?? '')),
       dateOfBirth: userModel.dateOfBirth,
+    );
+  }
+
+  InstructorModel copyFromUser(UserModel userModel) {
+    return copyWith(
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
     );
   }
 

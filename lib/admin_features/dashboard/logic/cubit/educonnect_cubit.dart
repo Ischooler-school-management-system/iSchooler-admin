@@ -4,7 +4,7 @@ import 'package:school_admin/common/network/educonnect_response.dart';
 
 import '../../../../common/educonnect_model.dart';
 
-abstract class EduconnectCubit extends Cubit<EduconnectState> {
+abstract class EduconnectCubit<S extends EduconnectState> extends Cubit<S> {
   EduconnectCubit(super.initialState);
 
   Future<void> getAllItems();

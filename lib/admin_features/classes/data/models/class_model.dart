@@ -30,9 +30,10 @@ class ClassModel extends EduconnectModel {
   }
 
   factory ClassModel.fromMap(Map<String, dynamic> map) {
+    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
     return ClassModel(
-      id: map['id'].toString(),
-      name: map['name'] ?? '',
+      id: educonnectModel.id,
+      name: educonnectModel.name,
       grade: GradeModel.fromMap(map['grade'] ?? {}),
       // createdAt: DateTime.now(),
     );
