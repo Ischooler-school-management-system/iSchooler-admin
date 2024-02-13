@@ -5,3 +5,4 @@ export 'package:school_admin/admin_features/users/instructor/data/models/instruc
 export 'package:school_admin/admin_features/users/students/data/models/students_list_model.dart';
 export 'package:school_admin/admin_features/users/users_list_model.dart';
 export 'package:school_admin/common/network/educonnect_network_helper.dart';
+export 'package:school_admin/admin_features/users/admin_roles/data/models/admin_roles_list_model.dart';

@@ -1,7 +1,7 @@
 import '../../common/educonnect_constants.dart';
 import '../../common/educonnect_model.dart';
 import '../../common/functions/educonnect_date_time_helper.dart';
-import '../../common/functions/truncate_dashboard_map.dart';
+import '../../common/madpoly.dart';
 
 enum UserRole { admin, instructor, student, none }
 
@@ -92,7 +92,7 @@ class UserModel extends EduconnectModel {
   }
 
   @override
-  Map<String, dynamic> toDisplayMap({int? limit}) {
+  Map<String, dynamic> toDisplayMap() {
     var map = {
       EduconnectConstants.localization().name: name,
       EduconnectConstants.localization().id: id,
@@ -100,7 +100,8 @@ class UserModel extends EduconnectModel {
       EduconnectConstants.localization().email: email,
     };
 
-    return truncateMap(map);
+    // return truncateMap(map);
+    return map;
   }
 
   @override
@@ -115,7 +116,7 @@ class UserModel extends EduconnectModel {
     UserRole? role,
     String? profilePicture,
   }) {
-    return UserModel(
+    var userModel = UserModel(
       id: id ?? this.id,
       name: name ?? this.name,
       // // createdAt: createdAt,
@@ -127,6 +128,13 @@ class UserModel extends EduconnectModel {
       role: role ?? this.role,
       profilePicture: profilePicture ?? this.profilePicture,
     );
+    Madpoly.print(
+      'userModel after update = ',
+      inspectObject: userModel,
+      tag: 'user_model > copyWith ',
+      developer: "Ziad",
+    );
+    return userModel;
   }
 
   @override

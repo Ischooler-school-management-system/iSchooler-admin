@@ -25,6 +25,10 @@ abstract class Madpoly {
     if (developer != null) message += "$developer :: ";
     // bool isInspect = msg is! String;
     message += msg.toString();
+    if (inspectObject != null) {
+      message += 'inspectObject: $inspectObject';
+    }
+
     if (color == null) {
       if (isLog == true) {
         color = MadpolyColor.yellow;
@@ -37,10 +41,8 @@ abstract class Madpoly {
       SmartDialog.showToast(msg.toString());
     }
     String formattedMessage = _formatLogMessage(message, color);
-    log(formattedMessage + inspectObject.toString());
-    // if (inspectObject != null) {
-    // inspect(inspectObject);
-    // }
+    log(formattedMessage);
+    inspect(inspectObject);
   }
 
   static String _formatLogMessage(String message, MadpolyColor? color) {

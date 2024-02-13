@@ -73,6 +73,15 @@ class StudentModel extends UserModel {
       paymentStatus: map['payment_status'] ?? false,
     );
   }
+  @override
+  Map<String, dynamic> toDisplayMap() {
+    return {
+      'Student Name': name,
+      'Class': classModel.name,
+      'Grade': classModel.grade.name,
+    };
+  }
+
   StudentModel copyFromUser(UserModel userModel) {
     return copyWith(
       id: userModel.id,

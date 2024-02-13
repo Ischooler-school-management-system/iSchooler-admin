@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:school_admin/admin_features/cubits.dart';
 import 'package:sidebarx/sidebarx.dart';
 
 import '../../../common/style/educonnect_colors.dart';
-import '../admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
 import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
-import '../admin_features/grades/logic/instructors_list_cubit/grades_list_cubit.dart';
-import '../admin_features/users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
-import '../admin_features/users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
-import '../admin_features/users/students/logic/students_list_cubit/students_list_cubit.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/comon_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';
@@ -41,6 +37,7 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
 
     final List<Widget> tabBodies = [
       const DashboardScreen<AdminsListCubit>(),
+      const DashboardScreen<AdminRolesListCubit>(),
       const DashboardScreen<InstructorsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<ClassesListCubit>(),

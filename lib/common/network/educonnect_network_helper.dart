@@ -21,6 +21,9 @@ class EduconnectNetworkHelper {
     }
     if (model is AdminModel || model is AdminsListModel) {
       return EduconnectTables.admin;
+    }
+    if (model is AdminRoleModel || model is AdminRolesListModel) {
+      return EduconnectTables.adminRole;
     } else if (model is InstructorModel || model is InstructorsListModel) {
       return EduconnectTables.instructor;
     } else if (model is GradeModel || model is GradesListModel) {

@@ -89,6 +89,10 @@ class ExampleSidebarX extends StatelessWidget {
       SidebarXItem(
         icon: Icons.admin_panel_settings,
         label: EduconnectConstants.localization().admins,
+      ), const SidebarXItem(
+        icon: Icons.admin_panel_settings,
+        // label: EduconnectConstants.localization().admins_roles,
+        label:'Admins Roles',
       ),
       SidebarXItem(
         icon: EduconnectIcons.teacher_7,

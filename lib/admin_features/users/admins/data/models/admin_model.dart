@@ -1,11 +1,12 @@
+import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../user_model.dart';
-import 'admin_role.dart';
+import '../../../admin_roles/data/models/admin_role_model.dart';
 
 class AdminModel extends UserModel {
   final String specialization;
   final DateTime hireDate;
-  final AdminRole adminRole;
+  final AdminRoleModel adminRole;
 
   const AdminModel({
     required super.id,
@@ -35,7 +36,7 @@ class AdminModel extends UserModel {
       profilePicture: '',
       specialization: '',
       hireDate: DateTime(2000),
-      adminRole: AdminRole.empty(),
+      adminRole: AdminRoleModel.empty(),
     );
   }
 
@@ -66,7 +67,7 @@ class AdminModel extends UserModel {
       profilePicture: 'path/to/profile_picture.jpg',
       specialization: 'IT',
       hireDate: DateTime(2022, 1, 1),
-      adminRole: AdminRole.dummy(),
+      adminRole: AdminRoleModel.dummy(),
     );
   }
   factory AdminModel.fromMap(Map<String, dynamic> map) {
@@ -83,7 +84,7 @@ class AdminModel extends UserModel {
       role: userModel.role,
       profilePicture: userModel.profilePicture,
       hireDate: EduconnectDateTimeHelper.fromMapItem(map['hire_date']),
-      adminRole: AdminRole.fromMap(map['admin_role'] ?? {}),
+      adminRole: AdminRoleModel.fromMap(map['admin_role'] ?? {}),
       specialization: map['specialization'] ?? '',
     );
   }
@@ -95,6 +96,20 @@ class AdminModel extends UserModel {
       'hire_date': hireDate.toIso8601String(),
       'admin_role_id': adminRole.id,
     });
+    return map;
+  }
+
+  @override
+  Map<String, dynamic> toDisplayMap() {
+    var map = {
+      EduconnectConstants.localization().name: name,
+      // EduconnectConstants.localization().id: id,
+      EduconnectConstants.localization().gender: gender,
+      'Admin Role': adminRole.name,
+      EduconnectConstants.localization().email: email,
+    };
+
+    // return truncateMap(map);
     return map;
   }
 
@@ -111,7 +126,7 @@ class AdminModel extends UserModel {
     String? profilePicture,
     String? specialization,
     DateTime? hireDate,
-    AdminRole? adminRole,
+    AdminRoleModel? adminRole,
   }) {
     return AdminModel(
       id: id ?? this.id,

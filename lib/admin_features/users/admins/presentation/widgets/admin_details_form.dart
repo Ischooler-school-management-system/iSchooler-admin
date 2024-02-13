@@ -6,7 +6,10 @@ import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../../common/madpoly.dart';
+import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
+import '../../../admin_roles/data/models/admin_role_model.dart';
+import '../../../admin_roles/logic/admin_roles_list_cubit/admin_roles_list_cubit.dart';
 import '../../../user_details_form.dart';
 import '../../../user_model.dart';
 import '../../data/models/admin_model.dart';
@@ -55,33 +58,23 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           ),
 
           /// Admin Role
-          // to view role until cubit is created
-          EduconnectTextField(
-            initialValue: adminData.adminRole.name,
-            labelText: 'Admin Role',
-            validator: EduconnectValidations.nameValidator,
-            /*  onSaved: (value) {
-              adminData = adminData.copyWith(adminRole: value);
-              // setState(() {});
-            }, */
-          ),
+
           //  Todo: create AdminRoles logic folder
 
-          /* DashboardDropDownWidget<AdminRolesListCubit>(
+          DashboardDropDownWidget<AdminRolesListCubit>(
               value: adminData.adminRole.name,
               labelText: 'Class',
-              onSaved: (EduconnectModel value) {
+              onChanged: (EduconnectModel value) {
                 Madpoly.print(
                   'class model = $value',
                   tag:
-                      'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
+                      'student_details_form > DashboardDropDownWidget<AdminRolesListCubit>',
                   developer: "Ziad",
                 );
                 adminData =
                     adminData.copyWith(adminRole: value as AdminRoleModel);
                 setState(() {});
               }),
-           */
 
           /// specialization
           EduconnectTextField(

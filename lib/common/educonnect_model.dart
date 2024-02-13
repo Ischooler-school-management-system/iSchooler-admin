@@ -154,6 +154,8 @@ class EduconnectModelList extends Equatable {
       return StudentsListModel.fromMap(map);
     } else if (this is AdminsListModel) {
       return AdminsListModel.fromMap(map);
+    } else if (this is AdminRolesListModel) {
+      return AdminRolesListModel.fromMap(map);
     } else if (this is InstructorsListModel) {
       return InstructorsListModel.fromMap(map);
     } else if (this is GradesListModel) {

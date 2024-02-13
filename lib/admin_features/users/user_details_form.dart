@@ -7,6 +7,7 @@ import '../../../../../common/comon_features/widgets/fields/educonnect_text_fiel
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../common/educonnect_assets.dart';
+import '../../common/madpoly.dart';
 import 'user_model.dart';
 
 class UserDetailsForm extends StatefulWidget {
@@ -101,9 +102,14 @@ class _StudentDetailsFormState extends State<UserDetailsForm> {
             // value: ,
             hint: userData.gender,
             onChanged: (value) {
-              setState(() {
-                userData = userData.copyWith(gender: value);
-              });
+              Madpoly.print(
+                'gender after update = ',
+                inspectObject: value,
+                tag: 'user_details_form > ',
+                developer: "Ziad",
+              );
+              userData = userData.copyWith(gender: value);
+              setState(() {});
             },
             options: const ['Male', 'Female'],
           ),
@@ -162,7 +168,12 @@ class _StudentDetailsFormState extends State<UserDetailsForm> {
   onSubmitButtonPressed() {
     // if (widget.formKey.currentState!.validate()) {
     widget.formKey.currentState!.save();
-
+    Madpoly.print(
+      'userData after update = ',
+      inspectObject: userData,
+      tag: 'user_details_form > ',
+      developer: "Ziad",
+    );
     widget.onSaved(userData);
     // }
   }
