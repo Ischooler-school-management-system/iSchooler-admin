@@ -39,13 +39,13 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectBoxConstrain(
+    return EduconnectScreen(
       padding: const EdgeInsets.all(30.0),
-      maxWidth: 500,
-      child: EduconnectScreen(
-        padding: const EdgeInsets.all(30.0),
-        enableScrolling: true,
-        body: form(),
+      enableScrolling: true,
+      body: EduconnectBoxConstrain(
+        // padding: const EdgeInsets.all(30.0),
+        maxWidth: 600,
+        child: form(),
       ),
     );
   }
@@ -69,6 +69,12 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
     } else if (C == InstructorsListCubit) {
       return InstructorDetailsForm(
         currentInstructorData: widget.currentData as InstructorModel?,
+        onSaved: onSubmitButtonPressed,
+      );
+    } else if (C == InstructorAssignmentsListCubit) {
+      return InstructorAssignmentDetailsForm(
+        currentInstructorAssignmentData:
+            widget.currentData as InstructorAssignmentModel?,
         onSaved: onSubmitButtonPressed,
       );
     } else if (C == ClassesListCubit) {

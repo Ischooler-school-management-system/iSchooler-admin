@@ -24,6 +24,10 @@ class _DashboardScreenState<C extends EduconnectCubit>
   @override
   void initState() {
     super.initState();
+    getDataRequest();
+  }
+
+  void getDataRequest() {
     context.read<C>().getAllItems();
   }
 
@@ -52,9 +56,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
       return 'Subject';
     } else {
       return '';
-    } /* else if (C == SubjectsListCubit) {
-    return 'Subject';
-  } else if (C == WeeklySessionsListCubit) {
+    } /* else if (C == WeeklySessionsListCubit) {
     return 'Weekly Session';
   } else if (C == WeeklyTimetablesListCubit) {
     return 'Weekly Timetable';
@@ -86,6 +88,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      onRefresh: () async => getDataRequest(),
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<C, EduconnectState>(
         builder: (context, state) {
@@ -124,7 +127,9 @@ class _DashboardScreenState<C extends EduconnectCubit>
       builder: (context) => DashboardDetailsScreen<C>(currentData: model),
     ); */
     EduconnectNavigator.navigateToScreen(
-      DashboardDetailsScreen<C>(currentData: model),
+      DashboardDetailsScreen<C>(
+        currentData: model,
+      ),
     );
   }
 

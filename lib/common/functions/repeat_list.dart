@@ -4,4 +4,6 @@ extension RepeatList<T> on List<T> {
       return this[index % length];
     });
   }
+  // ex:
+  // var list = (educonnectAllModel.items).repeat(5);
 }

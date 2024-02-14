@@ -34,6 +34,21 @@ class InstructorModel extends UserModel {
       hireDate: DateTime(2021, 1, 15),
     );
   }
+  factory InstructorModel.empty() {
+    return InstructorModel(
+      id: '',
+      name: '',
+      phoneNumber: '',
+      address: '',
+      gender: '',
+      email: '',
+      role: UserRole.instructor,
+      profilePicture: '',
+      specialization: '',
+      dateOfBirth: DateTime(1990, 5, 15),
+      hireDate: DateTime(2021, 1, 15),
+    );
+  }
   factory InstructorModel.fromMap(Map<String, dynamic> map) {
     var userModel = UserModel.fromMap(map).copyWith(role: UserRole.instructor);
     return InstructorModel(

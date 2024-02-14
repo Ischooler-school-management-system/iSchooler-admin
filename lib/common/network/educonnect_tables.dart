@@ -1,12 +1,19 @@
+import '../madpoly.dart';
+
 class DatabaseTable {
   final String tableName;
   final List<DatabaseTable>? relatedTablesList;
   final String selectQuery;
+  final ({
+    String? columnName,
+    String? referencedTable,
+  }) orderBy;
 
   DatabaseTable({
     required this.tableName,
     this.relatedTablesList,
     String? selectQuery,
+    this.orderBy = (columnName: null, referencedTable: null),
   }) : selectQuery = selectQuery ?? selectQueryMaker(relatedTablesList);
   factory DatabaseTable.empty() {
     return DatabaseTable(
@@ -15,16 +22,26 @@ class DatabaseTable {
     );
   }
   String tableSelectQueryMaker() {
-    return '$tableName($selectQuery)';
+    var result = '$tableName($selectQuery)';
+    Madpoly.print(
+      'result = ',
+      inspectObject: result,
+      tag: 'educonnect_tables > tableSelectQueryMaker',
+      developer: "Ziad",
+    );
+    return result;
   }
 
   static String selectQueryMaker(List<DatabaseTable>? relatedTablesList) {
     String result = '*, ';
     if (relatedTablesList != null) {
       for (var element in relatedTablesList) {
-        result += "${element.tableSelectQueryMaker()},";
+        result += element.tableSelectQueryMaker();
+        if (element != relatedTablesList.last) {
+          result += ',';
+        }
       }
-      result = result.replaceAll('),', ')');
+      // result = result.replaceAll('),', ')');
       // result += ')' * ((relatedTablesList.length) + 1);
     }
     return result;
@@ -85,6 +102,7 @@ class EduconnectTables {
   static final DatabaseTable subject = DatabaseTable(
     tableName: 'subject',
     // selectQuery: '*,grade(*)',
+    orderBy: (columnName: 'name', referencedTable: 'grade'),
     relatedTablesList: [grade],
 
     // selectQuery: '*,${grade.tableSelectQueryMaker()}',
@@ -103,7 +121,7 @@ class EduconnectTables {
   static final DatabaseTable instructorAssignment = DatabaseTable(
     tableName: 'instructor_assignment',
     // selectQuery: '*,instructor(*),class(*,grade(*)),subject(*,grade(*)))',
-    relatedTablesList: [instructor, classTable, grade],
+    relatedTablesList: [instructor, subject, classTable],
     // selectQuery:
     // '*,${instructor.tableSelectQueryMaker()},${classTable.tableSelectQueryMaker()},${subject.tableSelectQueryMaker()}',
   );

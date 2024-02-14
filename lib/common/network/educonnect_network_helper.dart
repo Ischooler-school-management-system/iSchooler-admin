@@ -18,14 +18,15 @@ class EduconnectNetworkHelper {
   static DatabaseTable getTableQueryData(dynamic model) {
     if (model is StudentModel || model is StudentsListModel) {
       return EduconnectTables.student;
-    }
-    if (model is AdminModel || model is AdminsListModel) {
+    } else if (model is AdminModel || model is AdminsListModel) {
       return EduconnectTables.admin;
-    }
-    if (model is AdminRoleModel || model is AdminRolesListModel) {
+    } else if (model is AdminRoleModel || model is AdminRolesListModel) {
       return EduconnectTables.adminRole;
     } else if (model is InstructorModel || model is InstructorsListModel) {
       return EduconnectTables.instructor;
+    } else if (model is InstructorAssignmentModel ||
+        model is InstructorAssignmentsListModel) {
+      return EduconnectTables.instructorAssignment;
     } else if (model is GradeModel || model is GradesListModel) {
       return EduconnectTables.grade;
     } else if (model is ClassModel || model is ClassesListModel) {

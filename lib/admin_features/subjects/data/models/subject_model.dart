@@ -39,7 +39,7 @@ class SubjectModel extends EduconnectModel {
       id: map['id'].toString(),
       name: map['name'] ?? '',
       grade: GradeModel.fromMap(map['grade'] ?? {}),
-      totalMarks: map['totalMarks'] ?? 0,
+      totalMarks: map['total_marks'] ?? 0,
       // createdAt: DateTime.parse(map['created_at']),
     );
   }
@@ -49,7 +49,7 @@ class SubjectModel extends EduconnectModel {
     return {
       'name': name,
       'grade_id': grade.id,
-      'totalMarks': totalMarks,
+      'total_marks': totalMarks,
     };
   }
 
@@ -58,7 +58,7 @@ class SubjectModel extends EduconnectModel {
     return {
       'Name': name,
       'Grade': grade.name,
-      'Total Marks': totalMarks,
+      'Total Marks': totalMarks /* .toString() */,
     };
   }
 

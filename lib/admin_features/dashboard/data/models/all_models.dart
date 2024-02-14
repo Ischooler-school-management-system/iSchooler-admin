@@ -1,10 +1,8 @@
 // ignore_for_file: use_super_parameters, overridden_fields
 
 import '../../../../common/educonnect_model.dart';
-import '../../../classes/data/models/class_model.dart';
-import '../../../grades/data/models/grade_model.dart';
-import '../../../subjects/data/models/subject_model.dart';
-import '../../../users/instructor/data/models/instructors_list_model.dart';
+import '../../../list_models.dart';
+import '../../../models.dart';
 
 /*
 class GradeModel

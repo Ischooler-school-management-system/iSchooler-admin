@@ -24,9 +24,11 @@ abstract class Madpoly {
     if (tag != null) message += "($tag) ";
     if (developer != null) message += "$developer :: ";
     // bool isInspect = msg is! String;
-    message += msg.toString();
+    if (msg != null) {
+      message += msg;
+    }
     if (inspectObject != null) {
-      message += 'inspectObject: $inspectObject';
+      message += ', inspectObject: $inspectObject';
     }
 
     if (color == null) {

@@ -7,6 +7,8 @@ ThemeData buildThemeData() {
     // useMaterial3 brings flutter new ui to the app
     useMaterial3: true,
     fontFamily: 'Almarai',
+    colorScheme: ColorScheme.fromSeed(seedColor: EduconnectColors.blue),
+
     // textTheme: AppTextStyles.appTextThemes,
     scaffoldBackgroundColor: EduconnectColors.backgroundColor,
   );

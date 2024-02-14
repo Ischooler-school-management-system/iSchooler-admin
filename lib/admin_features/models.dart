@@ -6,4 +6,5 @@ export 'package:school_admin/admin_features/users/instructor/data/models/instruc
 export 'package:school_admin/admin_features/users/students/data/models/student_model.dart';
 export 'package:school_admin/admin_features/users/user_model.dart';
 export 'package:school_admin/admin_features/users/admin_roles/data/models/admin_role_model.dart';
+export 'package:school_admin/admin_features/instructor_assignments/data/models/instructor_assignment_model.dart';
 export 'package:school_admin/admin_features/subjects/data/models/subject_model.dart';

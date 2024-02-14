@@ -34,6 +34,7 @@ class DashboardRepository implements EduconnectRepository {
       listModel = model.fromMapToChild(response.data);
       Madpoly.print(
         'response = ',
+        color: MadpolyColor.green,
         inspectObject: listModel,
         tag: 'dashboard_repo > getAllItems',
         developer: "Ziad",

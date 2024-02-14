@@ -110,7 +110,7 @@ abstract class EduconnectNavigator {
   }
 
   static void navigateToScreen(Widget screen,
-      {bool replace = false, bool hasAnimation = false}) {
+      {bool replace = false, bool hasAnimation = true}) {
     if (replace) {
       navigatorState.currentState!.pushReplacement(
           slideNavigation(screen: screen, hasAnimation: hasAnimation));

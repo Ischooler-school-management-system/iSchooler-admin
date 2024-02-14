@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../admin_features/classes/logic/cubit/classes_list_cubit.dart';
-import '../admin_features/grades/logic/cubit/grades_list_cubit.dart';
-import '../admin_features/subjects/logic/cubit/subjects_list_cubit.dart';
-import '../admin_features/users/admin_roles/logic/cubit/admin_roles_list_cubit.dart';
-import '../admin_features/users/admins/logic/cubit/admins_list_cubit.dart';
-import '../admin_features/users/instructor/logic/cubit/instructors_list_cubit.dart';
-import '../admin_features/users/students/logic/cubit/students_list_cubit.dart';
+import '../admin_features/cubits.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
@@ -28,6 +22,8 @@ MultiBlocProvider listOfBlocProviders({required Widget child}) {
       BlocProvider(create: (_) => AdminsListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => AdminRolesListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => InstructorsListCubit(getIt(), getIt())),
+      BlocProvider(
+          create: (_) => InstructorAssignmentsListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => ClassesListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => GradesListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => SubjectsListCubit(getIt(), getIt())),

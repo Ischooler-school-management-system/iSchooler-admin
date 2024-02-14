@@ -116,7 +116,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             options: const ['Male', 'Female'],
           ),
 
-          /// Role
+          /*   /// Role
           EduConnectDropdownWidget(
             labelText: 'Role',
             // value: ,
@@ -128,7 +128,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             },
             options: const ['Admin', 'Instructor', 'Student'],
           ),
-
+ */
           /// Phone Number
           EduconnectTextField(
             // initialValue: '01111',

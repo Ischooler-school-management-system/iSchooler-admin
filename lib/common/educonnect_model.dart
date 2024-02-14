@@ -63,8 +63,12 @@ class EduconnectModel extends Equatable {
       return (this as StudentModel).toMap();
     } else if (this is AdminModel) {
       return (this as AdminModel).toMap();
+    } else if (this is AdminRoleModel) {
+      return (this as AdminRoleModel).toMap();
     } else if (this is InstructorModel) {
       return (this as InstructorModel).toMap();
+    } else if (this is InstructorAssignmentModel) {
+      return (this as InstructorAssignmentModel).toMap();
     } else if (this is GradeModel) {
       return (this as GradeModel).toMap();
     } else if (this is ClassModel) {
@@ -158,6 +162,8 @@ class EduconnectModelList extends Equatable {
       return AdminRolesListModel.fromMap(map);
     } else if (this is InstructorsListModel) {
       return InstructorsListModel.fromMap(map);
+    } else if (this is InstructorAssignmentsListModel) {
+      return InstructorAssignmentsListModel.fromMap(map);
     } else if (this is GradesListModel) {
       return GradesListModel.fromMap(map);
     } else if (this is ClassesListModel) {

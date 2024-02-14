@@ -39,6 +39,7 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
       const DashboardScreen<AdminsListCubit>(),
       const DashboardScreen<AdminRolesListCubit>(),
       const DashboardScreen<InstructorsListCubit>(),
+      const DashboardScreen<InstructorAssignmentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<ClassesListCubit>(),
       const DashboardScreen<GradesListCubit>(),

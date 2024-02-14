@@ -111,7 +111,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
             },
             options: const ['Male', 'Female'],
           ),
-
+/* 
           /// Role
           EduConnectDropdownWidget(
             labelText: 'Role',
@@ -123,7 +123,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
               });
             },
             options: const ['Admin', 'Instructor', 'Student'],
-          ),
+          ), */
 
           /// Phone Number
           EduconnectTextField(
