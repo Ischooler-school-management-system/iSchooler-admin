@@ -2,7 +2,7 @@
 import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 import 'package:equatable/equatable.dart';
 import 'package:school_admin/common/madpoly.dart';
-import 'package:school_admin/admin_features//models.dart';
+import 'package:school_admin/admin_features/models.dart';
 import 'package:school_admin/admin_features/list_models.dart';
 
 class EduconnectModel extends Equatable {

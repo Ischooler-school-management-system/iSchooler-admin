@@ -1,6 +1,9 @@
-export '../admin_features/classes/logic/instructors_list_cubit/classes_list_cubit.dart';
-export '../admin_features/grades/logic/instructors_list_cubit/grades_list_cubit.dart';
-export '../admin_features/users/admin_roles/logic/admin_roles_list_cubit/admin_roles_list_cubit.dart';
-export '../admin_features/users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
-export '../admin_features/users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
-export '../admin_features/users/students/logic/students_list_cubit/students_list_cubit.dart';
+// /home/zh/Documents/GitHub/school_admin/lib/admin_features/dashboard/logic/cubit/educonnect_cubit.dart
+export '../admin_features/dashboard/logic/cubit/educonnect_cubit.dart';
+export '../admin_features/users/admin_roles/logic/cubit/admin_roles_list_cubit.dart';
+export '../admin_features/users/admins/logic/cubit/admins_list_cubit.dart';
+export '../admin_features/users/instructor/logic/cubit/instructors_list_cubit.dart';
+export '../admin_features/users/students/logic/cubit/students_list_cubit.dart';
+export '../admin_features/grades/logic/cubit/grades_list_cubit.dart';
+export '../admin_features/classes/logic/cubit/classes_list_cubit.dart';
+export '../admin_features/subjects/logic/cubit/subjects_list_cubit.dart';

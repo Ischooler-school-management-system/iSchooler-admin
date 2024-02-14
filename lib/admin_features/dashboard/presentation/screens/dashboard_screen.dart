@@ -2,18 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/comon_features/responsive/responsive.dart';
-import '../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
-import '../../../../common/comon_features/widgets/buttons/models/buttons_model.dart';
+import '../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
-import '../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
-import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
-import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
-import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
-import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
-import '../../logic/cubit/educonnect_cubit.dart';
+import '../../../cubits.dart';
 import '../veiws/dashboard_mobile_veiw.dart';
 import '../veiws/dashboard_web_veiw.dart';
 import 'dashboard_details_screen.dart';
@@ -46,12 +40,16 @@ class _DashboardScreenState<C extends EduconnectCubit>
       return 'Student';
     } else if (C == AdminsListCubit) {
       return 'Admin';
+    } else if (C == AdminRolesListCubit) {
+      return 'Admin Roles';
     } else if (C == InstructorsListCubit) {
       return 'Instructor';
     } else if (C == GradesListCubit) {
       return 'Grade';
     } else if (C == ClassesListCubit) {
       return 'Class';
+    } else if (C == SubjectsListCubit) {
+      return 'Subject';
     } else {
       return '';
     } /* else if (C == SubjectsListCubit) {

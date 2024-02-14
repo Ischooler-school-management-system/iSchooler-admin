@@ -8,31 +8,31 @@ import '../../../../../common/madpoly.dart';
 import '../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../../grades/logic/cubit/grades_list_cubit.dart';
-import '../../data/models/class_model.dart';
+import '../../data/models/subject_model.dart';
 
-class ClassDetailsForm extends StatefulWidget {
-  final ClassModel? currentClassData;
+class SubjectDetailsForm extends StatefulWidget {
+  final SubjectModel? currentSubjectData;
   final Function(EduconnectModel model) onSaved;
 
-  const ClassDetailsForm(
-      {super.key, this.currentClassData, required this.onSaved});
+  const SubjectDetailsForm(
+      {super.key, this.currentSubjectData, required this.onSaved});
 
   @override
-  State<ClassDetailsForm> createState() => _ClassDetailsFormState();
+  State<SubjectDetailsForm> createState() => _SubjectDetailsFormState();
 }
 
-class _ClassDetailsFormState extends State<ClassDetailsForm> {
+class _SubjectDetailsFormState extends State<SubjectDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
-  // Use Classmodel to store form data
-  ClassModel classData = ClassModel.dummy();
+  // Use Subjectmodel to store form data
+  SubjectModel subjectData = SubjectModel.dummy();
   bool editingModel = false;
   @override
   void initState() {
     super.initState();
-    editingModel = widget.currentClassData != null;
+    editingModel = widget.currentSubjectData != null;
     if (editingModel) {
-      classData = widget.currentClassData!.copyWith();
+      subjectData = widget.currentSubjectData!.copyWith();
     }
   }
 
@@ -40,7 +40,7 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
   Widget build(BuildContext context) {
     Madpoly.print(
       'building',
-      tag: 'class_details_form.dart > build',
+      tag: 'subject_details_form.dart > build',
       developer: "Ziad",
     );
     return Form(
@@ -48,21 +48,21 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
       child: Column(
         children: [
           EduconnectTextField(
-            initialValue: classData.id,
-            labelText: 'Class ID',
+            initialValue: subjectData.id,
+            labelText: 'Subject ID',
           ),
           EduconnectTextField(
-            initialValue: classData.name,
-            labelText: 'Class Name',
+            initialValue: subjectData.name,
+            labelText: 'Subject Name',
             validator: EduconnectValidations.nameValidator,
             onSaved: (value) {
               setState(() {
-                classData = classData.copyWith(name: value);
+                subjectData = subjectData.copyWith(name: value);
               });
             },
           ),
           DashboardDropDownWidget<GradesListCubit>(
-              value: classData.grade.name,
+              value: subjectData.grade.name,
               labelText: 'Grade',
               onChanged: (EduconnectModel value) {
                 Madpoly.print(
@@ -71,7 +71,7 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
                       'student_details_form > DashboardDropDownWidget<GradesListCubit>',
                   developer: "Ziad",
                 );
-                classData = classData.copyWith(grade: value as GradeModel);
+                subjectData = subjectData.copyWith(grade: value as GradeModel);
                 setState(() {});
               }),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
@@ -84,7 +84,7 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
 
-      widget.onSaved(classData);
+      widget.onSaved(subjectData);
     }
   }
 }

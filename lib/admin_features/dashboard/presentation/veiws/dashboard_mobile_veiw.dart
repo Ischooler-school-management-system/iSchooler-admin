@@ -28,10 +28,13 @@ class DashboardMobileVeiw extends StatelessWidget {
             ...educonnectAllModel.items.map(
               (EduconnectModel model) {
                 List displayMap = model.toDisplayMap().values.toList();
-                var subtitleString = displayMap[1];
-                if (displayMap.length > 2) {
-                  subtitleString += ' | ${displayMap[2]}';
-                }
+                String? subtitleString =
+                    (displayMap[1] != null && displayMap[1] is String)
+                        ? displayMap[1]
+                        : null;
+                // if (displayMap.length > 1) {
+                //   subtitleString += ' | ${displayMap[2]}';
+                // }
                 return EduconnecDashboardListTile(
                   title: displayMap[0],
                   subtitle: subtitleString,

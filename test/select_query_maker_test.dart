@@ -1,6 +1,7 @@
 import 'package:flutter_test/flutter_test.dart';
 import 'package:school_admin/admin_features/models.dart';
 import 'package:school_admin/admin_features/list_models.dart';
+import 'package:school_admin/common/network/educonnect_network_helper.dart';
 
 void main() {
   test('Test getTableQueryData method for all models', () {

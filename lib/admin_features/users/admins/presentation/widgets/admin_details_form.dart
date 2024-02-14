@@ -11,7 +11,7 @@ import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../../admin_roles/data/models/admin_role_model.dart';
-import '../../../admin_roles/logic/admin_roles_list_cubit/admin_roles_list_cubit.dart';
+import '../../../admin_roles/logic/cubit/admin_roles_list_cubit.dart';
 import '../../../user_model.dart';
 import '../../data/models/admin_model.dart';
 

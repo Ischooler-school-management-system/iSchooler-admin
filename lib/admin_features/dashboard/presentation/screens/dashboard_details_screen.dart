@@ -2,23 +2,11 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:school_admin/admin_features/forms.dart';
 
-import '../../../classes/data/models/class_model.dart';
-import '../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
-import '../../../classes/presentation/widgets/classes_details_form.dart';
-import '../../logic/cubit/educonnect_cubit.dart';
-import '../../../grades/data/models/grade_model.dart';
-import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
-import '../../../grades/presentation/widgets/grade_details_form.dart';
-import '../../../users/admins/data/models/admin_model.dart';
-import '../../../users/admins/logic/admins_list_cubit/admins_list_cubit.dart';
-import '../../../users/admins/presentation/widgets/admin_details_form.dart';
-import '../../../users/instructor/data/models/instructor_model.dart';
-import '../../../users/instructor/logic/instructors_list_cubit/instructors_list_cubit.dart';
-import '../../../users/instructor/presentation/widgets/instructor_details_form.dart';
-import '../../../users/students/data/models/student_model.dart';
-import '../../../users/students/logic/students_list_cubit/students_list_cubit.dart';
-import '../../../users/students/presentation/widgets/student_details_form.dart';
+import '../../../cubits.dart';
+import '../../../models.dart';
+
 import '/common/comon_features/widgets/educonnect_screen.dart';
 import '/common/comon_features/widgets/educonnect_small_view.dart';
 import '/common/educonnect_model.dart';
@@ -73,6 +61,11 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
         currentAdminData: widget.currentData as AdminModel?,
         onSaved: onSubmitButtonPressed,
       );
+    } else if (C == AdminRolesListCubit) {
+      return AdminRoleDetailsForm(
+        currentAdminRoleData: widget.currentData as AdminRoleModel?,
+        onSaved: onSubmitButtonPressed,
+      );
     } else if (C == InstructorsListCubit) {
       return InstructorDetailsForm(
         currentInstructorData: widget.currentData as InstructorModel?,
@@ -86,6 +79,11 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
     } else if (C == GradesListCubit) {
       return GradeDetailsForm(
         currentGradeData: widget.currentData as GradeModel?,
+        onSaved: onSubmitButtonPressed,
+      );
+    } else if (C == SubjectsListCubit) {
+      return SubjectDetailsForm(
+        currentSubjectData: widget.currentData as SubjectModel?,
         onSaved: onSubmitButtonPressed,
       );
     } else {

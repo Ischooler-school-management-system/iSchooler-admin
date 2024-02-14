@@ -9,7 +9,7 @@ import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../classes/data/models/class_model.dart';
-import '../../../../classes/logic/instructors_list_cubit/classes_list_cubit.dart';
+import '../../../../classes/logic/cubit/classes_list_cubit.dart';
 import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../../user_model.dart';
