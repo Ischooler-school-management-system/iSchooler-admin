@@ -90,7 +90,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           /// Date of Birth
           EduconnectDateField(
             initialValue:
-                EduconnectDateTimeHelper.format(studentData.dateOfBirth),
+                EduconnectDateTimeHelper.dateFormat(studentData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               studentData = studentData.copyWith(dateOfBirth: date);

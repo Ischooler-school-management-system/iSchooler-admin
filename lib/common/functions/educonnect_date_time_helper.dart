@@ -1,7 +1,7 @@
 import 'package:intl/intl.dart';
 
 class EduconnectDateTimeHelper {
-  static String? format(DateTime? date) {
+  static String? dateFormat(DateTime? date) {
     if (date != null) {
       return DateFormat('dd MMM, yyyy').format(date).toString();
     }
@@ -14,6 +14,24 @@ class EduconnectDateTimeHelper {
     }
 
     return function(value);
+  }
+
+  static String? timeFormat(DateTime? date) {
+    final formatter = DateFormat('H:mm a');
+    if (date != null) {
+      return formatter.format(date);
+    }
+    return null;
+  }
+
+  static List<String> generateDateTimeList(
+      DateTime startingDateTime, int count, Duration step) {
+    List<String> result = [];
+    for (int i = 0; i < count; i++) {
+      DateTime add = startingDateTime.add(step * i);
+      result.add(timeFormat(add) ?? '');
+    }
+    return result;
   }
 
   static DateTime fromMapItem(dynamic dateMapValue) {

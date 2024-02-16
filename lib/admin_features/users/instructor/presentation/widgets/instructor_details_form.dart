@@ -85,7 +85,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           /// Date of Birth
           EduconnectDateField(
             initialValue:
-                EduconnectDateTimeHelper.format(instructorData.dateOfBirth),
+                EduconnectDateTimeHelper.dateFormat(instructorData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               instructorData = instructorData.copyWith(dateOfBirth: date);
@@ -172,7 +172,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           /// hireDate
           EduconnectDateField(
             initialValue:
-                EduconnectDateTimeHelper.format(instructorData.dateOfBirth),
+                EduconnectDateTimeHelper.dateFormat(instructorData.dateOfBirth),
             labelText: 'Hire Date',
             onTap: (date) {
               instructorData = instructorData.copyWith(hireDate: date);

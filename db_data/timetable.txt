@@ -1,0 +1,12 @@
+admin
+select a class
+show name - grade 
+show the time table if its there
+to create
+
+input session and break interval 
+select a day 
+button says create a session
+veiw a dropdown to select a instructor assignment (get the ones for this class only)
+when this creatd it sows as a listtlie with edit and delete and next is the create button again
+

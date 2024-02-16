@@ -17,9 +17,11 @@ student: id | name | phone_number | address | gender | email | profile_picture |
 
 instructor_assignment: id | name | instructor_id | subject_id | class_id |
 
-weekly_timetable: id | name | term  | class_id | grade_id
+weekly_timetable: id | name | term  | class_id | start time | end time | session_interval | break_interval
 
 weekly_sessions: id | name  | session_number | weekday | start_time | end_time | session_interval | instructor_assignment_id | weekly_timetable_id
+
+
 
 exam_type: id | name | marks_percent
 
