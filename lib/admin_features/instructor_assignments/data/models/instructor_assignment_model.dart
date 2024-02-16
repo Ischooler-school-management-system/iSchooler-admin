@@ -67,6 +67,16 @@ class InstructorAssignmentModel extends EduconnectModel {
   }
 
   @override
+  Map<String, dynamic> toMap() {
+    return {
+      "name": name,
+      if (instructor != null) "instructor_id": instructor!.id,
+      if (subjectModel != null) "subject_id": subjectModel!.id,
+      if (classModel != null) "class_id": classModel!.id,
+    };
+  }
+
+  @override
   InstructorAssignmentModel copyWith({
     String? name,
     String? grade,

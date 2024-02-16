@@ -15,10 +15,18 @@ class GradesListState extends EduconnectState {
     );
   }
 
-  GradesListState updateAllGrades(GradesListModel gradesListModel) {
+  @override
+  GradesListState updateData(EduconnectListModel newData) {
     return _copyWith(
-      educonnectAllModel: gradesListModel,
+      educonnectAllModel: newData is GradesListModel ? newData : null,
       status: EduconnectStatus.loaded,
+    );
+  }
+
+  @override
+  GradesListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
     );
   }
 

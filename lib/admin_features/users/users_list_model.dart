@@ -2,7 +2,7 @@
 import '../../common/educonnect_model.dart';
 import 'user_model.dart';
 
-class UsersListModel extends EduconnectModelList {
+class UsersListModel extends EduconnectListModel {
   const UsersListModel({required super.items});
   factory UsersListModel.empty() {
     return const UsersListModel(items: []);

@@ -48,6 +48,8 @@ class _DashboardScreenState<C extends EduconnectCubit>
       return 'Admin Roles';
     } else if (C == InstructorsListCubit) {
       return 'Instructor';
+    } else if (C == InstructorAssignmentsListCubit) {
+      return 'Instructor Assignments';
     } else if (C == GradesListCubit) {
       return 'Grade';
     } else if (C == ClassesListCubit) {
@@ -92,7 +94,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<C, EduconnectState>(
         builder: (context, state) {
-          EduconnectModelList educonnectAllModel = EduconnectModelList.empty();
+          EduconnectListModel educonnectAllModel = EduconnectListModel.empty();
           if (state.isLoaded()) {
             educonnectAllModel = state.educonnectAllModel;
           }

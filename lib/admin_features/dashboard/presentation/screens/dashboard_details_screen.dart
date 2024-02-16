@@ -35,6 +35,12 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
     if (editingMode) {
       data = widget.currentData!.copyWith();
     }
+    Madpoly.print(
+      'data = ',
+      inspectObject: data,
+      tag: 'dashboard_details_screen > track',
+      developer: "Ziad",
+    );
   }
 
   @override

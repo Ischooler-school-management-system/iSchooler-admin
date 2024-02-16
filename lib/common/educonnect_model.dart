@@ -130,24 +130,24 @@ class EduconnectModel extends Equatable {
       ];
 }
 
-class EduconnectModelList extends Equatable {
+class EduconnectListModel extends Equatable {
   final List<EduconnectModel> items;
 
-  const EduconnectModelList({required this.items});
-  factory EduconnectModelList.empty() {
-    return const EduconnectModelList(items: []);
+  const EduconnectListModel({required this.items});
+  factory EduconnectListModel.empty() {
+    return const EduconnectListModel(items: []);
   }
 
-  factory EduconnectModelList.fromMap(Map map) {
+  factory EduconnectListModel.fromMap(Map map) {
     final List<EduconnectModel> items = List<EduconnectModel>.from(
       map['items'] ??
           [].map(
             (item) => EduconnectModel.fromMap(item),
           ),
     );
-    return EduconnectModelList(items: items);
+    return EduconnectListModel(items: items);
   }
-  EduconnectModelList fromMapToChild(Map<String, dynamic> map) {
+  EduconnectListModel fromMapToChild(Map<String, dynamic> map) {
     Madpoly.print(
       'model = $this',
       tag: 'EduconnectModelList > fromMapToChild',
@@ -188,7 +188,7 @@ class EduconnectModelList extends Equatable {
       return NewsListModel.fromMap(map);
     }
 
-    return EduconnectModelList.fromMap(map);
+    return EduconnectListModel.fromMap(map);
   }
 
   Map<String, dynamic> toMap() {
@@ -207,6 +207,9 @@ class EduconnectModelList extends Equatable {
   }
 
   EduconnectModel? getModelByName(String modelName) {
+    // every model must have a unique function because if it doesn't
+    // it goes into infinite loop because this function here is the defaults for all
+    // like a recursive function without base case
     Madpoly.print(
       'model = $this',
       tag: 'EduconnectModelList > getModelByName',
@@ -217,8 +220,12 @@ class EduconnectModelList extends Equatable {
       return (this as StudentsListModel).getModelByName(modelName);
     } else if (this is AdminsListModel) {
       return (this as AdminsListModel).getModelByName(modelName);
+    } else if (this is AdminRolesListModel) {
+      return (this as AdminRolesListModel).getModelByName(modelName);
     } else if (this is InstructorsListModel) {
       return (this as InstructorsListModel).getModelByName(modelName);
+    } else if (this is InstructorAssignmentsListModel) {
+      return (this as InstructorAssignmentsListModel).getModelByName(modelName);
     } else if (this is GradesListModel) {
       return (this as GradesListModel).getModelByName(modelName);
     } else if (this is ClassesListModel) {
@@ -250,10 +257,10 @@ class EduconnectModelList extends Equatable {
   @override
   List<Object> get props => [items];
 
-  EduconnectModelList copyWith({
+  EduconnectListModel copyWith({
     List<EduconnectModel>? items,
   }) {
-    return EduconnectModelList(
+    return EduconnectListModel(
       items: items ?? this.items,
     );
   }

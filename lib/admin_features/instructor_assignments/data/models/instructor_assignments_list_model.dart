@@ -3,7 +3,7 @@ import 'package:school_admin/common/educonnect_model.dart';
 
 import 'instructor_assignment_model.dart';
 
-class InstructorAssignmentsListModel extends EduconnectModelList {
+class InstructorAssignmentsListModel extends EduconnectListModel {
   const InstructorAssignmentsListModel({required super.items});
 
   factory InstructorAssignmentsListModel.empty() {

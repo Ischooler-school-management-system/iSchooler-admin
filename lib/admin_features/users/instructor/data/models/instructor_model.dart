@@ -34,6 +34,7 @@ class InstructorModel extends UserModel {
       hireDate: DateTime(2021, 1, 15),
     );
   }
+
   factory InstructorModel.empty() {
     return InstructorModel(
       id: '',

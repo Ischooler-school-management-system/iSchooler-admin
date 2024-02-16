@@ -15,6 +15,7 @@ enum AlertHandlingTypes {
 
   /// makes a instant logout
   MajorError,
+  MajorUiError,
 
   /// (used in the logic functions when request is successful) shows a toast describing the excuted request
   Alert,

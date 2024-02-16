@@ -23,7 +23,7 @@ class InstructorAssignmentsListCubit
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectModelList response =
+    EduconnectListModel response =
         //model is sent here to get the type of request only
         await _instructorassignmentRepository.getAllItems(
             model: InstructorAssignmentsListModel.empty());
@@ -45,6 +45,7 @@ class InstructorAssignmentsListCubit
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _instructorassignmentRepository.addItem(model: model);
+    emit(state.updateStatus());
     await getAllItems();
     // _loadingRepository.stopLoading();
   }
@@ -56,6 +57,9 @@ class InstructorAssignmentsListCubit
     bool successfulRequest =
         await _instructorassignmentRepository.updateItem(model: model);
     if (successfulRequest) {
+      emit(state.updateStatus());
+
+      emit(state.updateStatus());
       await getAllItems();
     }
     // _loadingRepository.stopLoading();
@@ -66,6 +70,9 @@ class InstructorAssignmentsListCubit
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _instructorassignmentRepository.deleteItem(model: model);
+    emit(state.updateStatus());
+
+    emit(state.updateStatus());
     await getAllItems();
   }
 }

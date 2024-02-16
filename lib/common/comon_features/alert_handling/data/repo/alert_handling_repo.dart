@@ -39,8 +39,8 @@ class AlertHandlingRepository {
         type: errorType,
         showToast: (showToast && message.isNotEmpty));
     Madpoly.print(
-      'alert= ',
-      inspectObject: error,
+      'alert= $error, developerMessage = ',
+      inspectObject: developerMessage,
       developer: "Ziad",
       color: type == AlertHandlingTypes.Alert
           ? MadpolyColor.green

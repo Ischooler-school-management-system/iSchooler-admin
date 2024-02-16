@@ -10,20 +10,29 @@ class StudentsListState extends EduconnectState {
 
   factory StudentsListState.init() {
     return StudentsListState(
-      educonnectAllModel: EduconnectModelList.empty(),
+      educonnectAllModel: EduconnectListModel.empty(),
       status: EduconnectStatus.init,
     );
   }
 
-  StudentsListState updateAllStudents(EduconnectModelList educonnectModel) {
+  @override
+  StudentsListState updateData(EduconnectListModel newData) {
     return _copyWith(
-      educonnectAllModel: educonnectModel as StudentsListModel,
+      // educonnectAllModel: newData is AdminsListModel ? newData : null,
+      educonnectAllModel: newData is StudentsListModel ? newData : null,
       status: EduconnectStatus.loaded,
     );
   }
 
+  @override
+  StudentsListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
+    );
+  }
+
   StudentsListState _copyWith({
-    EduconnectModelList? educonnectAllModel,
+    EduconnectListModel? educonnectAllModel,
     EduconnectStatus? status,
   }) {
     return StudentsListState(

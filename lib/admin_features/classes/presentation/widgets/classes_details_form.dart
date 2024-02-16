@@ -12,7 +12,7 @@ import '../../data/models/class_model.dart';
 
 class ClassDetailsForm extends StatefulWidget {
   final ClassModel? currentClassData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(ClassModel model) onSaved;
 
   const ClassDetailsForm(
       {super.key, this.currentClassData, required this.onSaved});

@@ -3,8 +3,8 @@ import '../../../../common/comon_features/alert_handling/data/repo/alert_handlin
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_response.dart';
-import '../../logic/cubit/educonnect_cubit.dart';
 import '../network/dashboard_network.dart';
+import 'educonnect_repository_interface.dart';
 
 class DashboardRepository implements EduconnectRepository {
   final AlertHandlingRepository _alertHandlingRepository;
@@ -16,9 +16,9 @@ class DashboardRepository implements EduconnectRepository {
         _adminNetwork = adminNetwork;
 
   @override
-  Future<EduconnectModelList> getAllItems(
-      {required EduconnectModelList model}) async {
-    EduconnectModelList listModel = EduconnectModelList.empty();
+  Future<EduconnectListModel> getAllItems(
+      {required EduconnectListModel model}) async {
+    EduconnectListModel listModel = EduconnectListModel.empty();
     Madpoly.print(
       ' model >> ${model.runtimeType}',
       inspectObject: model,
@@ -43,7 +43,7 @@ class DashboardRepository implements EduconnectRepository {
         'data retrieved sucessfully',
         AlertHandlingTypes.Alert,
         tag: 'dashboard_repo > getAllItems',
-        showToast: true,
+        // showToast: true,
       );
       // }
     } catch (e) {
@@ -65,7 +65,7 @@ class DashboardRepository implements EduconnectRepository {
       bool requestSuccess = await _adminNetwork.addItem(model: model);
       if (requestSuccess) {
         _alertHandlingRepository.addError(
-          'Admin Data Stored Successfully',
+          'Data Added Successfully',
           AlertHandlingTypes.Alert,
           tag: 'dashboard_repo > addItem',
           showToast: true,
@@ -91,10 +91,10 @@ class DashboardRepository implements EduconnectRepository {
       bool successfulRequest = await _adminNetwork.updateItem(model: model);
       if (successfulRequest) {
         _alertHandlingRepository.addError(
-          'Admin Data Stored Successfully',
+          'Data Updated Successfully',
           AlertHandlingTypes.Alert,
           tag: 'dashboard_repo > updateItem',
-          showToast: true,
+          // showToast: true,
         );
         requestSuccess = true;
       } else {
@@ -118,19 +118,19 @@ class DashboardRepository implements EduconnectRepository {
       bool requestSuccess = await _adminNetwork.deleteItem(model: model);
       if (requestSuccess) {
         _alertHandlingRepository.addError(
-          'Admin Data Stored Successfully',
+          'Data Deleted Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'dashboard_repo > storeAdminData',
+          tag: 'dashboard_repo > delete',
           showToast: true,
         );
       } else {
-        throw Exception('unable to add user');
+        throw Exception('unable to delete item');
       }
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > storeAdminData',
+        tag: 'dashboard_repo > delete',
         showToast: true,
       );
     }

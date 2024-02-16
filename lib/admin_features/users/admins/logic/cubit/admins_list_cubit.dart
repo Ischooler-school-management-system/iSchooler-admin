@@ -22,11 +22,11 @@ class AdminsListCubit extends EduconnectCubit<AdminsListState> {
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectModelList response =
+    EduconnectListModel response =
         //model is sent here to get the type of request only
         await _adminRepository.getAllItems(model: AdminsListModel.empty());
     if (response is AdminsListModel) {
-      emit(state.updateAllAdmins(response));
+      emit(state.updateData(response));
     } else {
       Madpoly.print(
         'incorrect model >> ${response.runtimeType}',
@@ -44,6 +44,9 @@ class AdminsListCubit extends EduconnectCubit<AdminsListState> {
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _adminRepository.addItem(model: model);
+    emit(state.updateStatus());
+
+    emit(state.updateStatus());
     await getAllItems();
     // _loadingRepository.stopLoading();
   }
@@ -54,6 +57,8 @@ class AdminsListCubit extends EduconnectCubit<AdminsListState> {
 
     bool successfulRequest = await _adminRepository.updateItem(model: model);
     if (successfulRequest) {
+      emit(state.updateStatus());
+      emit(state.updateStatus());
       await getAllItems();
     }
     // _loadingRepository.stopLoading();
@@ -64,6 +69,7 @@ class AdminsListCubit extends EduconnectCubit<AdminsListState> {
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _adminRepository.deleteItem(model: model);
+    emit(state.updateStatus());
     await getAllItems();
   }
 }

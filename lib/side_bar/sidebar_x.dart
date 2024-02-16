@@ -120,14 +120,14 @@ class ExampleSidebarX extends StatelessWidget {
         label: EduconnectConstants.localization().subjects,
       ),
       SidebarXItem(
+        icon: (Icons.schedule),
+        label: EduconnectConstants.localization().timetable,
+      ),
+      SidebarXItem(
         icon: (Icons.assignment),
         label: EduconnectConstants.localization().exams,
       ),
 
-      SidebarXItem(
-        icon: (Icons.schedule),
-        label: EduconnectConstants.localization().timetable,
-      ),
       SidebarXItem(
         icon: (Icons.assignment_turned_in),
         label: EduconnectConstants.localization().homeworks,

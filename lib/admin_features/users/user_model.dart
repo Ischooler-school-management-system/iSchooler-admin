@@ -1,7 +1,6 @@
 import '../../common/educonnect_constants.dart';
 import '../../common/educonnect_model.dart';
 import '../../common/functions/educonnect_date_time_helper.dart';
-import '../../common/madpoly.dart';
 
 enum UserRole { admin, instructor, student, none }
 
@@ -128,12 +127,7 @@ class UserModel extends EduconnectModel {
       role: role ?? this.role,
       profilePicture: profilePicture ?? this.profilePicture,
     );
-    Madpoly.print(
-      'userModel after update = ',
-      inspectObject: userModel,
-      tag: 'user_model > copyWith ',
-      developer: "Ziad",
-    );
+
     return userModel;
   }
 

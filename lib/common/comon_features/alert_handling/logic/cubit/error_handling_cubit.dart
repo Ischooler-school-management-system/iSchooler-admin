@@ -12,17 +12,17 @@ import '../../data/repo/alert_handling_repo.dart';
 part 'error_handling_state.dart';
 
 class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
-  final AlertHandlingRepository _AlertHandlingRepository;
+  final AlertHandlingRepository _alertHandlingRepository;
 
   late StreamSubscription<AlertHandlingModel> _errorHandlingStreamSubscription;
 
   late StreamSubscription<ConnectivityResult> _networkErrorStreamSubscription;
 
-  ErrorHandlingCubit(AlertHandlingRepository AlertHandlingRepository)
-      : _AlertHandlingRepository = AlertHandlingRepository,
+  ErrorHandlingCubit(AlertHandlingRepository alertHandlingRepository)
+      : _alertHandlingRepository = alertHandlingRepository,
         super(ErrorHandlingState.init()) {
     _errorHandlingStreamSubscription =
-        _AlertHandlingRepository.errorStatus.listen((event) {
+        _alertHandlingRepository.errorStatus.listen((event) {
       _onErrorUpdated(event);
     });
 
@@ -63,7 +63,7 @@ class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
   @override
   Future<void> close() {
     _errorHandlingStreamSubscription.cancel();
-    _AlertHandlingRepository.close();
+    _alertHandlingRepository.close();
     _networkErrorStreamSubscription.cancel();
     return super.close();
   }

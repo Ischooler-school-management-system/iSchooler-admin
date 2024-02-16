@@ -15,10 +15,18 @@ class AdminsListState extends EduconnectState {
     );
   }
 
-  AdminsListState updateAllAdmins(AdminsListModel alladminsModel) {
+  @override
+  AdminsListState updateData(EduconnectListModel newData) {
     return _copyWith(
-      educonnectAllModel: alladminsModel,
+      educonnectAllModel: newData is AdminsListModel ? newData : null,
       status: EduconnectStatus.loaded,
+    );
+  }
+
+  @override
+  AdminsListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
     );
   }
 

@@ -6,7 +6,7 @@ import '../../../../common/educonnect_model.dart';
 import '../widgets/dashboard_data_row.dart';
 
 class DashboardWebVeiw extends StatelessWidget {
-  final EduconnectModelList allUsers;
+  final EduconnectListModel allUsers;
   final Function(EduconnectModel model)? onDeleteButtonPressed;
   final Function(EduconnectModel model)? onEditButtonPressed;
   const DashboardWebVeiw(

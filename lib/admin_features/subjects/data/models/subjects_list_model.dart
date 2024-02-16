@@ -1,7 +1,9 @@
+import 'package:collection/collection.dart';
+
 import '../../../../common/educonnect_model.dart';
 import 'subject_model.dart';
 
-class SubjectsListModel extends EduconnectModelList {
+class SubjectsListModel extends EduconnectListModel {
   const SubjectsListModel({required List<SubjectModel> items})
       : super(items: items);
 
@@ -16,6 +18,13 @@ class SubjectsListModel extends EduconnectModelList {
       SubjectModel.dummy(),
     ]);
   }
+  @override
+  SubjectModel? getModelByName(String modelName) {
+    SubjectModel? firstWhereOrNull = (items as List<SubjectModel>)
+        .firstWhereOrNull((SubjectModel item) => item.name == modelName);
+    return firstWhereOrNull;
+  }
+
   factory SubjectsListModel.fromMap(Map map) {
     final List<SubjectModel> items = List<SubjectModel>.from(
       map['items'].map(

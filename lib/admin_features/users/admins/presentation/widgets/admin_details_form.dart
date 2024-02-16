@@ -17,7 +17,7 @@ import '../../data/models/admin_model.dart';
 
 class AdminDetailsForm extends StatefulWidget {
   final AdminModel? currentAdminData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(AdminModel model) onSaved;
 
   const AdminDetailsForm(
       {super.key, this.currentAdminData, required this.onSaved});

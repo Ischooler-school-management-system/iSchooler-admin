@@ -5,7 +5,7 @@ import '../../../../common/educonnect_model.dart';
 import '../widgets/educonnect_dashboard_listtile.dart';
 
 class DashboardMobileVeiw extends StatelessWidget {
-  final EduconnectModelList educonnectAllModel;
+  final EduconnectListModel educonnectAllModel;
   final Function(EduconnectModel model)? onDeleteButtonPressed;
   final Function(EduconnectModel model)? onEditButtonPressed;
   const DashboardMobileVeiw({

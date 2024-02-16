@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
@@ -9,7 +8,7 @@ import '../../data/models/grade_model.dart';
 
 class GradeDetailsForm extends StatefulWidget {
   final GradeModel? currentGradeData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(GradeModel model) onSaved;
 
   const GradeDetailsForm(
       {super.key, this.currentGradeData, required this.onSaved});

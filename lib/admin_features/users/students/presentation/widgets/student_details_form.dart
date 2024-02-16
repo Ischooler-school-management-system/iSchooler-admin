@@ -18,7 +18,7 @@ import '/common/madpoly.dart';
 
 class StudentDetailsForm extends StatefulWidget {
   final StudentModel? currentStudentData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(StudentModel model) onSaved;
   // final GlobalKey<FormState> formKey;
   const StudentDetailsForm({
     // required this.formKey,

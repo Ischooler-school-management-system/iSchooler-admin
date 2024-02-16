@@ -1,3 +1,5 @@
+import 'package:collection/collection.dart';
+
 import '../../../../../common/educonnect_model.dart';
 import '../../../users_list_model.dart';
 import 'instructor_model.dart';
@@ -24,6 +26,12 @@ class InstructorsListModel extends UsersListModel {
       InstructorModel.dummy(),
       InstructorModel.dummy(),
     ]);
+  }
+  @override
+  InstructorModel? getModelByName(String modelName) {
+    InstructorModel? firstWhereOrNull = (items as List<InstructorModel>)
+        .firstWhereOrNull((InstructorModel item) => item.name == modelName);
+    return firstWhereOrNull;
   }
 
   factory InstructorsListModel.fromMap(Map map) {

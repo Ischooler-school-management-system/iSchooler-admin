@@ -12,7 +12,7 @@ import '../../data/models/subject_model.dart';
 
 class SubjectDetailsForm extends StatefulWidget {
   final SubjectModel? currentSubjectData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(SubjectModel model) onSaved;
 
   const SubjectDetailsForm(
       {super.key, this.currentSubjectData, required this.onSaved});
@@ -47,10 +47,12 @@ class _SubjectDetailsFormState extends State<SubjectDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
-            initialValue: subjectData.id,
-            labelText: 'Subject ID',
-          ),
+          if (editingModel)
+            EduconnectTextField(
+              initialValue: subjectData.id,
+              labelText: 'Subject ID',
+              enabled: false,
+            ),
           EduconnectTextField(
             initialValue: subjectData.name,
             labelText: 'Subject Name',

@@ -4,7 +4,6 @@ import '../../../../../common/comon_features/widgets/educonnect_date_field.dart'
 import '../../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_assets.dart';
-import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../../common/madpoly.dart';
@@ -14,7 +13,7 @@ import '../../data/models/instructor_model.dart';
 
 class InstructorDetailsForm extends StatefulWidget {
   final InstructorModel? currentInstructorData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(InstructorModel model) onSaved;
 
   const InstructorDetailsForm(
       {super.key, this.currentInstructorData, required this.onSaved});

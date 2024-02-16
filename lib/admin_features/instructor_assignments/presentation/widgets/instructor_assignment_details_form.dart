@@ -11,7 +11,7 @@ import '../../../models.dart';
 
 class InstructorAssignmentDetailsForm extends StatefulWidget {
   final InstructorAssignmentModel? currentInstructorAssignmentData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(InstructorAssignmentModel model) onSaved;
 
   const InstructorAssignmentDetailsForm(
       {super.key, this.currentInstructorAssignmentData, required this.onSaved});
@@ -50,10 +50,12 @@ class _InstructorAssignmentDetailsFormState
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
-            initialValue: instructorAssignmentData.id,
-            labelText: 'InstructorAssignment ID',
-          ),
+          if (editingModel)
+            EduconnectTextField(
+              initialValue: instructorAssignmentData.id,
+              labelText: 'InstructorAssignment ID',
+              enabled: false,
+            ),
           EduconnectTextField(
             initialValue: instructorAssignmentData.name,
             labelText: 'InstructorAssignment Name',

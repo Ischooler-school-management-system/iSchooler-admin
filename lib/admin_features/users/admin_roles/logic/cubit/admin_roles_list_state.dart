@@ -15,11 +15,18 @@ class AdminRolesListState extends EduconnectState {
     );
   }
 
-  AdminRolesListState updateAllAdminRoles(
-      AdminRolesListModel adminrolesListModel) {
+  @override
+  AdminRolesListState updateData(EduconnectListModel newData) {
     return _copyWith(
-      educonnectAllModel: adminrolesListModel,
+      educonnectAllModel: newData is AdminRolesListModel ? newData : null,
       status: EduconnectStatus.loaded,
+    );
+  }
+
+  @override
+  AdminRolesListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
     );
   }
 

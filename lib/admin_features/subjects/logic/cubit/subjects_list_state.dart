@@ -15,10 +15,18 @@ class SubjectsListState extends EduconnectState {
     );
   }
 
-  SubjectsListState updateAllSubjects(SubjectsListModel subjectsListModel) {
+  @override
+  SubjectsListState updateData(EduconnectListModel newData) {
     return _copyWith(
-      educonnectAllModel: subjectsListModel,
+      educonnectAllModel: newData is SubjectsListModel ? newData : null,
       status: EduconnectStatus.loaded,
+    );
+  }
+
+  @override
+  SubjectsListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
     );
   }
 

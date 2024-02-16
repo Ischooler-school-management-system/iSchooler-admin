@@ -5,7 +5,7 @@ import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_network_helper.dart';
 import '../../../../common/network/educonnect_response.dart';
 import '../../../../common/network/educonnect_tables.dart';
-import '../../logic/cubit/educonnect_cubit.dart';
+import 'educonnect_network_interface.dart';
 
 class DashboardNetwork implements EduconnectNetwork {
   final AlertHandlingRepository _alertHandlingRepository;
@@ -15,7 +15,7 @@ class DashboardNetwork implements EduconnectNetwork {
 
   @override
   Future<EduconnectResponse> getAllItems(
-      {required EduconnectModelList model}) async {
+      {required EduconnectListModel model}) async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
       DatabaseTable tableQueryData =
@@ -55,9 +55,9 @@ class DashboardNetwork implements EduconnectNetwork {
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        AlertHandlingTypes.ServerError,
+        AlertHandlingTypes.MajorUiError,
         tag: 'admin_network > getAllData',
-        showToast: true,
+        // showToast: true,
       );
     }
     return response;
@@ -185,7 +185,7 @@ class DashboardNetwork implements EduconnectNetwork {
       final query = await SupabaseCridentials.supabase
           .from(tableQueryData.tableName)
           .delete()
-          .match({'id': model.id});
+          .eq('id', model.id);
       Madpoly.print(
         'query= ',
         inspectObject: query,

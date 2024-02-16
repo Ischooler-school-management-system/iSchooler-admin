@@ -22,7 +22,7 @@ class ClassesListCubit extends EduconnectCubit<ClassListState> {
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectModelList response =
+    EduconnectListModel response =
         //model is sent here to get the type of request only
         await _classRepository.getAllItems(model: ClassesListModel.empty());
     if (response is ClassesListModel) {
@@ -43,6 +43,9 @@ class ClassesListCubit extends EduconnectCubit<ClassListState> {
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _classRepository.addItem(model: model);
+    emit(state.updateStatus());
+
+    emit(state.updateStatus());
     await getAllItems();
     // _loadingRepository.stopLoading();
   }
@@ -53,6 +56,7 @@ class ClassesListCubit extends EduconnectCubit<ClassListState> {
 
     bool successfulRequest = await _classRepository.updateItem(model: model);
     if (successfulRequest) {
+      emit(state.updateStatus());
       await getAllItems();
     }
     // _loadingRepository.stopLoading();
@@ -63,6 +67,7 @@ class ClassesListCubit extends EduconnectCubit<ClassListState> {
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _classRepository.deleteItem(model: model);
+    emit(state.updateStatus());
     await getAllItems();
   }
 }

@@ -37,7 +37,7 @@ class _DashboardDropDownWidgetState<C extends EduconnectCubit>
   Widget build(BuildContext context) {
     return BlocBuilder<C, EduconnectState>(
       builder: (context, state) {
-        EduconnectModelList educonnectAllModel = EduconnectModelList.empty();
+        EduconnectListModel educonnectAllModel = EduconnectListModel.empty();
         if (state.isLoaded()) {
           educonnectAllModel = state.educonnectAllModel;
         }

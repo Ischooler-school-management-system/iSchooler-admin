@@ -859,7 +859,7 @@ class NewsModel extends EduconnectModel {
   }
 }
 
-class WeeklySessionsListModel extends EduconnectModelList {
+class WeeklySessionsListModel extends EduconnectListModel {
   const WeeklySessionsListModel({required List<WeeklySessionModel> items})
       : super(items: items);
 
@@ -885,7 +885,7 @@ class WeeklySessionsListModel extends EduconnectModelList {
   }
 }
 
-class WeeklyTimetablesListModel extends EduconnectModelList {
+class WeeklyTimetablesListModel extends EduconnectListModel {
   const WeeklyTimetablesListModel({required List<WeeklyTimetableModel> items})
       : super(items: items);
 
@@ -910,7 +910,7 @@ class WeeklyTimetablesListModel extends EduconnectModelList {
   }
 }
 
-class ExamTypesListModel extends EduconnectModelList {
+class ExamTypesListModel extends EduconnectListModel {
   const ExamTypesListModel({required List<ExamTypeModel> items})
       : super(items: items);
 
@@ -936,7 +936,7 @@ class ExamTypesListModel extends EduconnectModelList {
   }
 }
 
-class ExamsListModel extends EduconnectModelList {
+class ExamsListModel extends EduconnectListModel {
   const ExamsListModel({required List<ExamModel> items}) : super(items: items);
 
   factory ExamsListModel.empty() {
@@ -961,7 +961,7 @@ class ExamsListModel extends EduconnectModelList {
   }
 }
 
-class ExamSessionsListModel extends EduconnectModelList {
+class ExamSessionsListModel extends EduconnectListModel {
   const ExamSessionsListModel({required List<ExamSessionModel> items})
       : super(items: items);
 
@@ -986,7 +986,7 @@ class ExamSessionsListModel extends EduconnectModelList {
   }
 }
 
-class ExamTimetablesListModel extends EduconnectModelList {
+class ExamTimetablesListModel extends EduconnectListModel {
   const ExamTimetablesListModel({required List<ExamTimetableModel> items})
       : super(items: items);
 
@@ -1013,7 +1013,7 @@ class ExamTimetablesListModel extends EduconnectModelList {
   }
 }
 
-class HomeworksListModel extends EduconnectModelList {
+class HomeworksListModel extends EduconnectListModel {
   const HomeworksListModel({required List<HomeworkModel> items})
       : super(items: items);
 
@@ -1040,7 +1040,7 @@ class HomeworksListModel extends EduconnectModelList {
   }
 }
 
-class NewsListModel extends EduconnectModelList {
+class NewsListModel extends EduconnectListModel {
   const NewsListModel({required List<NewsModel> items}) : super(items: items);
 
   factory NewsListModel.empty() {

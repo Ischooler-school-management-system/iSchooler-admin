@@ -1,8 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:collection/collection.dart';
+
 import '../../../../../common/educonnect_model.dart';
 import 'admin_model.dart';
 
-class AdminsListModel extends EduconnectModelList {
+class AdminsListModel extends EduconnectListModel {
   @override
   const AdminsListModel({required super.items});
   factory AdminsListModel.empty() {
@@ -22,6 +24,13 @@ class AdminsListModel extends EduconnectModelList {
     );
     return AdminsListModel(items: items);
   }
+  @override
+  AdminModel? getModelByName(String modelName) {
+    AdminModel? firstWhereOrNull = (items as List<AdminModel>)
+        .firstWhereOrNull((AdminModel item) => item.name == modelName);
+    return firstWhereOrNull;
+  }
+
   @override
   Map<String, dynamic> toMap() {
     return {

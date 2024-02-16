@@ -3,7 +3,7 @@ import 'package:collection/collection.dart'; // You have to add this manually, f
 import '../../../../common/educonnect_model.dart';
 import 'class_model.dart';
 
-class ClassesListModel extends EduconnectModelList {
+class ClassesListModel extends EduconnectListModel {
   const ClassesListModel({required List<ClassModel> items})
       : super(items: items);
 

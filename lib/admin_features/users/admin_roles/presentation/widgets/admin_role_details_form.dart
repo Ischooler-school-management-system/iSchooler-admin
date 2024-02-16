@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
@@ -9,7 +8,7 @@ import '../../data/models/admin_role_model.dart';
 
 class AdminRoleDetailsForm extends StatefulWidget {
   final AdminRoleModel? currentAdminRoleData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(AdminRoleModel model) onSaved;
 
   const AdminRoleDetailsForm(
       {super.key, this.currentAdminRoleData, required this.onSaved});

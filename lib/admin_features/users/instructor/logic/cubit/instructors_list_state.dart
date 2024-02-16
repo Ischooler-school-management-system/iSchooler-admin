@@ -15,11 +15,18 @@ class InstructorsListState extends EduconnectState {
     );
   }
 
-  InstructorsListState updateAllInstructors(
-      InstructorsListModel instructorsListModel) {
+  @override
+  InstructorsListState updateData(newData) {
     return _copyWith(
-      educonnectAllModel: instructorsListModel,
+      educonnectAllModel: newData is InstructorsListModel ? newData : null,
       status: EduconnectStatus.loaded,
+    );
+  }
+
+  @override
+  InstructorsListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
     );
   }
 

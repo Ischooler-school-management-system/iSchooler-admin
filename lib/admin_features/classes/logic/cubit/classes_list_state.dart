@@ -22,6 +22,13 @@ class ClassListState extends EduconnectState {
     );
   }
 
+  @override
+  ClassListState updateStatus({EduconnectStatus? newStatus}) {
+    return _copyWith(
+      status: newStatus ?? EduconnectStatus.updated,
+    );
+  }
+
   ClassListState _copyWith({
     ClassesListModel? educonnectAllModel,
     EduconnectStatus? status,
