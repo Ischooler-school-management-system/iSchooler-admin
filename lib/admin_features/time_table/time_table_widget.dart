@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:timeline_tile/timeline_tile.dart';
 
+import '../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
 import '../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../common/functions/educonnect_date_time_helper.dart';
 import '../../common/style/educonnect_colors.dart';
@@ -34,20 +35,39 @@ class TimeTableScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<ScheduledClass> sessionList = generateClassList(
-        DateTime.now(), 5, const Duration(minutes: 30), "Math", "John Doe");
+        DateTime.now(), 9, const Duration(minutes: 30), "Math", "John Doe");
 
     return EduconnectScreen(
       body: Padding(
         padding: const EdgeInsets.all(8.0),
-        child: ListView.builder(
-          itemCount: sessionList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return newMethod(
-              session: sessionList[index],
-              isFirst: index == 0,
-              isLast: index == sessionList.length - 1,
-            );
-          },
+        child: Column(
+          children: [
+            EduConnectDropdownWidget(
+              labelText: 'day',
+              // value: ,
+              hint: 'Monday',
+              onChanged: (value) {},
+              options: const [
+                'Sunday',
+                'Monday',
+                'Tuesday',
+                'Wensday',
+                'Thursday'
+              ],
+            ),
+            Expanded(
+              child: ListView.builder(
+                itemCount: sessionList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return newMethod(
+                    session: sessionList[index],
+                    isFirst: index == 0,
+                    isLast: index == sessionList.length - 1,
+                  );
+                },
+              ),
+            ),
+          ],
         ),
       ),
     );

@@ -18,6 +18,7 @@ abstract class Madpoly {
     String? tag,
     bool isLog = false,
     bool showToast = false,
+    bool addDivider = true,
   }) {
     String message = "";
 
@@ -30,7 +31,7 @@ abstract class Madpoly {
     if (inspectObject != null) {
       message += ', inspectObject: $inspectObject';
     }
-
+    message += '\n ------------------------------------------------------';
     if (color == null) {
       if (isLog == true) {
         color = MadpolyColor.yellow;
@@ -42,6 +43,7 @@ abstract class Madpoly {
       SmartDialog.dismiss();
       SmartDialog.showToast(msg.toString());
     }
+
     String formattedMessage = _formatLogMessage(message, color);
     log(formattedMessage);
     inspect(inspectObject);

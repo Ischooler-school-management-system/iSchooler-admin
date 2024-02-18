@@ -2,7 +2,6 @@
 
 admin_role: id | name
 
-
 admin: id | name | phone_number | address | gender | email | profile_picture | date_of_birth | specialization(optional) | hire_date | admin_role_id
 
 instructor: id | name | phone_number | address | gender | email | profile_picture  | date_of_birth | specialization(optional) | hire_date
@@ -16,23 +15,23 @@ subject: id | name | total_marks| grade_id
 student: id | name | phone_number | address | gender | email | profile_picture | date_of_birth | guardians_phone_number | payment_status | class_id
 
 instructor_assignment: id | name | instructor_id | subject_id | class_id |
+----------------------------------------------------------
+weekday:id | name | is_day_off (static 7 weekdays)
 
 weekly_timetable: id | name | term  | class_id | start time | end time | session_interval | break_interval
 
-weekly_sessions: id | name  | session_number | weekday | start_time | end_time | session_interval | instructor_assignment_id | weekly_timetable_id
+weekly_timetable_day:id | weekly_timetable_id | weekday_id
 
-
-
+weekly_sessions: id | name | (required) weekly_timetable_days_id |(null if is_day_off=true) instructor_assignment_id | session_number
+----------------------------------------------------------
 exam_type: id | name | marks_percent
 
 exam: id | name | date_time | subject_id | exam_type_id
 
 exam_timetable: id | name | term | grade_id | exam_id
 
-exam_session: id | name | session_number | weekday | start_time | end_time | session_interval | instructor_id | exam_timetable_id 
+exam_session: id | name | session_number |  weekday_id | start_time | end_time | session_interval | session_number | instructor_id | exam_timetable_id
 
 homework: id | name | date | content | instructor_assignment_id
 
 news: id | name | thumbnail | date_time | description
-
---------------------------------------------------------------------------

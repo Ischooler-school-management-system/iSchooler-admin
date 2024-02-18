@@ -1,3 +1,7 @@
+import 'package:school_admin/admin_features/time_table/weekly_session_model.dart';
+import 'package:school_admin/admin_features/time_table/weekly_sessions_list_model.dart';
+import 'package:school_admin/admin_features/time_table/weekly_timetable_model.dart';
+import 'package:school_admin/admin_features/time_table/weekly_timetables_list_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../admin_features/list_models.dart';

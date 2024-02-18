@@ -15,11 +15,11 @@ class DashboardNetwork implements EduconnectNetwork {
 
   @override
   Future<EduconnectResponse> getAllItems(
-      {required EduconnectListModel model}) async {
+      {required EduconnectListModel model, DatabaseTable? table}) async {
     EduconnectResponse response = EduconnectResponse.empty();
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          table ?? EduconnectNetworkHelper.getTableQueryData(model);
 
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
