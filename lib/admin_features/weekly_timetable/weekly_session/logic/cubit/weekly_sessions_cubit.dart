@@ -11,7 +11,7 @@ import '../../data/repo/weekly_session_repo.dart';
 
 part 'weekly_sessions_state.dart';
 
-class WeeklySessionsCubit extends Cubit<WeeklySessionsListState> {
+class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
   final WeeklySessionsRepository _weeklysessionsRepository;
   final LoadingRepository _loadingRepository;
 
@@ -20,7 +20,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsListState> {
     LoadingRepository loadingRepository,
   )   : _weeklysessionsRepository = weeklysessionsRepository,
         _loadingRepository = loadingRepository,
-        super(WeeklySessionsListState.init());
+        super(WeeklySessionsState.init());
 
   Future<void> getAllItems({
     required String classId,

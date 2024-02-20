@@ -68,7 +68,7 @@ class _InstructorAssignmentDetailsFormState
             },
           ),
           DashboardDropDownWidget<InstructorsListCubit>(
-              value: instructorAssignmentData.instructor == null
+              hint: instructorAssignmentData.instructor == null
                   ? ''
                   : instructorAssignmentData.instructor!.name,
               labelText: 'Instructor',
@@ -84,7 +84,7 @@ class _InstructorAssignmentDetailsFormState
                 setState(() {});
               }),
           DashboardDropDownWidget<SubjectsListCubit>(
-              value: instructorAssignmentData.subjectModel == null
+              hint: instructorAssignmentData.subjectModel == null
                   ? ''
                   : instructorAssignmentData.subjectModel!.name,
               labelText: 'Subject',
@@ -100,7 +100,7 @@ class _InstructorAssignmentDetailsFormState
                 setState(() {});
               }),
           DashboardDropDownWidget<ClassesListCubit>(
-              value: instructorAssignmentData.classModel == null
+              hint: instructorAssignmentData.classModel == null
                   ? ''
                   : instructorAssignmentData.classModel!.name,
               labelText: 'Class',

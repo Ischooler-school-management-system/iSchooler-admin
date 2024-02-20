@@ -166,7 +166,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           //  Todo: create AdminRoles logic folder
 
           DashboardDropDownWidget<AdminRolesListCubit>(
-              value: adminData.adminRole.name,
+              hint: adminData.adminRole.name,
               labelText: 'Class',
               onChanged: (EduconnectModel value) {
                 Madpoly.print(

@@ -4,7 +4,6 @@ import 'package:sidebarx/sidebarx.dart';
 import '../../../common/style/educonnect_colors.dart';
 import '../admin_features/cubits.dart';
 import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
-import '../admin_features/time_table/time_table_screen.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/comon_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';
@@ -25,7 +24,7 @@ class EduconnectSideBar extends StatefulWidget {
 }
 
 class _EduconnectSideBarState extends State<EduconnectSideBar> {
-  final _controller = SidebarXController(selectedIndex: 0, extended: true);
+  final _controller = SidebarXController(selectedIndex: 5, extended: true);
 
   @override
   Widget build(BuildContext context) {
@@ -45,7 +44,8 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
       const DashboardScreen<ClassesListCubit>(),
       const DashboardScreen<GradesListCubit>(),
       const DashboardScreen<SubjectsListCubit>(),
-      const TimeTableScreen(),
+      // const TimeTableScreen(),
+      const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
@@ -57,11 +57,8 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
     ];
     return EduconnectScreen(
       // key: _key,
-      appBar: isSmallScreen
-          ? AppBar(
-              backgroundColor: Colors.transparent,
-            )
-          : null,
+      // appBar: AppBar(backgroundColor: Colors.transparent),
+      showAppbar: true,
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [

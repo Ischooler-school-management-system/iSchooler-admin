@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:school_admin/admin_features/grades/data/models/grade_model.dart';
+import 'package:school_admin/admin_features/weekly_timetable/presentation/screens/time_table_screen.dart';
+import 'package:school_admin/common/comon_features/widgets/buttons/educonnect_button.dart';
+import 'package:school_admin/common/comon_features/widgets/buttons/models/buttons_model.dart';
+import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
@@ -47,6 +51,15 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
+          EduconnectButton(
+            button: EduconnectElevatedButton(
+              onPressed: () {
+                EduconnectNavigator.navigateToScreen(
+                    TimeTableScreen(classId: classData.id));
+              },
+              text: 'class time table',
+            ),
+          ),
           EduconnectTextField(
             initialValue: classData.id,
             labelText: 'Class ID',
@@ -62,7 +75,7 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
             },
           ),
           DashboardDropDownWidget<GradesListCubit>(
-              value: classData.grade.name,
+              hint: classData.grade.name,
               labelText: 'Grade',
               onChanged: (EduconnectModel value) {
                 Madpoly.print(

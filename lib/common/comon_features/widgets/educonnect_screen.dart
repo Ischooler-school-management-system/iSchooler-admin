@@ -9,6 +9,7 @@ class EduconnectScreen extends StatelessWidget {
   final bool enableBackButton;
   final String tag;
   final PreferredSizeWidget? appBar;
+  final bool showAppbar;
   final Widget? body;
   final bool closeAppBackButton;
   final Widget? bottomNavigationBar;
@@ -44,6 +45,7 @@ class EduconnectScreen extends StatelessWidget {
     this.padding,
     this.margin,
     this.alignment,
+    this.showAppbar = false,
   });
 
   // Build method for the EduconnectScreen widget
@@ -53,7 +55,8 @@ class EduconnectScreen extends StatelessWidget {
     return Scaffold(
       // key: _key,
       extendBodyBehindAppBar: extendBodyBehindAppBar,
-      appBar: appBar /* ?? languageAppbar() */,
+      // appBar: appBar /* ?? languageAppbar() */,
+      appBar: newMethod(context),
       bottomNavigationBar: bottomNavigationBar,
       body: body != null
           ? Container(
@@ -77,5 +80,16 @@ class EduconnectScreen extends StatelessWidget {
       floatingActionButton: floatingActionButton,
       drawer: drawer,
     );
+  }
+
+  PreferredSizeWidget? newMethod(BuildContext context) {
+    if (showAppbar && MediaQuery.of(context).size.width < 600) {
+      return appBar ??
+          AppBar(
+            backgroundColor: Colors.transparent,
+          );
+    } else {
+      return null;
+    }
   }
 }

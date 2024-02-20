@@ -1,5 +1,3 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../../common/comon_features/loading/data/models/loading_model.dart';
 import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
@@ -11,7 +9,7 @@ import '../../data/repo/weekday_repo.dart';
 
 part 'weekday_state.dart';
 
-class WeekdaysCubit extends Cubit<WeekdaysState> {
+class WeekdaysCubit extends EduconnectCubit<WeekdaysState> {
   final WeekdaysRepository _weekdaysRepository;
   final LoadingRepository _loadingRepository;
 
@@ -22,6 +20,7 @@ class WeekdaysCubit extends Cubit<WeekdaysState> {
         _loadingRepository = loadingRepository,
         super(WeekdaysState.init());
 
+  @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
     EduconnectListModel response =
@@ -41,29 +40,37 @@ class WeekdaysCubit extends Cubit<WeekdaysState> {
     _loadingRepository.stopLoading();
   }
 
-  Future<void> addItem({required WeekdayModel model}) async {
+  @override
+  Future<void> addItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-
-    await _weekdaysRepository.addItem(model: model);
+    if (model is WeekdayModel) {
+      await _weekdaysRepository.addItem(model: model);
+    }
     emit(state.updateStatus());
     await getAllItems();
     // _loadingRepository.stopLoading();
   }
 
-  Future<void> updateItem({required WeekdayModel model}) async {
+  @override
+  Future<void> updateItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-
-    bool successfulRequest = await _weekdaysRepository.updateItem(model: model);
+    bool successfulRequest = false;
+    if (model is WeekdayModel) {
+      successfulRequest = await _weekdaysRepository.updateItem(model: model);
+    }
     if (successfulRequest) {
       emit(state.updateStatus());
       await getAllItems();
     } // _loadingRepository.stopLoading();
   }
 
-  Future<void> deleteItem({required WeekdayModel model}) async {
+  @override
+  Future<void> deleteItem({required EduconnectModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _weekdaysRepository.deleteItem(model: model);
+    if (model is WeekdayModel) {
+      await _weekdaysRepository.deleteItem(model: model);
+    }
     emit(state.updateStatus());
     await getAllItems();
   }

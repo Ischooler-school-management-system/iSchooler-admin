@@ -64,7 +64,7 @@ class _SubjectDetailsFormState extends State<SubjectDetailsForm> {
             },
           ),
           DashboardDropDownWidget<GradesListCubit>(
-              value: subjectData.grade.name,
+              hint: subjectData.grade.name,
               labelText: 'Grade',
               onChanged: (EduconnectModel value) {
                 Madpoly.print(

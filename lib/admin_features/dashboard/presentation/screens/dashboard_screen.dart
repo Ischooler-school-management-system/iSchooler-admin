@@ -8,9 +8,6 @@ import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
 import '../../../cubits.dart';
-import '../../../weekly_timetable/data/models/weekly_timetable_model.dart';
-import '../../../weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
-import '../../../weekly_timetable/weekly_session/logic/cubit/weekly_sessions_cubit.dart';
 import '../views/dashboard_mobile_view.dart';
 import '../views/dashboard_web_veiw.dart';
 import 'dashboard_details_screen.dart';
@@ -92,10 +89,6 @@ class _DashboardScreenState<C extends EduconnectCubit>
 
   @override
   Widget build(BuildContext context) {
-    context
-        .read<WeeklySessionsCubit>()
-        .getAllItems(classId: '1', weekdayId: '3');
-
     return EduconnectScreen(
       onRefresh: () async => getDataRequest(),
       padding: const EdgeInsets.all(8),

@@ -1,3 +1,4 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: use_super_parameters, overridden_fields
 
 import 'package:school_admin/common/educonnect_model.dart';
@@ -14,7 +15,7 @@ class WeekdayModel extends EduconnectModel {
     return const WeekdayModel(
       id: '-1',
       name: '',
-      isDayOff: false,
+      isDayOff: true,
     );
   }
 
@@ -43,4 +44,7 @@ class WeekdayModel extends EduconnectModel {
       'is_day_off': isDayOff,
     };
   }
+
+  @override
+  String toString() => 'WeekdayModel(${super.toString()}, isDayOff: $isDayOff)';
 }

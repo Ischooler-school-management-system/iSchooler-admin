@@ -10,13 +10,13 @@ import '../../logic/cubit/educonnect_cubit.dart';
 class DashboardDropDownWidget<C extends EduconnectCubit>
     extends StatefulWidget {
   final Function(EduconnectModel) onChanged;
-  final String value;
-  final String labelText;
+  final String? hint;
+  final String? labelText;
   const DashboardDropDownWidget({
     super.key,
     required this.onChanged,
-    required this.value,
-    required this.labelText,
+    this.hint,
+    this.labelText,
   });
 
   @override
@@ -41,9 +41,10 @@ class _DashboardDropDownWidgetState<C extends EduconnectCubit>
         if (state.isLoaded()) {
           educonnectAllModel = state.educonnectAllModel;
         }
+        List<String> options = educonnectAllModel.getItemNames();
         return EduConnectDropdownWidget(
           labelText: widget.labelText,
-          hint: widget.value,
+          hint: widget.hint ?? options.first,
           onChanged: (value) {
             setState(() {
               if (value != null && value != '') {
@@ -55,7 +56,7 @@ class _DashboardDropDownWidgetState<C extends EduconnectCubit>
               }
             });
           },
-          options: educonnectAllModel.getItemNames(),
+          options: options,
         );
       },
     );
