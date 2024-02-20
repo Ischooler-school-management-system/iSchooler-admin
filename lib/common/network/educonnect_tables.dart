@@ -33,17 +33,18 @@ class DatabaseTable {
   }
 
   static String selectQueryMaker(List<DatabaseTable>? relatedTablesList) {
-    String result = '*, ';
-    if (relatedTablesList != null) {
-      for (var element in relatedTablesList) {
-        result += element.tableSelectQueryMaker();
-        if (element != relatedTablesList.last) {
-          result += ',';
-        }
-      }
-      // result = result.replaceAll('),', ')');
-      // result += ')' * ((relatedTablesList.length) + 1);
+    if (relatedTablesList == null || relatedTablesList.isEmpty) {
+      return '*';
     }
+    String result = '*, ';
+    for (var element in relatedTablesList) {
+      result += element.tableSelectQueryMaker();
+      if (element != relatedTablesList.last) {
+        result += ',';
+      }
+    }
+    // result = result.replaceAll('),', ')');
+    // result += ')' * ((relatedTablesList.length) + 1);
     return result;
   }
 
@@ -143,6 +144,10 @@ class EduconnectTables {
     relatedTablesList: [instructorAssignment, weeklyTimetable],
     // selectQuery:
     // '*,${instructorAssignment.tableSelectQueryMaker()},${weeklyTimetable.tableSelectQueryMaker()}',
+  );
+  static final DatabaseTable weekday = DatabaseTable(
+    tableName: 'weekday',
+    relatedTablesList: [],
   );
 
   // exam_type: id | name | marks_percent

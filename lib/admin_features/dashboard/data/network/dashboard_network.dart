@@ -38,7 +38,7 @@ class DashboardNetwork implements EduconnectNetwork {
         isLog: true,
         developer: "Ziad",
       );
-      final List<Map<String, dynamic>> query = await SupabaseCridentials
+      final List<Map<String, dynamic>> query = await SupabaseCredentials
           .supabase
           .from(tableQueryData.tableName)
           .select(tableQueryData.selectQuery)
@@ -86,7 +86,7 @@ class DashboardNetwork implements EduconnectNetwork {
         isLog: true,
         developer: "Ziad",
       );
-      final query = await SupabaseCridentials.supabase
+      final query = await SupabaseCredentials.supabase
           .from(tableQueryData.tableName)
           .insert(data);
       Madpoly.print(
@@ -135,7 +135,7 @@ class DashboardNetwork implements EduconnectNetwork {
         isLog: true,
         developer: "Ziad",
       );
-      final query = await SupabaseCridentials.supabase
+      final query = await SupabaseCredentials.supabase
           .from(tableQueryData.tableName)
           .update(data)
           .match(model.idToMap());
@@ -182,7 +182,7 @@ class DashboardNetwork implements EduconnectNetwork {
         // color: MadpolyColor.purple,
         developer: "Ziad",
       );
-      final query = await SupabaseCridentials.supabase
+      final query = await SupabaseCredentials.supabase
           .from(tableQueryData.tableName)
           .delete()
           .eq('id', model.id);

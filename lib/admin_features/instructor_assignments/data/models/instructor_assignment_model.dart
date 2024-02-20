@@ -2,8 +2,6 @@
 import 'package:school_admin/admin_features/models.dart';
 
 import '../../../../common/educonnect_model.dart';
-import '../../../classes/data/models/class_model.dart';
-import '../../../users/instructor/data/models/instructor_model.dart';
 
 class InstructorAssignmentModel extends EduconnectModel {
   final InstructorModel? instructor;
@@ -92,4 +90,8 @@ class InstructorAssignmentModel extends EduconnectModel {
       subjectModel: subjectModel ?? this.subjectModel,
     );
   }
+
+  @override
+  String toString() =>
+      'InstructorAssignmentModel(instructor: $instructor, classModel: $classModel, subjectModel: $subjectModel)';
 }

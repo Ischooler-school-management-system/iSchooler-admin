@@ -46,8 +46,8 @@ Future<void> main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   await Supabase.initialize(
-    url: SupabaseCridentials.supabaseUrl,
-    anonKey: SupabaseCridentials.supabaseKey,
+    url: SupabaseCredentials.supabaseUrl,
+    anonKey: SupabaseCredentials.supabaseKey,
   );
 
   /// 5. setPreferredOrientations:

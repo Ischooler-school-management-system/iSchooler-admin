@@ -31,7 +31,7 @@ abstract class Madpoly {
     if (inspectObject != null) {
       message += ', inspectObject: $inspectObject';
     }
-    message += '\n ------------------------------------------------------';
+    message += '\n ---------------------------------';
     if (color == null) {
       if (isLog == true) {
         color = MadpolyColor.yellow;

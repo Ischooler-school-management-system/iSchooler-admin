@@ -78,7 +78,7 @@ class AuthRepository {
 
   Future<bool> signOut() async {
     try {
-      await SupabaseCridentials.authInstance.signOut();
+      await SupabaseCredentials.authInstance.signOut();
       Madpoly.print(
         'signing out now',
         tag: 'auth_repo > signOut',
@@ -93,6 +93,6 @@ class AuthRepository {
         showToast: true,
       );
     }
-    return SupabaseCridentials.authInstance.currentUser == null;
+    return SupabaseCredentials.authInstance.currentUser == null;
   }
 }

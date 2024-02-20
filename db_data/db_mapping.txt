@@ -22,7 +22,7 @@ weekly_timetable: id | name | term  | class_id | start time | end time | session
 
 weekly_timetable_day:id | weekly_timetable_id | weekday_id
 
-weekly_sessions: id | name | (required) weekly_timetable_days_id |(null if is_day_off=true) instructor_assignment_id | session_number
+weekly_sessions: id | name | weekly_timetable_days_id | instructor_assignment_id | session_number
 ----------------------------------------------------------
 exam_type: id | name | marks_percent
 

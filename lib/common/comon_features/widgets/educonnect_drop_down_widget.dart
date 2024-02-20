@@ -13,7 +13,7 @@ class EduConnectDropdownWidget extends StatefulWidget {
   final double? width;
   final String? value;
   final bool enableValidation;
-  final String labelText;
+  final String? labelText;
 
   const EduConnectDropdownWidget({
     super.key,
@@ -23,7 +23,7 @@ class EduConnectDropdownWidget extends StatefulWidget {
     this.width,
     this.value,
     this.enableValidation = true,
-    required this.labelText,
+    this.labelText,
   });
 
   @override
@@ -121,13 +121,14 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            widget.labelText,
-            style: EduconnectTextStyles.style16,
+        if (widget.labelText != null)
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(
+              widget.labelText!,
+              style: EduconnectTextStyles.style16,
+            ),
           ),
-        ),
         Container(
           padding: const EdgeInsets.symmetric(horizontal: 8),
           width: widget.width,

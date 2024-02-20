@@ -6,15 +6,13 @@ import '../../../../common/comon_features/widgets/buttons/educonnect_button_expo
 import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
 import '../../../../common/comon_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
-import '../../../../common/madpoly.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
-import '../../../../common/network/educonnect_network_helper.dart';
 import '../../../cubits.dart';
-import '../../../time_table/weekdays_list_model.dart';
-import '../../../time_table/weekly_timetable_model.dart';
-import '../../../time_table/weekly_timetables_list_model.dart';
-import '../veiws/dashboard_mobile_veiw.dart';
-import '../veiws/dashboard_web_veiw.dart';
+import '../../../weekly_timetable/data/models/weekly_timetable_model.dart';
+import '../../../weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
+import '../../../weekly_timetable/weekly_session/logic/cubit/weekly_sessions_cubit.dart';
+import '../views/dashboard_mobile_view.dart';
+import '../views/dashboard_web_veiw.dart';
 import 'dashboard_details_screen.dart';
 
 class DashboardScreen<C extends EduconnectCubit> extends StatefulWidget {
@@ -30,34 +28,6 @@ class _DashboardScreenState<C extends EduconnectCubit>
   void initState() {
     super.initState();
     getDataRequest();
-  }
-
-  Future<void> timetableResponseTest() async {
-    // final List<Map<String, dynamic>> weekday =
-    //     await SupabaseCridentials.supabase.from('weekday').select();
-    // Madpoly.print('weekday = ', inspectObject: weekday);
-    // Madpoly.print('weekday = ',
-    //     inspectObject: WeekdaysListModel.fromMap({'items': weekday}));
-    final List<Map<String, dynamic>> weeklyTimetable = await SupabaseCridentials
-        .supabase
-        .from('weekly_timetable')
-        .select('*,class(*)');
-    Madpoly.print('weeklyTimetable = ', inspectObject: weeklyTimetable);
-    Madpoly.print('weeklyTimetable = ',
-        inspectObject:
-            WeeklyTimetablesListModel.fromMap({'items': weeklyTimetable}));
-    /* 
-    final List<Map<String, dynamic>> weeklyTimetableDay =
-        await SupabaseCridentials.supabase
-            .from('weekly_timetable_day')
-            .select('*,weekly_timetable(*),weekday(*)');
-    Madpoly.print('weeklyTimetableDay = ', inspectObject: weeklyTimetableDay);
-    final List<Map<String, dynamic>> weeklySessions = await SupabaseCridentials
-        .supabase
-        .from('weekly_sessions')
-        .select('*,weekly_timetable_day(*),instructor_assignment(*)');
-    Madpoly.print('weeklySessions = ', inspectObject: weeklySessions);
-   */
   }
 
   void getDataRequest() {
@@ -122,7 +92,9 @@ class _DashboardScreenState<C extends EduconnectCubit>
 
   @override
   Widget build(BuildContext context) {
-    timetableResponseTest();
+    context
+        .read<WeeklySessionsCubit>()
+        .getAllItems(classId: '1', weekdayId: '3');
 
     return EduconnectScreen(
       onRefresh: () async => getDataRequest(),

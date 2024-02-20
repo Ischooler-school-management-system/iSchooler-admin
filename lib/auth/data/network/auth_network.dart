@@ -11,12 +11,12 @@ class AuthNetwork {
       : _alertHandlingRepository = alertHandlingRepository;
 
   // final FirebaseAuth instance = FirebaseAuth.instance;
-  final instance = SupabaseCridentials.authInstance;
+  final instance = SupabaseCredentials.authInstance;
 
   Future<User?> signUp(
       {required String email, required String password}) async {
     try {
-      final userCredential = await SupabaseCridentials.authInstance.signUp(
+      final userCredential = await SupabaseCredentials.authInstance.signUp(
         email: email,
         password: password,
       );
@@ -40,7 +40,7 @@ class AuthNetwork {
       {required String email, required String password}) async {
     try {
       final userCredential =
-          await SupabaseCridentials.authInstance.signInWithPassword(
+          await SupabaseCredentials.authInstance.signInWithPassword(
         email: email,
         password: password,
       );

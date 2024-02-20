@@ -89,7 +89,7 @@ class EduconnectMaterialApp extends StatelessWidget {
     if (EduconnectConstants.testMode) {
       return const TestScreen();
     } else {
-      User? user = SupabaseCridentials.authInstance.currentUser;
+      User? user = SupabaseCredentials.authInstance.currentUser;
       if (user != null) {
         return const EduconnectSideBar();
       } else {

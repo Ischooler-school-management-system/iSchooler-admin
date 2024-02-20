@@ -1,11 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/admin_features/cubits.dart';
 import 'package:sidebarx/sidebarx.dart';
-import 'package:timeline_tile/timeline_tile.dart';
 
 import '../../../common/style/educonnect_colors.dart';
+import '../admin_features/cubits.dart';
 import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
-import '../admin_features/time_table/time_table_widget.dart';
+import '../admin_features/time_table/time_table_screen.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/comon_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';

@@ -1,19 +1,19 @@
-import 'package:school_admin/admin_features/time_table/weekly_session_model.dart';
-import 'package:school_admin/admin_features/time_table/weekly_sessions_list_model.dart';
-import 'package:school_admin/admin_features/time_table/weekly_timetable_model.dart';
-import 'package:school_admin/admin_features/time_table/weekly_timetables_list_model.dart';
+import '../../admin_features/weekly_timetable/weekday/data/models/weekday_model.dart';
+import '../../admin_features/weekly_timetable/weekly_session/data/models/weekly_session_model.dart';
+import '../../admin_features/weekly_timetable/weekly_session/data/models/weekly_sessions_list_model.dart';
+import '../../admin_features/weekly_timetable/data/models/weekly_timetable_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../admin_features/list_models.dart';
 import '../../admin_features/models.dart';
 import 'educonnect_tables.dart';
 
-class SupabaseCridentials {
+class SupabaseCredentials {
   static const String supabaseUrl = 'https://rqxinbwhqmugrjffbpjw.supabase.co';
   static const String supabaseKey =
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InJxeGluYndocW11Z3JqZmZicGp3Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MDY4ODI4NDUsImV4cCI6MjAyMjQ1ODg0NX0.AwIDwWWJicgFl_b6CTlf6kE5jVPNkhhPO9wSRxSK5yA';
   static final SupabaseClient supabase = Supabase.instance.client;
-  static final GoTrueClient authInstance = SupabaseCridentials.supabase.auth;
+  static final GoTrueClient authInstance = SupabaseCredentials.supabase.auth;
 }
 
 class EduconnectNetworkHelper {
@@ -43,6 +43,8 @@ class EduconnectNetworkHelper {
     } else if (model is WeeklyTimetableModel ||
         model is WeeklyTimetablesListModel) {
       return EduconnectTables.weeklyTimetable;
+    } else if (model is WeekdaysListModel || model is WeekdayModel) {
+      return EduconnectTables.weekday;
     } else if (model is ExamTypeModel || model is ExamTypesListModel) {
       return EduconnectTables.examType;
     } else if (model is ExamModel || model is ExamsListModel) {
@@ -60,3 +62,4 @@ class EduconnectNetworkHelper {
     return DatabaseTable.empty();
   }
 }
+// tost

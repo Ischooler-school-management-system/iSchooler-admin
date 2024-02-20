@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 import 'package:equatable/equatable.dart';
-import 'package:school_admin/admin_features/time_table/weekly_session_model.dart';
-import 'package:school_admin/admin_features/time_table/weekly_sessions_list_model.dart';
-import 'package:school_admin/admin_features/time_table/weekly_timetable_model.dart';
-import 'package:school_admin/admin_features/time_table/weekly_timetables_list_model.dart';
-import 'package:school_admin/common/madpoly.dart';
-import 'package:school_admin/admin_features/models.dart';
 import 'package:school_admin/admin_features/list_models.dart';
+import 'package:school_admin/admin_features/models.dart';
+import 'package:school_admin/common/madpoly.dart';
+
+import '../admin_features/weekly_timetable/weekly_session/data/models/weekly_session_model.dart';
+import '../admin_features/weekly_timetable/weekly_session/data/models/weekly_sessions_list_model.dart';
+import '../admin_features/weekly_timetable/data/models/weekly_timetable_model.dart';
 
 class EduconnectModel extends Equatable {
   final String id;
@@ -38,7 +38,7 @@ class EduconnectModel extends Equatable {
 
   factory EduconnectModel.fromMap(Map<String, dynamic> map) {
     return EduconnectModel(
-      id: map['id'] ? map['id'].toString() : '-1',
+      id: map['id'] != null ? map['id'].toString() : '-1',
       name: map['name'] ?? '',
       // createdAt: DateTime.parse(map['created_at']),
     );
@@ -132,6 +132,9 @@ class EduconnectModel extends Equatable {
         name,
         // createdAt,
       ];
+
+  @override
+  String toString() => 'id: $id, name: $name';
 }
 
 class EduconnectListModel extends Equatable {

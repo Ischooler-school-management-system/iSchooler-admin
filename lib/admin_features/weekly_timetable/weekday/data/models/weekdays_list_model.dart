@@ -1,8 +1,8 @@
 // ignore_for_file: use_super_parameters, overridden_fields
 
-import 'package:school_admin/admin_features/time_table/weekly_timetable_model.dart';
+import 'package:collection/collection.dart';
 
-import '../../common/educonnect_model.dart';
+import '../../../../../common/educonnect_model.dart';
 import 'weekday_model.dart';
 
 class WeekdaysListModel extends EduconnectListModel {
@@ -18,6 +18,14 @@ class WeekdaysListModel extends EduconnectListModel {
       // Add more instances as needed
     ]);
   }
+
+  @override
+  WeekdayModel? getModelByName(String modelName) {
+    WeekdayModel? firstWhereOrNull = (items as List<WeekdayModel>)
+        .firstWhereOrNull((WeekdayModel item) => item.name == modelName);
+    return firstWhereOrNull;
+  }
+
   factory WeekdaysListModel.fromMap(Map map) {
     final List<WeekdayModel> items = List<WeekdayModel>.from(
       map['items'].map(

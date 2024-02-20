@@ -1,12 +1,91 @@
-admin
-select a class
-show name - grade 
-show the time table if its there
-to create
+----------------------------------------------------------
+weekday:id | name | is_day_off (static 7 weekdays)
 
-input session and break interval 
-select a day 
-button says create a session
-veiw a dropdown to select a instructor assignment (get the ones for this class only)
-when this creatd it sows as a listtlie with edit and delete and next is the create button again
+weekly_timetable: id | name | term  | class_id | start time | end time | session_interval | break_interval
 
+weekly_timetable_day:id | weekly_timetable_id | weekday_id
+
+weekly_sessions: id | name | weekly_timetable_day_id | instructor_assignment_id | session_number
+----------------------------------------------------------
+class screen > 
+get table by class id >>> (((WeeklyTimetableCubit.get(class id ))))
+if not found create new one WeeklyTimetableCubit.add(class id )
+(((WeeklyTimetableCubit.edit(class id))))
+
+get days >>> (((WeekdaysCubit.getall())))
+select day 
+   get a WeeklyTimetableDay (((WeeklyTimetableDaysCubit.get(weekly_timetable_id , weekday_id))))
+   check if the weekly_timetable_id | weekday_id are the same
+   if false or not found:
+   create a WeeklyTimetableDaysCubit (((WeeklyTimetableDaysCubit.create(weekly_timetable_id , weekday_id))))
+   delete all related sessions then delete it 
+   (((WeeklySessionsCubit.deleteAll(weekly_timetable_day_id))))
+   (((WeeklyTimetableDaysCubit.delete(weekly_timetable_id , weekday_id))))
+   
+   
+     get the sessions (((WeeklySessionsCubit.getall(class id ,weekday id ))))
+     add a session (((WeeklySessionsCubit.create(sessionmodel.tomap ))))
+     edit a session (((WeeklySessionsCubit.edit(sessionmodel.tomap ))))
+     delete a session (((WeeklySessionsCubit.delete(sessionmodel.id))))
+
+
+WeekdaysCubit
+WeeklyTimetableCubit
+WeeklySessionsCubit
+WeeklyTimetableDaysCubit
+
+ context.read<>().getAllItems();
+ context.read<>().addItem();
+ context.read<>().updateItem();
+ context.read<>().deleteItem();
+
+ // context.read<>(WeekdaysCubit).getAllItems();
+
+ context.read<WeeklyTimetableCubit>().getByClassId(classId);
+ context.read<WeeklyTimetableCubit>().addItem(model);
+ context.read<WeeklyTimetableCubit>().updateItem(model.id);
+ context.read<WeeklyTimetableCubit>().deleteItem(model.id);
+
+ context.read<WeeklySessionsCubit>().getAllItems(class id ,weekday id);
+ context.read<WeeklySessionsCubit>().addItem(model);
+ context.read<WeeklySessionsCubit>().updateItem(model);
+ context.read<WeeklySessionsCubit>().deleteItem(model.id);
+ context.read<WeeklySessionsCubit>().deleteAll(weekly_timetable_day_id);
+
+
+ context.read<WeeklyTimetableDaysCubit>().getItem(weekly_timetable_id , weekday_id);
+ context.read<WeeklyTimetableDaysCubit>().addItem(weekly_timetable_id , weekday_id);
+ context.read<WeeklyTimetableDaysCubit>().deleteItem(weekly_timetable_id , weekday_id);
+ 
+get the weekly_sessions table records that contains the  weekly_timetable_day record that contains the weekly_timetable record that contains the class_id = 1, and also contains weekday_id = 4'
+
+
+select a class (now class_id is available)
+create new timetable [timetable.toMap]
+     >> new timetable record needs (name | term  | class_id | start time | end time | session_interval | break_interval)
+to create table sessions
+    select a weekday (now weekly_timetable_day_id is available) [weekday.toMap]
+        give a value to is_day_off
+        if false:
+        for each day selected a weekly_timetable_day record will be created(weekly_timetable_id | weekday_id) [weekly_timetable_day.toMap]
+            >> add sessions [session.toMap]
+                select the instructor_assignment to this session (now instructor_assignment_id is available)
+                session needs(name | weekly_timetable_day_id | instructor_assignment_id | session_number "current sessions number + 1")
+
+
+
+weekday(getall)
+
+
+weekly_timetable(
+    create & update by id => form(name [field] | term [field]| class_id [select]| start time [time select]| end time [time select]| session_interval [num field] | break_interval [num field])
+, getbyClassId , deletebyclassid)
+
+
+weekly_timetable_day(
+    create & update by id => select(weekly_timetable_id | weekday_id)
+   , delete by (weekly_timetable(classid) | weekday_id))
+
+weekly_sessions(
+    create & update by id => (name field | weekly_timetable_day_id (select)| instructor_assignment_id(select) | session_number (current sessions number + 1)), 
+    getall by class id and weekday id , delete by id)
