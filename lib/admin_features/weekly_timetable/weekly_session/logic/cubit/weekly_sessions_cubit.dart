@@ -33,7 +33,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsListState> {
       classId: classId,
       weekdayId: weekdayId,
     );
-    if (response tingis WeeklySessionsListModel) {
+    if (response is WeeklySessionsListModel) {
       emit(state.updateData(response));
     } else {
       Madpoly.print(
