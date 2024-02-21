@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../../../../../common/comon_features/widgets/educonnect_date_field.dart';
-import '../../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/common_features/widgets/educonnect_date_field.dart';
+import '../../../../../common/common_features/widgets/educonnect_drop_down_widget.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_assets.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
@@ -133,6 +133,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           EduconnectTextField(
             // initialValue: '01111',
             initialValue: studentData.phoneNumber,
+            keyboardType: TextInputType.number,
 
             labelText: 'Phone Number',
             validator: (value) {

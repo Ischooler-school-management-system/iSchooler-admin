@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/comon_features/widgets/educonnect_checkbox.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../../common/common_features/widgets/educonnect_checkbox.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/style/educonnect_text_theme.dart';

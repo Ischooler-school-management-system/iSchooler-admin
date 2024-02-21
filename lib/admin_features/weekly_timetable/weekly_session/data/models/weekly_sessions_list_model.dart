@@ -25,7 +25,7 @@ class WeeklySessionsListModel extends EduconnectListModel {
   WeeklySessionsListModel setSessionsTiming(
       {required WeeklyTimetableModel timeTable}) {
     List<WeeklySessionModel> newItems = [];
-    DateTime firstSessionDate = DateTime(5000, 1, 1, timeTable.startTime);
+    DateTime firstSessionDate = timeTable.startTime;
     DateTime startingDate = firstSessionDate.copyWith();
     DateTime endingDate = firstSessionDate
         .copyWith()

@@ -17,7 +17,7 @@ class EduconnectDateTimeHelper {
   }
 
   static String? timeFormat(DateTime? date) {
-    final formatter = DateFormat('H:mm a');
+    final formatter = DateFormat('h:mm a');
     if (date != null) {
       return formatter.format(date);
     }

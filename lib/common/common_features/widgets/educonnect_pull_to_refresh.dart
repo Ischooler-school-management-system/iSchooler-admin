@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 
 import '../alert_handling/data/models/alert_handling_model.dart';
-import '../../comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
+import '../../common_features/alert_handling/logic/cubit/error_handling_cubit.dart';
 import '../../madpoly.dart';
 import '../../style/educonnect_colors.dart';
 import 'educonnect_conditional_widget.dart';

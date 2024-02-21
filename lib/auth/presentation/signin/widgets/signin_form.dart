@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/comon_features/widgets/educonnect_checkbox.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_password_field.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/comon_features/responsive/responsive.dart';
+import '../../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../../common/common_features/widgets/educonnect_checkbox.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_password_field.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/common_features/responsive/responsive.dart';
 import '../../../../../common/style/educonnect_colors.dart';
 import '../../../logic/cubit/auth_cubit.dart';
 

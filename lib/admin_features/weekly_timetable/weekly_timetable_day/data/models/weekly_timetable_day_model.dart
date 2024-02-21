@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: use_super_parameters, overridden_fields
 
-import 'package:school_admin/common/educonnect_model.dart';
+import '../../../../../common/educonnect_model.dart';
 
 class WeeklyTimetableDayModel extends EduconnectModel {
   final int weeklyTimetableId;
@@ -38,7 +38,6 @@ class WeeklyTimetableDayModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'id': id,
       'weekly_timetable_id': weeklyTimetableId,
       'weekday_id': weekdayId,
     };

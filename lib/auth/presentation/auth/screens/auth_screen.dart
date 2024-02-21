@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../common/comon_features/widgets/buttons/educonnect_button.dart';
-import '../../../../../common/comon_features/widgets/buttons/models/buttons_model.dart';
-import '../../../../../common/comon_features/widgets/educonnect_image_widget.dart';
-import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
+import '../../../../../common/common_features/widgets/buttons/educonnect_button.dart';
+import '../../../../../common/common_features/widgets/buttons/models/buttons_model.dart';
+import '../../../../../common/common_features/widgets/educonnect_image_widget.dart';
+import '../../../../../common/common_features/widgets/educonnect_screen.dart';
 import '../../../../../common/educonnect_assets.dart';
 import '../../../../../common/educonnect_constants.dart';
 import '../../../../../common/madpoly.dart';

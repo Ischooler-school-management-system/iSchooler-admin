@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:school_admin/admin_features/grades/data/models/grade_model.dart';
 
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/madpoly.dart';

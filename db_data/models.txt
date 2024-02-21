@@ -11,7 +11,7 @@ User: AppModel ==> (phone_number | address | gender | email | profile_picture | 
 Instructor: User ==> (date_of_birth | specialization(optional) | hire_date)
     Notes: (assign homework to students, see his sceduale, have access to student's guardians_phone_number )
 Student: User ==> (guardians_phone_number | payment_status | Class)
-    Notes: (veiw homework, sceduale, exam results, have access to instructor and other students phone_number)
+    Notes: (view homework, sceduale, exam results, have access to instructor and other students phone_number)
 AdminRole: AppModel ==> ( )
     Notes: [owner('can manage managers'), manager('can manage employees'), employee(manages students and instructors)]
 

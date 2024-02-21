@@ -54,11 +54,19 @@ class EduconnectTextButton extends IEduconnectButton {
 class EduconnectContainerButton extends IEduconnectButton {
   final Widget child;
   final bool roundedCorners;
+  final Color? color;
+  final double? borderRadius;
+  final EdgeInsetsGeometry? margin;
+  final EdgeInsetsGeometry? padding;
 
   const EduconnectContainerButton({
     required this.child,
     required super.onPressed,
     this.roundedCorners = false,
+    this.color,
+    this.borderRadius,
+    this.margin,
+    this.padding,
   });
 }
 

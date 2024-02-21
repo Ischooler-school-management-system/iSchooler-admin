@@ -38,6 +38,18 @@ class WeeklySessionModel extends EduconnectModel {
           InstructorAssignmentModel.fromMap(map['instructor_assignment']),
     );
   }
+  @override
+  Map<String, dynamic> toMap() {
+    return <String, dynamic>{
+      'session_number': sessionNumber,
+      'weekly_timetable_day_id': weeklyTimetableDayId,
+      'instructor_assignment_id': instructorAssignmentId,
+      // 'instructor_assignment': instructorAssignment.toMap(),
+      'start_time': startTime,
+      'end_time': endTime,
+    };
+  }
+
   factory WeeklySessionModel.dummy() {
     return WeeklySessionModel(
       id: '',

@@ -7,8 +7,8 @@ import 'package:school_admin/admin_features/forms.dart';
 import '../../../cubits.dart';
 import '../../../models.dart';
 
-import '/common/comon_features/widgets/educonnect_screen.dart';
-import '/common/comon_features/widgets/educonnect_small_view.dart';
+import '/common/common_features/widgets/educonnect_screen.dart';
+import '/common/common_features/widgets/educonnect_small_view.dart';
 import '/common/educonnect_model.dart';
 import '/common/madpoly.dart';
 
@@ -46,6 +46,7 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      showAppbar: true,
       padding: const EdgeInsets.all(30.0),
       enableScrolling: true,
       body: EduconnectBoxConstrain(

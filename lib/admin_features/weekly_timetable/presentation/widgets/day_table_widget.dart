@@ -1,43 +1,44 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../common/common_features/widgets/educonnect_timeline_tile.dart';
 import '../../weekly_session/data/models/weekly_session_model.dart';
 import '../../weekly_session/data/models/weekly_sessions_list_model.dart';
 import 'table_session_widget.dart';
 
 class DayTableWidget extends StatelessWidget {
+  final Function()? onAddSessionPressed;
+  final WeeklySessionsListModel weeklySessionsListModel;
   const DayTableWidget({
     super.key,
     required this.weeklySessionsListModel,
+    required this.onAddSessionPressed,
   });
-
-  final WeeklySessionsListModel weeklySessionsListModel;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Expanded(
-          child: ListView.builder(
-            itemCount: weeklySessionsListModel.items.length,
-            itemBuilder: (BuildContext context, int index) {
-              EduconnectModel item = weeklySessionsListModel.items[index];
-              if (item is WeeklySessionModel) {
-                return TableSessionWidget(
-                  session: item,
-                  isFirst: index == 0,
-                  isLast: index == weeklySessionsListModel.items.length - 1,
-                );
-              }
-              return null;
-            },
-          ),
-        ),
-        EduconnectButton(
-          button: EduconnectElevatedButton(
-            onPressed: () {},
-            text: 'create new session',
+        ...weeklySessionsListModel.items.asMap().entries.map((e) {
+          WeeklySessionModel item = e.value as WeeklySessionModel;
+          int index = e.key;
+          return TableSessionWidget(
+            session: item,
+            isFirst: index == 0,
+          );
+        }),
+        EduconnectTimelineTile(
+          isLast: true,
+          endChild: EduconnectButton(
+            button: EduconnectContainerButton(
+              borderRadius: 12,
+              margin: const EdgeInsets.all(8),
+              child: const ListTile(
+                title: Text('add new session'),
+                leading: Icon(Icons.add, color: Colors.black),
+              ),
+              onPressed: onAddSessionPressed,
+            ),
           ),
         ),
       ],

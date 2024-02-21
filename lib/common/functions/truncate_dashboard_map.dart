@@ -1,4 +1,4 @@
-import '../comon_features/responsive/responsive.dart';
+import '../common_features/responsive/responsive.dart';
 
 Map<String, dynamic> truncateMap(
     /* int length, */ Map<String, dynamic> originalMap) {

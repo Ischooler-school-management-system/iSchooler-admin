@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/comon_features/responsive/responsive.dart';
-import '../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../common/comon_features/widgets/educonnect_conditional_widget.dart';
-import '../../../../common/comon_features/widgets/educonnect_screen.dart';
+import '../../../../common/common_features/responsive/responsive.dart';
+import '../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../common/common_features/widgets/educonnect_conditional_widget.dart';
+import '../../../../common/common_features/widgets/educonnect_screen.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
 import '../../../cubits.dart';
 import '../views/dashboard_mobile_view.dart';
-import '../views/dashboard_web_veiw.dart';
+import '../views/dashboard_web_view.dart';
 import 'dashboard_details_screen.dart';
 
 class DashboardScreen<C extends EduconnectCubit> extends StatefulWidget {
@@ -105,12 +105,12 @@ class _DashboardScreenState<C extends EduconnectCubit>
               addButton(),
               EduconnectConditionalWidget(
                 condition: Responsive.isMobile(),
-                whenTrue: DashboardMobileVeiw(
+                whenTrue: DashboardMobileview(
                   educonnectAllModel: educonnectAllModel,
                   onDeleteButtonPressed: onDeleteButtonPressed,
                   onEditButtonPressed: onEditButtonPressed,
                 ),
-                whenFalse: DashboardWebVeiw(
+                whenFalse: DashboardWebview(
                   allUsers: educonnectAllModel,
                   onDeleteButtonPressed: onDeleteButtonPressed,
                   onEditButtonPressed: onEditButtonPressed,

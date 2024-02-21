@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../common/comon_features/loading/data/models/loading_model.dart';
-import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
+import '../../../../../common/common_features/loading/data/models/loading_model.dart';
+import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';
@@ -12,13 +12,13 @@ import '../../data/repo/weekly_session_repo.dart';
 part 'weekly_sessions_state.dart';
 
 class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
-  final WeeklySessionsRepository _weeklysessionsRepository;
+  final WeeklySessionsRepository _weeklySessionsRepository;
   final LoadingRepository _loadingRepository;
 
   WeeklySessionsCubit(
-    WeeklySessionsRepository weeklysessionsRepository,
+    WeeklySessionsRepository weeklySessionsRepository,
     LoadingRepository loadingRepository,
-  )   : _weeklysessionsRepository = weeklysessionsRepository,
+  )   : _weeklySessionsRepository = weeklySessionsRepository,
         _loadingRepository = loadingRepository,
         super(WeeklySessionsState.init());
 
@@ -29,7 +29,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
     _loadingRepository.startLoading(LoadingType.normal);
     EduconnectListModel response =
         //model is sent here to get the type of request only
-        await _weeklysessionsRepository.getAllItems(
+        await _weeklySessionsRepository.getAllItems(
       classId: classId,
       weekdayId: weekdayId,
     );
@@ -38,7 +38,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
     } else {
       Madpoly.print(
         'incorrect model >> ${response.runtimeType}',
-        tag: 'weeklytimetables_list_cubit > ',
+        tag: 'weeklyTimetables_list_cubit > ',
         showToast: true,
         developer: "Ziad",
       );
@@ -53,7 +53,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
   }) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _weeklysessionsRepository.addItem(model: model);
+    await _weeklySessionsRepository.addItem(model: model);
     emit(state.updateStatus());
     await getAllItems(classId: classId, weekdayId: weekdayId);
     // _loadingRepository.stopLoading();
@@ -67,7 +67,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
     _loadingRepository.startLoading(LoadingType.normal);
 
     bool successfulRequest =
-        await _weeklysessionsRepository.updateItem(model: model);
+        await _weeklySessionsRepository.updateItem(model: model);
     if (successfulRequest) {
       emit(state.updateStatus());
       await getAllItems(classId: classId, weekdayId: weekdayId);
@@ -81,7 +81,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
   }) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _weeklysessionsRepository.deleteItem(model: model);
+    await _weeklySessionsRepository.deleteItem(model: model);
     emit(state.updateStatus());
     await getAllItems(classId: classId, weekdayId: weekdayId);
   }

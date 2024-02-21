@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/comon_features/widgets/educonnect_small_view.dart';
+import '../../../../common/common_features/widgets/educonnect_small_view.dart';
 import '../../../../common/educonnect_model.dart';
 import '../widgets/educonnect_dashboard_listtile.dart';
 
-class DashboardMobileVeiw extends StatelessWidget {
+class DashboardMobileview extends StatelessWidget {
   final EduconnectListModel educonnectAllModel;
   final Function(EduconnectModel model)? onDeleteButtonPressed;
   final Function(EduconnectModel model)? onEditButtonPressed;
-  const DashboardMobileVeiw({
+  const DashboardMobileview({
     super.key,
     required this.educonnectAllModel,
     this.onDeleteButtonPressed,

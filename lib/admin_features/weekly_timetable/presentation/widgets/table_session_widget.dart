@@ -1,33 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/admin_features/weekly_timetable/weekly_session/data/models/weekly_session_model.dart';
-import 'package:school_admin/common/style/educonnect_colors.dart';
-import 'package:school_admin/common/style/educonnect_text_theme.dart';
-import 'package:timeline_tile/timeline_tile.dart';
+
+import '../../../../common/common_features/widgets/educonnect_timeline_tile.dart';
+import '../../../../common/style/educonnect_colors.dart';
+import '../../../../common/style/educonnect_text_theme.dart';
+import '../../weekly_session/data/models/weekly_session_model.dart';
 
 class TableSessionWidget extends StatelessWidget {
   final WeeklySessionModel session;
-  final bool hasIndicator;
+  // final bool hasIndicator;
   final bool isFirst;
   final bool isLast;
   const TableSessionWidget({
     super.key,
     required this.session,
-    this.hasIndicator = true,
+    // this.hasIndicator = true,
     this.isFirst = false,
     this.isLast = false,
   });
 
   @override
   Widget build(BuildContext context) {
-    return TimelineTile(
-      hasIndicator: hasIndicator,
+    return EduconnectTimelineTile(
+      // hasIndicator: hasIndicator,
       isFirst: isFirst,
       isLast: isLast,
-      indicatorStyle:
-          const IndicatorStyle(width: 10, color: EduconnectColors.blue),
-      beforeLineStyle: const LineStyle(color: EduconnectColors.blue),
-      alignment: TimelineAlign.manual,
-      lineXY: 0.2,
       endChild: Container(
         decoration: BoxDecoration(
           color: EduconnectColors.blue.withOpacity(0.3),

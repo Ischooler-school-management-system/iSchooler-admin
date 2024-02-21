@@ -1,5 +1,5 @@
-import '../../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../models/weekly_timetable_day_model.dart';
 import '../network/weekly_timetable_day_network.dart';
 
@@ -21,7 +21,7 @@ class WeeklyTimetableDaysRepository {
         _alertHandlingRepository.addError(
           'Data Added Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'weeklytimetabledays_repo > addItem',
+          tag: 'weekly_timetable_days_repo > addItem',
           showToast: true,
         );
       } else {
@@ -31,7 +31,7 @@ class WeeklyTimetableDaysRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklytimetabledays_repo > addItem',
+        tag: 'weekly_timetable_days_repo > addItem',
         showToast: true,
       );
     }
@@ -46,7 +46,7 @@ class WeeklyTimetableDaysRepository {
         _alertHandlingRepository.addError(
           'Data Updated Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'weeklytimetabledays_repo > updateItem',
+          tag: 'weekly_timetable_days_repo > updateItem',
           // showToast: true,
         );
         requestSuccess = true;
@@ -57,7 +57,7 @@ class WeeklyTimetableDaysRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklytimetabledays_repo > updateItem',
+        tag: 'weekly_timetable_days_repo > updateItem',
         showToast: true,
       );
     }
@@ -72,7 +72,7 @@ class WeeklyTimetableDaysRepository {
         _alertHandlingRepository.addError(
           'Data Deleted Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'weeklytimetabledays_repo > delete',
+          tag: 'weekly_timetable_days_repo > delete',
           showToast: true,
         );
       } else {
@@ -82,7 +82,7 @@ class WeeklyTimetableDaysRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklytimetabledays_repo > delete',
+        tag: 'weekly_timetable_days_repo > delete',
         showToast: true,
       );
     }

@@ -1,18 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../common/comon_features/widgets/educonnect_screen.dart';
+import '../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../common/common_features/widgets/educonnect_screen.dart';
+import '../../../../common/navigation/educonnect_navi.dart';
+import '../../../classes/data/models/class_model.dart';
 import '../../../cubits.dart';
 import '../../data/models/weekly_timetable_model.dart';
 import '../../logic/cubit/weekly_timetable_cubit.dart';
 import '../../weekly_session/data/models/weekly_sessions_list_model.dart';
-import '../views/time_table_loaded_veiw.dart';
+import '../views/time_table_loaded_view.dart';
+import '../widgets/time_table_details_form.dart';
 
 class TimeTableScreen extends StatefulWidget {
-  final String classId;
+  final ClassModel classData;
 
-  const TimeTableScreen({super.key, required this.classId});
+  const TimeTableScreen({super.key, required this.classData});
 
   @override
   State<TimeTableScreen> createState() => _TimeTableScreenState();
@@ -27,7 +30,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
     // timetableResponseTest();
     context
         .read<WeeklyTimetableCubit>()
-        .getItemByClassId(classId: widget.classId);
+        .getItemByClassId(classId: widget.classData.id);
   }
 
 /* 
@@ -55,6 +58,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
   @override
   Widget build(BuildContext context) {
     return EduconnectScreen(
+      showAppbar: true,
       body: BlocBuilder<WeeklyTimetableCubit, WeeklyTimetableState>(
         builder: (context, state) {
           WeeklyTimetableModel? timeTable;
@@ -63,12 +67,12 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
             timeTable = state.weeklyTimetableModel;
           }
           if (timeTable != null) {
-            return TimeTableLoadedVeiw(timeTable: timeTable);
+            return TimeTableLoadedView(timeTable: timeTable);
           } else {
             return Center(
               child: EduconnectButton(
                 button: EduconnectElevatedButton(
-                  onPressed: () {},
+                  onPressed: onCreateTableButtonPressed,
                   text: 'create time table',
                 ),
               ),
@@ -77,5 +81,10 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
         },
       ),
     );
+  }
+
+  onCreateTableButtonPressed() {
+    EduconnectNavigator.navigateToScreen(
+        TimeTableDetailsForm(currentClassData: widget.classData));
   }
 }

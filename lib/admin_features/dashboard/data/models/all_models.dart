@@ -586,14 +586,14 @@ class HomeworkModel extends EduconnectModel {
   HomeworkModel copyWith({
     String? id,
     String? name,
-    ClassModel? classInfo,
+    ClassModel? classModel,
     SubjectModel? subject,
     DateTime? date,
     String? content,
   }) {
     return HomeworkModel(
       id: id ?? this.id,
-      classInfo: classInfo ?? this.classInfo,
+      classInfo: classModel ?? classInfo,
       subject: subject ?? this.subject,
       date: date ?? this.date,
       content: content ?? this.content,

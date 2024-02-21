@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:school_admin/admin_features/grades/data/models/grade_model.dart';
 import 'package:school_admin/admin_features/weekly_timetable/presentation/screens/time_table_screen.dart';
-import 'package:school_admin/common/comon_features/widgets/buttons/educonnect_button.dart';
-import 'package:school_admin/common/comon_features/widgets/buttons/models/buttons_model.dart';
+import 'package:school_admin/common/common_features/widgets/buttons/educonnect_button.dart';
+import 'package:school_admin/common/common_features/widgets/buttons/models/buttons_model.dart';
 import 'package:school_admin/common/navigation/educonnect_navi.dart';
 
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/madpoly.dart';
@@ -55,15 +55,17 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
             button: EduconnectElevatedButton(
               onPressed: () {
                 EduconnectNavigator.navigateToScreen(
-                    TimeTableScreen(classId: classData.id));
+                    TimeTableScreen(classData: classData));
               },
               text: 'class time table',
             ),
           ),
-          EduconnectTextField(
-            initialValue: classData.id,
-            labelText: 'Class ID',
-          ),
+          if (editingModel)
+            EduconnectTextField(
+              initialValue: classData.id,
+              labelText: 'Class ID',
+              enabled: false,
+            ),
           EduconnectTextField(
             initialValue: classData.name,
             labelText: 'Class Name',

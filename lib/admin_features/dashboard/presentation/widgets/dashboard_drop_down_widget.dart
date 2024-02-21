@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
+import '../../../../common/common_features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../common/educonnect_model.dart';
 import '../../logic/cubit/educonnect_cubit.dart';
 

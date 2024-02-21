@@ -6,11 +6,11 @@ import '../../../classes/data/models/class_model.dart';
 class WeeklyTimetableModel extends EduconnectModel {
   final String term;
   final String classId;
-  final int startTime;
-  final int endTime;
+  final DateTime startTime;
+  final DateTime endTime;
   final int sessionInterval;
   final int breakInterval;
-  final ClassModel classInfo;
+  final ClassModel classModel;
 
   const WeeklyTimetableModel({
     required super.id,
@@ -21,19 +21,32 @@ class WeeklyTimetableModel extends EduconnectModel {
     required this.endTime,
     required this.sessionInterval,
     required this.breakInterval,
-    required this.classInfo,
+    required this.classModel,
   });
+
+  /* 
+  
+  //  required super.id,
+    // required super.name,
+    // required this.term,
+    // required this.classId,
+    required this.startTime,
+    required this.endTime,
+    required this.sessionInterval,
+    required this.breakInterval,
+    // required this.classInfo,
+   */
   factory WeeklyTimetableModel.empty() {
     return WeeklyTimetableModel(
       id: '-1',
       name: '',
       term: '',
       classId: "-1",
-      startTime: -1,
-      endTime: -1,
+      startTime: DateTime(500, 1, 1, 1, 1),
+      endTime: DateTime(500, 1, 1, 1, 1),
       sessionInterval: 0,
       breakInterval: 0,
-      classInfo: ClassModel.empty(),
+      classModel: ClassModel.empty(),
     );
   }
 
@@ -43,11 +56,11 @@ class WeeklyTimetableModel extends EduconnectModel {
       name: 'Sample Timetable',
       term: 'Spring 2024',
       classId: '1',
-      startTime: 8,
-      endTime: 2,
+      startTime: DateTime(500, 1, 1, 8, 0),
+      endTime: DateTime(500, 1, 1, 2, 0),
       sessionInterval: 60,
       breakInterval: 10,
-      classInfo: ClassModel.dummy(),
+      classModel: ClassModel.dummy(),
     );
   }
 
@@ -61,7 +74,7 @@ class WeeklyTimetableModel extends EduconnectModel {
         endTime,
         sessionInterval,
         breakInterval,
-        classInfo,
+        classModel,
       ];
 
   factory WeeklyTimetableModel.fromMap(Map<String, dynamic> map) {
@@ -71,11 +84,15 @@ class WeeklyTimetableModel extends EduconnectModel {
       name: educonnectModel.name,
       term: map['term'] ?? '',
       classId: map['class_id'] == null ? '-1' : map['class_id'].toString(),
-      startTime: map['start_time'] ?? -1,
-      endTime: map['end_time'] ?? -1,
+      startTime: map['start_time'] != null
+          ? DateTime.parse(map['start_time'])
+          : DateTime(500, 1, 1, 1, 1),
+      endTime: map['start_time'] != null
+          ? DateTime.parse(map['end_time'])
+          : DateTime(500, 1, 1, 1, 1),
       sessionInterval: map['session_interval'] ?? -1,
       breakInterval: map['break_interval'] ?? -1,
-      classInfo: ClassModel.fromMap(map['class'] ?? {}),
+      classModel: ClassModel.fromMap(map['class'] ?? {}),
     );
   }
 
@@ -85,8 +102,8 @@ class WeeklyTimetableModel extends EduconnectModel {
       'name': name,
       'term': term,
       'class_id': classId,
-      'start_time': startTime,
-      'end_time': endTime,
+      'start_time': startTime.toIso8601String(),
+      'end_time': endTime.toIso8601String(),
       'session_interval': sessionInterval,
       'break_interval': breakInterval,
     };
@@ -103,7 +120,7 @@ class WeeklyTimetableModel extends EduconnectModel {
       'End Time': endTime,
       'Session Interval': '$sessionInterval minutes',
       'Break Interval': '$breakInterval minutes',
-      'Class Info': classInfo.toDisplayMap(),
+      'Class Info': classModel.toDisplayMap(),
     };
   }
 
@@ -113,11 +130,11 @@ class WeeklyTimetableModel extends EduconnectModel {
     String? name,
     String? term,
     String? classId,
-    int? startTime,
-    int? endTime,
+    DateTime? startTime,
+    DateTime? endTime,
     int? sessionInterval,
     int? breakInterval,
-    ClassModel? classInfo,
+    ClassModel? classModel,
   }) {
     return WeeklyTimetableModel(
       id: this.id,
@@ -128,7 +145,7 @@ class WeeklyTimetableModel extends EduconnectModel {
       endTime: endTime ?? this.endTime,
       sessionInterval: sessionInterval ?? this.sessionInterval,
       breakInterval: breakInterval ?? this.breakInterval,
-      classInfo: classInfo ?? this.classInfo,
+      classModel: classModel ?? this.classModel,
     );
   }
 }

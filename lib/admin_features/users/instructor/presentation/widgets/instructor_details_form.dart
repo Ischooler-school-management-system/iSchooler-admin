@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/comon_features/widgets/educonnect_date_field.dart';
-import '../../../../../common/comon_features/widgets/educonnect_drop_down_widget.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../../../common/common_features/widgets/educonnect_date_field.dart';
+import '../../../../../common/common_features/widgets/educonnect_drop_down_widget.dart';
+import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_assets.dart';
 import '../../../../../common/educonnect_validation.dart';
 import '../../../../../common/functions/educonnect_date_time_helper.dart';
@@ -126,6 +126,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
 
           /// Phone Number
           EduconnectTextField(
+            keyboardType: TextInputType.number,
             // initialValue: '01111',
             initialValue: instructorData.phoneNumber,
 

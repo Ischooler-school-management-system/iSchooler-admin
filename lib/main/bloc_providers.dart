@@ -8,8 +8,8 @@ import '../admin_features/weekly_timetable/weekly_session/logic/cubit/weekly_ses
 import '../admin_features/weekly_timetable/weekly_timetable_day/logic/cubit/weekly_timetable_day_cubit.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
-import '../common/comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
-import '../common/comon_features/loading/logic/cubit/loading_cubit.dart';
+import '../common/common_features/alert_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/common_features/loading/logic/cubit/loading_cubit.dart';
 import '../common/di.dart';
 
 /// here we define all blocs used in the app

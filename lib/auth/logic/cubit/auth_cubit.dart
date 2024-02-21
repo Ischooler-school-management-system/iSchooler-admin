@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../common/comon_features/loading/data/models/loading_model.dart';
-import '../../../../common/comon_features/loading/data/repo/loading_repo.dart';
+import '../../../../common/common_features/loading/data/models/loading_model.dart';
+import '../../../../common/common_features/loading/data/repo/loading_repo.dart';
 import '../../../../common/madpoly.dart';
 import '../../../admin_features/users/user_model.dart';
 import '../../data/repo/auth_repo.dart';

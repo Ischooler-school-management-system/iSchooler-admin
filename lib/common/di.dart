@@ -14,8 +14,8 @@ import '../admin_features/weekly_timetable/weekly_timetable_day/data/network/wee
 import '../admin_features/weekly_timetable/weekly_timetable_day/data/repo/weekly_timetable_day_repo.dart';
 import '../auth/data/network/auth_network.dart';
 import '../auth/data/repo/auth_repo.dart';
-import 'comon_features/alert_handling/data/repo/alert_handling_repo.dart';
-import 'comon_features/loading/data/repo/loading_repo.dart';
+import 'common_features/alert_handling/data/repo/alert_handling_repo.dart';
+import 'common_features/loading/data/repo/loading_repo.dart';
 
 /// Instance of Get It
 final GetIt getIt = GetIt.instance;

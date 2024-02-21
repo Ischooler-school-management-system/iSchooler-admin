@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../common/educonnect_constants.dart';
-import '../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../common/comon_features/alert_handling/logic/cubit/error_handling_cubit.dart';
-import '../common/comon_features/loading/logic/cubit/loading_cubit.dart';
-import '../common/comon_features/loading/presentation/loading_popup.dart';
+import '../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../common/common_features/alert_handling/logic/cubit/error_handling_cubit.dart';
+import '../common/common_features/loading/logic/cubit/loading_cubit.dart';
+import '../common/common_features/loading/presentation/loading_popup.dart';
 import '../common/madpoly.dart';
 import '../common/navigation/educonnect_navi.dart';
 import '../common/navigation/routes.dart';

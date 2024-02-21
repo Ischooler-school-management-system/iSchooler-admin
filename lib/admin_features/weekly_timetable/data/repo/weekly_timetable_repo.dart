@@ -1,5 +1,5 @@
-import '../../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../../common/network/educonnect_response.dart';
 import '../models/weekly_timetable_model.dart';

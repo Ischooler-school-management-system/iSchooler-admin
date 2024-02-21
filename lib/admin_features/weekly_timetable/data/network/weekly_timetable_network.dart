@@ -1,5 +1,5 @@
-import '../../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../../common/network/educonnect_network_helper.dart';
@@ -69,7 +69,7 @@ class WeeklyTimetableNetwork {
     try {
       Madpoly.print(
         'request will be sent is >>  getItem(), '
-        'tableQueryData: weekly_timetable'
+        'tableQueryData: weekly_timetable, '
         'classId: $classId',
         // inspectObject: tableQueryData,
         tag: 'weeklytimetable_network > getItemByClassId',
@@ -81,7 +81,7 @@ class WeeklyTimetableNetwork {
       final Map<String, dynamic> query = await SupabaseCredentials.supabase
           .from('weekly_timetable')
           .select('*,class(*)')
-          .eq('id', classId)
+          .eq('class_id', classId)
           .single();
 
       Madpoly.print(

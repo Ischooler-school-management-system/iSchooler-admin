@@ -2,7 +2,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../common/educonnect_assets.dart';
-import '../../../../common/comon_features/widgets/educonnect_image_widget.dart';
+import '../../../../common/common_features/widgets/educonnect_image_widget.dart';
 import '../../../../common/style/educonnect_text_theme.dart';
 
 class EduconnecDashboardListTile extends StatelessWidget {

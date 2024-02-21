@@ -1,12 +1,12 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
-import 'admin_features/dashboard/presentation/views/dashboard_web_veiw.dart';
+import 'admin_features/dashboard/presentation/views/dashboard_web_view.dart';
 import 'admin_features/dashboard/presentation/widgets/dashboard_data_row.dart';
 import 'admin_features/users/students/data/models/student_model.dart';
 import 'admin_features/users/students/data/models/students_list_model.dart';
 import 'admin_features/users/user_model.dart';
-import 'common/comon_features/widgets/educonnect_screen.dart';
+import 'common/common_features/widgets/educonnect_screen.dart';
 import 'common/madpoly.dart';
 
 // ignore: must_be_immutable
@@ -43,7 +43,7 @@ class TableTestScreen extends StatelessWidget {
       // body: buildDataTable(),
       body: Column(
         children: [
-          Expanded(child: DashboardWebVeiw(allUsers: allUsers)),
+          Expanded(child: DashboardWebview(allUsers: allUsers)),
         ],
       ),
     );

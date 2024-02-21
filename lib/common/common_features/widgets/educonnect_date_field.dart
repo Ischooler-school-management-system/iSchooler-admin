@@ -1,9 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 
 import 'package:flutter/material.dart';
-import 'package:school_admin/common/comon_features/widgets/fields/educonnect_text_field.dart';
+import '../../../common/common_features/widgets/fields/educonnect_text_field.dart';
+import '../../functions/educonnect_date_time_helper.dart';
 
-class EduconnectDateField extends StatelessWidget {
+class EduconnectDateField extends StatefulWidget {
   final String? initialValue;
   final Function(DateTime date) onTap;
   final String? labelText;
@@ -16,10 +17,26 @@ class EduconnectDateField extends StatelessWidget {
   });
 
   @override
+  State<EduconnectDateField> createState() => _EduconnectDateFieldState();
+}
+
+class _EduconnectDateFieldState extends State<EduconnectDateField> {
+  late TextEditingController _controller;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = TextEditingController(
+      text: widget.initialValue,
+    );
+  }
+
+  @override
   Widget build(BuildContext context) {
     return EduconnectTextField(
-      initialValue: initialValue,
-      labelText: labelText,
+      controller: _controller,
+      // initialValue: widget.initialValue,
+      labelText: widget.labelText,
       validator: (value) {
         // Add validation logic for date of birth if needed
         return value == null ? 'Please select a date' : null;
@@ -33,7 +50,8 @@ class EduconnectDateField extends StatelessWidget {
                 firstDate: DateTime(1900),
                 lastDate: DateTime(2100)) ??
             DateTime(1900);
-        onTap(date);
+        widget.onTap(date);
+        _controller.text = EduconnectDateTimeHelper.dateFormat(date) ?? '';
       },
     );
   }

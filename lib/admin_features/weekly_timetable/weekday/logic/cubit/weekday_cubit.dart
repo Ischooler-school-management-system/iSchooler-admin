@@ -1,5 +1,5 @@
-import '../../../../../common/comon_features/loading/data/models/loading_model.dart';
-import '../../../../../common/comon_features/loading/data/repo/loading_repo.dart';
+import '../../../../../common/common_features/loading/data/models/loading_model.dart';
+import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';

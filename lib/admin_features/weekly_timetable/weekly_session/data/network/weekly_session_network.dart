@@ -1,5 +1,5 @@
-import '../../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../../common/network/educonnect_network_helper.dart';
 import '../../../../../common/network/educonnect_response.dart';
@@ -27,21 +27,23 @@ class WeeklySessionsNetwork {
           EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
         'request will be sent is >>  get(), ',
-        tag: 'weeklysessions_network > getAllItems',
+        tag: 'weeklysessions_network > getAllItems, '
+            'classId = $classId, weekdayId = $weekdayId',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
       );
+
       final List<
           Map<String,
               dynamic>> weeklySessions = await SupabaseCredentials.supabase
           .from('weekly_sessions')
           .select(
               '*,instructor_assignment(subject(id,name),instructor(id,name))'
-              ',weekly_timetable_day(*,weekly_timetable(class_id))')
-          .not('weekly_timetable_day', 'is', 'null')
-          .eq('weekly_timetable_day.weekly_timetable.class_id', classId)
+              ',weekly_timetable_day(*))')
+          .eq('weekly_timetable_day.weekly_timetable_id', classId)
           .eq('weekly_timetable_day.weekday_id', weekdayId)
+          .not('weekly_timetable_day', 'is', 'null')
           .order('id', ascending: true);
 
       Madpoly.print(

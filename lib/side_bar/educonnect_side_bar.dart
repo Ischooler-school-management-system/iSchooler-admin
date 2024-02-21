@@ -5,7 +5,7 @@ import '../../../common/style/educonnect_colors.dart';
 import '../admin_features/cubits.dart';
 import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
-import '../common/comon_features/widgets/educonnect_screen.dart';
+import '../common/common_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';
 import 'sidebar_x.dart';
 
