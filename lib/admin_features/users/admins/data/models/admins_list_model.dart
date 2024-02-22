@@ -4,7 +4,7 @@ import 'package:collection/collection.dart';
 import '../../../../../common/educonnect_model.dart';
 import 'admin_model.dart';
 
-class AdminsListModel extends EduconnectListModel {
+class AdminsListModel extends IschoolerListModel {
   @override
   const AdminsListModel({required super.items});
   factory AdminsListModel.empty() {
@@ -47,7 +47,7 @@ class AdminsListModel extends EduconnectListModel {
   List<Object> get props => [items];
   @override
   AdminsListModel copyWith({
-    List<EduconnectModel>? items,
+    List<IschoolerModel>? items,
   }) {
     return AdminsListModel(
       items: items ?? this.items,

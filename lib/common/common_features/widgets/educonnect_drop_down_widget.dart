@@ -40,8 +40,8 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
   String? validator(value) {
     final bool validValue = isValidValue(value);
     if (value == null || !validValue) {
-      // SmartDialog.showToast(EduconnectConstants.localization().select_option_prompt);
-      return EduconnectConstants.localization().select_option_prompt;
+      // SmartDialog.showToast(IschoolerConstants.localization().select_option_prompt);
+      return IschoolerConstants.localization().select_option_prompt;
     }
     return null;
   }
@@ -49,7 +49,7 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
   OutlineInputBorder buildBorder({Color? color}) {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: color ?? EduconnectColors.fieldsBorderColor,
+        color: color ?? IschoolerColors.fieldsBorderColor,
         width: 0.5,
       ),
       borderRadius: BorderRadius.circular(10),
@@ -59,7 +59,7 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
   OutlineInputBorder buildErrorBorder({Color? color}) {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: color ?? EduconnectColors.red,
+        color: color ?? IschoolerColors.red,
         width: 0.5,
       ),
       gapPadding: 14,
@@ -70,13 +70,13 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
   InputDecoration decoration() {
     return InputDecoration(
       filled: true,
-      fillColor: EduconnectColors.white,
-      focusColor: EduconnectColors.white,
+      fillColor: IschoolerColors.white,
+      focusColor: IschoolerColors.white,
       // alignLabelWithHint: true,
-      // prefixIconColor: EduconnectColors.primaryColor,
+      // prefixIconColor: IschoolerColors.primaryColor,
       errorMaxLines: 5,
-      // labelStyle: EduconnectTextStyles.style12Blue,
-      // suffixIconColor: EduconnectColors.primaryColor,
+      // labelStyle: IschoolerTextStyles.style12Blue,
+      // suffixIconColor: IschoolerColors.primaryColor,
       border: buildBorder(),
       enabledBorder: buildBorder(),
       focusedBorder: buildBorder(),
@@ -94,9 +94,9 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
       value: item,
       child: Text(
         item,
-        style: EduconnectConstants.textTheme.labelMedium!.copyWith(
+        style: IschoolerConstants.textTheme.labelMedium!.copyWith(
           fontFamily: GoogleFonts.poppins().fontFamily,
-          color: EduconnectColors.blue,
+          color: IschoolerColors.blue,
         ),
       ),
     );
@@ -126,7 +126,7 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
             padding: const EdgeInsets.all(8.0),
             child: Text(
               widget.labelText!,
-              style: EduconnectTextStyles.style16,
+              style: IschoolerTextStyles.style16,
             ),
           ),
         Container(
@@ -150,9 +150,9 @@ class _EduConnectDropdownWidgetState extends State<EduConnectDropdownWidget> {
             hint: (widget.hint != null)
                 ? Text(
                     widget.hint!,
-                    style: EduconnectConstants.textTheme.labelLarge!.copyWith(
+                    style: IschoolerConstants.textTheme.labelLarge!.copyWith(
                       fontFamily: GoogleFonts.poppins().fontFamily,
-                      // color: EduconnectColors.light_grey,
+                      // color: IschoolerColors.light_grey,
                     ),
                   )
                 : null,

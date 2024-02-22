@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'educonnect_button_interface.dart';
 
 //
-class EduconnectElevatedButton extends IEduconnectButton {
+class IschoolerElevatedButton extends IIschoolerButton {
   final String text;
   final bool isLightMode;
   final double? width;
@@ -14,7 +14,7 @@ class EduconnectElevatedButton extends IEduconnectButton {
   final EdgeInsetsGeometry? textPadding;
   final OutlinedBorder? shape;
 
-  const EduconnectElevatedButton({
+  const IschoolerElevatedButton({
     required super.onPressed,
     super.disabled,
     required this.text,
@@ -29,7 +29,7 @@ class EduconnectElevatedButton extends IEduconnectButton {
   });
 }
 
-class EduconnectTextButton extends IEduconnectButton {
+class IschoolerTextButton extends IIschoolerButton {
   final String? leadingText;
   final String textButton;
   final Color? color;
@@ -38,7 +38,7 @@ class EduconnectTextButton extends IEduconnectButton {
   final Widget? widget;
   //final BuildContext context;
 
-  const EduconnectTextButton({
+  const IschoolerTextButton({
     this.leadingText,
     required super.onPressed,
     required this.textButton,
@@ -51,7 +51,7 @@ class EduconnectTextButton extends IEduconnectButton {
   });
 }
 
-class EduconnectContainerButton extends IEduconnectButton {
+class IschoolerContainerButton extends IIschoolerButton {
   final Widget child;
   final bool roundedCorners;
   final Color? color;
@@ -59,7 +59,7 @@ class EduconnectContainerButton extends IEduconnectButton {
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
 
-  const EduconnectContainerButton({
+  const IschoolerContainerButton({
     required this.child,
     required super.onPressed,
     this.roundedCorners = false,
@@ -70,7 +70,7 @@ class EduconnectContainerButton extends IEduconnectButton {
   });
 }
 
-class EduconnectIconButton extends IEduconnectButton {
+class IschoolerIconButton extends IIschoolerButton {
   final Widget icon;
   final Color? color;
   final bool isLightMode;
@@ -79,7 +79,7 @@ class EduconnectIconButton extends IEduconnectButton {
   final double? height;
   final bool isContainer;
 
-  const EduconnectIconButton({
+  const IschoolerIconButton({
     this.isContainer = false,
     required super.onPressed,
     required this.icon,
@@ -92,13 +92,13 @@ class EduconnectIconButton extends IEduconnectButton {
   });
 }
 
-class EduconnectElevatedButtonWithIcon extends IEduconnectButton {
+class IschoolerElevatedButtonWithIcon extends IIschoolerButton {
   final Widget icon;
   final String text;
   final bool leftIcon;
   final bool isLightMode;
 
-  const EduconnectElevatedButtonWithIcon({
+  const IschoolerElevatedButtonWithIcon({
     required this.icon,
     required super.onPressed,
     required this.text,
@@ -108,12 +108,12 @@ class EduconnectElevatedButtonWithIcon extends IEduconnectButton {
   });
 }
 
-class EduconnectCartButton extends IEduconnectButton {
+class IschoolerCartButton extends IIschoolerButton {
   final String text;
   final dynamic Function()? addOnPressed;
   final dynamic Function()? removeOnPressed;
 
-  const EduconnectCartButton({
+  const IschoolerCartButton({
     this.addOnPressed,
     this.removeOnPressed,
     required super.onPressed,
@@ -122,12 +122,12 @@ class EduconnectCartButton extends IEduconnectButton {
   });
 }
 
-class EduconnectAddRemoveButton extends IEduconnectButton {
+class IschoolerAddRemoveButton extends IIschoolerButton {
   final dynamic Function() addButtonFunction;
   final dynamic Function() subtractButtonFunction;
   final int count;
 
-  const EduconnectAddRemoveButton({
+  const IschoolerAddRemoveButton({
     required this.count,
     required this.addButtonFunction,
     required this.subtractButtonFunction,

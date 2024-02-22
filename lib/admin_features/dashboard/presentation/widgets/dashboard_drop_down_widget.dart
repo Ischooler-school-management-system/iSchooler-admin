@@ -7,9 +7,8 @@ import '../../../../common/common_features/widgets/educonnect_drop_down_widget.d
 import '../../../../common/educonnect_model.dart';
 import '../../logic/cubit/educonnect_cubit.dart';
 
-class DashboardDropDownWidget<C extends EduconnectCubit>
-    extends StatefulWidget {
-  final Function(EduconnectModel) onChanged;
+class DashboardDropDownWidget<C extends IschoolerCubit> extends StatefulWidget {
+  final Function(IschoolerModel) onChanged;
   final String? hint;
   final String? labelText;
   const DashboardDropDownWidget({
@@ -24,9 +23,9 @@ class DashboardDropDownWidget<C extends EduconnectCubit>
       _DashboardDropDownWidgetState<C>();
 }
 
-class _DashboardDropDownWidgetState<C extends EduconnectCubit>
+class _DashboardDropDownWidgetState<C extends IschoolerCubit>
     extends State<DashboardDropDownWidget<C>> {
-  EduconnectModel selectedData = EduconnectModel.empty();
+  IschoolerModel selectedData = IschoolerModel.empty();
   @override
   void initState() {
     super.initState();
@@ -35,9 +34,9 @@ class _DashboardDropDownWidgetState<C extends EduconnectCubit>
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<C, EduconnectState>(
+    return BlocBuilder<C, IschoolerState>(
       builder: (context, state) {
-        EduconnectListModel educonnectAllModel = EduconnectListModel.empty();
+        IschoolerListModel educonnectAllModel = IschoolerListModel.empty();
         if (state.isLoaded()) {
           educonnectAllModel = state.educonnectAllModel;
         }
@@ -48,7 +47,7 @@ class _DashboardDropDownWidgetState<C extends EduconnectCubit>
           onChanged: (value) {
             setState(() {
               if (value != null && value != '') {
-                EduconnectModel? selectedData =
+                IschoolerModel? selectedData =
                     educonnectAllModel.getModelByName(value);
                 if (selectedData != null) {
                   widget.onChanged(selectedData);

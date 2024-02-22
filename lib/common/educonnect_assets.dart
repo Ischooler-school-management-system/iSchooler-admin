@@ -1,4 +1,4 @@
-class EduconnectAssets {
+class IschoolerAssets {
   static addImage(String name) => 'assets/images/$name';
   static addIcon(String name) => 'assets/icons/$name';
   // assets\images auth_image.png

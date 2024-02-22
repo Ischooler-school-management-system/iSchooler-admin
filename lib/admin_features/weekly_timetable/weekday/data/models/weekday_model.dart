@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: use_super_parameters, overridden_fields
 
-import 'package:school_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/common/educonnect_model.dart';
 
-class WeekdayModel extends EduconnectModel {
+class WeekdayModel extends IschoolerModel {
   final bool isDayOff;
 
   const WeekdayModel({
@@ -28,7 +28,7 @@ class WeekdayModel extends EduconnectModel {
   }
 
   factory WeekdayModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     return WeekdayModel(
       id: educonnectModel.id,
       name: educonnectModel.name,

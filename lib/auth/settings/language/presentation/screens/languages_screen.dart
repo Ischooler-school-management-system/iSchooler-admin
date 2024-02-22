@@ -31,7 +31,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
   }
 
   Future<void> getLang() async {
-    selectedIndex = await EduconnectLocalSettings.getCurrentLang();
+    selectedIndex = await IschoolerLocalSettings.getCurrentLang();
     setState(() {});
     Madpoly.print('selectedIndex$selectedIndex');
   }
@@ -40,7 +40,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     setState(() {
       selectedIndex = index;
     });
-    EduconnectLocalSettings.saveCurrentLang(selectedIndex);
+    IschoolerLocalSettings.saveCurrentLang(selectedIndex);
 
     // Update the language using the static languageSubject
     // LanguagesScreen.languageSubject.sink.add(index);
@@ -48,22 +48,22 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     BlocProvider.of<LangBloc>(context).add(UpdateLangEvent(selectedIndex));
     LoadingPopup.normalLoadingDialog();
     await Future.delayed(const Duration(seconds: 2), () {
-      // EduconnectNavigator.navigateToScreen(const EduconnectBottomNavBar());
+      // IschoolerNavigator.navigateToScreen(const IschoolerBottomNavBar());
       SmartDialog.dismiss();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectScreen(
+    return IschoolerScreen(
       keepMobileView: true,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            /* EduconnectConstants.localization(). */ 'language',
-            style: EduconnectConstants.textTheme.titleSmall!
-                .copyWith(color: EduconnectColors.blue),
+            /* IschoolerConstants.localization(). */ 'language',
+            style: IschoolerConstants.textTheme.titleSmall!
+                .copyWith(color: IschoolerColors.blue),
           ),
           SizedBox(height: 10.h),
           LanguageWidget(

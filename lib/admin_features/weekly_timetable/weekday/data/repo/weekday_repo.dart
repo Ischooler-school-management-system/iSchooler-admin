@@ -26,7 +26,7 @@ class WeekdaysRepository {
       // showToast: true,
     );
     try {
-      EduconnectResponse response =
+      IschoolerResponse response =
           await _adminNetwork.getAllItems(model: model, orderBy: orderBy);
       // if (response.hasData) {
 

@@ -8,11 +8,11 @@ import '../../madpoly.dart';
 import '../../style/educonnect_colors.dart';
 import 'educonnect_conditional_widget.dart';
 
-class EduconnectPullToRefresh extends StatelessWidget {
+class IschoolerPullToRefresh extends StatelessWidget {
   final Future<void> Function()? onRefresh;
   final Widget child;
 
-  const EduconnectPullToRefresh({
+  const IschoolerPullToRefresh({
     super.key,
     this.onRefresh,
     required this.child,
@@ -20,7 +20,7 @@ class EduconnectPullToRefresh extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectConditionalWidget(
+    return IschoolerConditionalWidget(
       condition: onRefresh == null,
       whenTrue: child,
       whenFalse: BlocListener<ErrorHandlingCubit, ErrorHandlingState>(
@@ -38,11 +38,11 @@ class EduconnectPullToRefresh extends StatelessWidget {
           animSpeedFactor: 2.5,
           springAnimationDurationInMilliseconds: 500,
           showChildOpacityTransition: false,
-          color: EduconnectColors.blue,
+          color: IschoolerColors.blue,
           onRefresh: () {
             Madpoly.print(
               'onRefresh function is called',
-              tag: "EduconnectScreen > LiquidPullToRefresh",
+              tag: "IschoolerScreen > LiquidPullToRefresh",
               developer: 'ziad',
             );
             return onRefresh!();

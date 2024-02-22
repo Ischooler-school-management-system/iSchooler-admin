@@ -6,7 +6,7 @@ import '../../../../../../../../common/educonnect_model.dart';
 import '../../../../../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../../../../../common/madpoly.dart';
 
-class WeeklySessionsListModel extends EduconnectListModel {
+class WeeklySessionsListModel extends IschoolerListModel {
   const WeeklySessionsListModel({
     required List<WeeklySessionModel> items,
   }) : super(items: items);
@@ -31,12 +31,11 @@ class WeeklySessionsListModel extends EduconnectListModel {
         .copyWith()
         .add(Duration(minutes: timeTable.sessionInterval));
     for (var index = 0; index < items.length; index++) {
-      // EduconnectDateTimeHelper.timeFormat(
-      EduconnectModel item = items[index];
+      // IschoolerDateTimeHelper.timeFormat(
+      IschoolerModel item = items[index];
       if (item is WeeklySessionModel) {
-        String? startingTime =
-            EduconnectDateTimeHelper.timeFormat(startingDate);
-        String? endingtime = EduconnectDateTimeHelper.timeFormat(endingDate);
+        String? startingTime = IschoolerDateTimeHelper.timeFormat(startingDate);
+        String? endingtime = IschoolerDateTimeHelper.timeFormat(endingDate);
         Madpoly.print(
           'startingTime = $startingTime, '
           'endingtime = $endingtime',

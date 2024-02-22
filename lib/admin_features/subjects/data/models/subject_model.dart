@@ -1,7 +1,7 @@
 import '../../../../common/educonnect_model.dart';
 import '../../../grades/data/models/grade_model.dart';
 
-class SubjectModel extends EduconnectModel {
+class SubjectModel extends IschoolerModel {
   final GradeModel grade; // Injecting GradeModel object
   final int totalMarks;
 

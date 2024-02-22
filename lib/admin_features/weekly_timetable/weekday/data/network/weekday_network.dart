@@ -17,14 +17,14 @@ class WeekdaysNetwork {
         await SupabaseCredentials.supabase.from('weekday').select();
     weekdaysListModel = WeekdaysListModel.fromMap({'items': weekdays});
  */
-  Future<EduconnectResponse> getAllItems(
+  Future<IschoolerResponse> getAllItems(
       {required WeekdaysListModel model,
       DatabaseTable? table,
       String? orderBy}) async {
-    EduconnectResponse response = EduconnectResponse.empty();
+    IschoolerResponse response = IschoolerResponse.empty();
     try {
       DatabaseTable tableQueryData =
-          table ?? EduconnectNetworkHelper.getTableQueryData(model);
+          table ?? IschoolerNetworkHelper.getTableQueryData(model);
 
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
@@ -33,7 +33,7 @@ class WeekdaysNetwork {
         );
       }
       /*  final CollectionReference<Map<String, dynamic>> reference =
-          EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
+          IschoolerNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
         'request will be sent is >>  get(), '
         'tableQueryData: $tableQueryData',
@@ -56,7 +56,7 @@ class WeekdaysNetwork {
         tag: 'weekdays_network > getAllItems',
         developer: "Ziad",
       );
-      response = EduconnectResponse(hasData: true, data: {'items': query});
+      response = IschoolerResponse(hasData: true, data: {'items': query});
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -73,7 +73,7 @@ class WeekdaysNetwork {
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -120,7 +120,7 @@ class WeekdaysNetwork {
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -168,7 +168,7 @@ class WeekdaysNetwork {
     bool dataDeleted = false;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '

@@ -24,7 +24,7 @@ class AuthHeaderWidget extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: EduconnectColors.blue,
+        color: IschoolerColors.blue,
         borderRadius: BorderRadiusDirectional.only(
           bottomEnd: Radius.circular(
             90.r,
@@ -39,11 +39,11 @@ class AuthHeaderWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: EduconnectTextStyles.style20White,
+              style: IschoolerTextStyles.style20White,
             ),
             Text(
               subTitle,
-              style: EduconnectTextStyles.style14White,
+              style: IschoolerTextStyles.style14White,
             ),
           ],
         ),

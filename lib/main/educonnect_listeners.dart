@@ -13,9 +13,9 @@ import '../common/navigation/routes.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import 'bloc_providers.dart';
 
-class EduconnectListeners extends StatelessWidget {
+class IschoolerListeners extends StatelessWidget {
   final Widget child;
-  const EduconnectListeners({super.key, required this.child});
+  const IschoolerListeners({super.key, required this.child});
 
   @override
   Widget build(BuildContext context) {
@@ -39,7 +39,7 @@ class EduconnectListeners extends StatelessWidget {
   }
 
   void authListener(BuildContext context, AuthState state) {
-    if (!EduconnectConstants.testMode) {
+    if (!IschoolerConstants.testMode) {
       Madpoly.print('state = $state',
           tag: 'starting_screen > ', developer: "Ziad");
 
@@ -48,38 +48,38 @@ class EduconnectListeners extends StatelessWidget {
         Madpoly.print('isAuthenticated',
             tag: 'starting_screen > ', developer: "Ziad");
         // User is authenticated, navigate to home screen
-        EduconnectNavigator.push(Routes.sideBarScreen, replace: true);
+        IschoolerNavigator.push(Routes.sideBarScreen, replace: true);
         // } else if (state.isUnauthenticated()) {
       } else if (state.status == AuthStatus.unauthenticated) {
         Madpoly.print('isUnauthenticated',
             tag: 'starting_screen > ', developer: "Ziad");
 
         // User is signed out, navigate to authentication screen
-        EduconnectNavigator.push(Routes.selectRoleScreen, replace: true);
-        // EduconnectNavigator.navigateToScreen(const TestScreen(), replace: true);
+        IschoolerNavigator.push(Routes.selectRoleScreen, replace: true);
+        // IschoolerNavigator.navigateToScreen(const TestScreen(), replace: true);
       }
     }
   }
 
   void errorListener(BuildContext context, ErrorHandlingState state) {
     final SnackBar authSnackBar = SnackBar(
-      content: Text(EduconnectConstants.localization().login_dialog_content),
+      content: Text(IschoolerConstants.localization().login_dialog_content),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
         onPressed: () {},
-        label: EduconnectConstants.localization().sign_in,
+        label: IschoolerConstants.localization().sign_in,
       ),
     );
     final SnackBar noInternetSnackBar = SnackBar(
-      content: Text(EduconnectConstants.localization().no_internet_connection),
+      content: Text(IschoolerConstants.localization().no_internet_connection),
       duration: const Duration(seconds: 30),
       behavior: SnackBarBehavior.floating,
       action: SnackBarAction(
           onPressed: () {
             ScaffoldMessenger.of(currentContext!).hideCurrentSnackBar();
           },
-          label: EduconnectConstants.localization().cancel),
+          label: IschoolerConstants.localization().cancel),
     );
 
     /*  Madpoly.print(
@@ -118,7 +118,7 @@ class EduconnectListeners extends StatelessWidget {
         if (state.error.showToast) {
           SmartDialog.dismiss();
           SmartDialog.showToast(
-            '${EduconnectConstants.localization().there_is_an_error} ${state.error.message}',
+            '${IschoolerConstants.localization().there_is_an_error} ${state.error.message}',
           );
         }
     }

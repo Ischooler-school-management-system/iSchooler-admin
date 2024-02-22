@@ -36,7 +36,7 @@ class TableTestScreen extends StatelessWidget {
       return const Center(child: Text('No data available.'));
     }
 
-    return EduconnectScreen(
+    return IschoolerScreen(
       // keepMobileView: true,
       // alignment: Alignment.center,
       // body: tableBody(),

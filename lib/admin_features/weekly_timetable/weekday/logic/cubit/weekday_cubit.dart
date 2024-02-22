@@ -9,7 +9,7 @@ import '../../data/repo/weekday_repo.dart';
 
 part 'weekday_state.dart';
 
-class WeekdaysCubit extends EduconnectCubit<WeekdaysState> {
+class WeekdaysCubit extends IschoolerCubit<WeekdaysState> {
   final WeekdaysRepository _weekdaysRepository;
   final LoadingRepository _loadingRepository;
 
@@ -23,7 +23,7 @@ class WeekdaysCubit extends EduconnectCubit<WeekdaysState> {
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectListModel response =
+    IschoolerListModel response =
         //model is sent here to get the type of request only
         await _weekdaysRepository.getAllItems(
             model: WeekdaysListModel.empty(), orderBy: 'id');
@@ -41,7 +41,7 @@ class WeekdaysCubit extends EduconnectCubit<WeekdaysState> {
   }
 
   @override
-  Future<void> addItem({required EduconnectModel model}) async {
+  Future<void> addItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
     if (model is WeekdayModel) {
       await _weekdaysRepository.addItem(model: model);
@@ -52,7 +52,7 @@ class WeekdaysCubit extends EduconnectCubit<WeekdaysState> {
   }
 
   @override
-  Future<void> updateItem({required EduconnectModel model}) async {
+  Future<void> updateItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
     bool successfulRequest = false;
     if (model is WeekdayModel) {
@@ -65,7 +65,7 @@ class WeekdaysCubit extends EduconnectCubit<WeekdaysState> {
   }
 
   @override
-  Future<void> deleteItem({required EduconnectModel model}) async {
+  Future<void> deleteItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
     if (model is WeekdayModel) {

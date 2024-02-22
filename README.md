@@ -1,4 +1,4 @@
-# school_admin
+# ischooler_admin
 
 A new Flutter project.
 

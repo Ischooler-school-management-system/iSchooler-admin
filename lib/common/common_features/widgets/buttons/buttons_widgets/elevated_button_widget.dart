@@ -2,7 +2,7 @@ part of '../educonnect_button.dart';
 
 //elevated button with text only
 class _ElevatedButtonWidget extends StatelessWidget {
-  final EduconnectElevatedButton educonnectElevatedButton;
+  final IschoolerElevatedButton educonnectElevatedButton;
   const _ElevatedButtonWidget({
     required this.educonnectElevatedButton,
   });
@@ -11,16 +11,16 @@ class _ElevatedButtonWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     //switch colors for the button
     final Color buttonColor = educonnectElevatedButton.isLightMode
-        ? EduconnectColors.light_grey // Background color in light mode
-        : EduconnectColors.secondaryColor; // Background color in dark mode
+        ? IschoolerColors.light_grey // Background color in light mode
+        : IschoolerColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectElevatedButton.isLightMode
-        ? EduconnectColors.secondaryColor
-        : EduconnectColors.light_grey; // Text color
+        ? IschoolerColors.secondaryColor
+        : IschoolerColors.light_grey; // Text color
 
     final Color borderColor = educonnectElevatedButton.isLightMode
         ? textColor
-        : EduconnectColors.transparent; // Border color
+        : IschoolerColors.transparent; // Border color
 
     return ElevatedButton(
       onPressed: educonnectElevatedButton.disabled
@@ -29,14 +29,14 @@ class _ElevatedButtonWidget extends StatelessWidget {
       style: buttonStyle(textColor, buttonColor, borderColor),
       child: Text(educonnectElevatedButton.text,
           style: educonnectElevatedButton.textStyle ??
-              EduconnectTextStyles.style16.copyWith(color: textColor)
+              IschoolerTextStyles.style16.copyWith(color: textColor)
           /*  TextStyle(
-              fontSize: EduconnectTextStyles.font14,
+              fontSize: IschoolerTextStyles.font14,
               // fontWeight: FontWeight.w600,
               color: textColor,
             ), */
 
-          // EduconnectConstants.text_theme.bodyLarge!.copyWith(color: textColor),
+          // IschoolerConstants.text_theme.bodyLarge!.copyWith(color: textColor),
           ),
     );
   }
@@ -52,13 +52,13 @@ class _ElevatedButtonWidget extends StatelessWidget {
       minimumSize: Size(
         educonnectElevatedButton.width ?? double.infinity,
         educonnectElevatedButton.height ??
-            EduconnectConstants.educonnect_button_height,
+            IschoolerConstants.educonnect_button_height,
       ),
       shape: educonnectElevatedButton.shape ??
           RoundedRectangleBorder(
             borderRadius: educonnectElevatedButton.hasRoundedCorners
                 ? BorderRadius.circular(
-                    EduconnectConstants.educonnect_button_radius)
+                    IschoolerConstants.educonnect_button_radius)
                 : BorderRadius.zero,
             side: BorderSide(
               color: borderColor,

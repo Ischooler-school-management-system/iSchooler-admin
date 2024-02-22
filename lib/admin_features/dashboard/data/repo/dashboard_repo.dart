@@ -6,7 +6,7 @@ import '../../../../common/network/educonnect_response.dart';
 import '../network/dashboard_network.dart';
 import 'educonnect_repository_interface.dart';
 
-class DashboardRepository implements EduconnectRepository {
+class DashboardRepository implements IschoolerRepository {
   final AlertHandlingRepository _alertHandlingRepository;
   final DashboardNetwork _adminNetwork;
 
@@ -16,9 +16,9 @@ class DashboardRepository implements EduconnectRepository {
         _adminNetwork = adminNetwork;
 
   @override
-  Future<EduconnectListModel> getAllItems(
-      {required EduconnectListModel model}) async {
-    EduconnectListModel listModel = EduconnectListModel.empty();
+  Future<IschoolerListModel> getAllItems(
+      {required IschoolerListModel model}) async {
+    IschoolerListModel listModel = IschoolerListModel.empty();
     Madpoly.print(
       ' model >> ${model.runtimeType}',
       inspectObject: model,
@@ -27,7 +27,7 @@ class DashboardRepository implements EduconnectRepository {
       // showToast: true,
     );
     try {
-      EduconnectResponse response =
+      IschoolerResponse response =
           await _adminNetwork.getAllItems(model: model);
       // if (response.hasData) {
 
@@ -59,7 +59,7 @@ class DashboardRepository implements EduconnectRepository {
 
   @override
   Future<bool> addItem(
-      {required EduconnectModel model, bool addWithId = false}) async {
+      {required IschoolerModel model, bool addWithId = false}) async {
     bool requestSuccess = false;
     try {
       bool requestSuccess = await _adminNetwork.addItem(model: model);
@@ -85,7 +85,7 @@ class DashboardRepository implements EduconnectRepository {
   }
 
   @override
-  Future<bool> updateItem({required EduconnectModel model}) async {
+  Future<bool> updateItem({required IschoolerModel model}) async {
     bool requestSuccess = false;
     try {
       bool successfulRequest = await _adminNetwork.updateItem(model: model);
@@ -112,7 +112,7 @@ class DashboardRepository implements EduconnectRepository {
   }
 
   @override
-  Future<bool> deleteItem({required EduconnectModel model}) async {
+  Future<bool> deleteItem({required IschoolerModel model}) async {
     bool requestSuccess = false;
     try {
       bool requestSuccess = await _adminNetwork.deleteItem(model: model);

@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 
 import '../../educonnect_assets.dart';
 
-class EduconnectImageWidget extends StatelessWidget {
+class IschoolerImageWidget extends StatelessWidget {
   final String url;
   final double? width;
   final double? height;
   final BoxFit? fit;
   final String? placeHolderImage;
   final bool circleShape;
-  const EduconnectImageWidget.asset({
+  const IschoolerImageWidget.asset({
     super.key,
     this.width,
     this.height,
@@ -19,7 +19,7 @@ class EduconnectImageWidget extends StatelessWidget {
     this.circleShape = false,
   });
 
-  const EduconnectImageWidget.network({
+  const IschoolerImageWidget.network({
     super.key,
     this.width,
     this.height,
@@ -73,7 +73,7 @@ class EduconnectImageWidget extends StatelessWidget {
 
   Widget _buildPlaceholderImage() {
     // Return a placeholder image or default behavior for invalid or empty URL
-    return Image.asset(placeHolderImage ?? EduconnectAssets.authImage,
+    return Image.asset(placeHolderImage ?? IschoolerAssets.authImage,
         width: width,
         height: height,
         fit: fit, errorBuilder: (context, error, stackTrace) {

@@ -1,10 +1,10 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: use_super_parameters, overridden_fields
 
-import 'package:school_admin/admin_features/models.dart';
-import 'package:school_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/admin_features/models.dart';
+import 'package:ischooler_admin/common/educonnect_model.dart';
 
-class WeeklySessionModel extends EduconnectModel {
+class WeeklySessionModel extends IschoolerModel {
   final int sessionNumber;
   final int weeklyTimetableDayId;
   final int instructorAssignmentId;
@@ -26,7 +26,7 @@ class WeeklySessionModel extends EduconnectModel {
   });
 
   factory WeeklySessionModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     return WeeklySessionModel(
       id: educonnectModel.id,
       name: educonnectModel.name,

@@ -2,7 +2,7 @@
 import '../../common/educonnect_model.dart';
 import 'user_model.dart';
 
-class UsersListModel extends EduconnectListModel {
+class UsersListModel extends IschoolerListModel {
   const UsersListModel({required super.items});
   factory UsersListModel.empty() {
     return const UsersListModel(items: []);
@@ -34,7 +34,7 @@ class UsersListModel extends EduconnectListModel {
 
   @override
   UsersListModel copyWith({
-    List<EduconnectModel>? items,
+    List<IschoolerModel>? items,
   }) {
     return UsersListModel(
       items: items ?? this.items,

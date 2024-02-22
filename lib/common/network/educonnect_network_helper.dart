@@ -16,48 +16,48 @@ class SupabaseCredentials {
   static final GoTrueClient authInstance = SupabaseCredentials.supabase.auth;
 }
 
-class EduconnectNetworkHelper {
+class IschoolerNetworkHelper {
   // user_role: id | name
 
   static DatabaseTable getTableQueryData(dynamic model) {
     if (model is StudentModel || model is StudentsListModel) {
-      return EduconnectTables.student;
+      return IschoolerTables.student;
     } else if (model is AdminModel || model is AdminsListModel) {
-      return EduconnectTables.admin;
+      return IschoolerTables.admin;
     } else if (model is AdminRoleModel || model is AdminRolesListModel) {
-      return EduconnectTables.adminRole;
+      return IschoolerTables.adminRole;
     } else if (model is InstructorModel || model is InstructorsListModel) {
-      return EduconnectTables.instructor;
+      return IschoolerTables.instructor;
     } else if (model is InstructorAssignmentModel ||
         model is InstructorAssignmentsListModel) {
-      return EduconnectTables.instructorAssignment;
+      return IschoolerTables.instructorAssignment;
     } else if (model is GradeModel || model is GradesListModel) {
-      return EduconnectTables.grade;
+      return IschoolerTables.grade;
     } else if (model is ClassModel || model is ClassesListModel) {
-      return EduconnectTables.classTable;
+      return IschoolerTables.classTable;
     } else if (model is SubjectModel || model is SubjectsListModel) {
-      return EduconnectTables.subject;
+      return IschoolerTables.subject;
     } else if (model is WeeklySessionModel ||
         model is WeeklySessionsListModel) {
-      return EduconnectTables.weeklySessions;
+      return IschoolerTables.weeklySessions;
     } else if (model is WeeklyTimetableModel ||
         model is WeeklyTimetablesListModel) {
-      return EduconnectTables.weeklyTimetable;
+      return IschoolerTables.weeklyTimetable;
     } else if (model is WeekdaysListModel || model is WeekdayModel) {
-      return EduconnectTables.weekday;
+      return IschoolerTables.weekday;
     } else if (model is ExamTypeModel || model is ExamTypesListModel) {
-      return EduconnectTables.examType;
+      return IschoolerTables.examType;
     } else if (model is ExamModel || model is ExamsListModel) {
-      return EduconnectTables.exam;
+      return IschoolerTables.exam;
     } else if (model is ExamSessionModel || model is ExamSessionsListModel) {
-      return EduconnectTables.examSession;
+      return IschoolerTables.examSession;
     } else if (model is ExamTimetableModel ||
         model is ExamTimetablesListModel) {
-      return EduconnectTables.examTimetable;
+      return IschoolerTables.examTimetable;
     } else if (model is HomeworkModel || model is HomeworksListModel) {
-      return EduconnectTables.homework;
+      return IschoolerTables.homework;
     } else if (model is NewsModel || model is NewsListModel) {
-      return EduconnectTables.news;
+      return IschoolerTables.news;
     }
     return DatabaseTable.empty();
   }

@@ -54,7 +54,7 @@ class DatabaseTable {
   }
 }
 
-class EduconnectTables {
+class IschoolerTables {
   static final DatabaseTable userRole = DatabaseTable(
     tableName: 'user_role',
     selectQuery: '*',

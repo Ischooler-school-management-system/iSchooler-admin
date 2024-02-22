@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import '../../../../common/educonnect_model.dart';
 import 'grade_model.dart';
 
-class GradesListModel extends EduconnectListModel {
+class GradesListModel extends IschoolerListModel {
   const GradesListModel({required List<GradeModel> items})
       : super(items: items);
 

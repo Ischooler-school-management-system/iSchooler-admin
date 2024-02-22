@@ -52,15 +52,15 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
             height: 100,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Image.asset(EduconnectAssets.blankProfileImage),
+              child: Image.asset(IschoolerAssets.blankProfileImage),
             ),
           ),
 
           /// name
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: instructorData.name,
             labelText: 'Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               instructorData = instructorData.copyWith(name: value);
               // setState(() {});
@@ -68,13 +68,13 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           ),
 
           /// Email Address
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: 'test',
             initialValue: instructorData.email,
 
             labelText: 'Email Address',
 
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
 
             onSaved: (value) {
               instructorData = instructorData.copyWith(email: value);
@@ -83,9 +83,9 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           ),
 
           /// Date of Birth
-          EduconnectDateField(
+          IschoolerDateField(
             initialValue:
-                EduconnectDateTimeHelper.dateFormat(instructorData.dateOfBirth),
+                IschoolerDateTimeHelper.dateFormat(instructorData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               instructorData = instructorData.copyWith(dateOfBirth: date);
@@ -125,7 +125,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           ), */
 
           /// Phone Number
-          EduconnectTextField(
+          IschoolerTextField(
             keyboardType: TextInputType.number,
             // initialValue: '01111',
             initialValue: instructorData.phoneNumber,
@@ -142,7 +142,7 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           ),
 
           /// Address
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: instructorData.address,
 
             // initialValue: 'test',
@@ -160,10 +160,10 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           ),
 
           /// specialization
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: instructorData.specialization,
             labelText: 'Specialization',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               instructorData = instructorData.copyWith(specialization: value);
               // setState(() {});
@@ -171,9 +171,9 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
           ),
 
           /// hireDate
-          EduconnectDateField(
+          IschoolerDateField(
             initialValue:
-                EduconnectDateTimeHelper.dateFormat(instructorData.dateOfBirth),
+                IschoolerDateTimeHelper.dateFormat(instructorData.dateOfBirth),
             labelText: 'Hire Date',
             onTap: (date) {
               instructorData = instructorData.copyWith(hireDate: date);

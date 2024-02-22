@@ -5,7 +5,7 @@ import 'package:collection/collection.dart';
 import '../../../../../common/educonnect_model.dart';
 import 'weekday_model.dart';
 
-class WeekdaysListModel extends EduconnectListModel {
+class WeekdaysListModel extends IschoolerListModel {
   const WeekdaysListModel({required super.items});
   factory WeekdaysListModel.empty() {
     return const WeekdaysListModel(items: []);

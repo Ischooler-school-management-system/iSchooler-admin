@@ -27,10 +27,10 @@ class DayTableWidget extends StatelessWidget {
             isFirst: index == 0,
           );
         }),
-        EduconnectTimelineTile(
+        IschoolerTimelineTile(
           isLast: true,
-          endChild: EduconnectButton(
-            button: EduconnectContainerButton(
+          endChild: IschoolerButton(
+            button: IschoolerContainerButton(
               borderRadius: 12,
               margin: const EdgeInsets.all(8),
               child: const ListTile(

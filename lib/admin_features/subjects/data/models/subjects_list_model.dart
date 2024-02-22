@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import '../../../../common/educonnect_model.dart';
 import 'subject_model.dart';
 
-class SubjectsListModel extends EduconnectListModel {
+class SubjectsListModel extends IschoolerListModel {
   const SubjectsListModel({required List<SubjectModel> items})
       : super(items: items);
 

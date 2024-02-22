@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 
 import '../../navigation/educonnect_navi.dart';
 
-class EduconnectSmallView extends StatelessWidget {
+class IschoolerSmallView extends StatelessWidget {
   final bool keepMobileView;
   final Widget child;
   final bool isCenter;
-  const EduconnectSmallView({
+  const IschoolerSmallView({
     super.key,
     this.keepMobileView = true,
     required this.child,
@@ -27,12 +27,12 @@ class EduconnectSmallView extends StatelessWidget {
   }
 }
 
-class EduconnectBoxConstrain extends StatelessWidget {
+class IschoolerBoxConstrain extends StatelessWidget {
   final Widget child;
   final double? maxWidth;
   final EdgeInsetsGeometry? padding;
   final bool roundedCorners;
-  const EduconnectBoxConstrain({
+  const IschoolerBoxConstrain({
     super.key,
     required this.child,
     this.maxWidth,

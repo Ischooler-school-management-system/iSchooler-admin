@@ -1,28 +1,28 @@
-import 'package:school_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/common/educonnect_model.dart';
 
-class AdminRoleModel extends EduconnectModel {
+class AdminRoleModel extends IschoolerModel {
   const AdminRoleModel({
     required super.id,
     required super.name,
   });
 
   factory AdminRoleModel.empty() {
-    EduconnectModel.empty();
+    IschoolerModel.empty();
     return AdminRoleModel(
-      id: EduconnectModel.empty().id,
-      name: EduconnectModel.empty().name,
+      id: IschoolerModel.empty().id,
+      name: IschoolerModel.empty().name,
     );
   }
 
   factory AdminRoleModel.dummy() {
     return AdminRoleModel(
-      id: EduconnectModel.empty().id,
-      name: EduconnectModel.empty().name,
+      id: IschoolerModel.empty().id,
+      name: IschoolerModel.empty().name,
     );
   }
 
   factory AdminRoleModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     return AdminRoleModel(
       id: educonnectModel.id,
       name: educonnectModel.name,

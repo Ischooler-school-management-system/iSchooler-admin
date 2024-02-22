@@ -15,11 +15,11 @@ import '../generated/l10n.dart';
 import '../side_bar/educonnect_side_bar.dart';
 import '../test_screen.dart';
 
-class EduconnectMaterialApp extends StatelessWidget {
+class IschoolerMaterialApp extends StatelessWidget {
   final AsyncSnapshot<int> languageSnapshot;
   final int currentLang;
 
-  const EduconnectMaterialApp({
+  const IschoolerMaterialApp({
     super.key,
     required this.languageSnapshot,
     required this.currentLang,
@@ -66,8 +66,8 @@ class EduconnectMaterialApp extends StatelessWidget {
           // ----------------------------------
 
           // 8. custom navigator
-          navigatorKey: EduconnectNavigator.navigatorState,
-          onGenerateRoute: EduconnectNavigator.onCreateRoute,
+          navigatorKey: IschoolerNavigator.navigatorState,
+          onGenerateRoute: IschoolerNavigator.onCreateRoute,
           // ----------------------------------
 
           // to remove the debug banner showed in the screen
@@ -86,12 +86,12 @@ class EduconnectMaterialApp extends StatelessWidget {
   }
 
   Widget startingScreen() {
-    if (EduconnectConstants.testMode) {
+    if (IschoolerConstants.testMode) {
       return const TestScreen();
     } else {
       User? user = SupabaseCredentials.authInstance.currentUser;
       if (user != null) {
-        return const EduconnectSideBar();
+        return const IschoolerSideBar();
       } else {
         return const SelectRoleScreen();
       }

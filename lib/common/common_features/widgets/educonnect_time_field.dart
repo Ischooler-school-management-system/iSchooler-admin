@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 import '../../functions/educonnect_date_time_helper.dart';
 import 'fields/educonnect_text_field.dart';
 
-class EduconnectTimeField extends StatefulWidget {
+class IschoolerTimeField extends StatefulWidget {
   final TimeOfDay? initialValue;
   final Function(DateTime time) onTap;
   final String? labelText;
 
-  const EduconnectTimeField({
+  const IschoolerTimeField({
     super.key,
     this.initialValue,
     required this.onTap,
@@ -16,10 +16,10 @@ class EduconnectTimeField extends StatefulWidget {
   });
 
   @override
-  State<EduconnectTimeField> createState() => _EduconnectTimeFieldState();
+  State<IschoolerTimeField> createState() => _IschoolerTimeFieldState();
 }
 
-class _EduconnectTimeFieldState extends State<EduconnectTimeField> {
+class _IschoolerTimeFieldState extends State<IschoolerTimeField> {
   late TextEditingController _controller;
 
   @override
@@ -40,7 +40,7 @@ class _EduconnectTimeFieldState extends State<EduconnectTimeField> {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectTextField(
+    return IschoolerTextField(
       controller: _controller,
       labelText: widget.labelText,
       validator: (value) {
@@ -73,7 +73,7 @@ class _EduconnectTimeFieldState extends State<EduconnectTimeField> {
   String _formatTime(TimeOfDay timeOfDay) {
     DateTime convertToDateTime = _convertToDateTime(timeOfDay);
     final String? formattedString =
-        EduconnectDateTimeHelper.timeFormat(convertToDateTime);
+        IschoolerDateTimeHelper.timeFormat(convertToDateTime);
     return formattedString ?? '';
   }
 }

@@ -52,7 +52,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
       tag: 'class_details_form.dart > build',
       developer: "Ziad",
     );
-    return EduconnectScreen(
+    return IschoolerScreen(
       enableScrolling: true,
       showAppbar: true,
       body: Form(
@@ -60,25 +60,25 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
         child: Column(
           children: [
             if (editingModel)
-              EduconnectTextField(
+              IschoolerTextField(
                 initialValue: timeTableData.id,
                 labelText: ' TimeTable ID',
                 enabled: false,
               ),
-            EduconnectTextField(
+            IschoolerTextField(
               initialValue: timeTableData.name,
               labelText: 'TimeTable Name',
-              validator: EduconnectValidations.nameValidator,
+              validator: IschoolerValidations.nameValidator,
               onSaved: (value) {
                 setState(() {
                   timeTableData = timeTableData.copyWith(name: value);
                 });
               },
             ),
-            EduconnectTextField(
+            IschoolerTextField(
               initialValue: timeTableData.name,
               labelText: 'term',
-              validator: EduconnectValidations.nameValidator,
+              validator: IschoolerValidations.nameValidator,
               onSaved: (value) {
                 setState(() {
                   timeTableData = timeTableData.copyWith(term: value);
@@ -90,7 +90,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
             DashboardDropDownWidget<ClassesListCubit>(
                 hint: widget.currentClassData.name,
                 labelText: 'Class',
-                onChanged: (EduconnectModel value) {
+                onChanged: (IschoolerModel value) {
                   Madpoly.print(
                     'class model = $value',
                     tag:
@@ -101,7 +101,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
                       timeTableData.copyWith(classModel: value as ClassModel);
                   setState(() {});
                 }),
-            EduconnectTimeField(
+            IschoolerTimeField(
               onTap: (DateTime value) {
                 timeTableData = timeTableData.copyWith(startTime: value);
                 setState(() {});
@@ -109,7 +109,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
               labelText: 'Start time',
               initialValue: const TimeOfDay(hour: 8, minute: 0),
             ),
-            EduconnectTimeField(
+            IschoolerTimeField(
               onTap: (DateTime value) {
                 timeTableData = timeTableData.copyWith(endTime: value);
                 setState(() {});
@@ -117,7 +117,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
               labelText: 'end time',
               initialValue: const TimeOfDay(hour: 14, minute: 0),
             ),
-            EduconnectTextField(
+            IschoolerTextField(
               // initialValue: '01111',
               initialValue: timeTableData.sessionInterval.toString(),
               keyboardType: TextInputType.number,
@@ -132,7 +132,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
                 // setState(() {});
               },
             ),
-            EduconnectTextField(
+            IschoolerTextField(
               // initialValue: '01111',
               initialValue: timeTableData.breakInterval.toString(),
               keyboardType: TextInputType.number,

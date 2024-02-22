@@ -5,9 +5,9 @@ import '../../../../common/educonnect_model.dart';
 import '../widgets/educonnect_dashboard_listtile.dart';
 
 class DashboardMobileview extends StatelessWidget {
-  final EduconnectListModel educonnectAllModel;
-  final Function(EduconnectModel model)? onDeleteButtonPressed;
-  final Function(EduconnectModel model)? onEditButtonPressed;
+  final IschoolerListModel educonnectAllModel;
+  final Function(IschoolerModel model)? onDeleteButtonPressed;
+  final Function(IschoolerModel model)? onEditButtonPressed;
   const DashboardMobileview({
     super.key,
     required this.educonnectAllModel,
@@ -17,16 +17,16 @@ class DashboardMobileview extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<EduconnectModel> list = (educonnectAllModel.items);
+    List<IschoolerModel> list = (educonnectAllModel.items);
     // var list = (educonnectAllModel.items).repeat(5);
     return Expanded(
-      child: EduconnectSmallView(
+      child: IschoolerSmallView(
         isCenter: false,
         child: ListView.builder(
           // crossAxisAlignment: CrossAxisAlignment.start,
           itemCount: list.length,
           itemBuilder: (context, index) {
-            EduconnectModel model = list[index];
+            IschoolerModel model = list[index];
             List displayMap = model.toDisplayMap().values.toList();
             String? subtitleString;
             if ((displayMap[1] != null && displayMap[1] is String)) {

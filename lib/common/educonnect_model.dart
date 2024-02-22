@@ -1,43 +1,43 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 import 'package:equatable/equatable.dart';
-import 'package:school_admin/admin_features/list_models.dart';
-import 'package:school_admin/admin_features/models.dart';
-import 'package:school_admin/common/madpoly.dart';
+import 'package:ischooler_admin/admin_features/list_models.dart';
+import 'package:ischooler_admin/admin_features/models.dart';
+import 'package:ischooler_admin/common/madpoly.dart';
 
 import '../admin_features/weekly_timetable/weekly_session/data/models/weekly_session_model.dart';
 import '../admin_features/weekly_timetable/weekly_session/data/models/weekly_sessions_list_model.dart';
 import '../admin_features/weekly_timetable/data/models/weekly_timetable_model.dart';
 
-class EduconnectModel extends Equatable {
+class IschoolerModel extends Equatable {
   final String id;
   final String name;
   // final DateTime createdAt;
 
-  const EduconnectModel({
+  const IschoolerModel({
     required this.id,
     this.name = '',
     // required this.createdAt,
   });
 
-  factory EduconnectModel.empty() {
-    return const EduconnectModel(
+  factory IschoolerModel.empty() {
+    return const IschoolerModel(
       id: '-1',
       name: 'name',
       // createdAt: DateTime(5000),
     );
   }
 
-  factory EduconnectModel.dummy() {
-    return const EduconnectModel(
+  factory IschoolerModel.dummy() {
+    return const IschoolerModel(
       id: '-1',
       name: 'name',
       // createdAt: DateTime.now(),
     );
   }
 
-  factory EduconnectModel.fromMap(Map<String, dynamic> map) {
-    return EduconnectModel(
+  factory IschoolerModel.fromMap(Map<String, dynamic> map) {
+    return IschoolerModel(
       id: map['id'] != null ? map['id'].toString() : '-1',
       name: map['name'] ?? '',
       // createdAt: DateTime.parse(map['created_at']),
@@ -60,7 +60,7 @@ class EduconnectModel extends Equatable {
     Madpoly.print(
       'model = $runtimeType',
       inspectObject: this,
-      tag: 'EduconnectModel > toMapFromChild',
+      tag: 'IschoolerModel > toMapFromChild',
       developer: "Ziad",
     );
     if (this is StudentModel) {
@@ -118,8 +118,8 @@ class EduconnectModel extends Equatable {
     return userModel;
   }
  */
-  EduconnectModel copyWith({String? name}) {
-    return EduconnectModel(
+  IschoolerModel copyWith({String? name}) {
+    return IschoolerModel(
       id: id,
       name: name ?? this.name,
       // // createdAt: createdAt,
@@ -137,27 +137,27 @@ class EduconnectModel extends Equatable {
   String toString() => 'id: $id, name: $name';
 }
 
-class EduconnectListModel extends Equatable {
-  final List<EduconnectModel> items;
+class IschoolerListModel extends Equatable {
+  final List<IschoolerModel> items;
 
-  const EduconnectListModel({required this.items});
-  factory EduconnectListModel.empty() {
-    return const EduconnectListModel(items: []);
+  const IschoolerListModel({required this.items});
+  factory IschoolerListModel.empty() {
+    return const IschoolerListModel(items: []);
   }
 
-  factory EduconnectListModel.fromMap(Map map) {
-    final List<EduconnectModel> items = List<EduconnectModel>.from(
+  factory IschoolerListModel.fromMap(Map map) {
+    final List<IschoolerModel> items = List<IschoolerModel>.from(
       map['items'] ??
           [].map(
-            (item) => EduconnectModel.fromMap(item),
+            (item) => IschoolerModel.fromMap(item),
           ),
     );
-    return EduconnectListModel(items: items);
+    return IschoolerListModel(items: items);
   }
-  EduconnectListModel fromMapToChild(Map<String, dynamic> map) {
+  IschoolerListModel fromMapToChild(Map<String, dynamic> map) {
     Madpoly.print(
       'model = $this',
-      tag: 'EduconnectModelList > fromMapToChild',
+      tag: 'IschoolerModelList > fromMapToChild',
       developer: "Ziad",
     );
 
@@ -195,7 +195,7 @@ class EduconnectListModel extends Equatable {
       return NewsListModel.fromMap(map);
     }
 
-    return EduconnectListModel.fromMap(map);
+    return IschoolerListModel.fromMap(map);
   }
 
   Map<String, dynamic> toMap() {
@@ -213,13 +213,13 @@ class EduconnectListModel extends Equatable {
     return items.map((item) => item.name).toList();
   }
 
-  EduconnectModel? getModelByName(String modelName) {
+  IschoolerModel? getModelByName(String modelName) {
     // every model must have a unique function because if it doesn't
     // it goes into infinite loop because this function here is the defaults for all
     // like a recursive function without base case
     Madpoly.print(
       'model = $this',
-      tag: 'EduconnectModelList > getModelByName',
+      tag: 'IschoolerModelList > getModelByName',
       developer: "Ziad",
     );
 
@@ -257,17 +257,17 @@ class EduconnectListModel extends Equatable {
       return (this as NewsListModel).getModelByName(modelName);
     }
     return items.firstWhereOrNull(
-      (EduconnectModel item) => item.name == modelName,
+      (IschoolerModel item) => item.name == modelName,
     );
   }
 
   @override
   List<Object> get props => [items];
 
-  EduconnectListModel copyWith({
-    List<EduconnectModel>? items,
+  IschoolerListModel copyWith({
+    List<IschoolerModel>? items,
   }) {
-    return EduconnectListModel(
+    return IschoolerListModel(
       items: items ?? this.items,
     );
   }

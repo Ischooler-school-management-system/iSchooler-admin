@@ -12,12 +12,12 @@ class WeeklyTimetableNetwork {
   WeeklyTimetableNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
-  Future<EduconnectResponse> getAllItems(
-      {required EduconnectListModel model, DatabaseTable? table}) async {
-    EduconnectResponse response = EduconnectResponse.empty();
+  Future<IschoolerResponse> getAllItems(
+      {required IschoolerListModel model, DatabaseTable? table}) async {
+    IschoolerResponse response = IschoolerResponse.empty();
     try {
       DatabaseTable tableQueryData =
-          table ?? EduconnectNetworkHelper.getTableQueryData(model);
+          table ?? IschoolerNetworkHelper.getTableQueryData(model);
 
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
@@ -26,7 +26,7 @@ class WeeklyTimetableNetwork {
         );
       }
       /*  final CollectionReference<Map<String, dynamic>> reference =
-          EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
+          IschoolerNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
 
       Madpoly.print(
         'request will be sent is >>  get(), '
@@ -52,7 +52,7 @@ class WeeklyTimetableNetwork {
         developer: "Ziad",
       );
 
-      response = EduconnectResponse(hasData: true, data: {'items': query});
+      response = IschoolerResponse(hasData: true, data: {'items': query});
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -64,8 +64,8 @@ class WeeklyTimetableNetwork {
     return response;
   }
 
-  Future<EduconnectResponse> getItemByClassId({required String classId}) async {
-    EduconnectResponse response = EduconnectResponse.empty();
+  Future<IschoolerResponse> getItemByClassId({required String classId}) async {
+    IschoolerResponse response = IschoolerResponse.empty();
     try {
       Madpoly.print(
         'request will be sent is >>  getItem(), '
@@ -92,7 +92,7 @@ class WeeklyTimetableNetwork {
         developer: "Ziad",
       );
 
-      response = EduconnectResponse(hasData: true, data: query);
+      response = IschoolerResponse(hasData: true, data: query);
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -104,12 +104,12 @@ class WeeklyTimetableNetwork {
     return response;
   }
 
-  Future<bool> addItem({required EduconnectModel model}) async {
+  Future<bool> addItem({required IschoolerModel model}) async {
     bool dataStored = false;
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -155,12 +155,12 @@ class WeeklyTimetableNetwork {
     return dataStored;
   }
 
-  Future<bool> updateItem({required EduconnectModel model}) async {
+  Future<bool> updateItem({required IschoolerModel model}) async {
     bool dataUpdated = false;
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -208,11 +208,11 @@ class WeeklyTimetableNetwork {
     return dataUpdated;
   }
 
-  Future<bool> deleteItem({required EduconnectModel model}) async {
+  Future<bool> deleteItem({required IschoolerModel model}) async {
     bool dataDeleted = false;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '

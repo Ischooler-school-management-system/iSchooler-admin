@@ -1,48 +1,48 @@
 part of 'educonnect_cubit.dart';
 
-enum EduconnectStatus { init, updated, loaded, failed }
+enum IschoolerStatus { init, updated, loaded, failed }
 // @immutable
 
-class EduconnectState extends Equatable {
-  final EduconnectListModel educonnectAllModel;
-  final EduconnectStatus status;
+class IschoolerState extends Equatable {
+  final IschoolerListModel educonnectAllModel;
+  final IschoolerStatus status;
 
-  const EduconnectState({
+  const IschoolerState({
     required this.educonnectAllModel,
     required this.status,
   });
 
-  factory EduconnectState.init() {
-    return EduconnectState(
-      educonnectAllModel: EduconnectListModel.empty(),
-      status: EduconnectStatus.init,
+  factory IschoolerState.init() {
+    return IschoolerState(
+      educonnectAllModel: IschoolerListModel.empty(),
+      status: IschoolerStatus.init,
     );
   }
 
-  EduconnectState updateData(EduconnectListModel newData) {
+  IschoolerState updateData(IschoolerListModel newData) {
     return _copyWith(
       educonnectAllModel: newData,
-      status: EduconnectStatus.loaded,
+      status: IschoolerStatus.loaded,
     );
   }
 
-  EduconnectState updateStatus({EduconnectStatus? newStatus}) {
+  IschoolerState updateStatus({IschoolerStatus? newStatus}) {
     return _copyWith(
-      status: newStatus ?? EduconnectStatus.updated,
+      status: newStatus ?? IschoolerStatus.updated,
     );
   }
 
-  EduconnectState _copyWith({
-    EduconnectListModel? educonnectAllModel,
-    EduconnectStatus? status,
+  IschoolerState _copyWith({
+    IschoolerListModel? educonnectAllModel,
+    IschoolerStatus? status,
   }) {
-    return EduconnectState(
+    return IschoolerState(
       educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
       status: status ?? this.status,
     );
   }
 
-  bool isLoaded() => status == EduconnectStatus.loaded;
+  bool isLoaded() => status == IschoolerStatus.loaded;
 
   @override
   List<Object> get props => [educonnectAllModel];

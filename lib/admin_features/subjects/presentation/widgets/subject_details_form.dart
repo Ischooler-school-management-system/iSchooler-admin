@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/admin_features/grades/data/models/grade_model.dart';
+import 'package:ischooler_admin/admin_features/grades/data/models/grade_model.dart';
 
 import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
@@ -48,15 +48,15 @@ class _SubjectDetailsFormState extends State<SubjectDetailsForm> {
       child: Column(
         children: [
           if (editingModel)
-            EduconnectTextField(
+            IschoolerTextField(
               initialValue: subjectData.id,
               labelText: 'Subject ID',
               enabled: false,
             ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: subjectData.name,
             labelText: 'Subject Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               setState(() {
                 subjectData = subjectData.copyWith(name: value);
@@ -66,7 +66,7 @@ class _SubjectDetailsFormState extends State<SubjectDetailsForm> {
           DashboardDropDownWidget<GradesListCubit>(
               hint: subjectData.grade.name,
               labelText: 'Grade',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'Grade model = $value',
                   tag:

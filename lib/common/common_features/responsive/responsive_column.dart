@@ -17,7 +17,7 @@ class ResponsiveColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     /*   var child = Container(
       width: 200,
-      color: EduconnectColors.blue,
+      color: IschoolerColors.blue,
     ); */
     List<Widget> evenIndexList = [];
     List<Widget> oddIndexList = [];

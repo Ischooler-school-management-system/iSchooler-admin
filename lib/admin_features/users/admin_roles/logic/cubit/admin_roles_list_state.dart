@@ -2,7 +2,7 @@ part of 'admin_roles_list_cubit.dart';
 
 // @immutable
 
-class AdminRolesListState extends EduconnectState {
+class AdminRolesListState extends IschoolerState {
   const AdminRolesListState({
     required super.educonnectAllModel,
     required super.status,
@@ -11,28 +11,28 @@ class AdminRolesListState extends EduconnectState {
   factory AdminRolesListState.init() {
     return AdminRolesListState(
       educonnectAllModel: AdminRolesListModel.empty(),
-      status: EduconnectStatus.init,
+      status: IschoolerStatus.init,
     );
   }
 
   @override
-  AdminRolesListState updateData(EduconnectListModel newData) {
+  AdminRolesListState updateData(IschoolerListModel newData) {
     return _copyWith(
       educonnectAllModel: newData is AdminRolesListModel ? newData : null,
-      status: EduconnectStatus.loaded,
+      status: IschoolerStatus.loaded,
     );
   }
 
   @override
-  AdminRolesListState updateStatus({EduconnectStatus? newStatus}) {
+  AdminRolesListState updateStatus({IschoolerStatus? newStatus}) {
     return _copyWith(
-      status: newStatus ?? EduconnectStatus.updated,
+      status: newStatus ?? IschoolerStatus.updated,
     );
   }
 
   AdminRolesListState _copyWith({
     AdminRolesListModel? educonnectAllModel,
-    EduconnectStatus? status,
+    IschoolerStatus? status,
   }) {
     return AdminRolesListState(
       educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
@@ -41,7 +41,7 @@ class AdminRolesListState extends EduconnectState {
   }
 
   @override
-  bool isLoaded() => status == EduconnectStatus.loaded;
+  bool isLoaded() => status == IschoolerStatus.loaded;
   @override
   List<Object> get props => [educonnectAllModel, status];
 }

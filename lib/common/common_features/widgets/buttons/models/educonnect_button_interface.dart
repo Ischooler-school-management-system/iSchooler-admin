@@ -1,9 +1,9 @@
 //parent class for all the button classes
-abstract class IEduconnectButton {
+abstract class IIschoolerButton {
   final Function()? onPressed;
   final bool disabled;
 
-  const IEduconnectButton({
+  const IIschoolerButton({
     required this.onPressed,
     this.disabled = false,
   });

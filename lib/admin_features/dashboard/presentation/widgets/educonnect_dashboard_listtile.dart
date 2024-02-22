@@ -29,22 +29,22 @@ class EduconnecDashboardListTile extends StatelessWidget {
       leading: isName
           ? Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: EduconnectImageWidget.asset(
-                url: EduconnectAssets.blankProfileImage,
+              child: IschoolerImageWidget.asset(
+                url: IschoolerAssets.blankProfileImage,
                 circleShape: true,
               ),
             )
           : null,
       title: Text(
         title,
-        style: EduconnectTextStyles.style14,
+        style: IschoolerTextStyles.style14,
         textAlign: TextAlign.center,
         maxLines: 1,
       ),
       subtitle: subtitle != null
           ? Text(
               subtitle!,
-              // style: EduconnectTextStyles.style14,
+              // style: IschoolerTextStyles.style14,
               textAlign: TextAlign.center,
             )
           : null,

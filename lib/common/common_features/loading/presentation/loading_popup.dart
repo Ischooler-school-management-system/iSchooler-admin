@@ -31,7 +31,7 @@ class LoadingPopup {
         width: 40,
         height: 40,
         decoration: BoxDecoration(
-            color: EduconnectColors.secondaryColor.withOpacity(0.6),
+            color: IschoolerColors.secondaryColor.withOpacity(0.6),
             borderRadius: BorderRadius.circular(15.0),
             shape: BoxShape.rectangle // Add rounded corners
             ),
@@ -40,7 +40,7 @@ class LoadingPopup {
             width: 25,
             height: 25,
             child: SpinKitRing(
-              color: EduconnectColors.white,
+              color: IschoolerColors.white,
               lineWidth: 3,
             ),
           ),
@@ -54,8 +54,8 @@ class LoadingPopup {
       clickMaskDismiss: false,
       builder: (context) => Padding(
         padding: EdgeInsets.all(30.0.h),
-        child: EduconnectLoadingSnackbar(
-          message: EduconnectConstants.localization().loading,
+        child: IschoolerLoadingSnackbar(
+          message: IschoolerConstants.localization().loading,
         ),
       ),
       msg: 'text',

@@ -58,24 +58,24 @@ class _SignupFormState extends State<SignupPasswordForm> {
       }, */
       child: Column(
         children: [
-          EduconnectPasswordField(
+          IschoolerPasswordField(
             initialValue: 'password',
-            labelText: EduconnectConstants.localization().enter_password,
+            labelText: IschoolerConstants.localization().enter_password,
             focusNode: passwordFocusNode,
-            validator: EduconnectValidations.passwordValidator,
+            validator: IschoolerValidations.passwordValidator,
           ),
-          EduconnectPasswordField(
+          IschoolerPasswordField(
             initialValue: 'password',
-            labelText: EduconnectConstants.localization().confirm_password,
+            labelText: IschoolerConstants.localization().confirm_password,
             focusNode: confirmPasswordFocusNode,
-            validator: EduconnectValidations.passwordValidator,
+            validator: IschoolerValidations.passwordValidator,
           ),
           SizedBox(height: 20.h),
-          EduconnectButton(
-            button: EduconnectElevatedButton(
+          IschoolerButton(
+            button: IschoolerElevatedButton(
               // disabled: _isButtonDisabled,
               onPressed: onSignupButtonPressed,
-              text: EduconnectConstants.localization().sign_up,
+              text: IschoolerConstants.localization().sign_up,
             ),
           ),
         ],

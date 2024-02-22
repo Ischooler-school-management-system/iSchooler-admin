@@ -12,14 +12,14 @@ import '../views/dashboard_mobile_view.dart';
 import '../views/dashboard_web_view.dart';
 import 'dashboard_details_screen.dart';
 
-class DashboardScreen<C extends EduconnectCubit> extends StatefulWidget {
+class DashboardScreen<C extends IschoolerCubit> extends StatefulWidget {
   const DashboardScreen({super.key});
 
   @override
   State<DashboardScreen<C>> createState() => _DashboardScreenState<C>();
 }
 
-class _DashboardScreenState<C extends EduconnectCubit>
+class _DashboardScreenState<C extends IschoolerCubit>
     extends State<DashboardScreen<C>> {
   @override
   void initState() {
@@ -34,7 +34,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
   int limit = 0;
 
   onAddButtonPressed() {
-    EduconnectNavigator.navigateToScreen(
+    IschoolerNavigator.navigateToScreen(
       DashboardDetailsScreen<C>(),
     );
   }
@@ -77,9 +77,9 @@ class _DashboardScreenState<C extends EduconnectCubit>
   } */
   }
 
-  EduconnectButton addButton() {
-    return EduconnectButton(
-      button: EduconnectElevatedButton(
+  IschoolerButton addButton() {
+    return IschoolerButton(
+      button: IschoolerElevatedButton(
         onPressed: onAddButtonPressed,
         text: 'Add ${screenTag()}',
         width: 200,
@@ -89,12 +89,12 @@ class _DashboardScreenState<C extends EduconnectCubit>
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectScreen(
+    return IschoolerScreen(
       onRefresh: () async => getDataRequest(),
       padding: const EdgeInsets.all(8),
-      body: BlocBuilder<C, EduconnectState>(
+      body: BlocBuilder<C, IschoolerState>(
         builder: (context, state) {
-          EduconnectListModel educonnectAllModel = EduconnectListModel.empty();
+          IschoolerListModel educonnectAllModel = IschoolerListModel.empty();
           if (state.isLoaded()) {
             educonnectAllModel = state.educonnectAllModel;
           }
@@ -103,7 +103,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               addButton(),
-              EduconnectConditionalWidget(
+              IschoolerConditionalWidget(
                 condition: Responsive.isMobile(),
                 whenTrue: DashboardMobileview(
                   educonnectAllModel: educonnectAllModel,
@@ -128,7 +128,7 @@ class _DashboardScreenState<C extends EduconnectCubit>
       alignment: Alignment.center,
       builder: (context) => DashboardDetailsScreen<C>(currentData: model),
     ); */
-    EduconnectNavigator.navigateToScreen(
+    IschoolerNavigator.navigateToScreen(
       DashboardDetailsScreen<C>(
         currentData: model,
       ),

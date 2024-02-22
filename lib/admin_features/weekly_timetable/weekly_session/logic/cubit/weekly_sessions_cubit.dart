@@ -27,7 +27,7 @@ class WeeklySessionsCubit extends Cubit<WeeklySessionsState> {
     required String weekdayId,
   }) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectListModel response =
+    IschoolerListModel response =
         //model is sent here to get the type of request only
         await _weeklySessionsRepository.getAllItems(
       classId: classId,

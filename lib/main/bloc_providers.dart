@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_admin/admin_features/weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
+import 'package:ischooler_admin/admin_features/weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
 
 import '../admin_features/cubits.dart';
 import '../admin_features/weekly_timetable/weekday/logic/cubit/weekday_cubit.dart';

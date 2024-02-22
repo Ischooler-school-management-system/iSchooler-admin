@@ -3,7 +3,7 @@ import 'package:collection/collection.dart';
 import '../../../../../common/educonnect_model.dart';
 import 'admin_role_model.dart';
 
-class AdminRolesListModel extends EduconnectListModel {
+class AdminRolesListModel extends IschoolerListModel {
   const AdminRolesListModel({required List<AdminRoleModel> items})
       : super(items: items);
 

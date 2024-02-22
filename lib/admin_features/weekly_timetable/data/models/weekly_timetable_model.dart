@@ -3,7 +3,7 @@
 import '../../../../common/educonnect_model.dart';
 import '../../../classes/data/models/class_model.dart';
 
-class WeeklyTimetableModel extends EduconnectModel {
+class WeeklyTimetableModel extends IschoolerModel {
   final String term;
   final String classId;
   final DateTime startTime;
@@ -78,7 +78,7 @@ class WeeklyTimetableModel extends EduconnectModel {
       ];
 
   factory WeeklyTimetableModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     return WeeklyTimetableModel(
       id: educonnectModel.id,
       name: educonnectModel.name,

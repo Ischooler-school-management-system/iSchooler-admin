@@ -21,7 +21,7 @@ class _SignupScreenState extends State<SignupScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectScreen(
+    return IschoolerScreen(
       alignment: Alignment.center,
       enableflexibleScrolling: true,
       keepMobileView: true,
@@ -31,10 +31,10 @@ class _SignupScreenState extends State<SignupScreen> {
             Visibility(
               visible: !isKeyboardOpen,
               child: AuthHeaderWidget(
-                height: EduconnectConstants.educonnect_screen_height * 0.25,
-                width: EduconnectConstants.educonnect_screen_width,
-                title: EduconnectConstants.localization().welcome,
-                subTitle: EduconnectConstants.localization().sign_up_prompt,
+                height: IschoolerConstants.educonnect_screen_height * 0.25,
+                width: IschoolerConstants.educonnect_screen_width,
+                title: IschoolerConstants.localization().welcome,
+                subTitle: IschoolerConstants.localization().sign_up_prompt,
               ),
             ),
             Padding(
@@ -47,13 +47,13 @@ class _SignupScreenState extends State<SignupScreen> {
                   SizedBox(height: 20.h),
                   Visibility(
                     visible: !isKeyboardOpen,
-                    child: EduconnectButton(
-                      button: EduconnectTextButton(
+                    child: IschoolerButton(
+                      button: IschoolerTextButton(
                         onPressed: onSigninButtonPressed,
-                        textButton: EduconnectConstants.localization().sign_in,
-                        leadingText: EduconnectConstants.localization()
+                        textButton: IschoolerConstants.localization().sign_in,
+                        leadingText: IschoolerConstants.localization()
                             .have_account_prompt,
-                        color: EduconnectColors.primaryColor,
+                        color: IschoolerColors.primaryColor,
                       ),
                     ),
                   ),
@@ -73,6 +73,6 @@ class _SignupScreenState extends State<SignupScreen> {
   }
 
   onSigninButtonPressed() {
-    EduconnectNavigator.push(Routes.signinScreen, replace: true);
+    IschoolerNavigator.push(Routes.signinScreen, replace: true);
   }
 }

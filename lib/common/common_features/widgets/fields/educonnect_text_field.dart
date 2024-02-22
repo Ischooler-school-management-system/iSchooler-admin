@@ -7,7 +7,7 @@ import '../../../educonnect_constants.dart';
 import '../../../style/educonnect_colors.dart';
 import '../../../style/educonnect_text_theme.dart';
 
-class EduconnectTextField extends StatelessWidget {
+class IschoolerTextField extends StatelessWidget {
   final String? labelText;
   final double? width;
   final String? initialValue;
@@ -33,7 +33,7 @@ class EduconnectTextField extends StatelessWidget {
   final TextDirection? textDirection;
   final bool? enabled;
 
-  const EduconnectTextField({
+  const IschoolerTextField({
     super.key,
     this.labelText,
     this.width,
@@ -74,7 +74,7 @@ class EduconnectTextField extends StatelessWidget {
   OutlineInputBorder buildErrorBorder({Color? color}) {
     return OutlineInputBorder(
       borderSide: BorderSide(
-        color: color ?? EduconnectColors.red,
+        color: color ?? IschoolerColors.red,
         width: 0.5,
       ),
       gapPadding: 14,
@@ -85,21 +85,21 @@ class EduconnectTextField extends StatelessWidget {
   InputDecoration decoration() {
     return InputDecoration(
       filled: true,
-      fillColor: EduconnectColors.white,
-      focusColor: EduconnectColors.white,
+      fillColor: IschoolerColors.white,
+      focusColor: IschoolerColors.white,
       alignLabelWithHint: true,
       prefixIcon: prefixIcon,
-      prefixIconColor: EduconnectColors.primaryColor,
+      prefixIconColor: IschoolerColors.primaryColor,
       errorMaxLines: 5,
       contentPadding: EdgeInsets.symmetric(vertical: 6.h, horizontal: 15.w),
-      labelStyle: EduconnectTextStyles.style12Blue,
+      labelStyle: IschoolerTextStyles.style12Blue,
       /* TextStyle(
-        color: EduconnectColors.primaryColor,
+        color: IschoolerColors.primaryColor,
         fontSize: 12.sp,
       ), */
       // labelText: labelText,
       suffixIcon: suffixIcon,
-      suffixIconColor: EduconnectColors.primaryColor,
+      suffixIconColor: IschoolerColors.primaryColor,
       border: hasBorder ? buildBorder() : null,
       enabledBorder: hasBorder ? buildBorder() : null,
       focusedBorder: hasBorder ? buildBorder() : null,
@@ -109,7 +109,7 @@ class EduconnectTextField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bool isArabic = EduconnectConstants.isCurrentLocaleArabic();
+    final bool isArabic = IschoolerConstants.isCurrentLocaleArabic();
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -117,11 +117,11 @@ class EduconnectTextField extends StatelessWidget {
           padding: const EdgeInsets.all(8.0),
           child: Text(
             labelText ?? '',
-            style: EduconnectTextStyles.style16,
+            style: IschoolerTextStyles.style16,
           ),
         ),
         Container(
-          // width: width ?? EduconnectConstants.educonnect_screen_width * 0.8,
+          // width: width ?? IschoolerConstants.educonnect_screen_width * 0.8,
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
             selectionHeightStyle: BoxHeightStyle.max,

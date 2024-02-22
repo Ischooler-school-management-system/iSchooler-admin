@@ -83,7 +83,7 @@ class AdminModel extends UserModel {
       email: userModel.email,
       role: userModel.role,
       profilePicture: userModel.profilePicture,
-      hireDate: EduconnectDateTimeHelper.fromMapItem(map['hire_date']),
+      hireDate: IschoolerDateTimeHelper.fromMapItem(map['hire_date']),
       adminRole: AdminRoleModel.fromMap(map['admin_role'] ?? {}),
       specialization: map['specialization'] ?? '',
     );
@@ -102,11 +102,11 @@ class AdminModel extends UserModel {
   @override
   Map<String, dynamic> toDisplayMap() {
     var map = {
-      EduconnectConstants.localization().name: name,
-      // EduconnectConstants.localization().id: id,
-      EduconnectConstants.localization().gender: gender,
+      IschoolerConstants.localization().name: name,
+      // IschoolerConstants.localization().id: id,
+      IschoolerConstants.localization().gender: gender,
       'Admin Role': adminRole.name,
-      EduconnectConstants.localization().email: email,
+      IschoolerConstants.localization().email: email,
     };
 
     // return truncateMap(map);

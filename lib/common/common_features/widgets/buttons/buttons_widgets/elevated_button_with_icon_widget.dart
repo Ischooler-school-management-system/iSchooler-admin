@@ -4,7 +4,7 @@ part of '../educonnect_button.dart';
 //the icon either at the beginning or the end of the button
 
 class _ElevatedButtonWithIconWidget extends StatelessWidget {
-  final EduconnectElevatedButtonWithIcon educonnectElevatedButtonWithIcon;
+  final IschoolerElevatedButtonWithIcon educonnectElevatedButtonWithIcon;
   const _ElevatedButtonWithIconWidget({
     required this.educonnectElevatedButtonWithIcon,
   });
@@ -12,16 +12,16 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final Color buttonColor = educonnectElevatedButtonWithIcon.isLightMode
-        ? EduconnectColors.white // Background color in light mode
-        : EduconnectColors.secondaryColor; // Background color in dark mode
+        ? IschoolerColors.white // Background color in light mode
+        : IschoolerColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectElevatedButtonWithIcon.isLightMode
-        ? EduconnectColors.secondaryColor
-        : EduconnectColors.white; // Text color
+        ? IschoolerColors.secondaryColor
+        : IschoolerColors.white; // Text color
 
     final Color borderColor = educonnectElevatedButtonWithIcon.isLightMode
         ? textColor
-        : EduconnectColors.transparent; // Border color
+        : IschoolerColors.transparent; // Border color
 
     return educonnectElevatedButtonWithIcon.leftIcon
         ? buttonWithLeftIcon(buttonColor, borderColor, textColor)
@@ -38,7 +38,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       fixedSize: Size(205.w, 44.h),
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(EduconnectConstants.educonnect_button_radius),
+            BorderRadius.circular(IschoolerConstants.educonnect_button_radius),
         side: BorderSide(
           color: borderColor!,
         ),
@@ -57,13 +57,13 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
 
           Text(
             educonnectElevatedButtonWithIcon.text,
-            style: EduconnectConstants.textTheme.bodyLarge!
+            style: IschoolerConstants.textTheme.bodyLarge!
                 .copyWith(color: textColor),
             textAlign: TextAlign.center,
           ),
 
           Align(
-            alignment: EduconnectConstants.isCurrentLocaleArabic()
+            alignment: IschoolerConstants.isCurrentLocaleArabic()
                 ? Alignment.centerLeft
                 : Alignment.centerRight,
             child: Container(
@@ -71,12 +71,12 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
               height: 40.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                    EduconnectConstants.educonnect_button_radius),
+                    IschoolerConstants.educonnect_button_radius),
                 // gradient: LinearGradient(colors: [
-                //   EduconnectColors.white.withOpacity(0),
-                //   EduconnectColors.white.withOpacity(0.1),
-                //   EduconnectColors.white.withOpacity(0.2),
-                //   EduconnectColors.white.withOpacity(0.4),
+                //   IschoolerColors.white.withOpacity(0),
+                //   IschoolerColors.white.withOpacity(0.1),
+                //   IschoolerColors.white.withOpacity(0.2),
+                //   IschoolerColors.white.withOpacity(0.4),
                 // ])
               ),
               child: educonnectElevatedButtonWithIcon.icon,
@@ -96,10 +96,10 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
         backgroundColor: buttonColor,
         surfaceTintColor: buttonColor,
         minimumSize:
-            Size(double.infinity, EduconnectConstants.educonnect_button_height),
+            Size(double.infinity, IschoolerConstants.educonnect_button_height),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(
-              EduconnectConstants.educonnect_button_radius),
+              IschoolerConstants.educonnect_button_radius),
           side: BorderSide(
             color: borderColor!,
           ),
@@ -110,7 +110,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       label: Text(
         educonnectElevatedButtonWithIcon.text,
         style:
-            EduconnectConstants.textTheme.bodyLarge!.copyWith(color: textColor),
+            IschoolerConstants.textTheme.bodyLarge!.copyWith(color: textColor),
       ),
     );
   }

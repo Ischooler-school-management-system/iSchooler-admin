@@ -10,20 +10,20 @@ import '../common/madpoly.dart';
 import 'sidebar_x.dart';
 
 const primaryColor = canvasColor;
-const canvasColor = EduconnectColors.blue;
+const canvasColor = IschoolerColors.blue;
 const scaffoldBackgroundColor = Color.fromRGBO(255, 255, 255, 1);
-const accentCanvasColor = EduconnectColors.grey;
+const accentCanvasColor = IschoolerColors.grey;
 const white = Colors.white;
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
 
-class EduconnectSideBar extends StatefulWidget {
-  const EduconnectSideBar({super.key});
+class IschoolerSideBar extends StatefulWidget {
+  const IschoolerSideBar({super.key});
 
   @override
-  State<EduconnectSideBar> createState() => _EduconnectSideBarState();
+  State<IschoolerSideBar> createState() => _IschoolerSideBarState();
 }
 
-class _EduconnectSideBarState extends State<EduconnectSideBar> {
+class _IschoolerSideBarState extends State<IschoolerSideBar> {
   final _controller = SidebarXController(selectedIndex: 5, extended: true);
 
   @override
@@ -55,7 +55,7 @@ class _EduconnectSideBarState extends State<EduconnectSideBar> {
       const LanguagesScreen(),
       const EmptyTab(),
     ];
-    return EduconnectScreen(
+    return IschoolerScreen(
       // key: _key,
       // appBar: AppBar(backgroundColor: Colors.transparent),
       showAppbar: true,

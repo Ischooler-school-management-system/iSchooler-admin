@@ -1,6 +1,6 @@
 {
-    "name": "school_admin",
-    "short_name": "school_admin",
+    "name": "ischooler_admin",
+    "short_name": "ischooler_admin",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

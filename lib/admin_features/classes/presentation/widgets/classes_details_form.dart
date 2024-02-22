@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/admin_features/grades/data/models/grade_model.dart';
-import 'package:school_admin/admin_features/weekly_timetable/presentation/screens/time_table_screen.dart';
-import 'package:school_admin/common/common_features/widgets/buttons/educonnect_button.dart';
-import 'package:school_admin/common/common_features/widgets/buttons/models/buttons_model.dart';
-import 'package:school_admin/common/navigation/educonnect_navi.dart';
+import 'package:ischooler_admin/admin_features/grades/data/models/grade_model.dart';
+import 'package:ischooler_admin/admin_features/weekly_timetable/presentation/screens/time_table_screen.dart';
+import 'package:ischooler_admin/common/common_features/widgets/buttons/educonnect_button.dart';
+import 'package:ischooler_admin/common/common_features/widgets/buttons/models/buttons_model.dart';
+import 'package:ischooler_admin/common/navigation/educonnect_navi.dart';
 
 import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../../../../common/educonnect_model.dart';
@@ -51,25 +51,25 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectButton(
-            button: EduconnectElevatedButton(
+          IschoolerButton(
+            button: IschoolerElevatedButton(
               onPressed: () {
-                EduconnectNavigator.navigateToScreen(
+                IschoolerNavigator.navigateToScreen(
                     TimeTableScreen(classData: classData));
               },
               text: 'class time table',
             ),
           ),
           if (editingModel)
-            EduconnectTextField(
+            IschoolerTextField(
               initialValue: classData.id,
               labelText: 'Class ID',
               enabled: false,
             ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: classData.name,
             labelText: 'Class Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               setState(() {
                 classData = classData.copyWith(name: value);
@@ -79,7 +79,7 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
           DashboardDropDownWidget<GradesListCubit>(
               hint: classData.grade.name,
               labelText: 'Grade',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'Grade model = $value',
                   tag:

@@ -4,7 +4,7 @@ part of 'weekly_timetable_day_cubit.dart';
 
 class WeeklyTimetableDaysListState {
   final WeeklyTimetableDayModel weeklyTimetableDayModel;
-  final EduconnectStatus status;
+  final IschoolerStatus status;
   const WeeklyTimetableDaysListState({
     required this.weeklyTimetableDayModel,
     required this.status,
@@ -13,26 +13,26 @@ class WeeklyTimetableDaysListState {
   factory WeeklyTimetableDaysListState.init() {
     return WeeklyTimetableDaysListState(
       weeklyTimetableDayModel: WeeklyTimetableDayModel.empty(),
-      status: EduconnectStatus.init,
+      status: IschoolerStatus.init,
     );
   }
 
   WeeklyTimetableDaysListState updateData(WeeklyTimetableDayModel newData) {
     return _copyWith(
       weeklyTimetableDayModel: newData,
-      status: EduconnectStatus.loaded,
+      status: IschoolerStatus.loaded,
     );
   }
 
-  WeeklyTimetableDaysListState updateStatus({EduconnectStatus? newStatus}) {
+  WeeklyTimetableDaysListState updateStatus({IschoolerStatus? newStatus}) {
     return _copyWith(
-      status: newStatus ?? EduconnectStatus.updated,
+      status: newStatus ?? IschoolerStatus.updated,
     );
   }
 
   WeeklyTimetableDaysListState _copyWith({
     WeeklyTimetableDayModel? weeklyTimetableDayModel,
-    EduconnectStatus? status,
+    IschoolerStatus? status,
   }) {
     return WeeklyTimetableDaysListState(
       weeklyTimetableDayModel:
@@ -41,6 +41,6 @@ class WeeklyTimetableDaysListState {
     );
   }
 
-  bool isLoaded() => status == EduconnectStatus.loaded;
+  bool isLoaded() => status == IschoolerStatus.loaded;
   List<Object> get props => [weeklyTimetableDayModel, status];
 }

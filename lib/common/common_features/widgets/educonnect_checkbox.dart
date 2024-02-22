@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../educonnect_constants.dart';
 import '../../style/educonnect_colors.dart';
 
-class EduconnectCheckbox extends StatefulWidget {
+class IschoolerCheckbox extends StatefulWidget {
   final String text;
   final String? subtitle;
   final Function(bool)? onChanged;
@@ -12,7 +12,7 @@ class EduconnectCheckbox extends StatefulWidget {
   final TextStyle? textStyle;
   final bool isToggle;
 
-  const EduconnectCheckbox({
+  const IschoolerCheckbox({
     super.key,
     required this.text,
     this.subtitle,
@@ -24,10 +24,10 @@ class EduconnectCheckbox extends StatefulWidget {
   });
 
   @override
-  State<EduconnectCheckbox> createState() => _EduconnectCheckboxState();
+  State<IschoolerCheckbox> createState() => _IschoolerCheckboxState();
 }
 
-class _EduconnectCheckboxState extends State<EduconnectCheckbox> {
+class _IschoolerCheckboxState extends State<IschoolerCheckbox> {
   bool isSelected = false;
 
   @override
@@ -43,8 +43,8 @@ class _EduconnectCheckboxState extends State<EduconnectCheckbox> {
           children: [
             Icon(
               decideIcon(),
-              size: EduconnectConstants.educonnect_screen_height / 35,
-              color: EduconnectColors.blue,
+              size: IschoolerConstants.educonnect_screen_height / 35,
+              color: IschoolerColors.blue,
             ),
             const SizedBox(width: 8.0),
             Expanded(

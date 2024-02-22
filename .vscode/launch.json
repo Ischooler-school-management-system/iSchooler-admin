@@ -5,18 +5,18 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "school_admin",
+            "name": "ischooler_admin",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "school_admin (profile mode)",
+            "name": "ischooler_admin (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
         },
         {
-            "name": "school_admin (release mode)",
+            "name": "ischooler_admin (release mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "release"

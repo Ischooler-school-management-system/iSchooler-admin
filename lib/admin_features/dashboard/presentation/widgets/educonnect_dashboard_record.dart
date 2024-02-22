@@ -7,12 +7,12 @@ import '../../../../common/educonnect_constants.dart';
 import '../../../../common/style/educonnect_colors.dart';
 import 'educonnect_dashboard_listtile.dart';
 
-class EduconnectDashboardRecord extends StatelessWidget {
+class IschoolerDashboardRecord extends StatelessWidget {
   final Map map;
   final bool isEven;
   final bool viewKeys;
   final Function()? onPressed;
-  const EduconnectDashboardRecord({
+  const IschoolerDashboardRecord({
     super.key,
     required this.map,
     required this.isEven,
@@ -22,10 +22,10 @@ class EduconnectDashboardRecord extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectButton(
-      button: EduconnectContainerButton(
+    return IschoolerButton(
+      button: IschoolerContainerButton(
         child: ListTile(
-          tileColor: isEven ? EduconnectColors.blue.withOpacity(0.3) : null,
+          tileColor: isEven ? IschoolerColors.blue.withOpacity(0.3) : null,
           contentPadding: EdgeInsets.zero,
           title: recordWidget(map, showKeys: viewKeys),
           trailing: viewKeys
@@ -65,7 +65,7 @@ class EduconnectDashboardRecord extends StatelessWidget {
         } else {
           return EduconnecDashboardListTile(
             title: entry.value.toString(),
-            isName: entry.key == EduconnectConstants.localization().name,
+            isName: entry.key == IschoolerConstants.localization().name,
           );
         }
       }).toList(),

@@ -7,19 +7,19 @@ import '../../../../common/network/educonnect_response.dart';
 import '../../../../common/network/educonnect_tables.dart';
 import 'educonnect_network_interface.dart';
 
-class DashboardNetwork implements EduconnectNetwork {
+class DashboardNetwork implements IschoolerNetwork {
   final AlertHandlingRepository _alertHandlingRepository;
 
   DashboardNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
   @override
-  Future<EduconnectResponse> getAllItems(
-      {required EduconnectListModel model, DatabaseTable? table}) async {
-    EduconnectResponse response = EduconnectResponse.empty();
+  Future<IschoolerResponse> getAllItems(
+      {required IschoolerListModel model, DatabaseTable? table}) async {
+    IschoolerResponse response = IschoolerResponse.empty();
     try {
       DatabaseTable tableQueryData =
-          table ?? EduconnectNetworkHelper.getTableQueryData(model);
+          table ?? IschoolerNetworkHelper.getTableQueryData(model);
 
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
@@ -28,7 +28,7 @@ class DashboardNetwork implements EduconnectNetwork {
         );
       }
       /*  final CollectionReference<Map<String, dynamic>> reference =
-          EduconnectNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
+          IschoolerNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
         'request will be sent is >>  get(), '
         'tableQueryData: $tableQueryData',
@@ -51,7 +51,7 @@ class DashboardNetwork implements EduconnectNetwork {
         tag: 'dashboard_network > getAllItems',
         developer: "Ziad",
       );
-      response = EduconnectResponse(hasData: true, data: {'items': query});
+      response = IschoolerResponse(hasData: true, data: {'items': query});
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -64,12 +64,12 @@ class DashboardNetwork implements EduconnectNetwork {
   }
 
   @override
-  Future<bool> addItem({required EduconnectModel model}) async {
+  Future<bool> addItem({required IschoolerModel model}) async {
     bool dataStored = false;
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -112,12 +112,12 @@ class DashboardNetwork implements EduconnectNetwork {
   }
 
   @override
-  Future<bool> updateItem({required EduconnectModel model}) async {
+  Future<bool> updateItem({required IschoolerModel model}) async {
     bool dataUpdated = false;
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -162,11 +162,11 @@ class DashboardNetwork implements EduconnectNetwork {
   }
 
   @override
-  Future<bool> deleteItem({required EduconnectModel model}) async {
+  Future<bool> deleteItem({required IschoolerModel model}) async {
     bool dataDeleted = false;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '

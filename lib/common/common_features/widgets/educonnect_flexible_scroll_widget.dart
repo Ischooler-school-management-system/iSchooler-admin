@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-// class EduconnectScrollingWidget
-class EduconnectFlexibleScrollWidget extends StatelessWidget {
+// class IschoolerScrollingWidget
+class IschoolerFlexibleScrollWidget extends StatelessWidget {
   final Widget child;
   final bool hasMinHeight;
   final bool enableScrolling;
   final bool enableflexibleScrolling;
-  const EduconnectFlexibleScrollWidget({
+  const IschoolerFlexibleScrollWidget({
     super.key,
     required this.child,
     this.hasMinHeight = false,

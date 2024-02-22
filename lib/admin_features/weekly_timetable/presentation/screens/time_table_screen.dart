@@ -57,12 +57,12 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
  */
   @override
   Widget build(BuildContext context) {
-    return EduconnectScreen(
+    return IschoolerScreen(
       showAppbar: true,
       body: BlocBuilder<WeeklyTimetableCubit, WeeklyTimetableState>(
         builder: (context, state) {
           WeeklyTimetableModel? timeTable;
-          if (state.status == EduconnectStatus.loaded &&
+          if (state.status == IschoolerStatus.loaded &&
               state.weeklyTimetableModel.id != '-1') {
             timeTable = state.weeklyTimetableModel;
           }
@@ -70,8 +70,8 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
             return TimeTableLoadedView(timeTable: timeTable);
           } else {
             return Center(
-              child: EduconnectButton(
-                button: EduconnectElevatedButton(
+              child: IschoolerButton(
+                button: IschoolerElevatedButton(
                   onPressed: onCreateTableButtonPressed,
                   text: 'create time table',
                 ),
@@ -84,7 +84,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
   }
 
   onCreateTableButtonPressed() {
-    EduconnectNavigator.navigateToScreen(
+    IschoolerNavigator.navigateToScreen(
         TimeTableDetailsForm(currentClassData: widget.classData));
   }
 }

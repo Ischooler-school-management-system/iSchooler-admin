@@ -8,7 +8,7 @@ import '../../data/models/subjects_list_model.dart';
 
 part 'subjects_list_state.dart';
 
-class SubjectsListCubit extends EduconnectCubit<SubjectsListState> {
+class SubjectsListCubit extends IschoolerCubit<SubjectsListState> {
   final DashboardRepository _subjectRepository;
   final LoadingRepository _loadingRepository;
 
@@ -22,7 +22,7 @@ class SubjectsListCubit extends EduconnectCubit<SubjectsListState> {
   @override
   Future<void> getAllItems() async {
     _loadingRepository.startLoading(LoadingType.normal);
-    EduconnectListModel response =
+    IschoolerListModel response =
         //model is sent here to get the type of request only
         await _subjectRepository.getAllItems(model: SubjectsListModel.empty());
     if (response is SubjectsListModel) {
@@ -39,7 +39,7 @@ class SubjectsListCubit extends EduconnectCubit<SubjectsListState> {
   }
 
   @override
-  Future<void> addItem({required EduconnectModel model}) async {
+  Future<void> addItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _subjectRepository.addItem(model: model);
@@ -49,7 +49,7 @@ class SubjectsListCubit extends EduconnectCubit<SubjectsListState> {
   }
 
   @override
-  Future<void> updateItem({required EduconnectModel model}) async {
+  Future<void> updateItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
     bool successfulRequest = await _subjectRepository.updateItem(model: model);
@@ -61,7 +61,7 @@ class SubjectsListCubit extends EduconnectCubit<SubjectsListState> {
   }
 
   @override
-  Future<void> deleteItem({required EduconnectModel model}) async {
+  Future<void> deleteItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
     await _subjectRepository.deleteItem(model: model);

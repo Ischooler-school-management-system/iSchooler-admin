@@ -4,7 +4,7 @@ import '../../../../common/educonnect_model.dart';
 import '../../../list_models.dart';
 import '../../../models.dart';
 
-class ExamTypeModel extends EduconnectModel {
+class ExamTypeModel extends IschoolerModel {
   @override
   final String name;
   final double marksPercent;
@@ -74,7 +74,7 @@ class ExamTypeModel extends EduconnectModel {
   }
 }
 
-class ExamTypesListModel extends EduconnectListModel {
+class ExamTypesListModel extends IschoolerListModel {
   const ExamTypesListModel({required List<ExamTypeModel> items})
       : super(items: items);
 
@@ -100,7 +100,7 @@ class ExamTypesListModel extends EduconnectListModel {
   }
 }
 
-class ExamModel extends EduconnectModel {
+class ExamModel extends IschoolerModel {
   final SubjectModel subject;
   final DateTime date;
   final DateTime time;
@@ -188,7 +188,7 @@ class ExamModel extends EduconnectModel {
   }
 }
 
-class ExamsListModel extends EduconnectListModel {
+class ExamsListModel extends IschoolerListModel {
   const ExamsListModel({required List<ExamModel> items}) : super(items: items);
 
   factory ExamsListModel.empty() {
@@ -213,7 +213,7 @@ class ExamsListModel extends EduconnectListModel {
   }
 }
 
-class ExamSessionModel extends EduconnectModel {
+class ExamSessionModel extends IschoolerModel {
   final int sessionNumber;
   final String weekday;
   final DateTime startTime;
@@ -339,7 +339,7 @@ class ExamSessionModel extends EduconnectModel {
   }
 }
 
-class ExamSessionsListModel extends EduconnectListModel {
+class ExamSessionsListModel extends IschoolerListModel {
   const ExamSessionsListModel({required List<ExamSessionModel> items})
       : super(items: items);
 
@@ -364,7 +364,7 @@ class ExamSessionsListModel extends EduconnectListModel {
   }
 }
 
-class ExamTimetableModel extends EduconnectModel {
+class ExamTimetableModel extends IschoolerModel {
   final String term;
   final List<ExamSessionModel> examSessions;
   final GradeModel grade;
@@ -457,7 +457,7 @@ class ExamTimetableModel extends EduconnectModel {
   }
 }
 
-class ExamTimetablesListModel extends EduconnectListModel {
+class ExamTimetablesListModel extends IschoolerListModel {
   const ExamTimetablesListModel({required List<ExamTimetableModel> items})
       : super(items: items);
 
@@ -484,7 +484,7 @@ class ExamTimetablesListModel extends EduconnectListModel {
   }
 }
 
-class HomeworksListModel extends EduconnectListModel {
+class HomeworksListModel extends IschoolerListModel {
   const HomeworksListModel({required List<HomeworkModel> items})
       : super(items: items);
 
@@ -511,7 +511,7 @@ class HomeworksListModel extends EduconnectListModel {
   }
 }
 
-class HomeworkModel extends EduconnectModel {
+class HomeworkModel extends IschoolerModel {
   final ClassModel classInfo;
   final SubjectModel subject;
   final DateTime date;
@@ -601,7 +601,7 @@ class HomeworkModel extends EduconnectModel {
   }
 }
 
-class NewsModel extends EduconnectModel {
+class NewsModel extends IschoolerModel {
   @override
   final String name;
   final String thumbnail;
@@ -691,7 +691,7 @@ class NewsModel extends EduconnectModel {
   }
 }
 
-class NewsListModel extends EduconnectListModel {
+class NewsListModel extends IschoolerListModel {
   const NewsListModel({required List<NewsModel> items}) : super(items: items);
 
   factory NewsListModel.empty() {

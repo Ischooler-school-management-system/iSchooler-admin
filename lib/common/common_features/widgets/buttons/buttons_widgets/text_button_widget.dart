@@ -2,7 +2,7 @@ part of '../educonnect_button.dart';
 
 //text button either with or without leading text
 class _TextButtonWidget extends StatelessWidget {
-  final EduconnectTextButton educonnectTextButton;
+  final IschoolerTextButton educonnectTextButton;
   const _TextButtonWidget({
     required this.educonnectTextButton,
   });
@@ -32,13 +32,13 @@ class _TextButtonWidget extends StatelessWidget {
 
   SizedBox childWithLeadingText() {
     return SizedBox(
-      width: EduconnectConstants.educonnect_screen_width / 1.3,
+      width: IschoolerConstants.educonnect_screen_width / 1.3,
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
           text: "${educonnectTextButton.leadingText!} ",
           style:
-              educonnectTextButton.style ?? EduconnectTextStyles.styleBlackW500,
+              educonnectTextButton.style ?? IschoolerTextStyles.styleBlackW500,
           children: [
             TextSpan(
               text: educonnectTextButton.textButton,
@@ -53,18 +53,18 @@ class _TextButtonWidget extends StatelessWidget {
   }
 
   TextStyle buttonTextStyle() {
-    return EduconnectTextStyles.style14BlueW500.copyWith(
+    return IschoolerTextStyles.style14BlueW500.copyWith(
       decoration: educonnectTextButton.hasUnderline
           ? TextDecoration.underline
           : TextDecoration.none,
-      decorationColor: EduconnectColors.primaryColor,
+      decorationColor: IschoolerColors.primaryColor,
     );
     /* TextStyle(
       decoration: educonnectTextButton.hasUnderline
           ? TextDecoration.underline
           : TextDecoration.none,
-      decorationColor: EduconnectColors.primaryColor,
-      color: EduconnectColors.primaryColor,
+      decorationColor: IschoolerColors.primaryColor,
+      color: IschoolerColors.primaryColor,
       fontSize: 14.sp,
       fontWeight: FontWeight.w500,
     ); */

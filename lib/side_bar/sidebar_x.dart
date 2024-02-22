@@ -1,4 +1,3 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../common/style/educonnect_text_theme.dart';
@@ -11,12 +10,11 @@ import '../common/educonnect_assets.dart';
 import '../common/educonnect_constants.dart';
 
 const primaryColor = canvasColor;
-const canvasColor = EduconnectColors.blue;
+const canvasColor = IschoolerColors.blue;
 const scaffoldBackgroundColor = Color.fromRGBO(255, 255, 255, 1);
-const accentCanvasColor = EduconnectColors.grey;
+const accentCanvasColor = IschoolerColors.grey;
 const white = Colors.white;
 final divider = Divider(color: white.withOpacity(0.3), height: 1);
-FirebaseAuth newVariable = FirebaseAuth.instance;
 
 class ExampleSidebarX extends StatelessWidget {
   final SidebarXController _controller;
@@ -67,13 +65,13 @@ class ExampleSidebarX extends StatelessWidget {
           height: 100,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Image.asset(EduconnectAssets.blankProfileImage),
+            child: Image.asset(IschoolerAssets.blankProfileImage),
           ),
         ),
-        if (newVariable.currentUser != null &&
-            newVariable.currentUser!.email != null)
-          Text(newVariable.currentUser!.email!,
-              style: EduconnectTextStyles.style14White),
+        // if (newVariable.currentUser != null &&
+        //     newVariable.currentUser!.email != null)
+        //   Text(newVariable.currentUser!.email!,
+        //       style: IschoolerTextStyles.style14White),
       ],
     );
   }
@@ -84,66 +82,66 @@ class ExampleSidebarX extends StatelessWidget {
     final List<SidebarXItem> sideBarTabs = [
       // SidebarXItem(
       //   icon: const tterLogo(size: 20),
-      //   label: EduconnectConstants.localization().dashboard,
+      //   label: IschoolerConstants.localization().dashboard,
       // ),
       SidebarXItem(
         icon: Icons.admin_panel_settings,
-        label: EduconnectConstants.localization().admins,
+        label: IschoolerConstants.localization().admins,
       ),
       const SidebarXItem(
         icon: Icons.admin_panel_settings,
-        // label: EduconnectConstants.localization().admins_roles,
+        // label: IschoolerConstants.localization().admins_roles,
         label: 'Admins Roles',
       ),
       SidebarXItem(
-        icon: EduconnectIcons.teacher_7,
-        label: EduconnectConstants.localization().teachers,
+        icon: IschoolerIcons.teacher_7,
+        label: IschoolerConstants.localization().teachers,
       ),
       const SidebarXItem(
-        icon: EduconnectIcons.teacher_7,
+        icon: IschoolerIcons.teacher_7,
         label: 'Instructor Assignment',
       ),
       SidebarXItem(
         icon: Icons.person,
-        label: EduconnectConstants.localization().students,
+        label: IschoolerConstants.localization().students,
       ),
       SidebarXItem(
         icon: (Icons.school),
-        label: EduconnectConstants.localization().classes,
+        label: IschoolerConstants.localization().classes,
       ),
       SidebarXItem(
         icon: (Icons.grade),
-        label: EduconnectConstants.localization().grades,
+        label: IschoolerConstants.localization().grades,
       ),
       SidebarXItem(
         icon: (Icons.subject),
-        label: EduconnectConstants.localization().subjects,
+        label: IschoolerConstants.localization().subjects,
       ),
       SidebarXItem(
         icon: (Icons.schedule),
-        label: EduconnectConstants.localization().timetable,
+        label: IschoolerConstants.localization().timetable,
       ),
       SidebarXItem(
         icon: (Icons.assignment),
-        label: EduconnectConstants.localization().exams,
+        label: IschoolerConstants.localization().exams,
       ),
 
       SidebarXItem(
         icon: (Icons.assignment_turned_in),
-        label: EduconnectConstants.localization().homeworks,
+        label: IschoolerConstants.localization().homeworks,
       ),
 
       SidebarXItem(
         icon: (Icons.account_circle),
-        label: EduconnectConstants.localization().profile,
+        label: IschoolerConstants.localization().profile,
       ),
       SidebarXItem(
         icon: (Icons.settings),
-        label: EduconnectConstants.localization().settings,
+        label: IschoolerConstants.localization().settings,
       ),
       SidebarXItem(
         icon: Icons.logout,
-        label: EduconnectConstants.localization().sign_out,
+        label: IschoolerConstants.localization().sign_out,
         onTap: () {
           context.read<AuthCubit>().signOut();
         },

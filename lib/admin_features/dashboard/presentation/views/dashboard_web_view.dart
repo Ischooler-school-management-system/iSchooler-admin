@@ -6,9 +6,9 @@ import '../../../../common/educonnect_model.dart';
 import '../widgets/dashboard_data_row.dart';
 
 class DashboardWebview extends StatelessWidget {
-  final EduconnectListModel allUsers;
-  final Function(EduconnectModel model)? onDeleteButtonPressed;
-  final Function(EduconnectModel model)? onEditButtonPressed;
+  final IschoolerListModel allUsers;
+  final Function(IschoolerModel model)? onDeleteButtonPressed;
+  final Function(IschoolerModel model)? onEditButtonPressed;
   const DashboardWebview(
       {super.key,
       required this.allUsers,
@@ -70,12 +70,12 @@ class DashboardWebview extends StatelessWidget {
   }
 
   List<DataRow2> _buildRows() {
-    Iterable<MapEntry<int, EduconnectModel>> entries2 =
+    Iterable<MapEntry<int, IschoolerModel>> entries2 =
         allUsers.items.asMap().entries;
     List<DataRow2> rowList = entries2.map((entry) {
       final int index = entry.key;
-      final EduconnectModel data = allUsers.items[index];
-      final EduconnectModel map = entry.value;
+      final IschoolerModel data = allUsers.items[index];
+      final IschoolerModel map = entry.value;
       final bool isEven = index % 2 == 0;
       // Add the edit and delete buttons in the trailing section
       return DashboardDataRow2.buildDataRow2(

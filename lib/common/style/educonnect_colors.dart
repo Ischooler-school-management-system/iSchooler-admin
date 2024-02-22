@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 
-abstract class EduconnectColors {
+abstract class IschoolerColors {
   static const Color primaryColor = blue;
   static const Color secondaryColor = blue;
   static const Color accentColor = white;

@@ -1,7 +1,7 @@
 part of '../educonnect_button.dart';
 
 class _CartButtonWidget extends StatelessWidget {
-  final EduconnectCartButton educonnectCartButton;
+  final IschoolerCartButton educonnectCartButton;
 
   const _CartButtonWidget({
     required this.educonnectCartButton,
@@ -13,11 +13,11 @@ class _CartButtonWidget extends StatelessWidget {
       onTap: () {},
       child: Container(
         decoration: BoxDecoration(
-          color: EduconnectColors.light_grey,
+          color: IschoolerColors.light_grey,
           borderRadius: BorderRadius.circular(30.r),
         ),
-        height: EduconnectConstants.educonnect_screen_height / 28,
-        width: EduconnectConstants.educonnect_screen_width / 5,
+        height: IschoolerConstants.educonnect_screen_height / 28,
+        width: IschoolerConstants.educonnect_screen_width / 5,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 2.w),
         child: SizedBox(
@@ -30,7 +30,7 @@ class _CartButtonWidget extends StatelessWidget {
                 child: Icon(
                   Icons.remove,
                   size: 17.w,
-                  color: EduconnectColors.secondaryColor,
+                  color: IschoolerColors.secondaryColor,
                 ),
               ),
               SizedBox(
@@ -40,8 +40,8 @@ class _CartButtonWidget extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     educonnectCartButton.text,
-                    style: EduconnectConstants.textTheme.bodyMedium!.copyWith(
-                      color: EduconnectColors.secondaryColor,
+                    style: IschoolerConstants.textTheme.bodyMedium!.copyWith(
+                      color: IschoolerColors.secondaryColor,
                       fontWeight: FontWeight.w600,
                       fontFamily: GoogleFonts.poppins().fontFamily,
                     ),
@@ -53,7 +53,7 @@ class _CartButtonWidget extends StatelessWidget {
                 child: Icon(
                   Icons.add,
                   size: 17.w,
-                  color: EduconnectColors.secondaryColor,
+                  color: IschoolerColors.secondaryColor,
                 ),
               ),
             ],

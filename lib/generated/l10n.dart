@@ -220,10 +220,10 @@ class S {
     );
   }
 
-  /// `Now you can manage your entire school with the Educonnect app`
+  /// `Now you can manage your entire school with the Ischooler app`
   String get manage_school_with_app {
     return Intl.message(
-      'Now you can manage your entire school with the Educonnect app',
+      'Now you can manage your entire school with the Ischooler app',
       name: 'manage_school_with_app',
       desc: '',
       args: [],

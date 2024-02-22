@@ -28,7 +28,7 @@ class WeeklySessionsRepository {
     //   // showToast: true,
     // );
     try {
-      EduconnectResponse response = await _adminNetwork.getAllItems(
+      IschoolerResponse response = await _adminNetwork.getAllItems(
           classId: classId, weekdayId: weekdayId);
       // if (response.hasData) {
 

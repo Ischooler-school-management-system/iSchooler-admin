@@ -20,13 +20,13 @@ class TableSessionWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectTimelineTile(
+    return IschoolerTimelineTile(
       // hasIndicator: hasIndicator,
       isFirst: isFirst,
       isLast: isLast,
       endChild: Container(
         decoration: BoxDecoration(
-          color: EduconnectColors.blue.withOpacity(0.3),
+          color: IschoolerColors.blue.withOpacity(0.3),
           borderRadius: BorderRadius.circular(12),
         ),
         margin: const EdgeInsets.all(8),
@@ -42,13 +42,13 @@ class TableSessionWidget extends StatelessWidget {
           children: [
             Text(
               session.startTime,
-              style: EduconnectTextStyles.style14
+              style: IschoolerTextStyles.style14
                   .copyWith(fontWeight: FontWeight.w600),
             ),
             Text(
               session.endTime,
-              style: EduconnectTextStyles.style12Blue
-                  .copyWith(color: EduconnectColors.grey),
+              style: IschoolerTextStyles.style12Blue
+                  .copyWith(color: IschoolerColors.grey),
             ),
           ],
         ),

@@ -51,15 +51,15 @@ class _InstructorAssignmentDetailsFormState
       child: Column(
         children: [
           if (editingModel)
-            EduconnectTextField(
+            IschoolerTextField(
               initialValue: instructorAssignmentData.id,
               labelText: 'InstructorAssignment ID',
               enabled: false,
             ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: instructorAssignmentData.name,
             labelText: 'InstructorAssignment Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               setState(() {
                 instructorAssignmentData =
@@ -72,7 +72,7 @@ class _InstructorAssignmentDetailsFormState
                   ? ''
                   : instructorAssignmentData.instructor!.name,
               labelText: 'Instructor',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'Instructor model = $value',
                   tag:
@@ -88,7 +88,7 @@ class _InstructorAssignmentDetailsFormState
                   ? ''
                   : instructorAssignmentData.subjectModel!.name,
               labelText: 'Subject',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'Subject model = $value',
                   tag:
@@ -104,7 +104,7 @@ class _InstructorAssignmentDetailsFormState
                   ? ''
                   : instructorAssignmentData.classModel!.name,
               labelText: 'Class',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'Class Model = $value',
                   tag:

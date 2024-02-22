@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'educonnect_colors.dart';
 
-class EduconnectTextStyles {
+class IschoolerTextStyles {
   /// used font sizes
   static const double font12 = 12;
   static const double font10 = 10;
@@ -17,11 +17,11 @@ class EduconnectTextStyles {
 
   static const style10Grey = TextStyle(
     fontSize: font10,
-    color: EduconnectColors.grey,
+    color: IschoolerColors.grey,
   );
 
   static const TextStyle style12Blue = TextStyle(
-    color: EduconnectColors.primaryColor,
+    color: IschoolerColors.primaryColor,
     fontSize: font12,
   );
 
@@ -33,7 +33,7 @@ class EduconnectTextStyles {
   );
 
   static const TextStyle style14BlueW500 = TextStyle(
-    color: EduconnectColors.primaryColor,
+    color: IschoolerColors.primaryColor,
     fontSize: font14,
     fontWeight: weight500,
   );

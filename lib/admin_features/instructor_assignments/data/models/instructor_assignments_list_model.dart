@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart';
-import 'package:school_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/common/educonnect_model.dart';
 
 import 'instructor_assignment_model.dart';
 
-class InstructorAssignmentsListModel extends EduconnectListModel {
+class InstructorAssignmentsListModel extends IschoolerListModel {
   const InstructorAssignmentsListModel({required super.items});
 
   factory InstructorAssignmentsListModel.empty() {

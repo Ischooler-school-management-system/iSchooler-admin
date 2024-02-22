@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class EduconnectConditionalWidget extends StatelessWidget {
+class IschoolerConditionalWidget extends StatelessWidget {
   final bool condition;
   final Widget? whenTrue;
   final Widget whenFalse;
-  const EduconnectConditionalWidget({
+  const IschoolerConditionalWidget({
     super.key,
     required this.condition,
     this.whenTrue,

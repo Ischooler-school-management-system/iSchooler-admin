@@ -1,6 +1,6 @@
 import '../../../../common/educonnect_model.dart';
 
-class GradeModel extends EduconnectModel {
+class GradeModel extends IschoolerModel {
   const GradeModel({
     required super.id,
     required super.name,
@@ -31,7 +31,7 @@ class GradeModel extends EduconnectModel {
   }
 
   factory GradeModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     return GradeModel(
       id: educonnectModel.id,
       name: educonnectModel.name,

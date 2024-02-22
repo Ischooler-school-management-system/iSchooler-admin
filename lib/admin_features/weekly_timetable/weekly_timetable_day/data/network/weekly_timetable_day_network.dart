@@ -16,7 +16,7 @@ class WeeklyTimetableDayNetwork {
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -63,7 +63,7 @@ class WeeklyTimetableDayNetwork {
     // String? docName = addWithId ? model.id : null;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '
@@ -111,7 +111,7 @@ class WeeklyTimetableDayNetwork {
     bool dataDeleted = false;
     try {
       DatabaseTable tableQueryData =
-          EduconnectNetworkHelper.getTableQueryData(model);
+          IschoolerNetworkHelper.getTableQueryData(model);
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception(
           'tableQueryData = $tableQueryData, '

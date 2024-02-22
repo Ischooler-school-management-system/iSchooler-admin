@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_admin/admin_features/models.dart';
+import 'package:ischooler_admin/admin_features/models.dart';
 
 import '../../../../common/madpoly.dart';
 import '../../../../common/navigation/educonnect_navi.dart';
@@ -43,7 +43,7 @@ class _TimeTableLoadedViewState extends State<TimeTableLoadedView> {
       builder: (context, state) {
         WeeklySessionsListModel weeklySessionsListModel =
             WeeklySessionsListModel.empty();
-        if (state.status == EduconnectStatus.loaded &&
+        if (state.status == IschoolerStatus.loaded &&
             state.educonnectAllModel is WeeklySessionsListModel) {
           weeklySessionsListModel =
               state.educonnectAllModel as WeeklySessionsListModel;

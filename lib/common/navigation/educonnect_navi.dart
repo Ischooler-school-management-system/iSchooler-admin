@@ -16,9 +16,9 @@ import 'routes.dart';
 
 /// Global Context of App
 BuildContext? get currentContext =>
-    EduconnectNavigator.navigatorState.currentContext;
+    IschoolerNavigator.navigatorState.currentContext;
 
-abstract class EduconnectNavigator {
+abstract class IschoolerNavigator {
   static final GlobalKey<NavigatorState> navigatorState =
       GlobalKey<NavigatorState>();
   static final RouteObserver<PageRoute> routeObserver =
@@ -36,7 +36,7 @@ abstract class EduconnectNavigator {
             transitionsBuilder:
                 (context, animation, secondaryAnimation, child) {
               var tween = Tween(
-                begin: EduconnectConstants.isCurrentLocaleArabic()
+                begin: IschoolerConstants.isCurrentLocaleArabic()
                     ? const Offset(-1.0, 0.0)
                     : const Offset(1.0, 0.0),
                 end: Offset.zero,
@@ -122,9 +122,9 @@ abstract class EduconnectNavigator {
 
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case Routes.selectRoleScreen:
-        return slideNavigation(
-            screen: const SelectRoleScreen(), arguments: settings.arguments);
+      // case Routes.selectRoleScreen:
+      //   return slideNavigation(
+      //       screen: const SelectRoleScreen(), arguments: settings.arguments);
       case Routes.authScreen:
         return slideNavigation(
             screen: const AuthScreen(), arguments: settings.arguments);
@@ -149,7 +149,7 @@ abstract class EduconnectNavigator {
       */
       case Routes.sideBarScreen:
         return slideNavigation(
-            screen: const EduconnectSideBar(), arguments: settings.arguments);
+            screen: const IschoolerSideBar(), arguments: settings.arguments);
       default:
         {
           return slideNavigation(
@@ -170,7 +170,7 @@ class NoScreen extends StatelessWidget {
       developer: "Ziad",
     );
 
-    return const EduconnectScreen(
+    return const IschoolerScreen(
       keepMobileView: true,
       alignment: Alignment.center,
       body: Center(child: Text('No such screen')),

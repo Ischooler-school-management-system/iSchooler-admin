@@ -3,7 +3,7 @@
 
 import '../../../../../common/educonnect_model.dart';
 
-class WeeklyTimetableDayModel extends EduconnectModel {
+class WeeklyTimetableDayModel extends IschoolerModel {
   final int weeklyTimetableId;
   final int weekdayId;
 
@@ -49,7 +49,7 @@ class WeeklyTimetableDayModel extends EduconnectModel {
       'weekdayId: $weekdayId)';
 }
 
-class WeeklyTimetableWeekdayListModel extends EduconnectListModel {
+class WeeklyTimetableWeekdayListModel extends IschoolerListModel {
   const WeeklyTimetableWeekdayListModel({required super.items});
 
   factory WeeklyTimetableWeekdayListModel.empty() {

@@ -2,7 +2,7 @@ part of 'students_list_cubit.dart';
 
 // @immutable
 
-class StudentsListState extends EduconnectState {
+class StudentsListState extends IschoolerState {
   const StudentsListState({
     required super.educonnectAllModel,
     required super.status,
@@ -10,30 +10,30 @@ class StudentsListState extends EduconnectState {
 
   factory StudentsListState.init() {
     return StudentsListState(
-      educonnectAllModel: EduconnectListModel.empty(),
-      status: EduconnectStatus.init,
+      educonnectAllModel: IschoolerListModel.empty(),
+      status: IschoolerStatus.init,
     );
   }
 
   @override
-  StudentsListState updateData(EduconnectListModel newData) {
+  StudentsListState updateData(IschoolerListModel newData) {
     return _copyWith(
       // educonnectAllModel: newData is AdminsListModel ? newData : null,
       educonnectAllModel: newData is StudentsListModel ? newData : null,
-      status: EduconnectStatus.loaded,
+      status: IschoolerStatus.loaded,
     );
   }
 
   @override
-  StudentsListState updateStatus({EduconnectStatus? newStatus}) {
+  StudentsListState updateStatus({IschoolerStatus? newStatus}) {
     return _copyWith(
-      status: newStatus ?? EduconnectStatus.updated,
+      status: newStatus ?? IschoolerStatus.updated,
     );
   }
 
   StudentsListState _copyWith({
-    EduconnectListModel? educonnectAllModel,
-    EduconnectStatus? status,
+    IschoolerListModel? educonnectAllModel,
+    IschoolerStatus? status,
   }) {
     return StudentsListState(
       educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
@@ -42,7 +42,7 @@ class StudentsListState extends EduconnectState {
   }
 
   @override
-  bool isLoaded() => status == EduconnectStatus.loaded;
+  bool isLoaded() => status == IschoolerStatus.loaded;
   @override
   List<Object> get props => [educonnectAllModel, status];
 }

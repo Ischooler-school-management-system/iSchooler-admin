@@ -24,19 +24,15 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
   int selectedRole = -1;
 
   List<({String iconPath, UserRole role, String title})> rolesDataList = [
-    (
-      role: UserRole.admin,
-      iconPath: EduconnectAssets.adminIcon,
-      title: 'Admin'
-    ),
+    (role: UserRole.admin, iconPath: IschoolerAssets.adminIcon, title: 'Admin'),
     (
       role: UserRole.instructor,
-      iconPath: EduconnectAssets.teacherIcon,
+      iconPath: IschoolerAssets.teacherIcon,
       title: 'Teacher'
     ),
     (
       role: UserRole.student,
-      iconPath: EduconnectAssets.studentIcon,
+      iconPath: IschoolerAssets.studentIcon,
       title: 'Student'
     ),
   ];
@@ -68,7 +64,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
     ).toList();
     var isMobile = MediaQuery.of(currentContext!).size.width < 400;
 
-    return EduconnectScreen(
+    return IschoolerScreen(
       keepMobileView: true,
       enableScrolling: true,
       alignment: Alignment.center,
@@ -78,7 +74,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
         children: [
           Text(
             'Please select you role',
-            style: EduconnectTextStyles.style20
+            style: IschoolerTextStyles.style20
                 .copyWith(fontWeight: FontWeight.w600, fontSize: 22),
           ),
           const SizedBox(height: 40),
@@ -93,8 +89,8 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
                   children: Responsive.expandedChildren(children: children),
                 ),
           const SizedBox(height: 20),
-          EduconnectButton(
-            button: EduconnectElevatedButton(
+          IschoolerButton(
+            button: IschoolerElevatedButton(
               width: 200,
               onPressed: onContinueButtonPressed,
               disabled:
@@ -116,7 +112,7 @@ class _SelectRoleScreenState extends State<SelectRoleScreen> {
       showToast: true,
     );
     context.read<AuthCubit>().selectRole(rolesDataList[selectedRole].role);
-    EduconnectNavigator.push(Routes.authScreen);
+    IschoolerNavigator.push(Routes.authScreen);
   }
 }
 
@@ -142,12 +138,12 @@ class RoleButtonWidget extends StatelessWidget {
       height: 80,
       fit: BoxFit.fitHeight,
       colorFilter: ColorFilter.mode(
-          isSelected ? EduconnectColors.blue : Colors.grey.withOpacity(0.3),
+          isSelected ? IschoolerColors.blue : Colors.grey.withOpacity(0.3),
           BlendMode.srcIn),
       semanticsLabel: 'A red up arrow',
     );
-    return EduconnectButton(
-      button: EduconnectContainerButton(
+    return IschoolerButton(
+      button: IschoolerContainerButton(
         roundedCorners: true,
         child: Container(
           padding: const EdgeInsets.all(20),
@@ -156,12 +152,12 @@ class RoleButtonWidget extends StatelessWidget {
             borderRadius: BorderRadius.circular(12),
             border: isSelected
                 ? Border.all(
-                    color: EduconnectColors.blue,
+                    color: IschoolerColors.blue,
                   )
                 : null,
             color: isSelected
                 ? const Color.fromARGB(255, 213, 237, 250)
-                : EduconnectColors.backgroundColor,
+                : IschoolerColors.backgroundColor,
             boxShadow: [
               BoxShadow(
                 blurRadius: 5,
@@ -183,7 +179,7 @@ class RoleButtonWidget extends StatelessWidget {
               Text(
                 title,
                 style: TextStyle(
-                  color: isSelected ? EduconnectColors.blue : Colors.grey,
+                  color: isSelected ? IschoolerColors.blue : Colors.grey,
                   fontWeight: isSelected ? FontWeight.w600 : FontWeight.normal,
                 ),
               ),

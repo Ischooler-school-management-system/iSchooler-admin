@@ -1,6 +1,6 @@
 import 'package:intl/intl.dart';
 
-class EduconnectDateTimeHelper {
+class IschoolerDateTimeHelper {
   static String? dateFormat(DateTime? date) {
     if (date != null) {
       return DateFormat('dd MMM, yyyy').format(date).toString();

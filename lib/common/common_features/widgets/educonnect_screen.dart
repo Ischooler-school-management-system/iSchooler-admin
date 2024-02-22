@@ -5,7 +5,7 @@ import 'educonnect_pull_to_refresh.dart';
 import 'educonnect_small_view.dart';
 
 // ignore: must_be_immutable
-class EduconnectScreen extends StatelessWidget {
+class IschoolerScreen extends StatelessWidget {
   final bool enableBackButton;
   final String tag;
   final PreferredSizeWidget? appBar;
@@ -26,7 +26,7 @@ class EduconnectScreen extends StatelessWidget {
 
   final FloatingActionButton? floatingActionButton;
 
-  const EduconnectScreen({
+  const IschoolerScreen({
     super.key,
     this.body,
     this.enableBackButton = false,
@@ -48,7 +48,7 @@ class EduconnectScreen extends StatelessWidget {
     this.showAppbar = false,
   });
 
-  // Build method for the EduconnectScreen widget
+  // Build method for the IschoolerScreen widget
   @override
   Widget build(BuildContext context) {
     // Build the main screen with necessary widgets
@@ -63,13 +63,13 @@ class EduconnectScreen extends StatelessWidget {
               padding: padding,
               margin: margin,
               alignment: alignment,
-              child: EduconnectSmallView(
+              child: IschoolerSmallView(
                 keepMobileView: keepMobileView,
-                child: EduconnectFlexibleScrollWidget(
+                child: IschoolerFlexibleScrollWidget(
                   hasMinHeight: hasMinHeight,
                   enableflexibleScrolling: enableflexibleScrolling,
                   enableScrolling: enableScrolling,
-                  child: EduconnectPullToRefresh(
+                  child: IschoolerPullToRefresh(
                     onRefresh: onRefresh,
                     child: body!,
                   ),

@@ -28,7 +28,7 @@ class LanguageWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: EduconnectConstants.textTheme.bodyMedium!.copyWith(
+              style: IschoolerConstants.textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w600,
                 fontFamily: GoogleFonts.poppins().fontFamily,
               ),
@@ -37,8 +37,8 @@ class LanguageWidget extends StatelessWidget {
               isSelected
                   ? Icons.radio_button_checked
                   : Icons.radio_button_unchecked,
-              size: EduconnectConstants.educonnect_screen_height / 33,
-              color: EduconnectColors.blue,
+              size: IschoolerConstants.educonnect_screen_height / 33,
+              color: IschoolerColors.blue,
             ),
           ],
         ),

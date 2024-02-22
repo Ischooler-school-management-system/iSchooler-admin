@@ -6,7 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../generated/l10n.dart';
 import 'navigation/educonnect_navi.dart';
 
-abstract class EduconnectConstants {
+abstract class IschoolerConstants {
   // static bool testMode = true;
   static const bool testMode = false;
 

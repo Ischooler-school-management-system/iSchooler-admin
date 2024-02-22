@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../educonnect_constants.dart';
 import 'educonnect_text_field.dart';
 
-class EduconnectPasswordField extends StatefulWidget {
+class IschoolerPasswordField extends StatefulWidget {
   final Function(String?)? onSaved;
   final String labelText;
   final String? Function(String?)? validator;
@@ -11,7 +11,7 @@ class EduconnectPasswordField extends StatefulWidget {
   final String? initialValue;
   final FocusNode? focusNode;
 
-  const EduconnectPasswordField({
+  const IschoolerPasswordField({
     super.key,
     this.onSaved,
     required this.labelText,
@@ -21,11 +21,10 @@ class EduconnectPasswordField extends StatefulWidget {
   });
 
   @override
-  State<EduconnectPasswordField> createState() =>
-      _EduconnectPasswordFieldState();
+  State<IschoolerPasswordField> createState() => _IschoolerPasswordFieldState();
 }
 
-class _EduconnectPasswordFieldState extends State<EduconnectPasswordField> {
+class _IschoolerPasswordFieldState extends State<IschoolerPasswordField> {
   bool isHiddenPass = true;
 
   void _togglePass() {
@@ -41,7 +40,7 @@ class _EduconnectPasswordFieldState extends State<EduconnectPasswordField> {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectTextField(
+    return IschoolerTextField(
       textAlign: TextAlign.left,
       textDirection: TextDirection.ltr,
       focusNode: widget.focusNode,
@@ -56,14 +55,14 @@ class _EduconnectPasswordFieldState extends State<EduconnectPasswordField> {
         child: isHiddenPass
             ? Icon(
                 Icons.visibility_off,
-                size: EduconnectConstants.educonnect_screen_height / 35,
+                size: IschoolerConstants.educonnect_screen_height / 35,
               )
             : Icon(
                 Icons.visibility,
-                size: EduconnectConstants.educonnect_screen_height / 35,
+                size: IschoolerConstants.educonnect_screen_height / 35,
               ),
       ),
-      // validator: EduconnectValidations().passwordValidator,
+      // validator: IschoolerValidations().passwordValidator,
       onSaved: widget.onSaved,
     );
   }

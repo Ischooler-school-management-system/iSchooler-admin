@@ -2,7 +2,7 @@ part of 'weekly_sessions_cubit.dart';
 
 // @immutable
 
-class WeeklySessionsState extends EduconnectState {
+class WeeklySessionsState extends IschoolerState {
   const WeeklySessionsState({
     required super.educonnectAllModel,
     required super.status,
@@ -11,28 +11,28 @@ class WeeklySessionsState extends EduconnectState {
   factory WeeklySessionsState.init() {
     return WeeklySessionsState(
       educonnectAllModel: WeeklySessionsListModel.empty(),
-      status: EduconnectStatus.init,
+      status: IschoolerStatus.init,
     );
   }
 
   @override
-  WeeklySessionsState updateData(EduconnectListModel newData) {
+  WeeklySessionsState updateData(IschoolerListModel newData) {
     return _copyWith(
       educonnectAllModel: newData is WeeklySessionsListModel ? newData : null,
-      status: EduconnectStatus.loaded,
+      status: IschoolerStatus.loaded,
     );
   }
 
   @override
-  WeeklySessionsState updateStatus({EduconnectStatus? newStatus}) {
+  WeeklySessionsState updateStatus({IschoolerStatus? newStatus}) {
     return _copyWith(
-      status: newStatus ?? EduconnectStatus.updated,
+      status: newStatus ?? IschoolerStatus.updated,
     );
   }
 
   WeeklySessionsState _copyWith({
     WeeklySessionsListModel? educonnectAllModel,
-    EduconnectStatus? status,
+    IschoolerStatus? status,
   }) {
     return WeeklySessionsState(
       educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
@@ -41,7 +41,7 @@ class WeeklySessionsState extends EduconnectState {
   }
 
   @override
-  bool isLoaded() => status == EduconnectStatus.loaded;
+  bool isLoaded() => status == IschoolerStatus.loaded;
   @override
   List<Object> get props => [educonnectAllModel, status];
 }

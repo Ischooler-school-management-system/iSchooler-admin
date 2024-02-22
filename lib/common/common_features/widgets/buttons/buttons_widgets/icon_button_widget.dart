@@ -2,23 +2,23 @@ part of '../educonnect_button.dart';
 
 //button with icon only
 class _IconButtonWidget extends StatelessWidget {
-  final EduconnectIconButton educonnectIconButton;
+  final IschoolerIconButton educonnectIconButton;
   const _IconButtonWidget({
     required this.educonnectIconButton,
   });
   @override
   Widget build(BuildContext context) {
     final Color buttonColor = educonnectIconButton.isLightMode
-        ? EduconnectColors.white // Background color in light mode
-        : EduconnectColors.secondaryColor; // Background color in dark mode
+        ? IschoolerColors.white // Background color in light mode
+        : IschoolerColors.secondaryColor; // Background color in dark mode
 
     final Color textColor = educonnectIconButton.isLightMode
-        ? EduconnectColors.secondaryColor
-        : EduconnectColors.white; // Text color
+        ? IschoolerColors.secondaryColor
+        : IschoolerColors.white; // Text color
 
     final Color borderColor = educonnectIconButton.isLightMode
         ? textColor
-        : EduconnectColors.transparent; // Border color
+        : IschoolerColors.transparent; // Border color
 
     CircleBorder? shape2;
     if (educonnectIconButton.hasBorder) {
@@ -46,9 +46,9 @@ class _IconButtonWidget extends StatelessWidget {
             ? null
             : Size(
                 educonnectIconButton.width ??
-                    EduconnectConstants.educonnect_button_height,
+                    IschoolerConstants.educonnect_button_height,
                 educonnectIconButton.height ??
-                    EduconnectConstants.educonnect_button_height,
+                    IschoolerConstants.educonnect_button_height,
               ),
         shape: shape2,
       ),

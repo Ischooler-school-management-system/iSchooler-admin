@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 import '../../../common/common_features/widgets/fields/educonnect_text_field.dart';
 import '../../functions/educonnect_date_time_helper.dart';
 
-class EduconnectDateField extends StatefulWidget {
+class IschoolerDateField extends StatefulWidget {
   final String? initialValue;
   final Function(DateTime date) onTap;
   final String? labelText;
 
-  const EduconnectDateField({
+  const IschoolerDateField({
     super.key,
     this.initialValue,
     required this.onTap,
@@ -17,10 +17,10 @@ class EduconnectDateField extends StatefulWidget {
   });
 
   @override
-  State<EduconnectDateField> createState() => _EduconnectDateFieldState();
+  State<IschoolerDateField> createState() => _IschoolerDateFieldState();
 }
 
-class _EduconnectDateFieldState extends State<EduconnectDateField> {
+class _IschoolerDateFieldState extends State<IschoolerDateField> {
   late TextEditingController _controller;
 
   @override
@@ -33,7 +33,7 @@ class _EduconnectDateFieldState extends State<EduconnectDateField> {
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectTextField(
+    return IschoolerTextField(
       controller: _controller,
       // initialValue: widget.initialValue,
       labelText: widget.labelText,
@@ -51,7 +51,7 @@ class _EduconnectDateFieldState extends State<EduconnectDateField> {
                 lastDate: DateTime(2100)) ??
             DateTime(1900);
         widget.onTap(date);
-        _controller.text = EduconnectDateTimeHelper.dateFormat(date) ?? '';
+        _controller.text = IschoolerDateTimeHelper.dateFormat(date) ?? '';
       },
     );
   }

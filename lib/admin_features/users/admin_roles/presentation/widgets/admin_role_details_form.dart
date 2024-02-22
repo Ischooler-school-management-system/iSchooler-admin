@@ -43,10 +43,10 @@ class _AdminRoleDetailsFormState extends State<AdminRoleDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminroleData.name,
             labelText: 'AdminRole Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onChanged: (value) {
               setState(() {
                 adminroleData = adminroleData.copyWith(name: value);
@@ -54,17 +54,17 @@ class _AdminRoleDetailsFormState extends State<AdminRoleDetailsForm> {
             },
           ),
           /*
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminroleData.email,
             labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
             onChanged: (value) {
               setState(() {
                 adminroleData = adminroleData.copyWith(userName: value);
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: adminroleData.dateOfBirth.toString(),
             initialValue: educonnectDateFormatter(adminroleData.dateOfBirth),
             labelText: 'Date of Birth',
@@ -81,7 +81,7 @@ class _AdminRoleDetailsFormState extends State<AdminRoleDetailsForm> {
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminroleData.phoneNumber,
             labelText: 'Phone Number',
             validator: (value) {
@@ -94,7 +94,7 @@ class _AdminRoleDetailsFormState extends State<AdminRoleDetailsForm> {
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminroleData.address,
             labelText: 'Address',
             validator: (value) {

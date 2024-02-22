@@ -57,15 +57,15 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
             height: 100,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Image.asset(EduconnectAssets.blankProfileImage),
+              child: Image.asset(IschoolerAssets.blankProfileImage),
             ),
           ),
 
           /// name
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: studentData.name,
             labelText: 'Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               studentData = studentData.copyWith(name: value);
               // setState(() {});
@@ -73,13 +73,13 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           ),
 
           /// Email Address
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: 'test',
             initialValue: studentData.email,
 
             labelText: 'Email Address',
 
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
 
             onSaved: (value) {
               studentData = studentData.copyWith(email: value);
@@ -88,9 +88,9 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           ),
 
           /// Date of Birth
-          EduconnectDateField(
+          IschoolerDateField(
             initialValue:
-                EduconnectDateTimeHelper.dateFormat(studentData.dateOfBirth),
+                IschoolerDateTimeHelper.dateFormat(studentData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               studentData = studentData.copyWith(dateOfBirth: date);
@@ -130,7 +130,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           ),
  */
           /// Phone Number
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: '01111',
             initialValue: studentData.phoneNumber,
             keyboardType: TextInputType.number,
@@ -147,7 +147,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           ),
 
           /// Address
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: studentData.address,
 
             // initialValue: 'test',
@@ -168,7 +168,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           DashboardDropDownWidget<ClassesListCubit>(
               hint: studentData.classModel.name,
               labelText: 'Class',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'class model = $value',
                   tag:
@@ -182,10 +182,10 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
 
           /// Payment Status
           //  Todo: create a ui to select student's payment status
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: studentData.paymentStatus ? 'paid' : 'not paid',
             labelText: 'Specialization',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             /* onSaved: (value) {
               studentData = studentData.copyWith(paymentStatus: value);
               // setState(() {});

@@ -26,7 +26,7 @@ class WeeklyTimetableRepository {
       // showToast: true,
     );
     try {
-      EduconnectResponse response =
+      IschoolerResponse response =
           await _adminNetwork.getAllItems(model: model);
       // if (response.hasData) {
 
@@ -67,7 +67,7 @@ class WeeklyTimetableRepository {
       // showToast: true,
     );
     try {
-      EduconnectResponse response =
+      IschoolerResponse response =
           await _adminNetwork.getItemByClassId(classId: classId);
       // if (response.hasData) {
 

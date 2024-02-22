@@ -33,8 +33,7 @@ class ErrorHandlingCubit extends Cubit<ErrorHandlingState> {
         if (result == ConnectivityResult.none) {
           _onErrorUpdated(
             AlertHandlingModel(
-              message:
-                  EduconnectConstants.localization().no_internet_connection,
+              message: IschoolerConstants.localization().no_internet_connection,
               type: AlertHandlingTypes.InternetConnection,
               showToast: true,
             ),

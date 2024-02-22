@@ -5,10 +5,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import '../../../educonnect_constants.dart';
 import '../../../style/educonnect_colors.dart';
 
-class EduconnectLoadingSnackbar extends StatelessWidget {
+class IschoolerLoadingSnackbar extends StatelessWidget {
   final String message;
 
-  const EduconnectLoadingSnackbar({super.key, required this.message});
+  const IschoolerLoadingSnackbar({super.key, required this.message});
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +17,7 @@ class EduconnectLoadingSnackbar extends StatelessWidget {
       padding: EdgeInsets.symmetric(
           vertical: 12.h, horizontal: 16.w), // Adjust vertical padding
       decoration: BoxDecoration(
-        color: EduconnectColors.secondaryColor,
+        color: IschoolerColors.secondaryColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Row(
@@ -26,15 +26,15 @@ class EduconnectLoadingSnackbar extends StatelessWidget {
             height: 24, // Adjust the height of the CircularProgressIndicator
             width: 24, // Adjust the width of the CircularProgressIndicator
             child: SpinKitRing(
-              color: EduconnectColors.white,
+              color: IschoolerColors.white,
               lineWidth: 3,
             ),
           ),
           const SizedBox(width: 8),
           Text(
             message,
-            style: EduconnectConstants.textTheme.labelMedium!
-                .copyWith(color: EduconnectColors.white),
+            style: IschoolerConstants.textTheme.labelMedium!
+                .copyWith(color: IschoolerColors.white),
           ),
         ],
       ),

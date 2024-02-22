@@ -90,12 +90,12 @@ BEGIN
         BLOCK "040904e4"
         BEGIN
             VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "school_admin" "\0"
+            VALUE "FileDescription", "ischooler_admin" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
-            VALUE "InternalName", "school_admin" "\0"
+            VALUE "InternalName", "ischooler_admin" "\0"
             VALUE "LegalCopyright", "Copyright (C) 2023 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "school_admin.exe" "\0"
-            VALUE "ProductName", "school_admin" "\0"
+            VALUE "OriginalFilename", "ischooler_admin.exe" "\0"
+            VALUE "ProductName", "ischooler_admin" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

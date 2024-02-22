@@ -12,7 +12,7 @@ class InstructorsListModel extends UsersListModel {
   }
   @override
   InstructorsListModel copyWith({
-    List<EduconnectModel>? items,
+    List<IschoolerModel>? items,
   }) {
     return InstructorsListModel(
       items: items ?? this.items,

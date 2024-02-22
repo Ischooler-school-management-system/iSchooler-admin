@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:school_admin/admin_features/forms.dart';
+import 'package:ischooler_admin/admin_features/forms.dart';
 
 import '../../../cubits.dart';
 import '../../../models.dart';
@@ -12,8 +12,8 @@ import '/common/common_features/widgets/educonnect_small_view.dart';
 import '/common/educonnect_model.dart';
 import '/common/madpoly.dart';
 
-class DashboardDetailsScreen<C extends EduconnectCubit> extends StatefulWidget {
-  final EduconnectModel? currentData;
+class DashboardDetailsScreen<C extends IschoolerCubit> extends StatefulWidget {
+  final IschoolerModel? currentData;
   const DashboardDetailsScreen({super.key, this.currentData});
 
   @override
@@ -21,12 +21,12 @@ class DashboardDetailsScreen<C extends EduconnectCubit> extends StatefulWidget {
       _DashboardDetailsScreenState<C>();
 }
 
-class _DashboardDetailsScreenState<C extends EduconnectCubit>
+class _DashboardDetailsScreenState<C extends IschoolerCubit>
     extends State<DashboardDetailsScreen<C>> {
 // final _formKey = GlobalKey<FormState>();
 
   // Use Studentmodel to store form data
-  EduconnectModel data = EduconnectModel.empty();
+  IschoolerModel data = IschoolerModel.empty();
   bool editingMode = false;
   @override
   void initState() {
@@ -45,11 +45,11 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectScreen(
+    return IschoolerScreen(
       showAppbar: true,
       padding: const EdgeInsets.all(30.0),
       enableScrolling: true,
-      body: EduconnectBoxConstrain(
+      body: IschoolerBoxConstrain(
         // padding: const EdgeInsets.all(30.0),
         maxWidth: 600,
         child: form(),
@@ -104,7 +104,7 @@ class _DashboardDetailsScreenState<C extends EduconnectCubit>
     }
   }
 
-  onSubmitButtonPressed(EduconnectModel data) {
+  onSubmitButtonPressed(IschoolerModel data) {
     Madpoly.print(' model after form submit: ',
         inspectObject: data,
         tag: 'dashboard_details_screen > onSubmitButtonPressed');

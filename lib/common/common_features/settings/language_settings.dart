@@ -7,6 +7,6 @@ class SettingsTab extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(EduconnectConstants.localization().settings);
+    return Text(IschoolerConstants.localization().settings);
   }
 }

@@ -1,4 +1,4 @@
-class EduconnectScheme {
+class IschoolerScheme {
   // Table: user_role
 // Columns: id | name
   static final userRole = (

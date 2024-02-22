@@ -55,15 +55,15 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
             height: 100,
             child: Padding(
               padding: const EdgeInsets.all(16.0),
-              child: Image.asset(EduconnectAssets.blankProfileImage),
+              child: Image.asset(IschoolerAssets.blankProfileImage),
             ),
           ),
 
           /// name
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminData.name,
             labelText: 'Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               adminData = adminData.copyWith(name: value);
               // setState(() {});
@@ -71,13 +71,13 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           ),
 
           /// Email Address
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: 'test',
             initialValue: adminData.email,
 
             labelText: 'Email Address',
 
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
 
             onSaved: (value) {
               adminData = adminData.copyWith(email: value);
@@ -86,9 +86,9 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           ),
 
           /// Date of Birth
-          EduconnectDateField(
+          IschoolerDateField(
             initialValue:
-                EduconnectDateTimeHelper.dateFormat(adminData.dateOfBirth),
+                IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               adminData = adminData.copyWith(dateOfBirth: date);
@@ -128,7 +128,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           ),
  */
           /// Phone Number
-          EduconnectTextField(
+          IschoolerTextField(
             keyboardType: TextInputType.number,
             // initialValue: '01111',
             initialValue: adminData.phoneNumber,
@@ -145,7 +145,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           ),
 
           /// Address
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminData.address,
 
             // initialValue: 'test',
@@ -169,7 +169,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           DashboardDropDownWidget<AdminRolesListCubit>(
               hint: adminData.adminRole.name,
               labelText: 'Class',
-              onChanged: (EduconnectModel value) {
+              onChanged: (IschoolerModel value) {
                 Madpoly.print(
                   'class model = $value',
                   tag:
@@ -182,10 +182,10 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
               }),
 
           /// specialization
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: adminData.specialization,
             labelText: 'Specialization',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               adminData = adminData.copyWith(specialization: value);
               // setState(() {});
@@ -193,9 +193,9 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           ),
 
           /// hireDate
-          EduconnectDateField(
+          IschoolerDateField(
             initialValue:
-                EduconnectDateTimeHelper.dateFormat(adminData.dateOfBirth),
+                IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth),
             labelText: 'Hire Date',
             onTap: (date) {
               adminData = adminData.copyWith(hireDate: date);

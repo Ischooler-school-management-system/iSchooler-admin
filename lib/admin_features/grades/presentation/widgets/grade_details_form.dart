@@ -43,10 +43,10 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.name,
             labelText: 'Grade Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onChanged: (value) {
               setState(() {
                 gradeData = gradeData.copyWith(name: value);
@@ -54,17 +54,17 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
             },
           ),
           /*
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.email,
             labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
             onChanged: (value) {
               setState(() {
                 gradeData = gradeData.copyWith(userName: value);
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: gradeData.dateOfBirth.toString(),
             initialValue: educonnectDateFormatter(gradeData.dateOfBirth),
             labelText: 'Date of Birth',
@@ -81,7 +81,7 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.phoneNumber,
             labelText: 'Phone Number',
             validator: (value) {
@@ -94,7 +94,7 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.address,
             labelText: 'Address',
             validator: (value) {

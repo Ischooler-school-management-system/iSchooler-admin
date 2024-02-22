@@ -4,7 +4,7 @@ import '../../common/functions/educonnect_date_time_helper.dart';
 
 enum UserRole { admin, instructor, student, none }
 
-class UserModel extends EduconnectModel {
+class UserModel extends IschoolerModel {
   final DateTime? dateOfBirth;
   final String phoneNumber;
   final String address;
@@ -56,7 +56,7 @@ class UserModel extends EduconnectModel {
     );
   }
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     // return StudentModel(
     return UserModel(
       id: educonnectModel.id,
@@ -64,7 +64,7 @@ class UserModel extends EduconnectModel {
 
       // createdAt: DateTime.parse(map['created_at']),
       // dateOfBirth: DateTime.now(),
-      dateOfBirth: EduconnectDateTimeHelper.fromMapItem(map['date_of_birth']),
+      dateOfBirth: IschoolerDateTimeHelper.fromMapItem(map['date_of_birth']),
       phoneNumber: map['phone_number'] ?? '',
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',
@@ -93,10 +93,10 @@ class UserModel extends EduconnectModel {
   @override
   Map<String, dynamic> toDisplayMap() {
     var map = {
-      EduconnectConstants.localization().name: name,
-      EduconnectConstants.localization().id: id,
-      EduconnectConstants.localization().gender: gender,
-      EduconnectConstants.localization().email: email,
+      IschoolerConstants.localization().name: name,
+      IschoolerConstants.localization().id: id,
+      IschoolerConstants.localization().gender: gender,
+      IschoolerConstants.localization().email: email,
     };
 
     // return truncateMap(map);

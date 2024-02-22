@@ -1,4 +1,3 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rxdart/rxdart.dart';
@@ -7,7 +6,6 @@ import 'package:supabase_flutter/supabase_flutter.dart';
 import 'common/di.dart';
 import 'common/educonnect_local_settings.dart';
 import 'common/network/educonnect_network_helper.dart';
-import 'firebase_options.dart';
 import 'main/educonnect_listeners.dart';
 import 'main/educonnect_materialapp.dart';
 
@@ -37,14 +35,11 @@ Future<void> main() async {
   /// setting up ScreenUtil(1):
   await ScreenUtil.ensureScreenSize();
 
-  final bool isFirstTime = await EduconnectLocalSettings.isFirstTime();
+  final bool isFirstTime = await IschoolerLocalSettings.isFirstTime();
   // 1. localization(1)
-  final int currentLang = await EduconnectLocalSettings.getCurrentLang();
+  final int currentLang = await IschoolerLocalSettings.getCurrentLang();
   WidgetsFlutterBinding.ensureInitialized();
-  // firebase setup
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
+
   await Supabase.initialize(
     url: SupabaseCredentials.supabaseUrl,
     anonKey: SupabaseCredentials.supabaseKey,
@@ -80,7 +75,7 @@ class MyApp extends StatelessWidget {
         BehaviorSubject<int>.seeded(-1);
 
     /// AppListeners is the widget that contains all listeners needed on the starting of the app
-    return EduconnectListeners(
+    return IschoolerListeners(
       /// setting up ScreenUtil(2):
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -93,7 +88,7 @@ class MyApp extends StatelessWidget {
             stream: languageSubject.stream,
             initialData: currentLang,
             builder: (context, AsyncSnapshot<int> snapshot) {
-              return EduconnectMaterialApp(
+              return IschoolerMaterialApp(
                 languageSnapshot: snapshot,
                 currentLang: currentLang,
               );

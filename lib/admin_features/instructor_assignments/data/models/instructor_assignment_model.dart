@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'package:school_admin/admin_features/models.dart';
+import 'package:ischooler_admin/admin_features/models.dart';
 
 import '../../../../common/educonnect_model.dart';
 
-class InstructorAssignmentModel extends EduconnectModel {
+class InstructorAssignmentModel extends IschoolerModel {
   final InstructorModel? instructor;
   final ClassModel? classModel;
   final SubjectModel? subjectModel;
@@ -40,7 +40,7 @@ class InstructorAssignmentModel extends EduconnectModel {
   }
 
   factory InstructorAssignmentModel.fromMap(Map<String, dynamic> map) {
-    EduconnectModel educonnectModel = EduconnectModel.fromMap(map);
+    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
     return InstructorAssignmentModel(
       id: educonnectModel.id,
       name: educonnectModel.name,

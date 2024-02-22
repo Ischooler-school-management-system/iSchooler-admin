@@ -5,11 +5,11 @@ import '../../../../common/educonnect_model.dart';
 
 part 'educonnect_state.dart';
 
-abstract class EduconnectCubit<S extends EduconnectState> extends Cubit<S> {
-  EduconnectCubit(super.initialState);
+abstract class IschoolerCubit<S extends IschoolerState> extends Cubit<S> {
+  IschoolerCubit(super.initialState);
 
   Future<void> getAllItems();
-  Future<void> addItem({required EduconnectModel model});
-  Future<void> updateItem({required EduconnectModel model});
-  Future<void> deleteItem({required EduconnectModel model});
+  Future<void> addItem({required IschoolerModel model});
+  Future<void> updateItem({required IschoolerModel model});
+  Future<void> deleteItem({required IschoolerModel model});
 }
