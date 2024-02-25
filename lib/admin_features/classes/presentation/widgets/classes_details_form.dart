@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ischooler_admin/admin_features/grades/data/models/grade_model.dart';
-import 'package:ischooler_admin/admin_features/weekly_timetable/presentation/screens/time_table_screen.dart';
+import 'package:ischooler_admin/admin_features/calender/weekly_timetable/presentation/screens/time_table_screen.dart';
 import 'package:ischooler_admin/common/common_features/widgets/buttons/educonnect_button.dart';
 import 'package:ischooler_admin/common/common_features/widgets/buttons/models/buttons_model.dart';
 import 'package:ischooler_admin/common/navigation/educonnect_navi.dart';

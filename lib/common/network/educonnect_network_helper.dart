@@ -1,7 +1,7 @@
-import '../../admin_features/weekly_timetable/weekday/data/models/weekday_model.dart';
-import '../../admin_features/weekly_timetable/weekly_session/data/models/weekly_session_model.dart';
-import '../../admin_features/weekly_timetable/weekly_session/data/models/weekly_sessions_list_model.dart';
-import '../../admin_features/weekly_timetable/data/models/weekly_timetable_model.dart';
+import '../../admin_features/calender/weekday/data/models/weekday_model.dart';
+import '../../admin_features/calender/weekly_session/data/models/weekly_session_model.dart';
+import '../../admin_features/calender/weekly_session/data/models/weekly_sessions_list_model.dart';
+import '../../admin_features/calender/weekly_timetable/data/models/weekly_timetable_model.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import '../../admin_features/list_models.dart';

@@ -1,6 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../../../classes/data/models/class_model.dart';
-import '../../../../grades/data/models/grade_model.dart';
 import '../../../user_model.dart';
 
 class StudentModel extends UserModel {
@@ -112,7 +111,6 @@ class StudentModel extends UserModel {
     String? name,
     DateTime? dateOfBirth,
     ClassModel? classModel,
-    GradeModel? gradeModel,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,

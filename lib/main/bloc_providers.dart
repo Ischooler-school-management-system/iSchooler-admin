@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ischooler_admin/admin_features/weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
 
+import '../admin_features/calender/weekday/logic/cubit/weekday_cubit.dart';
+import '../admin_features/calender/weekly_session/logic/cubit/weekly_sessions_cubit.dart';
+import '../admin_features/calender/weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
+import '../admin_features/calender/weekly_timetable_day/logic/cubit/weekly_timetable_day_cubit.dart';
 import '../admin_features/cubits.dart';
-import '../admin_features/weekly_timetable/weekday/logic/cubit/weekday_cubit.dart';
-import '../admin_features/weekly_timetable/weekly_session/logic/cubit/weekly_sessions_cubit.dart';
-import '../admin_features/weekly_timetable/weekly_timetable_day/logic/cubit/weekly_timetable_day_cubit.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/common_features/alert_handling/logic/cubit/error_handling_cubit.dart';

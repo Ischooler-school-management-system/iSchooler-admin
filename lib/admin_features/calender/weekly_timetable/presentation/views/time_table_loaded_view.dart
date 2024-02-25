@@ -2,16 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ischooler_admin/admin_features/models.dart';
 
-import '../../../../common/madpoly.dart';
-import '../../../../common/navigation/educonnect_navi.dart';
-import '../../../dashboard/logic/cubit/educonnect_cubit.dart';
-import '../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
+import '../../../../../common/madpoly.dart';
+import '../../../../../common/navigation/educonnect_navi.dart';
+import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';
+import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../data/models/weekly_timetable_model.dart';
-import '../../weekday/data/models/weekday_model.dart';
-import '../../weekday/logic/cubit/weekday_cubit.dart';
-import '../../weekly_session/data/models/weekly_session_model.dart';
-import '../../weekly_session/data/models/weekly_sessions_list_model.dart';
-import '../../weekly_session/logic/cubit/weekly_sessions_cubit.dart';
+import '../../../weekday/data/models/weekday_model.dart';
+import '../../../weekday/logic/cubit/weekday_cubit.dart';
+import '../../../weekly_session/data/models/weekly_session_model.dart';
+import '../../../weekly_session/data/models/weekly_sessions_list_model.dart';
+import '../../../weekly_session/logic/cubit/weekly_sessions_cubit.dart';
 import '../widgets/day_table_widget.dart';
 
 class TimeTableLoadedView extends StatefulWidget {

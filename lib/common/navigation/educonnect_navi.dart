@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../auth/presentation/auth/screens/auth_screen.dart';
-import '../../auth/presentation/auth/screens/select_role_screen.dart';
 import '../../auth/presentation/signin/screens/sign_in_screen.dart';
 import '../../auth/presentation/signup/screens/sign_up_password_screen.dart';
 import '../../auth/presentation/signup/screens/sign_up_screen.dart';

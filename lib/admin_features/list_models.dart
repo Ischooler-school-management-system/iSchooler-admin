@@ -8,5 +8,5 @@ export 'package:ischooler_admin/admin_features/users/admin_roles/data/models/adm
 export 'package:ischooler_admin/admin_features/instructor_assignments/data/models/instructor_assignments_list_model.dart';
 export 'package:ischooler_admin/admin_features/subjects/data/models/subjects_list_model.dart';
 // /home/zh/Documents/GitHub/ischooler_admin/lib/admin_features/time_table/weekdays_list_model.dart
-export 'package:ischooler_admin/admin_features/weekly_timetable/weekday/data/models/weekdays_list_model.dart';
-export 'package:ischooler_admin/admin_features/weekly_timetable/data/models/weekly_timetables_list_model.dart';
+export 'package:ischooler_admin/admin_features/calender/weekday/data/models/weekdays_list_model.dart';
+export 'package:ischooler_admin/admin_features/calender/weekly_timetable/data/models/weekly_timetables_list_model.dart';
