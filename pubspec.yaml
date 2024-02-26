@@ -56,12 +56,22 @@ dev_dependencies:
   flutter_launcher_icons: ^0.13.1
   flutter_test:
     sdk: flutter
-
-flutter_icons:
+# To Run the package:
+# flutter pub run flutter_launcher_icons
+flutter_launcher_icons:
   android: true
   ios: true
-  image_path: "assets/icons/educonnect_splash_logo.png"
-  adaptive_icon_foreground: "assets/icons/educonnect_icon_logo.png"
+  image_path: "assets/icons/logo-color.png"
+  adaptive_icon_background: "#0077b6"
+  adaptive_icon_foreground: "assets/icons/logo-color.png"
+
+# To Run the package: 
+# dart run flutter_native_splash:create
+flutter_native_splash:
+  color: "#0077b6"
+  image: "assets/icons/logo-color.png"
+  android_12:
+    image: "assets/icons/logo-color.png"
 
 flutter:
   uses-material-design: true
