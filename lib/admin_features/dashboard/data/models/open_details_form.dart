@@ -27,7 +27,7 @@ navigateToUserDetails(UserModel user) {
     default:
       Madpoly.print(
         'the role: ${user.role.name} is not a valid role',
-        tag: 'all_users_web_veiw > ',
+        tag: 'all_users_web_view > ',
         developer: "Ziad",
       );
   }

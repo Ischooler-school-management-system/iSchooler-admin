@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_model.dart';
-import '../../../../../common/educonnect_validation.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_validation.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../data/models/grade_model.dart';
 
 class GradeDetailsForm extends StatefulWidget {
   final GradeModel? currentGradeData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(GradeModel model) onSaved;
 
   const GradeDetailsForm(
       {super.key, this.currentGradeData, required this.onSaved});
@@ -44,10 +43,10 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.name,
             labelText: 'Grade Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onChanged: (value) {
               setState(() {
                 gradeData = gradeData.copyWith(name: value);
@@ -55,17 +54,17 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
             },
           ),
           /*
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.email,
             labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
             onChanged: (value) {
               setState(() {
                 gradeData = gradeData.copyWith(userName: value);
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             // initialValue: gradeData.dateOfBirth.toString(),
             initialValue: educonnectDateFormatter(gradeData.dateOfBirth),
             labelText: 'Date of Birth',
@@ -82,7 +81,7 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.phoneNumber,
             labelText: 'Phone Number',
             validator: (value) {
@@ -95,7 +94,7 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
               });
             },
           ),
-          EduconnectTextField(
+          IschoolerTextField(
             initialValue: gradeData.address,
             labelText: 'Address',
             validator: (value) {

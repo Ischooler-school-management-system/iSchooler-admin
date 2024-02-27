@@ -1,9 +1,9 @@
 import 'package:collection/collection.dart'; // You have to add this manually, for some reason it cannot be added automatically
 
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 import 'class_model.dart';
 
-class ClassesListModel extends EduconnectModelList {
+class ClassesListModel extends IschoolerListModel {
   const ClassesListModel({required List<ClassModel> items})
       : super(items: items);
 

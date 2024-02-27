@@ -2,8 +2,8 @@
 
 import 'package:flutter/material.dart';
 
-import '../../../../common/comon_features/responsive/responsive.dart';
-import '../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../common/common_features/responsive/responsive.dart';
+import '../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
 import '../../../../common/navigation/router.export.dart';
 
 class FormButtonsWidget extends StatelessWidget {
@@ -19,18 +19,18 @@ class FormButtonsWidget extends StatelessWidget {
         children: Responsive.expandedChildren(
       padding: const EdgeInsets.all(8),
       children: [
-        EduconnectButton(
-          button: EduconnectElevatedButton(
+        IschoolerButton(
+          button: IschoolerElevatedButton(
             // width: 200,
             onPressed: () {
               // SmartDialog.dismiss();
-              EduconnectNavigator.pop();
+              IschoolerNavigator.pop();
             },
             text: 'cancel',
           ),
         ),
-        EduconnectButton(
-          button: EduconnectElevatedButton(
+        IschoolerButton(
+          button: IschoolerElevatedButton(
             // width: 200,
             onPressed: onSubmitButtonPressed,
             text: 'Submit',

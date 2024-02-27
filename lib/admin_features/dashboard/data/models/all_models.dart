@@ -1,360 +1,10 @@
-import '../../../../common/educonnect_model.dart';
-import '../../../classes/data/models/class_model.dart';
-import '../../../grades/data/models/grade_model.dart';
-import '../../../users/instructor/data/models/instructors_list_model.dart';
+// ignore_for_file: use_super_parameters, overridden_fields
 
-/*
-class GradeModel
-class ClassModel
-class SubjectModel
-class WeeklySessionModel
-class WeeklyTimetableModel
-class ExamTypeModel
-class ExamModel
-class ExamSessionModel
-class ExamTimetableModel
-class InstructorModel
-class HomeworkModel
-class NewsModel 
+import '../../../../common/ischooler_model.dart';
+import '../../../list_models.dart';
+import '../../../models.dart';
 
-GradesListModel
-ClasssListModel
-SubjectsListModel
-WeeklySessionsListModel
-WeeklyTimetablesListModel
-ExamTypesListModel
-ExamsListModel
-ExamSessionsListModel
-ExamTimetablesListModel
-InstructorsListModel
-HomeworksListModel
-NewsListModel
-
-class GradeModel
-class AllGradeModel
-
-class ClassModel
-class AllClassModel
-
-class SubjectModel
-class AllSubjectModel
-
-class WeeklySessionModel
-class AllWeeklySessionModel
-
-class WeeklyTimetableModel
-class AllWeeklyTimetableModel
-
-class ExamTypeModel
-class AllExamTypeModel
-
-class ExamModel
-class AllExamModel
-
-class ExamSessionModel
-class AllExamSessionModel
-
-class ExamTimetableModel
-class AllExamTimetableModel
-
-class InstructorModel
-class AllInstructorModel
-
-class HomeworkModel
-class AllHomeworkModel
-
-class NewsModel
-class AllNewsModel
-
-
-
-*/
-class SubjectModel extends EduconnectModel {
-  @override
-  final String name;
-  final GradeModel grade; // Injecting GradeModel object
-  final int totalMarks;
-
-  const SubjectModel({
-    required super.id,
-    required this.name,
-    required this.grade,
-    required this.totalMarks,
-  });
-
-  @override
-  List<Object?> get props => [id, name, grade, totalMarks];
-
-  factory SubjectModel.empty() {
-    return SubjectModel(
-        id: '-1', name: '', grade: GradeModel.empty(), totalMarks: 0);
-  }
-  factory SubjectModel.dummy() {
-    return SubjectModel(
-      id: '1',
-      name: 'Introduction to Computer Science',
-      grade: GradeModel.dummy(),
-      totalMarks: 100,
-    );
-  }
-  factory SubjectModel.fromMap(Map<String, dynamic> map) {
-    return SubjectModel(
-      id: map['id'] ?? '',
-      name: map['name'] ?? '',
-      grade: GradeModel.fromMap(map['grade'] ?? {}),
-      totalMarks: map['totalMarks'] ?? 0,
-    );
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'name': name,
-      'grade': grade.toMap(),
-      'totalMarks': totalMarks,
-    };
-  }
-
-  @override
-  Map<String, dynamic> toDisplayMap() {
-    return {
-      'Name': name,
-      'Grade': grade.toDisplayMap(),
-      'Total Marks': totalMarks,
-    };
-  }
-
-  @override
-  SubjectModel copyWith({
-    String? id,
-    String? name,
-    GradeModel? grade,
-    int? totalMarks,
-  }) {
-    return SubjectModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      grade: grade ?? this.grade,
-      totalMarks: totalMarks ?? this.totalMarks,
-    );
-  }
-}
-
-class WeeklySessionModel extends EduconnectModel {
-  final int sessionNumber;
-  final String weekday;
-  final DateTime startTime;
-  final DateTime endTime;
-  final int sessionInterval;
-  final SubjectModel subject;
-  final String? instructor; // Optional
-
-  const WeeklySessionModel({
-    required super.id,
-    required this.sessionNumber,
-    required this.weekday,
-    required this.startTime,
-    required this.endTime,
-    required this.sessionInterval,
-    required this.subject,
-    this.instructor,
-  });
-
-  @override
-  List<Object?> get props => [
-        id,
-        sessionNumber,
-        weekday,
-        startTime,
-        endTime,
-        sessionInterval,
-        subject,
-        instructor
-      ];
-
-  factory WeeklySessionModel.empty() {
-    return WeeklySessionModel(
-      id: '-1',
-      sessionNumber: 0,
-      weekday: '',
-      startTime: DateTime.now(),
-      endTime: DateTime.now(),
-      sessionInterval: 0,
-      subject: SubjectModel.empty(),
-      instructor: null,
-    );
-  }
-  factory WeeklySessionModel.dummy() {
-    return WeeklySessionModel(
-      id: '1', // You can assign a unique ID for the dummy data
-      sessionNumber: 1,
-      weekday: 'Monday',
-      startTime: DateTime.now(),
-      endTime: DateTime.now().add(const Duration(hours: 1)),
-      sessionInterval: 60,
-      subject: SubjectModel.dummy(),
-      instructor: 'John Doe',
-    );
-  }
-  factory WeeklySessionModel.fromMap(Map<String, dynamic> map) {
-    return WeeklySessionModel(
-      id: map['id'] ?? '',
-      sessionNumber: map['sessionNumber'] ?? 0,
-      weekday: map['weekday'] ?? '',
-      startTime: DateTime.parse(map['startTime'] ?? ''),
-      endTime: DateTime.parse(map['endTime'] ?? ''),
-      sessionInterval: map['sessionInterval'] ?? 0,
-      subject: SubjectModel.fromMap(map['subject'] ?? {}),
-      instructor: map['instructor'],
-    );
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'sessionNumber': sessionNumber,
-      'weekday': weekday,
-      'startTime': startTime.toIso8601String(),
-      'endTime': endTime.toIso8601String(),
-      'sessionInterval': sessionInterval,
-      'subject': subject.toMap(),
-      'instructor': instructor,
-    };
-  }
-
-  @override
-  Map<String, dynamic> toDisplayMap() {
-    return {
-      'Session Number': sessionNumber,
-      'Weekday': weekday,
-      'Start Time': startTime.toString(),
-      'End Time': endTime.toString(),
-      'Session Interval': sessionInterval,
-      'Subject': subject.toDisplayMap(),
-      'Instructor': instructor ?? 'N/A',
-    };
-  }
-
-  @override
-  WeeklySessionModel copyWith({
-    String? id,
-    int? sessionNumber,
-    String? weekday,
-    DateTime? startTime,
-    DateTime? endTime,
-    int? sessionInterval,
-    SubjectModel? subject,
-    String? instructor,
-  }) {
-    return WeeklySessionModel(
-      id: id ?? this.id,
-      sessionNumber: sessionNumber ?? this.sessionNumber,
-      weekday: weekday ?? this.weekday,
-      startTime: startTime ?? this.startTime,
-      endTime: endTime ?? this.endTime,
-      sessionInterval: sessionInterval ?? this.sessionInterval,
-      subject: subject ?? this.subject,
-      instructor: instructor ?? this.instructor,
-    );
-  }
-}
-
-class WeeklyTimetableModel extends EduconnectModel {
-  final ClassModel classInfo;
-  final String term;
-  final List<WeeklySessionModel> weeklySessions;
-  final GradeModel grade;
-
-  const WeeklyTimetableModel({
-    required super.id,
-    required this.classInfo,
-    required this.term,
-    required this.weeklySessions,
-    required this.grade,
-  });
-
-  @override
-  List<Object?> get props => [
-        id,
-        classInfo,
-        term,
-        weeklySessions,
-        grade,
-      ];
-
-  factory WeeklyTimetableModel.empty() {
-    return WeeklyTimetableModel(
-      id: '-1',
-      classInfo: ClassModel.empty(),
-      term: '',
-      weeklySessions: const [],
-      grade: GradeModel.empty(),
-    );
-  }
-  factory WeeklyTimetableModel.dummy() {
-    return WeeklyTimetableModel(
-      id: '1', // You can assign a unique ID for the dummy data
-      classInfo: ClassModel.dummy(),
-      term: 'Fall 2024',
-      weeklySessions: [WeeklySessionModel.dummy()],
-      grade: GradeModel.dummy(),
-    );
-  }
-
-  factory WeeklyTimetableModel.fromMap(Map<String, dynamic> map) {
-    return WeeklyTimetableModel(
-      id: map['id'] ?? '',
-      classInfo: ClassModel.fromMap(map['classInfo'] ?? {}),
-      term: map['term'] ?? '',
-      weeklySessions: (map['weeklySessions'] as List<dynamic>?)
-              ?.map((sessionMap) => WeeklySessionModel.fromMap(sessionMap))
-              .toList() ??
-          [],
-      grade: GradeModel.fromMap(map['grade'] ?? {}),
-    );
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'classInfo': classInfo.toMap(),
-      'term': term,
-      'weeklySessions':
-          weeklySessions.map((session) => session.toMap()).toList(),
-      'grade': grade.toMap(),
-    };
-  }
-
-  @override
-  Map<String, dynamic> toDisplayMap() {
-    return {
-      'Class Info': classInfo.toDisplayMap(),
-      'Term': term,
-      'Weekly Sessions':
-          weeklySessions.map((session) => session.toDisplayMap()).toList(),
-      'Grade': grade.toDisplayMap(),
-    };
-  }
-
-  @override
-  WeeklyTimetableModel copyWith({
-    String? id,
-    ClassModel? classInfo,
-    String? term,
-    List<WeeklySessionModel>? weeklySessions,
-    GradeModel? grade,
-  }) {
-    return WeeklyTimetableModel(
-      id: id ?? this.id,
-      classInfo: classInfo ?? this.classInfo,
-      term: term ?? this.term,
-      weeklySessions: weeklySessions ?? this.weeklySessions,
-      grade: grade ?? this.grade,
-    );
-  }
-}
-
-class ExamTypeModel extends EduconnectModel {
+class ExamTypeModel extends IschoolerModel {
   @override
   final String name;
   final double marksPercent;
@@ -388,7 +38,7 @@ class ExamTypeModel extends EduconnectModel {
   }
   factory ExamTypeModel.fromMap(Map<String, dynamic> map) {
     return ExamTypeModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
       marksPercent: map['marksPercent'] ?? 0.0,
     );
@@ -424,7 +74,33 @@ class ExamTypeModel extends EduconnectModel {
   }
 }
 
-class ExamModel extends EduconnectModel {
+class ExamTypesListModel extends IschoolerListModel {
+  const ExamTypesListModel({required List<ExamTypeModel> items})
+      : super(items: items);
+
+  factory ExamTypesListModel.empty() {
+    return const ExamTypesListModel(items: []);
+  }
+  factory ExamTypesListModel.dummy() {
+    return ExamTypesListModel(items: [
+      ExamTypeModel.empty(),
+      ExamTypeModel.empty(),
+      ExamTypeModel.empty(),
+      // Add more instances as needed
+    ]);
+  }
+
+  factory ExamTypesListModel.fromMap(Map map) {
+    final List<ExamTypeModel> items = List<ExamTypeModel>.from(
+      map['items'].map(
+        (item) => ExamTypeModel.fromMap(item),
+      ),
+    );
+    return ExamTypesListModel(items: items);
+  }
+}
+
+class ExamModel extends IschoolerModel {
   final SubjectModel subject;
   final DateTime date;
   final DateTime time;
@@ -466,7 +142,7 @@ class ExamModel extends EduconnectModel {
   }
   factory ExamModel.fromMap(Map<String, dynamic> map) {
     return ExamModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       subject: SubjectModel.fromMap(map['subject'] ?? {}),
       date: DateTime.parse(map['date'] ?? ''),
       time: DateTime.parse(map['time'] ?? ''),
@@ -477,10 +153,10 @@ class ExamModel extends EduconnectModel {
   @override
   Map<String, dynamic> toMap() {
     return {
-      'subject': subject.toMap(),
+      'subject': subject.id,
       'date': date.toIso8601String(),
       'time': time.toIso8601String(),
-      'examType': examType.toMap(),
+      'examType': examType.id,
     };
   }
 
@@ -497,6 +173,7 @@ class ExamModel extends EduconnectModel {
   @override
   ExamModel copyWith(
       {String? id,
+      String? name,
       SubjectModel? subject,
       DateTime? date,
       DateTime? time,
@@ -511,7 +188,32 @@ class ExamModel extends EduconnectModel {
   }
 }
 
-class ExamSessionModel extends EduconnectModel {
+class ExamsListModel extends IschoolerListModel {
+  const ExamsListModel({required List<ExamModel> items}) : super(items: items);
+
+  factory ExamsListModel.empty() {
+    return const ExamsListModel(items: []);
+  }
+  factory ExamsListModel.dummy() {
+    return ExamsListModel(items: [
+      ExamModel.empty(),
+      ExamModel.empty(),
+      ExamModel.empty(),
+      // Add more instances as needed
+    ]);
+  }
+
+  factory ExamsListModel.fromMap(Map map) {
+    final List<ExamModel> items = List<ExamModel>.from(
+      map['items'].map(
+        (item) => ExamModel.fromMap(item),
+      ),
+    );
+    return ExamsListModel(items: items);
+  }
+}
+
+class ExamSessionModel extends IschoolerModel {
   final int sessionNumber;
   final String weekday;
   final DateTime startTime;
@@ -569,7 +271,7 @@ class ExamSessionModel extends EduconnectModel {
   }
   factory ExamSessionModel.fromMap(Map<String, dynamic> map) {
     return ExamSessionModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       sessionNumber: map['sessionNumber'] ?? 0,
       weekday: map['weekday'] ?? '',
       startTime: DateTime.parse(map['startTime'] ?? ''),
@@ -593,7 +295,9 @@ class ExamSessionModel extends EduconnectModel {
       'endTime': endTime.toIso8601String(),
       'subject': subject.toMap(),
       'sessionInterval': sessionInterval,
-      'instructors': instructors.toMap(),
+      // 'instructors': instructors.toMap(),
+
+      'instructors': instructors.items.map((session) => session.id).toList(),
     };
   }
 
@@ -613,6 +317,7 @@ class ExamSessionModel extends EduconnectModel {
   @override
   ExamSessionModel copyWith({
     String? id,
+    String? name,
     int? sessionNumber,
     String? weekday,
     DateTime? startTime,
@@ -634,7 +339,32 @@ class ExamSessionModel extends EduconnectModel {
   }
 }
 
-class ExamTimetableModel extends EduconnectModel {
+class ExamSessionsListModel extends IschoolerListModel {
+  const ExamSessionsListModel({required List<ExamSessionModel> items})
+      : super(items: items);
+
+  factory ExamSessionsListModel.empty() {
+    return const ExamSessionsListModel(items: []);
+  }
+  factory ExamSessionsListModel.dummy() {
+    return ExamSessionsListModel(items: [
+      ExamSessionModel.empty(),
+      ExamSessionModel.empty(),
+      ExamSessionModel.empty(),
+      // Add more instances as needed
+    ]);
+  }
+  factory ExamSessionsListModel.fromMap(Map map) {
+    final List<ExamSessionModel> items = List<ExamSessionModel>.from(
+      map['items'].map(
+        (item) => ExamSessionModel.fromMap(item),
+      ),
+    );
+    return ExamSessionsListModel(items: items);
+  }
+}
+
+class ExamTimetableModel extends IschoolerModel {
   final String term;
   final List<ExamSessionModel> examSessions;
   final GradeModel grade;
@@ -676,7 +406,7 @@ class ExamTimetableModel extends EduconnectModel {
   }
   factory ExamTimetableModel.fromMap(Map<String, dynamic> map) {
     return ExamTimetableModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       term: map['term'] ?? '',
       examSessions: (map['examSessions'] as List<dynamic>?)
               ?.map((sessionMap) => ExamSessionModel.fromMap(sessionMap))
@@ -691,9 +421,9 @@ class ExamTimetableModel extends EduconnectModel {
   Map<String, dynamic> toMap() {
     return {
       'term': term,
-      'examSessions': examSessions.map((session) => session.toMap()).toList(),
+      'examSessions': examSessions.map((session) => session.id).toList(),
       'gradeId': grade,
-      'examType': examType.toMap(),
+      'examType': examType.id,
     };
   }
 
@@ -710,6 +440,7 @@ class ExamTimetableModel extends EduconnectModel {
 
   @override
   ExamTimetableModel copyWith({
+    String? name,
     String? id,
     String? term,
     List<ExamSessionModel>? examSessions,
@@ -726,96 +457,34 @@ class ExamTimetableModel extends EduconnectModel {
   }
 }
 
-class HomeworkModel extends EduconnectModel {
-  final ClassModel classInfo;
-  final SubjectModel subject;
-  final DateTime date;
-  final String content;
+class ExamTimetablesListModel extends IschoolerListModel {
+  const ExamTimetablesListModel({required List<ExamTimetableModel> items})
+      : super(items: items);
 
-  const HomeworkModel({
-    required super.id,
-    required this.classInfo,
-    required this.subject,
-    required this.date,
-    required this.content,
-  });
+  factory ExamTimetablesListModel.empty() {
+    return const ExamTimetablesListModel(items: []);
+  }
 
-  @override
-  List<Object?> get props => [
-        id,
-        classInfo,
-        subject,
-        date,
-        content,
-      ];
+  factory ExamTimetablesListModel.dummy() {
+    return ExamTimetablesListModel(items: [
+      ExamTimetableModel.empty(),
+      ExamTimetableModel.empty(),
+      ExamTimetableModel.empty(),
+      // Add more instances as needed
+    ]);
+  }
 
-  factory HomeworkModel.empty() {
-    return HomeworkModel(
-      id: '-1',
-      classInfo: ClassModel.empty(),
-      subject: SubjectModel.empty(),
-      date: DateTime.now(),
-      content: '',
+  factory ExamTimetablesListModel.fromMap(Map map) {
+    final List<ExamTimetableModel> items = List<ExamTimetableModel>.from(
+      map['items'].map(
+        (item) => ExamTimetableModel.fromMap(item),
+      ),
     );
-  }
-  factory HomeworkModel.dummy() {
-    return HomeworkModel(
-      id: '1', // You can assign a unique ID for the dummy data
-      classInfo: ClassModel.dummy(),
-      subject: SubjectModel.dummy(),
-      date: DateTime.now().add(const Duration(days: 7)),
-      content: 'Sample homework content',
-    );
-  }
-  factory HomeworkModel.fromMap(Map<String, dynamic> map) {
-    return HomeworkModel(
-      id: map['id'] ?? '',
-      classInfo: ClassModel.fromMap(map['classInfo'] ?? {}),
-      subject: SubjectModel.fromMap(map['subject'] ?? {}),
-      date: DateTime.parse(map['date'] ?? ''),
-      content: map['content'] ?? '',
-    );
-  }
-
-  @override
-  Map<String, dynamic> toMap() {
-    return {
-      'classInfo': classInfo.toMap(),
-      'subject': subject.toMap(),
-      'date': date.toIso8601String(),
-      'content': content,
-    };
-  }
-
-  @override
-  Map<String, dynamic> toDisplayMap() {
-    return {
-      'Class Info': classInfo.toDisplayMap(),
-      'Subject': subject.toDisplayMap(),
-      'Date': date.toString(),
-      'Content': content,
-    };
-  }
-
-  @override
-  HomeworkModel copyWith({
-    String? id,
-    ClassModel? classInfo,
-    SubjectModel? subject,
-    DateTime? date,
-    String? content,
-  }) {
-    return HomeworkModel(
-      id: id ?? this.id,
-      classInfo: classInfo ?? this.classInfo,
-      subject: subject ?? this.subject,
-      date: date ?? this.date,
-      content: content ?? this.content,
-    );
+    return ExamTimetablesListModel(items: items);
   }
 }
 
-class NewsModel extends EduconnectModel {
+class NewsModel extends IschoolerModel {
   @override
   final String name;
   final String thumbnail;
@@ -859,7 +528,7 @@ class NewsModel extends EduconnectModel {
   }
   factory NewsModel.fromMap(Map<String, dynamic> map) {
     return NewsModel(
-      id: map['id'] ?? '',
+      id: map['id'].toString(),
       name: map['name'] ?? '',
       thumbnail: map['thumbnail'] ?? '',
       dateTime: DateTime.parse(map['dateTime'] ?? ''),
@@ -905,213 +574,7 @@ class NewsModel extends EduconnectModel {
   }
 }
 
-class SubjectsListModel extends EduconnectModelList {
-  const SubjectsListModel({required List<SubjectModel> items})
-      : super(items: items);
-
-  factory SubjectsListModel.empty() {
-    return const SubjectsListModel(items: []);
-  }
-  factory SubjectsListModel.dummy() {
-    return SubjectsListModel(items: [
-      SubjectModel.dummy(),
-      SubjectModel.dummy(),
-      SubjectModel.dummy(),
-      SubjectModel.dummy(),
-    ]);
-  }
-  factory SubjectsListModel.fromMap(Map map) {
-    final List<SubjectModel> items = List<SubjectModel>.from(
-      map['items'].map(
-        (item) => SubjectModel.fromMap(item),
-      ),
-    );
-    return SubjectsListModel(items: items);
-  }
-}
-
-class WeeklySessionsListModel extends EduconnectModelList {
-  const WeeklySessionsListModel({required List<WeeklySessionModel> items})
-      : super(items: items);
-
-  factory WeeklySessionsListModel.empty() {
-    return const WeeklySessionsListModel(items: []);
-  }
-  factory WeeklySessionsListModel.dummy() {
-    return WeeklySessionsListModel(items: [
-      WeeklySessionModel.dummy(),
-      WeeklySessionModel.dummy(),
-      WeeklySessionModel.dummy(),
-      WeeklySessionModel.dummy(),
-    ]);
-  }
-
-  factory WeeklySessionsListModel.fromMap(Map map) {
-    final List<WeeklySessionModel> items = List<WeeklySessionModel>.from(
-      map['items'].map(
-        (item) => WeeklySessionModel.fromMap(item),
-      ),
-    );
-    return WeeklySessionsListModel(items: items);
-  }
-}
-
-class WeeklyTimetablesListModel extends EduconnectModelList {
-  const WeeklyTimetablesListModel({required List<WeeklyTimetableModel> items})
-      : super(items: items);
-
-  factory WeeklyTimetablesListModel.empty() {
-    return const WeeklyTimetablesListModel(items: []);
-  }
-  factory WeeklyTimetablesListModel.dummy() {
-    return WeeklyTimetablesListModel(items: [
-      WeeklyTimetableModel.empty(),
-      WeeklyTimetableModel.empty(),
-      WeeklyTimetableModel.empty(),
-      // Add more instances as needed
-    ]);
-  }
-  factory WeeklyTimetablesListModel.fromMap(Map map) {
-    final List<WeeklyTimetableModel> items = List<WeeklyTimetableModel>.from(
-      map['items'].map(
-        (item) => WeeklyTimetableModel.fromMap(item),
-      ),
-    );
-    return WeeklyTimetablesListModel(items: items);
-  }
-}
-
-class ExamTypesListModel extends EduconnectModelList {
-  const ExamTypesListModel({required List<ExamTypeModel> items})
-      : super(items: items);
-
-  factory ExamTypesListModel.empty() {
-    return const ExamTypesListModel(items: []);
-  }
-  factory ExamTypesListModel.dummy() {
-    return ExamTypesListModel(items: [
-      ExamTypeModel.empty(),
-      ExamTypeModel.empty(),
-      ExamTypeModel.empty(),
-      // Add more instances as needed
-    ]);
-  }
-
-  factory ExamTypesListModel.fromMap(Map map) {
-    final List<ExamTypeModel> items = List<ExamTypeModel>.from(
-      map['items'].map(
-        (item) => ExamTypeModel.fromMap(item),
-      ),
-    );
-    return ExamTypesListModel(items: items);
-  }
-}
-
-class ExamsListModel extends EduconnectModelList {
-  const ExamsListModel({required List<ExamModel> items}) : super(items: items);
-
-  factory ExamsListModel.empty() {
-    return const ExamsListModel(items: []);
-  }
-  factory ExamsListModel.dummy() {
-    return ExamsListModel(items: [
-      ExamModel.empty(),
-      ExamModel.empty(),
-      ExamModel.empty(),
-      // Add more instances as needed
-    ]);
-  }
-
-  factory ExamsListModel.fromMap(Map map) {
-    final List<ExamModel> items = List<ExamModel>.from(
-      map['items'].map(
-        (item) => ExamModel.fromMap(item),
-      ),
-    );
-    return ExamsListModel(items: items);
-  }
-}
-
-class ExamSessionsListModel extends EduconnectModelList {
-  const ExamSessionsListModel({required List<ExamSessionModel> items})
-      : super(items: items);
-
-  factory ExamSessionsListModel.empty() {
-    return const ExamSessionsListModel(items: []);
-  }
-  factory ExamSessionsListModel.dummy() {
-    return ExamSessionsListModel(items: [
-      ExamSessionModel.empty(),
-      ExamSessionModel.empty(),
-      ExamSessionModel.empty(),
-      // Add more instances as needed
-    ]);
-  }
-  factory ExamSessionsListModel.fromMap(Map map) {
-    final List<ExamSessionModel> items = List<ExamSessionModel>.from(
-      map['items'].map(
-        (item) => ExamSessionModel.fromMap(item),
-      ),
-    );
-    return ExamSessionsListModel(items: items);
-  }
-}
-
-class ExamTimetablesListModel extends EduconnectModelList {
-  const ExamTimetablesListModel({required List<ExamTimetableModel> items})
-      : super(items: items);
-
-  factory ExamTimetablesListModel.empty() {
-    return const ExamTimetablesListModel(items: []);
-  }
-
-  factory ExamTimetablesListModel.dummy() {
-    return ExamTimetablesListModel(items: [
-      ExamTimetableModel.empty(),
-      ExamTimetableModel.empty(),
-      ExamTimetableModel.empty(),
-      // Add more instances as needed
-    ]);
-  }
-
-  factory ExamTimetablesListModel.fromMap(Map map) {
-    final List<ExamTimetableModel> items = List<ExamTimetableModel>.from(
-      map['items'].map(
-        (item) => ExamTimetableModel.fromMap(item),
-      ),
-    );
-    return ExamTimetablesListModel(items: items);
-  }
-}
-
-class HomeworksListModel extends EduconnectModelList {
-  const HomeworksListModel({required List<HomeworkModel> items})
-      : super(items: items);
-
-  factory HomeworksListModel.empty() {
-    return const HomeworksListModel(items: []);
-  }
-
-  factory HomeworksListModel.dummy() {
-    return HomeworksListModel(items: [
-      HomeworkModel.empty(),
-      HomeworkModel.empty(),
-      HomeworkModel.empty(),
-      // Add more instances as needed
-    ]);
-  }
-
-  factory HomeworksListModel.fromMap(Map map) {
-    final List<HomeworkModel> items = List<HomeworkModel>.from(
-      map['items'].map(
-        (item) => HomeworkModel.fromMap(item),
-      ),
-    );
-    return HomeworksListModel(items: items);
-  }
-}
-
-class NewsListModel extends EduconnectModelList {
+class NewsListModel extends IschoolerListModel {
   const NewsListModel({required List<NewsModel> items}) : super(items: items);
 
   factory NewsListModel.empty() {

@@ -1,16 +1,23 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_model.dart';
-import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/functions/educonnect_date_formatter.dart';
+import '../../../../../common/common_features/widgets/ischooler_date_field.dart';
+import '../../../../../common/common_features/widgets/ischooler_drop_down_widget.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_assets.dart';
+import '../../../../../common/ischooler_model.dart';
+import '../../../../../common/ischooler_validation.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../../../common/madpoly.dart';
+import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
+import '../../../admin_roles/data/models/admin_role_model.dart';
+import '../../../admin_roles/logic/cubit/admin_roles_list_cubit.dart';
+import '../../../user_model.dart';
 import '../../data/models/admin_model.dart';
 
 class AdminDetailsForm extends StatefulWidget {
   final AdminModel? currentAdminData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(AdminModel model) onSaved;
 
   const AdminDetailsForm(
       {super.key, this.currentAdminData, required this.onSaved});
@@ -21,7 +28,6 @@ class AdminDetailsForm extends StatefulWidget {
 
 class _AdminDetailsFormState extends State<AdminDetailsForm> {
   final _formKey = GlobalKey<FormState>();
-
   // Use Adminmodel to store form data
   AdminModel adminData = AdminModel.dummy();
   bool editingModel = false;
@@ -45,58 +51,104 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
+          SizedBox(
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(IschoolerAssets.blankProfileImage),
+            ),
+          ),
+
+          /// name
+          IschoolerTextField(
             initialValue: adminData.name,
-            labelText: 'name',
-            validator: EduconnectValidations.nameValidator,
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(name: value);
-              });
+            labelText: 'Name',
+            validator: IschoolerValidations.nameValidator,
+            onSaved: (value) {
+              adminData = adminData.copyWith(name: value);
+              // setState(() {});
             },
           ),
-          EduconnectTextField(
+
+          /// Email Address
+          IschoolerTextField(
+            // initialValue: 'test',
             initialValue: adminData.email,
+
             labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(name: value);
-              });
+
+            validator: IschoolerValidations.emailValidator,
+
+            onSaved: (value) {
+              adminData = adminData.copyWith(email: value);
+              // setState(() {});
             },
           ),
-          EduconnectTextField(
-            // initialValue: adminData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(adminData.dateOfBirth),
+
+          /// Date of Birth
+          IschoolerDateField(
+            initialValue:
+                IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth),
             labelText: 'Date of Birth',
-            validator: (value) {
-              // Add validation logic for date of birth if needed
-              return null;
-            },
-            onChanged: (value) {
-              // Convert the value to DateTime and assign it to dateOfBirth
-              // You may want to use a DatePicker for a better user experience
-              setState(() {
-                adminData =
-                    adminData.copyWith(dateOfBirth: DateTime.parse(value));
-              });
+            onTap: (date) {
+              adminData = adminData.copyWith(dateOfBirth: date);
+              setState(() {});
             },
           ),
-          EduconnectTextField(
+          //  Todo: create a ui to select user gender
+          /// Gender
+          EduConnectDropdownWidget(
+            labelText: 'Gender',
+            // value: ,
+            hint: adminData.gender,
+            onChanged: (value) {
+              Madpoly.print(
+                'gender after update = ',
+                inspectObject: value,
+                tag: 'user_details_form > ',
+                developer: "Ziad",
+              );
+              adminData = adminData.copyWith(gender: value);
+              setState(() {});
+            },
+            options: const ['Male', 'Female'],
+          ),
+
+          /* /// Role
+          EduConnectDropdownWidget(
+            labelText: 'Role',
+            // value: ,
+            hint: adminData.role.name,
+            onChanged: (value) {
+              setState(() {
+                adminData = adminData.copyWith(gender: value);
+              });
+            },
+            options: const ['Admin', 'Instructor', 'Student'],
+          ),
+ */
+          /// Phone Number
+          IschoolerTextField(
+            keyboardType: TextInputType.number,
+            // initialValue: '01111',
             initialValue: adminData.phoneNumber,
+
             labelText: 'Phone Number',
             validator: (value) {
               // Add phone number validation if needed
               return null;
             },
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(phoneNumber: value);
-              });
+            onSaved: (value) {
+              adminData = adminData.copyWith(phoneNumber: value);
+              // setState(() {});
             },
           ),
-          EduconnectTextField(
+
+          /// Address
+          IschoolerTextField(
             initialValue: adminData.address,
+
+            // initialValue: 'test',
             labelText: 'Address',
             validator: (value) {
               if (value == null || value.isEmpty) {
@@ -104,16 +156,60 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
               }
               return null;
             },
-            onChanged: (value) {
-              setState(() {
-                adminData = adminData.copyWith(address: value);
-              });
+            onSaved: (value) {
+              adminData = adminData.copyWith(address: value);
+              // setState(() {});
+            },
+          ),
+
+          /// Admin Role
+
+          //  Todo: create AdminRoles logic folder
+
+          DashboardDropDownWidget<AdminRolesListCubit>(
+              hint: adminData.adminRole.name,
+              labelText: 'Class',
+              onChanged: (IschoolerModel value) {
+                Madpoly.print(
+                  'class model = $value',
+                  tag:
+                      'student_details_form > DashboardDropDownWidget<AdminRolesListCubit>',
+                  developer: "Ziad",
+                );
+                adminData =
+                    adminData.copyWith(adminRole: value as AdminRoleModel);
+                setState(() {});
+              }),
+
+          /// specialization
+          IschoolerTextField(
+            initialValue: adminData.specialization,
+            labelText: 'Specialization',
+            validator: IschoolerValidations.nameValidator,
+            onSaved: (value) {
+              adminData = adminData.copyWith(specialization: value);
+              // setState(() {});
+            },
+          ),
+
+          /// hireDate
+          IschoolerDateField(
+            initialValue:
+                IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth),
+            labelText: 'Hire Date',
+            onTap: (date) {
+              adminData = adminData.copyWith(hireDate: date);
+              setState(() {});
             },
           ),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),
     );
+  }
+
+  onadminDataSaved(UserModel user) {
+    adminData = adminData.copyFromUser(user);
   }
 
   onSubmitButtonPressed() {

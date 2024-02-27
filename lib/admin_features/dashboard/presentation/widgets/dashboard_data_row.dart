@@ -1,9 +1,9 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../common/educonnect_assets.dart';
-import '../../../../common/educonnect_constants.dart';
-import '../../../../common/style/educonnect_colors.dart';
+import '../../../../common/ischooler_assets.dart';
+import '../../../../common/ischooler_constants.dart';
+import '../../../../common/style/ischooler_colors.dart';
 
 class DashboardDataRow2 {
   /// I couldn't make it a statlesswidget because of this error:
@@ -18,11 +18,11 @@ class DashboardDataRow2 {
     return DataRow2(
       onSelectChanged: onSelectChanged,
       color: MaterialStatePropertyAll(
-        isEven ? EduconnectColors.blue.withOpacity(0.3) : null,
+        isEven ? IschoolerColors.blue.withOpacity(0.3) : null,
       ),
       cells: [
         ...map.entries.map((MapEntry<String, dynamic> map) {
-          bool isName = map.key == EduconnectConstants.localization().name;
+          bool isName = map.key == IschoolerConstants.localization().name;
 
           return DataCell(
               isName ? imageCellWidget(map.value) : textCellWidget(map.value));
@@ -66,11 +66,11 @@ class DashboardDataRow2 {
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: CircleAvatar(
-            backgroundImage: AssetImage(EduconnectAssets.blankProfileImage),
+            backgroundImage: AssetImage(IschoolerAssets.blankProfileImage),
           ),
 
-          /* EduconnectImageWidget.asset(
-            url: EduconnectAssets.blankProfileImage,
+          /* IschoolerImageWidget.asset(
+            url: IschoolerAssets.blankProfileImage,
             // circleShape: true,
             width: 60,
           ), */

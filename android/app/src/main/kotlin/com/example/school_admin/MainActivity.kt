@@ -1,4 +1,4 @@
-package com.example.school_admin
+package com.example.ischooler_admin
 
 import io.flutter.embedding.android.FlutterActivity
 

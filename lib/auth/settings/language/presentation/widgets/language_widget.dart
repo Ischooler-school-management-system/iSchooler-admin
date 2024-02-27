@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../common/educonnect_constants.dart';
-import '../../../../../../common/style/educonnect_colors.dart';
+import '../../../../../../common/ischooler_constants.dart';
+import '../../../../../../common/style/ischooler_colors.dart';
 
 class LanguageWidget extends StatelessWidget {
   final String title;
@@ -28,7 +28,7 @@ class LanguageWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: EduconnectConstants.textTheme.bodyMedium!.copyWith(
+              style: IschoolerConstants.textTheme.bodyMedium!.copyWith(
                 fontWeight: FontWeight.w600,
                 fontFamily: GoogleFonts.poppins().fontFamily,
               ),
@@ -37,8 +37,8 @@ class LanguageWidget extends StatelessWidget {
               isSelected
                   ? Icons.radio_button_checked
                   : Icons.radio_button_unchecked,
-              size: EduconnectConstants.educonnect_screen_height / 33,
-              color: EduconnectColors.blue,
+              size: IschoolerConstants.educonnect_screen_height / 33,
+              color: IschoolerColors.blue,
             ),
           ],
         ),

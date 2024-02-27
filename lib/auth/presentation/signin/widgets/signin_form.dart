@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/comon_features/widgets/educonnect_checkbox.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_password_field.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/comon_features/responsive/responsive.dart';
-import '../../../../../common/style/educonnect_colors.dart';
+import '../../../../../common/ischooler_constants.dart';
+import '../../../../../common/ischooler_validation.dart';
+import '../../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
+import '../../../../../common/common_features/widgets/ischooler_checkbox.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_password_field.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/common_features/responsive/responsive.dart';
+import '../../../../../common/style/ischooler_colors.dart';
 import '../../../logic/cubit/auth_cubit.dart';
 
 class SigninForm extends StatefulWidget {
@@ -74,10 +74,10 @@ class _SigninFormState extends State<SigninForm> {
       },
       child: Column(
         children: [
-          EduconnectTextField(
-            initialValue: 'ziad@admin.com',
-            labelText: EduconnectConstants.localization().enter_email,
-            validator: EduconnectValidations.emailValidator,
+          IschoolerTextField(
+            initialValue: 'ziad@test.com',
+            labelText: IschoolerConstants.localization().enter_email,
+            validator: IschoolerValidations.emailValidator,
             suffixIcon: const Icon(Icons.person),
             focusNode: emailFocusNode,
             onSaved: (value) {
@@ -86,10 +86,10 @@ class _SigninFormState extends State<SigninForm> {
               }
             },
           ),
-          EduconnectPasswordField(
+          IschoolerPasswordField(
             initialValue: 'password',
-            labelText: EduconnectConstants.localization().enter_password,
-            validator: EduconnectValidations.passwordValidator,
+            labelText: IschoolerConstants.localization().enter_password,
+            validator: IschoolerValidations.passwordValidator,
             focusNode: passwordFocusNode,
             onSaved: (value) {
               if (value != null) {
@@ -103,11 +103,11 @@ class _SigninFormState extends State<SigninForm> {
           forgotPasswordRow(),
           SizedBox(height: 20.h),
           // sign in button
-          EduconnectButton(
-            button: EduconnectElevatedButton(
+          IschoolerButton(
+            button: IschoolerElevatedButton(
               // disabled: _isButtonDisabled,
               onPressed: onSigninButtonPressed,
-              text: EduconnectConstants.localization().sign_in,
+              text: IschoolerConstants.localization().sign_in,
             ),
           ),
         ],
@@ -129,15 +129,15 @@ class _SigninFormState extends State<SigninForm> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: Responsive.expandedChildren(
         children: [
-          EduconnectCheckbox(
-            text: EduconnectConstants.localization().remember_me,
+          IschoolerCheckbox(
+            text: IschoolerConstants.localization().remember_me,
             onChanged: (isSelected) {},
           ),
-          EduconnectButton(
-            button: EduconnectTextButton(
+          IschoolerButton(
+            button: IschoolerTextButton(
               onPressed: () {},
-              textButton: EduconnectConstants.localization().forgot_password,
-              color: EduconnectColors.primaryColor,
+              textButton: IschoolerConstants.localization().forgot_password,
+              color: IschoolerColors.primaryColor,
             ),
           ),
         ],

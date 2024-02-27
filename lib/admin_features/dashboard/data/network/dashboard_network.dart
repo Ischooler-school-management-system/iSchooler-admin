@@ -1,80 +1,104 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
-import '../../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../../common/ischooler_model.dart';
 import '../../../../common/madpoly.dart';
-import '../../../../common/network/educonnect_network_helper.dart';
-import '../../../../common/network/educonnect_response.dart';
-import '../../logic/cubit/all_cubit.dart';
+import '../../../../common/network/ischooler_network_helper.dart';
+import '../../../../common/network/ischooler_response.dart';
+import '../../../../common/network/ischooler_tables.dart';
+import 'ischooler_list_network_interface.dart';
 
-class DashboardNetwork implements EduconnectNetwork {
+class DashboardNetwork implements IschoolerListNetwork {
   final AlertHandlingRepository _alertHandlingRepository;
 
   DashboardNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
   @override
-  Future<EduconnectResponse> getAllItems(
-      {required EduconnectModelList model}) async {
-    EduconnectResponse response = EduconnectResponse.empty();
+  Future<IschoolerResponse> getAllItems(
+      {required IschoolerListModel model, DatabaseTable? table}) async {
+    IschoolerResponse response = IschoolerResponse.empty();
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
-        if (collectionName == null) {
-          throw Exception('unable to get (model = $model) data');
-        }
+      DatabaseTable tableQueryData =
+          table ?? IschoolerNetworkHelper.getTableQueryData(model);
+
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to get (model = $model) data',
+        );
       }
-      final CollectionReference<Map<String, dynamic>> reference =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      /*  final CollectionReference<Map<String, dynamic>> reference =
+          IschoolerNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
-        'request will be sent is >>  get(), collection:$collectionName,',
+        'request will be sent is >>  get(), '
+        'tableQueryData: $tableQueryData',
+        // inspectObject: tableQueryData,
         tag: 'dashboard_network > getAllItems',
         // color: MadpolyColor.purple,
         isLog: true,
-
         developer: "Ziad",
       );
-      final QuerySnapshot<Map<String, dynamic>> query = await reference.get();
-      response = EduconnectResponse.fromCollection(query);
+      final List<Map<String, dynamic>> query = await SupabaseCredentials
+          .supabase
+          .from(tableQueryData.tableName)
+          .select(tableQueryData.selectQuery)
+          .order('created_at', ascending: true);
+
+      Madpoly.print(
+        'query= ',
+        inspectObject: query,
+        color: MadpolyColor.green,
+        tag: 'dashboard_network > getAllItems',
+        developer: "Ziad",
+      );
+      response = IschoolerResponse(hasData: true, data: {'items': query});
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
-        AlertHandlingTypes.ServerError,
+        AlertHandlingTypes.MajorUiError,
         tag: 'admin_network > getAllData',
-        showToast: true,
+        // showToast: true,
       );
     }
     return response;
   }
 
   @override
-  Future<bool> addItem(
-      {required EduconnectModel model, required bool addWithId}) async {
-    bool userStored = false;
-    String? docName = addWithId ? model.id : null;
+  Future<bool> addItem({required IschoolerModel model}) async {
+    bool dataStored = false;
+    // String? docName = addWithId ? model.id : null;
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
-        throw Exception('unable to add (model = $model) data');
+      DatabaseTable tableQueryData =
+          IschoolerNetworkHelper.getTableQueryData(model);
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to add (model = $model) data',
+        );
       }
-      final credentialCollection =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
       Map<String, dynamic> data = model.toMap();
-
       Madpoly.print(
-        'request will be sent is >> set(), collection:$collectionName, addWithId = $addWithId document:$docName,',
+        'request will be sent is >> insert(), '
+        'tableQueryData: $tableQueryData, '
+        'data = $data',
         tag: 'dashboard_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
-
         developer: "Ziad",
       );
-      await credentialCollection.doc(docName).set(data);
-      // await credentialCollection.doc(model.id).set(model.toMap());
-      userStored = true;
+      final query = await SupabaseCredentials.supabase
+          .from(tableQueryData.tableName)
+          .insert(data)
+          .select();
+      Madpoly.print(
+        color: MadpolyColor.green,
+        'query =',
+        inspectObject: query,
+        tag: 'dashboard_network > add',
+        developer: "Ziad",
+      );
+      // await response.doc(model.id).set(model.toMap());
+      dataStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
@@ -85,29 +109,93 @@ class DashboardNetwork implements EduconnectNetwork {
       );
     }
 
-    return userStored;
+    return dataStored;
   }
 
   @override
-  Future<bool> deleteItem({required EduconnectModel model}) async {
-    bool userStored = false;
+  Future<bool> updateItem({required IschoolerModel model}) async {
+    bool dataUpdated = false;
+    // String? docName = addWithId ? model.id : null;
     try {
-      String? collectionName =
-          EduconnectNetworkHelper.getCollectionByModel(model);
-      if (collectionName == null) {
-        throw Exception('unable to delete (model = $model) data');
+      DatabaseTable tableQueryData =
+          IschoolerNetworkHelper.getTableQueryData(model);
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to update (model = $model) data',
+        );
       }
-      final credentialCollection =
-          EduconnectNetworkHelper.fireStoreInstance.collection(collectionName);
+      Map<String, dynamic> data = model.toMapFromChild();
       Madpoly.print(
-        'request will be sent is >> delete(), collection:$collectionName, document:${model.id},',
+        'request will be sent is >> update(), '
+        'table: ${tableQueryData.tableName}, '
+        'data = ',
+        inspectObject: data,
+        tag: 'dashboard_network > update',
+        // color: MadpolyColor.purple,
+        isLog: true,
+        developer: "Ziad",
+      );
+      final query = await SupabaseCredentials.supabase
+          .from(tableQueryData.tableName)
+          .update(data)
+          .match(model.idToMap());
+      Madpoly.print(
+        'query= ',
+        color: MadpolyColor.green,
+        inspectObject: query,
+        tag: 'dashboard_network > update',
+        developer: "Ziad",
+      );
+      // await response.doc(model.id).set(model.toMap());
+      dataUpdated = true;
+    } catch (e) {
+      _alertHandlingRepository.addError(
+        // 'unable to add user',
+        /* developerMessage: */ e.toString(),
+        AlertHandlingTypes.ServerError,
+        tag: 'admin_network > update > catch',
+        showToast: true,
+      );
+    }
+
+    return dataUpdated;
+  }
+
+  @override
+  Future<bool> deleteItem({required IschoolerModel model}) async {
+    bool dataDeleted = false;
+    try {
+      DatabaseTable tableQueryData =
+          IschoolerNetworkHelper.getTableQueryData(model);
+      if (tableQueryData == DatabaseTable.empty()) {
+        throw Exception(
+          'tableQueryData = $tableQueryData, '
+          'unable to delete (model = $model) data',
+        );
+      }
+      Madpoly.print(
+        'request will be sent is >> delete(), '
+        'tableQueryData: $tableQueryData, ',
+        inspectObject: model,
         tag: 'dashboard_network > deleteItem',
         isLog: true,
         // color: MadpolyColor.purple,
         developer: "Ziad",
       );
-      await credentialCollection.doc(model.id).delete();
-      userStored = true;
+      final query = await SupabaseCredentials.supabase
+          .from(tableQueryData.tableName)
+          .delete()
+          .eq('id', model.id);
+      Madpoly.print(
+        'query= ',
+        inspectObject: query,
+        color: MadpolyColor.green,
+        tag: 'dashboard_network > delete',
+        developer: "Ziad",
+      );
+
+      dataDeleted = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         'unable to add user',
@@ -118,6 +206,6 @@ class DashboardNetwork implements EduconnectNetwork {
       );
     }
 
-    return userStored;
+    return dataDeleted;
   }
 }

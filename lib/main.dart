@@ -1,14 +1,13 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:rxdart/rxdart.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'common/di.dart';
-import 'common/educonnect_local_settings.dart';
-import 'common/madpoly.dart';
-import 'firebase_options.dart';
-import 'main/educonnect_listeners.dart';
-import 'main/educonnect_materialapp.dart';
+import 'common/ischooler_local_settings.dart';
+import 'common/network/ischooler_network_helper.dart';
+import 'main/ischooler_listeners.dart';
+import 'main/ischooler_materialapp.dart';
 
 /// app initial settings:
 /// inside main:
@@ -36,30 +35,15 @@ Future<void> main() async {
   /// setting up ScreenUtil(1):
   await ScreenUtil.ensureScreenSize();
 
-  final bool isFirstTime = await EduconnectLocalSettings.isFirstTime();
+  final bool isFirstTime = await IschoolerLocalSettings.isFirstTime();
   // 1. localization(1)
-  final int currentLang = await EduconnectLocalSettings.getCurrentLang();
+  final int currentLang = await IschoolerLocalSettings.getCurrentLang();
   WidgetsFlutterBinding.ensureInitialized();
-  // firebase setup
-  try {
-    await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-      /* options: const FirebaseOptions(
-    apiKey: 'AIzaSyCqUoe7uNYPcIPHb4deFPm-X7GVIRv311g',
-    appId: '1:497792930106:web:dd37f1d7f7ecc3acc7c003',
-    messagingSenderId: '497792930106',
-    projectId: 'educonnect-7716d',
-    authDomain: 'educonnect-7716d.firebaseapp.com',
-    storageBucket: 'educonnect-7716d.appspot.com',
-  ), */
-    );
-  } catch (e) {
-    Madpoly.print(
-      '$e',
-      tag: 'main > Firebase.initializeApp',
-      developer: "Ziad",
-    );
-  }
+
+  await Supabase.initialize(
+    url: SupabaseCredentials.supabaseUrl,
+    anonKey: SupabaseCredentials.supabaseKey,
+  );
 
   /// 5. setPreferredOrientations:
   /// here we set the app Orientation to work in portraitUp only so it doesn't rotate
@@ -91,7 +75,7 @@ class MyApp extends StatelessWidget {
         BehaviorSubject<int>.seeded(-1);
 
     /// AppListeners is the widget that contains all listeners needed on the starting of the app
-    return EduconnectListeners(
+    return IschoolerListeners(
       /// setting up ScreenUtil(2):
       child: ScreenUtilInit(
         designSize: const Size(360, 690),
@@ -104,7 +88,7 @@ class MyApp extends StatelessWidget {
             stream: languageSubject.stream,
             initialData: currentLang,
             builder: (context, AsyncSnapshot<int> snapshot) {
-              return EduconnectMaterialApp(
+              return IschoolerMaterialApp(
                 languageSnapshot: snapshot,
                 currentLang: currentLang,
               );

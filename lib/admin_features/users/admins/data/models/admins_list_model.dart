@@ -1,14 +1,21 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-import '../../../../../common/educonnect_model.dart';
-import '../../../users_list_model.dart';
+import 'package:collection/collection.dart';
+
+import '../../../../../common/ischooler_model.dart';
 import 'admin_model.dart';
 
-class AdminsListModel extends UsersListModel {
+class AdminsListModel extends IschoolerListModel {
   @override
   const AdminsListModel({required super.items});
   factory AdminsListModel.empty() {
     return const AdminsListModel(items: []);
   }
+
+  factory AdminsListModel.dummy() {
+    return AdminsListModel(
+        items: List.generate(3, (index) => AdminModel.dummy()));
+  }
+
   factory AdminsListModel.fromMap(Map map) {
     final List<AdminModel> items = List<AdminModel>.from(
       map['items'].map(
@@ -17,6 +24,13 @@ class AdminsListModel extends UsersListModel {
     );
     return AdminsListModel(items: items);
   }
+  @override
+  AdminModel? getModelByName(String modelName) {
+    AdminModel? firstWhereOrNull = (items as List<AdminModel>)
+        .firstWhereOrNull((AdminModel item) => item.name == modelName);
+    return firstWhereOrNull;
+  }
+
   @override
   Map<String, dynamic> toMap() {
     return {
@@ -33,7 +47,7 @@ class AdminsListModel extends UsersListModel {
   List<Object> get props => [items];
   @override
   AdminsListModel copyWith({
-    List<EduconnectModel>? items,
+    List<IschoolerModel>? items,
   }) {
     return AdminsListModel(
       items: items ?? this.items,

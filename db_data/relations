@@ -1,0 +1,33 @@
+• user(student): id | name | dateOfBirth | class | phoneNumber | address | paymentStatus 
+    get updated with (class)
+
+• class: id | Name | grade 
+    get updated with (grade)
+
+• grade: id| name 
+    updates with (class, student, subject) with it
+
+• subject: id | name | grade | totalMarks 
+    get updated with (grade)
+
+• instructors: id | name 
+
+• instructorAssignments: id | instructor | subject | class 
+
+• weeklyTimetables: id | class | term | weeklySessions (array) | grade 
+
+• weeklySessions: id | sessionNumber | weekday | startTime | endTime | sessionInterval | subject | instructor (optional) 
+
+• exams: id | subject | date | time | examType 
+
+• examTypes: id | name | marksPercent 
+
+• examTimetables: id | term | examSessions (array) | grade | examType 
+
+• examSessions: id | sessionNumber | weekday | startTime | endTime | subject | sessionInterval | instructors  (array)  (optional) 
+
+• homework: id | class | subject | date | content 
+
+• news: id | name | thumbnail | dateTime | description 
+
+ 

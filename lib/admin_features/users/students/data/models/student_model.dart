@@ -1,34 +1,30 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import '../../../../classes/data/models/class_model.dart';
-import '../../../../grades/data/models/grade_model.dart';
 import '../../../user_model.dart';
 
 class StudentModel extends UserModel {
-  final ClassModel classModel;
-  // final GradeModel gradeModel;
+  final ClassModel classData;
   final bool paymentStatus;
 
   const StudentModel({
-    required this.classModel,
-    // required this.gradeModel,
-    super.id = '-1',
-    super.dateOfBirth,
-    super.phoneNumber = '',
-    super.address = '',
-    this.paymentStatus = false,
-    super.gender = '',
-    super.email = '',
-    // super.displayName = '',
-    super.role = UserRole.student,
-    super.name = '',
-    super.profilePicture = '',
+    required super.id,
+    required super.dateOfBirth,
+    required super.phoneNumber,
+    required super.address,
+    required super.gender,
+    required super.email,
+    required super.role,
+    required super.name,
+    required super.profilePicture,
+    required this.classData,
+    required this.paymentStatus,
   });
   @override
   factory StudentModel.empty() {
     return StudentModel(
         id: '',
         name: '',
-        classModel: ClassModel.empty(),
+        classData: ClassModel.empty(),
         // gradeModel: GradeModel.empty(),
         dateOfBirth: null,
         phoneNumber: '',
@@ -36,88 +32,77 @@ class StudentModel extends UserModel {
         gender: '',
         email: '',
         // displayName: '',
+        paymentStatus: false,
         role: UserRole.student,
         profilePicture: '');
   }
   @override
   factory StudentModel.dummy() {
     return StudentModel(
-        id: '',
-        name: 'ziad',
-        classModel: ClassModel.empty(),
-        // gradeModel: GradeModel.empty(),
-        dateOfBirth: null,
-        phoneNumber: '0123786323',
-        address: 'a .main b',
-        gender: 'male',
-        email: 'user@mail.com',
-        // displayName: '',
-        role: UserRole.student,
-        profilePicture: '');
+      id: '',
+      name: 'ziad',
+      classData: ClassModel.empty(),
+      // gradeModel: GradeModel.empty(),
+      dateOfBirth: null,
+      phoneNumber: '0123786323',
+      address: 'a .main b',
+      gender: 'male',
+      email: 'user@mail.com',
+      // displayName: '',
+      role: UserRole.student,
+      paymentStatus: false,
+      profilePicture: '',
+    );
   }
-
   factory StudentModel.fromMap(Map<String, dynamic> map) {
+    UserModel userModel =
+        UserModel.fromMap(map).copyWith(role: UserRole.student);
+
     return StudentModel(
-      id: map['id'] ?? '',
-      name: map['name'] ?? '',
-      dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
-          : null,
-      classModel: ClassModel.fromMap(map['class'] ?? {}),
-      // gradeModel: GradeModel.fromMap(map['grade'] ?? {}),
-      phoneNumber: map['phoneNumber'] ?? '',
-      address: map['address'] ?? '',
-      paymentStatus: map['paymentStatus'] ?? false,
-      gender: map['gender'] ?? '',
-      email: map['email'] ?? '',
-      // // displayName: map['displayName'] ?? '',
-      role: map['role'] == UserRole.student.name
-          ? UserRole.student
-          : UserRole.none,
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
+      classData: ClassModel.fromMap(map['class'] ?? {}),
+      paymentStatus: map['payment_status'] ?? false,
     );
   }
   @override
-  Map<String, dynamic> toMap() {
+  Map<String, dynamic> toDisplayMap() {
     return {
-      'name': name,
-      'dateOfBirth': dateOfBirth?.toIso8601String(),
-      'classId': classModel.toMap(),
-      // 'gradeId': gradeModel.toDisplayMap(),
-      'phoneNumber': phoneNumber,
-      'address': address,
-      'paymentStatus': paymentStatus,
-      'gender': gender,
-      'email': email,
-      // // 'displayName': displayName,
-      'role': role.name,
-      'profilePicture': profilePicture,
+      'Student Name': name,
+      'Class': classData.name,
+      'Grade': classData.grade.name,
     };
   }
 
-  /* @override
-  Map<String, dynamic> toDisplayMap({int? limit}) {
-    var map = {
-      // '': profilePicture,
-      // EduconnectConstants.localization().name: displayName,
-      EduconnectConstants.localization().id: id,
-      EduconnectConstants.localization().gender: gender,
-      EduconnectConstants.localization().email: email,
-      // EduconnectConstants.localization().phone_number: phoneNumber,
-      // EduconnectConstants.localization().address: address,
-      // EduconnectConstants.localization().date_of_birth:
-      // DateFormat('dd MMM, yyyy').format(dateOfBirth ?? DateTime(500)),
-      // EduconnectConstants.localization().payment_status:
-      // paymentStatus.toString(),
-    };
-
-    return truncateMap(map);
-  } */
+  StudentModel copyFromUser(UserModel userModel) {
+    return copyWith(
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
+    );
+  }
 
   @override
-  String toString() {
-    return 'StudentModel{studentId: $id, name: $name, dateOfBirth: $dateOfBirth, '
-        'classId: $classModel, phoneNumber: $phoneNumber, address: $address, '
-        'paymentStatus: $paymentStatus, gender: $gender, email: $email, role: ${role.name}}';
+  Map<String, dynamic> toMap() {
+    Map<String, dynamic> userMap = super.toMap();
+    return {
+      ...userMap,
+      'class_id': classData.id,
+      'payment_status': paymentStatus,
+    };
   }
 
   @override
@@ -126,7 +111,6 @@ class StudentModel extends UserModel {
     String? name,
     DateTime? dateOfBirth,
     ClassModel? classModel,
-    GradeModel? gradeModel,
     String? phoneNumber,
     String? address,
     bool? paymentStatus,
@@ -140,7 +124,7 @@ class StudentModel extends UserModel {
       id: id ?? this.id,
       name: name ?? this.name,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      classModel: classModel ?? this.classModel,
+      classData: classModel ?? classData,
       // gradeModel: gradeModel ?? this.gradeModel,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
@@ -154,6 +138,13 @@ class StudentModel extends UserModel {
   }
 
   @override
+  String toString() {
+    return 'StudentModel{studentId: $id, name: $name, dateOfBirth: $dateOfBirth, '
+        'classId: $classData, phoneNumber: $phoneNumber, address: $address, '
+        'paymentStatus: $paymentStatus, gender: $gender, email: $email, role: ${role.name}}';
+  }
+
+  @override
   List<Object?> get props {
     return [
       dateOfBirth,
@@ -164,7 +155,7 @@ class StudentModel extends UserModel {
       name,
       role,
       name,
-      classModel,
+      classData,
       /* gradeModel, */ paymentStatus,
     ];
   }

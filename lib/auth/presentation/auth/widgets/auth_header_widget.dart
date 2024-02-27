@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../common/style/educonnect_text_theme.dart';
+import '../../../../common/style/ischooler_text_theme.dart';
 
-import '../../../../../common/style/educonnect_colors.dart';
+import '../../../../../common/style/ischooler_colors.dart';
 
 class AuthHeaderWidget extends StatelessWidget {
   final String title;
@@ -24,7 +24,7 @@ class AuthHeaderWidget extends StatelessWidget {
       height: height,
       width: width,
       decoration: BoxDecoration(
-        color: EduconnectColors.blue,
+        color: IschoolerColors.blue,
         borderRadius: BorderRadiusDirectional.only(
           bottomEnd: Radius.circular(
             90.r,
@@ -39,11 +39,11 @@ class AuthHeaderWidget extends StatelessWidget {
           children: [
             Text(
               title,
-              style: EduconnectTextStyles.style20White,
+              style: IschoolerTextStyles.style20White,
             ),
             Text(
               subTitle,
-              style: EduconnectTextStyles.style14White,
+              style: IschoolerTextStyles.style14White,
             ),
           ],
         ),

@@ -64,7 +64,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "login_dialog_content": MessageLookupByLibrary.simpleMessage(
             "يجب أن تقوم بتسجيل الدخول للوصول إلى هذه الميزة."),
         "manage_school_with_app": MessageLookupByLibrary.simpleMessage(
-            "الآن يمكنك إدارة مدرستك بأكملها باستخدام تطبيق Educonnect"),
+            "الآن يمكنك إدارة مدرستك بأكملها باستخدام تطبيق Ischooler"),
         "name": MessageLookupByLibrary.simpleMessage("الاسم"),
         "name_validation_error":
             MessageLookupByLibrary.simpleMessage("الرجاء إدخال اسمك"),

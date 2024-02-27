@@ -1,19 +1,24 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_model.dart';
-import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/functions/educonnect_date_formatter.dart';
+import '../../../../../common/common_features/widgets/ischooler_date_field.dart';
+import '../../../../../common/common_features/widgets/ischooler_drop_down_widget.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_assets.dart';
+import '../../../../../common/ischooler_model.dart';
+import '../../../../../common/ischooler_validation.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
+import '../../../../classes/data/models/class_model.dart';
+import '../../../../classes/logic/cubit/classes_list_cubit.dart';
 import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../../dashboard/presentation/widgets/form_buttons_widget.dart';
-import '../../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
+import '../../../user_model.dart';
 import '../../data/models/student_model.dart';
 import '/common/madpoly.dart';
 
 class StudentDetailsForm extends StatefulWidget {
   final StudentModel? currentStudentData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(StudentModel model) onSaved;
   // final GlobalKey<FormState> formKey;
   const StudentDetailsForm({
     // required this.formKey,
@@ -28,7 +33,7 @@ class StudentDetailsForm extends StatefulWidget {
 
 class _StudentDetailsFormState extends State<StudentDetailsForm> {
   // Use Studentmodel to store form data
-  final _formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   // StudentModel studentData = StudentModel.empty();
   StudentModel studentData = StudentModel.dummy();
@@ -48,56 +53,87 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
+          SizedBox(
+            height: 100,
+            child: Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: Image.asset(IschoolerAssets.blankProfileImage),
+            ),
+          ),
+
+          /// name
+          IschoolerTextField(
             initialValue: studentData.name,
-            labelText: 'Username',
-            validator: EduconnectValidations.nameValidator,
+            labelText: 'Name',
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               studentData = studentData.copyWith(name: value);
               // setState(() {});
             },
           ),
-          EduconnectTextField(
+
+          /// Email Address
+          IschoolerTextField(
             // initialValue: 'test',
             initialValue: studentData.email,
 
             labelText: 'Email Address',
 
-            validator: EduconnectValidations.emailValidator,
+            validator: IschoolerValidations.emailValidator,
 
             onSaved: (value) {
               studentData = studentData.copyWith(email: value);
               // setState(() {});
             },
           ),
-          EduconnectTextField(
-            initialValue: educonnectDateFormatter(studentData.dateOfBirth),
+
+          /// Date of Birth
+          IschoolerDateField(
+            initialValue:
+                IschoolerDateTimeHelper.dateFormat(studentData.dateOfBirth),
             labelText: 'Date of Birth',
-            validator: (value) {
-              // Add validation logic for date of birth if needed
-              return null;
-            },
-            onSaved: (value) {
-              // Convert the value to DateTime and assign it to dateOfBirth
-              // You may want to use a DatePicker for a better user experience
-              // studentData = studentData.copyWith(
-              //     dateOfBirth: value != null ? DateTime.parse(value) : null);
-              // setState(() {});
+            onTap: (date) {
+              studentData = studentData.copyWith(dateOfBirth: date);
+              setState(() {});
             },
           ),
-          /*  EduConnectDropdownWidget(
-                    labelText: 'Gender',
-                    onSaved: (value) {
-                      setState(() {
-                        studentData = studentData.copyWith(gradeId: value);
-                      });
-                    },
-                    options: const ['Male', 'Female'],
-                  ), */
+          //  Todo: create a ui to select user gender
+          /// Gender
+          EduConnectDropdownWidget(
+            labelText: 'Gender',
+            // value: ,
+            hint: studentData.gender,
+            onChanged: (value) {
+              Madpoly.print(
+                'gender after update = ',
+                inspectObject: value,
+                tag: 'user_details_form > ',
+                developer: "Ziad",
+              );
+              studentData = studentData.copyWith(gender: value);
+              setState(() {});
+            },
+            options: const ['Male', 'Female'],
+          ),
 
-          EduconnectTextField(
+          /*   /// Role
+          EduConnectDropdownWidget(
+            labelText: 'Role',
+            // value: ,
+            hint: studentData.role.name,
+            onChanged: (value) {
+              setState(() {
+                studentData = studentData.copyWith(gender: value);
+              });
+            },
+            options: const ['Admin', 'Instructor', 'Student'],
+          ),
+ */
+          /// Phone Number
+          IschoolerTextField(
             // initialValue: '01111',
             initialValue: studentData.phoneNumber,
+            keyboardType: TextInputType.number,
 
             labelText: 'Phone Number',
             validator: (value) {
@@ -109,7 +145,9 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               // setState(() {});
             },
           ),
-          EduconnectTextField(
+
+          /// Address
+          IschoolerTextField(
             initialValue: studentData.address,
 
             // initialValue: 'test',
@@ -125,86 +163,50 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
               // setState(() {});
             },
           ),
-          /* DashboardDropDownWidget<ClassesListCubit>(
-              onChanged: (EduconnectModel value) {
-            Madpoly.print(
-              'class model = $value',
-              tag:
-                  'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
-              developer: "Ziad",
-            );
-            studentData = studentData.copyWith(classModel: value as ClassModel);
-            setState(() {});
-          }), */
-          DashboardDropDownWidget<GradesListCubit>(
-              onChanged: (EduconnectModel value) {
-            Madpoly.print(
-              'Grade model = $value',
-              tag:
-                  'student_details_form > DashboardDropDownWidget<GradesListCubit>',
-              developer: "Ziad",
-            );
-            // studentData = studentData.copyWith(classModel: value as ClassModel);
-            setState(() {});
-          }),
-          /* EduConnectDropdownWidget(
-            labelText: 'Class',
-            // hint: 'Class',
 
-            onChanged: (value) {
-              setState(() {
-                studentData = studentData.copyWith(classId: value);
-              });
-            },
-            options: const ['claass 1', 'r 2', 'clasrs 2'],
+          /// class
+          DashboardDropDownWidget<ClassesListCubit>(
+              hint: studentData.classData.name,
+              labelText: 'Class',
+              onChanged: (IschoolerModel value) {
+                Madpoly.print(
+                  'class model = $value',
+                  tag:
+                      'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
+                  developer: "Ziad",
+                );
+                studentData =
+                    studentData.copyWith(classModel: value as ClassModel);
+                setState(() {});
+              }),
+
+          /// Payment Status
+          //  Todo: create a ui to select student's payment status
+          IschoolerTextField(
+            initialValue: studentData.paymentStatus ? 'paid' : 'not paid',
+            labelText: 'Specialization',
+            validator: IschoolerValidations.nameValidator,
+            /* onSaved: (value) {
+              studentData = studentData.copyWith(paymentStatus: value);
+              // setState(() {});
+            }, */
           ),
-          EduConnectDropdownWidget(
-            labelText: 'Grade',
-            onChanged: (value) {
-              setState(() {
-                studentData = studentData.copyWith(grade: value);
-              });
-            },
-            options: const ['class 1', 'class 2', 'class 3'],
-          ),
-          EduConnectDropdownWidget(
-            labelText: 'Gender',
-            onChanged: (value) {
-              setState(() {
-                studentData = studentData.copyWith(grade: value);
-              });
-            },
-            options: const ['Male', 'Female'],
-          ),
- */
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
-          /*  Row(
-      
-      
-          children: [
-            const Text('Payment Status: '),
-            Checkbox(
-              value: studentData.paymentStatus,
-              onSaved: (value) {
-                setState(() {
-                  studentData =
-                      studentData.copyWith(paymentStatus: value ?? false);
-                });
-              },
-            ),
-          ],
-        ), */
-          // const SizedBox(height: 20),
         ],
       ),
     );
   }
 
-  onSubmitButtonPressed() {
-    if (_formKey.currentState!.validate()) {
-      _formKey.currentState!.save();
+  onUserDataSaved(UserModel user) {
+    studentData = studentData.copyFromUser(user);
+  }
 
-      widget.onSaved(studentData);
-    }
+  onSubmitButtonPressed() {
+    // if (_formKey.currentState!.validate() &&
+    //     _userFormKey.currentState!.validate()) {
+    _formKey.currentState!.save();
+
+    widget.onSaved(studentData);
+    // }
   }
 }

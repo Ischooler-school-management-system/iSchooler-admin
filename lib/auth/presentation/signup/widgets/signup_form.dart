@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../../common/comon_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/comon_features/widgets/educonnect_checkbox.dart';
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/style/educonnect_text_theme.dart';
+import '../../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
+import '../../../../../common/common_features/widgets/ischooler_checkbox.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_constants.dart';
+import '../../../../../common/ischooler_validation.dart';
+import '../../../../../common/style/ischooler_text_theme.dart';
 import '../../../../admin_features/users/user_model.dart';
 import '../../../../common/navigation/router.export.dart';
 import '../../../logic/cubit/auth_cubit.dart';
@@ -70,53 +70,52 @@ class _SignupFormState extends State<SignupForm> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (!(state.user.role == UserRole.admin))
-              EduconnectTextField(
+              IschoolerTextField(
                 // initialValue: 'ziad',
                 labelText: 'Enrollment code',
                 focusNode: nameFocusNode,
-                validator: EduconnectValidations.nameValidator,
+                validator: IschoolerValidations.nameValidator,
                 onSaved: (String? value) =>
                     newUser = newUser.copyWith(name: value),
               ),
             if ((state.user.role == UserRole.admin))
-              EduconnectTextField(
+              IschoolerTextField(
                 initialValue: 'ziad',
-                labelText: EduconnectConstants.localization().enter_name,
+                labelText: IschoolerConstants.localization().enter_name,
                 focusNode: nameFocusNode,
-                validator: EduconnectValidations.nameValidator,
+                validator: IschoolerValidations.nameValidator,
                 onSaved: (String? value) =>
                     newUser = newUser.copyWith(name: value),
               ),
             if ((state.user.role == UserRole.admin))
-              EduconnectTextField(
+              IschoolerTextField(
                 initialValue: 'ziad@test.com',
-                labelText: EduconnectConstants.localization().enter_email,
+                labelText: IschoolerConstants.localization().enter_email,
                 focusNode: emailFocusNode,
-                validator: EduconnectValidations.emailValidator,
+                validator: IschoolerValidations.emailValidator,
                 onSaved: (String? value) =>
                     newUser = newUser.copyWith(email: value),
               ),
             if ((state.user.role == UserRole.admin))
-              EduconnectTextField(
+              IschoolerTextField(
                 initialValue: '01112345671',
-                labelText:
-                    EduconnectConstants.localization().enter_phone_number,
+                labelText: IschoolerConstants.localization().enter_phone_number,
                 focusNode: phoneFocusNode,
-                validator: EduconnectValidations.phoneNumberValidator,
+                validator: IschoolerValidations.phoneNumberValidator,
                 onSaved: (String? value) =>
                     newUser = newUser.copyWith(phoneNumber: value),
               ),
-            EduconnectCheckbox(
+            IschoolerCheckbox(
               text:
                   'I agree with the terms and conditions and also the protection of my presonal data on thi applicaiton',
-              textStyle: EduconnectTextStyles.style10Grey,
+              textStyle: IschoolerTextStyles.style10Grey,
               onChanged: onAgrementChecked,
             ),
-            EduconnectButton(
-              button: EduconnectElevatedButton(
+            IschoolerButton(
+              button: IschoolerElevatedButton(
                 // disabled: _isButtonDisabled || !_isCheckboxChecked,
                 onPressed: onNextButtonPressed,
-                text: EduconnectConstants.localization().next,
+                text: IschoolerConstants.localization().next,
               ),
             ),
           ],
@@ -135,15 +134,15 @@ class _SignupFormState extends State<SignupForm> {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
       if (_isCheckboxChecked) {
-        // EduconnectNavigator.navigateToScreen(
+        // IschoolerNavigator.navigateToScreen(
         // SignupPasswordScreen(newUser: newUser));
-        EduconnectNavigator.push(
+        IschoolerNavigator.push(
           Routes.signupPasswordScreen,
           arguments: newUser,
         );
       } else {
         SmartDialog.showToast(
-            EduconnectConstants.localization().accept_the_terms_and_conditions);
+            IschoolerConstants.localization().accept_the_terms_and_conditions);
       }
     }
   }

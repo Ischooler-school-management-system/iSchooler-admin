@@ -1,0 +1,54 @@
+[
+    {
+        "id": 1,
+        "name": "Tom Johnson",
+        "phone_number": "5558881234",
+        "address": "123 Oak St, City",
+        "gender": "Male",
+        "email": "tom@example.com",
+        "profile_picture": "profile.jpg",
+        "date_of_birth": "1980-08-25",
+        "specialization": "Mathematics",
+        "hire_date": "2021-01-15",
+        "created_at": "2024-02-09T14:51:24.81227"
+    },
+    {
+        "id": 2,
+        "name": "Alice White",
+        "phone_number": "6669994567",
+        "address": "456 Elm St, Town",
+        "gender": "Female",
+        "email": "alice@example.com",
+        "profile_picture": "profile.jpg",
+        "date_of_birth": "1992-04-12",
+        "specialization": "English",
+        "hire_date": "2021-02-20",
+        "created_at": "2024-02-09T14:51:24.81227"
+    },
+    {
+        "id": 3,
+        "name": "Chris Evans",
+        "phone_number": "7771112222",
+        "address": "789 Maple St, Village",
+        "gender": "Male",
+        "email": "chris@example.com",
+        "profile_picture": "profile.jpg",
+        "date_of_birth": "1986-10-30",
+        "specialization": "Science",
+        "hire_date": "2021-03-10",
+        "created_at": "2024-02-09T14:51:24.81227"
+    },
+    {
+        "id": 4,
+        "name": "Emily Davis",
+        "phone_number": "8883334444",
+        "address": "987 Pine St, Hamlet",
+        "gender": "Female",
+        "email": "emily@example.com",
+        "profile_picture": "profile.jpg",
+        "date_of_birth": "1990-12-05",
+        "specialization": "History",
+        "hire_date": "2021-04-25",
+        "created_at": "2024-02-09T14:51:24.81227"
+    }
+]

@@ -1,22 +1,16 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import '../common/style/educonnect_text_theme.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-import '../../../common/style/educonnect_colors.dart';
-import '../auth/logic/cubit/auth_cubit.dart';
-import '../common/comon_features/widgets/educonnect_icons.dart';
-import '../common/educonnect_assets.dart';
-import '../common/educonnect_constants.dart';
+import '../../../common/style/ischooler_colors.dart';
+import '../common/ischooler_assets.dart';
+import 'ischooler_side_bar_data.dart';
 
 const primaryColor = canvasColor;
-const canvasColor = EduconnectColors.blue;
+const canvasColor = IschoolerColors.blue;
 const scaffoldBackgroundColor = Color.fromRGBO(255, 255, 255, 1);
-const accentCanvasColor = EduconnectColors.grey;
+const accentCanvasColor = IschoolerColors.grey;
 const white = Colors.white;
-final divider = Divider(color: white.withOpacity(0.3), height: 1);
-FirebaseAuth newVariable = FirebaseAuth.instance;
+final Widget divider = Divider(color: white.withOpacity(0.3), height: 1);
 
 class ExampleSidebarX extends StatelessWidget {
   final SidebarXController _controller;
@@ -67,13 +61,13 @@ class ExampleSidebarX extends StatelessWidget {
           height: 100,
           child: Padding(
             padding: const EdgeInsets.all(16.0),
-            child: Image.asset(EduconnectAssets.blankProfileImage),
+            child: Image.asset(IschoolerAssets.blankProfileImage),
           ),
         ),
-        if (newVariable.currentUser != null &&
-            newVariable.currentUser!.email != null)
-          Text(newVariable.currentUser!.email!,
-              style: EduconnectTextStyles.style14White),
+        // if (newVariable.currentUser != null &&
+        //     newVariable.currentUser!.email != null)
+        //   Text(newVariable.currentUser!.email!,
+        //       style: IschoolerTextStyles.style14White),
       ],
     );
   }
@@ -81,65 +75,6 @@ class ExampleSidebarX extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const itemTextPadding = EdgeInsets.symmetric(horizontal: 30);
-    final List<SidebarXItem> sideBarTabs = [
-      // SidebarXItem(
-      //   icon: const tterLogo(size: 20),
-      //   label: EduconnectConstants.localization().dashboard,
-      // ),
-      SidebarXItem(
-        icon: Icons.admin_panel_settings,
-        label: EduconnectConstants.localization().admins,
-      ),
-      SidebarXItem(
-        icon: EduconnectIcons.teacher_7,
-        label: EduconnectConstants.localization().teachers,
-      ),
-      SidebarXItem(
-        icon: Icons.person,
-        label: EduconnectConstants.localization().students,
-      ),
-      SidebarXItem(
-        icon: (Icons.school),
-        label: EduconnectConstants.localization().classes,
-      ),
-      SidebarXItem(
-        icon: (Icons.grade),
-        label: EduconnectConstants.localization().grades,
-      ),
-      SidebarXItem(
-        icon: (Icons.subject),
-        label: EduconnectConstants.localization().subjects,
-      ),
-      SidebarXItem(
-        icon: (Icons.assignment),
-        label: EduconnectConstants.localization().exams,
-      ),
-
-      SidebarXItem(
-        icon: (Icons.schedule),
-        label: EduconnectConstants.localization().timetable,
-      ),
-      SidebarXItem(
-        icon: (Icons.assignment_turned_in),
-        label: EduconnectConstants.localization().homeworks,
-      ),
-
-      SidebarXItem(
-        icon: (Icons.account_circle),
-        label: EduconnectConstants.localization().profile,
-      ),
-      SidebarXItem(
-        icon: (Icons.settings),
-        label: EduconnectConstants.localization().settings,
-      ),
-      SidebarXItem(
-        icon: Icons.logout,
-        label: EduconnectConstants.localization().sign_out,
-        onTap: () {
-          context.read<AuthCubit>().signOut();
-        },
-      )
-    ];
     final SidebarXTheme sidebarXTheme = SidebarXTheme(
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
@@ -169,7 +104,18 @@ class ExampleSidebarX extends StatelessWidget {
       extendedTheme: extendedTheme,
       footerDivider: divider,
       headerBuilder: headerBuilder,
-      items: sideBarTabs,
+      // separatorBuilder: (BuildContext context, int i) => divider,
+      items: IschoolerSideBarData.sideBarData.values.toList(),
+
+      // footerItems: [
+      //   SidebarXItem(
+      //     icon: Icons.logout,
+      //     label: IschoolerConstants.localization().sign_out,
+      //     onTap: () {
+      //       context.read<AuthCubit>().signOut();
+      //     },
+      //   )
+      // ],
     );
   }
 }

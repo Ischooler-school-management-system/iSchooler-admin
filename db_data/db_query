@@ -1,0 +1,157 @@
+-- Create admin_role table
+CREATE TABLE admin_role (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+-- Create admin table
+CREATE TABLE admin (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20),
+    address TEXT,
+    gender VARCHAR(10),
+    email VARCHAR(255),
+    profile_picture TEXT,
+    date_of_birth DATE,
+    specialization VARCHAR(255),
+    hire_date DATE,
+    admin_role_id INT REFERENCES admin_role(id)
+);
+
+-- Create instructor table
+CREATE TABLE instructor (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20),
+    address TEXT,
+    gender VARCHAR(10),
+    email VARCHAR(255),
+    profile_picture TEXT,
+    date_of_birth DATE,
+    specialization VARCHAR(255),
+    hire_date DATE
+);
+
+-- Create grade table
+CREATE TABLE grade (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
+-- Create class table
+CREATE TABLE class (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    grade_id INT REFERENCES grade(id)
+);
+
+-- Create subject table
+CREATE TABLE subject (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    total_marks INT,
+    grade_id INT REFERENCES grade(id)
+);
+
+-- Create student table
+CREATE TABLE student (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    phone_number VARCHAR(20),
+    address TEXT,
+    gender VARCHAR(10),
+    email VARCHAR(255),
+    profile_picture TEXT,
+    date_of_birth DATE,
+    guardians_phone_number VARCHAR(20),
+    payment_status BOOLEAN,
+    class_id INT REFERENCES class(id)
+);
+
+-- Create instructor_assignment table
+CREATE TABLE instructor_assignment (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    instructor_id INT REFERENCES instructor(id),
+    subject_id INT REFERENCES subject(id),
+    class_id INT REFERENCES class(id)
+);
+
+-- Create weekly_timetable table
+CREATE TABLE weekly_timetable (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    term VARCHAR(255),
+    class_id INT REFERENCES class(id),
+    grade_id INT REFERENCES grade(id)
+);
+
+-- Create weekly_sessions table
+CREATE TABLE weekly_sessions (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    session_number INT,
+    weekday VARCHAR(20),
+    start_time TIME,
+    end_time TIME,
+    session_interval INTERVAL,
+    instructor_assignment_id INT REFERENCES instructor_assignment(id),
+    weekly_timetable_id INT REFERENCES weekly_timetable(id)
+);
+
+-- Create exam_type table
+CREATE TABLE exam_type (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    marks_percent DECIMAL(5,2)
+);
+
+-- Create exam table
+CREATE TABLE exam (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    date_time TIMESTAMP,
+    subject_id INT REFERENCES subject(id),
+    exam_type_id INT REFERENCES exam_type(id)
+);
+
+-- Create exam_timetable table
+CREATE TABLE exam_timetable (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    term VARCHAR(255),
+    grade_id INT REFERENCES grade(id),
+    exam_id INT REFERENCES exam(id)
+);
+
+-- Create exam_session table
+CREATE TABLE exam_session (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    session_number INT,
+    weekday VARCHAR(20),
+    start_time TIME,
+    end_time TIME,
+    session_interval INTERVAL,
+    instructor_id INT REFERENCES instructor(id),
+    exam_timetable_id INT REFERENCES exam_timetable(id)
+);
+
+-- Create homework table
+CREATE TABLE homework (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    date DATE,
+    content TEXT,
+    instructor_assignment_id INT REFERENCES instructor_assignment(id)
+);
+
+-- Create news table
+CREATE TABLE news (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255),
+    thumbnail TEXT,
+    date_time TIMESTAMP,
+    description TEXT
+);

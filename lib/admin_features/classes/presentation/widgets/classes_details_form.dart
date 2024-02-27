@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
-import 'package:school_admin/admin_features/grades/data/models/grade_model.dart';
+import 'package:ischooler_admin/admin_features/grades/data/models/grade_model.dart';
+import 'package:ischooler_admin/admin_features/calender/weekly_timetable/presentation/screens/time_table_screen.dart';
+import 'package:ischooler_admin/common/common_features/widgets/buttons/ischooler_button.dart';
+import 'package:ischooler_admin/common/common_features/widgets/buttons/models/buttons_model.dart';
+import 'package:ischooler_admin/common/navigation/ischooler_navi.dart';
 
-import '../../../../../common/comon_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_model.dart';
-import '../../../../../common/educonnect_validation.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_model.dart';
+import '../../../../../common/ischooler_validation.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
-import '../../../grades/logic/instructors_list_cubit/grades_list_cubit.dart';
+import '../../../grades/logic/cubit/grades_list_cubit.dart';
 import '../../data/models/class_model.dart';
 
 class ClassDetailsForm extends StatefulWidget {
   final ClassModel? currentClassData;
-  final Function(EduconnectModel model) onSaved;
+  final Function(ClassModel model) onSaved;
 
   const ClassDetailsForm(
       {super.key, this.currentClassData, required this.onSaved});
@@ -47,16 +51,25 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
       key: _formKey,
       child: Column(
         children: [
-          EduconnectTextField(
-            initialValue: classData.id,
-            labelText: 'Class ID',
-
-            // validator: EduconnectValidations.nameValidator,
+          IschoolerButton(
+            button: IschoolerElevatedButton(
+              onPressed: () {
+                IschoolerNavigator.navigateToScreen(
+                    TimeTableScreen(classData: classData));
+              },
+              text: 'class time table',
+            ),
           ),
-          EduconnectTextField(
+          if (editingModel)
+            IschoolerTextField(
+              initialValue: classData.id,
+              labelText: 'Class ID',
+              enabled: false,
+            ),
+          IschoolerTextField(
             initialValue: classData.name,
             labelText: 'Class Name',
-            validator: EduconnectValidations.nameValidator,
+            validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               setState(() {
                 classData = classData.copyWith(name: value);
@@ -64,72 +77,18 @@ class _ClassDetailsFormState extends State<ClassDetailsForm> {
             },
           ),
           DashboardDropDownWidget<GradesListCubit>(
-              onChanged: (EduconnectModel value) {
-            Madpoly.print(
-              'Grade model = $value',
-              tag:
-                  'student_details_form > DashboardDropDownWidget<GradesListCubit>',
-              developer: "Ziad",
-            );
-            classData = classData.copyWith(grade: value as GradeModel);
-            setState(() {});
-          }),
-          /*
-          EduconnectTextField(
-            initialValue: classData.email,
-            labelText: 'Email Address',
-            validator: EduconnectValidations.emailValidator,
-            onSaved: (value) {
-              setState(() {
-                classData = classData.copyWith(userName: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            // initialValue: classData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(classData.dateOfBirth),
-            labelText: 'Date of Birth',
-            validator: (value) {
-              // Add validation logic for date of birth if needed
-              return null;
-            },
-            onSaved: (value) {
-              // Convert the value to DateTime and assign it to dateOfBirth
-              // You may want to use a DatePicker for a better user experience
-              setState(() {
-                classData =
-                    classData.copyWith(dateOfBirth: DateTime.parse(value));
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: classData.phoneNumber,
-            labelText: 'Phone Number',
-            validator: (value) {
-              // Add phone number validation if needed
-              return null;
-            },
-            onSaved: (value) {
-              setState(() {
-                classData = classData.copyWith(phoneNumber: value);
-              });
-            },
-          ),
-          EduconnectTextField(
-            initialValue: classData.address,
-            labelText: 'Address',
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Please enter Address';
-              }
-              return null;
-            },
-            onSaved: (value) {
-              setState(() {
-                classData = classData.copyWith(address: value);
-              });
-            },
-          ), */
+              hint: classData.grade.name,
+              labelText: 'Grade',
+              onChanged: (IschoolerModel value) {
+                Madpoly.print(
+                  'Grade model = $value',
+                  tag:
+                      'student_details_form > DashboardDropDownWidget<GradesListCubit>',
+                  developer: "Ziad",
+                );
+                classData = classData.copyWith(grade: value as GradeModel);
+                setState(() {});
+              }),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),

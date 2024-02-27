@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/comon_features/widgets/educonnect_screen.dart';
+import '../../../../../common/ischooler_constants.dart';
+import '../../../../../common/common_features/widgets/ischooler_screen.dart';
 import '../../../../admin_features/users/user_model.dart';
 import '../../../../common/navigation/router.export.dart';
 import '../../auth/widgets/auth_header_widget.dart';
@@ -24,9 +24,9 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final UserModel newUser = EduconnectNavigator.getPassedData(context,
+    final UserModel newUser = IschoolerNavigator.getPassedData(context,
         defaultValue: UserModel.empty()) as UserModel;
-    return EduconnectScreen(
+    return IschoolerScreen(
       enableflexibleScrolling: true,
       alignment: Alignment.center,
       keepMobileView: true,
@@ -36,8 +36,8 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
             Visibility(
               visible: !isKeyboardOpen,
               child: AuthHeaderWidget(
-                height: EduconnectConstants.educonnect_screen_height * 0.25,
-                width: EduconnectConstants.educonnect_screen_width,
+                height: IschoolerConstants.educonnect_screen_height * 0.25,
+                width: IschoolerConstants.educonnect_screen_width,
                 title: 'Create Password',
                 subTitle: 'Create a password so you can login to your account',
               ),

@@ -1,21 +1,30 @@
+import '../../../../../common/ischooler_constants.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../user_model.dart';
+import '../../../admin_roles/data/models/admin_role_model.dart';
 
 class AdminModel extends UserModel {
+  final String specialization;
+  final DateTime hireDate;
+  final AdminRoleModel adminRole;
+
   const AdminModel({
-    super.id = '-1',
-    super.dateOfBirth,
-    super.phoneNumber = '',
-    super.name = '',
-    super.address = '',
-    super.gender = '',
-    super.email = '',
-    // super.displayName = '',
-    super.role = UserRole.admin,
-    super.profilePicture = '',
+    required super.id,
+    required super.name,
+    required super.phoneNumber,
+    required super.address,
+    required super.gender,
+    required super.email,
+    required super.role,
+    required super.profilePicture,
+    required super.dateOfBirth,
+    required this.specialization,
+    required this.hireDate,
+    required this.adminRole,
   });
 
   factory AdminModel.empty() {
-    return const AdminModel(
+    return AdminModel(
       id: '',
       name: '',
       dateOfBirth: null,
@@ -23,38 +32,85 @@ class AdminModel extends UserModel {
       address: '',
       gender: '',
       email: '',
-      // displayName: '',
       role: UserRole.admin,
+      profilePicture: '',
+      specialization: '',
+      hireDate: DateTime(2000),
+      adminRole: AdminRoleModel.empty(),
     );
   }
+
+  AdminModel copyFromUser(UserModel userModel) {
+    return copyWith(
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
+    );
+  }
+
   factory AdminModel.dummy() {
     return AdminModel(
-      name: 'JohnDoe',
       id: '123456',
+      name: 'JohnDoe',
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',
       address: '123 Main St, City',
       gender: 'Male',
       email: 'john.doe@example.com',
-      // displayName: 'John Doe',
       role: UserRole.admin,
       profilePicture: 'path/to/profile_picture.jpg',
+      specialization: 'IT',
+      hireDate: DateTime(2022, 1, 1),
+      adminRole: AdminRoleModel.dummy(),
     );
   }
   factory AdminModel.fromMap(Map<String, dynamic> map) {
+    var userModel = UserModel.fromMap(map).copyWith(role: UserRole.admin);
+
     return AdminModel(
-      id: map['id'] ?? '',
-      name: map['name'] ?? '',
-      dateOfBirth: map['dateOfBirth'] != null
-          ? DateTime.parse(map['dateOfBirth'])
-          : null,
-      phoneNumber: map['phoneNumber'] ?? '',
-      address: map['address'] ?? '',
-      gender: map['gender'] ?? '',
-      email: map['email'] ?? '',
-      // // displayName: map['displayName'] ?? '',
-      role: map['role'] == UserRole.admin.name ? UserRole.admin : UserRole.none,
+      id: userModel.id,
+      name: userModel.name,
+      dateOfBirth: userModel.dateOfBirth,
+      phoneNumber: userModel.phoneNumber,
+      address: userModel.address,
+      gender: userModel.gender,
+      email: userModel.email,
+      role: userModel.role,
+      profilePicture: userModel.profilePicture,
+      hireDate: IschoolerDateTimeHelper.fromMapItem(map['hire_date']),
+      adminRole: AdminRoleModel.fromMap(map['admin_role'] ?? {}),
+      specialization: map['specialization'] ?? '',
     );
+  }
+  @override
+  Map<String, dynamic> toMap() {
+    var map = super.toMap();
+    map.addAll({
+      'specialization': specialization,
+      'hire_date': hireDate.toIso8601String(),
+      'admin_role_id': adminRole.id,
+    });
+    return map;
+  }
+
+  @override
+  Map<String, dynamic> toDisplayMap() {
+    var map = {
+      IschoolerConstants.localization().name: name,
+      // IschoolerConstants.localization().id: id,
+      IschoolerConstants.localization().gender: gender,
+      'Admin Role': adminRole.name,
+      IschoolerConstants.localization().email: email,
+    };
+
+    // return truncateMap(map);
+    return map;
   }
 
   @override
@@ -64,12 +120,13 @@ class AdminModel extends UserModel {
     DateTime? dateOfBirth,
     String? phoneNumber,
     String? address,
-    bool? paymentStatus,
     String? gender,
     String? email,
-    // String? displayName,
     UserRole? role,
     String? profilePicture,
+    String? specialization,
+    DateTime? hireDate,
+    AdminRoleModel? adminRole,
   }) {
     return AdminModel(
       id: id ?? this.id,
@@ -79,16 +136,16 @@ class AdminModel extends UserModel {
       address: address ?? this.address,
       gender: gender ?? this.gender,
       email: email ?? this.email,
-      // // // displayName: displayName ?? this.displayName,
       role: role ?? this.role,
-      profilePicture: this.profilePicture,
+      profilePicture: profilePicture ?? this.profilePicture,
+      specialization: specialization ?? this.specialization,
+      hireDate: hireDate ?? this.hireDate,
+      adminRole: adminRole ?? this.adminRole,
     );
   }
 
   @override
   String toString() {
-    return 'AdminModel{adminId: $id, name: $name, dateOfBirth: $dateOfBirth, '
-        'phoneNumber: $phoneNumber, address: $address, '
-        'gender: $gender, email: $email, role: ${role.name}}';
+    return 'AdminModel{adminId: $id, name: $name, phoneNumber: $phoneNumber, address: $address, gender: $gender, email: $email, role: ${role.name}, profilePicture: $profilePicture, specialization: $specialization, hireDate: $hireDate, dateOfBirth: $dateOfBirth, adminRole: $adminRole}';
   }
 }

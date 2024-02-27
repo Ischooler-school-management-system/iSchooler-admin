@@ -3,12 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../../../common/comon_features/loading/presentation/loading_popup.dart';
-import '../../../../../../common/comon_features/widgets/educonnect_screen.dart';
-import '../../../../../../common/educonnect_constants.dart';
-import '../../../../../../common/educonnect_local_settings.dart';
+import '../../../../../../common/common_features/loading/presentation/loading_popup.dart';
+import '../../../../../../common/common_features/widgets/ischooler_screen.dart';
+import '../../../../../../common/ischooler_constants.dart';
+import '../../../../../../common/ischooler_local_settings.dart';
 import '../../../../../../common/madpoly.dart';
-import '../../../../../../common/style/educonnect_colors.dart';
+import '../../../../../../common/style/ischooler_colors.dart';
 import '../../language_bloc/language_bloc.dart';
 import '../widgets/language_widget.dart';
 
@@ -31,7 +31,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
   }
 
   Future<void> getLang() async {
-    selectedIndex = await EduconnectLocalSettings.getCurrentLang();
+    selectedIndex = await IschoolerLocalSettings.getCurrentLang();
     setState(() {});
     Madpoly.print('selectedIndex$selectedIndex');
   }
@@ -40,7 +40,7 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     setState(() {
       selectedIndex = index;
     });
-    EduconnectLocalSettings.saveCurrentLang(selectedIndex);
+    IschoolerLocalSettings.saveCurrentLang(selectedIndex);
 
     // Update the language using the static languageSubject
     // LanguagesScreen.languageSubject.sink.add(index);
@@ -48,22 +48,22 @@ class _LanguagesScreenState extends State<LanguagesScreen> {
     BlocProvider.of<LangBloc>(context).add(UpdateLangEvent(selectedIndex));
     LoadingPopup.normalLoadingDialog();
     await Future.delayed(const Duration(seconds: 2), () {
-      // EduconnectNavigator.navigateToScreen(const EduconnectBottomNavBar());
+      // IschoolerNavigator.navigateToScreen(const IschoolerBottomNavBar());
       SmartDialog.dismiss();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return EduconnectScreen(
+    return IschoolerScreen(
       keepMobileView: true,
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            /* EduconnectConstants.localization(). */ 'language',
-            style: EduconnectConstants.textTheme.titleSmall!
-                .copyWith(color: EduconnectColors.blue),
+            /* IschoolerConstants.localization(). */ 'language',
+            style: IschoolerConstants.textTheme.titleSmall!
+                .copyWith(color: IschoolerColors.blue),
           ),
           SizedBox(height: 10.h),
           LanguageWidget(

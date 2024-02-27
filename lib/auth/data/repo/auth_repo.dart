@@ -1,10 +1,11 @@
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../../../common/comon_features/alert_handling/data/models/alert_handling_model.dart';
-import '../../../common/comon_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
+import '../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/madpoly.dart';
 import '../../../admin_features/dashboard/data/repo/dashboard_repo.dart';
 import '../../../admin_features/users/user_model.dart';
+import '../../../common/network/ischooler_network_helper.dart';
 import '../network/auth_network.dart';
 
 class AuthRepository {
@@ -17,8 +18,6 @@ class AuthRepository {
         _adminsRepository = adminsRepository,
         _authNetwork = authNetwork;
 
-  final FirebaseAuth instance = FirebaseAuth.instance;
-
   Future<UserModel> signUp(
       {required UserModel user, required String password}) async {
     UserModel newUser = UserModel.empty();
@@ -27,11 +26,16 @@ class AuthRepository {
         throw Exception('unable to sign up (role = ${user.role.name})');
       }
 
-      User? firebaseUser =
+      User? supabaseUser =
           await _authNetwork.signUp(email: user.email, password: password);
+      Madpoly.print(
+        'supabaseUser = $supabaseUser',
+        tag: 'auth_repo > signUp',
+        developer: "Ziad",
+      );
       // add the new created user id to the user data
-      if (firebaseUser != null) {
-        newUser = user.copyWith(id: firebaseUser.uid);
+      if (supabaseUser != null) {
+        newUser = user.copyWith(id: supabaseUser.id);
         // add the ful new user to firestore
         _adminsRepository.addItem(model: newUser, addWithId: true);
       }
@@ -51,10 +55,15 @@ class AuthRepository {
     UserModel newUser = UserModel.empty();
 
     try {
-      var firebaseUser =
+      var supabaseUser =
           await _authNetwork.signIn(email: email, password: password);
-      if (firebaseUser != null) {
-        newUser = newUser.copyWith(id: firebaseUser.uid);
+      Madpoly.print(
+        'supabaseUser = $supabaseUser',
+        tag: 'auth_repo > signUp',
+        developer: "Ziad",
+      );
+      if (supabaseUser != null) {
+        newUser = newUser.copyWith(id: supabaseUser.id);
       }
     } catch (e) {
       _alertHandlingRepository.addError(
@@ -69,7 +78,7 @@ class AuthRepository {
 
   Future<bool> signOut() async {
     try {
-      await instance.signOut();
+      await SupabaseCredentials.authInstance.signOut();
       Madpoly.print(
         'signing out now',
         tag: 'auth_repo > signOut',
@@ -84,6 +93,6 @@ class AuthRepository {
         showToast: true,
       );
     }
-    return instance.currentUser == null;
+    return SupabaseCredentials.authInstance.currentUser == null;
   }
 }
