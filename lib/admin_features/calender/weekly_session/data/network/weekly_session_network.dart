@@ -4,6 +4,7 @@ import '../../../../../common/madpoly.dart';
 import '../../../../../common/network/educonnect_network_helper.dart';
 import '../../../../../common/network/educonnect_response.dart';
 import '../../../../../common/network/educonnect_tables.dart';
+import '../../../weekly_timetable_day/data/models/weekly_timetable_day_model.dart';
 import '../models/weekly_session_model.dart';
 
 class WeeklySessionsNetwork {
@@ -13,22 +14,27 @@ class WeeklySessionsNetwork {
       : _alertHandlingRepository = alertHandlingRepository;
 
   Future<IschoolerResponse> getAllItems(
-      {required String classId,
-      required String weekdayId,
+      {required WeeklyTimetableDayModel weeklyTimetableDayModel,
       DatabaseTable? table}) async {
     IschoolerResponse response = IschoolerResponse.empty();
     try {
-      if (classId == '' || weekdayId == '') {
+      if (weeklyTimetableDayModel == WeeklyTimetableDayModel.empty()) {
         throw Exception(
           'unable to get data',
+        );
+      }
+      if (weeklyTimetableDayModel == WeeklyTimetableDayModel.empty()) {
+        throw Exception(
+          'unable to add (model = $weeklyTimetableDayModel) data, '
+          'weeklyTimetableDay data is empty',
         );
       }
       /*  final CollectionReference<Map<String, dynamic>> reference =
           IschoolerNetworkHelper.fireStoreInstance.collection(tableQueryData.tableName); */
       Madpoly.print(
         'request will be sent is >>  get(), ',
-        tag: 'weeklysessions_network > getAllItems, '
-            'classId = $classId, weekdayId = $weekdayId',
+        tag: 'weeklySessions_network > getAllItems, '
+            'weeklyTimetableDayModel = $weeklyTimetableDayModel',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
@@ -41,8 +47,10 @@ class WeeklySessionsNetwork {
           .select(
               '*,instructor_assignment(subject(id,name),instructor(id,name))'
               ',weekly_timetable_day(*))')
-          .eq('weekly_timetable_day.weekly_timetable_id', classId)
-          .eq('weekly_timetable_day.weekday_id', weekdayId)
+          .eq('weekly_timetable_day.weekly_timetable_id',
+              weeklyTimetableDayModel.weeklyTimetableId)
+          .eq('weekly_timetable_day.weekday_id',
+              weeklyTimetableDayModel.weekdayId)
           .not('weekly_timetable_day', 'is', 'null')
           .order('id', ascending: true);
 
@@ -50,7 +58,7 @@ class WeeklySessionsNetwork {
         'query= ',
         inspectObject: weeklySessions,
         color: MadpolyColor.green,
-        tag: 'weeklysessions_network > getAllItems',
+        tag: 'weekly_sessions_network > getAllItems',
         developer: "Ziad",
       );
       response =
@@ -78,12 +86,18 @@ class WeeklySessionsNetwork {
           'unable to add (model = $model) data',
         );
       }
+      if (model.weeklyTimetableDay == WeeklyTimetableDayModel.empty()) {
+        throw Exception(
+          'unable to add (model = $model) data, '
+          'weeklyTimetableDay data is empty',
+        );
+      }
       Map<String, dynamic> data = model.toMap();
       Madpoly.print(
         'request will be sent is >> insert(), '
         'tableQueryData: $tableQueryData, '
         'data = $data',
-        tag: 'weeklysessions_network > add',
+        tag: 'weekly_sessions_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
@@ -95,7 +109,7 @@ class WeeklySessionsNetwork {
         color: MadpolyColor.green,
         'query =',
         inspectObject: query,
-        tag: 'weeklysessions_network > add',
+        tag: 'weekly_sessions_network > add',
         developer: "Ziad",
       );
       // await response.doc(model.id).set(model.toMap());
@@ -131,7 +145,7 @@ class WeeklySessionsNetwork {
         'table: ${tableQueryData.tableName}, '
         'data = ',
         inspectObject: data,
-        tag: 'weeklysessions_network > update',
+        tag: 'weekly_sessions_network > update',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
@@ -144,7 +158,7 @@ class WeeklySessionsNetwork {
         'query= ',
         color: MadpolyColor.green,
         inspectObject: query,
-        tag: 'weeklysessions_network > update',
+        tag: 'weekly_sessions_network > update',
         developer: "Ziad",
       );
       // await response.doc(model.id).set(model.toMap());
@@ -177,7 +191,7 @@ class WeeklySessionsNetwork {
         'request will be sent is >> delete(), '
         'tableQueryData: $tableQueryData, ',
         inspectObject: model,
-        tag: 'weeklysessions_network > deleteItem',
+        tag: 'weekly_sessions_network > deleteItem',
         isLog: true,
         // color: MadpolyColor.purple,
         developer: "Ziad",
@@ -190,7 +204,7 @@ class WeeklySessionsNetwork {
         'query= ',
         inspectObject: query,
         color: MadpolyColor.green,
-        tag: 'weeklysessions_network > delete',
+        tag: 'weekly_sessions_network > delete',
         developer: "Ziad",
       );
 

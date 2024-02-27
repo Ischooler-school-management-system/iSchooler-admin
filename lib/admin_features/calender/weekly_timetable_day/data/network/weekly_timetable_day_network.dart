@@ -2,6 +2,7 @@ import '../../../../../common/common_features/alert_handling/data/models/alert_h
 import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../../common/network/educonnect_network_helper.dart';
+import '../../../../../common/network/educonnect_response.dart';
 import '../../../../../common/network/educonnect_tables.dart';
 import '../models/weekly_timetable_day_model.dart';
 
@@ -11,51 +12,89 @@ class WeeklyTimetableDayNetwork {
   WeeklyTimetableDayNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
-  Future<bool> addItem({required WeeklyTimetableDayModel model}) async {
-    bool dataStored = false;
-    // String? docName = addWithId ? model.id : null;
+  Future<IschoolerResponse> getItem(
+      {required WeeklyTimetableDayModel model}) async {
+    IschoolerResponse response = IschoolerResponse.empty();
     try {
-      DatabaseTable tableQueryData =
-          IschoolerNetworkHelper.getTableQueryData(model);
-      if (tableQueryData == DatabaseTable.empty()) {
-        throw Exception(
-          'tableQueryData = $tableQueryData, '
-          'unable to add (model = $model) data',
-        );
-      }
+      Madpoly.print(
+        'request will be sent is >>  getItem(), '
+        'tableQueryData: weekly_timetable, '
+        'model: $model',
+        // inspectObject: tableQueryData,
+        tag: 'weeklyTimetableDay_network > getItem',
+        // color: MadpolyColor.purple,
+        isLog: true,
+        developer: "Ziad",
+      );
+
+      final Map<String, dynamic> query = await SupabaseCredentials.supabase
+          .from('weekly_timetable_day')
+          .select('*')
+          .eq('weekly_timetable_id', model.weeklyTimetableId)
+          .eq('weekday_id', model.weekdayId)
+          // .not('weekly_timetab_day', 'is', 'null')
+          .single();
+
+      Madpoly.print(
+        'query= ',
+        inspectObject: query,
+        color: MadpolyColor.green,
+        tag: 'weeklyTimetableDay_network > getAllItems',
+        developer: "Ziad",
+      );
+
+      response = IschoolerResponse(hasData: true, data: query);
+    } catch (e) {
+      _alertHandlingRepository.addError(
+        e.toString(),
+        AlertHandlingTypes.MajorUiError,
+        tag: 'weekly_timetable_day_network > getAllData',
+        // showToast: true,
+      );
+    }
+    return response;
+  }
+
+  Future<IschoolerResponse> addItem(
+      {required WeeklyTimetableDayModel model}) async {
+    IschoolerResponse response = IschoolerResponse.empty();
+    try {
       Map<String, dynamic> data = model.toMap();
       Madpoly.print(
         'request will be sent is >> insert(), '
-        'tableQueryData: $tableQueryData, '
+        'table: weekly_timetable_day, '
         'data = $data',
-        tag: 'weeklytimetableday_network > add',
+        tag: 'weekly_timetable_day_network > addItem ',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
       );
       final query = await SupabaseCredentials.supabase
-          .from(tableQueryData.tableName)
-          .insert(data);
+          .from('weekly_timetable_day')
+          .insert(data)
+          .select()
+          .single();
       Madpoly.print(
         color: MadpolyColor.green,
         'query =',
         inspectObject: query,
-        tag: 'weeklytimetableday_network > add',
+        tag: 'weekly_timetable_day_network > addItem ',
         developer: "Ziad",
       );
+      response = IschoolerResponse(hasData: true, data: query);
+
       // await response.doc(model.id).set(model.toMap());
-      dataStored = true;
     } catch (e) {
       _alertHandlingRepository.addError(
         // 'unable to add user',
         /* developerMessage: */ e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_network > addData > catch',
+        tag: 'weekly_timetable_day_network > addItem > catch',
         showToast: true,
       );
     }
 
-    return dataStored;
+    return response;
   }
 
   Future<bool> updateItem({required WeeklyTimetableDayModel model}) async {
@@ -76,7 +115,7 @@ class WeeklyTimetableDayNetwork {
         'table: ${tableQueryData.tableName}, '
         'data = ',
         inspectObject: data,
-        tag: 'weeklytimetableday_network > update',
+        tag: 'weekly_timetable_day_network > update',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
@@ -89,7 +128,7 @@ class WeeklyTimetableDayNetwork {
         'query= ',
         color: MadpolyColor.green,
         inspectObject: query,
-        tag: 'weeklytimetableday_network > update',
+        tag: 'weekly_timetable_day_network > update',
         developer: "Ziad",
       );
       // await response.doc(model.id).set(model.toMap());
@@ -99,7 +138,7 @@ class WeeklyTimetableDayNetwork {
         // 'unable to add user',
         /* developerMessage: */ e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_network > update > catch',
+        tag: 'weekly_timetable_day_network > update > catch',
         showToast: true,
       );
     }
@@ -122,7 +161,7 @@ class WeeklyTimetableDayNetwork {
         'request will be sent is >> delete(), '
         'tableQueryData: $tableQueryData, ',
         inspectObject: model,
-        tag: 'weeklytimetableday_network > deleteItem',
+        tag: 'weekly_timetable_day_network > deleteItem',
         isLog: true,
         // color: MadpolyColor.purple,
         developer: "Ziad",
@@ -135,7 +174,7 @@ class WeeklyTimetableDayNetwork {
         'query= ',
         inspectObject: query,
         color: MadpolyColor.green,
-        tag: 'weeklytimetableday_network > delete',
+        tag: 'weekly_timetable_day_network > delete',
         developer: "Ziad",
       );
 
@@ -145,7 +184,7 @@ class WeeklyTimetableDayNetwork {
         'unable to add user',
         developerMessage: e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'admin_network > delete > catch',
+        tag: 'weekly_timetable_day_network > delete > catch',
         showToast: true,
       );
     }

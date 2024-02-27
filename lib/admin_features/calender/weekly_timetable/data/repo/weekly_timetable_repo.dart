@@ -39,7 +39,7 @@ class WeeklyTimetableRepository {
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
-        'data retrieved sucessfully',
+        'data retrieved successfully',
         AlertHandlingTypes.Alert,
         tag: 'weeklytimetable_repo > getAllItems',
         // showToast: true,
@@ -80,7 +80,7 @@ class WeeklyTimetableRepository {
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
-        'data retrieved sucessfully',
+        'data retrieved successfully',
         AlertHandlingTypes.Alert,
         tag: 'weeklytimetable_repo > getAllItems',
         // showToast: true,

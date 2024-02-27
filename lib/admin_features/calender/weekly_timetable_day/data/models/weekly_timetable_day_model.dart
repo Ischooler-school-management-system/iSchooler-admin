@@ -4,8 +4,8 @@
 import '../../../../../common/educonnect_model.dart';
 
 class WeeklyTimetableDayModel extends IschoolerModel {
-  final int weeklyTimetableId;
-  final int weekdayId;
+  final String weeklyTimetableId;
+  final String weekdayId;
 
   const WeeklyTimetableDayModel({
     required super.id,
@@ -15,23 +15,26 @@ class WeeklyTimetableDayModel extends IschoolerModel {
   factory WeeklyTimetableDayModel.empty() {
     return const WeeklyTimetableDayModel(
       id: '-1',
-      weeklyTimetableId: -1,
-      weekdayId: -1,
+      weeklyTimetableId: '-1',
+      weekdayId: '-1',
     );
   }
 
   factory WeeklyTimetableDayModel.dummy() {
     return const WeeklyTimetableDayModel(
       id: '1',
-      weeklyTimetableId: 1,
-      weekdayId: 3,
+      weeklyTimetableId: '1',
+      weekdayId: '3',
     );
   }
   factory WeeklyTimetableDayModel.fromMap(Map<String, dynamic> map) {
     return WeeklyTimetableDayModel(
-      id: map['id'].toString(),
-      weeklyTimetableId: map['weekly_timetable_id'],
-      weekdayId: map['weekday_id'],
+      id: map['id'] != null ? map['id'].toString() : '-1',
+      weeklyTimetableId: map['weekly_timetable_id'] != null
+          ? map['weekly_timetable_id'].toString()
+          : '-1',
+      weekdayId:
+          map['weekday_id'] != null ? map['weekday_id'].toString() : '-1',
     );
   }
 
@@ -47,42 +50,12 @@ class WeeklyTimetableDayModel extends IschoolerModel {
   String toString() => 'WeeklyTimetableDayModel(id:$id,'
       'weeklyTimetableId: $weeklyTimetableId, '
       'weekdayId: $weekdayId)';
-}
-
-class WeeklyTimetableWeekdayListModel extends IschoolerListModel {
-  const WeeklyTimetableWeekdayListModel({required super.items});
-
-  factory WeeklyTimetableWeekdayListModel.empty() {
-    return const WeeklyTimetableWeekdayListModel(items: []);
-  }
-
-  factory WeeklyTimetableWeekdayListModel.dummy() {
-    return WeeklyTimetableWeekdayListModel(
-      items: [
-        WeeklyTimetableDayModel.dummy(),
-        WeeklyTimetableDayModel.dummy(),
-        WeeklyTimetableDayModel.dummy(),
-      ],
-    );
-  }
-
-  factory WeeklyTimetableWeekdayListModel.fromMap(Map map) {
-    List<Map<String, dynamic>> list =
-        (map['items'] != null && map['items'] is List<Map<String, dynamic>>)
-            ? map['items']
-            : [];
-    final List<WeeklyTimetableDayModel> items =
-        List<WeeklyTimetableDayModel>.from(
-      list.map(
-        (item) => WeeklyTimetableDayModel.fromMap(item),
-      ),
-    );
-    return WeeklyTimetableWeekdayListModel(items: items);
-  }
   @override
-  Map<String, dynamic> toMap() {
-    return {
-      'items': items.map((item) => item.toMap()).toList(),
-    };
-  }
+  List<Object?> get props => [
+        id,
+        name,
+        weeklyTimetableId,
+        weekdayId,
+        // createdAt,
+      ];
 }

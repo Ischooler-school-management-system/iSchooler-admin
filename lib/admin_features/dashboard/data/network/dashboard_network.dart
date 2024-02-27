@@ -88,7 +88,8 @@ class DashboardNetwork implements IschoolerNetwork {
       );
       final query = await SupabaseCredentials.supabase
           .from(tableQueryData.tableName)
-          .insert(data);
+          .insert(data)
+          .select();
       Madpoly.print(
         color: MadpolyColor.green,
         'query =',

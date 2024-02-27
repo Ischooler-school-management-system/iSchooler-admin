@@ -1,5 +1,7 @@
 import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
+import '../../../../../common/madpoly.dart';
+import '../../../../../common/network/educonnect_response.dart';
 import '../models/weekly_timetable_day_model.dart';
 import '../network/weekly_timetable_day_network.dart';
 
@@ -12,21 +14,27 @@ class WeeklyTimetableDaysRepository {
       : _alertHandlingRepository = alertHandlingRepository,
         _adminNetwork = adminNetwork;
 
-  Future<bool> addItem(
-      {required WeeklyTimetableDayModel model, bool addWithId = false}) async {
-    bool requestSuccess = false;
+  Future<WeeklyTimetableDayModel> addItem(
+      {required WeeklyTimetableDayModel model}) async {
+    WeeklyTimetableDayModel weeklyTimetableData =
+        WeeklyTimetableDayModel.empty();
+
     try {
-      bool requestSuccess = await _adminNetwork.addItem(model: model);
-      if (requestSuccess) {
-        _alertHandlingRepository.addError(
-          'Data Added Successfully',
-          AlertHandlingTypes.Alert,
-          tag: 'weekly_timetable_days_repo > addItem',
-          showToast: true,
-        );
-      } else {
-        throw Exception('unable to add user');
-      }
+      IschoolerResponse response = await _adminNetwork.addItem(model: model);
+      weeklyTimetableData = WeeklyTimetableDayModel.fromMap(response.data);
+      Madpoly.print(
+        'response = ',
+        color: MadpolyColor.green,
+        inspectObject: weeklyTimetableData,
+        tag: 'WeeklyTimetableDay_repo > getAllItems',
+        developer: "Ziad",
+      );
+      _alertHandlingRepository.addError(
+        'data retrieved successfully',
+        AlertHandlingTypes.Alert,
+        tag: 'WeeklyTimetableDay_repo > getAllItems',
+        // showToast: true,
+      );
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
@@ -35,7 +43,48 @@ class WeeklyTimetableDaysRepository {
         showToast: true,
       );
     }
-    return requestSuccess;
+    return weeklyTimetableData;
+  }
+
+  Future<WeeklyTimetableDayModel> getItem(
+      {required WeeklyTimetableDayModel model}) async {
+    WeeklyTimetableDayModel weeklyTimetableData =
+        WeeklyTimetableDayModel.empty();
+    Madpoly.print(
+      ' model ',
+      inspectObject: model,
+      tag: 'repo > getAllItems ',
+      developer: "Ziad",
+      // showToast: true,
+    );
+    try {
+      IschoolerResponse response = await _adminNetwork.getItem(model: model);
+      // if (response.hasData) {
+
+      weeklyTimetableData = WeeklyTimetableDayModel.fromMap(response.data);
+      Madpoly.print(
+        'response = ',
+        color: MadpolyColor.green,
+        inspectObject: weeklyTimetableData,
+        tag: 'WeeklyTimetableDay_repo > getAllItems',
+        developer: "Ziad",
+      );
+      _alertHandlingRepository.addError(
+        'data retrieved successfully',
+        AlertHandlingTypes.Alert,
+        tag: 'WeeklyTimetableDay_repo > getAllItems',
+        // showToast: true,
+      );
+      // }
+    } catch (e) {
+      _alertHandlingRepository.addError(
+        e.toString(),
+        AlertHandlingTypes.ServerError,
+        tag: 'WeeklyTimetableDay_repo > getAllItems',
+        showToast: true,
+      );
+    }
+    return weeklyTimetableData;
   }
 
   Future<bool> updateItem({required WeeklyTimetableDayModel model}) async {

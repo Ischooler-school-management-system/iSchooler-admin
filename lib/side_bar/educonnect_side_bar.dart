@@ -4,6 +4,7 @@ import 'package:sidebarx/sidebarx.dart';
 import '../../../common/style/educonnect_colors.dart';
 import '../admin_features/cubits.dart';
 import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
+import '../admin_features/homework/logic/cubit/homeworks_list_cubit.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
 import '../common/common_features/widgets/educonnect_screen.dart';
 import '../common/madpoly.dart';
@@ -47,7 +48,7 @@ class _IschoolerSideBarState extends State<IschoolerSideBar> {
       // const TimeTableScreen(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
-      const DashboardScreen<StudentsListCubit>(),
+      const DashboardScreen<HomeworksListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
       const DashboardScreen<StudentsListCubit>(),
 

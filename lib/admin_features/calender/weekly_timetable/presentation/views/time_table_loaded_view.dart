@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ischooler_admin/admin_features/calender/weekly_timetable_day/data/models/weekly_timetable_day_model.dart';
 import 'package:ischooler_admin/admin_features/models.dart';
 
 import '../../../../../common/madpoly.dart';
@@ -70,7 +71,23 @@ class _TimeTableLoadedViewState extends State<TimeTableLoadedView> {
                 Expanded(
                   child: DayTableWidget(
                     weeklySessionsListModel: weeklySessionsListModel,
-                    onAddSessionPressed: onAddSessionPressed,
+                    onAddSessionPressed: () {
+                      currentContext!.read<WeeklySessionsCubit>().addItem(
+                            weeklySessionModel: WeeklySessionModel(
+                              id: '-1',
+                              name: 'name',
+                              sessionNumber:
+                                  weeklySessionsListModel.items.length + 1,
+                              instructorAssignment:
+                                  InstructorAssignmentModel.dummy(),
+                              weeklyTimetableDay: WeeklyTimetableDayModel(
+                                id: '-1',
+                                weeklyTimetableId: widget.timeTable.id,
+                                weekdayId: selectedWeekday.id,
+                              ),
+                            ),
+                          );
+                    },
                   ),
                 ),
               }
@@ -79,21 +96,6 @@ class _TimeTableLoadedViewState extends State<TimeTableLoadedView> {
         );
       },
     );
-  }
-
-  onAddSessionPressed() {
-    currentContext!.read<WeeklySessionsCubit>().addItem(
-          model: WeeklySessionModel(
-            id: '-1',
-            name: 'name',
-            sessionNumber: 1,
-            weeklyTimetableDayId: -1,
-            instructorAssignmentId: 1,
-            instructorAssignment: InstructorAssignmentModel.dummy(),
-          ),
-          classId: widget.timeTable.id,
-          weekdayId: selectedWeekday.id,
-        );
   }
 
   onWeekdaySelected(weekday) async {
@@ -105,8 +107,11 @@ class _TimeTableLoadedViewState extends State<TimeTableLoadedView> {
     if (weekday is WeekdayModel) {
       selectedWeekday = weekday;
       context.read<WeeklySessionsCubit>().getAllItems(
-            classId: widget.timeTable.id,
-            weekdayId: selectedWeekday.id,
+            weeklyTimetableDayModel: WeeklyTimetableDayModel(
+              id: '-1',
+              weeklyTimetableId: widget.timeTable.id,
+              weekdayId: selectedWeekday.id,
+            ),
           );
       setState(() {});
     }

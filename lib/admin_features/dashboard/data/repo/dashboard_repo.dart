@@ -40,7 +40,7 @@ class DashboardRepository implements IschoolerRepository {
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
-        'data retrieved sucessfully',
+        'data retrieved successfully',
         AlertHandlingTypes.Alert,
         tag: 'dashboard_repo > getAllItems',
         // showToast: true,

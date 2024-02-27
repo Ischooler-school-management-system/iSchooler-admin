@@ -2,22 +2,22 @@ import '../../../../../common/common_features/alert_handling/data/models/alert_h
 import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../../common/network/educonnect_response.dart';
+import '../../../weekly_timetable_day/data/models/weekly_timetable_day_model.dart';
 import '../models/weekly_session_model.dart';
 import '../models/weekly_sessions_list_model.dart';
 import '../network/weekly_session_network.dart';
 
 class WeeklySessionsRepository {
   final AlertHandlingRepository _alertHandlingRepository;
-  final WeeklySessionsNetwork _adminNetwork;
+  final WeeklySessionsNetwork _weeklySessionsNetwork;
 
   WeeklySessionsRepository(AlertHandlingRepository alertHandlingRepository,
-      WeeklySessionsNetwork adminNetwork)
+      WeeklySessionsNetwork weeklySessionsNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
-        _adminNetwork = adminNetwork;
+        _weeklySessionsNetwork = weeklySessionsNetwork;
 
   Future<WeeklySessionsListModel> getAllItems({
-    required String classId,
-    required String weekdayId,
+    required WeeklyTimetableDayModel weeklyTimetableDayModel,
   }) async {
     WeeklySessionsListModel listModel = WeeklySessionsListModel.empty();
     // Madpoly.print(
@@ -28,8 +28,9 @@ class WeeklySessionsRepository {
     //   // showToast: true,
     // );
     try {
-      IschoolerResponse response = await _adminNetwork.getAllItems(
-          classId: classId, weekdayId: weekdayId);
+      IschoolerResponse response = await _weeklySessionsNetwork.getAllItems(
+        weeklyTimetableDayModel: weeklyTimetableDayModel,
+      );
       // if (response.hasData) {
 
       listModel = WeeklySessionsListModel.fromMap(response.data);
@@ -37,13 +38,13 @@ class WeeklySessionsRepository {
         'response = ',
         color: MadpolyColor.green,
         inspectObject: listModel,
-        tag: 'weeklysessions_repo > getAllItems',
+        tag: 'weekly_sessions_repo > getAllItems',
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
-        'data retrieved sucessfully',
+        'data retrieved successfully',
         AlertHandlingTypes.Alert,
-        tag: 'weeklysessions_repo > getAllItems',
+        tag: 'weekly_sessions_repo > getAllItems',
         // showToast: true,
       );
       // }
@@ -51,7 +52,7 @@ class WeeklySessionsRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklysessions_repo > getAllItems',
+        tag: 'weekly_sessions_repo > getAllItems',
         showToast: true,
       );
     }
@@ -62,12 +63,12 @@ class WeeklySessionsRepository {
       {required WeeklySessionModel model, bool addWithId = false}) async {
     bool requestSuccess = false;
     try {
-      bool requestSuccess = await _adminNetwork.addItem(model: model);
+      bool requestSuccess = await _weeklySessionsNetwork.addItem(model: model);
       if (requestSuccess) {
         _alertHandlingRepository.addError(
           'Data Added Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'weeklysessions_repo > addItem',
+          tag: 'weekly_sessions_repo > addItem',
           showToast: true,
         );
       } else {
@@ -77,7 +78,7 @@ class WeeklySessionsRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklysessions_repo > addItem',
+        tag: 'weekly_sessions_repo > addItem',
         showToast: true,
       );
     }
@@ -87,12 +88,13 @@ class WeeklySessionsRepository {
   Future<bool> updateItem({required WeeklySessionModel model}) async {
     bool requestSuccess = false;
     try {
-      bool successfulRequest = await _adminNetwork.updateItem(model: model);
+      bool successfulRequest =
+          await _weeklySessionsNetwork.updateItem(model: model);
       if (successfulRequest) {
         _alertHandlingRepository.addError(
           'Data Updated Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'weeklysessions_repo > updateItem',
+          tag: 'weekly_sessions_repo > updateItem',
           // showToast: true,
         );
         requestSuccess = true;
@@ -103,7 +105,7 @@ class WeeklySessionsRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklysessions_repo > updateItem',
+        tag: 'weekly_sessions_repo > updateItem',
         showToast: true,
       );
     }
@@ -113,12 +115,13 @@ class WeeklySessionsRepository {
   Future<bool> deleteItem({required WeeklySessionModel model}) async {
     bool requestSuccess = false;
     try {
-      bool requestSuccess = await _adminNetwork.deleteItem(model: model);
+      bool requestSuccess =
+          await _weeklySessionsNetwork.deleteItem(model: model);
       if (requestSuccess) {
         _alertHandlingRepository.addError(
           'Data Deleted Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'weeklysessions_repo > delete',
+          tag: 'weekly_sessions_repo > delete',
           showToast: true,
         );
       } else {
@@ -128,7 +131,7 @@ class WeeklySessionsRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'weeklysessions_repo > delete',
+        tag: 'weekly_sessions_repo > delete',
         showToast: true,
       );
     }

@@ -46,7 +46,9 @@ abstract class Madpoly {
 
     String formattedMessage = _formatLogMessage(message, color);
     log(formattedMessage);
-    inspect(inspectObject);
+    if (inspectObject != null) {
+      inspect(inspectObject);
+    }
   }
 
   static String _formatLogMessage(String message, MadpolyColor? color) {

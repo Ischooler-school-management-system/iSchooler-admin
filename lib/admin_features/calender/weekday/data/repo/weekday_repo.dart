@@ -39,7 +39,7 @@ class WeekdaysRepository {
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
-        'data retrieved sucessfully',
+        'data retrieved successfully',
         AlertHandlingTypes.Alert,
         tag: 'weekdays_repo > getAllItems',
         // showToast: true,

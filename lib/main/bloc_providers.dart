@@ -6,6 +6,7 @@ import '../admin_features/calender/weekly_session/logic/cubit/weekly_sessions_cu
 import '../admin_features/calender/weekly_timetable/logic/cubit/weekly_timetable_cubit.dart';
 import '../admin_features/calender/weekly_timetable_day/logic/cubit/weekly_timetable_day_cubit.dart';
 import '../admin_features/cubits.dart';
+import '../admin_features/homework/logic/cubit/homeworks_list_cubit.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/common_features/alert_handling/logic/cubit/error_handling_cubit.dart';
@@ -33,8 +34,10 @@ MultiBlocProvider listOfBlocProviders({required Widget child}) {
       BlocProvider(create: (_) => SubjectsListCubit(getIt(), getIt())),
       BlocProvider(create: (_) => WeeklyTimetableCubit(getIt(), getIt())),
       BlocProvider(create: (_) => WeekdaysCubit(getIt(), getIt())),
-      BlocProvider(create: (_) => WeeklySessionsCubit(getIt(), getIt())),
+      BlocProvider(
+          create: (_) => WeeklySessionsCubit(getIt(), getIt(), getIt())),
       BlocProvider(create: (_) => WeeklyTimetableDaysCubit(getIt(), getIt())),
+      BlocProvider(create: (_) => HomeworksListCubit(getIt(), getIt())),
     ],
     child: child,
   );
