@@ -14,7 +14,8 @@ import '/common/common_features/widgets/educonnect_small_view.dart';
 import '/common/educonnect_model.dart';
 import '/common/madpoly.dart';
 
-class DashboardDetailsScreen<C extends IschoolerCubit> extends StatefulWidget {
+class DashboardDetailsScreen<C extends IschoolerListCubit>
+    extends StatefulWidget {
   final IschoolerModel? currentData;
   const DashboardDetailsScreen({super.key, this.currentData});
 
@@ -23,7 +24,7 @@ class DashboardDetailsScreen<C extends IschoolerCubit> extends StatefulWidget {
       _DashboardDetailsScreenState<C>();
 }
 
-class _DashboardDetailsScreenState<C extends IschoolerCubit>
+class _DashboardDetailsScreenState<C extends IschoolerListCubit>
     extends State<DashboardDetailsScreen<C>> {
 // final _formKey = GlobalKey<FormState>();
 

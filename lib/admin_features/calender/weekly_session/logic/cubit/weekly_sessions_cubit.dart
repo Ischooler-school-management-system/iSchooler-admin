@@ -5,7 +5,7 @@ import '../../../../../common/common_features/loading/data/models/loading_model.
 import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';
+import '../../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
 import '../../../weekly_timetable_day/data/repo/weekly_timetable_day_repo.dart';
 import '../../data/models/weekly_session_model.dart';
 import '../../data/models/weekly_sessions_list_model.dart';

@@ -1,25 +1,25 @@
-part of 'educonnect_cubit.dart';
+import 'package:equatable/equatable.dart';
 
-enum IschoolerStatus { init, updated, loaded, failed }
-// @immutable
+import '../../../../common/educonnect_model.dart';
+import 'educonnect_list_cubit.dart';
 
 class IschoolerState extends Equatable {
-  final IschoolerListModel educonnectAllModel;
+  final IschoolerModel ischoolerModel;
   final IschoolerStatus status;
 
   const IschoolerState({
-    required this.educonnectAllModel,
+    required this.ischoolerModel,
     required this.status,
   });
 
   factory IschoolerState.init() {
     return IschoolerState(
-      educonnectAllModel: IschoolerListModel.empty(),
+      ischoolerModel: IschoolerModel.empty(),
       status: IschoolerStatus.init,
     );
   }
 
-  IschoolerState updateData(IschoolerListModel newData) {
+  IschoolerState updateData(IschoolerModel newData) {
     return _copyWith(
       educonnectAllModel: newData,
       status: IschoolerStatus.loaded,
@@ -33,11 +33,11 @@ class IschoolerState extends Equatable {
   }
 
   IschoolerState _copyWith({
-    IschoolerListModel? educonnectAllModel,
+    IschoolerModel? educonnectAllModel,
     IschoolerStatus? status,
   }) {
     return IschoolerState(
-      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
+      ischoolerModel: educonnectAllModel ?? ischoolerModel,
       status: status ?? this.status,
     );
   }
@@ -45,5 +45,5 @@ class IschoolerState extends Equatable {
   bool isLoaded() => status == IschoolerStatus.loaded;
 
   @override
-  List<Object> get props => [educonnectAllModel];
+  List<Object> get props => [ischoolerModel];
 }

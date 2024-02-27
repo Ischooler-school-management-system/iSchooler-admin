@@ -2,7 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/common_features/loading/data/models/loading_model.dart';
 import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
-import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';
+import '../../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
 import '../../data/models/weekly_timetable_day_model.dart';
 import '../../data/repo/weekly_timetable_day_repo.dart';
 

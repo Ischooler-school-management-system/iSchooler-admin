@@ -2,7 +2,7 @@ part of 'weekly_sessions_cubit.dart';
 
 // @immutable
 
-class WeeklySessionsState extends IschoolerState {
+class WeeklySessionsState extends IschoolerListState {
   const WeeklySessionsState({
     required super.educonnectAllModel,
     required super.status,

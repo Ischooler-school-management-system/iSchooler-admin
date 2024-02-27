@@ -3,12 +3,12 @@ import '../../../../../common/common_features/loading/data/repo/loading_repo.dar
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../dashboard/data/repo/dashboard_repo.dart';
-import '../../../dashboard/logic/cubit/educonnect_cubit.dart';
+import '../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
 import '../../data/models/homeworks_list_model.dart';
 
 part 'homeworks_list_state.dart';
 
-class HomeworksListCubit extends IschoolerCubit<HomeworksListState> {
+class HomeworksListCubit extends IschoolerListCubit<HomeworksListState> {
   final DashboardRepository _homeworkRepository;
   final LoadingRepository _loadingRepository;
 

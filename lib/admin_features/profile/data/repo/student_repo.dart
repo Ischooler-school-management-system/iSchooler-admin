@@ -3,46 +3,44 @@ import '../../../../common/common_features/alert_handling/data/repo/alert_handli
 import '../../../../common/educonnect_model.dart';
 import '../../../../common/madpoly.dart';
 import '../../../../common/network/educonnect_response.dart';
-import '../network/dashboard_network.dart';
-import 'educonnect_list_repository_interface.dart';
+import '../../../dashboard/data/repo/ischooler_repository_interface.dart';
+import '../../../users/students/data/models/student_model.dart';
+import '../network/student_network.dart';
 
-class DashboardRepository implements IschoolerListRepository {
+class StudentRepository implements IschoolerRepository {
   final AlertHandlingRepository _alertHandlingRepository;
-  final DashboardNetwork _adminNetwork;
+  final StudentNetwork _adminNetwork;
 
-  DashboardRepository(AlertHandlingRepository alertHandlingRepository,
-      DashboardNetwork adminNetwork)
+  StudentRepository(AlertHandlingRepository alertHandlingRepository,
+      StudentNetwork adminNetwork)
       : _alertHandlingRepository = alertHandlingRepository,
         _adminNetwork = adminNetwork;
 
   @override
-  Future<IschoolerListModel> getAllItems(
-      {required IschoolerListModel model}) async {
-    IschoolerListModel listModel = IschoolerListModel.empty();
+  Future<IschoolerModel> getItem({required String id}) async {
+    IschoolerModel listModel = IschoolerModel.empty();
     Madpoly.print(
-      ' model >> ${model.runtimeType}',
-      inspectObject: model,
+      ' id >> $id',
       tag: 'repo > getAllItems ',
       developer: "Ziad",
       // showToast: true,
     );
     try {
-      IschoolerResponse response =
-          await _adminNetwork.getAllItems(model: model);
+      IschoolerResponse response = await _adminNetwork.getItem(id: id);
       // if (response.hasData) {
 
-      listModel = model.fromMapToChild(response.data);
+      listModel = StudentModel.fromMap(response.data);
       Madpoly.print(
         'response = ',
         color: MadpolyColor.green,
         inspectObject: listModel,
-        tag: 'dashboard_repo > getAllItems',
+        tag: 'student_repo > getAllItems',
         developer: "Ziad",
       );
       _alertHandlingRepository.addError(
         'data retrieved successfully',
         AlertHandlingTypes.Alert,
-        tag: 'dashboard_repo > getAllItems',
+        tag: 'student_repo > getAllItems',
         // showToast: true,
       );
       // }
@@ -50,7 +48,7 @@ class DashboardRepository implements IschoolerListRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > getAllItems',
+        tag: 'student_repo > getAllItems',
         showToast: true,
       );
     }
@@ -67,7 +65,7 @@ class DashboardRepository implements IschoolerListRepository {
         _alertHandlingRepository.addError(
           'Data Added Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'dashboard_repo > addItem',
+          tag: 'student_repo > addItem',
           showToast: true,
         );
       } else {
@@ -77,7 +75,7 @@ class DashboardRepository implements IschoolerListRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > addItem',
+        tag: 'student_repo > addItem',
         showToast: true,
       );
     }
@@ -93,7 +91,7 @@ class DashboardRepository implements IschoolerListRepository {
         _alertHandlingRepository.addError(
           'Data Updated Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'dashboard_repo > updateItem',
+          tag: 'student_repo > updateItem',
           // showToast: true,
         );
         requestSuccess = true;
@@ -104,7 +102,7 @@ class DashboardRepository implements IschoolerListRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > updateItem',
+        tag: 'student_repo > updateItem',
         showToast: true,
       );
     }
@@ -120,7 +118,7 @@ class DashboardRepository implements IschoolerListRepository {
         _alertHandlingRepository.addError(
           'Data Deleted Successfully',
           AlertHandlingTypes.Alert,
-          tag: 'dashboard_repo > delete',
+          tag: 'student_repo > delete',
           showToast: true,
         );
       } else {
@@ -130,7 +128,7 @@ class DashboardRepository implements IschoolerListRepository {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.ServerError,
-        tag: 'dashboard_repo > delete',
+        tag: 'student_repo > delete',
         showToast: true,
       );
     }

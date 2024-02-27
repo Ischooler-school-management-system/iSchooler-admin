@@ -2,36 +2,37 @@ import '../../../../../common/common_features/loading/data/models/loading_model.
 import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../dashboard/data/repo/dashboard_repo.dart';
-import '../../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
-import '../../data/models/admin_roles_list_model.dart';
+import '../../../dashboard/logic/cubit/educonnect_cubit.dart';
+import '../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
+import '../../../dashboard/logic/cubit/ischooler_state.dart';
+import '../../../users/students/data/models/student_model.dart';
+import '../../data/repo/student_repo.dart';
 
-part 'admin_roles_list_state.dart';
+part 'student_state.dart';
 
-class AdminRolesListCubit extends IschoolerListCubit<AdminRolesListState> {
-  final DashboardRepository _dashboardRepository;
+class StudentCubit extends IschoolerCubit<StudentState> {
+  final StudentRepository _studentRepository;
   final LoadingRepository _loadingRepository;
 
-  AdminRolesListCubit(
-    DashboardRepository dashboardRepository,
+  StudentCubit(
+    StudentRepository studentRepository,
     LoadingRepository loadingRepository,
-  )   : _dashboardRepository = dashboardRepository,
+  )   : _studentRepository = studentRepository,
         _loadingRepository = loadingRepository,
-        super(AdminRolesListState.init());
+        super(StudentState.init());
 
   @override
-  Future<void> getAllItems() async {
+  Future<void> getItem({required String id}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-    IschoolerListModel response =
+    IschoolerModel response =
         //model is sent here to get the type of request only
-        await _dashboardRepository.getAllItems(
-            model: AdminRolesListModel.empty());
-    if (response is AdminRolesListModel) {
+        await _studentRepository.getItem(id: id);
+    if (response is StudentModel) {
       emit(state.updateData(response));
     } else {
       Madpoly.print(
         'incorrect model >> ${response.runtimeType}',
-        tag: 'admin_roles_list_cubit > ',
+        tag: 'students_list_cubit > ',
         showToast: true,
         developer: "Ziad",
       );
@@ -42,31 +43,27 @@ class AdminRolesListCubit extends IschoolerListCubit<AdminRolesListState> {
   @override
   Future<void> addItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-
-    await _dashboardRepository.addItem(model: model);
+    await _studentRepository.addItem(model: model);
     emit(state.updateStatus());
-    await getAllItems();
+    // await getAllItems();
     // _loadingRepository.stopLoading();
   }
 
   @override
   Future<void> updateItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-
-    bool successfulRequest =
-        await _dashboardRepository.updateItem(model: model);
+    bool successfulRequest = await _studentRepository.updateItem(model: model);
     if (successfulRequest) {
       emit(state.updateStatus());
-      await getAllItems();
+      // await getAllItems();
     } // _loadingRepository.stopLoading();
   }
 
   @override
   Future<void> deleteItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
-
-    await _dashboardRepository.deleteItem(model: model);
+    await _studentRepository.deleteItem(model: model);
     emit(state.updateStatus());
-    await getAllItems();
+    // await getAllItems();
   }
 }

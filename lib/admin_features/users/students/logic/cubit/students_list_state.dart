@@ -2,7 +2,7 @@ part of 'students_list_cubit.dart';
 
 // @immutable
 
-class StudentsListState extends IschoolerState {
+class StudentsListState extends IschoolerListState {
   const StudentsListState({
     required super.educonnectAllModel,
     required super.status,

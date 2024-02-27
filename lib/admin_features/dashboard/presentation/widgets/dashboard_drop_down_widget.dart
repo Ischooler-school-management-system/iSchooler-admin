@@ -5,9 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../common/common_features/widgets/educonnect_drop_down_widget.dart';
 import '../../../../common/educonnect_model.dart';
-import '../../logic/cubit/educonnect_cubit.dart';
+import '../../logic/cubit/educonnect_list_cubit.dart';
 
-class DashboardDropDownWidget<C extends IschoolerCubit> extends StatefulWidget {
+class DashboardDropDownWidget<C extends IschoolerListCubit>
+    extends StatefulWidget {
   final Function(IschoolerModel) onChanged;
   final String? hint;
   final String? labelText;
@@ -23,7 +24,7 @@ class DashboardDropDownWidget<C extends IschoolerCubit> extends StatefulWidget {
       _DashboardDropDownWidgetState<C>();
 }
 
-class _DashboardDropDownWidgetState<C extends IschoolerCubit>
+class _DashboardDropDownWidgetState<C extends IschoolerListCubit>
     extends State<DashboardDropDownWidget<C>> {
   IschoolerModel selectedData = IschoolerModel.empty();
   @override
@@ -34,7 +35,7 @@ class _DashboardDropDownWidgetState<C extends IschoolerCubit>
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<C, IschoolerState>(
+    return BlocBuilder<C, IschoolerListState>(
       builder: (context, state) {
         IschoolerListModel educonnectAllModel = IschoolerListModel.empty();
         if (state.isLoaded()) {

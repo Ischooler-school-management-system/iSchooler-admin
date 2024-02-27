@@ -12,14 +12,14 @@ import '../views/dashboard_mobile_view.dart';
 import '../views/dashboard_web_view.dart';
 import 'dashboard_details_screen.dart';
 
-class DashboardScreen<C extends IschoolerCubit> extends StatefulWidget {
+class DashboardScreen<C extends IschoolerListCubit> extends StatefulWidget {
   const DashboardScreen({super.key});
 
   @override
   State<DashboardScreen<C>> createState() => _DashboardScreenState<C>();
 }
 
-class _DashboardScreenState<C extends IschoolerCubit>
+class _DashboardScreenState<C extends IschoolerListCubit>
     extends State<DashboardScreen<C>> {
   @override
   void initState() {
@@ -92,7 +92,7 @@ class _DashboardScreenState<C extends IschoolerCubit>
     return IschoolerScreen(
       onRefresh: () async => getDataRequest(),
       padding: const EdgeInsets.all(8),
-      body: BlocBuilder<C, IschoolerState>(
+      body: BlocBuilder<C, IschoolerListState>(
         builder: (context, state) {
           IschoolerListModel educonnectAllModel = IschoolerListModel.empty();
           if (state.isLoaded()) {

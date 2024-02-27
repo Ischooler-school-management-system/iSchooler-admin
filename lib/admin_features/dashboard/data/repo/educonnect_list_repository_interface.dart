@@ -1,10 +1,10 @@
 import '../../../../common/educonnect_model.dart';
-import '../../../../common/network/educonnect_response.dart';
 
-abstract class IschoolerNetwork {
+abstract class IschoolerListRepository {
   //model is sent here to get the type of request only
-  Future<IschoolerResponse> getItem({required String id});
-  Future<bool> addItem({required IschoolerModel model});
+  Future<IschoolerListModel> getAllItems({required IschoolerListModel model});
+  Future<bool> addItem(
+      {required IschoolerModel model, required bool addWithId});
   Future<bool> updateItem({required IschoolerModel model});
   Future<bool> deleteItem({required IschoolerModel model});
 }

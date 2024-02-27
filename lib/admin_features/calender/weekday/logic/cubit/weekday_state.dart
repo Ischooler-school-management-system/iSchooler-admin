@@ -2,7 +2,7 @@ part of 'weekday_cubit.dart';
 
 // @immutable
 
-class WeekdaysState extends IschoolerState {
+class WeekdaysState extends IschoolerListState {
   const WeekdaysState({
     required super.educonnectAllModel,
     required super.status,

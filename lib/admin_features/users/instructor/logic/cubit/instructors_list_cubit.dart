@@ -2,13 +2,13 @@ import '../../../../../common/common_features/loading/data/models/loading_model.
 import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
 import '../../../../../common/educonnect_model.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../dashboard/logic/cubit/educonnect_cubit.dart';
+import '../../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
 import '../../data/models/instructors_list_model.dart';
 import '../../../../dashboard/data/repo/dashboard_repo.dart';
 
 part 'instructors_list_state.dart';
 
-class InstructorsListCubit extends IschoolerCubit<InstructorsListState> {
+class InstructorsListCubit extends IschoolerListCubit<InstructorsListState> {
   final DashboardRepository _instructorRepository;
   final LoadingRepository _loadingRepository;
 

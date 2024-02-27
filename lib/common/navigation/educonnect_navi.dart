@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../auth/presentation/auth/screens/auth_screen.dart';
+import '../../auth/presentation/auth/screens/select_role_screen.dart';
 import '../../auth/presentation/signin/screens/sign_in_screen.dart';
 import '../../auth/presentation/signup/screens/sign_up_password_screen.dart';
 import '../../auth/presentation/signup/screens/sign_up_screen.dart';
@@ -121,9 +122,9 @@ abstract class IschoolerNavigator {
 
   static Route<dynamic> onCreateRoute(RouteSettings settings) {
     switch (settings.name) {
-      // case Routes.selectRoleScreen:
-      //   return slideNavigation(
-      //       screen: const SelectRoleScreen(), arguments: settings.arguments);
+      case Routes.selectRoleScreen:
+        return slideNavigation(
+            screen: const SelectRoleScreen(), arguments: settings.arguments);
       case Routes.authScreen:
         return slideNavigation(
             screen: const AuthScreen(), arguments: settings.arguments);

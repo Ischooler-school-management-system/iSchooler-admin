@@ -2,7 +2,7 @@ part of 'admin_roles_list_cubit.dart';
 
 // @immutable
 
-class AdminRolesListState extends IschoolerState {
+class AdminRolesListState extends IschoolerListState {
   const AdminRolesListState({
     required super.educonnectAllModel,
     required super.status,
