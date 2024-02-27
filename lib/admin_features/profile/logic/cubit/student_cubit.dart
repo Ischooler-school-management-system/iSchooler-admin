@@ -1,9 +1,9 @@
 import '../../../../../common/common_features/loading/data/models/loading_model.dart';
 import '../../../../../common/common_features/loading/data/repo/loading_repo.dart';
-import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/ischooler_model.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../dashboard/logic/cubit/educonnect_cubit.dart';
-import '../../../dashboard/logic/cubit/educonnect_list_cubit.dart';
+import '../../../dashboard/logic/cubit/ischooler_cubit.dart';
+import '../../../dashboard/logic/cubit/ischooler_list_cubit.dart';
 import '../../../dashboard/logic/cubit/ischooler_state.dart';
 import '../../../users/students/data/models/student_model.dart';
 import '../../data/repo/student_repo.dart';

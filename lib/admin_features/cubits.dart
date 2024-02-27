@@ -1,5 +1,5 @@
-// /home/zh/Documents/GitHub/ischooler_admin/lib/admin_features/dashboard/logic/cubit/educonnect_cubit.dart
-export 'dashboard/logic/cubit/educonnect_list_cubit.dart';
+// /home/zh/Documents/GitHub/ischooler_admin/lib/admin_features/dashboard/logic/cubit/ischooler_cubit.dart
+export 'dashboard/logic/cubit/ischooler_list_cubit.dart';
 export '../admin_features/users/admin_roles/logic/cubit/admin_roles_list_cubit.dart';
 export '../admin_features/users/admins/logic/cubit/admins_list_cubit.dart';
 export '../admin_features/users/instructor/logic/cubit/instructors_list_cubit.dart';

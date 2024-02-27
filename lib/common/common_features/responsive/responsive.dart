@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../navigation/educonnect_navi.dart';
+import '../../navigation/ischooler_navi.dart';
 
 class Responsive extends StatelessWidget {
   final Widget mobile;

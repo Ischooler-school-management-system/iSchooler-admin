@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_validation.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_validation.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
 import '../../data/models/grade_model.dart';

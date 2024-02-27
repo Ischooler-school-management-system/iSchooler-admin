@@ -5,7 +5,7 @@ import '../../../common/common_features/alert_handling/data/repo/alert_handling_
 import '../../../../common/madpoly.dart';
 import '../../../admin_features/dashboard/data/repo/dashboard_repo.dart';
 import '../../../admin_features/users/user_model.dart';
-import '../../../common/network/educonnect_network_helper.dart';
+import '../../../common/network/ischooler_network_helper.dart';
 import '../network/auth_network.dart';
 
 class AuthRepository {

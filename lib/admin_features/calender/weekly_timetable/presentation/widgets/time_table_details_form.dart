@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../../common/educonnect_validation.dart';
+import '../../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../../common/ischooler_validation.dart';
 import '../../../../../../common/madpoly.dart';
-import '../../../../../common/common_features/widgets/educonnect_screen.dart';
-import '../../../../../common/common_features/widgets/educonnect_time_field.dart';
-import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/common_features/widgets/ischooler_screen.dart';
+import '../../../../../common/common_features/widgets/ischooler_time_field.dart';
+import '../../../../../common/ischooler_model.dart';
 import '../../../../classes/data/models/class_model.dart';
 import '../../../../classes/logic/cubit/classes_list_cubit.dart';
 import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';

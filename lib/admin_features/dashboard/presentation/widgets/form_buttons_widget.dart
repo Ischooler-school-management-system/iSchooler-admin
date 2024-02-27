@@ -3,7 +3,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../common/common_features/responsive/responsive.dart';
-import '../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
+import '../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
 import '../../../../common/navigation/router.export.dart';
 
 class FormButtonsWidget extends StatelessWidget {

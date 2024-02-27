@@ -1,4 +1,4 @@
-part of '../educonnect_button.dart';
+part of '../ischooler_button.dart';
 
 //elevated button with text and icon
 //the icon either at the beginning or the end of the button

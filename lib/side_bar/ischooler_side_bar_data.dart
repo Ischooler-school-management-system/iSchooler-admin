@@ -7,9 +7,9 @@ import '../admin_features/dashboard/presentation/screens/dashboard_screen.dart';
 import '../admin_features/homework/logic/cubit/homeworks_list_cubit.dart';
 import '../auth/logic/cubit/auth_cubit.dart';
 import '../auth/settings/language/presentation/screens/languages_screen.dart';
-import '../common/common_features/widgets/educonnect_icons.dart';
-import '../common/educonnect_constants.dart';
-import '../common/navigation/educonnect_navi.dart';
+import '../common/common_features/widgets/ischooler_icons.dart';
+import '../common/ischooler_constants.dart';
+import '../common/navigation/ischooler_navi.dart';
 
 class IschoolerSideBarData {
   static final Map<Widget, SidebarXItem> sideBarData = {

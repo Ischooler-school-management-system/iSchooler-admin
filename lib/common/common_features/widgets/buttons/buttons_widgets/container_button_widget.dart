@@ -1,4 +1,4 @@
-part of '../educonnect_button.dart';
+part of '../ischooler_button.dart';
 
 class _IschoolerContainerButtonWidget extends StatelessWidget {
   final IschoolerContainerButton educonnectContainerButton;

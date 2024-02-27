@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/common_features/widgets/educonnect_timeline_tile.dart';
+import '../../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
+import '../../../../../common/common_features/widgets/ischooler_timeline_tile.dart';
 import '../../../weekly_session/data/models/weekly_session_model.dart';
 import '../../../weekly_session/data/models/weekly_sessions_list_model.dart';
 import 'table_session_widget.dart';

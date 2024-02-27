@@ -3,10 +3,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 
-import '../../../educonnect_constants.dart';
-import '../../../style/educonnect_colors.dart';
+import '../../../ischooler_constants.dart';
+import '../../../style/ischooler_colors.dart';
 import '../data/models/loading_model.dart';
-import 'educonnect_loading_snackbar.dart';
+import 'ischooler_loading_snackbar.dart';
 
 class LoadingPopup {
   static show(LoadingModel loading) {

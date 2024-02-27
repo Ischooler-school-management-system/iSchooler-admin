@@ -1,4 +1,4 @@
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 
 class GradeModel extends IschoolerModel {
   const GradeModel({

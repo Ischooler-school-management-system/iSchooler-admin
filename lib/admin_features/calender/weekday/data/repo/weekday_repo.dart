@@ -1,7 +1,7 @@
 import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../../common/network/educonnect_response.dart';
+import '../../../../../common/network/ischooler_response.dart';
 import '../models/weekday_model.dart';
 import '../models/weekdays_list_model.dart';
 import '../network/weekday_network.dart';

@@ -1,10 +1,10 @@
 import '../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 import '../../../../common/madpoly.dart';
-import '../../../../common/network/educonnect_response.dart';
+import '../../../../common/network/ischooler_response.dart';
 import '../network/dashboard_network.dart';
-import 'educonnect_list_repository_interface.dart';
+import 'ischooler_list_repository_interface.dart';
 
 class DashboardRepository implements IschoolerListRepository {
   final AlertHandlingRepository _alertHandlingRepository;

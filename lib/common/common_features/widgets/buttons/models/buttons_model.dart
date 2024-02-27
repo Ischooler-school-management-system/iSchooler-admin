@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'educonnect_button_interface.dart';
+import 'ischooler_button_interface.dart';
 
 //
 class IschoolerElevatedButton extends IIschoolerButton {

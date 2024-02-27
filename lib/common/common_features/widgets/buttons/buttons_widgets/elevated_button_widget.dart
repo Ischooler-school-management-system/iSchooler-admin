@@ -1,4 +1,4 @@
-part of '../educonnect_button.dart';
+part of '../ischooler_button.dart';
 
 //elevated button with text only
 class _ElevatedButtonWidget extends StatelessWidget {

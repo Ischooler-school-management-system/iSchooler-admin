@@ -4,10 +4,10 @@ import 'package:rxdart/rxdart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 import 'common/di.dart';
-import 'common/educonnect_local_settings.dart';
-import 'common/network/educonnect_network_helper.dart';
-import 'main/educonnect_listeners.dart';
-import 'main/educonnect_materialapp.dart';
+import 'common/ischooler_local_settings.dart';
+import 'common/network/ischooler_network_helper.dart';
+import 'main/ischooler_listeners.dart';
+import 'main/ischooler_materialapp.dart';
 
 /// app initial settings:
 /// inside main:

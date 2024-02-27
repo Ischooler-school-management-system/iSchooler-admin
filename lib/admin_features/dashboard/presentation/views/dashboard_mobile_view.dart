@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../common/common_features/widgets/educonnect_small_view.dart';
-import '../../../../common/educonnect_model.dart';
-import '../widgets/educonnect_dashboard_listtile.dart';
+import '../../../../common/common_features/widgets/ischooler_small_view.dart';
+import '../../../../common/ischooler_model.dart';
+import '../widgets/ischooler_dashboard_listtile.dart';
 
 class DashboardMobileview extends StatelessWidget {
   final IschoolerListModel educonnectAllModel;

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../../../../common/common_features/widgets/educonnect_timeline_tile.dart';
-import '../../../../../common/style/educonnect_colors.dart';
-import '../../../../../common/style/educonnect_text_theme.dart';
+import '../../../../../common/common_features/widgets/ischooler_timeline_tile.dart';
+import '../../../../../common/style/ischooler_colors.dart';
+import '../../../../../common/style/ischooler_text_theme.dart';
 import '../../../weekly_session/data/models/weekly_session_model.dart';
 
 class TableSessionWidget extends StatelessWidget {

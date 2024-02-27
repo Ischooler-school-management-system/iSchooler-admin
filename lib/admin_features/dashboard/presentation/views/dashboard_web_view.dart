@@ -2,7 +2,7 @@ import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 import '../widgets/dashboard_data_row.dart';
 
 class DashboardWebview extends StatelessWidget {

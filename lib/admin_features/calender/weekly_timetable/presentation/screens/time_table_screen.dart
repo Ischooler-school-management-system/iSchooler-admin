@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../../common/common_features/widgets/educonnect_screen.dart';
-import '../../../../../common/navigation/educonnect_navi.dart';
+import '../../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
+import '../../../../../common/common_features/widgets/ischooler_screen.dart';
+import '../../../../../common/navigation/ischooler_navi.dart';
 import '../../../../classes/data/models/class_model.dart';
 import '../../../../cubits.dart';
 import '../../data/models/weekly_timetable_model.dart';

@@ -9,9 +9,9 @@ import '../../../homework/data/models/homework_model.dart';
 import '../../../homework/logic/cubit/homeworks_list_cubit.dart';
 import '../../../homework/presentation/widgets/homeworks_details_form.dart';
 import '../../../models.dart';
-import '/common/common_features/widgets/educonnect_screen.dart';
-import '/common/common_features/widgets/educonnect_small_view.dart';
-import '/common/educonnect_model.dart';
+import '/common/common_features/widgets/ischooler_screen.dart';
+import '/common/common_features/widgets/ischooler_small_view.dart';
+import '/common/ischooler_model.dart';
 import '/common/madpoly.dart';
 
 class DashboardDetailsScreen<C extends IschoolerListCubit>

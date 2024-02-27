@@ -4,13 +4,13 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../../../admin_features/users/user_model.dart';
 import '../../../../common/common_features/responsive/responsive.dart';
-import '../../../../common/common_features/widgets/buttons/educonnect_button_export.dart';
-import '../../../../common/common_features/widgets/educonnect_screen.dart';
-import '../../../../common/educonnect_assets.dart';
+import '../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
+import '../../../../common/common_features/widgets/ischooler_screen.dart';
+import '../../../../common/ischooler_assets.dart';
 import '../../../../common/madpoly.dart';
 import '../../../../common/navigation/router.export.dart';
-import '../../../../common/style/educonnect_colors.dart';
-import '../../../../common/style/educonnect_text_theme.dart';
+import '../../../../common/style/ischooler_colors.dart';
+import '../../../../common/style/ischooler_text_theme.dart';
 import '../../../logic/cubit/auth_cubit.dart';
 
 class SelectRoleScreen extends StatefulWidget {

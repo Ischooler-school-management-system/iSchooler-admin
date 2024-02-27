@@ -1,4 +1,4 @@
-part of '../educonnect_button.dart';
+part of '../ischooler_button.dart';
 
 //button with icon only
 class _IconButtonWidget extends StatelessWidget {

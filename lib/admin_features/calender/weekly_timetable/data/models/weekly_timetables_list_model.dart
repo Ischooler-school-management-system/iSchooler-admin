@@ -1,7 +1,7 @@
 // ignore_for_file: use_super_parameters, overridden_fields
 
 import 'package:ischooler_admin/admin_features/calender/weekly_timetable/data/models/weekly_timetable_model.dart';
-import 'package:ischooler_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/common/ischooler_model.dart';
 
 class WeeklyTimetablesListModel extends IschoolerListModel {
   const WeeklyTimetablesListModel({required List<WeeklyTimetableModel> items})

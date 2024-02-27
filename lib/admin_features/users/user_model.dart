@@ -1,6 +1,6 @@
-import '../../common/educonnect_constants.dart';
-import '../../common/educonnect_model.dart';
-import '../../common/functions/educonnect_date_time_helper.dart';
+import '../../common/ischooler_constants.dart';
+import '../../common/ischooler_model.dart';
+import '../../common/functions/ischooler_date_time_helper.dart';
 
 enum UserRole { admin, instructor, student, none }
 

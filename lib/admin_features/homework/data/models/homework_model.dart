@@ -1,9 +1,9 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: use_super_parameters, overridden_fields
 
-import 'package:ischooler_admin/common/functions/educonnect_date_time_helper.dart';
+import 'package:ischooler_admin/common/functions/ischooler_date_time_helper.dart';
 
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 import '../../../models.dart';
 
 class HomeworkModel extends IschoolerModel {

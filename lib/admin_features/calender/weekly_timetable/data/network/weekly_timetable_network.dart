@@ -1,10 +1,10 @@
 import '../../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
-import '../../../../../../common/educonnect_model.dart';
+import '../../../../../../common/ischooler_model.dart';
 import '../../../../../../common/madpoly.dart';
-import '../../../../../../common/network/educonnect_network_helper.dart';
-import '../../../../../../common/network/educonnect_response.dart';
-import '../../../../../../common/network/educonnect_tables.dart';
+import '../../../../../../common/network/ischooler_network_helper.dart';
+import '../../../../../../common/network/ischooler_response.dart';
+import '../../../../../../common/network/ischooler_tables.dart';
 
 class WeeklyTimetableNetwork {
   final AlertHandlingRepository _alertHandlingRepository;

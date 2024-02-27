@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sidebarx/sidebarx.dart';
 
-import '../../../common/style/educonnect_colors.dart';
-import '../common/educonnect_assets.dart';
+import '../../../common/style/ischooler_colors.dart';
+import '../common/ischooler_assets.dart';
 import 'ischooler_side_bar_data.dart';
 
 const primaryColor = canvasColor;

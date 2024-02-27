@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../../../../../common/educonnect_constants.dart';
-import '../../../../../../common/style/educonnect_colors.dart';
+import '../../../../../../common/ischooler_constants.dart';
+import '../../../../../../common/style/ischooler_colors.dart';
 
 class LanguageWidget extends StatelessWidget {
   final String title;

@@ -1,5 +1,5 @@
-import '../../../../../common/educonnect_constants.dart';
-import '../../../../../common/functions/educonnect_date_time_helper.dart';
+import '../../../../../common/ischooler_constants.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../user_model.dart';
 import '../../../admin_roles/data/models/admin_role_model.dart';
 

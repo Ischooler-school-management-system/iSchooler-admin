@@ -2,7 +2,7 @@
 
 import 'package:collection/collection.dart';
 
-import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/ischooler_model.dart';
 import 'student_model.dart';
 
 class StudentsListModel extends IschoolerListModel {

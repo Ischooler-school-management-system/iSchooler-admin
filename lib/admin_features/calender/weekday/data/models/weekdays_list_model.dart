@@ -2,7 +2,7 @@
 
 import 'package:collection/collection.dart';
 
-import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/ischooler_model.dart';
 import 'weekday_model.dart';
 
 class WeekdaysListModel extends IschoolerListModel {

@@ -1,4 +1,4 @@
-part of '../educonnect_button.dart';
+part of '../ischooler_button.dart';
 
 //text button either with or without leading text
 class _TextButtonWidget extends StatelessWidget {

@@ -1,7 +1,7 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 // ignore_for_file: use_super_parameters, overridden_fields
 
-import 'package:ischooler_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/common/ischooler_model.dart';
 
 class WeekdayModel extends IschoolerModel {
   final bool isDayOff;

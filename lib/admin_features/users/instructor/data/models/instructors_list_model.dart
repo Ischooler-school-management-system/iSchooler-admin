@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-import '../../../../../common/educonnect_model.dart';
+import '../../../../../common/ischooler_model.dart';
 import '../../../users_list_model.dart';
 import 'instructor_model.dart';
 

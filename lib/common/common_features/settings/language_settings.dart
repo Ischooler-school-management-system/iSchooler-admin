@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../educonnect_constants.dart';
+import '../../ischooler_constants.dart';
 
 class SettingsTab extends StatelessWidget {
   const SettingsTab({super.key});

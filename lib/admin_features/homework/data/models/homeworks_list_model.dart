@@ -1,7 +1,7 @@
 // ignore_for_file: use_super_parameters, overridden_fields
 
 import 'homework_model.dart';
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 
 class HomeworksListModel extends IschoolerListModel {
   const HomeworksListModel({required List<HomeworkModel> items})

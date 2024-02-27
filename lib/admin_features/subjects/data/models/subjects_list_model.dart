@@ -1,6 +1,6 @@
 import 'package:collection/collection.dart';
 
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 import 'subject_model.dart';
 
 class SubjectsListModel extends IschoolerListModel {

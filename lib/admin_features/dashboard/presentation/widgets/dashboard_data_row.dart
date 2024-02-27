@@ -1,9 +1,9 @@
 import 'package:data_table_2/data_table_2.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../common/educonnect_assets.dart';
-import '../../../../common/educonnect_constants.dart';
-import '../../../../common/style/educonnect_colors.dart';
+import '../../../../common/ischooler_assets.dart';
+import '../../../../common/ischooler_constants.dart';
+import '../../../../common/style/ischooler_colors.dart';
 
 class DashboardDataRow2 {
   /// I couldn't make it a statlesswidget because of this error:

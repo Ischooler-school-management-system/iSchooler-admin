@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../common/style/educonnect_colors.dart';
+import '../../../../common/style/ischooler_colors.dart';
 import '../../../users/students/data/models/student_model.dart';
 
 class ProfileOverviewWidget extends StatelessWidget {

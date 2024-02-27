@@ -1,4 +1,4 @@
-import '../../../../common/educonnect_model.dart';
+import '../../../../common/ischooler_model.dart';
 
 abstract class IschoolerRepository {
   //model is sent here to get the type of request only

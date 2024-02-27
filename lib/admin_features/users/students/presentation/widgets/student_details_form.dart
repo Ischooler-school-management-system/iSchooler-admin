@@ -1,13 +1,13 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
-import '../../../../../common/common_features/widgets/educonnect_date_field.dart';
-import '../../../../../common/common_features/widgets/educonnect_drop_down_widget.dart';
-import '../../../../../common/common_features/widgets/fields/educonnect_text_field.dart';
-import '../../../../../common/educonnect_assets.dart';
-import '../../../../../common/educonnect_model.dart';
-import '../../../../../common/educonnect_validation.dart';
-import '../../../../../common/functions/educonnect_date_time_helper.dart';
+import '../../../../../common/common_features/widgets/ischooler_date_field.dart';
+import '../../../../../common/common_features/widgets/ischooler_drop_down_widget.dart';
+import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
+import '../../../../../common/ischooler_assets.dart';
+import '../../../../../common/ischooler_model.dart';
+import '../../../../../common/ischooler_validation.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../../classes/data/models/class_model.dart';
 import '../../../../classes/logic/cubit/classes_list_cubit.dart';
 import '../../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';

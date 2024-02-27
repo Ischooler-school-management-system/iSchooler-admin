@@ -4,11 +4,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 
 import '../../../../../../common/common_features/loading/presentation/loading_popup.dart';
-import '../../../../../../common/common_features/widgets/educonnect_screen.dart';
-import '../../../../../../common/educonnect_constants.dart';
-import '../../../../../../common/educonnect_local_settings.dart';
+import '../../../../../../common/common_features/widgets/ischooler_screen.dart';
+import '../../../../../../common/ischooler_constants.dart';
+import '../../../../../../common/ischooler_local_settings.dart';
 import '../../../../../../common/madpoly.dart';
-import '../../../../../../common/style/educonnect_colors.dart';
+import '../../../../../../common/style/ischooler_colors.dart';
 import '../../language_bloc/language_bloc.dart';
 import '../widgets/language_widget.dart';
 

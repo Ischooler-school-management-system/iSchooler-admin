@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import '../../../../common/style/educonnect_text_theme.dart';
+import '../../../../common/style/ischooler_text_theme.dart';
 
-import '../../../../../common/style/educonnect_colors.dart';
+import '../../../../../common/style/ischooler_colors.dart';
 
 class AuthHeaderWidget extends StatelessWidget {
   final String title;

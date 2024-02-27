@@ -1,4 +1,4 @@
-import 'package:ischooler_admin/common/educonnect_model.dart';
+import 'package:ischooler_admin/common/ischooler_model.dart';
 
 class AdminRoleModel extends IschoolerModel {
   const AdminRoleModel({

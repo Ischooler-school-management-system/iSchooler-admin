@@ -1,4 +1,4 @@
-import '../../../../../common/functions/educonnect_date_time_helper.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../user_model.dart';
 
 class InstructorModel extends UserModel {

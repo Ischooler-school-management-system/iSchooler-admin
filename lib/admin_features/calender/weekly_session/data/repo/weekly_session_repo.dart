@@ -1,7 +1,7 @@
 import '../../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../../common/madpoly.dart';
-import '../../../../../common/network/educonnect_response.dart';
+import '../../../../../common/network/ischooler_response.dart';
 import '../../../weekly_timetable_day/data/models/weekly_timetable_day_model.dart';
 import '../models/weekly_session_model.dart';
 import '../models/weekly_sessions_list_model.dart';

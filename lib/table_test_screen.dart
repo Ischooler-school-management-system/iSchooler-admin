@@ -6,7 +6,7 @@ import 'admin_features/dashboard/presentation/widgets/dashboard_data_row.dart';
 import 'admin_features/users/students/data/models/student_model.dart';
 import 'admin_features/users/students/data/models/students_list_model.dart';
 import 'admin_features/users/user_model.dart';
-import 'common/common_features/widgets/educonnect_screen.dart';
+import 'common/common_features/widgets/ischooler_screen.dart';
 import 'common/madpoly.dart';
 
 // ignore: must_be_immutable
