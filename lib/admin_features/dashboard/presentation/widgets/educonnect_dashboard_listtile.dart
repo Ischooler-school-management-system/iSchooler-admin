@@ -29,9 +29,9 @@ class EduconnecDashboardListTile extends StatelessWidget {
       leading: isName
           ? Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: IschoolerImageWidget.asset(
+              child: IschoolerImageWidget(
                 url: IschoolerAssets.blankProfileImage,
-                circleShape: true,
+                circleAvatarRadius: 25,
               ),
             )
           : null,

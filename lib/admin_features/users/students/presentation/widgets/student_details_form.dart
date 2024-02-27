@@ -166,7 +166,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
 
           /// class
           DashboardDropDownWidget<ClassesListCubit>(
-              hint: studentData.classModel.name,
+              hint: studentData.classData.name,
               labelText: 'Class',
               onChanged: (IschoolerModel value) {
                 Madpoly.print(

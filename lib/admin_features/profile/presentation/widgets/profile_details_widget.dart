@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../common/educonnect_constants.dart';
 import '../../../../common/functions/educonnect_date_time_helper.dart';
 import '../../../../common/style/educonnect_colors.dart';
-import '../../data/models/student_model.dart';
+import '../../../users/students/data/models/student_model.dart';
 
 class ProfileDetailsWidget extends StatelessWidget {
   final StudentModel studentData;
@@ -15,19 +15,22 @@ class ProfileDetailsWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final List<Widget> profileDetailsList = [
       detailsRowWidget(
-        IschoolerConstants.localization().the_class,
+        // IschoolerConstants.localization().the_class,
+        'the_class',
         studentData.classData.name,
       ),
 
       /// grade
       detailsRowWidget(
-        IschoolerConstants.localization().grade,
+        // IschoolerConstants.localization().grade,
+        'grade',
         studentData.classData.grade.name,
       ),
 
       /// Roll Number
       detailsRowWidget(
-        IschoolerConstants.localization().roll_number,
+        // IschoolerConstants.localization().roll_number,
+        'roll_number',
         studentData.id,
       ),
 

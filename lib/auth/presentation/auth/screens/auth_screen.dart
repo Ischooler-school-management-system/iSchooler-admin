@@ -74,7 +74,7 @@ class AuthScreen extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        IschoolerImageWidget.asset(
+        IschoolerImageWidget(
           url: IschoolerAssets.authImage,
           height: IschoolerConstants.educonnect_screen_height * 0.5,
         ),

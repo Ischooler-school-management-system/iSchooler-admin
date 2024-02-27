@@ -3,7 +3,7 @@ import '../../../../classes/data/models/class_model.dart';
 import '../../../user_model.dart';
 
 class StudentModel extends UserModel {
-  final ClassModel classModel;
+  final ClassModel classData;
   final bool paymentStatus;
 
   const StudentModel({
@@ -16,7 +16,7 @@ class StudentModel extends UserModel {
     required super.role,
     required super.name,
     required super.profilePicture,
-    required this.classModel,
+    required this.classData,
     required this.paymentStatus,
   });
   @override
@@ -24,7 +24,7 @@ class StudentModel extends UserModel {
     return StudentModel(
         id: '',
         name: '',
-        classModel: ClassModel.empty(),
+        classData: ClassModel.empty(),
         // gradeModel: GradeModel.empty(),
         dateOfBirth: null,
         phoneNumber: '',
@@ -41,7 +41,7 @@ class StudentModel extends UserModel {
     return StudentModel(
       id: '',
       name: 'ziad',
-      classModel: ClassModel.empty(),
+      classData: ClassModel.empty(),
       // gradeModel: GradeModel.empty(),
       dateOfBirth: null,
       phoneNumber: '0123786323',
@@ -68,7 +68,7 @@ class StudentModel extends UserModel {
       email: userModel.email,
       role: userModel.role,
       profilePicture: userModel.profilePicture,
-      classModel: ClassModel.fromMap(map['class'] ?? {}),
+      classData: ClassModel.fromMap(map['class'] ?? {}),
       paymentStatus: map['payment_status'] ?? false,
     );
   }
@@ -76,8 +76,8 @@ class StudentModel extends UserModel {
   Map<String, dynamic> toDisplayMap() {
     return {
       'Student Name': name,
-      'Class': classModel.name,
-      'Grade': classModel.grade.name,
+      'Class': classData.name,
+      'Grade': classData.grade.name,
     };
   }
 
@@ -100,7 +100,7 @@ class StudentModel extends UserModel {
     Map<String, dynamic> userMap = super.toMap();
     return {
       ...userMap,
-      'class_id': classModel.id,
+      'class_id': classData.id,
       'payment_status': paymentStatus,
     };
   }
@@ -124,7 +124,7 @@ class StudentModel extends UserModel {
       id: id ?? this.id,
       name: name ?? this.name,
       dateOfBirth: dateOfBirth ?? this.dateOfBirth,
-      classModel: classModel ?? this.classModel,
+      classData: classModel ?? classData,
       // gradeModel: gradeModel ?? this.gradeModel,
       phoneNumber: phoneNumber ?? this.phoneNumber,
       address: address ?? this.address,
@@ -140,7 +140,7 @@ class StudentModel extends UserModel {
   @override
   String toString() {
     return 'StudentModel{studentId: $id, name: $name, dateOfBirth: $dateOfBirth, '
-        'classId: $classModel, phoneNumber: $phoneNumber, address: $address, '
+        'classId: $classData, phoneNumber: $phoneNumber, address: $address, '
         'paymentStatus: $paymentStatus, gender: $gender, email: $email, role: ${role.name}}';
   }
 
@@ -155,7 +155,7 @@ class StudentModel extends UserModel {
       name,
       role,
       name,
-      classModel,
+      classData,
       /* gradeModel, */ paymentStatus,
     ];
   }

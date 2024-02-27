@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../common/common_features/widgets/educonnect_image_widget.dart';
 import '../../../../common/style/educonnect_colors.dart';
-import '../../data/models/student_model.dart';
+import '../../../users/students/data/models/student_model.dart';
 
 class ProfileOverviewWidget extends StatelessWidget {
   final StudentModel studentData;
@@ -61,7 +60,8 @@ class ProfileOverviewWidget extends StatelessWidget {
                         'Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor',
                         style: TextStyle(
                           fontSize: 14,
-                          color: IschoolerColors.lightBlack,
+                          color: IschoolerColors.black,
+                          // color: IschoolerColors.lightBlack,
                         ),
                         overflow: TextOverflow.ellipsis,
                         maxLines: 2,
@@ -81,10 +81,10 @@ class ProfileOverviewWidget extends StatelessWidget {
               height: 140.h,
               child: Column(
                 children: [
-                  IschoolerImageWidget(
-                    circleAvatarRadius: 40.r,
-                    url: studentData.profilePicture,
-                  ),
+                  // IschoolerImageWidget(
+                  //   circleAvatarRadius: 40.r,
+                  //   url: studentData.profilePicture,
+                  // ),
                   Text(
                     studentData.name,
                     style: const TextStyle(
@@ -96,7 +96,8 @@ class ProfileOverviewWidget extends StatelessWidget {
                     '${studentData.classData.grade.name} | ${studentData.classData.name}',
                     style: const TextStyle(
                       fontSize: 16,
-                      color: IschoolerColors.lightBlack,
+                      color: IschoolerColors.black,
+                      // color: IschoolerColors.lightBlack,
                     ),
                   ),
                 ],
