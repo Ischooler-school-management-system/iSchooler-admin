@@ -34,9 +34,11 @@ class _IschoolerSideBarState extends State<IschoolerSideBar> {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     return IschoolerScreen(
+      extendBodyBehindAppBar: true,
+
       // key: _key,
       // appBar: AppBar(backgroundColor: Colors.transparent),
-      showAppbar: true,
+      showAppBar: true,
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(
         children: [

@@ -9,13 +9,13 @@ class IschoolerScreen extends StatelessWidget {
   final bool enableBackButton;
   final String tag;
   final PreferredSizeWidget? appBar;
-  final bool showAppbar;
+  final bool showAppBar;
   final Widget? body;
   final bool closeAppBackButton;
   final Widget? bottomNavigationBar;
   final Future<void> Function()? onRefresh;
   final bool keepMobileView;
-  final bool enableflexibleScrolling;
+  final bool enableFlexibleScrolling;
   final bool enableScrolling;
   final bool hasMinHeight;
   final bool extendBodyBehindAppBar;
@@ -35,7 +35,7 @@ class IschoolerScreen extends StatelessWidget {
     this.closeAppBackButton = false,
     this.bottomNavigationBar,
     this.onRefresh,
-    this.enableflexibleScrolling = false,
+    this.enableFlexibleScrolling = false,
     this.enableScrolling = false,
     this.hasMinHeight = false,
     this.keepMobileView = false,
@@ -45,7 +45,7 @@ class IschoolerScreen extends StatelessWidget {
     this.padding,
     this.margin,
     this.alignment,
-    this.showAppbar = false,
+    this.showAppBar = false,
   });
 
   // Build method for the IschoolerScreen widget
@@ -67,7 +67,7 @@ class IschoolerScreen extends StatelessWidget {
                 keepMobileView: keepMobileView,
                 child: IschoolerFlexibleScrollWidget(
                   hasMinHeight: hasMinHeight,
-                  enableflexibleScrolling: enableflexibleScrolling,
+                  enableflexibleScrolling: enableFlexibleScrolling,
                   enableScrolling: enableScrolling,
                   child: IschoolerPullToRefresh(
                     onRefresh: onRefresh,
@@ -83,7 +83,7 @@ class IschoolerScreen extends StatelessWidget {
   }
 
   PreferredSizeWidget? newMethod(BuildContext context) {
-    if (showAppbar && MediaQuery.of(context).size.width < 600) {
+    if (showAppBar && MediaQuery.of(context).size.width < 600) {
       return appBar ??
           AppBar(
             backgroundColor: Colors.transparent,

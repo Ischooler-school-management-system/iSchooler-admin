@@ -23,7 +23,7 @@ class _SigninScreenState extends State<SigninScreen> {
     return IschoolerScreen(
       keepMobileView: true,
       alignment: Alignment.center,
-      enableflexibleScrolling: true,
+      enableFlexibleScrolling: true,
       body: Center(
         child: Column(
           children: [

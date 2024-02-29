@@ -27,7 +27,7 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
     final UserModel newUser = IschoolerNavigator.getPassedData(context,
         defaultValue: UserModel.empty()) as UserModel;
     return IschoolerScreen(
-      enableflexibleScrolling: true,
+      enableFlexibleScrolling: true,
       alignment: Alignment.center,
       keepMobileView: true,
       body: Center(

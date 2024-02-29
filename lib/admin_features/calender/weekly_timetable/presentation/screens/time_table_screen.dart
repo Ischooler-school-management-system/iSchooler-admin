@@ -58,7 +58,7 @@ class _TimeTableScreenState extends State<TimeTableScreen> {
   @override
   Widget build(BuildContext context) {
     return IschoolerScreen(
-      showAppbar: true,
+      showAppBar: true,
       body: BlocBuilder<WeeklyTimetableCubit, WeeklyTimetableState>(
         builder: (context, state) {
           WeeklyTimetableModel? timeTable;

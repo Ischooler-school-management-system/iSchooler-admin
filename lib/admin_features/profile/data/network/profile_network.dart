@@ -1,3 +1,5 @@
+import 'package:supabase_flutter/supabase_flutter.dart';
+
 import '../../../../common/common_features/alert_handling/data/models/alert_handling_model.dart';
 import '../../../../common/common_features/alert_handling/data/repo/alert_handling_repo.dart';
 import '../../../../common/ischooler_model.dart';
@@ -7,17 +9,17 @@ import '../../../../common/network/ischooler_response.dart';
 import '../../../../common/network/ischooler_tables.dart';
 import '../../../dashboard/data/network/ischooler_network_interface.dart';
 
-class StudentNetwork implements IschoolerNetwork {
+class ProfileNetwork implements IschoolerNetwork {
   final AlertHandlingRepository _alertHandlingRepository;
 
-  StudentNetwork(AlertHandlingRepository alertHandlingRepository)
+  ProfileNetwork(AlertHandlingRepository alertHandlingRepository)
       : _alertHandlingRepository = alertHandlingRepository;
 
   @override
   Future<IschoolerResponse> getItem({required String id}) async {
     IschoolerResponse response = IschoolerResponse.empty();
     try {
-      DatabaseTable tableQueryData = IschoolerTables.student;
+      DatabaseTable tableQueryData = IschoolerTables.admin;
 
       if (tableQueryData == DatabaseTable.empty()) {
         throw Exception('tableQueryData = $tableQueryData, ');
@@ -28,30 +30,33 @@ class StudentNetwork implements IschoolerNetwork {
         'request will be sent is >>  get(), '
         'tableQueryData: $tableQueryData',
         // inspectObject: tableQueryData,
-        tag: 'student_network > getItem',
+        tag: 'profile_network > getItem',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
       );
-      final Map<String, dynamic> query = await SupabaseCredentials.supabase
-          .from(tableQueryData.tableName)
-          .select(tableQueryData.selectQuery)
-          .eq('id', id)
-          .single();
+      User? user = SupabaseCredentials.authInstance.currentUser;
 
-      Madpoly.print(
-        'query= ',
-        inspectObject: query,
-        color: MadpolyColor.green,
-        tag: 'student_network > getItem',
-        developer: "Ziad",
-      );
-      response = IschoolerResponse(hasData: true, data: query);
+      if (user != null) {
+        final Map<String, dynamic> query = await SupabaseCredentials.supabase
+            .from(tableQueryData.tableName)
+            .select(tableQueryData.selectQuery)
+            .eq('id', user.id)
+            .single();
+        Madpoly.print(
+          'query= ',
+          inspectObject: query,
+          color: MadpolyColor.green,
+          tag: 'profile_network > getItem',
+          developer: "Ziad",
+        );
+        response = IschoolerResponse(hasData: true, data: query);
+      }
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),
         AlertHandlingTypes.MajorUiError,
-        tag: 'student_network > getAllData',
+        tag: 'profile_network > getAllData',
         // showToast: true,
       );
     }
@@ -76,7 +81,7 @@ class StudentNetwork implements IschoolerNetwork {
         'request will be sent is >> insert(), '
         'tableQueryData: $tableQueryData, '
         'data = $data',
-        tag: 'student_network > add',
+        tag: 'profile_network > add',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
@@ -88,7 +93,7 @@ class StudentNetwork implements IschoolerNetwork {
         color: MadpolyColor.green,
         'query =',
         inspectObject: query,
-        tag: 'student_network > add',
+        tag: 'profile_network > add',
         developer: "Ziad",
       );
       // await response.doc(model.id).set(model.toMap());
@@ -125,7 +130,7 @@ class StudentNetwork implements IschoolerNetwork {
         'table: ${tableQueryData.tableName}, '
         'data = ',
         inspectObject: data,
-        tag: 'student_network > update',
+        tag: 'profile_network > update',
         // color: MadpolyColor.purple,
         isLog: true,
         developer: "Ziad",
@@ -138,7 +143,7 @@ class StudentNetwork implements IschoolerNetwork {
         'query= ',
         color: MadpolyColor.green,
         inspectObject: query,
-        tag: 'student_network > update',
+        tag: 'profile_network > update',
         developer: "Ziad",
       );
       // await response.doc(model.id).set(model.toMap());
@@ -172,7 +177,7 @@ class StudentNetwork implements IschoolerNetwork {
         'request will be sent is >> delete(), '
         'tableQueryData: $tableQueryData, ',
         inspectObject: model,
-        tag: 'student_network > deleteItem',
+        tag: 'profile_network > deleteItem',
         isLog: true,
         // color: MadpolyColor.purple,
         developer: "Ziad",
@@ -185,7 +190,7 @@ class StudentNetwork implements IschoolerNetwork {
         'query= ',
         inspectObject: query,
         color: MadpolyColor.green,
-        tag: 'student_network > delete',
+        tag: 'profile_network > delete',
         developer: "Ziad",
       );
 

@@ -49,7 +49,7 @@ class _DashboardDetailsScreenState<C extends IschoolerListCubit>
   @override
   Widget build(BuildContext context) {
     return IschoolerScreen(
-      showAppbar: true,
+      showAppBar: true,
       padding: const EdgeInsets.all(30.0),
       enableScrolling: true,
       body: IschoolerBoxConstrain(

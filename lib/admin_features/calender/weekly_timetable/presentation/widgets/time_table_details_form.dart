@@ -54,7 +54,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
     );
     return IschoolerScreen(
       enableScrolling: true,
-      showAppbar: true,
+      showAppBar: true,
       body: Form(
         key: _formKey,
         child: Column(

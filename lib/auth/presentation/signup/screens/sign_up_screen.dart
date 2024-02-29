@@ -23,7 +23,7 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return IschoolerScreen(
       alignment: Alignment.center,
-      enableflexibleScrolling: true,
+      enableFlexibleScrolling: true,
       keepMobileView: true,
       body: Center(
         child: Column(

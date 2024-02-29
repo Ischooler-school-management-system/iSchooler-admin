@@ -49,7 +49,7 @@ class IschoolerImageWidget extends StatelessWidget {
         }
       } else if (url!.startsWith('http') || url!.startsWith('https')) {
         if (circleAvatarRadius != null) {
-          return networkCircleAvatar();
+          return _networkCircleAvatar();
         } else {
           return Image.network(
             url!,
@@ -81,12 +81,16 @@ class IschoolerImageWidget extends StatelessWidget {
         }
       } else {
         // Handle invalid URL
-        return _buildPlaceholderImage();
+        if (circleAvatarRadius != null) {
+          return _circlePlaceHolderImage();
+        } else {
+          return _buildPlaceholderImage();
+        }
       }
     }
   }
 
-  networkCircleAvatar() {
+  _networkCircleAvatar() {
     return CachedNetworkImage(
       imageUrl: url!,
       errorWidget: (context, url, error) => _circlePlaceHolderImage(),

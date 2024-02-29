@@ -1,65 +1,81 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../../../auth/logic/cubit/auth_cubit.dart';
-import '../../../../common/common_features/widgets/buttons/ischooler_button.dart';
-import '../../../../common/common_features/widgets/buttons/models/buttons_model.dart';
 import '../../../../common/common_features/widgets/ischooler_screen.dart';
-import '../../../../common/ischooler_constants.dart';
-import '../../../../common/style/ischooler_colors.dart';
-import '../../../users/students/data/models/student_model.dart';
+import '../../../users/admins/data/models/admin_model.dart';
+import '../../logic/cubit/profile_cubit.dart';
 import '../widgets/profile_details_widget.dart';
 import '../widgets/profile_overview_widget.dart';
 
-class ProfileScreen extends StatelessWidget {
-  final StudentModel studentData;
-  const ProfileScreen({super.key, required this.studentData});
+class ProfileScreen extends StatefulWidget {
+  // final StudentModel studentData;
+  const ProfileScreen({
+    super.key,
+    /* required this.studentData */
+  });
+
+  @override
+  State<ProfileScreen> createState() => _ProfileScreenState();
+}
+
+class _ProfileScreenState extends State<ProfileScreen> {
+  AdminModel adminData = AdminModel.empty();
+  @override
+  void initState() {
+    super.initState();
+    getDataRequest();
+  }
+
+  void getDataRequest() {
+    context.read<ProfileCubit>().getItem(id: 'id');
+  }
 
   @override
   Widget build(BuildContext context) {
-    return IschoolerScreen(
-        appBar: AppBar(
-          backgroundColor: IschoolerColors.blue,
-          foregroundColor: IschoolerColors.white,
-          title: Text(
-            IschoolerConstants.localization().profile,
-            style: const TextStyle(
-              fontSize: 18,
-            ),
-          ),
-          centerTitle: true,
-          leading: IschoolerButton(
-            button: IschoolerIconButton(
-              onPressed: () {
-                // IschoolerNavigator.push(
-                //   Routes.settingsScreen,
-                //   // replace: true,
-                // );
-              },
-              icon: const Icon(
-                Icons.settings,
-              ),
-            ),
-          ),
-          actions: [
-            IschoolerButton(
-              button: IschoolerIconButton(
-                onPressed: () {
-                  context.read<AuthCubit>().signOut();
-                },
-                icon: const Icon(
-                  Icons.logout,
-                ),
-              ),
-            ),
-          ],
-        ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ProfileOverviewWidget(studentData: studentData),
-            ProfileDetailsWidget(studentData: studentData),
-          ],
-        ));
+    return BlocBuilder<ProfileCubit, ProfileState>(builder: (context, state) {
+      if (state.isLoaded()) {
+        adminData = state.ischoolerModel as AdminModel;
+      }
+      return IschoolerScreen(
+          // appBarTitle: Text(
+          //   IschoolerConstants.localization().profile,
+          //   style: const TextStyle(
+          //     fontSize: 18,
+          //   ),
+          // ),
+          // appBarCenterTitle: true,
+          // appBarLeading: IschoolerButton(
+          //   button: IschoolerIconButton(
+          //     onPressed: () {
+          //       // IschoolerNavigator.push(
+          //       //   Routes.settingsScreen,
+          //       //   // replace: true,
+          //       // );
+          //     },
+          //     icon: const Icon(
+          //       Icons.settings,
+          //     ),
+          //   ),
+          // ),
+          // appBarActions: [
+          //   IschoolerButton(
+          //     button: IschoolerIconButton(
+          //       onPressed: () {
+          //         context.read<AuthCubit>().signOut();
+          //       },
+          //       icon: const Icon(
+          //         Icons.logout,
+          //       ),
+          //     ),
+          //   ),
+          // ],
+          body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ProfileOverviewWidget(adminData: adminData),
+          ProfileDetailsWidget(adminData: adminData),
+        ],
+      ));
+    });
   }
 }

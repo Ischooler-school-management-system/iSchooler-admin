@@ -1,41 +1,41 @@
-part of 'student_cubit.dart';
+part of 'profile_cubit.dart';
 
 // @immutable
 
-class StudentState extends IschoolerState {
-  const StudentState({
+class ProfileState extends IschoolerState {
+  const ProfileState({
     required super.ischoolerModel,
     required super.status,
   });
 
-  factory StudentState.init() {
-    return StudentState(
+  factory ProfileState.init() {
+    return ProfileState(
       ischoolerModel: IschoolerModel.empty(),
       status: IschoolerStatus.init,
     );
   }
 
   @override
-  StudentState updateData(IschoolerModel newData) {
+  ProfileState updateData(IschoolerModel newData) {
     return _copyWith(
       // ischoolerModel: newData is AdminsListModel ? newData : null,
-      ischoolerModel: newData is StudentModel ? newData : null,
+      ischoolerModel: newData is AdminModel ? newData : null,
       status: IschoolerStatus.loaded,
     );
   }
 
   @override
-  StudentState updateStatus({IschoolerStatus? newStatus}) {
+  ProfileState updateStatus({IschoolerStatus? newStatus}) {
     return _copyWith(
       status: newStatus ?? IschoolerStatus.updated,
     );
   }
 
-  StudentState _copyWith({
+  ProfileState _copyWith({
     IschoolerModel? ischoolerModel,
     IschoolerStatus? status,
   }) {
-    return StudentState(
+    return ProfileState(
       ischoolerModel: ischoolerModel ?? this.ischoolerModel,
       status: status ?? this.status,
     );

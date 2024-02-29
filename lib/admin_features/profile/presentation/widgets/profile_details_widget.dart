@@ -1,56 +1,58 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../common/ischooler_constants.dart';
 import '../../../../common/functions/ischooler_date_time_helper.dart';
+import '../../../../common/ischooler_constants.dart';
 import '../../../../common/style/ischooler_colors.dart';
-import '../../../users/students/data/models/student_model.dart';
+import '../../../users/admins/data/models/admin_model.dart';
 
 class ProfileDetailsWidget extends StatelessWidget {
-  final StudentModel studentData;
+  final AdminModel adminData;
 
-  const ProfileDetailsWidget({super.key, required this.studentData});
+  const ProfileDetailsWidget({
+    super.key,
+    required this.adminData,
+  });
 
   @override
   Widget build(BuildContext context) {
     final List<Widget> profileDetailsList = [
-      detailsRowWidget(
-        // IschoolerConstants.localization().the_class,
-        'the_class',
-        studentData.classData.name,
-      ),
+      // detailsRowWidget(
+      //   // IschoolerConstants.localization().the_class,
+      //   'the_class',
+      //   adminData.classData.name,
+      // ),
 
-      /// grade
-      detailsRowWidget(
-        // IschoolerConstants.localization().grade,
-        'grade',
-        studentData.classData.grade.name,
-      ),
+      // /// grade
+      // detailsRowWidget(
+      //   // IschoolerConstants.localization().grade,
+      //   'grade',
+      //   adminData.classData.grade.name,
+      // ),
 
       /// Roll Number
       detailsRowWidget(
         // IschoolerConstants.localization().roll_number,
         'roll_number',
-        studentData.id,
+        adminData.id,
       ),
 
       /// date of birth
       detailsRowWidget(
         IschoolerConstants.localization().date_of_birth,
-        IschoolerDateTimeHelper.dateFormat(studentData.dateOfBirth) ??
-            'Unknown',
+        IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth) ?? 'Unknown',
       ),
 
       /// Phone Number
       detailsRowWidget(
         IschoolerConstants.localization().phone_number,
-        studentData.phoneNumber,
+        adminData.phoneNumber,
       ),
 
       /// Address
       detailsRowWidget(
         IschoolerConstants.localization().address,
-        studentData.address,
+        adminData.address,
       ),
     ];
     return Padding(
