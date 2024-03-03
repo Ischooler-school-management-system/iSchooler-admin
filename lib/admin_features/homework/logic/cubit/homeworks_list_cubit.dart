@@ -20,7 +20,7 @@ class HomeworksListCubit extends IschoolerListCubit<HomeworksListState> {
         super(HomeworksListState.init());
 
   @override
-  Future<void> getAllItems() async {
+  Future<void> getAllItems({Map<String, dynamic>? eqMap}) async {
     _loadingRepository.startLoading(LoadingType.normal);
     IschoolerListModel response =
         //model is sent here to get the type of request only

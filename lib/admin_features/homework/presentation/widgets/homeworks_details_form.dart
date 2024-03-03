@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
 import '../../../../../common/ischooler_validation.dart';
 import '../../../../../common/madpoly.dart';
+import '../../../../common/common_features/widgets/ischooler_drop_down_widget.dart';
 import '../../../../common/ischooler_model.dart';
-import '../../../classes/logic/cubit/classes_list_cubit.dart';
 import '../../../dashboard/presentation/widgets/dashboard_drop_down_widget.dart';
 import '../../../dashboard/presentation/widgets/form_buttons_widget.dart';
-import '../../../subjects/logic/cubit/subjects_list_cubit.dart';
+import '../../../instructor_assignments/data/models/instructor_assignment_model.dart';
+import '../../../instructor_assignments/data/models/instructor_assignments_list_model.dart';
+import '../../../instructor_assignments/logic/cubit/instructor_assignments_list_cubit.dart';
+import '../../../users/instructor/data/models/instructor_model.dart';
 import '../../../users/instructor/logic/cubit/instructors_list_cubit.dart';
 import '../../data/models/homework_model.dart';
 
@@ -25,16 +29,27 @@ class HomeworkDetailsForm extends StatefulWidget {
 class _HomeworkDetailsFormState extends State<HomeworkDetailsForm> {
   final _formKey = GlobalKey<FormState>();
 
-  // Use Homeworkmodel to store form data
+  // Use HomeworkModel to store form data
   HomeworkModel homeworkData = HomeworkModel.dummy();
-
+  bool isValidInstructor = false;
   bool editingModel = false;
+  InstructorModel? selectedInstructor;
+  String selectedClass = '';
+
   @override
   void initState() {
     super.initState();
     editingModel = widget.currentHomeworkData != null;
     if (editingModel) {
       homeworkData = widget.currentHomeworkData!.copyWith();
+    }
+    isValidInstructor = homeworkData.instructorAssignment.instructor == null ||
+        homeworkData.instructorAssignment.instructor!.id == '-1';
+    if (isValidInstructor) {
+      context.read<InstructorAssignmentsListCubit>().getAllItems(eqMap: {
+        'instructor_id': homeworkData.instructorAssignment.instructor!.id
+      });
+      selectedInstructor = homeworkData.instructorAssignment.instructor;
     }
   }
 
@@ -56,8 +71,8 @@ class _HomeworkDetailsFormState extends State<HomeworkDetailsForm> {
               enabled: false,
             ),
           IschoolerTextField(
-            initialValue: homeworkData.name,
-            labelText: 'Homework Name',
+            initialValue: homeworkData.content,
+            labelText: 'Homework Content',
             validator: IschoolerValidations.nameValidator,
             onSaved: (value) {
               setState(() {
@@ -66,8 +81,8 @@ class _HomeworkDetailsFormState extends State<HomeworkDetailsForm> {
             },
           ),
           DashboardDropDownWidget<InstructorsListCubit>(
-              hint: homeworkData.instructorAssignment.instructor == null
-                  ? ''
+              hint: isValidInstructor
+                  ? 'Select Instructor'
                   : homeworkData.instructorAssignment.instructor!.name,
               labelText: 'Instructor',
               onChanged: (IschoolerModel value) {
@@ -77,45 +92,111 @@ class _HomeworkDetailsFormState extends State<HomeworkDetailsForm> {
                       'student_details_form > DashboardDropDownWidget<InstructorsListCubit>',
                   developer: "Ziad",
                 );
+                if (value is InstructorModel) {
+                  selectedInstructor = value;
+                }
                 // homeworkData.instructorAssignment = homeworkData
                 //     .instructorAssignment
                 //     .copyWith(instructor: value as InstructorModel);
+                context
+                    .read<InstructorAssignmentsListCubit>()
+                    .getAllItems(eqMap: {'instructor_id': value.id});
                 setState(() {});
               }),
-          DashboardDropDownWidget<SubjectsListCubit>(
-              hint: homeworkData.instructorAssignment.subjectModel == null
-                  ? ''
-                  : homeworkData.instructorAssignment.subjectModel!.name,
-              labelText: 'Subject',
-              onChanged: (IschoolerModel value) {
-                Madpoly.print(
-                  'Subject model = $value',
-                  tag:
-                      'student_details_form > DashboardDropDownWidget<SubjectsListCubit>',
-                  developer: "Ziad",
-                );
-                // homeworkData.instructorAssignment = homeworkData
-                //     .instructorAssignment
-                //     .copyWith(subjectModel: value as SubjectModel);
-                setState(() {});
-              }),
-          DashboardDropDownWidget<ClassesListCubit>(
-              hint: homeworkData.instructorAssignment.classModel == null
-                  ? ''
-                  : homeworkData.instructorAssignment.classModel!.name,
-              labelText: 'Class',
-              onChanged: (IschoolerModel value) {
-                Madpoly.print(
-                  'Class Model = $value',
-                  tag:
-                      'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
-                  developer: "Ziad",
-                );
-                // homeworkData.instructorAssignment = homeworkData
-                //     .instructorAssignment
-                //     .copyWith(classModel: value as ClassModel);
-                setState(() {});
-              }),
+
+          BlocBuilder<InstructorAssignmentsListCubit,
+              InstructorAssignmentsListState>(
+            builder: (context, state) {
+              InstructorAssignmentsListModel educonnectAllModel =
+                  InstructorAssignmentsListModel.empty();
+              if (state.isLoaded() &&
+                  state.educonnectAllModel is InstructorAssignmentsListModel) {
+                educonnectAllModel =
+                    state.educonnectAllModel as InstructorAssignmentsListModel;
+              }
+              List<String> classOptions = educonnectAllModel.getItemClassName();
+              List<String> subjectOptions =
+                  educonnectAllModel.getItemSubjectName();
+              return Column(
+                children: [
+                  EduConnectDropdownWidget(
+                    labelText: 'Class',
+                    hint: classOptions.isEmpty
+                        ? 'Select Class'
+                        : classOptions.first,
+                    onChanged: (value) {
+                      setState(() {
+                        if (value != null && value != '') {
+                          selectedClass = value;
+                          // if (selectedData != null) {
+                          //   // widget.onChanged(selectedData);
+                          // }
+                        }
+                      });
+                    },
+                    options: classOptions,
+                  ),
+                  EduConnectDropdownWidget(
+                    labelText: 'Subject',
+                    hint: subjectOptions.isEmpty
+                        ? 'Select Subject'
+                        : subjectOptions.first,
+                    onChanged: (selectedSubject) {
+                      if (selectedSubject != null && selectedSubject != '') {
+                        InstructorAssignmentModel? selectedData =
+                            educonnectAllModel.getModelByNames(
+                          subjectName: selectedSubject,
+                          className: selectedClass,
+                          instructor: selectedInstructor,
+                        );
+                        print(
+                            'InstructorAssignmentModel selectedData = $selectedData');
+                        if (selectedData != null) {
+                          homeworkData = homeworkData.copyWith(
+                              instructorAssignmentModel: selectedData);
+                        }
+                      }
+                      setState(() {});
+                    },
+                    options: subjectOptions,
+                  ),
+                ],
+              );
+            },
+          ), // DashboardDropDownWidget<SubjectsListCubit>(
+          //     hint: homeworkData.instructorAssignment.subjectModel == null
+          //         ? ''
+          //         : homeworkData.instructorAssignment.subjectModel!.name,
+          //     labelText: 'Subject',
+          //     onChanged: (IschoolerModel value) {
+          //       Madpoly.print(
+          //         'Subject model = $value',
+          //         tag:
+          //             'student_details_form > DashboardDropDownWidget<SubjectsListCubit>',
+          //         developer: "Ziad",
+          //       );
+          //       // homeworkData.instructorAssignment = homeworkData
+          //       //     .instructorAssignment
+          //       //     .copyWith(subjectModel: value as SubjectModel);
+          //       setState(() {});
+          //     }),
+          // DashboardDropDownWidget<ClassesListCubit>(
+          //     hint: homeworkData.instructorAssignment.classModel == null
+          //         ? ''
+          //         : homeworkData.instructorAssignment.classModel!.name,
+          //     labelText: 'Class',
+          //     onChanged: (IschoolerModel value) {
+          //       Madpoly.print(
+          //         'Class Model = $value',
+          //         tag:
+          //             'student_details_form > DashboardDropDownWidget<ClassesListCubit>',
+          //         developer: "Ziad",
+          //       );
+          //       // homeworkData.instructorAssignment = homeworkData
+          //       //     .instructorAssignment
+          //       //     .copyWith(classModel: value as ClassModel);
+          //       setState(() {});
+          //     }),
           FormButtonsWidget(onSubmitButtonPressed: onSubmitButtonPressed),
         ],
       ),

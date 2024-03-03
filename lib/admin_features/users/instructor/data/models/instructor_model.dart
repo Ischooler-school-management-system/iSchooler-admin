@@ -21,7 +21,7 @@ class InstructorModel extends UserModel {
 
   factory InstructorModel.dummy() {
     return InstructorModel(
-      id: '123456',
+      id: '-1',
       name: 'JohnDoe',
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',

@@ -43,7 +43,7 @@ class UserModel extends IschoolerModel {
 
   factory UserModel.dummy() {
     return UserModel(
-      id: '123456',
+      id: '-1',
       name: 'JohnDoe',
       // createdAt: DateTime.now(),
       dateOfBirth: DateTime(1990, 5, 15),

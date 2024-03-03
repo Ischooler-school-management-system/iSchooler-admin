@@ -30,7 +30,7 @@ class InstructorAssignmentModel extends IschoolerModel {
   }
   factory InstructorAssignmentModel.dummy() {
     return InstructorAssignmentModel(
-      id: '1',
+      id: '-1',
       name: 'name',
       instructor: InstructorModel.dummy(),
       classModel: ClassModel.dummy(),

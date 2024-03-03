@@ -39,6 +39,7 @@ class _DashboardDetailsScreenState<C extends IschoolerListCubit>
       data = widget.currentData!.copyWith();
     }
     Madpoly.print(
+      'editingMode = $editingMode , '
       'data = ',
       inspectObject: data,
       tag: 'dashboard_details_screen > track',

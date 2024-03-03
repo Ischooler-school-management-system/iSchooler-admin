@@ -22,7 +22,7 @@ class IschoolerSideBar extends StatefulWidget {
 }
 
 class _IschoolerSideBarState extends State<IschoolerSideBar> {
-  final _controller = SidebarXController(selectedIndex: 5, extended: true);
+  final _controller = SidebarXController(selectedIndex: 8, extended: true);
 
   @override
   Widget build(BuildContext context) {
@@ -34,10 +34,6 @@ class _IschoolerSideBarState extends State<IschoolerSideBar> {
     final isSmallScreen = MediaQuery.of(context).size.width < 600;
 
     return IschoolerScreen(
-      extendBodyBehindAppBar: true,
-
-      // key: _key,
-      // appBar: AppBar(backgroundColor: Colors.transparent),
       showAppBar: true,
       drawer: ExampleSidebarX(controller: _controller),
       body: Row(

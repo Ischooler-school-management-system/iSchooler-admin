@@ -62,7 +62,6 @@ class HomeworkModel extends IschoolerModel {
   Map<String, dynamic> toMap() {
     return {
       'instructor_assignment_id': instructorAssignment.id,
-
       // 'subject_id': subject.id,
       'date': date.toIso8601String(),
       'content': content,

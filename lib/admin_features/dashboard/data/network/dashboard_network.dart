@@ -14,8 +14,11 @@ class DashboardNetwork implements IschoolerListNetwork {
       : _alertHandlingRepository = alertHandlingRepository;
 
   @override
-  Future<IschoolerResponse> getAllItems(
-      {required IschoolerListModel model, DatabaseTable? table}) async {
+  Future<IschoolerResponse> getAllItems({
+    required IschoolerListModel model,
+    DatabaseTable? table,
+    Map<String, dynamic>? eqMap,
+  }) async {
     IschoolerResponse response = IschoolerResponse.empty();
     try {
       DatabaseTable tableQueryData =
@@ -38,20 +41,24 @@ class DashboardNetwork implements IschoolerListNetwork {
         isLog: true,
         developer: "Ziad",
       );
-      final List<Map<String, dynamic>> query = await SupabaseCredentials
-          .supabase
+      var query = SupabaseCredentials.supabase
           .from(tableQueryData.tableName)
-          .select(tableQueryData.selectQuery)
-          .order('created_at', ascending: true);
+          .select(tableQueryData.selectQuery);
+      if (eqMap != null && eqMap.isNotEmpty) {
+        query = query.eq(eqMap.keys.first, eqMap.values.first);
+      }
+      final List<Map<String, dynamic>> responseData =
+          await query.order('created_at', ascending: true);
 
       Madpoly.print(
         'query= ',
-        inspectObject: query,
+        inspectObject: responseData,
         color: MadpolyColor.green,
         tag: 'dashboard_network > getAllItems',
         developer: "Ziad",
       );
-      response = IschoolerResponse(hasData: true, data: {'items': query});
+      response =
+          IschoolerResponse(hasData: true, data: {'items': responseData});
     } catch (e) {
       _alertHandlingRepository.addError(
         e.toString(),

@@ -56,7 +56,7 @@ class AdminModel extends UserModel {
 
   factory AdminModel.dummy() {
     return AdminModel(
-      id: '123456',
+      id: '-1',
       name: 'JohnDoe',
       dateOfBirth: DateTime(1990, 5, 15),
       phoneNumber: '555-1234',

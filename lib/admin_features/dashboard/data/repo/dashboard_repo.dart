@@ -16,8 +16,10 @@ class DashboardRepository implements IschoolerListRepository {
         _adminNetwork = adminNetwork;
 
   @override
-  Future<IschoolerListModel> getAllItems(
-      {required IschoolerListModel model}) async {
+  Future<IschoolerListModel> getAllItems({
+    required IschoolerListModel model,
+    Map<String, dynamic>? eqMap,
+  }) async {
     IschoolerListModel listModel = IschoolerListModel.empty();
     Madpoly.print(
       ' model >> ${model.runtimeType}',
@@ -27,8 +29,10 @@ class DashboardRepository implements IschoolerListRepository {
       // showToast: true,
     );
     try {
-      IschoolerResponse response =
-          await _adminNetwork.getAllItems(model: model);
+      IschoolerResponse response = await _adminNetwork.getAllItems(
+        model: model,
+        eqMap: eqMap,
+      );
       // if (response.hasData) {
 
       listModel = model.fromMapToChild(response.data);

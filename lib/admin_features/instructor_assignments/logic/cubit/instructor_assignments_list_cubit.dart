@@ -10,29 +10,31 @@ part 'instructor_assignments_list_state.dart';
 
 class InstructorAssignmentsListCubit
     extends IschoolerListCubit<InstructorAssignmentsListState> {
-  final DashboardRepository _instructorassignmentRepository;
+  final DashboardRepository _instructorAssignmentRepository;
   final LoadingRepository _loadingRepository;
 
   InstructorAssignmentsListCubit(
-    DashboardRepository instructorassignmentRepository,
+    DashboardRepository instructorAssignmentRepository,
     LoadingRepository loadingRepository,
-  )   : _instructorassignmentRepository = instructorassignmentRepository,
+  )   : _instructorAssignmentRepository = instructorAssignmentRepository,
         _loadingRepository = loadingRepository,
         super(InstructorAssignmentsListState.init());
 
   @override
-  Future<void> getAllItems() async {
+  Future<void> getAllItems({Map<String, dynamic>? eqMap}) async {
     _loadingRepository.startLoading(LoadingType.normal);
     IschoolerListModel response =
         //model is sent here to get the type of request only
-        await _instructorassignmentRepository.getAllItems(
-            model: InstructorAssignmentsListModel.empty());
+        await _instructorAssignmentRepository.getAllItems(
+      model: InstructorAssignmentsListModel.empty(),
+      eqMap: eqMap,
+    );
     if (response is InstructorAssignmentsListModel) {
       emit(state.updateAllInstructorAssignments(response));
     } else {
       Madpoly.print(
         'incorrect model >> ${response.runtimeType}',
-        tag: 'instructorassignments_list_cubit > ',
+        tag: 'instructorAssignments_list_cubit > ',
         showToast: true,
         developer: "Ziad",
       );
@@ -44,7 +46,7 @@ class InstructorAssignmentsListCubit
   Future<void> addItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _instructorassignmentRepository.addItem(model: model);
+    await _instructorAssignmentRepository.addItem(model: model);
     emit(state.updateStatus());
     await getAllItems();
     // _loadingRepository.stopLoading();
@@ -55,10 +57,8 @@ class InstructorAssignmentsListCubit
     _loadingRepository.startLoading(LoadingType.normal);
 
     bool successfulRequest =
-        await _instructorassignmentRepository.updateItem(model: model);
+        await _instructorAssignmentRepository.updateItem(model: model);
     if (successfulRequest) {
-      emit(state.updateStatus());
-
       emit(state.updateStatus());
       await getAllItems();
     }
@@ -69,8 +69,7 @@ class InstructorAssignmentsListCubit
   Future<void> deleteItem({required IschoolerModel model}) async {
     _loadingRepository.startLoading(LoadingType.normal);
 
-    await _instructorassignmentRepository.deleteItem(model: model);
-    emit(state.updateStatus());
+    await _instructorAssignmentRepository.deleteItem(model: model);
 
     emit(state.updateStatus());
     await getAllItems();
