@@ -76,7 +76,7 @@ class AuthScreen extends StatelessWidget {
       children: [
         IschoolerImageWidget(
           url: IschoolerAssets.authImage,
-          height: IschoolerConstants.educonnect_screen_height * 0.5,
+          height: IschoolerConstants.ischooler_screen_height * 0.5,
         ),
         Text(
           IschoolerConstants.localization().welcome,

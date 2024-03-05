@@ -40,10 +40,10 @@ class InstructorAssignmentModel extends IschoolerModel {
   }
 
   factory InstructorAssignmentModel.fromMap(Map<String, dynamic> map) {
-    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
+    IschoolerModel ischoolerModel = IschoolerModel.fromMap(map);
     return InstructorAssignmentModel(
-      id: educonnectModel.id,
-      name: educonnectModel.name,
+      id: ischoolerModel.id,
+      name: ischoolerModel.name,
       instructor: map['instructor'] == null
           ? null
           : InstructorModel.fromMap(map['instructor']),

@@ -18,7 +18,7 @@ class IschoolerErrorScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // SizedBox(height: IschoolerConstants.educonnect_screen_height / 4),
+            // SizedBox(height: IschoolerConstants.ischooler_screen_height / 4),
             Image.asset(IschoolerAssets.error_animated_icon),
             SizedBox(height: 10.h),
             Text(

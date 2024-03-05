@@ -14,6 +14,8 @@ import '../admin_features/calender/weekly_timetable_day/data/network/weekly_time
 import '../admin_features/calender/weekly_timetable_day/data/repo/weekly_timetable_day_repo.dart';
 import '../admin_features/profile/data/network/profile_network.dart';
 import '../admin_features/profile/data/repo/profile_repo.dart';
+import '../admin_features/users/students/data/network/student_network.dart';
+import '../admin_features/users/students/data/repo/student_repo.dart';
 import '../auth/data/network/auth_network.dart';
 import '../auth/data/repo/auth_repo.dart';
 import 'common_features/alert_handling/data/repo/alert_handling_repo.dart';
@@ -43,6 +45,7 @@ class DependencyInjection {
     getIt.registerLazySingleton(() => WeeklySessionsNetwork(getIt()));
     getIt.registerLazySingleton(() => WeeklyTimetableDayNetwork(getIt()));
     getIt.registerLazySingleton(() => ProfileNetwork(getIt()));
+    getIt.registerLazySingleton(() => StudentNetwork(getIt()));
     //--------------------------------------------------------------------------
     /// register Repositories:
     getIt.registerLazySingleton(() => LoadingRepository());
@@ -58,6 +61,8 @@ class DependencyInjection {
     getIt.registerLazySingleton(
         () => WeeklyTimetableDaysRepository(getIt(), getIt()));
     getIt.registerLazySingleton(() => ProfileRepository(getIt(), getIt()));
+    getIt.registerLazySingleton(
+        () => StudentRepository(getIt(), getIt(), getIt()));
     //--------------------------------------------------------------------------
   }
 }

@@ -56,11 +56,11 @@ class UserModel extends IschoolerModel {
     );
   }
   factory UserModel.fromMap(Map<String, dynamic> map) {
-    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
+    IschoolerModel ischoolerModel = IschoolerModel.fromMap(map);
     // return StudentModel(
     return UserModel(
-      id: educonnectModel.id,
-      name: educonnectModel.name,
+      id: ischoolerModel.id,
+      name: ischoolerModel.name,
 
       // createdAt: DateTime.parse(map['created_at']),
       // dateOfBirth: DateTime.now(),

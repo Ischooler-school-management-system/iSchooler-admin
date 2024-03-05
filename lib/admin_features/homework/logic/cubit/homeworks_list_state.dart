@@ -4,13 +4,13 @@ part of 'homeworks_list_cubit.dart';
 
 class HomeworksListState extends IschoolerListState {
   const HomeworksListState({
-    required super.educonnectAllModel,
+    required super.ischoolerAllModel,
     required super.status,
   });
 
   factory HomeworksListState.init() {
     return HomeworksListState(
-      educonnectAllModel: HomeworksListModel.empty(),
+      ischoolerAllModel: HomeworksListModel.empty(),
       status: IschoolerStatus.init,
     );
   }
@@ -18,7 +18,7 @@ class HomeworksListState extends IschoolerListState {
   @override
   HomeworksListState updateData(IschoolerListModel newData) {
     return _copyWith(
-      educonnectAllModel: newData is HomeworksListModel ? newData : null,
+      ischoolerAllModel: newData is HomeworksListModel ? newData : null,
       status: IschoolerStatus.loaded,
     );
   }
@@ -31,11 +31,11 @@ class HomeworksListState extends IschoolerListState {
   }
 
   HomeworksListState _copyWith({
-    HomeworksListModel? educonnectAllModel,
+    HomeworksListModel? ischoolerAllModel,
     IschoolerStatus? status,
   }) {
     return HomeworksListState(
-      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
+      ischoolerAllModel: ischoolerAllModel ?? this.ischoolerAllModel,
       status: status ?? this.status,
     );
   }
@@ -43,5 +43,5 @@ class HomeworksListState extends IschoolerListState {
   @override
   bool isLoaded() => status == IschoolerStatus.loaded;
   @override
-  List<Object> get props => [educonnectAllModel, status];
+  List<Object> get props => [ischoolerAllModel, status];
 }

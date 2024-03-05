@@ -21,7 +21,7 @@ class IschoolerState extends Equatable {
 
   IschoolerState updateData(IschoolerModel newData) {
     return _copyWith(
-      educonnectAllModel: newData,
+      ischoolerAllModel: newData,
       status: IschoolerStatus.loaded,
     );
   }
@@ -33,11 +33,11 @@ class IschoolerState extends Equatable {
   }
 
   IschoolerState _copyWith({
-    IschoolerModel? educonnectAllModel,
+    IschoolerModel? ischoolerAllModel,
     IschoolerStatus? status,
   }) {
     return IschoolerState(
-      ischoolerModel: educonnectAllModel ?? ischoolerModel,
+      ischoolerModel: ischoolerAllModel ?? ischoolerModel,
       status: status ?? this.status,
     );
   }

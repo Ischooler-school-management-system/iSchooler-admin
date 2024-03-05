@@ -1,10 +1,10 @@
 part of '../ischooler_button.dart';
 
 class _CartButtonWidget extends StatelessWidget {
-  final IschoolerCartButton educonnectCartButton;
+  final IschoolerCartButton ischoolerCartButton;
 
   const _CartButtonWidget({
-    required this.educonnectCartButton,
+    required this.ischoolerCartButton,
   });
 
   @override
@@ -16,8 +16,8 @@ class _CartButtonWidget extends StatelessWidget {
           color: IschoolerColors.light_grey,
           borderRadius: BorderRadius.circular(30.r),
         ),
-        height: IschoolerConstants.educonnect_screen_height / 28,
-        width: IschoolerConstants.educonnect_screen_width / 5,
+        height: IschoolerConstants.ischooler_screen_height / 28,
+        width: IschoolerConstants.ischooler_screen_width / 5,
         alignment: Alignment.center,
         padding: EdgeInsets.symmetric(horizontal: 2.w),
         child: SizedBox(
@@ -26,7 +26,7 @@ class _CartButtonWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               InkWell(
-                onTap: educonnectCartButton.removeOnPressed,
+                onTap: ischoolerCartButton.removeOnPressed,
                 child: Icon(
                   Icons.remove,
                   size: 17.w,
@@ -39,7 +39,7 @@ class _CartButtonWidget extends StatelessWidget {
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
                   child: Text(
-                    educonnectCartButton.text,
+                    ischoolerCartButton.text,
                     style: IschoolerConstants.textTheme.bodyMedium!.copyWith(
                       color: IschoolerColors.secondaryColor,
                       fontWeight: FontWeight.w600,
@@ -49,7 +49,7 @@ class _CartButtonWidget extends StatelessWidget {
                 ),
               ),
               InkWell(
-                onTap: educonnectCartButton.addOnPressed,
+                onTap: ischoolerCartButton.addOnPressed,
                 child: Icon(
                   Icons.add,
                   size: 17.w,

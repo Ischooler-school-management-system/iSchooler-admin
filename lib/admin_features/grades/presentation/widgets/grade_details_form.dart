@@ -66,7 +66,7 @@ class _GradeDetailsFormState extends State<GradeDetailsForm> {
           ),
           IschoolerTextField(
             // initialValue: gradeData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(gradeData.dateOfBirth),
+            initialValue: ischoolerDateFormatter(gradeData.dateOfBirth),
             labelText: 'Date of Birth',
             validator: (value) {
               // Add validation logic for date of birth if needed

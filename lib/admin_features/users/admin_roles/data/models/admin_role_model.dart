@@ -22,10 +22,10 @@ class AdminRoleModel extends IschoolerModel {
   }
 
   factory AdminRoleModel.fromMap(Map<String, dynamic> map) {
-    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
+    IschoolerModel ischoolerModel = IschoolerModel.fromMap(map);
     return AdminRoleModel(
-      id: educonnectModel.id,
-      name: educonnectModel.name,
+      id: ischoolerModel.id,
+      name: ischoolerModel.name,
     );
   }
 

@@ -37,7 +37,7 @@ class LanguageWidget extends StatelessWidget {
               isSelected
                   ? Icons.radio_button_checked
                   : Icons.radio_button_unchecked,
-              size: IschoolerConstants.educonnect_screen_height / 33,
+              size: IschoolerConstants.ischooler_screen_height / 33,
               color: IschoolerColors.blue,
             ),
           ],

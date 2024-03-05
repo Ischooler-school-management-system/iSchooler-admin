@@ -107,16 +107,16 @@ class _HomeworkDetailsFormState extends State<HomeworkDetailsForm> {
           BlocBuilder<InstructorAssignmentsListCubit,
               InstructorAssignmentsListState>(
             builder: (context, state) {
-              InstructorAssignmentsListModel educonnectAllModel =
+              InstructorAssignmentsListModel ischoolerAllModel =
                   InstructorAssignmentsListModel.empty();
               if (state.isLoaded() &&
-                  state.educonnectAllModel is InstructorAssignmentsListModel) {
-                educonnectAllModel =
-                    state.educonnectAllModel as InstructorAssignmentsListModel;
+                  state.ischoolerAllModel is InstructorAssignmentsListModel) {
+                ischoolerAllModel =
+                    state.ischoolerAllModel as InstructorAssignmentsListModel;
               }
-              List<String> classOptions = educonnectAllModel.getItemClassName();
+              List<String> classOptions = ischoolerAllModel.getItemClassName();
               List<String> subjectOptions =
-                  educonnectAllModel.getItemSubjectName();
+                  ischoolerAllModel.getItemSubjectName();
               return Column(
                 children: [
                   EduConnectDropdownWidget(
@@ -144,7 +144,7 @@ class _HomeworkDetailsFormState extends State<HomeworkDetailsForm> {
                     onChanged: (selectedSubject) {
                       if (selectedSubject != null && selectedSubject != '') {
                         InstructorAssignmentModel? selectedData =
-                            educonnectAllModel.getModelByNames(
+                            ischoolerAllModel.getModelByNames(
                           subjectName: selectedSubject,
                           className: selectedClass,
                           instructor: selectedInstructor,

@@ -4,24 +4,24 @@ enum IschoolerStatus { init, updated, loaded, failed }
 // @immutable
 
 class IschoolerListState extends Equatable {
-  final IschoolerListModel educonnectAllModel;
+  final IschoolerListModel ischoolerAllModel;
   final IschoolerStatus status;
 
   const IschoolerListState({
-    required this.educonnectAllModel,
+    required this.ischoolerAllModel,
     required this.status,
   });
 
   factory IschoolerListState.init() {
     return IschoolerListState(
-      educonnectAllModel: IschoolerListModel.empty(),
+      ischoolerAllModel: IschoolerListModel.empty(),
       status: IschoolerStatus.init,
     );
   }
 
   IschoolerListState updateData(IschoolerListModel newData) {
     return _copyWith(
-      educonnectAllModel: newData,
+      ischoolerAllModel: newData,
       status: IschoolerStatus.loaded,
     );
   }
@@ -33,11 +33,11 @@ class IschoolerListState extends Equatable {
   }
 
   IschoolerListState _copyWith({
-    IschoolerListModel? educonnectAllModel,
+    IschoolerListModel? ischoolerAllModel,
     IschoolerStatus? status,
   }) {
     return IschoolerListState(
-      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
+      ischoolerAllModel: ischoolerAllModel ?? this.ischoolerAllModel,
       status: status ?? this.status,
     );
   }
@@ -45,5 +45,5 @@ class IschoolerListState extends Equatable {
   bool isLoaded() => status == IschoolerStatus.loaded;
 
   @override
-  List<Object> get props => [educonnectAllModel];
+  List<Object> get props => [ischoolerAllModel];
 }

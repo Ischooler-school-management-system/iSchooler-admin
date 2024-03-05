@@ -4,13 +4,13 @@ part of 'weekly_sessions_cubit.dart';
 
 class WeeklySessionsState extends IschoolerListState {
   const WeeklySessionsState({
-    required super.educonnectAllModel,
+    required super.ischoolerAllModel,
     required super.status,
   });
 
   factory WeeklySessionsState.init() {
     return WeeklySessionsState(
-      educonnectAllModel: WeeklySessionsListModel.empty(),
+      ischoolerAllModel: WeeklySessionsListModel.empty(),
       status: IschoolerStatus.init,
     );
   }
@@ -18,7 +18,7 @@ class WeeklySessionsState extends IschoolerListState {
   @override
   WeeklySessionsState updateData(IschoolerListModel newData) {
     return _copyWith(
-      educonnectAllModel: newData is WeeklySessionsListModel ? newData : null,
+      ischoolerAllModel: newData is WeeklySessionsListModel ? newData : null,
       status: IschoolerStatus.loaded,
     );
   }
@@ -31,11 +31,11 @@ class WeeklySessionsState extends IschoolerListState {
   }
 
   WeeklySessionsState _copyWith({
-    WeeklySessionsListModel? educonnectAllModel,
+    WeeklySessionsListModel? ischoolerAllModel,
     IschoolerStatus? status,
   }) {
     return WeeklySessionsState(
-      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
+      ischoolerAllModel: ischoolerAllModel ?? this.ischoolerAllModel,
       status: status ?? this.status,
     );
   }
@@ -43,5 +43,5 @@ class WeeklySessionsState extends IschoolerListState {
   @override
   bool isLoaded() => status == IschoolerStatus.loaded;
   @override
-  List<Object> get props => [educonnectAllModel, status];
+  List<Object> get props => [ischoolerAllModel, status];
 }

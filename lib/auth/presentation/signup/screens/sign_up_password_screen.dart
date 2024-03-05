@@ -36,8 +36,8 @@ class _SignupScreenState extends State<SignupPasswordScreen> {
             Visibility(
               visible: !isKeyboardOpen,
               child: AuthHeaderWidget(
-                height: IschoolerConstants.educonnect_screen_height * 0.25,
-                width: IschoolerConstants.educonnect_screen_width,
+                height: IschoolerConstants.ischooler_screen_height * 0.25,
+                width: IschoolerConstants.ischooler_screen_width,
                 title: 'Create Password',
                 subTitle: 'Create a password so you can login to your account',
               ),

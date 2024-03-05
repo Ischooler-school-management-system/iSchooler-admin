@@ -2,9 +2,9 @@ part of '../ischooler_button.dart';
 
 //text button either with or without leading text
 class _TextButtonWidget extends StatelessWidget {
-  final IschoolerTextButton educonnectTextButton;
+  final IschoolerTextButton ischoolerTextButton;
   const _TextButtonWidget({
-    required this.educonnectTextButton,
+    required this.ischoolerTextButton,
   });
 
   @override
@@ -14,10 +14,10 @@ class _TextButtonWidget extends StatelessWidget {
         shape: const RoundedRectangleBorder(),
         padding: EdgeInsets.zero,
       ),
-      onPressed: educonnectTextButton.onPressed,
-      child: (educonnectTextButton.leadingText != null)
+      onPressed: ischoolerTextButton.onPressed,
+      child: (ischoolerTextButton.leadingText != null)
           ? childWithLeadingText()
-          : educonnectTextButton.widget != null
+          : ischoolerTextButton.widget != null
               ? childWithWidget()
               : buttonText(),
     );
@@ -25,24 +25,24 @@ class _TextButtonWidget extends StatelessWidget {
 
   Text buttonText() {
     return Text(
-      educonnectTextButton.textButton,
-      style: educonnectTextButton.style ?? buttonTextStyle(),
+      ischoolerTextButton.textButton,
+      style: ischoolerTextButton.style ?? buttonTextStyle(),
     );
   }
 
   SizedBox childWithLeadingText() {
     return SizedBox(
-      width: IschoolerConstants.educonnect_screen_width / 1.3,
+      width: IschoolerConstants.ischooler_screen_width / 1.3,
       child: RichText(
         textAlign: TextAlign.center,
         text: TextSpan(
-          text: "${educonnectTextButton.leadingText!} ",
+          text: "${ischoolerTextButton.leadingText!} ",
           style:
-              educonnectTextButton.style ?? IschoolerTextStyles.styleBlackW500,
+              ischoolerTextButton.style ?? IschoolerTextStyles.styleBlackW500,
           children: [
             TextSpan(
-              text: educonnectTextButton.textButton,
-              style: educonnectTextButton.style ?? buttonTextStyle(),
+              text: ischoolerTextButton.textButton,
+              style: ischoolerTextButton.style ?? buttonTextStyle(),
             ),
           ],
         ),
@@ -54,13 +54,13 @@ class _TextButtonWidget extends StatelessWidget {
 
   TextStyle buttonTextStyle() {
     return IschoolerTextStyles.style14BlueW500.copyWith(
-      decoration: educonnectTextButton.hasUnderline
+      decoration: ischoolerTextButton.hasUnderline
           ? TextDecoration.underline
           : TextDecoration.none,
       decorationColor: IschoolerColors.primaryColor,
     );
     /* TextStyle(
-      decoration: educonnectTextButton.hasUnderline
+      decoration: ischoolerTextButton.hasUnderline
           ? TextDecoration.underline
           : TextDecoration.none,
       decorationColor: IschoolerColors.primaryColor,
@@ -75,7 +75,7 @@ class _TextButtonWidget extends StatelessWidget {
       children: [
         buttonText(),
         Row(
-          children: [SizedBox(width: 3.w), educonnectTextButton.widget!],
+          children: [SizedBox(width: 3.w), ischoolerTextButton.widget!],
         ),
       ],
     );

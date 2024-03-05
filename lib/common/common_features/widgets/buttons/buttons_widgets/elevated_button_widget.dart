@@ -2,33 +2,33 @@ part of '../ischooler_button.dart';
 
 //elevated button with text only
 class _ElevatedButtonWidget extends StatelessWidget {
-  final IschoolerElevatedButton educonnectElevatedButton;
+  final IschoolerElevatedButton ischoolerElevatedButton;
   const _ElevatedButtonWidget({
-    required this.educonnectElevatedButton,
+    required this.ischoolerElevatedButton,
   });
 
   @override
   Widget build(BuildContext context) {
     //switch colors for the button
-    final Color buttonColor = educonnectElevatedButton.isLightMode
+    final Color buttonColor = ischoolerElevatedButton.isLightMode
         ? IschoolerColors.light_grey // Background color in light mode
         : IschoolerColors.secondaryColor; // Background color in dark mode
 
-    final Color textColor = educonnectElevatedButton.isLightMode
+    final Color textColor = ischoolerElevatedButton.isLightMode
         ? IschoolerColors.secondaryColor
         : IschoolerColors.light_grey; // Text color
 
-    final Color borderColor = educonnectElevatedButton.isLightMode
+    final Color borderColor = ischoolerElevatedButton.isLightMode
         ? textColor
         : IschoolerColors.transparent; // Border color
 
     return ElevatedButton(
-      onPressed: educonnectElevatedButton.disabled
+      onPressed: ischoolerElevatedButton.disabled
           ? null
-          : educonnectElevatedButton.onPressed,
+          : ischoolerElevatedButton.onPressed,
       style: buttonStyle(textColor, buttonColor, borderColor),
-      child: Text(educonnectElevatedButton.text,
-          style: educonnectElevatedButton.textStyle ??
+      child: Text(ischoolerElevatedButton.text,
+          style: ischoolerElevatedButton.textStyle ??
               IschoolerTextStyles.style16.copyWith(color: textColor)
           /*  TextStyle(
               fontSize: IschoolerTextStyles.font14,
@@ -44,21 +44,21 @@ class _ElevatedButtonWidget extends StatelessWidget {
   ButtonStyle buttonStyle(
       Color textColor, Color buttonColor, Color borderColor) {
     return ElevatedButton.styleFrom(
-      padding: educonnectElevatedButton.textPadding,
+      padding: ischoolerElevatedButton.textPadding,
       foregroundColor: textColor,
       backgroundColor: buttonColor,
       surfaceTintColor: buttonColor,
       alignment: Alignment.center,
       minimumSize: Size(
-        educonnectElevatedButton.width ?? double.infinity,
-        educonnectElevatedButton.height ??
-            IschoolerConstants.educonnect_button_height,
+        ischoolerElevatedButton.width ?? double.infinity,
+        ischoolerElevatedButton.height ??
+            IschoolerConstants.ischooler_button_height,
       ),
-      shape: educonnectElevatedButton.shape ??
+      shape: ischoolerElevatedButton.shape ??
           RoundedRectangleBorder(
-            borderRadius: educonnectElevatedButton.hasRoundedCorners
+            borderRadius: ischoolerElevatedButton.hasRoundedCorners
                 ? BorderRadius.circular(
-                    IschoolerConstants.educonnect_button_radius)
+                    IschoolerConstants.ischooler_button_radius)
                 : BorderRadius.zero,
             side: BorderSide(
               color: borderColor,

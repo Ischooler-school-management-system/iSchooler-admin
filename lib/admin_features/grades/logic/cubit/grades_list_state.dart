@@ -4,13 +4,13 @@ part of 'grades_list_cubit.dart';
 
 class GradesListState extends IschoolerListState {
   const GradesListState({
-    required super.educonnectAllModel,
+    required super.ischoolerAllModel,
     required super.status,
   });
 
   factory GradesListState.init() {
     return GradesListState(
-      educonnectAllModel: GradesListModel.empty(),
+      ischoolerAllModel: GradesListModel.empty(),
       status: IschoolerStatus.init,
     );
   }
@@ -18,7 +18,7 @@ class GradesListState extends IschoolerListState {
   @override
   GradesListState updateData(IschoolerListModel newData) {
     return _copyWith(
-      educonnectAllModel: newData is GradesListModel ? newData : null,
+      ischoolerAllModel: newData is GradesListModel ? newData : null,
       status: IschoolerStatus.loaded,
     );
   }
@@ -31,11 +31,11 @@ class GradesListState extends IschoolerListState {
   }
 
   GradesListState _copyWith({
-    GradesListModel? educonnectAllModel,
+    GradesListModel? ischoolerAllModel,
     IschoolerStatus? status,
   }) {
     return GradesListState(
-      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
+      ischoolerAllModel: ischoolerAllModel ?? this.ischoolerAllModel,
       status: status ?? this.status,
     );
   }
@@ -43,5 +43,5 @@ class GradesListState extends IschoolerListState {
   @override
   bool isLoaded() => status == IschoolerStatus.loaded;
   @override
-  List<Object> get props => [educonnectAllModel, status];
+  List<Object> get props => [ischoolerAllModel, status];
 }

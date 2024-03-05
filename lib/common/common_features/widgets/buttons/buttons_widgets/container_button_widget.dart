@@ -1,9 +1,9 @@
 part of '../ischooler_button.dart';
 
 class _IschoolerContainerButtonWidget extends StatelessWidget {
-  final IschoolerContainerButton educonnectContainerButton;
+  final IschoolerContainerButton ischoolerContainerButton;
   const _IschoolerContainerButtonWidget({
-    required this.educonnectContainerButton,
+    required this.ischoolerContainerButton,
   });
 
   @override
@@ -12,21 +12,21 @@ class _IschoolerContainerButtonWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: IschoolerColors.blue.withOpacity(0.3),
         borderRadius:
-            BorderRadius.circular(educonnectContainerButton.borderRadius ?? 0),
+            BorderRadius.circular(ischoolerContainerButton.borderRadius ?? 0),
       ),
-      margin: educonnectContainerButton.margin,
+      margin: ischoolerContainerButton.margin,
       child: IconButton(
         style: IconButton.styleFrom(
-          shape: educonnectContainerButton.borderRadius != null
+          shape: ischoolerContainerButton.borderRadius != null
               ? RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(
-                      educonnectContainerButton.borderRadius!))
+                      ischoolerContainerButton.borderRadius!))
               : const ContinuousRectangleBorder(),
-          padding: educonnectContainerButton.padding ?? EdgeInsets.zero,
-          backgroundColor: educonnectContainerButton.color,
+          padding: ischoolerContainerButton.padding ?? EdgeInsets.zero,
+          backgroundColor: ischoolerContainerButton.color,
         ),
-        onPressed: educonnectContainerButton.onPressed,
-        icon: educonnectContainerButton.child,
+        onPressed: ischoolerContainerButton.onPressed,
+        icon: ischoolerContainerButton.child,
       ),
     );
   }

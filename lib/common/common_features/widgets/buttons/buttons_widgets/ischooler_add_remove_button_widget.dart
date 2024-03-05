@@ -1,10 +1,10 @@
 part of '../ischooler_button.dart';
 
 class _IschoolerAddRemoveButtonWidget extends StatelessWidget {
-  final IschoolerAddRemoveButton educonnectAddRemoveButton;
+  final IschoolerAddRemoveButton ischoolerAddRemoveButton;
 
   const _IschoolerAddRemoveButtonWidget(
-      {required this.educonnectAddRemoveButton});
+      {required this.ischoolerAddRemoveButton});
   //int count = 1;
   @override
   Widget build(BuildContext context) {
@@ -12,13 +12,13 @@ class _IschoolerAddRemoveButtonWidget extends StatelessWidget {
       children: [
         IschoolerButton(
           button: IschoolerIconButton(
-            height: IschoolerConstants.educonnect_screen_height / 30,
-            width: IschoolerConstants.educonnect_screen_width / 30,
-            onPressed: educonnectAddRemoveButton.addButtonFunction,
+            height: IschoolerConstants.ischooler_screen_height / 30,
+            width: IschoolerConstants.ischooler_screen_width / 30,
+            onPressed: ischoolerAddRemoveButton.addButtonFunction,
             icon: Icon(Icons.add,
                 size: IschoolerConstants.isTablet
-                    ? IschoolerConstants.educonnect_screen_height / 25
-                    : IschoolerConstants.educonnect_screen_height / 35),
+                    ? IschoolerConstants.ischooler_screen_height / 25
+                    : IschoolerConstants.ischooler_screen_height / 35),
           ),
         ),
         Padding(
@@ -28,7 +28,7 @@ class _IschoolerAddRemoveButtonWidget extends StatelessWidget {
             height: IschoolerConstants.isTablet ? 50 : 25,
             child: FittedBox(
               child: Text(
-                '${educonnectAddRemoveButton.count}',
+                '${ischoolerAddRemoveButton.count}',
                 style: IschoolerConstants.textTheme.displaySmall!.copyWith(
                   color: IschoolerColors.primaryColor,
                   fontWeight: FontWeight.normal,
@@ -39,13 +39,13 @@ class _IschoolerAddRemoveButtonWidget extends StatelessWidget {
         ),
         IschoolerButton(
           button: IschoolerIconButton(
-            height: IschoolerConstants.educonnect_screen_height / 30,
-            width: IschoolerConstants.educonnect_screen_width / 30,
-            onPressed: educonnectAddRemoveButton.subtractButtonFunction,
+            height: IschoolerConstants.ischooler_screen_height / 30,
+            width: IschoolerConstants.ischooler_screen_width / 30,
+            onPressed: ischoolerAddRemoveButton.subtractButtonFunction,
             icon: Icon(Icons.remove,
                 size: IschoolerConstants.isTablet
-                    ? IschoolerConstants.educonnect_screen_height / 25
-                    : IschoolerConstants.educonnect_screen_height / 35),
+                    ? IschoolerConstants.ischooler_screen_height / 25
+                    : IschoolerConstants.ischooler_screen_height / 35),
           ),
         ),
       ],

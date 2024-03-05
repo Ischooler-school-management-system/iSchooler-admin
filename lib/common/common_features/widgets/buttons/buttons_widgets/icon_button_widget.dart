@@ -2,32 +2,32 @@ part of '../ischooler_button.dart';
 
 //button with icon only
 class _IconButtonWidget extends StatelessWidget {
-  final IschoolerIconButton educonnectIconButton;
+  final IschoolerIconButton ischoolerIconButton;
   const _IconButtonWidget({
-    required this.educonnectIconButton,
+    required this.ischoolerIconButton,
   });
   @override
   Widget build(BuildContext context) {
-    final Color buttonColor = educonnectIconButton.isLightMode
+    final Color buttonColor = ischoolerIconButton.isLightMode
         ? IschoolerColors.white // Background color in light mode
         : IschoolerColors.secondaryColor; // Background color in dark mode
 
-    final Color textColor = educonnectIconButton.isLightMode
+    final Color textColor = ischoolerIconButton.isLightMode
         ? IschoolerColors.secondaryColor
         : IschoolerColors.white; // Text color
 
-    final Color borderColor = educonnectIconButton.isLightMode
+    final Color borderColor = ischoolerIconButton.isLightMode
         ? textColor
         : IschoolerColors.transparent; // Border color
 
     CircleBorder? shape2;
-    if (educonnectIconButton.hasBorder) {
+    if (ischoolerIconButton.hasBorder) {
       shape2 = CircleBorder(
         side: BorderSide(
           color: borderColor,
         ),
       );
-    } else if (educonnectIconButton.isContainer) {
+    } else if (ischoolerIconButton.isContainer) {
       const ContinuousRectangleBorder();
     } else {
       shape2 = null;
@@ -35,25 +35,25 @@ class _IconButtonWidget extends StatelessWidget {
     return IconButton(
       style: IconButton.styleFrom(
         foregroundColor: textColor,
-        backgroundColor: educonnectIconButton.isContainer
+        backgroundColor: ischoolerIconButton.isContainer
             ? null
-            : educonnectIconButton.color ?? buttonColor,
-        surfaceTintColor: educonnectIconButton.isContainer
+            : ischoolerIconButton.color ?? buttonColor,
+        surfaceTintColor: ischoolerIconButton.isContainer
             ? null
-            : educonnectIconButton.color ?? buttonColor,
-        padding: educonnectIconButton.isContainer ? EdgeInsets.zero : null,
-        minimumSize: educonnectIconButton.isContainer
+            : ischoolerIconButton.color ?? buttonColor,
+        padding: ischoolerIconButton.isContainer ? EdgeInsets.zero : null,
+        minimumSize: ischoolerIconButton.isContainer
             ? null
             : Size(
-                educonnectIconButton.width ??
-                    IschoolerConstants.educonnect_button_height,
-                educonnectIconButton.height ??
-                    IschoolerConstants.educonnect_button_height,
+                ischoolerIconButton.width ??
+                    IschoolerConstants.ischooler_button_height,
+                ischoolerIconButton.height ??
+                    IschoolerConstants.ischooler_button_height,
               ),
         shape: shape2,
       ),
-      onPressed: educonnectIconButton.onPressed,
-      icon: educonnectIconButton.icon,
+      onPressed: ischoolerIconButton.onPressed,
+      icon: ischoolerIconButton.icon,
     );
   }
 }

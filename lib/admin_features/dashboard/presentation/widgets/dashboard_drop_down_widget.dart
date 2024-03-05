@@ -37,11 +37,11 @@ class _DashboardDropDownWidgetState<C extends IschoolerListCubit>
   Widget build(BuildContext context) {
     return BlocBuilder<C, IschoolerListState>(
       builder: (context, state) {
-        IschoolerListModel educonnectAllModel = IschoolerListModel.empty();
+        IschoolerListModel ischoolerAllModel = IschoolerListModel.empty();
         if (state.isLoaded()) {
-          educonnectAllModel = state.educonnectAllModel;
+          ischoolerAllModel = state.ischoolerAllModel;
         }
-        List<String> options = educonnectAllModel.getItemNames();
+        List<String> options = ischoolerAllModel.getItemNames();
         return EduConnectDropdownWidget(
           labelText: widget.labelText,
           hint: widget.hint ?? options.first,
@@ -49,7 +49,7 @@ class _DashboardDropDownWidgetState<C extends IschoolerListCubit>
             setState(() {
               if (value != null && value != '') {
                 IschoolerModel? selectedData =
-                    educonnectAllModel.getModelByName(value);
+                    ischoolerAllModel.getModelByName(value);
                 if (selectedData != null) {
                   widget.onChanged(selectedData);
                 }

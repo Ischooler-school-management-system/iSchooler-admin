@@ -5,5 +5,5 @@ extension RepeatList<T> on List<T> {
     });
   }
   // ex:
-  // var list = (educonnectAllModel.items).repeat(5);
+  // var list = (ischoolerAllModel.items).repeat(5);
 }

@@ -43,7 +43,7 @@ class _IschoolerCheckboxState extends State<IschoolerCheckbox> {
           children: [
             Icon(
               decideIcon(),
-              size: IschoolerConstants.educonnect_screen_height / 35,
+              size: IschoolerConstants.ischooler_screen_height / 35,
               color: IschoolerColors.blue,
             ),
             const SizedBox(width: 8.0),

@@ -4,26 +4,26 @@ part of '../ischooler_button.dart';
 //the icon either at the beginning or the end of the button
 
 class _ElevatedButtonWithIconWidget extends StatelessWidget {
-  final IschoolerElevatedButtonWithIcon educonnectElevatedButtonWithIcon;
+  final IschoolerElevatedButtonWithIcon ischoolerElevatedButtonWithIcon;
   const _ElevatedButtonWithIconWidget({
-    required this.educonnectElevatedButtonWithIcon,
+    required this.ischoolerElevatedButtonWithIcon,
   });
 
   @override
   Widget build(BuildContext context) {
-    final Color buttonColor = educonnectElevatedButtonWithIcon.isLightMode
+    final Color buttonColor = ischoolerElevatedButtonWithIcon.isLightMode
         ? IschoolerColors.white // Background color in light mode
         : IschoolerColors.secondaryColor; // Background color in dark mode
 
-    final Color textColor = educonnectElevatedButtonWithIcon.isLightMode
+    final Color textColor = ischoolerElevatedButtonWithIcon.isLightMode
         ? IschoolerColors.secondaryColor
         : IschoolerColors.white; // Text color
 
-    final Color borderColor = educonnectElevatedButtonWithIcon.isLightMode
+    final Color borderColor = ischoolerElevatedButtonWithIcon.isLightMode
         ? textColor
         : IschoolerColors.transparent; // Border color
 
-    return educonnectElevatedButtonWithIcon.leftIcon
+    return ischoolerElevatedButtonWithIcon.leftIcon
         ? buttonWithLeftIcon(buttonColor, borderColor, textColor)
         : buttonWithRightIcon(buttonColor, borderColor, textColor);
   }
@@ -38,7 +38,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
       fixedSize: Size(205.w, 44.h),
       shape: RoundedRectangleBorder(
         borderRadius:
-            BorderRadius.circular(IschoolerConstants.educonnect_button_radius),
+            BorderRadius.circular(IschoolerConstants.ischooler_button_radius),
         side: BorderSide(
           color: borderColor!,
         ),
@@ -47,7 +47,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
 
     return ElevatedButton(
       style: buttonStyle,
-      onPressed: educonnectElevatedButtonWithIcon.onPressed,
+      onPressed: ischoolerElevatedButtonWithIcon.onPressed,
       //first row to make the sized box at the end of the button
       child: Stack(
         alignment: Alignment.center,
@@ -56,7 +56,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
           //sized box to take width so the text will be in the center
 
           Text(
-            educonnectElevatedButtonWithIcon.text,
+            ischoolerElevatedButtonWithIcon.text,
             style: IschoolerConstants.textTheme.bodyLarge!
                 .copyWith(color: textColor),
             textAlign: TextAlign.center,
@@ -71,7 +71,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
               height: 40.h,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(
-                    IschoolerConstants.educonnect_button_radius),
+                    IschoolerConstants.ischooler_button_radius),
                 // gradient: LinearGradient(colors: [
                 //   IschoolerColors.white.withOpacity(0),
                 //   IschoolerColors.white.withOpacity(0.1),
@@ -79,7 +79,7 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
                 //   IschoolerColors.white.withOpacity(0.4),
                 // ])
               ),
-              child: educonnectElevatedButtonWithIcon.icon,
+              child: ischoolerElevatedButtonWithIcon.icon,
             ),
           ),
         ],
@@ -96,19 +96,19 @@ class _ElevatedButtonWithIconWidget extends StatelessWidget {
         backgroundColor: buttonColor,
         surfaceTintColor: buttonColor,
         minimumSize:
-            Size(double.infinity, IschoolerConstants.educonnect_button_height),
+            Size(double.infinity, IschoolerConstants.ischooler_button_height),
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(
-              IschoolerConstants.educonnect_button_radius),
+          borderRadius:
+              BorderRadius.circular(IschoolerConstants.ischooler_button_radius),
           side: BorderSide(
             color: borderColor!,
           ),
         ),
       ),
-      onPressed: educonnectElevatedButtonWithIcon.onPressed,
-      icon: educonnectElevatedButtonWithIcon.icon,
+      onPressed: ischoolerElevatedButtonWithIcon.onPressed,
+      icon: ischoolerElevatedButtonWithIcon.icon,
       label: Text(
-        educonnectElevatedButtonWithIcon.text,
+        ischoolerElevatedButtonWithIcon.text,
         style:
             IschoolerConstants.textTheme.bodyLarge!.copyWith(color: textColor),
       ),

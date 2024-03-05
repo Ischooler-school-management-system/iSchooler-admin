@@ -28,10 +28,10 @@ class WeekdayModel extends IschoolerModel {
   }
 
   factory WeekdayModel.fromMap(Map<String, dynamic> map) {
-    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
+    IschoolerModel ischoolerModel = IschoolerModel.fromMap(map);
     return WeekdayModel(
-      id: educonnectModel.id,
-      name: educonnectModel.name,
+      id: ischoolerModel.id,
+      name: ischoolerModel.name,
       isDayOff: map['is_day_off'],
     );
   }

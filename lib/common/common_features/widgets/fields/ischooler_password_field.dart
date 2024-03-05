@@ -55,11 +55,11 @@ class _IschoolerPasswordFieldState extends State<IschoolerPasswordField> {
         child: isHiddenPass
             ? Icon(
                 Icons.visibility_off,
-                size: IschoolerConstants.educonnect_screen_height / 35,
+                size: IschoolerConstants.ischooler_screen_height / 35,
               )
             : Icon(
                 Icons.visibility,
-                size: IschoolerConstants.educonnect_screen_height / 35,
+                size: IschoolerConstants.ischooler_screen_height / 35,
               ),
       ),
       // validator: IschoolerValidations().passwordValidator,

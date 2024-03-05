@@ -5,20 +5,20 @@ import '../../../../common/ischooler_model.dart';
 import '../widgets/ischooler_dashboard_listtile.dart';
 
 class DashboardMobileview extends StatelessWidget {
-  final IschoolerListModel educonnectAllModel;
+  final IschoolerListModel ischoolerAllModel;
   final Function(IschoolerModel model)? onDeleteButtonPressed;
   final Function(IschoolerModel model)? onEditButtonPressed;
   const DashboardMobileview({
     super.key,
-    required this.educonnectAllModel,
+    required this.ischoolerAllModel,
     this.onDeleteButtonPressed,
     this.onEditButtonPressed,
   });
 
   @override
   Widget build(BuildContext context) {
-    List<IschoolerModel> list = (educonnectAllModel.items);
-    // var list = (educonnectAllModel.items).repeat(5);
+    List<IschoolerModel> list = (ischoolerAllModel.items);
+    // var list = (ischoolerAllModel.items).repeat(5);
     return Expanded(
       child: IschoolerSmallView(
         isCenter: false,

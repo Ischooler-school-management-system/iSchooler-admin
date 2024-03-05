@@ -121,7 +121,7 @@ class IschoolerTextField extends StatelessWidget {
           ),
         ),
         Container(
-          // width: width ?? IschoolerConstants.educonnect_screen_width * 0.8,
+          // width: width ?? IschoolerConstants.ischooler_screen_width * 0.8,
           padding: const EdgeInsets.all(8.0),
           child: TextFormField(
             selectionHeightStyle: BoxHeightStyle.max,

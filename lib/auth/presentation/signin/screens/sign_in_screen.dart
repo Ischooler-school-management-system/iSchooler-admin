@@ -31,8 +31,8 @@ class _SigninScreenState extends State<SigninScreen> {
             Visibility(
               visible: !isKeyboardOpen,
               child: AuthHeaderWidget(
-                height: IschoolerConstants.educonnect_screen_height * 0.25,
-                width: IschoolerConstants.educonnect_screen_width,
+                height: IschoolerConstants.ischooler_screen_height * 0.25,
+                width: IschoolerConstants.ischooler_screen_width,
                 title: IschoolerConstants.localization().welcome,
                 subTitle: IschoolerConstants.localization().sign_in_prompt,
               ),

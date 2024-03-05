@@ -4,13 +4,13 @@ part of 'students_list_cubit.dart';
 
 class StudentsListState extends IschoolerListState {
   const StudentsListState({
-    required super.educonnectAllModel,
+    required super.ischoolerAllModel,
     required super.status,
   });
 
   factory StudentsListState.init() {
     return StudentsListState(
-      educonnectAllModel: IschoolerListModel.empty(),
+      ischoolerAllModel: IschoolerListModel.empty(),
       status: IschoolerStatus.init,
     );
   }
@@ -18,8 +18,8 @@ class StudentsListState extends IschoolerListState {
   @override
   StudentsListState updateData(IschoolerListModel newData) {
     return _copyWith(
-      // educonnectAllModel: newData is AdminsListModel ? newData : null,
-      educonnectAllModel: newData is StudentsListModel ? newData : null,
+      // ischoolerAllModel: newData is AdminsListModel ? newData : null,
+      ischoolerAllModel: newData is StudentsListModel ? newData : null,
       status: IschoolerStatus.loaded,
     );
   }
@@ -32,11 +32,11 @@ class StudentsListState extends IschoolerListState {
   }
 
   StudentsListState _copyWith({
-    IschoolerListModel? educonnectAllModel,
+    IschoolerListModel? ischoolerAllModel,
     IschoolerStatus? status,
   }) {
     return StudentsListState(
-      educonnectAllModel: educonnectAllModel ?? this.educonnectAllModel,
+      ischoolerAllModel: ischoolerAllModel ?? this.ischoolerAllModel,
       status: status ?? this.status,
     );
   }
@@ -44,5 +44,5 @@ class StudentsListState extends IschoolerListState {
   @override
   bool isLoaded() => status == IschoolerStatus.loaded;
   @override
-  List<Object> get props => [educonnectAllModel, status];
+  List<Object> get props => [ischoolerAllModel, status];
 }

@@ -1,5 +1,5 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
-library educonnect_button_library;
+library ischooler_button_library;
 
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -33,29 +33,29 @@ class IschoolerButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     switch (button) {
-      case IschoolerElevatedButton educonnectElevatedButton:
+      case IschoolerElevatedButton ischoolerElevatedButton:
         return _ElevatedButtonWidget(
-            educonnectElevatedButton: educonnectElevatedButton);
+            ischoolerElevatedButton: ischoolerElevatedButton);
 
-      case IschoolerTextButton educonnectTextButton:
-        return _TextButtonWidget(educonnectTextButton: educonnectTextButton);
+      case IschoolerTextButton ischoolerTextButton:
+        return _TextButtonWidget(ischoolerTextButton: ischoolerTextButton);
 
-      case IschoolerIconButton educonnectIconButton:
-        return _IconButtonWidget(educonnectIconButton: educonnectIconButton);
+      case IschoolerIconButton ischoolerIconButton:
+        return _IconButtonWidget(ischoolerIconButton: ischoolerIconButton);
 
-      case IschoolerElevatedButtonWithIcon educonnectElevatedButtonWithIcon:
+      case IschoolerElevatedButtonWithIcon ischoolerElevatedButtonWithIcon:
         return _ElevatedButtonWithIconWidget(
-            educonnectElevatedButtonWithIcon: educonnectElevatedButtonWithIcon);
+            ischoolerElevatedButtonWithIcon: ischoolerElevatedButtonWithIcon);
 
-      case IschoolerCartButton educonnectCartButton:
-        return _CartButtonWidget(educonnectCartButton: educonnectCartButton);
+      case IschoolerCartButton ischoolerCartButton:
+        return _CartButtonWidget(ischoolerCartButton: ischoolerCartButton);
 
-      case IschoolerAddRemoveButton educonnectAddRemoveButton:
+      case IschoolerAddRemoveButton ischoolerAddRemoveButton:
         return _IschoolerAddRemoveButtonWidget(
-            educonnectAddRemoveButton: educonnectAddRemoveButton);
-      case IschoolerContainerButton educonnectContainerButton:
+            ischoolerAddRemoveButton: ischoolerAddRemoveButton);
+      case IschoolerContainerButton ischoolerContainerButton:
         return _IschoolerContainerButtonWidget(
-          educonnectContainerButton: educonnectContainerButton,
+          ischoolerContainerButton: ischoolerContainerButton,
         );
 
       default:

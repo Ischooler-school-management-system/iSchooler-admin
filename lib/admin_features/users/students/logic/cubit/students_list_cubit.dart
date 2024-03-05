@@ -3,17 +3,17 @@ import '../../../../../common/common_features/loading/data/repo/loading_repo.dar
 import '../../../../../common/ischooler_model.dart';
 import '../../../../../common/madpoly.dart';
 import '../../../../dashboard/logic/cubit/ischooler_list_cubit.dart';
-import '../../../../dashboard/data/repo/dashboard_repo.dart';
 import '../../data/models/students_list_model.dart';
+import '../../data/repo/student_repo.dart';
 
 part 'students_list_state.dart';
 
 class StudentsListCubit extends IschoolerListCubit<StudentsListState> {
-  final DashboardRepository _studentRepository;
+  final StudentRepository _studentRepository;
   final LoadingRepository _loadingRepository;
 
   StudentsListCubit(
-    DashboardRepository studentRepository,
+    StudentRepository studentRepository,
     LoadingRepository loadingRepository,
   )   : _studentRepository = studentRepository,
         _loadingRepository = loadingRepository,

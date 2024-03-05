@@ -94,9 +94,9 @@ class _DashboardScreenState<C extends IschoolerListCubit>
       padding: const EdgeInsets.all(8),
       body: BlocBuilder<C, IschoolerListState>(
         builder: (context, state) {
-          IschoolerListModel educonnectAllModel = IschoolerListModel.empty();
+          IschoolerListModel ischoolerAllModel = IschoolerListModel.empty();
           if (state.isLoaded()) {
-            educonnectAllModel = state.educonnectAllModel;
+            ischoolerAllModel = state.ischoolerAllModel;
           }
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -106,12 +106,12 @@ class _DashboardScreenState<C extends IschoolerListCubit>
               IschoolerConditionalWidget(
                 condition: Responsive.isMobile(),
                 whenTrue: DashboardMobileview(
-                  educonnectAllModel: educonnectAllModel,
+                  ischoolerAllModel: ischoolerAllModel,
                   onDeleteButtonPressed: onDeleteButtonPressed,
                   onEditButtonPressed: onEditButtonPressed,
                 ),
                 whenFalse: DashboardWebview(
-                  allUsers: educonnectAllModel,
+                  allUsers: ischoolerAllModel,
                   onDeleteButtonPressed: onDeleteButtonPressed,
                   onEditButtonPressed: onEditButtonPressed,
                 ),

@@ -78,10 +78,10 @@ class WeeklyTimetableModel extends IschoolerModel {
       ];
 
   factory WeeklyTimetableModel.fromMap(Map<String, dynamic> map) {
-    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
+    IschoolerModel ischoolerModel = IschoolerModel.fromMap(map);
     return WeeklyTimetableModel(
-      id: educonnectModel.id,
-      name: educonnectModel.name,
+      id: ischoolerModel.id,
+      name: ischoolerModel.name,
       term: map['term'] ?? '',
       classId: map['class_id'] == null ? '-1' : map['class_id'].toString(),
       startTime: map['start_time'] != null

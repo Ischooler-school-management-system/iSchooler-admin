@@ -26,10 +26,10 @@ class WeeklySessionModel extends IschoolerModel {
   });
 
   factory WeeklySessionModel.fromMap(Map<String, dynamic> map) {
-    IschoolerModel educonnectModel = IschoolerModel.fromMap(map);
+    IschoolerModel ischoolerModel = IschoolerModel.fromMap(map);
     return WeeklySessionModel(
-      id: educonnectModel.id,
-      name: educonnectModel.name,
+      id: ischoolerModel.id,
+      name: ischoolerModel.name,
       sessionNumber: map['session_number'],
       // weeklyTimetableDayId: map['weekly_timetable_day_id'].toString(),
       // instructorAssignmentId: map['instructor_assignment_id'].toString(),

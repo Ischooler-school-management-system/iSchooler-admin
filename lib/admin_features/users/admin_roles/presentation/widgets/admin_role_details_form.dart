@@ -66,7 +66,7 @@ class _AdminRoleDetailsFormState extends State<AdminRoleDetailsForm> {
           ),
           IschoolerTextField(
             // initialValue: adminroleData.dateOfBirth.toString(),
-            initialValue: educonnectDateFormatter(adminroleData.dateOfBirth),
+            initialValue: ischoolerDateFormatter(adminroleData.dateOfBirth),
             labelText: 'Date of Birth',
             validator: (value) {
               // Add validation logic for date of birth if needed
