@@ -1,10 +1,11 @@
 // ignore_for_file: use_super_parameters, overridden_fields
 
+import 'package:flutter/material.dart';
+
+import '../../../../../../../../common/functions/ischooler_date_time_helper.dart';
+import '../../../../../../../../common/ischooler_model.dart';
 import '../../../weekly_timetable/data/models/weekly_timetable_model.dart';
 import 'weekly_session_model.dart';
-import '../../../../../../../../common/ischooler_model.dart';
-import '../../../../../../../../common/functions/ischooler_date_time_helper.dart';
-import '../../../../../../../../common/madpoly.dart';
 
 class WeeklySessionsListModel extends IschoolerListModel {
   const WeeklySessionsListModel({
@@ -25,7 +26,7 @@ class WeeklySessionsListModel extends IschoolerListModel {
   WeeklySessionsListModel setSessionsTiming(
       {required WeeklyTimetableModel timeTable}) {
     List<WeeklySessionModel> newItems = [];
-    DateTime firstSessionDate = timeTable.startTime;
+    DateTime firstSessionDate = timeTable.startTime.toDateTime();
     DateTime startingDate = firstSessionDate.copyWith();
     DateTime endingDate = firstSessionDate
         .copyWith()
@@ -34,20 +35,13 @@ class WeeklySessionsListModel extends IschoolerListModel {
       // IschoolerDateTimeHelper.timeFormat(
       IschoolerModel item = items[index];
       if (item is WeeklySessionModel) {
-        String? startingTime = IschoolerDateTimeHelper.timeFormat(startingDate);
-        String? endingtime = IschoolerDateTimeHelper.timeFormat(endingDate);
-        Madpoly.print(
-          'startingTime = $startingTime, '
-          'endingtime = $endingtime',
-          tag: 'weekly_sessions_list_model > setSessionsTiming',
-          developer: "Ziad",
-        );
         newItems.add(
           (item).copyWith(
-            startTime: startingTime,
-            endTime: endingtime,
+            startTime: TimeOfDay.fromDateTime(startingDate),
+            endTime: TimeOfDay.fromDateTime(endingDate),
           ),
         );
+
         startingDate = endingDate
             .copyWith()
             .add(Duration(minutes: timeTable.breakInterval));

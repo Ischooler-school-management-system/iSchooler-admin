@@ -90,7 +90,7 @@ class _StudentDetailsFormState extends State<StudentDetailsForm> {
           /// Date of Birth
           IschoolerDateField(
             initialValue:
-                IschoolerDateTimeHelper.dateFormat(studentData.dateOfBirth),
+                IschoolerDateAndTimeHelper.dateFormat(studentData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               studentData = studentData.copyWith(dateOfBirth: date);

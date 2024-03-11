@@ -51,7 +51,7 @@ class _IschoolerDateFieldState extends State<IschoolerDateField> {
                 lastDate: DateTime(2100)) ??
             DateTime(1900);
         widget.onTap(date);
-        _controller.text = IschoolerDateTimeHelper.dateFormat(date) ?? '';
+        _controller.text = IschoolerDateAndTimeHelper.dateFormat(date) ?? '';
       },
     );
   }

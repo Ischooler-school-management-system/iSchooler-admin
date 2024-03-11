@@ -84,8 +84,8 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
 
           /// Date of Birth
           IschoolerDateField(
-            initialValue:
-                IschoolerDateTimeHelper.dateFormat(instructorData.dateOfBirth),
+            initialValue: IschoolerDateAndTimeHelper.dateFormat(
+                instructorData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               instructorData = instructorData.copyWith(dateOfBirth: date);
@@ -172,8 +172,8 @@ class _InstructorDetailsFormState extends State<InstructorDetailsForm> {
 
           /// hireDate
           IschoolerDateField(
-            initialValue:
-                IschoolerDateTimeHelper.dateFormat(instructorData.dateOfBirth),
+            initialValue: IschoolerDateAndTimeHelper.dateFormat(
+                instructorData.dateOfBirth),
             labelText: 'Hire Date',
             onTap: (date) {
               instructorData = instructorData.copyWith(hireDate: date);

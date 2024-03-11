@@ -5,7 +5,7 @@ weekly_timetable: id | name | term | class_id | start time | end time | session_
 
 weekly_timetable_day:id | weekly_timetable_id | weekday_id
 
-weekly_session: id | name | weekly_timetable_day_id | instructor_assignment_id | session_number
+weekly_session: id | name | weekly_timetable_day_id | instructor_assignment_id | session_number | starting_time | ending_time 
 ----------------------------------------------------------
 create weekly_timetable_day
 take id and create weekly_session

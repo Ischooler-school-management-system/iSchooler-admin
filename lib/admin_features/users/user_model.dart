@@ -64,7 +64,7 @@ class UserModel extends IschoolerModel {
 
       // createdAt: DateTime.parse(map['created_at']),
       // dateOfBirth: DateTime.now(),
-      dateOfBirth: IschoolerDateTimeHelper.fromMapItem(map['date_of_birth']),
+      dateOfBirth: IschoolerDateAndTimeHelper.toDateTime(map['date_of_birth']),
       phoneNumber: map['phone_number'] ?? '',
       address: map['address'] ?? '',
       gender: map['gender'] ?? '',

@@ -55,7 +55,7 @@ class IschoolerListeners extends StatelessWidget {
             tag: 'starting_screen > ', developer: "Ziad");
 
         // User is signed out, navigate to authentication screen
-        IschoolerNavigator.push(Routes.selectRoleScreen, replace: true);
+        IschoolerNavigator.push(Routes.signinScreen, replace: true);
         // IschoolerNavigator.navigateToScreen(const TestScreen(), replace: true);
       }
     }

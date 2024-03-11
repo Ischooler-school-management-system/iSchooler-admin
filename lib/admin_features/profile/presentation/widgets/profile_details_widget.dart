@@ -40,7 +40,8 @@ class ProfileDetailsWidget extends StatelessWidget {
       /// date of birth
       detailsRowWidget(
         IschoolerConstants.localization().date_of_birth,
-        IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth) ?? 'Unknown',
+        IschoolerDateAndTimeHelper.dateFormat(adminData.dateOfBirth) ??
+            'Unknown',
       ),
 
       /// Phone Number

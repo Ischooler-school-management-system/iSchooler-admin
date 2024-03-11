@@ -102,7 +102,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
                   setState(() {});
                 }),
             IschoolerTimeField(
-              onTap: (DateTime value) {
+              onTap: (TimeOfDay value) {
                 timeTableData = timeTableData.copyWith(startTime: value);
                 setState(() {});
               },
@@ -110,7 +110,7 @@ class _TimeTableDetailsFormState extends State<TimeTableDetailsForm> {
               initialValue: const TimeOfDay(hour: 8, minute: 0),
             ),
             IschoolerTimeField(
-              onTap: (DateTime value) {
+              onTap: (TimeOfDay value) {
                 timeTableData = timeTableData.copyWith(endTime: value);
                 setState(() {});
               },

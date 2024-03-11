@@ -76,6 +76,7 @@ class InstructorAssignmentModel extends IschoolerModel {
 
   @override
   InstructorAssignmentModel copyWith({
+    String? id,
     String? name,
     String? grade,
     InstructorModel? instructor,
@@ -83,7 +84,7 @@ class InstructorAssignmentModel extends IschoolerModel {
     SubjectModel? subjectModel,
   }) {
     return InstructorAssignmentModel(
-      id: id,
+      id: id ?? this.id,
       name: name ?? this.name,
       instructor: instructor ?? this.instructor,
       classModel: classModel ?? this.classModel,

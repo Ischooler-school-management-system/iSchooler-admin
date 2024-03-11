@@ -5,7 +5,7 @@ import 'package:flutter_smart_dialog/flutter_smart_dialog.dart';
 import 'package:rxdart/rxdart.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-import '../auth/presentation/auth/screens/select_role_screen.dart';
+import '../auth/presentation/signin/screens/sign_in_screen.dart';
 import '../auth/settings/language/language_bloc/language_bloc.dart';
 import '../common/ischooler_constants.dart';
 import '../common/navigation/router.export.dart';
@@ -93,7 +93,7 @@ class IschoolerMaterialApp extends StatelessWidget {
       if (user != null) {
         return const IschoolerSideBar();
       } else {
-        return const SelectRoleScreen();
+        return const SigninScreen();
       }
     }
     // return const TestScreen();

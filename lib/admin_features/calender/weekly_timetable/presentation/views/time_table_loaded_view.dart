@@ -48,8 +48,6 @@ class _TimeTableLoadedViewState extends State<TimeTableLoadedView> {
             state.ischoolerAllModel is WeeklySessionsListModel) {
           weeklySessionsListModel =
               state.ischoolerAllModel as WeeklySessionsListModel;
-          weeklySessionsListModel = weeklySessionsListModel.setSessionsTiming(
-              timeTable: widget.timeTable);
         }
         return Padding(
           padding: const EdgeInsets.all(8.0),
@@ -79,9 +77,10 @@ class _TimeTableLoadedViewState extends State<TimeTableLoadedView> {
                               sessionNumber:
                                   weeklySessionsListModel.items.length + 1,
                               instructorAssignment:
-                                  InstructorAssignmentModel.dummy(),
+                                  InstructorAssignmentModel.dummy()
+                                      .copyWith(id: '1'),
                               weeklyTimetableDay: WeeklyTimetableDayModel(
-                                id: '-1',
+                                id: '7',
                                 weeklyTimetableId: widget.timeTable.id,
                                 weekdayId: selectedWeekday.id,
                               ),

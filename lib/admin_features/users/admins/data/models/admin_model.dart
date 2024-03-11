@@ -83,7 +83,7 @@ class AdminModel extends UserModel {
       email: userModel.email,
       role: userModel.role,
       profilePicture: userModel.profilePicture,
-      hireDate: IschoolerDateTimeHelper.fromMapItem(map['hire_date']),
+      hireDate: IschoolerDateAndTimeHelper.toDateTime(map['hire_date']),
       adminRole: AdminRoleModel.fromMap(map['admin_role'] ?? {}),
       specialization: map['specialization'] ?? '',
     );

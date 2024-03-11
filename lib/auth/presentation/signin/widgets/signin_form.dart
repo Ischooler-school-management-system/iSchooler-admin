@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../../../common/ischooler_constants.dart';
-import '../../../../../common/ischooler_validation.dart';
+import '../../../../../common/common_features/responsive/responsive.dart';
 import '../../../../../common/common_features/widgets/buttons/ischooler_button_export.dart';
-import '../../../../../common/common_features/widgets/ischooler_checkbox.dart';
 import '../../../../../common/common_features/widgets/fields/ischooler_password_field.dart';
 import '../../../../../common/common_features/widgets/fields/ischooler_text_field.dart';
-import '../../../../../common/common_features/responsive/responsive.dart';
+import '../../../../../common/common_features/widgets/ischooler_checkbox.dart';
+import '../../../../../common/ischooler_constants.dart';
+import '../../../../../common/ischooler_validation.dart';
 import '../../../../../common/style/ischooler_colors.dart';
 import '../../../logic/cubit/auth_cubit.dart';
 
@@ -32,7 +32,6 @@ class _SigninFormState extends State<SigninForm> {
   bool isKeyboardOpen = false;
   FocusNode emailFocusNode = FocusNode();
   FocusNode passwordFocusNode = FocusNode();
-  bool _isButtonDisabled = true;
   String inputEmail = '';
   String inputPassword = '';
 
@@ -66,16 +65,10 @@ class _SigninFormState extends State<SigninForm> {
   Widget build(BuildContext context) {
     return Form(
       key: _formKey,
-      onChanged: () {
-        setState(() {
-          _isButtonDisabled = !_formKey.currentState!.validate();
-          // widget.onFormChanged(_isButtonDisabled);
-        });
-      },
       child: Column(
         children: [
           IschoolerTextField(
-            initialValue: 'ziad@test.com',
+            initialValue: 'hassan_admin@mail.com',
             labelText: IschoolerConstants.localization().enter_email,
             validator: IschoolerValidations.emailValidator,
             suffixIcon: const Icon(Icons.person),
@@ -98,8 +91,8 @@ class _SigninFormState extends State<SigninForm> {
             },
           ),
 
-          /// shows the row that contains the remember me checkbex
-          ///  and forgot pasword button
+          /// shows the row that contains the remember me checkbox
+          ///  and forgot password button
           forgotPasswordRow(),
           SizedBox(height: 20.h),
           // sign in button

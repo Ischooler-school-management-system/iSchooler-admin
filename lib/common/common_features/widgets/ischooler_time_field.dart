@@ -5,7 +5,7 @@ import 'fields/ischooler_text_field.dart';
 
 class IschoolerTimeField extends StatefulWidget {
   final TimeOfDay? initialValue;
-  final Function(DateTime time) onTap;
+  final Function(TimeOfDay time) onTap;
   final String? labelText;
 
   const IschoolerTimeField({
@@ -55,7 +55,7 @@ class _IschoolerTimeFieldState extends State<IschoolerTimeField> {
           initialTime: widget.initialValue ?? TimeOfDay.now(),
         );
         if (time != null) {
-          widget.onTap(_convertToDateTime(time));
+          widget.onTap(time);
           _controller.text = _formatTime(time);
         }
       },
@@ -73,7 +73,7 @@ class _IschoolerTimeFieldState extends State<IschoolerTimeField> {
   String _formatTime(TimeOfDay timeOfDay) {
     DateTime convertToDateTime = _convertToDateTime(timeOfDay);
     final String? formattedString =
-        IschoolerDateTimeHelper.timeFormat(convertToDateTime);
+        IschoolerDateAndTimeHelper.timeFormat(convertToDateTime);
     return formattedString ?? '';
   }
 }

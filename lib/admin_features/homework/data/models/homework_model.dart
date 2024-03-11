@@ -73,7 +73,7 @@ class HomeworkModel extends IschoolerModel {
     return {
       // 'Class Info': instructorAssignment.toDisplayMap(),
       // 'Subject': subject.toDisplayMap(),
-      'Date': IschoolerDateTimeHelper.dateFormat(date),
+      'Date': IschoolerDateAndTimeHelper.dateFormat(date),
       'Content': content,
     };
   }

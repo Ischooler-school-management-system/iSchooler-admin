@@ -88,7 +88,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           /// Date of Birth
           IschoolerDateField(
             initialValue:
-                IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth),
+                IschoolerDateAndTimeHelper.dateFormat(adminData.dateOfBirth),
             labelText: 'Date of Birth',
             onTap: (date) {
               adminData = adminData.copyWith(dateOfBirth: date);
@@ -195,7 +195,7 @@ class _AdminDetailsFormState extends State<AdminDetailsForm> {
           /// hireDate
           IschoolerDateField(
             initialValue:
-                IschoolerDateTimeHelper.dateFormat(adminData.dateOfBirth),
+                IschoolerDateAndTimeHelper.dateFormat(adminData.dateOfBirth),
             labelText: 'Hire Date',
             onTap: (date) {
               adminData = adminData.copyWith(hireDate: date);

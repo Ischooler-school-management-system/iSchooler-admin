@@ -63,7 +63,7 @@ class InstructorModel extends UserModel {
       profilePicture: userModel.profilePicture,
       specialization: map['specialization'] ?? '',
       // hireDate: DateTime.now(),
-      hireDate: IschoolerDateTimeHelper.fromMapItem((map['hire_date'] ?? '')),
+      hireDate: IschoolerDateAndTimeHelper.toDateTime((map['hire_date'] ?? '')),
       dateOfBirth: userModel.dateOfBirth,
     );
   }

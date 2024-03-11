@@ -1,13 +1,13 @@
-// ignore_for_file: use_super_parameters, overridden_fields
-
+import 'package:flutter/material.dart'; // Import TimeOfDay
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../../../common/ischooler_model.dart';
 import '../../../../classes/data/models/class_model.dart';
 
 class WeeklyTimetableModel extends IschoolerModel {
   final String term;
   final String classId;
-  final DateTime startTime;
-  final DateTime endTime;
+  final TimeOfDay startTime; // Change type to TimeOfDay
+  final TimeOfDay endTime; // Change type to TimeOfDay
   final int sessionInterval;
   final int breakInterval;
   final ClassModel classModel;
@@ -24,26 +24,14 @@ class WeeklyTimetableModel extends IschoolerModel {
     required this.classModel,
   });
 
-  /* 
-  
-  //  required super.id,
-    // required super.name,
-    // required this.term,
-    // required this.classId,
-    required this.startTime,
-    required this.endTime,
-    required this.sessionInterval,
-    required this.breakInterval,
-    // required this.classInfo,
-   */
   factory WeeklyTimetableModel.empty() {
     return WeeklyTimetableModel(
       id: '-1',
       name: '',
       term: '',
       classId: "-1",
-      startTime: DateTime(500, 1, 1, 1, 1),
-      endTime: DateTime(500, 1, 1, 1, 1),
+      startTime: const TimeOfDay(hour: 0, minute: 0),
+      endTime: const TimeOfDay(hour: 0, minute: 0),
       sessionInterval: 0,
       breakInterval: 0,
       classModel: ClassModel.empty(),
@@ -56,8 +44,8 @@ class WeeklyTimetableModel extends IschoolerModel {
       name: 'Sample Timetable',
       term: 'Spring 2024',
       classId: '1',
-      startTime: DateTime(500, 1, 1, 8, 0),
-      endTime: DateTime(500, 1, 1, 2, 0),
+      startTime: const TimeOfDay(hour: 8, minute: 0),
+      endTime: const TimeOfDay(hour: 12, minute: 0),
       sessionInterval: 60,
       breakInterval: 10,
       classModel: ClassModel.dummy(),
@@ -84,12 +72,8 @@ class WeeklyTimetableModel extends IschoolerModel {
       name: ischoolerModel.name,
       term: map['term'] ?? '',
       classId: map['class_id'] == null ? '-1' : map['class_id'].toString(),
-      startTime: map['start_time'] != null
-          ? DateTime.parse(map['start_time'])
-          : DateTime(500, 1, 1, 1, 1),
-      endTime: map['start_time'] != null
-          ? DateTime.parse(map['end_time'])
-          : DateTime(500, 1, 1, 1, 1),
+      startTime: IschoolerDateAndTimeHelper.toTimeOfDay(map['start_time']),
+      endTime: IschoolerDateAndTimeHelper.toTimeOfDay(map['end_time']),
       sessionInterval: map['session_interval'] ?? -1,
       breakInterval: map['break_interval'] ?? -1,
       classModel: ClassModel.fromMap(map['class'] ?? {}),
@@ -102,8 +86,10 @@ class WeeklyTimetableModel extends IschoolerModel {
       'name': name,
       'term': term,
       'class_id': classId,
-      'start_time': startTime.toIso8601String(),
-      'end_time': endTime.toIso8601String(),
+      'start_time':
+          '${startTime.hour}:${startTime.minute}', // Serialize TimeOfDay to string
+      'end_time':
+          '${endTime.hour}:${endTime.minute}', // Serialize TimeOfDay to string
       'session_interval': sessionInterval,
       'break_interval': breakInterval,
     };
@@ -116,8 +102,10 @@ class WeeklyTimetableModel extends IschoolerModel {
       'Name': name,
       'Term': term,
       'Class ID': classId,
-      'Start Time': startTime,
-      'End Time': endTime,
+      'Start Time':
+          '${startTime.hour}:${startTime.minute}', // Display TimeOfDay as string
+      'End Time':
+          '${endTime.hour}:${endTime.minute}', // Display TimeOfDay as string
       'Session Interval': '$sessionInterval minutes',
       'Break Interval': '$breakInterval minutes',
       'Class Info': classModel.toDisplayMap(),
@@ -130,8 +118,8 @@ class WeeklyTimetableModel extends IschoolerModel {
     String? name,
     String? term,
     String? classId,
-    DateTime? startTime,
-    DateTime? endTime,
+    TimeOfDay? startTime,
+    TimeOfDay? endTime,
     int? sessionInterval,
     int? breakInterval,
     ClassModel? classModel,

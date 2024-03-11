@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../common/common_features/widgets/ischooler_timeline_tile.dart';
+import '../../../../../common/functions/ischooler_date_time_helper.dart';
 import '../../../../../common/style/ischooler_colors.dart';
 import '../../../../../common/style/ischooler_text_theme.dart';
 import '../../../weekly_session/data/models/weekly_session_model.dart';
@@ -41,12 +42,12 @@ class TableSessionWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              session.startTime,
+              IschoolerDateAndTimeHelper.timeOfDayToString(session.startTime),
               style: IschoolerTextStyles.style14
                   .copyWith(fontWeight: FontWeight.w600),
             ),
             Text(
-              session.endTime,
+              IschoolerDateAndTimeHelper.timeOfDayToString(session.endTime),
               style: IschoolerTextStyles.style12Blue
                   .copyWith(color: IschoolerColors.grey),
             ),
